@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "title": "Global Agentic OS Dashboard",
+    "lastUpdated": "2026-05-28 IDT",
+    "sourceOfTruth": "../PROJECT-STATUS.md",
+    "sourcePolicy": "Local folder mode only. No GitHub status was used.",
+    "freshnessRule": {
+      "fresh": "Updated in the last 48 hours.",
+      "needsReview": "Updated in the last 3-7 days.",
+      "stale": "Older than 7 days.",
+      "unknown": "No reliable updated date found."
+    }
+  },
+  "summary": {
+    "overallStatus": "Both products are in active distribution sprint. RunSmart iOS is in ASO finalization (submit target 2026-06-01). ResumeBuilder Web has distribution scaffold v1 installed and first ASO session is ready to run.",
+    "bestNextAction": "RunSmart iOS: copy approved description to fastlane, render screenshot overlays (rs-aso-002), then archive and submit. ResumeBuilder: run first ASO session using .agent-os/distribution/app-store-program.md.",
+    "mainBlockers": [
+      "RunSmart iOS: approved description (rs-aso-001) and screenshot overlays (rs-aso-002) need to be applied before App Store submission.",
+      "RunSmart iOS: rs-analytics-001 (PostHog instrumentation) must be executed before lifecycle email triggers are meaningful.",
+      "ResumeBuilder iOS: five-tab simulator smoke QA still pending; Resume Library backend endpoints not live.",
+      "ResumeBuilder distribution: ASO metadata, RTL PDF status, and iOS pricing model all need founder confirmation before first ASO session."
+    ],
+    "needsDecision": [
+      "RunSmart iOS: whether one focused physical-device pass is enough before archive/upload readiness.",
+      "ResumeBuilder iOS: whether the PR can proceed with the mock library service while backend endpoints are pending."
+    ]
+  },
+  "projects": [
+    {
+      "id": "runsmart-ios",
+      "name": "RunSmart iOS",
+      "type": "Native SwiftUI iOS app",
+      "role": "Premium mobile version of RunSmart.",
+      "freshness": "Fresh",
+      "statusTone": "distribution",
+      "status": "ASO finalization sprint. Distribution scaffold v1 installed 2026-05-28. Approved description (rs-aso-001) and screenshot overlays (rs-aso-002) ready to apply. Submit target: 2026-06-01.",
+      "distributionStatus": "Distribution scaffold v1 installed; ASO finalization in progress (rs-aso-001 approved, submit target 2026-06-01)",
+      "currentPhase": "ASO finalization + App Store submission",
+      "activeStory": "Apply rs-aso-001 description + rs-aso-002 screenshot overlays; execute rs-analytics-001 PostHog spec",
+      "lastCompletedStory": "Story 10: TestFlight Polish And Privacy Review, plus Agent OS status source-of-truth consolidation",
+      "nextRecommendedStory": "Physical-device outdoor/background recording check, then archive/upload readiness",
+      "estimatedCompletion": "Not estimated in local files",
+      "progressPercent": null,
+      "progressLabel": "Not estimated",
+      "lastValidation": "2026-05-15 physical-device Debug build passed on connected iPhone 13, bundle id com.runsmart.lite; simulator build passed; latest full iPhone 17 XCTest attempt still stalled with NSMachErrorDomain Code=-308.",
+      "validationState": "Builds passed; manual outdoor/background/battery QA is missing.",
+      "lastUpdated": "2026-05-15",
+      "blockers": [
+        "Manual outdoor/background recording and battery-delta check remains open.",
+        "External beta readiness is blocked on manual physical-device run QA."
+      ],
+      "risks": [
+        "Location/background behavior",
+        "Battery usage",
+        "Garmin missing map data",
+        "Pre-existing AppIcon warnings",
+        "Older actor-isolation warning noise"
+      ],
+      "nextActions": [
+        "Run the manual outdoor/background recording and battery-delta check on the connected iPhone.",
+        "Record exact device, route/run duration, lock/background behavior, battery delta, and GPS/permission issues in local task files.",
+        "After device QA passes, run archive/upload readiness: signing, bundle id, privacy strings, App Store Connect, and TestFlight release notes."
+      ],
+      "links": {
+        "bridge": "../PROJECT-BRIDGES/runsmart-ios.md",
+        "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
+      }
+    },
+    {
+      "id": "resumebuilder-ios",
+      "name": "ResumeBuilder iOS",
+      "type": "Native SwiftUI iOS app",
+      "role": "Native iOS app for ResumeBuilder product.",
+      "freshness": "Fresh",
+      "statusTone": "blocked",
+      "status": "In progress; five-story tab/library spec completed, smoke QA and PR remain.",
+      "currentPhase": "Pre-release / TestFlight prep",
+      "activeStory": "Simulator smoke test all 5 tabs",
+      "lastCompletedStory": "Spec \"Merge Track->Me, Redesign Optimized Resume, Real Resume Library\" all 5 stories",
+      "nextRecommendedStory": "Simulator smoke test all 5 tabs, create PR claude/hungry-chatelet-a86030 -> main, then flip BackendConfig.useMockLibraryService once web API ships",
+      "estimatedCompletion": "25% per local tasks/progress.md",
+      "progressPercent": 25,
+      "progressLabel": "25%",
+      "lastValidation": "Xcode build succeeded after each story commit. Manual smoke test all 5 tabs is still TODO.",
+      "validationState": "Build notes exist; five-tab smoke QA is missing.",
+      "lastUpdated": "2026-05-15",
+      "blockers": [
+        "Resume Library backend endpoints are not live.",
+        "BackendConfig.useMockLibraryService = true remains active."
+      ],
+      "risks": [
+        "Swift 6 concurrency strictness",
+        "WKWebView PDF render fragility on real device",
+        "No Hebrew/RTL support",
+        "Resume Library backend endpoints not yet live"
+      ],
+      "nextActions": [
+        "Run simulator smoke test across Tailor, Optimized, Design, Expert, and Me.",
+        "Create PR claude/hungry-chatelet-a86030 -> main after smoke QA.",
+        "Flip BackendConfig.useMockLibraryService = false only after the web backend ships /api/v1/resumes."
+      ],
+      "links": {
+        "bridge": "../PROJECT-BRIDGES/resumebuilder-ios.md",
+        "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
+      }
+    },
+    {
+      "id": "runsmart-web",
+      "name": "RunSmart Web",
+      "type": "Web app",
+      "role": "Main AI running coach product and source of current product logic.",
+      "freshness": "Unknown",
+      "statusTone": "reference",
+      "status": "Portfolio reference project. No current execution status was pulled into PROJECT-STATUS.md.",
+      "currentPhase": "Reference / product logic source",
+      "activeStory": "Not listed in PROJECT-STATUS.md",
+      "lastCompletedStory": "Not listed in PROJECT-STATUS.md",
+      "nextRecommendedStory": "Refresh local repo status before making implementation decisions.",
+      "estimatedCompletion": "Unknown",
+      "progressPercent": null,
+      "progressLabel": "Unknown",
+      "lastValidation": "No latest validation included in PROJECT-STATUS.md.",
+      "validationState": "Needs local status refresh before execution.",
+      "lastUpdated": "Unknown",
+      "blockers": [
+        "No current blocker data in PROJECT-STATUS.md."
+      ],
+      "risks": [
+        "AI coaching correctness and user trust",
+        "Training plan logic regressions",
+        "Garmin/Apple readiness and sync assumptions",
+        "Auth, payments, subscriptions, and monetization"
+      ],
+      "nextActions": [
+        "Read the RunSmart Web local Agent OS before any implementation.",
+        "Use this project as product logic reference for RunSmart iOS only after repo evidence is checked."
+      ],
+      "links": {
+        "bridge": "../PROJECT-BRIDGES/runsmart-web.md",
+        "repo": "file:///Users/nadavyigal/Documents/RunSmart"
+      }
+    },
+    {
+      "id": "resumebuilder-ai",
+      "name": "ResumeBuilder AI",
+      "type": "AI resume optimization product",
+      "role": "High-quality resume generation, templates, export, confidence, and conversion.",
+      "freshness": "Fresh",
+      "statusTone": "distribution",
+      "status": "Distribution scaffold v1 installed in web repo 2026-05-28. First ASO session ready. Hebrew program and iOS pricing model are open questions before first ASO publish.",
+      "distributionStatus": "Distribution scaffold v1 installed in web repo 2026-05-28; first ASO session ready to run",
+      "currentPhase": "Distribution scaffold install + first ASO session",
+      "activeStory": "Not listed in PROJECT-STATUS.md",
+      "lastCompletedStory": "Not listed in PROJECT-STATUS.md",
+      "nextRecommendedStory": "Confirm local repo path and refresh status before execution.",
+      "estimatedCompletion": "Unknown",
+      "progressPercent": null,
+      "progressLabel": "Unknown",
+      "lastValidation": "No latest validation included in PROJECT-STATUS.md.",
+      "validationState": "Needs local status refresh before execution.",
+      "lastUpdated": "Unknown",
+      "blockers": [
+        "Local repo path is not confirmed in PROJECT-PATHS.md."
+      ],
+      "risks": [
+        "Low-quality AI output",
+        "Broken PDF/export formatting",
+        "Templates that look good but parse poorly",
+        "Hebrew/English direction bugs"
+      ],
+      "nextActions": [
+        "Confirm repo path.",
+        "Read local Agent OS files before any implementation.",
+        "Prioritize output quality and export QA before monetization changes."
+      ],
+      "links": {
+        "bridge": "../PROJECT-BRIDGES/resumebuilder-ai.md",
+        "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
+      }
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "type": "Future orchestration layer",
+      "role": "Cross-project coordination for tasks, context, specs, QA, workflows, and agents.",
+      "freshness": "Unknown",
+      "statusTone": "reference",
+      "status": "Future orchestration concept. Do not build before the workflow is proven manually.",
+      "currentPhase": "Concept / orchestration planning",
+      "activeStory": "Not listed in PROJECT-STATUS.md",
+      "lastCompletedStory": "Not listed in PROJECT-STATUS.md",
+      "nextRecommendedStory": "Keep manual workflow lightweight; automate only after repeated patterns are proven.",
+      "estimatedCompletion": "Unknown",
+      "progressPercent": null,
+      "progressLabel": "Unknown",
+      "lastValidation": "No Atlas repo validation included in PROJECT-STATUS.md.",
+      "validationState": "Concept only; no repo path confirmed.",
+      "lastUpdated": "Unknown",
+      "blockers": [
+        "Atlas repo path is not confirmed.",
+        "Manual orchestration workflow is not yet proven enough to automate."
+      ],
+      "risks": [
+        "Replacing local project truth with stale global summaries",
+        "Loading too much context",
+        "Over-centralizing secrets, docs, or decisions",
+        "Creating fake certainty across repos"
+      ],
+      "nextActions": [
+        "Use the Global Agentic OS dashboard as a manual coordination layer.",
+        "Keep local project repos as source of truth.",
+        "Record repeatable workflows before building Atlas automation."
+      ],
+      "links": {
+        "bridge": "../PROJECT-BRIDGES/atlas.md",
+        "repo": null
+      }
+    }
+  ],
+  "priorityBoard": {
+    "now": [
+      "RunSmart iOS: apply rs-aso-001 description to fastlane/metadata/en-US/description.txt.",
+      "RunSmart iOS: render rs-aso-002 screenshot overlays (A variants approved).",
+      "RunSmart iOS: execute rs-analytics-001 PostHog instrumentation spec.",
+      "ResumeBuilder: run first ASO session using .agent-os/distribution/app-store-program.md."
+    ],
+    "next": [
+      "RunSmart iOS: archive and submit to App Store (target 2026-06-01).",
+      "ResumeBuilder: confirm Hebrew RTL PDF status + iOS pricing model before first ASO publish.",
+      "ResumeBuilder iOS: five-tab simulator smoke test + PR from claude/hungry-chatelet-a86030 to main."
+    ],
+    "later": [
+      "RunSmart iOS: clean up warning noise and confirm external beta notes.",
+      "ResumeBuilder iOS: backend resume library integration, PDF/export device QA, Hebrew/RTL planning."
+    ],
+    "blocked": [
+      "RunSmart iOS external TestFlight until manual outdoor/background/battery validation is done.",
+      "ResumeBuilder iOS real Resume Library integration until /api/v1/resumes ships."
+    ]
+  },
+  "qaBoard": [
+    {
+      "project": "RunSmart iOS",
+      "buildStatus": "Simulator build passed; physical-device Debug build passed.",
+      "testStatus": "Full Story 10 test passed 2026-05-14; 2026-05-15 full test attempt stalled.",
+      "manualQAStatus": "Manual outdoor/background/battery QA not done.",
+      "testFlightReadiness": "Not external-beta ready until manual device run QA and archive/upload checks pass.",
+      "latestValidationDate": "2026-05-15",
+      "missingValidation": "Outdoor/background/battery run, archive/upload readiness."
+    },
+    {
+      "project": "ResumeBuilder iOS",
+      "buildStatus": "Xcode build succeeded after each story commit.",
+      "testStatus": "No full test pass recorded in progress.",
+      "manualQAStatus": "Five-tab smoke test TODO.",
+      "testFlightReadiness": "Not ready.",
+      "latestValidationDate": "2026-05-15 build notes",
+      "missingValidation": "Five-tab smoke test, PR review, real backend resume library integration, PDF/export device QA."
+    }
+  ],
+  "decisionBoard": [
+    {
+      "decision": "Is one focused physical-device run enough before archive prep?",
+      "project": "RunSmart iOS",
+      "whyItMatters": "External beta depends on real background/battery confidence.",
+      "options": "One focused device check; broader device matrix; pause for more automation.",
+      "recommendedOption": "One focused outdoor/background/battery check, then archive readiness review.",
+      "urgency": "High"
+    },
+    {
+      "decision": "Can ResumeBuilder PR proceed while Resume Library uses mocks?",
+      "project": "ResumeBuilder iOS",
+      "whyItMatters": "The five-story spec is complete, but backend endpoints are pending.",
+      "options": "PR now with mock flag; wait for backend; split PR.",
+      "recommendedOption": "PR after smoke QA, clearly documenting mock flag and backend dependency.",
+      "urgency": "High"
+    },
+    {
+      "decision": "When to flip useMockLibraryService",
+      "project": "ResumeBuilder iOS",
+      "whyItMatters": "Real library behavior depends on web/backend /api/v1/resumes.",
+      "options": "Flip now; flip after backend ships; keep mocks for TestFlight.",
+      "recommendedOption": "Flip only after backend endpoint is live and tested.",
+      "urgency": "Medium"
+    }
+  ],
+  "navigation": [
+    {
+      "label": "Markdown Dashboard",
+      "href": "../DASHBOARD.md"
+    },
+    {
+      "label": "Project Status",
+      "href": "../PROJECT-STATUS.md"
+    },
+    {
+      "label": "Projects",
+      "href": "../PROJECTS.md"
+    },
+    {
+      "label": "Project Bridges",
+      "href": "../PROJECT-BRIDGES/"
+    },
+    {
+      "label": "Project Paths",
+      "href": "../PROJECT-PATHS.md"
+    }
+  ]
+}
