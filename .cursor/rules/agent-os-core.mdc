@@ -1,0 +1,51 @@
+---
+description: Agent OS session ritual for cross-project work in the Global Agentic OS
+alwaysApply: true
+---
+
+# Agent OS Core (Global Workspace)
+
+## Session Start
+
+1. Read `~/.claude/MEMORY.md` for cross-project decisions.
+2. Read `~/.claude/ERRORS.md` for failed approaches.
+3. State the objective in one sentence before planning.
+4. Write a 5-step plan maximum before touching any file.
+
+## ERRORS Gate
+
+Before proposing any fix or approach, check `~/.claude/ERRORS.md`. If a similar approach is logged as failed, surface the failure and propose a different path.
+
+## Work Rules
+
+- This repo is a reference library, not a software product. No build commands, tests, or lint.
+- Prefer decisions that work across all products, not just one.
+- Keep global docs lean. Do not duplicate content that lives in individual project files.
+- Load bridge files only for cross-project context. Do not read every file by default.
+- Scope gate: if a cross-project decision starts affecting a single project too deeply, suggest switching to that project's workspace.
+
+## Never Do
+
+- Open with warmup phrases
+- Use em dashes
+- Propose an approach already in ERRORS.md
+- Give generic advice; be specific to the actual products and decisions at hand
+- Duplicate long project docs into the global OS
+
+## Session End
+
+On "session end", "done for now", "wrapping up", or "let's stop here":
+
+1. Write to `~/.claude/MEMORY.md`:
+
+```
+## YYYY-MM-DD — [Brief session title]
+Worked on: [what we focused on]
+Completed: [what is finished and verified]
+In progress: [what was started but not finished]
+Decisions: [key choices made]
+Next session: [what to pick up first, with enough context to resume cold]
+```
+
+2. If any approach failed more than once, append to `~/.claude/ERRORS.md`.
+3. List: files changed, open questions, what was NOT done.

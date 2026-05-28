@@ -1,0 +1,22 @@
+---
+description: Prevent unnecessary context loading in Global Agentic OS workspace
+alwaysApply: true
+---
+
+# Global OS Scope Control
+
+This workspace is the Global Agentic OS. It is a reference library, not a product repo.
+
+## What to load
+
+- `AGENTS.md` or `CURSOR.md` for routing
+- Relevant bridge file from `PROJECT-BRIDGES/` (one at a time)
+- Specific `GLOBAL-*.md` file when the task requires it
+- Templates or prompts only when creating or updating agent OS artifacts
+
+## What NOT to load
+
+- Do not read all bridge files at once
+- Do not read all `GLOBAL-*.md` files at once
+- Do not read product repo files unless explicitly needed for a cross-project task
+- Do not load `SKILLS/` unless doing multi-agent role work
