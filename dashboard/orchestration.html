@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentic OS — Orchestration Map</title>
+    <style>
+      :root {
+        --bg: #0b0f1a;
+        --bg-2: #11172a;
+        --panel: #151d33;
+        --panel-2: #1b2540;
+        --line: #263354;
+        --ink: #e8edf9;
+        --muted: #93a0c2;
+        --faint: #5e6b8e;
+        --accent: #6ea8fe;
+        --green: #34d399;
+        --amber: #fbbf24;
+        --red: #f87171;
+        --violet: #a78bfa;
+        --cyan: #22d3ee;
+        --pink: #f472b6;
+        --radius: 14px;
+        font-synthesis: none;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.08), transparent),
+          linear-gradient(180deg, var(--bg), var(--bg-2));
+        background-color: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      .wrap { max-width: 1240px; margin: 0 auto; padding: 28px 22px 80px; }
+
+      /* Header */
+      header.top {
+        display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+        gap: 18px; border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 26px;
+      }
+      .brand { display: flex; align-items: center; gap: 14px; }
+      .mark {
+        width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+        font-weight: 800; letter-spacing: .5px; color: #06122b;
+        background: linear-gradient(135deg, var(--accent), var(--cyan));
+        box-shadow: 0 8px 24px rgba(110,168,254,.35);
+      }
+      .brand h1 { font-size: 20px; margin: 0; letter-spacing: .2px; }
+      .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }
+      .stamp { text-align: right; color: var(--muted); font-size: 12.5px; }
+      .stamp strong { color: var(--ink); }
+
+      /* Launch chips */
+      .launch { display: flex; gap: 12px; flex-wrap: wrap; margin: 4px 0 26px; }
+      .chip {
+        background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+        padding: 8px 14px; font-size: 13px; display: flex; align-items: center; gap: 9px;
+      }
+      .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; box-shadow: 0 0 0 3px rgba(255,255,255,.04); }
+      .d-green { background: var(--green); } .d-amber { background: var(--amber); }
+      .d-red { background: var(--red); } .d-blue { background: var(--accent); }
+      .d-grey { background: var(--faint); }
+      .chip b { color: var(--ink); } .chip span { color: var(--muted); }
+
+      /* KPI row */
+      .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 30px; }
+      .kpi { background: linear-gradient(180deg, var(--panel), var(--bg-2)); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 16px 18px; }
+      .kpi .v { font-size: 26px; font-weight: 750; }
+      .kpi .l { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+      /* Layer band */
+      .layer { position: relative; margin: 0 0 16px; border: 1px solid var(--line);
+        border-radius: var(--radius); background: linear-gradient(180deg, var(--panel), var(--bg-2));
+        overflow: hidden; }
+      .layer::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+      .layer.l-orchestration::before { background: var(--violet); }
+      .layer.l-product::before { background: var(--cyan); }
+      .layer.l-distribution::before { background: var(--green); }
+      .layer.l-cro::before { background: var(--pink); }
+      .layer.l-agents::before { background: var(--amber); }
+      .layer.l-skills::before { background: var(--accent); }
+      .layer.l-plans::before { background: var(--violet); }
+      .layer.l-todos::before { background: var(--cyan); }
+      .layer.l-executive::before { background: var(--pink); }
+
+      .layer-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+        padding: 16px 20px 4px; }
+      .layer-head h2 { font-size: 15.5px; margin: 0; letter-spacing: .3px; }
+      .layer-head .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px;
+        color: var(--faint); }
+      .layer-head .desc { color: var(--muted); font-size: 12.5px; margin-left: auto; max-width: 560px; text-align: right; }
+
+      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 12px; padding: 14px 20px 20px; }
+      .card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 11px;
+        padding: 12px 13px; transition: transform .12s ease, border-color .12s ease; }
+      .card:hover { transform: translateY(-2px); border-color: #36507f; }
+      .card .ct { display: flex; align-items: center; gap: 8px; font-weight: 650; font-size: 13.5px; }
+      .card .cs { color: var(--muted); font-size: 12px; margin-top: 6px; }
+      .card .pill { font-size: 10.5px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line);
+        color: var(--muted); margin-left: auto; white-space: nowrap; }
+      .pill.ready { color: var(--green); border-color: rgba(52,211,153,.4); }
+      .pill.progress { color: var(--amber); border-color: rgba(251,191,36,.4); }
+      .pill.blocked { color: var(--red); border-color: rgba(248,113,113,.4); }
+      .pill.planned { color: var(--accent); border-color: rgba(110,168,254,.4); }
+      .pill.idle { color: var(--faint); }
+
+      /* Todos columns */
+      .todo-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 14px 20px 20px; }
+      .todo-col h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--faint); margin: 0 0 8px; }
+      .todo-col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+      .todo-col li { background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px;
+        padding: 9px 11px; font-size: 12.5px; color: var(--ink); }
+      .col-now h3 { color: var(--green); } .col-next h3 { color: var(--accent); }
+      .col-later h3 { color: var(--muted); } .col-blocked h3 { color: var(--red); }
+
+      .flow { color: var(--faint); text-align: center; font-size: 18px; margin: -6px 0 10px; }
+
+      footer { margin-top: 34px; color: var(--faint); font-size: 12px; border-top: 1px solid var(--line);
+        padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+      footer a { color: var(--accent); text-decoration: none; }
+      @media (max-width: 880px) {
+        .kpis, .todo-cols { grid-template-columns: repeat(2, 1fr); }
+        .layer-head .desc { text-align: left; margin-left: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="brand">
+          <div class="mark">OS</div>
+          <div>
+            <h1>Agentic OS — Orchestration Map</h1>
+            <p>How the operating system coordinates products, distribution, agents, and skills.</p>
+          </div>
+        </div>
+        <div class="stamp">
+          <div>Generated <strong id="stamp-date"></strong></div>
+          <div>Source: local Agentic OS repo · <a style="color:var(--accent)" href="./index.html">Project Status →</a></div>
+        </div>
+      </header>
+
+      <div class="launch" id="launch"></div>
+      <div class="kpis" id="kpis"></div>
+      <div id="layers"></div>
+
+      <footer>
+        <span>Single-file artifact · opens via file:// · regenerate when status changes.</span>
+        <span><a href="./index.html">Project Status dashboard</a> · <a href="../DASHBOARD.md">DASHBOARD.md</a> · <a href="../distribution-os/distribution-command-center.md">Command Center</a></span>
+      </footer>
+    </div>
+
+    <script id="os-data" type="application/json">
+{
+  "generated": "2026-05-30",
+  "launch": [
+    {
+      "label": "RunSmart iOS",
+      "tone": "green",
+      "state": "Submit-ready (build 6)"
+    },
+    {
+      "label": "Resumely iOS",
+      "tone": "amber",
+      "state": "Pre-submission (copy + analytics)"
+    },
+    {
+      "label": "App Review ETA",
+      "tone": "blue",
+      "state": "24–48h after each submit"
+    }
+  ],
+  "kpis": [
+    {
+      "v": "2",
+      "l": "Apps in submission sprint"
+    },
+    {
+      "v": "1",
+      "l": "Submit-ready today"
+    },
+    {
+      "v": "9",
+      "l": "Distribution channels mapped"
+    },
+    {
+      "v": "7",
+      "l": "Agent roles defined"
+    }
+  ],
+  "layers": [
+    {
+      "id": "orchestration",
+      "tag": "Layer 0",
+      "title": "Orchestration & Governance",
+      "desc": "Rules, planning protocol, and the swarm that routes work to the right agent.",
+      "cards": [
+        {
+          "t": "Director / Swarm",
+          "s": "swarm-orchestrator + dev-swarm route multi-agent work",
+          "p": "active",
+          "pill": "progress"
+        },
+        {
+          "t": "Planning Protocol",
+          "s": "Required for any task touching >2 files",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Global Rules",
+          "s": "GLOBAL-AGENT-RULES + GLOBAL-STANDARDS + QA rules",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Self-Improvement",
+          "s": "LESSONS.md + GLOBAL-SELF-IMPROVEMENT capture loop",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Atlas (future)",
+          "s": "Cross-repo automation — concept only, do not build yet",
+          "p": "idle",
+          "pill": "idle"
+        }
+      ]
+    },
+    {
+      "id": "product",
+      "tag": "Layer 1",
+      "title": "Products",
+      "desc": "Two products, four repos. RunSmart is primary; Resumely is secondary.",
+      "cards": [
+        {
+          "t": "RunSmart iOS",
+          "s": "Build 6, description applied, device QA passed",
+          "p": "ready",
+          "pill": "ready"
+        },
+        {
+          "t": "Resumely iOS",
+          "s": "Listing copy drafted; PostHog + smoke QA pending",
+          "p": "progress",
+          "pill": "progress"
+        },
+        {
+          "t": "RunSmart Web",
+          "s": "Product-logic source for the iOS coach",
+          "p": "reference",
+          "pill": "idle"
+        },
+        {
+          "t": "ResumeBuilder Web",
+          "s": "Backend + distribution support for Resumely",
+          "p": "reference",
+          "pill": "idle"
+        }
+      ]
+    },
+    {
+      "id": "distribution",
+      "tag": "Layer 2",
+      "title": "Distribution OS",
+      "desc": "Acquisition engine. ASO is the live wedge; everything else is staged behind App Store approval.",
+      "cards": [
+        {
+          "t": "ASO — RunSmart",
+          "s": "Submit-ready; portal steps remain",
+          "p": "ready",
+          "pill": "ready"
+        },
+        {
+          "t": "ASO — Resumely",
+          "s": "rb-aso-001 copy awaiting approval",
+          "p": "review",
+          "pill": "progress"
+        },
+        {
+          "t": "App Store Screenshots",
+          "s": "RunSmart 5 slots; Resumely rb-aso-002 added",
+          "p": "ready",
+          "pill": "ready"
+        },
+        {
+          "t": "Running / Resume SEO",
+          "s": "Landing pages staged post-approval",
+          "p": "planned",
+          "pill": "planned"
+        },
+        {
+          "t": "Directories",
+          "s": "rb-dir-001 pack drafted (5 dirs)",
+          "p": "planned",
+          "pill": "planned"
+        },
+        {
+          "t": "LinkedIn Founder",
+          "s": "Launch-week cadence, not started",
+          "p": "planned",
+          "pill": "planned"
+        },
+        {
+          "t": "Lifecycle Email",
+          "s": "Resend via Supabase; blocked on analytics",
+          "p": "blocked",
+          "pill": "blocked"
+        },
+        {
+          "t": "Partnerships",
+          "s": "Coach / career-coach outreach — later",
+          "p": "planned",
+          "pill": "planned"
+        },
+        {
+          "t": "Community / Hebrew",
+          "s": "Observation only; RTL deferred",
+          "p": "idle",
+          "pill": "idle"
+        }
+      ]
+    },
+    {
+      "id": "cro",
+      "tag": "Layer 3",
+      "title": "CRO / Conversion",
+      "desc": "Turning installs into activated users. Funnels are designed; data starts once apps are live.",
+      "cards": [
+        {
+          "t": "Activation Funnel — RS",
+          "s": "First AI-coached run within 7 days (north-star)",
+          "p": "wired",
+          "pill": "progress"
+        },
+        {
+          "t": "Core-Loop Funnel — RB",
+          "s": "Upload → optimize → preview → export",
+          "p": "wired",
+          "pill": "progress"
+        },
+        {
+          "t": "PostHog — RunSmart",
+          "s": "SDK wired; activation events not yet firing",
+          "p": "progress",
+          "pill": "progress"
+        },
+        {
+          "t": "PostHog — Resumely",
+          "s": "Not integrated yet (AnalyticsService TODO)",
+          "p": "blocked",
+          "pill": "blocked"
+        },
+        {
+          "t": "Conversion Review",
+          "s": "Workflow 09 — signup→editor→export",
+          "p": "planned",
+          "pill": "planned"
+        },
+        {
+          "t": "Web → App Store CTA",
+          "s": "Attribution tags (at=/ct=) not yet wired",
+          "p": "planned",
+          "pill": "planned"
+        }
+      ]
+    },
+    {
+      "id": "agents",
+      "tag": "Layer 4",
+      "title": "Agents",
+      "desc": "Role definitions in SKILLS/ that the orchestrator assigns per task.",
+      "cards": [
+        {
+          "t": "Director",
+          "s": "Prioritization + routing across products",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Architect",
+          "s": "Plans + technical design before code",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Product Manager",
+          "s": "Specs, scope gates, story slicing",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Growth",
+          "s": "Distribution OS execution + experiments",
+          "p": "active",
+          "pill": "progress"
+        },
+        {
+          "t": "QA",
+          "s": "Evidence-based completion gates",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Release Manager",
+          "s": "Archive, upload, submit, changelog",
+          "p": "active",
+          "pill": "progress"
+        },
+        {
+          "t": "UI / UX",
+          "s": "Design review + screenshot quality",
+          "p": "active",
+          "pill": "ready"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "tag": "Layer 5",
+      "title": "Skills",
+      "desc": "187+ installed skills. The orchestrator invokes them automatically per task.",
+      "cards": [
+        {
+          "t": "Superpowers (workflow)",
+          "s": "brainstorm, TDD, debugging, plans, review",
+          "p": "core",
+          "pill": "ready"
+        },
+        {
+          "t": "RunSmart Domain (24)",
+          "s": "plan-generator, readiness-check, garmin, ios-expert…",
+          "p": "core",
+          "pill": "ready"
+        },
+        {
+          "t": "Distribution Prompts/Workflows",
+          "s": "13 workflows + ASO/SEO/directory prompts",
+          "p": "core",
+          "pill": "ready"
+        },
+        {
+          "t": "Vercel",
+          "s": "deploy, env-vars, nextjs, ai-sdk",
+          "p": "available",
+          "pill": "idle"
+        },
+        {
+          "t": "Supabase",
+          "s": "DB, RLS, edge functions, best practices",
+          "p": "available",
+          "pill": "idle"
+        },
+        {
+          "t": "Frontend Design",
+          "s": "frontend-design, impeccable, design-html",
+          "p": "available",
+          "pill": "idle"
+        },
+        {
+          "t": "Universal Dev",
+          "s": "review, qa, ship, investigate, ship-checklist",
+          "p": "core",
+          "pill": "ready"
+        },
+        {
+          "t": "iOS Build Suite",
+          "s": "xcode-build-orchestrator + analyzers + fixer",
+          "p": "available",
+          "pill": "idle"
+        }
+      ]
+    },
+    {
+      "id": "plans",
+      "tag": "Layer 6",
+      "title": "Plans & Experiments",
+      "desc": "Active sprints and distribution experiments driving this week.",
+      "cards": [
+        {
+          "t": "Sprint 01 — RS Archive/Submit",
+          "s": "2026-05-28 · build 6 → submit",
+          "p": "near-done",
+          "pill": "progress"
+        },
+        {
+          "t": "Sprint 02 — Resumely Ready",
+          "s": "2026-05-28 · metadata + PostHog + smoke",
+          "p": "progress",
+          "pill": "progress"
+        },
+        {
+          "t": "Sprint 03 — Distribution Setup",
+          "s": "Scaffold install + command center",
+          "p": "done",
+          "pill": "ready"
+        },
+        {
+          "t": "rs-aso-001",
+          "s": "RunSmart description — applied",
+          "p": "done",
+          "pill": "ready"
+        },
+        {
+          "t": "rb-aso-001",
+          "s": "Resumely listing copy — draft",
+          "p": "review",
+          "pill": "progress"
+        },
+        {
+          "t": "rs-analytics-001",
+          "s": "Activation events — follow-up",
+          "p": "planned",
+          "pill": "planned"
+        }
+      ]
+    },
+    {
+      "id": "todos",
+      "tag": "Layer 7",
+      "title": "Todos — Portfolio Action Board",
+      "desc": "Now / Next / Later / Blocked across both products.",
+      "todos": {
+        "now": [
+          "RunSmart: finish App Store Connect portal + Submit for Review",
+          "Resumely: approve rb-aso-001 copy → write into fastlane",
+          "Resumely: integrate PostHog (AnalyticsService + events)"
+        ],
+        "next": [
+          "Resumely: five-tab device smoke → archive build 1",
+          "RunSmart: fire activation-funnel events post-launch",
+          "Resumely: verify screenshot dimensions (6.7\" / 6.5\")"
+        ],
+        "later": [
+          "Both: directories + SEO landings after approval",
+          "Resumely: /api/v1/resumes backend, Hebrew/RTL",
+          "RunSmart: lifecycle email after analytics fires"
+        ],
+        "blocked": [
+          "All acquisition metrics until apps approved",
+          "Resumely lifecycle email until PostHog ships",
+          "Resume Library until /api/v1/resumes ships"
+        ]
+      }
+    },
+    {
+      "id": "executive",
+      "tag": "Layer 8",
+      "title": "Executive Intelligence OS",
+      "desc": "CEO / CFO / Analysis layer on top of the OS. Markdown-first; reuses distribution-os; invents no financial data.",
+      "cards": [
+        {
+          "t": "CEO OS",
+          "s": "Strategy, priorities, OKRs, decisions",
+          "p": "active",
+          "pill": "progress"
+        },
+        {
+          "t": "CFO / Monetization OS",
+          "s": "Budget, revenue, pricing, runway — Needs Data",
+          "p": "needs-data",
+          "pill": "blocked"
+        },
+        {
+          "t": "Analysis OS",
+          "s": "Research, ideation, opportunity discovery",
+          "p": "ready",
+          "pill": "ready"
+        },
+        {
+          "t": "Decision Board",
+          "s": "EXD-001/002/003 in EXECUTIVE-DECISIONS.md",
+          "p": "active",
+          "pill": "progress"
+        },
+        {
+          "t": "Executive Metrics",
+          "s": "Financial + strategic scorecard — sources defined, values pending",
+          "p": "needs-data",
+          "pill": "blocked"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+      const data = JSON.parse(document.getElementById("os-data").textContent);
+      const $ = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
+
+      document.getElementById("stamp-date").textContent = data.generated;
+
+      const launch = document.getElementById("launch");
+      data.launch.forEach((c) => {
+        const chip = $("div", "chip");
+        chip.append(Object.assign($("span", "dot d-" + c.tone), {}), $("b", "", c.label), $("span", "", "· " + c.state));
+        launch.appendChild(chip);
+      });
+
+      const kpis = document.getElementById("kpis");
+      data.kpis.forEach((k) => {
+        const el = $("div", "kpi");
+        el.append($("div", "v", k.v), $("div", "l", k.l));
+        kpis.appendChild(el);
+      });
+
+      const layers = document.getElementById("layers");
+      data.layers.forEach((layer, i) => {
+        if (i > 0) { const f = $("div", "flow", "↓"); layers.appendChild(f); }
+        const wrap = $("div", "layer l-" + layer.id);
+        const head = $("div", "layer-head");
+        head.append($("span", "tag", layer.tag), $("h2", "", layer.title), $("span", "desc", layer.desc));
+        wrap.appendChild(head);
+
+        if (layer.todos) {
+          const cols = $("div", "todo-cols");
+          [["now", "Now"], ["next", "Next"], ["later", "Later"], ["blocked", "Blocked"]].forEach(([key, label]) => {
+            const col = $("div", "todo-col col-" + key);
+            col.appendChild($("h3", "", label));
+            const ul = $("ul");
+            (layer.todos[key] || []).forEach((t) => ul.appendChild($("li", "", t)));
+            col.appendChild(ul);
+            cols.appendChild(col);
+          });
+          wrap.appendChild(cols);
+        } else {
+          const cards = $("div", "cards");
+          layer.cards.forEach((c) => {
+            const card = $("div", "card");
+            const ct = $("div", "ct");
+            ct.append($("span", "", c.t));
+            if (c.pill) ct.append($("span", "pill " + c.pill, (c.p || "").toString()));
+            card.append(ct, $("div", "cs", c.s));
+            cards.appendChild(card);
+          });
+          wrap.appendChild(cards);
+        }
+        layers.appendChild(wrap);
+      });
+    </script>
+  </body>
+</html>

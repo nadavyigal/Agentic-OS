@@ -99,3 +99,4 @@ All durable architectural decisions are logged in `DECISIONS.md`. Read it before
 | `PROJECT-STATUS.md` | Current status per project |
 | `PROJECT-PATHS.md` | Canonical paths — source of truth for project locations |
 | `CURSOR.md` | Cursor-native router; Cursor reads `AGENTS.md` via this file + `.cursor/rules/` |
+| `executive-os/` | Layer 8 — Executive Intelligence OS (CEO / CFO / Analysis). Read `executive-os/README.md` for strategy, finance, research, and weekly/monthly executive reviews |

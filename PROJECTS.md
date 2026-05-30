@@ -30,3 +30,20 @@ This file tracks active and future products at a global level. Keep details shor
 - Bridge: `PROJECT-BRIDGES/atlas.md`
 - Global focus: product, engineering, QA, growth, and monetization orchestration.
 
+## Executive Responsibilities (Layer 8)
+
+What the Executive Intelligence OS (`executive-os/`) owns per product. Details and
+status live in `executive-os/EXECUTIVE-DASHBOARD.md`; numbers stay `Needs Data` until
+a real source exists.
+
+- **RunSmart iOS** (primary): App Store approval is the current executive bottleneck;
+  CFO tracks proceeds/subscriptions once live; CEO holds new scope during the sprint.
+- **RunSmart Web**: product-logic source; CEO watches stability/UX; CFO tracks
+  hosting + AI/API cost; Analysis OS scouts feature opportunities.
+- **Resumely iOS** (secondary): finish copy + analytics, then submit; CEO keeps it
+  behind RunSmart for time.
+- **ResumeBuilder Web**: output quality before monetization; CFO defers pricing until
+  quality bar is met.
+- **Atlas**: future; Executive OS will fold its orchestration into the operating
+  rhythm when active.
+

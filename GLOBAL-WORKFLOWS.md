@@ -87,3 +87,19 @@ Output: update to `LESSONS.md`, relevant prompt/workflow, and project-local less
 5. Read only the local workflow file needed for the task.
 6. Follow the local project OS as the source of truth.
 
+## Executive Workflows (Layer 8)
+
+Founder-level reviews run on a cadence. They synthesize existing status; they do not
+re-collect it. See `executive-os/EXECUTIVE-RHYTHM.md` for the full cadence.
+
+- **Weekly CEO Review** — `executive-os/workflows/weekly-ceo-review.md` (run via
+  `PROMPTS/executive-weekly-review.md`). Top 3 priorities, decisions, stop-doing,
+  delegation. Consumes `morning-brief`, `exec-review`, `DASHBOARD.md`,
+  `PROJECT-STATUS.md`, and `distribution-os/weekly-growth-review.md`.
+- **Monthly Finance Review** — `executive-os/workflows/monthly-finance-review.md`
+  (run via `PROMPTS/cfo-monthly-review.md`). Financial snapshot from available data
+  only; no invented numbers.
+- **Analysis Research Sprint** — `executive-os/workflows/research-brief.md` (run via
+  `PROMPTS/analysis-research-sprint.md`). Evidence table → scored opportunities →
+  recommended next step.
+

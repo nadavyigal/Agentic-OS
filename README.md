@@ -62,4 +62,6 @@ Do not use this folder for:
 - `PROJECT-BRIDGES/`: short bridge files explaining how each product connects to the global vision.
 - `TEMPLATES/`: lightweight templates for briefs, specs, stories, QA, PRs, decisions, lessons, and bridge files.
 - `SKILLS/`: reusable agent role definitions for multi-agent work.
+- `distribution-os/`: cross-product distribution operating system (research → assets → measure).
+- `executive-os/`: **Layer 8 — Executive Intelligence OS.** CEO OS, CFO/Monetization OS, and Analysis OS. Founder-level strategy, finance, and research that sits on top of the rest of the OS. Start at `executive-os/README.md`.
 

@@ -41,3 +41,14 @@ Keep each lesson short:
 - Applies to
 - Follow-up updates made
 
+## Executive Lessons Loop (Layer 8)
+
+Executive-level lessons (CEO, CFO/Monetization, or Analysis) live in
+`executive-os/EXECUTIVE-LESSONS.md`, not in `LESSONS.md`. Save only reusable
+executive lessons that improve future strategy, finance, or research behavior; skip
+noisy details.
+
+If an executive lesson also affects local product execution, update the relevant
+project's local `tasks/lessons.md` as well. If it changes an executive rule or
+workflow, update the relevant file in `executive-os/`.
+

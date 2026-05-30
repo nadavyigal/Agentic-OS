@@ -48,6 +48,7 @@ See `PROJECT-PATHS.md` for the authoritative list and `PROJECT-STATUS.md` for cu
 | `SKILLS/` | Agent role definitions for multi-agent work: architect, director, growth, product-manager, QA, release-manager, UI/UX |
 | `PROJECT-BRIDGES/` | One bridge file per product; connects global strategy to local repo context |
 | `dashboard/` | Static HTML dashboard (`index.html`, `status.json`, `styles.css`) — update `status.json` when project states change |
+| `executive-os/` | **Layer 8 — Executive Intelligence OS.** CEO OS (strategy, OKRs, decisions), CFO/Monetization OS (budget, revenue, pricing, runway), Analysis OS (research, opportunities). Markdown-first; reuses `distribution-os/`, `morning-brief`, and `exec-review`; invents no financial data. Start at `executive-os/README.md` |
 
 ## How Agents Should Use This Folder
 

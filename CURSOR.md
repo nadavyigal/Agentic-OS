@@ -63,3 +63,4 @@ Next session: [what to pick up first, with enough context to resume cold]
 | `TEMPLATES/` | Starter files for new repos, rules, and memory entries |
 | `PROMPTS/` | Reusable prompts for common workflows |
 | `docs/cursor-setup.md` | How to set up Cursor with this Agent OS |
+| `executive-os/` | Layer 8 — Executive Intelligence OS (CEO / CFO / Analysis); read `executive-os/README.md` for strategy, finance, and research work |

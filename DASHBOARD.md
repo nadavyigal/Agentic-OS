@@ -240,3 +240,26 @@ Recommendation:
 - RunSmart iOS: pause new story implementation until physical-device outdoor/background/battery QA is complete.
 - ResumeBuilder iOS: pause new story implementation until five-tab smoke QA is complete and PR readiness is clear.
 
+## 11. Executive Intelligence OS
+
+Layer 8 summary. Source of truth: `executive-os/EXECUTIVE-DASHBOARD.md`. Financial
+figures are `Needs Data` until a real source is wired; no numbers are invented here.
+
+| Sub-OS | Status | Note |
+| --- | --- | --- |
+| CEO OS | Active | Focus: clear the two-app App Store submission sprint before new scope |
+| CFO / Monetization OS | Needs Data | No revenue/cost instrumentation yet; schema defined in `executive-os/EXECUTIVE-METRICS.md` |
+| Analysis OS | Ready | No active research sprint; run `PROMPTS/analysis-research-sprint.md` to start |
+
+- **Current CEO priority:** RunSmart iOS App Store approval; Resumely iOS copy +
+  analytics, then submit.
+- **Current financial focus:** define real data sources for revenue, cost, and
+  activation (values still `Needs Data`).
+- **Current research sprint:** none.
+- **Open executive decisions:** see `executive-os/EXECUTIVE-DECISIONS.md` (EXD-001
+  logged: adopt Layer 8, markdown-first, phased).
+- **Top executive risks:** App Store approval delay blocks both apps; no
+  financial/activation visibility; Resumely analytics not wired before submit.
+
+Run cadence: `executive-os/EXECUTIVE-RHYTHM.md`.
+

@@ -37,3 +37,17 @@ Agents should usually provide:
 
 For implementation tasks, cite files and commands where useful.
 
+## Executive OS Rules (Layer 8)
+
+These apply to any agent doing CEO, CFO/Monetization, or Analysis OS work in
+`executive-os/`:
+
+1. Distinguish facts from assumptions. Unsourced claims are assumptions, not facts.
+2. CFO outputs must not invent numbers. Unknown figures are `unknown — need:
+   <source>`; derived numbers must show their inputs.
+3. Research outputs must cite sources or label source type and reliability.
+4. CEO outputs must recommend decisions, not just summarize.
+5. Monetization outputs must include risks and a validation plan.
+6. Analysis outputs must end with a confidence level and a single recommended next
+   step.
+
