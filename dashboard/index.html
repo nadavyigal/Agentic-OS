@@ -8,14 +8,18 @@
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="Global Agentic OS Dashboard">
+      <a class="brand" href="./command-center.html" aria-label="Global Agentic OS">
         <span class="brand-mark">OS</span>
         <span>
           <strong>Global Agentic OS</strong>
-          <small>Visual Dashboard</small>
+          <small>Project Status</small>
         </span>
       </a>
-      <nav id="nav-links" class="nav-links" aria-label="Dashboard links"></nav>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./command-center.html">Command Center</a>
+        <a href="./orchestration.html">Orchestration Map</a>
+        <a href="./index.html" class="active" aria-current="page">Project Status</a>
+      </nav>
     </header>
 
     <main id="top" class="page-shell">
@@ -83,15 +87,20 @@
         </div>
         <div id="qa-board" class="qa-board"></div>
       </section>
+
+      <footer class="page-footer">
+        <span>Reads <code>status.json</code> over http; embedded fallback on file://. Source of truth: <code>../PROJECT-STATUS.md</code>.</span>
+        <nav id="nav-links" class="nav-links" aria-label="Document links"></nav>
+      </footer>
     </main>
 
     <script id="status-data" type="application/json">
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-05-15 17:12 IDT",
+    "lastUpdated": "2026-05-31 (eve) IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
-    "sourcePolicy": "Local folder mode only. No GitHub status was used.",
+    "sourcePolicy": "Local folder mode. Status cross-checked against product-repo git history on 2026-05-31: RunSmart iOS submitted; Resumely iOS PostHog integrated (PR #35 into #36) + UX transformation shipped.",
     "freshnessRule": {
       "fresh": "Updated in the last 48 hours.",
       "needsReview": "Updated in the last 3-7 days.",
@@ -100,16 +109,17 @@
     }
   },
   "summary": {
-    "overallStatus": "Both active iOS projects are fresh and moving forward, but both are gated by QA before release-facing work.",
-    "bestNextAction": "Run the RunSmart iOS outdoor/background/battery validation, then run ResumeBuilder iOS five-tab simulator smoke QA.",
+    "overallStatus": "RunSmart iOS is submitted to App Store review. Resumely iOS cleared its last analytics gate: PostHog is now integrated (PR #35 merged into the PR #36 UX transformation) with a PII guard and event de-dup, so the focus shifts to ASC credentials and a real-device smoke test before submit.",
+    "bestNextAction": "RunSmart iOS: monitor App Store review and prep the 1.0.1 fast-follow UX redesign spec. Resumely iOS: set up Fastlane / ASC API key, run a real-device smoke test, then submit for review.",
     "mainBlockers": [
-      "RunSmart iOS needs manual outdoor/background recording and battery-delta QA before external TestFlight.",
-      "ResumeBuilder iOS needs simulator smoke QA across all 5 tabs.",
-      "ResumeBuilder iOS Resume Library backend endpoints are not live, so the mock service remains active."
+      "RunSmart iOS: in App Store review (24 to 48h ETA); next work is the 1.0.1 fast-follow, not a blocker.",
+      "Resumely iOS: no local Fastlane config / ASC API key. Screenshot + metadata upload needs manual setup.",
+      "Resumely iOS: real-device smoke test with a live account not yet run.",
+      "Resumely iOS: Resume Library backend (/api/v1/resumes) not live; mock service active."
     ],
     "needsDecision": [
-      "RunSmart iOS: whether one focused physical-device pass is enough before archive/upload readiness.",
-      "ResumeBuilder iOS: whether the PR can proceed with the mock library service while backend endpoints are pending."
+      "RunSmart 1.0.1: confirm scope of the fast-follow UX redesign spec before building.",
+      "Resumely iOS: Fastlane / ASC credentials setup (founder action required)."
     ]
   },
   "projects": [
@@ -117,35 +127,39 @@
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
       "type": "Native SwiftUI iOS app",
-      "role": "Premium mobile version of RunSmart.",
+      "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
-      "statusTone": "qa",
-      "status": "Device build passed; manual outdoor/background QA still required before external TestFlight.",
-      "currentPhase": "Route feature TestFlight polish / external beta prep",
-      "activeStory": "Manual outdoor/background recording and battery-delta check",
-      "lastCompletedStory": "Story 10: TestFlight Polish And Privacy Review, plus Agent OS status source-of-truth consolidation",
-      "nextRecommendedStory": "Physical-device outdoor/background recording check, then archive/upload readiness",
-      "estimatedCompletion": "Not estimated in local files",
+      "statusTone": "submission",
+      "status": "Submitted to App Store review. Build 6 uploaded, portal close-out done. E7 Striver-gated Garmin 7-day HRV and readiness trends shipped. A 1.0.1 fast-follow UX redesign spec is now drafted.",
+      "distributionStatus": "Submitted for review; awaiting Apple. 1.0.1 fast-follow UX spec drafted",
+      "currentPhase": "In App Store review; planning 1.0.1 fast-follow",
+      "activeStory": "Monitor App Store review; scope the 1.0.1 fast-follow UX redesign spec",
+      "lastCompletedStory": "Submitted build 6; E7 Wearable Depth (Garmin HRV + readiness trends, PR #36); archive script + release fixes; readiness test fixes",
+      "nextRecommendedStory": "Confirm 1.0.1 UX redesign scope; wire run_started + run_completed activation events",
+      "estimatedCompletion": "Review ETA 24 to 48h",
       "progressPercent": null,
-      "progressLabel": "Not estimated",
-      "lastValidation": "2026-05-15 physical-device Debug build passed on connected iPhone 13, bundle id com.runsmart.lite; simulator build passed; latest full iPhone 17 XCTest attempt still stalled with NSMachErrorDomain Code=-308.",
-      "validationState": "Builds passed; manual outdoor/background/battery QA is missing.",
-      "lastUpdated": "2026-05-15",
+      "progressLabel": "In review",
+      "lastValidation": "GPS QA run 2: 9.10 km 2026-05-30 PASS (1,432 GPS pts, 7% battery drain). Focused tests green: StriverPersonaGateTests 3/3, WellnessTrendMapperTests 4/4, FlexWeekCacheTests 4/4.",
+      "validationState": "QA passed; build submitted to Apple.",
+      "lastUpdated": "2026-05-31",
       "blockers": [
-        "Manual outdoor/background recording and battery-delta check remains open.",
-        "External beta readiness is blocked on manual physical-device run QA."
+        "In App Store review: outcome depends on Apple (no agent action available).",
+        "Garmin freshness Story 4 (webhook audit) is backend/human investigation."
       ],
       "risks": [
-        "Location/background behavior",
-        "Battery usage",
-        "Garmin missing map data",
-        "Pre-existing AppIcon warnings",
-        "Older actor-isolation warning noise"
+        "App Store approval delay or rejection",
+        "Garmin webhook subscription health not yet audited"
       ],
+      "analyticsStatus": {
+        "sdkIntegrated": true,
+        "eventsWired": ["app_launched", "tab_viewed", "sign_in_completed", "flex_week_triggered", "flex_week_confirmed", "flex_week_cancelled", "flex_week_intervention_shown", "flex_week_intervention_action"],
+        "missingEvents": ["run_started", "run_completed", "plan_created", "onboarding_completed"],
+        "note": "Activation funnel not yet fully visible. run_started and run_completed are the highest-value missing events."
+      },
       "nextActions": [
-        "Run the manual outdoor/background recording and battery-delta check on the connected iPhone.",
-        "Record exact device, route/run duration, lock/background behavior, battery delta, and GPS/permission issues in local task files.",
-        "After device QA passes, run archive/upload readiness: signing, bundle id, privacy strings, App Store Connect, and TestFlight release notes."
+        "Monitor App Store review status; respond to any Apple feedback.",
+        "Scope and confirm the 1.0.1 fast-follow UX redesign spec before building.",
+        "Wire run_started + run_completed activation events for funnel visibility."
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/runsmart-ios.md",
@@ -154,36 +168,43 @@
     },
     {
       "id": "resumebuilder-ios",
-      "name": "ResumeBuilder iOS",
+      "name": "Resumely iOS",
       "type": "Native SwiftUI iOS app",
-      "role": "Native iOS app for ResumeBuilder product.",
+      "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
-      "statusTone": "blocked",
-      "status": "In progress; five-story tab/library spec completed, smoke QA and PR remain.",
-      "currentPhase": "Pre-release / TestFlight prep",
-      "activeStory": "Simulator smoke test all 5 tabs",
-      "lastCompletedStory": "Spec \"Merge Track->Me, Redesign Optimized Resume, Real Resume Library\" all 5 stories",
-      "nextRecommendedStory": "Simulator smoke test all 5 tabs, create PR claude/hungry-chatelet-a86030 -> main, then flip BackendConfig.useMockLibraryService once web API ships",
-      "estimatedCompletion": "25% per local tasks/progress.md",
-      "progressPercent": 25,
-      "progressLabel": "25%",
-      "lastValidation": "Xcode build succeeded after each story commit. Manual smoke test all 5 tabs is still TODO.",
-      "validationState": "Build notes exist; five-tab smoke QA is missing.",
-      "lastUpdated": "2026-05-15",
+      "statusTone": "pre-submission",
+      "status": "Pre-submission, analytics gate cleared. PostHog integrated via AnalyticsService (PR #35 merged into the PR #36 UX transformation), with a PII guard and event de-dup. Guest-first home activation flow shipped. Remaining gates: ASC credentials and a real-device smoke test.",
+      "currentPhase": "Pre-submission sprint — ASC credentials + smoke test",
+      "activeStory": "Set up Fastlane / ASC API key; run a real-device smoke test with a live account; then submit",
+      "lastCompletedStory": "PostHog integration (Story 2, PR #35); PR #36 UX transformation; PII guard + double-fire fix; guest-first home activation; rb-aso-002 screenshots; 55/55 tests",
+      "nextRecommendedStory": "Set up Fastlane ASC API key, run real-device smoke test, submit for review",
+      "estimatedCompletion": "Unknown",
+      "progressPercent": null,
+      "progressLabel": "ASC credentials + smoke test remaining",
+      "lastValidation": "test_sim 55/55 passing 2026-05-26. Analytics PII guard + de-dup landed (commit ec978aa). rb-aso-002 screenshots rendered 2026-05-28.",
+      "validationState": "Build, tests, and analytics passing. Real-device smoke test with live account not done.",
+      "lastUpdated": "2026-05-31",
       "blockers": [
-        "Resume Library backend endpoints are not live.",
-        "BackendConfig.useMockLibraryService = true remains active."
+        "No local Fastlane config / ASC API key. App Store Connect upload requires manual setup.",
+        "Real-device smoke test with a live account not completed.",
+        "Resume Library backend (/api/v1/resumes) not live; mock service active."
       ],
       "risks": [
         "Swift 6 concurrency strictness",
         "WKWebView PDF render fragility on real device",
         "No Hebrew/RTL support",
-        "Resume Library backend endpoints not yet live"
+        "Backend Resume Library not yet live"
       ],
+      "analyticsStatus": {
+        "sdkIntegrated": true,
+        "eventsWired": ["app_launched", "optimize_completed"],
+        "missingEvents": ["export_success"],
+        "note": "PostHog integrated via AnalyticsService (PR #35 into #36). PII guard + double-fire fix landed (ec978aa). Confirm full event coverage and export_success against the live optimize/export flow."
+      },
       "nextActions": [
-        "Run simulator smoke test across Tailor, Optimized, Design, Expert, and Me.",
-        "Create PR claude/hungry-chatelet-a86030 -> main after smoke QA.",
-        "Flip BackendConfig.useMockLibraryService = false only after the web backend ships /api/v1/resumes."
+        "Set up Fastlane / ASC API key (founder action) to enable screenshot + metadata upload.",
+        "Run a real-device smoke test with a live account across optimize, design, expert, preview, export.",
+        "Submit Resumely for App Store review."
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/resumebuilder-ios.md",
@@ -194,10 +215,10 @@
       "id": "runsmart-web",
       "name": "RunSmart Web",
       "type": "Web app",
-      "role": "Main AI running coach product and source of current product logic.",
+      "role": "Main AI running coach product and source of product logic.",
       "freshness": "Unknown",
       "statusTone": "reference",
-      "status": "Portfolio reference project. No current execution status was pulled into PROJECT-STATUS.md.",
+      "status": "Portfolio reference project. No current execution status pulled on 2026-05-31.",
       "currentPhase": "Reference / product logic source",
       "activeStory": "Not listed in PROJECT-STATUS.md",
       "lastCompletedStory": "Not listed in PROJECT-STATUS.md",
@@ -205,7 +226,7 @@
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "No latest validation included in PROJECT-STATUS.md.",
+      "lastValidation": "No latest validation in PROJECT-STATUS.md.",
       "validationState": "Needs local status refresh before execution.",
       "lastUpdated": "Unknown",
       "blockers": [
@@ -218,8 +239,8 @@
         "Auth, payments, subscriptions, and monetization"
       ],
       "nextActions": [
-        "Read the RunSmart Web local Agent OS before any implementation.",
-        "Use this project as product logic reference for RunSmart iOS only after repo evidence is checked."
+        "Read RunSmart Web local Agent OS before any implementation.",
+        "Use as product logic reference for RunSmart iOS only after repo evidence is checked."
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/runsmart-web.md",
@@ -228,24 +249,24 @@
     },
     {
       "id": "resumebuilder-ai",
-      "name": "ResumeBuilder AI",
+      "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
       "freshness": "Unknown",
       "statusTone": "reference",
-      "status": "Portfolio reference project. No current execution status was pulled into PROJECT-STATUS.md.",
-      "currentPhase": "Reference / product quality source",
+      "status": "Portfolio reference project. No current execution status pulled on 2026-05-31.",
+      "currentPhase": "Output quality and distribution",
       "activeStory": "Not listed in PROJECT-STATUS.md",
       "lastCompletedStory": "Not listed in PROJECT-STATUS.md",
       "nextRecommendedStory": "Confirm local repo path and refresh status before execution.",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "No latest validation included in PROJECT-STATUS.md.",
+      "lastValidation": "No latest validation in PROJECT-STATUS.md.",
       "validationState": "Needs local status refresh before execution.",
       "lastUpdated": "Unknown",
       "blockers": [
-        "Local repo path is not confirmed in PROJECT-PATHS.md."
+        "Local repo path not confirmed in PROJECT-PATHS.md."
       ],
       "risks": [
         "Low-quality AI output",
@@ -260,7 +281,7 @@
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/resumebuilder-ai.md",
-        "repo": null
+        "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       }
     },
     {
@@ -278,12 +299,12 @@
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "No Atlas repo validation included in PROJECT-STATUS.md.",
+      "lastValidation": "Concept only; no repo path confirmed.",
       "validationState": "Concept only; no repo path confirmed.",
       "lastUpdated": "Unknown",
       "blockers": [
-        "Atlas repo path is not confirmed.",
-        "Manual orchestration workflow is not yet proven enough to automate."
+        "Atlas repo path not confirmed.",
+        "Manual orchestration workflow not yet proven enough to automate."
       ],
       "risks": [
         "Replacing local project truth with stale global summaries",
@@ -304,77 +325,86 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: manual outdoor/background/battery validation.",
-      "ResumeBuilder iOS: five-tab simulator smoke test."
+      "RunSmart iOS: monitor App Store review and respond to any Apple feedback.",
+      "Resumely iOS: set up Fastlane / ASC API key for screenshot + metadata upload.",
+      "Resumely iOS: run a real-device smoke test with a live account, then submit."
     ],
     "next": [
-      "RunSmart iOS: archive/upload readiness after physical-device QA.",
-      "ResumeBuilder iOS: PR from claude/hungry-chatelet-a86030 to main."
+      "RunSmart iOS: scope the 1.0.1 fast-follow UX redesign spec.",
+      "RunSmart iOS: wire run_started + run_completed activation events.",
+      "Resumely iOS: confirm full PostHog event coverage incl. export_success."
     ],
     "later": [
-      "RunSmart iOS: clean up warning noise and confirm external beta notes.",
-      "ResumeBuilder iOS: backend resume library integration, PDF/export device QA, Hebrew/RTL planning."
+      "RunSmart iOS: analytics for plan_created, onboarding_completed.",
+      "Resumely iOS: backend Resume Library integration, PDF/export device QA, Hebrew/RTL.",
+      "Both: CFO OS — revenue, cost, and gross-margin instrumentation."
     ],
     "blocked": [
-      "RunSmart iOS external TestFlight until manual outdoor/background/battery validation is done.",
-      "ResumeBuilder iOS real Resume Library integration until /api/v1/resumes ships."
+      "Resumely iOS ASC upload until Fastlane / ASC credentials are configured.",
+      "Resumely iOS real Resume Library integration until /api/v1/resumes ships."
     ]
   },
   "qaBoard": [
     {
       "project": "RunSmart iOS",
-      "buildStatus": "Simulator build passed; physical-device Debug build passed.",
-      "testStatus": "Full Story 10 test passed 2026-05-14; 2026-05-15 full test attempt stalled.",
-      "manualQAStatus": "Manual outdoor/background/battery QA not done.",
-      "testFlightReadiness": "Not external-beta ready until manual device run QA and archive/upload checks pass.",
-      "latestValidationDate": "2026-05-15",
-      "missingValidation": "Outdoor/background/battery run, archive/upload readiness."
+      "buildStatus": "Simulator build clean; all focused tests green.",
+      "testStatus": "StriverPersonaGateTests 3/3, WellnessTrendMapperTests 4/4, FlexWeekCacheTests 4/4.",
+      "manualQAStatus": "GPS/battery QA passed twice (2026-05-27 and 2026-05-30).",
+      "appStoreReadiness": "Portal close-out remaining (human-only). No agent gate open.",
+      "latestValidationDate": "2026-05-30",
+      "missingValidation": "ASC portal close-out (human): select build, upload screenshots, enter credentials, submit."
     },
     {
-      "project": "ResumeBuilder iOS",
-      "buildStatus": "Xcode build succeeded after each story commit.",
-      "testStatus": "No full test pass recorded in progress.",
-      "manualQAStatus": "Five-tab smoke test TODO.",
-      "testFlightReadiness": "Not ready.",
-      "latestValidationDate": "2026-05-15 build notes",
-      "missingValidation": "Five-tab smoke test, PR review, real backend resume library integration, PDF/export device QA."
+      "project": "Resumely iOS",
+      "buildStatus": "XcodeBuildMCP build clean.",
+      "testStatus": "test_sim 55/55 passing (2026-05-26).",
+      "manualQAStatus": "Real-device smoke test with live account not done.",
+      "appStoreReadiness": "Analytics gate cleared (PostHog integrated). Remaining: ASC credentials + real-device smoke test before submit.",
+      "latestValidationDate": "2026-05-31",
+      "missingValidation": "ASC credentials / Fastlane setup, real-device smoke test, confirm export_success event."
     }
   ],
+  "executiveBoard": {
+    "weeklyReviewDate": "2026-05-31",
+    "top3": [
+      "RunSmart iOS: monitor App Store review; scope the 1.0.1 fast-follow UX redesign.",
+      "Resumely iOS: set up ASC credentials, run real-device smoke test, then submit.",
+      "Activation funnels: wire RunSmart run_started/run_completed and confirm Resumely export_success."
+    ],
+    "openDecisions": [
+      "RunSmart 1.0.1 fast-follow UX redesign scope",
+      "Resumely iOS Fastlane / ASC credentials setup (founder action)"
+    ],
+    "financialSnapshot": "Needs Data — no revenue/cost instrumentation wired.",
+    "note": "EXD-002 (analytics scope) and the PostHog-before-submit call are now resolved: PostHog is integrated in both apps. See executive-os/EXECUTIVE-DASHBOARD.md for the full Executive Intelligence OS view."
+  },
   "decisionBoard": [
     {
-      "decision": "Is one focused physical-device run enough before archive prep?",
+      "decision": "RunSmart 1.0.1 fast-follow UX redesign scope",
       "project": "RunSmart iOS",
-      "whyItMatters": "External beta depends on real background/battery confidence.",
-      "options": "One focused device check; broader device matrix; pause for more automation.",
-      "recommendedOption": "One focused outdoor/background/battery check, then archive readiness review.",
+      "whyItMatters": "A UX redesign spec is drafted; locking scope now keeps the fast-follow small and shippable while v1.0 is in review.",
+      "options": "Ship the full redesign spec / cherry-pick the highest-impact screens / hold until v1.0 review outcome",
+      "recommendedOption": "Cherry-pick the highest-impact screens for 1.0.1; defer the rest to 1.1.",
+      "urgency": "Medium"
+    },
+    {
+      "decision": "Resumely iOS Fastlane / ASC credentials setup",
+      "project": "Resumely iOS",
+      "whyItMatters": "Screenshots and metadata cannot be uploaded without credentials; manual ASC web upload is slow and error-prone.",
+      "options": "Fastlane with ASC API key / manual upload in ASC web UI",
+      "recommendedOption": "Set up Fastlane with ASC API key (founder action).",
       "urgency": "High"
     },
     {
-      "decision": "Can ResumeBuilder PR proceed while Resume Library uses mocks?",
-      "project": "ResumeBuilder iOS",
-      "whyItMatters": "The five-story spec is complete, but backend endpoints are pending.",
-      "options": "PR now with mock flag; wait for backend; split PR.",
-      "recommendedOption": "PR after smoke QA, clearly documenting mock flag and backend dependency.",
-      "urgency": "High"
-    },
-    {
-      "decision": "When to flip useMockLibraryService",
-      "project": "ResumeBuilder iOS",
-      "whyItMatters": "Real library behavior depends on web/backend /api/v1/resumes.",
-      "options": "Flip now; flip after backend ships; keep mocks for TestFlight.",
-      "recommendedOption": "Flip only after backend endpoint is live and tested.",
+      "decision": "Resumely iOS: confirm PostHog event coverage before submit",
+      "project": "Resumely iOS",
+      "whyItMatters": "PostHog is integrated, but export_success coverage is unconfirmed; the export step is the core conversion event.",
+      "options": "Verify export_success now / submit and verify post-launch",
+      "recommendedOption": "Verify export_success against the live export flow before submit.",
       "urgency": "Medium"
     }
   ],
   "navigation": [
-    {
-      "label": "OS Command Center",
-      "href": "./command-center.html"
-    },
-    {
-      "label": "Orchestration Map",
-      "href": "./orchestration.html"
-    },
     {
       "label": "Markdown Dashboard",
       "href": "../DASHBOARD.md"
@@ -382,6 +412,10 @@
     {
       "label": "Project Status",
       "href": "../PROJECT-STATUS.md"
+    },
+    {
+      "label": "Executive Dashboard",
+      "href": "../executive-os/EXECUTIVE-DASHBOARD.md"
     },
     {
       "label": "Projects",
@@ -401,6 +435,8 @@
     <script>
       const toneLabels = {
         fresh: "Fresh",
+        submission: "Submitted",
+        "pre-submission": "Pre-submission",
         qa: "Needs QA",
         blocked: "Blocked",
         reference: "Reference",

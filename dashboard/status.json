@@ -1,9 +1,9 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-05-31 IDT",
+    "lastUpdated": "2026-05-31 (eve) IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
-    "sourcePolicy": "Local folder mode only. No GitHub status was used. Status pulled from local task files on 2026-05-31.",
+    "sourcePolicy": "Local folder mode. Status cross-checked against product-repo git history on 2026-05-31: RunSmart iOS submitted; Resumely iOS PostHog integrated (PR #35 into #36) + UX transformation shipped.",
     "freshnessRule": {
       "fresh": "Updated in the last 48 hours.",
       "needsReview": "Updated in the last 3-7 days.",
@@ -12,16 +12,16 @@
     }
   },
   "summary": {
-    "overallStatus": "Both iOS apps are in the final pre-submission gate. RunSmart iOS is submit-ready (build 6 uploaded); portal close-out is the only remaining task. Resumely iOS is pre-submission with PostHog integration as the last technical gate.",
-    "bestNextAction": "RunSmart iOS: open App Store Connect portal, select build 6, upload screenshots, enter demo credentials, submit for review. Resumely iOS: integrate PostHog SDK (app_launched + optimize_completed, 2-day cap), then submit.",
+    "overallStatus": "RunSmart iOS is submitted to App Store review. Resumely iOS cleared its last analytics gate: PostHog is now integrated (PR #35 merged into the PR #36 UX transformation) with a PII guard and event de-dup, so the focus shifts to ASC credentials and a real-device smoke test before submit.",
+    "bestNextAction": "RunSmart iOS: monitor App Store review and prep the 1.0.1 fast-follow UX redesign spec. Resumely iOS: set up Fastlane / ASC API key, run a real-device smoke test, then submit for review.",
     "mainBlockers": [
-      "RunSmart iOS: App Store Connect portal tasks are human-only (no agent action available).",
-      "Resumely iOS: PostHog SDK not integrated — zero analytics visibility post-launch.",
-      "Resumely iOS: no local Fastlane config / ASC API key — screenshot upload requires manual setup.",
+      "RunSmart iOS: in App Store review (24 to 48h ETA); next work is the 1.0.1 fast-follow, not a blocker.",
+      "Resumely iOS: no local Fastlane config / ASC API key. Screenshot + metadata upload needs manual setup.",
+      "Resumely iOS: real-device smoke test with a live account not yet run.",
       "Resumely iOS: Resume Library backend (/api/v1/resumes) not live; mock service active."
     ],
     "needsDecision": [
-      "EXD-002: analytics instrumentation scope and cap (recommendation: 2-day cap, activation + export-success only).",
+      "RunSmart 1.0.1: confirm scope of the fast-follow UX redesign spec before building.",
       "Resumely iOS: Fastlane / ASC credentials setup (founder action required)."
     ]
   },
@@ -33,24 +33,24 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Submit-ready. Build 6 uploaded to App Store Connect. GPS/battery QA passed twice (2026-05-27 and 2026-05-30). Portal close-out is the only remaining gate.",
-      "distributionStatus": "Build 6 uploaded; ASO screenshots generated; portal close-out in progress",
-      "currentPhase": "App Store submission sprint — portal close-out",
-      "activeStory": "App Store Connect portal close-out (human-only): select build 6, upload screenshots, enter demo credentials, submit for review",
-      "lastCompletedStory": "GPS/battery QA ×2; Garmin freshness fix Stories 1+2; E7 Wearable Depth; Flex Week Analytics Stories 8+9",
-      "nextRecommendedStory": "Human: select build 6 in ASC, upload 6.9\" + 6.1\" screenshots, confirm privacy / age rating, submit",
-      "estimatedCompletion": "2026-06-01 target",
+      "status": "Submitted to App Store review. Build 6 uploaded, portal close-out done. E7 Striver-gated Garmin 7-day HRV and readiness trends shipped. A 1.0.1 fast-follow UX redesign spec is now drafted.",
+      "distributionStatus": "Submitted for review; awaiting Apple. 1.0.1 fast-follow UX spec drafted",
+      "currentPhase": "In App Store review; planning 1.0.1 fast-follow",
+      "activeStory": "Monitor App Store review; scope the 1.0.1 fast-follow UX redesign spec",
+      "lastCompletedStory": "Submitted build 6; E7 Wearable Depth (Garmin HRV + readiness trends, PR #36); archive script + release fixes; readiness test fixes",
+      "nextRecommendedStory": "Confirm 1.0.1 UX redesign scope; wire run_started + run_completed activation events",
+      "estimatedCompletion": "Review ETA 24 to 48h",
       "progressPercent": null,
-      "progressLabel": "Portal close-out remaining",
-      "lastValidation": "GPS QA run 2: 9.10 km 2026-05-30 PASS (1,432 GPS pts, 7% battery drain). Focused tests all green: StriverPersonaGateTests 3/3, WellnessTrendMapperTests 4/4, FlexWeekCacheTests 4/4.",
-      "validationState": "All QA passed. Portal tasks are human-only.",
-      "lastUpdated": "2026-05-30",
+      "progressLabel": "In review",
+      "lastValidation": "GPS QA run 2: 9.10 km 2026-05-30 PASS (1,432 GPS pts, 7% battery drain). Focused tests green: StriverPersonaGateTests 3/3, WellnessTrendMapperTests 4/4, FlexWeekCacheTests 4/4.",
+      "validationState": "QA passed; build submitted to Apple.",
+      "lastUpdated": "2026-05-31",
       "blockers": [
-        "App Store Connect portal tasks are human-only: select build, upload screenshots, enter demo credentials, confirm privacy questionnaire and age rating.",
+        "In App Store review: outcome depends on Apple (no agent action available).",
         "Garmin freshness Story 4 (webhook audit) is backend/human investigation."
       ],
       "risks": [
-        "App Store approval delay",
+        "App Store approval delay or rejection",
         "Garmin webhook subscription health not yet audited"
       ],
       "analyticsStatus": {
@@ -60,9 +60,9 @@
         "note": "Activation funnel not yet fully visible. run_started and run_completed are the highest-value missing events."
       },
       "nextActions": [
-        "Human: open App Store Connect, select processed build 6.",
-        "Human: upload 6.9\" and 6.1\" screenshots from build/AppStoreExportClean.",
-        "Human: enter demo credentials, confirm privacy questionnaire (4+), category (Health & Fitness), submit for review."
+        "Monitor App Store review status; respond to any Apple feedback.",
+        "Scope and confirm the 1.0.1 fast-follow UX redesign spec before building.",
+        "Wire run_started + run_completed activation events for funnel visibility."
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/runsmart-ios.md",
@@ -76,22 +76,21 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Pre-submission. Live optimize/design/expert/preview flow stable. Screenshots rendered (rb-aso-002). PostHog NOT integrated — last technical gate before submission.",
-      "currentPhase": "Pre-submission sprint — PostHog integration + ASC upload",
-      "activeStory": "Integrate PostHog SDK (app_launched + optimize_completed); upload screenshots to App Store Connect",
-      "lastCompletedStory": "rb-aso-002 screenshots rendered; 55/55 tests passing; live expert flow stable; backend expert contracts 24/24",
-      "nextRecommendedStory": "Integrate PostHog SDK (2-day cap); set up Fastlane ASC API key; submit for review",
+      "status": "Pre-submission, analytics gate cleared. PostHog integrated via AnalyticsService (PR #35 merged into the PR #36 UX transformation), with a PII guard and event de-dup. Guest-first home activation flow shipped. Remaining gates: ASC credentials and a real-device smoke test.",
+      "currentPhase": "Pre-submission sprint — ASC credentials + smoke test",
+      "activeStory": "Set up Fastlane / ASC API key; run a real-device smoke test with a live account; then submit",
+      "lastCompletedStory": "PostHog integration (Story 2, PR #35); PR #36 UX transformation; PII guard + double-fire fix; guest-first home activation; rb-aso-002 screenshots; 55/55 tests",
+      "nextRecommendedStory": "Set up Fastlane ASC API key, run real-device smoke test, submit for review",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
-      "progressLabel": "PostHog integration + ASC upload remaining",
-      "lastValidation": "test_sim 55/55 passing 2026-05-26. rb-aso-002 screenshots rendered 2026-05-28.",
-      "validationState": "Build and tests passing. Real-device smoke test with live account not done.",
-      "lastUpdated": "2026-05-28",
+      "progressLabel": "ASC credentials + smoke test remaining",
+      "lastValidation": "test_sim 55/55 passing 2026-05-26. Analytics PII guard + de-dup landed (commit ec978aa). rb-aso-002 screenshots rendered 2026-05-28.",
+      "validationState": "Build, tests, and analytics passing. Real-device smoke test with live account not done.",
+      "lastUpdated": "2026-05-31",
       "blockers": [
-        "PostHog SDK not integrated — no analytics events fire.",
-        "No local Fastlane config / ASC API key — App Store Connect upload requires manual setup.",
-        "Resume Library backend (/api/v1/resumes) not live; mock service active.",
-        "Real-device smoke test with live account not completed."
+        "No local Fastlane config / ASC API key. App Store Connect upload requires manual setup.",
+        "Real-device smoke test with a live account not completed.",
+        "Resume Library backend (/api/v1/resumes) not live; mock service active."
       ],
       "risks": [
         "Swift 6 concurrency strictness",
@@ -100,14 +99,14 @@
         "Backend Resume Library not yet live"
       ],
       "analyticsStatus": {
-        "sdkIntegrated": false,
-        "eventsWired": [],
-        "missingEvents": ["app_launched", "optimize_started", "optimize_completed", "export_success"],
-        "note": "PostHog SDK not present in codebase. No analytics events fire. Full activation funnel blind."
+        "sdkIntegrated": true,
+        "eventsWired": ["app_launched", "optimize_completed"],
+        "missingEvents": ["export_success"],
+        "note": "PostHog integrated via AnalyticsService (PR #35 into #36). PII guard + double-fire fix landed (ec978aa). Confirm full event coverage and export_success against the live optimize/export flow."
       },
       "nextActions": [
-        "Integrate PostHog SDK via SPM; create minimal AnalyticsService; wire app_launched + optimize_completed.",
         "Set up Fastlane / ASC API key (founder action) to enable screenshot + metadata upload.",
+        "Run a real-device smoke test with a live account across optimize, design, expert, preview, export.",
         "Submit Resumely for App Store review."
       ],
       "links": {
@@ -229,19 +228,19 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: App Store Connect portal close-out (human) — select build 6, upload screenshots, enter demo credentials, submit.",
-      "Resumely iOS: integrate PostHog SDK (2-day cap: app_launched + optimize_completed).",
-      "Resumely iOS: set up Fastlane / ASC API key for screenshot upload."
+      "RunSmart iOS: monitor App Store review and respond to any Apple feedback.",
+      "Resumely iOS: set up Fastlane / ASC API key for screenshot + metadata upload.",
+      "Resumely iOS: run a real-device smoke test with a live account, then submit."
     ],
     "next": [
-      "Resumely iOS: submit to App Store Connect.",
-      "Both apps: post-launch activation monitoring once live.",
-      "RunSmart iOS: wire run_started + run_completed events (post-submission)."
+      "RunSmart iOS: scope the 1.0.1 fast-follow UX redesign spec.",
+      "RunSmart iOS: wire run_started + run_completed activation events.",
+      "Resumely iOS: confirm full PostHog event coverage incl. export_success."
     ],
     "later": [
       "RunSmart iOS: analytics for plan_created, onboarding_completed.",
       "Resumely iOS: backend Resume Library integration, PDF/export device QA, Hebrew/RTL.",
-      "Both: CFO OS — revenue, cost, and gross margin instrumentation."
+      "Both: CFO OS — revenue, cost, and gross-margin instrumentation."
     ],
     "blocked": [
       "Resumely iOS ASC upload until Fastlane / ASC credentials are configured.",
@@ -263,59 +262,52 @@
       "buildStatus": "XcodeBuildMCP build clean.",
       "testStatus": "test_sim 55/55 passing (2026-05-26).",
       "manualQAStatus": "Real-device smoke test with live account not done.",
-      "appStoreReadiness": "Not ready — PostHog not integrated; no ASC credentials locally.",
-      "latestValidationDate": "2026-05-26",
-      "missingValidation": "PostHog integration, ASC credentials / Fastlane setup, real-device smoke test."
+      "appStoreReadiness": "Analytics gate cleared (PostHog integrated). Remaining: ASC credentials + real-device smoke test before submit.",
+      "latestValidationDate": "2026-05-31",
+      "missingValidation": "ASC credentials / Fastlane setup, real-device smoke test, confirm export_success event."
     }
   ],
   "executiveBoard": {
     "weeklyReviewDate": "2026-05-31",
     "top3": [
-      "RunSmart iOS: App Store Connect portal close-out (human) — select build 6, upload screenshots, submit.",
-      "Resumely iOS: integrate PostHog (2-day cap), then submit.",
-      "Analytics instrumentation (EXD-002): define scope for both apps before any new feature work."
+      "RunSmart iOS: monitor App Store review; scope the 1.0.1 fast-follow UX redesign.",
+      "Resumely iOS: set up ASC credentials, run real-device smoke test, then submit.",
+      "Activation funnels: wire RunSmart run_started/run_completed and confirm Resumely export_success."
     ],
     "openDecisions": [
-      "EXD-002: analytics instrumentation scope (recommendation: 2-day cap, activation events only)"
+      "RunSmart 1.0.1 fast-follow UX redesign scope",
+      "Resumely iOS Fastlane / ASC credentials setup (founder action)"
     ],
     "financialSnapshot": "Needs Data — no revenue/cost instrumentation wired.",
-    "note": "See executive-os/EXECUTIVE-DASHBOARD.md for the full Executive Intelligence OS view."
+    "note": "EXD-002 (analytics scope) and the PostHog-before-submit call are now resolved: PostHog is integrated in both apps. See executive-os/EXECUTIVE-DASHBOARD.md for the full Executive Intelligence OS view."
   },
   "decisionBoard": [
     {
-      "decision": "Analytics instrumentation scope (EXD-002)",
-      "project": "Both apps",
-      "whyItMatters": "Shipping both apps with zero funnel visibility means post-launch decisions will be blind.",
-      "options": "Instrument first (2-day cap) / ship features first / do both simultaneously",
-      "recommendedOption": "Instrument first, cap at 2 days, scope to activation + export-success only. RunSmart: run_started + run_completed. Resumely: app_launched + optimize_completed.",
-      "urgency": "High"
+      "decision": "RunSmart 1.0.1 fast-follow UX redesign scope",
+      "project": "RunSmart iOS",
+      "whyItMatters": "A UX redesign spec is drafted; locking scope now keeps the fast-follow small and shippable while v1.0 is in review.",
+      "options": "Ship the full redesign spec / cherry-pick the highest-impact screens / hold until v1.0 review outcome",
+      "recommendedOption": "Cherry-pick the highest-impact screens for 1.0.1; defer the rest to 1.1.",
+      "urgency": "Medium"
     },
     {
-      "decision": "Resumely iOS: PostHog before or after first submission?",
+      "decision": "Resumely iOS Fastlane / ASC credentials setup",
       "project": "Resumely iOS",
-      "whyItMatters": "Data from day 1 is worth more than data from week 2. 2-day integration cost is low.",
-      "options": "Integrate before submit / submit now and wire post-launch",
-      "recommendedOption": "Integrate before submit (2-day cap).",
-      "urgency": "High"
-    },
-    {
-      "decision": "Fastlane / ASC credentials setup",
-      "project": "Resumely iOS",
-      "whyItMatters": "Screenshots cannot be uploaded without credentials; manual ASC web upload is time-consuming.",
+      "whyItMatters": "Screenshots and metadata cannot be uploaded without credentials; manual ASC web upload is slow and error-prone.",
       "options": "Fastlane with ASC API key / manual upload in ASC web UI",
       "recommendedOption": "Set up Fastlane with ASC API key (founder action).",
       "urgency": "High"
+    },
+    {
+      "decision": "Resumely iOS: confirm PostHog event coverage before submit",
+      "project": "Resumely iOS",
+      "whyItMatters": "PostHog is integrated, but export_success coverage is unconfirmed; the export step is the core conversion event.",
+      "options": "Verify export_success now / submit and verify post-launch",
+      "recommendedOption": "Verify export_success against the live export flow before submit.",
+      "urgency": "Medium"
     }
   ],
   "navigation": [
-    {
-      "label": "OS Command Center",
-      "href": "./command-center.html"
-    },
-    {
-      "label": "Orchestration Map",
-      "href": "./orchestration.html"
-    },
     {
       "label": "Markdown Dashboard",
       "href": "../DASHBOARD.md"

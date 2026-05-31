@@ -55,6 +55,14 @@
       .stamp { text-align: right; color: var(--muted); font-size: 12.5px; }
       .stamp strong { color: var(--ink); }
 
+      /* Shared dashboard nav */
+      .osnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+      .osnav a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 7px 14px;
+        border-radius: 999px; border: 1px solid var(--line); background: var(--panel); }
+      .osnav a:hover { color: var(--ink); border-color: #36507f; }
+      .osnav a.active { color: #06122b; background: linear-gradient(135deg, var(--accent), var(--cyan));
+        border-color: transparent; font-weight: 700; }
+
       /* Launch chips */
       .launch { display: flex; gap: 12px; flex-wrap: wrap; margin: 4px 0 26px; }
       .chip {
@@ -88,6 +96,7 @@
       .layer.l-plans::before { background: var(--violet); }
       .layer.l-todos::before { background: var(--cyan); }
       .layer.l-executive::before { background: var(--pink); }
+      .layer.l-memory::before { background: var(--green); }
 
       .layer-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
         padding: 16px 20px 4px; }
@@ -147,6 +156,12 @@
         </div>
       </header>
 
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./command-center.html">Command Center</a>
+        <a href="./orchestration.html" class="active" aria-current="page">Orchestration Map</a>
+        <a href="./index.html">Project Status</a>
+      </nav>
+
       <div class="launch" id="launch"></div>
       <div class="kpis" id="kpis"></div>
       <div id="layers"></div>
@@ -164,31 +179,31 @@
     {
       "label": "RunSmart iOS",
       "tone": "green",
-      "state": "Submit-ready (build 6)"
+      "state": "Submitted to App Store review"
     },
     {
       "label": "Resumely iOS",
       "tone": "amber",
-      "state": "Pre-submission (copy + analytics)"
+      "state": "Pre-submission (PostHog in; ASC + smoke next)"
     },
     {
       "label": "App Review ETA",
       "tone": "blue",
-      "state": "24–48h after each submit"
+      "state": "24–48h for RunSmart"
     }
   ],
   "kpis": [
     {
+      "v": "1",
+      "l": "App submitted to review"
+    },
+    {
       "v": "2",
-      "l": "Apps in submission sprint"
+      "l": "Apps with PostHog wired"
     },
     {
       "v": "1",
-      "l": "Submit-ready today"
-    },
-    {
-      "v": "9",
-      "l": "Distribution channels mapped"
+      "l": "Next-version spec drafted (RS 1.0.1)"
     },
     {
       "v": "7",
@@ -242,13 +257,13 @@
       "cards": [
         {
           "t": "RunSmart iOS",
-          "s": "Build 6, description applied, device QA passed",
-          "p": "ready",
+          "s": "Submitted to review; E7 Garmin trends shipped; 1.0.1 UX spec drafted",
+          "p": "submitted",
           "pill": "ready"
         },
         {
           "t": "Resumely iOS",
-          "s": "Listing copy drafted; PostHog + smoke QA pending",
+          "s": "PostHog integrated + PR#36 UX shipped; ASC creds + smoke QA next",
           "p": "progress",
           "pill": "progress"
         },
@@ -354,9 +369,9 @@
         },
         {
           "t": "PostHog — Resumely",
-          "s": "Not integrated yet (AnalyticsService TODO)",
-          "p": "blocked",
-          "pill": "blocked"
+          "s": "Integrated via AnalyticsService (PR #35→#36); PII guard + de-dup",
+          "p": "wired",
+          "pill": "ready"
         },
         {
           "t": "Conversion Review",
@@ -486,37 +501,37 @@
       "cards": [
         {
           "t": "Sprint 01 — RS Archive/Submit",
-          "s": "2026-05-28 · build 6 → submit",
-          "p": "near-done",
-          "pill": "progress"
+          "s": "Build 6 submitted to App Store review",
+          "p": "done",
+          "pill": "ready"
         },
         {
           "t": "Sprint 02 — Resumely Ready",
-          "s": "2026-05-28 · metadata + PostHog + smoke",
+          "s": "PostHog in + PR#36 UX shipped; ASC creds + smoke remain",
           "p": "progress",
           "pill": "progress"
         },
         {
-          "t": "Sprint 03 — Distribution Setup",
-          "s": "Scaffold install + command center",
+          "t": "RS 1.0.1 UX redesign",
+          "s": "Fast-follow UX spec drafted — scope to confirm",
+          "p": "spec",
+          "pill": "planned"
+        },
+        {
+          "t": "E7 Garmin Depth",
+          "s": "Striver-gated 7-day HRV + readiness trends shipped (PR #36)",
           "p": "done",
           "pill": "ready"
         },
         {
-          "t": "rs-aso-001",
-          "s": "RunSmart description — applied",
+          "t": "rb-posthog-001",
+          "s": "Resumely analytics integrated + PII guard (PR #35→#36)",
           "p": "done",
           "pill": "ready"
-        },
-        {
-          "t": "rb-aso-001",
-          "s": "Resumely listing copy — draft",
-          "p": "review",
-          "pill": "progress"
         },
         {
           "t": "rs-analytics-001",
-          "s": "Activation events — wired and firing",
+          "s": "RunSmart activation events — wired and firing",
           "p": "done",
           "pill": "ready"
         }
@@ -529,23 +544,23 @@
       "desc": "Now / Next / Later / Blocked across both products.",
       "todos": {
         "now": [
-          "RunSmart: finish App Store Connect portal + Submit for Review",
-          "Resumely: approve rb-aso-001 copy → write into fastlane",
-          "Resumely: integrate PostHog (AnalyticsService + events)"
+          "RunSmart: monitor App Store review; respond to Apple feedback",
+          "Resumely: set up Fastlane / ASC API key for upload",
+          "Resumely: real-device smoke test with live account → submit"
         ],
         "next": [
-          "Resumely: five-tab device smoke → archive build 1",
-          "RunSmart: fire activation-funnel events post-launch",
-          "Resumely: verify screenshot dimensions (6.7\" / 6.5\")"
+          "RunSmart: confirm 1.0.1 fast-follow UX redesign scope",
+          "RunSmart: wire run_started + run_completed events",
+          "Resumely: confirm PostHog export_success coverage"
         ],
         "later": [
           "Both: directories + SEO landings after approval",
           "Resumely: /api/v1/resumes backend, Hebrew/RTL",
-          "RunSmart: lifecycle email after analytics fires"
+          "Both: CFO OS — revenue, cost, gross-margin instrumentation"
         ],
         "blocked": [
-          "All acquisition metrics until apps approved",
-          "Resumely lifecycle email until PostHog ships",
+          "Acquisition metrics until apps are live",
+          "Resumely ASC upload until Fastlane / ASC creds configured",
           "Resume Library until /api/v1/resumes ships"
         ]
       }
@@ -585,6 +600,50 @@
           "s": "Financial + strategic scorecard — sources defined, values pending",
           "p": "needs-data",
           "pill": "blocked"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "tag": "Layer 9",
+      "title": "Memory & Learning",
+      "desc": "The persistence and feedback loop. What every agent reads at session start and writes at session end so the OS never relearns the same lesson.",
+      "cards": [
+        {
+          "t": "Global Memory",
+          "s": "~/.claude/MEMORY.md — cross-project decisions, read first",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Project Memory",
+          "s": "tasks/MEMORY.md — repo-local session history + decisions",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Errors Ledger",
+          "s": "ERRORS.md (global + tasks/) — failed approaches, never re-propose",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Lessons",
+          "s": "LESSONS.md + executive-os/EXECUTIVE-LESSONS.md — recurring fixes",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Decisions",
+          "s": "DECISIONS.md + EXECUTIVE-DECISIONS.md — durable architectural calls",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Auto-Memory",
+          "s": "~/.claude/.../memory/ — Claude's per-fact files + MEMORY.md index",
+          "p": "active",
+          "pill": "ready"
         }
       ]
     }

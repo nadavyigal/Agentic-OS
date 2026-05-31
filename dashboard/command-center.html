@@ -65,6 +65,14 @@
       .search:focus { outline: none; border-color: var(--accent); }
       .hint { color: var(--faint); font-size: 12px; white-space: nowrap; }
 
+      /* Shared dashboard nav */
+      .osnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+      .osnav a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 7px 14px;
+        border-radius: 999px; border: 1px solid var(--line); background: var(--panel); }
+      .osnav a:hover { color: var(--ink); border-color: #36507f; }
+      .osnav a.active { color: #06122b; background: linear-gradient(135deg, var(--accent), var(--cyan));
+        border-color: transparent; font-weight: 700; }
+
       /* Group */
       .group { margin: 0 0 14px; }
       .group-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 26px 0 12px; }
@@ -149,14 +157,20 @@
           <div class="mark">OS</div>
           <div>
             <h1>Agentic OS — Command Center</h1>
-            <p>One place to talk to every OS. Each card copies a context-loaded conversation starter you paste into Claude Code or Cursor, plus deep links into its docs.</p>
+            <p>One place to plan the next move, run a workflow, or talk to any OS. Each card copies a context-loaded prompt you paste into Claude Code or Cursor, plus deep links into its docs.</p>
           </div>
         </div>
         <div class="stamp">
           <div>Updated <strong id="stamp-date"></strong></div>
-          <div><a href="./orchestration.html">Orchestration Map →</a> · <a href="./index.html">Project Status →</a></div>
+          <div>Static · no backend · no secrets</div>
         </div>
       </header>
+
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./command-center.html" class="active" aria-current="page">Command Center</a>
+        <a href="./orchestration.html">Orchestration Map</a>
+        <a href="./index.html">Project Status</a>
+      </nav>
 
       <div class="controls">
         <input id="search" class="search" type="search" placeholder="Filter OSes and agents — e.g. ceo, research, distribution, qa…" autocomplete="off" />
@@ -178,6 +192,52 @@
 {
   "generated": "2026-05-31",
   "groups": [
+    {
+      "tag": "Planner",
+      "title": "Plan the next move",
+      "items": [
+        {
+          "id": "sprint",
+          "name": "Generate next sprint",
+          "tone": "pink",
+          "status": "ready",
+          "purpose": "Fuse the Action Board (Now / Next) and the Decision Board into one concrete, reviewable one-week sprint.",
+          "starter": "Act as the Director with CEO OS judgment. Read PROJECT-STATUS.md, dashboard/status.json (priorityBoard, decisionBoard, executiveBoard) and executive-os/EXECUTIVE-DECISIONS.md. Then: (1) resolve each open decision on the Decision Board with a recommended option, (2) pick the top 3 actions from the Now column, (3) produce a one-week sprint plan as a markdown file under sprints/ using TEMPLATES/development-story-template.md for each story (goal, acceptance criteria, test, scope-gate note). Keep it to one reviewable story at a time. End with the single story I should start first and why.",
+          "links": [
+            { "label": "PROJECT-STATUS.md", "href": "../PROJECT-STATUS.md" },
+            { "label": "status.json", "href": "./status.json" },
+            { "label": "story template", "href": "../TEMPLATES/development-story-template.md" },
+            { "label": "sprints/", "href": "../sprints/" }
+          ]
+        },
+        {
+          "id": "decisions",
+          "name": "Resolve open decisions",
+          "tone": "pink",
+          "status": "ready",
+          "purpose": "Work only the Decision Board: options, a recommendation, cost of delay, then log the call.",
+          "starter": "Act as the CEO OS. Read dashboard/status.json (decisionBoard) and executive-os/EXECUTIVE-DECISIONS.md. For each open decision: state the options, give one recommended option with the reasoning, and the cost of delay. Then write the resolutions into executive-os/EXECUTIVE-DECISIONS.md dated {date} using TEMPLATES/decision-template.md. End with the one decision that unblocks the most work.",
+          "links": [
+            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" },
+            { "label": "decision template", "href": "../TEMPLATES/decision-template.md" },
+            { "label": "status.json", "href": "./status.json" }
+          ]
+        },
+        {
+          "id": "feature",
+          "name": "Draft next feature plan",
+          "tone": "pink",
+          "status": "ready",
+          "purpose": "Turn a Later-column item or a drafted spec (e.g. RunSmart 1.0.1) into an implementation plan.",
+          "starter": "Act as the Architect with PM judgment. Read PROJECT-STATUS.md (the Later column) and the relevant product spec (e.g. the RunSmart 1.0.1 fast-follow UX redesign spec in the RunSmart iOS repo). Pick the highest-leverage next feature and produce an implementation plan using PROMPTS/plan-feature.md: architecture, data flow, key files, edge cases, tests, risks. Do not write code. Apply the scope gate. End with a 5-step plan and the open questions to resolve first.",
+          "links": [
+            { "label": "plan-feature prompt", "href": "../PROMPTS/plan-feature.md" },
+            { "label": "story template", "href": "../TEMPLATES/development-story-template.md" },
+            { "label": "PROJECT-STATUS.md", "href": "../PROJECT-STATUS.md" }
+          ]
+        }
+      ]
+    },
     {
       "tag": "Layer 8",
       "title": "Executive Intelligence",
@@ -339,6 +399,139 @@
           ]
         }
       ]
+    },
+    {
+      "tag": "Runs",
+      "title": "Runs / Workflows",
+      "items": [
+        {
+          "id": "morning-brief",
+          "name": "Morning Brief",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Cross-project status: what shipped, what is in flight, what is blocked, and the best next focus.",
+          "starter": "Run the morning brief for {date}: read PROMPTS/morning-brief.md and execute it across RunSmart (web + iOS) and Resumely iOS. Read recent git activity, MEMORY.md, todos, and active plans. Output a one-page brief ending with the single recommended focus for today.",
+          "links": [
+            { "label": "morning-brief.md", "href": "../PROMPTS/morning-brief.md" }
+          ]
+        },
+        {
+          "id": "exec-review",
+          "name": "Weekly Exec Review",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "The Weekly CEO Review: priorities, decisions, OKR progress, and the week's top 3.",
+          "starter": "Run the Weekly Exec Review for {date}: read PROMPTS/executive-weekly-review.md and executive-os/workflows/weekly-ceo-review.md and execute. Pull from DASHBOARD.md, PROJECT-STATUS.md, EXECUTIVE-DASHBOARD.md and EXECUTIVE-DECISIONS.md. Invent no numbers. End with the week's top 3 and the one decision to make.",
+          "links": [
+            { "label": "executive-weekly-review.md", "href": "../PROMPTS/executive-weekly-review.md" },
+            { "label": "exec-review.md", "href": "../PROMPTS/exec-review.md" }
+          ]
+        },
+        {
+          "id": "distribution-weekly",
+          "name": "Weekly Distribution Run",
+          "tone": "green",
+          "status": "ready",
+          "purpose": "This week's growth review and the next distribution actions.",
+          "starter": "Run the weekly distribution review for {date}: read distribution-os/prompts/weekly-distribution-run.md and distribution-os/weekly-growth-review.md and execute. What shipped, what moved, what is blocked, and the top 3 growth actions. Cite source files; invent no metrics.",
+          "links": [
+            { "label": "weekly-distribution-run.md", "href": "../distribution-os/prompts/weekly-distribution-run.md" },
+            { "label": "daily-distribution-check.md", "href": "../distribution-os/prompts/daily-distribution-check.md" }
+          ]
+        },
+        {
+          "id": "qa-review",
+          "name": "QA Review",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Evidence-based completion gate for a change before it ships.",
+          "starter": "Run a QA review: read PROMPTS/qa-review.md and GLOBAL-QA-RULES.md and execute against <PROJECT / CHANGE>. Produce a QA plan, run it, and report pass/fail with the exact evidence (lint, tests, manual QA). Do not mark done without evidence.",
+          "links": [
+            { "label": "qa-review.md", "href": "../PROMPTS/qa-review.md" },
+            { "label": "GLOBAL-QA-RULES.md", "href": "../GLOBAL-QA-RULES.md" }
+          ]
+        },
+        {
+          "id": "risk-review",
+          "name": "Risk Review",
+          "tone": "amber",
+          "status": "ready",
+          "purpose": "Surface what could go wrong before a risky or irreversible change.",
+          "starter": "Run a risk review: read PROMPTS/risk-review.md and execute against <CHANGE / PLAN>. Identify the top risks, likelihood, blast radius, and the mitigation or validation for each. End with a go / no-go recommendation.",
+          "links": [
+            { "label": "risk-review.md", "href": "../PROMPTS/risk-review.md" }
+          ]
+        },
+        {
+          "id": "update-lessons",
+          "name": "Update Lessons",
+          "tone": "green",
+          "status": "ready",
+          "purpose": "Capture a recurring bug or hard-won fix so the OS does not relearn it.",
+          "starter": "Run the lessons update: read PROMPTS/update-lessons.md and execute. Capture today's recurring issue or fix into the right LESSONS file using TEMPLATES/lesson-template.md. Keep it concise and auditable.",
+          "links": [
+            { "label": "update-lessons.md", "href": "../PROMPTS/update-lessons.md" },
+            { "label": "lesson template", "href": "../TEMPLATES/lesson-template.md" }
+          ]
+        },
+        {
+          "id": "pr-summary",
+          "name": "PR Summary",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Draft a clean PR summary from the current diff.",
+          "starter": "Run the PR summary: read PROMPTS/pr-summary.md and execute against the current branch diff. Summarize what changed and why, test evidence, risk, and what was not done, using TEMPLATES/pr-summary-template.md.",
+          "links": [
+            { "label": "pr-summary.md", "href": "../PROMPTS/pr-summary.md" },
+            { "label": "pr-summary template", "href": "../TEMPLATES/pr-summary-template.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Layer 9",
+      "title": "Memory & Learning",
+      "items": [
+        {
+          "id": "recall",
+          "name": "Recall context",
+          "tone": "green",
+          "status": "ready",
+          "purpose": "Load what was decided, what failed, and where you left off before starting work.",
+          "starter": "Recall my working context: read ~/.claude/MEMORY.md, ~/.claude/ERRORS.md, tasks/MEMORY.md and tasks/ERRORS.md. Summarize the open decisions, the failed approaches I must not repeat, and where I left off. End with the first thing I should pick up.",
+          "links": [
+            { "label": "tasks/MEMORY.md", "href": "../tasks/MEMORY.md" },
+            { "label": "tasks/ERRORS.md", "href": "../tasks/ERRORS.md" },
+            { "label": "DECISIONS.md", "href": "../DECISIONS.md" }
+          ]
+        },
+        {
+          "id": "session-end",
+          "name": "Log session end",
+          "tone": "green",
+          "status": "ready",
+          "purpose": "Write the session summary so any future session can resume cold.",
+          "starter": "Log the session end for {date}: write a session summary to tasks/MEMORY.md using TEMPLATES/session-summary-template.md (worked on, completed, in progress, decisions, next session). If an approach failed more than once, append it to tasks/ERRORS.md. List files changed, tests run, and what was NOT done.",
+          "links": [
+            { "label": "tasks/MEMORY.md", "href": "../tasks/MEMORY.md" },
+            { "label": "session-summary template", "href": "../TEMPLATES/session-summary-template.md" }
+          ]
+        },
+        {
+          "id": "lessons-decisions",
+          "name": "Lessons & Decisions",
+          "tone": "green",
+          "status": "ready",
+          "purpose": "The durable ledgers: recurring lessons and cross-project architectural decisions.",
+          "starter": "Review the learning ledgers: read LESSONS.md, executive-os/EXECUTIVE-LESSONS.md, DECISIONS.md and executive-os/EXECUTIVE-DECISIONS.md. Tell me which lessons are still active and whether any recent work contradicts a logged decision.",
+          "links": [
+            { "label": "LESSONS.md", "href": "../LESSONS.md" },
+            { "label": "EXECUTIVE-LESSONS.md", "href": "../executive-os/EXECUTIVE-LESSONS.md" },
+            { "label": "DECISIONS.md", "href": "../DECISIONS.md" },
+            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" }
+          ]
+        }
+      ]
     }
   ]
 }
@@ -377,7 +570,7 @@
 
           const actions = el("div", "actions");
           const btn = el("button", "btn-copy");
-          btn.append(document.createTextNode("▶ Copy conversation starter"));
+          btn.append(document.createTextNode("▶ Copy prompt"));
           btn.addEventListener("click", () => copyText(resolve(os.starter), btn));
           const links = el("div", "links");
           os.links.forEach((l) => {
