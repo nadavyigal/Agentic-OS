@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentic OS — Command Center</title>
+    <style>
+      :root {
+        --bg: #0b0f1a;
+        --bg-2: #11172a;
+        --panel: #151d33;
+        --panel-2: #1b2540;
+        --line: #263354;
+        --ink: #e8edf9;
+        --muted: #93a0c2;
+        --faint: #5e6b8e;
+        --accent: #6ea8fe;
+        --green: #34d399;
+        --amber: #fbbf24;
+        --red: #f87171;
+        --violet: #a78bfa;
+        --cyan: #22d3ee;
+        --pink: #f472b6;
+        --radius: 14px;
+        font-synthesis: none;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.08), transparent),
+          linear-gradient(180deg, var(--bg), var(--bg-2));
+        background-color: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      .wrap { max-width: 1240px; margin: 0 auto; padding: 28px 22px 80px; }
+
+      header.top {
+        display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+        gap: 18px; border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 22px;
+      }
+      .brand { display: flex; align-items: center; gap: 14px; }
+      .mark {
+        width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+        font-weight: 800; letter-spacing: .5px; color: #06122b;
+        background: linear-gradient(135deg, var(--violet), var(--cyan));
+        box-shadow: 0 8px 24px rgba(167,139,250,.35);
+      }
+      .brand h1 { font-size: 20px; margin: 0; letter-spacing: .2px; }
+      .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; max-width: 560px; }
+      .stamp { text-align: right; color: var(--muted); font-size: 12.5px; }
+      .stamp a { color: var(--accent); text-decoration: none; }
+      .stamp strong { color: var(--ink); }
+
+      /* Controls */
+      .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 4px 0 26px; }
+      .search {
+        flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
+        border-radius: 10px; padding: 11px 14px; color: var(--ink); font-size: 13.5px;
+      }
+      .search::placeholder { color: var(--faint); }
+      .search:focus { outline: none; border-color: var(--accent); }
+      .hint { color: var(--faint); font-size: 12px; white-space: nowrap; }
+
+      /* Group */
+      .group { margin: 0 0 14px; }
+      .group-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 26px 0 12px; }
+      .group-head h2 { font-size: 14px; margin: 0; letter-spacing: .4px; text-transform: uppercase; }
+      .group-head .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--faint); }
+      .group-head .gline { flex: 1; height: 1px; background: var(--line); }
+
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+
+      .os {
+        position: relative; background: linear-gradient(180deg, var(--panel), var(--bg-2));
+        border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px;
+        display: flex; flex-direction: column; gap: 10px; transition: border-color .12s ease, transform .12s ease;
+      }
+      .os:hover { border-color: #36507f; transform: translateY(-2px); }
+      .os::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--accent); }
+      .os.t-violet::before { background: var(--violet); }
+      .os.t-cyan::before { background: var(--cyan); }
+      .os.t-green::before { background: var(--green); }
+      .os.t-amber::before { background: var(--amber); }
+      .os.t-pink::before { background: var(--pink); }
+      .os.t-accent::before { background: var(--accent); }
+
+      .os-head { display: flex; align-items: center; gap: 9px; }
+      .os-head .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+      .os-head h3 { font-size: 15px; margin: 0; }
+      .os-head .pill { font-size: 10.5px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line);
+        color: var(--muted); margin-left: auto; white-space: nowrap; }
+      .pill.ready { color: var(--green); border-color: rgba(52,211,153,.4); }
+      .pill.active { color: var(--amber); border-color: rgba(251,191,36,.4); }
+      .pill.needsdata { color: var(--red); border-color: rgba(248,113,113,.4); }
+      .os .purpose { color: var(--muted); font-size: 12.5px; margin: 0; }
+
+      .prompt {
+        background: #0c1426; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px;
+        color: #b9c6e6; max-height: 92px; overflow: auto; white-space: pre-wrap; line-height: 1.45;
+      }
+      .prompt::-webkit-scrollbar { width: 8px; }
+      .prompt::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+      .btn-copy {
+        background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #06122b; border: none;
+        border-radius: 8px; padding: 8px 13px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 7px;
+      }
+      .btn-copy:hover { filter: brightness(1.06); }
+      .btn-copy.copied { background: var(--green); }
+      .links { display: flex; flex-wrap: wrap; gap: 6px; }
+      .links a {
+        font-size: 11.5px; color: var(--muted); text-decoration: none; background: var(--panel-2);
+        border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+      }
+      .links a:hover { color: var(--ink); border-color: #36507f; }
+      .links a::before { content: "⧉ "; color: var(--faint); }
+
+      .empty { color: var(--faint); font-size: 13px; padding: 30px 4px; text-align: center; display: none; }
+
+      footer { margin-top: 34px; color: var(--faint); font-size: 12px; border-top: 1px solid var(--line);
+        padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+      footer a { color: var(--accent); text-decoration: none; }
+
+      .toast {
+        position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px);
+        background: var(--green); color: #06122b; font-weight: 700; font-size: 13px;
+        padding: 10px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+        opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+      @media (max-width: 720px) {
+        .grid { grid-template-columns: 1fr; }
+        .stamp { text-align: left; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="brand">
+          <div class="mark">OS</div>
+          <div>
+            <h1>Agentic OS — Command Center</h1>
+            <p>One place to talk to every OS. Each card copies a context-loaded conversation starter you paste into Claude Code or Cursor, plus deep links into its docs.</p>
+          </div>
+        </div>
+        <div class="stamp">
+          <div>Updated <strong id="stamp-date"></strong></div>
+          <div><a href="./orchestration.html">Orchestration Map →</a> · <a href="./index.html">Project Status →</a></div>
+        </div>
+      </header>
+
+      <div class="controls">
+        <input id="search" class="search" type="search" placeholder="Filter OSes and agents — e.g. ceo, research, distribution, qa…" autocomplete="off" />
+        <span class="hint" id="count-hint"></span>
+      </div>
+
+      <div id="groups"></div>
+      <div class="empty" id="empty">No OS matches that filter.</div>
+
+      <footer>
+        <span>Static artifact · opens via file:// · no backend, no secrets. Copy a starter, paste into your agent.</span>
+        <span><a href="./orchestration.html">Orchestration Map</a> · <a href="./index.html">Project Status</a> · <a href="../executive-os/README.md">Executive OS</a> · <a href="../distribution-os/distribution-command-center.md">Distribution Center</a></span>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast">Copied — paste into Claude Code or Cursor</div>
+
+    <script id="cc-data" type="application/json">
+{
+  "generated": "2026-05-31",
+  "groups": [
+    {
+      "tag": "Layer 8",
+      "title": "Executive Intelligence",
+      "items": [
+        {
+          "id": "ceo",
+          "name": "CEO OS",
+          "tone": "violet",
+          "status": "active",
+          "purpose": "Strategy, OKRs, weekly priorities, portfolio tradeoffs, and the one decision that matters this week.",
+          "starter": "Act as the CEO OS for the Agentic OS portfolio. Read executive-os/CEO-OS.md, executive-os/EXECUTIVE-DECISIONS.md, executive-os/EXECUTIVE-METRICS.md and executive-os/EXECUTIVE-RHYTHM.md. Then run the Weekly CEO Review for {date} following executive-os/workflows/weekly-ceo-review.md. Do not invent financial or user numbers; mark every unknown as \"unknown — need: <source>\". End with the single highest-leverage decision I must make this week and a recommended option.",
+          "links": [
+            { "label": "CEO-OS.md", "href": "../executive-os/CEO-OS.md" },
+            { "label": "weekly-ceo-review.md", "href": "../executive-os/workflows/weekly-ceo-review.md" },
+            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" },
+            { "label": "review prompt", "href": "../PROMPTS/executive-weekly-review.md" }
+          ]
+        },
+        {
+          "id": "cfo",
+          "name": "CFO / Monetization OS",
+          "tone": "amber",
+          "status": "needsdata",
+          "purpose": "Budget, revenue, pricing, unit economics, cost control, and runway. Markdown-first, never invents numbers.",
+          "starter": "Act as the CFO / Monetization OS. Read executive-os/CFO-OS.md, executive-os/EXECUTIVE-METRICS.md and distribution-os/metrics-dashboard.md. Run the Monthly Finance Review per executive-os/workflows/monthly-finance-review.md. Never invent revenue, cost, conversion, or user numbers; every missing value is \"unknown — need: <source>\". Include risks and a validation plan. End with what to monetize next and what to stop spending on.",
+          "links": [
+            { "label": "CFO-OS.md", "href": "../executive-os/CFO-OS.md" },
+            { "label": "monthly-finance-review.md", "href": "../executive-os/workflows/monthly-finance-review.md" },
+            { "label": "EXECUTIVE-METRICS.md", "href": "../executive-os/EXECUTIVE-METRICS.md" },
+            { "label": "finance prompt", "href": "../PROMPTS/cfo-monthly-review.md" }
+          ]
+        },
+        {
+          "id": "analysis",
+          "name": "Analysis OS",
+          "tone": "cyan",
+          "status": "ready",
+          "purpose": "Research, ideation, competitor and market scans, opportunity discovery, consultancy-style recommendations.",
+          "starter": "Act as the Analysis OS. Read executive-os/ANALYSIS-OS.md and follow executive-os/workflows/research-brief.md. Topic: <STATE YOUR QUESTION HERE>. Structure the output exactly as: Facts, Sources, Assumptions, Insights, Opportunities, Risks, Recommendations, Open questions, Decision needed. Score every opportunity on impact, confidence, effort, revenue potential, strategic fit, and risk before recommending it. Cite or label source quality for every research claim. End with a confidence level and one recommended next step.",
+          "links": [
+            { "label": "ANALYSIS-OS.md", "href": "../executive-os/ANALYSIS-OS.md" },
+            { "label": "research-brief.md", "href": "../executive-os/workflows/research-brief.md" },
+            { "label": "opportunity-card", "href": "../executive-os/templates/opportunity-card-template.md" },
+            { "label": "research prompt", "href": "../PROMPTS/analysis-research-sprint.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Layers 0 & 2",
+      "title": "Orchestration & Growth",
+      "items": [
+        {
+          "id": "director",
+          "name": "Director / Orchestrator",
+          "tone": "violet",
+          "status": "active",
+          "purpose": "Routes multi-agent work, enforces the planning protocol, and gives the cross-project morning brief.",
+          "starter": "Act as the Director / Orchestrator. Read SKILLS/director-agent.md, GLOBAL-AGENT-RULES.md and GLOBAL-WORKFLOWS.md. Give me a cross-project morning brief for {date} using PROMPTS/morning-brief.md across RunSmart (web + iOS) and Resumely iOS: what shipped, what is in flight, what is blocked, and the single best next focus. Then propose which agent role should own each top action.",
+          "links": [
+            { "label": "director-agent.md", "href": "../SKILLS/director-agent.md" },
+            { "label": "GLOBAL-AGENT-RULES.md", "href": "../GLOBAL-AGENT-RULES.md" },
+            { "label": "GLOBAL-WORKFLOWS.md", "href": "../GLOBAL-WORKFLOWS.md" },
+            { "label": "morning-brief prompt", "href": "../PROMPTS/morning-brief.md" }
+          ]
+        },
+        {
+          "id": "distribution",
+          "name": "Distribution OS",
+          "tone": "green",
+          "status": "active",
+          "purpose": "Acquisition engine: ASO, SEO, directories, lifecycle email, partnerships. ASO is the live wedge.",
+          "starter": "Act as the Distribution OS. Read distribution-os/distribution-command-center.md, distribution-os/weekly-growth-review.md and distribution-os/operating-principles.md. Run this week's distribution review for {date}: what shipped, what moved, what is blocked, and the top 3 growth actions for next week. ASO is the live wedge; keep post-approval channels staged. Cite the source file for each status and do not invent metrics.",
+          "links": [
+            { "label": "command-center.md", "href": "../distribution-os/distribution-command-center.md" },
+            { "label": "weekly-growth-review.md", "href": "../distribution-os/weekly-growth-review.md" },
+            { "label": "channel-backlog.md", "href": "../distribution-os/channel-backlog.md" },
+            { "label": "weekly run prompt", "href": "../distribution-os/prompts/weekly-distribution-run.md" }
+          ]
+        },
+        {
+          "id": "growth",
+          "name": "Growth Agent",
+          "tone": "green",
+          "status": "active",
+          "purpose": "Executes distribution campaigns and growth experiments, then reads the results.",
+          "starter": "Act as the Growth agent. Read SKILLS/growth-agent.md and distribution-os/operating-principles.md. Design one distribution experiment I can run this week with a clear hypothesis, the single metric it moves, the channel, the effort, and how we will read the result. Follow PROMPTS/distribution-campaign.md. Do not invent baseline metrics; mark unknowns and state how to capture them.",
+          "links": [
+            { "label": "growth-agent.md", "href": "../SKILLS/growth-agent.md" },
+            { "label": "experiment-log.md", "href": "../distribution-os/experiment-log.md" },
+            { "label": "campaign prompt", "href": "../PROMPTS/distribution-campaign.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Layer 4",
+      "title": "Delivery Agents",
+      "items": [
+        {
+          "id": "architect",
+          "name": "Architect",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Plans and technical design before any code. Diagrams, data flow, edge cases.",
+          "starter": "Act as the Architect agent. Read SKILLS/architect-agent.md and the planning protocol. Feature/problem: <DESCRIBE IT>. Produce an implementation plan following PROMPTS/plan-feature.md: architecture, data flow, key files, edge cases, test coverage, and risks. Do not write code yet. End with a step-by-step plan in 5 steps or fewer and the open questions you need answered first.",
+          "links": [
+            { "label": "architect-agent.md", "href": "../SKILLS/architect-agent.md" },
+            { "label": "plan-feature prompt", "href": "../PROMPTS/plan-feature.md" }
+          ]
+        },
+        {
+          "id": "pm",
+          "name": "Product Manager",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Specs, scope gates, and story slicing. Keeps work to one reviewable story at a time.",
+          "starter": "Act as the Product Manager agent. Read SKILLS/product-manager-agent.md. Goal: <DESCRIBE IT>. Slice it into the smallest reviewable stories, each with acceptance criteria and a test. Apply the scope gate: flag anything that would touch more than 3 unexpected files. Follow PROMPTS/implement-story.md for the first story only. End by asking me to confirm the first story before any code.",
+          "links": [
+            { "label": "product-manager-agent.md", "href": "../SKILLS/product-manager-agent.md" },
+            { "label": "implement-story prompt", "href": "../PROMPTS/implement-story.md" }
+          ]
+        },
+        {
+          "id": "qa",
+          "name": "QA",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Evidence-based completion gates. Nothing is done without lint pass, test pass, or manual QA.",
+          "starter": "Act as the QA agent. Read SKILLS/qa-agent.md and GLOBAL-QA-RULES.md. Target: <PROJECT / CHANGE>. Produce a QA plan and run it following PROMPTS/qa-review.md: what to test, expected vs actual, and the completion evidence required. Do not mark anything done without lint pass, test pass, or a manual QA report. End with a clear pass/fail and the exact evidence captured.",
+          "links": [
+            { "label": "qa-agent.md", "href": "../SKILLS/qa-agent.md" },
+            { "label": "GLOBAL-QA-RULES.md", "href": "../GLOBAL-QA-RULES.md" },
+            { "label": "qa-review prompt", "href": "../PROMPTS/qa-review.md" }
+          ]
+        },
+        {
+          "id": "release",
+          "name": "Release Manager",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Archive, upload, submit, changelog. Owns the path from green build to App Store.",
+          "starter": "Act as the Release Manager agent. Read SKILLS/release-manager-agent.md. Target release: <PROJECT / BUILD>. Walk the release checklist: signing, bundle id, privacy strings, screenshots, release notes, and submit steps. Never deploy, submit, or run migrations without my explicit yes in the message. Draft the PR summary using PROMPTS/pr-summary.md and end with the exact remaining manual steps.",
+          "links": [
+            { "label": "release-manager-agent.md", "href": "../SKILLS/release-manager-agent.md" },
+            { "label": "pr-summary prompt", "href": "../PROMPTS/pr-summary.md" }
+          ]
+        },
+        {
+          "id": "uiux",
+          "name": "UI / UX",
+          "tone": "accent",
+          "status": "ready",
+          "purpose": "Design review, visual hierarchy, and App Store screenshot quality.",
+          "starter": "Act as the UI / UX agent. Read SKILLS/ui-ux-agent.md. Target: <SCREEN / FLOW / SCREENSHOTS>. Run a design review following PROMPTS/ui-review.md: visual hierarchy, spacing, consistency, accessibility, and any AI-slop patterns. Give concrete, specific fixes tied to the actual screens, not generic advice. End with a prioritized fix list.",
+          "links": [
+            { "label": "ui-ux-agent.md", "href": "../SKILLS/ui-ux-agent.md" },
+            { "label": "ui-review prompt", "href": "../PROMPTS/ui-review.md" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+      const data = JSON.parse(document.getElementById("cc-data").textContent);
+      const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
+
+      document.getElementById("stamp-date").textContent = data.generated;
+
+      const resolve = (s) => s.replace(/\{date\}/g, data.generated);
+
+      const cards = [];
+      const groupsRoot = document.getElementById("groups");
+
+      data.groups.forEach((group) => {
+        const g = el("section", "group");
+        const head = el("div", "group-head");
+        head.append(el("span", "tag", group.tag), el("h2", "", group.title), el("span", "gline"));
+        g.appendChild(head);
+
+        const grid = el("div", "grid");
+        group.items.forEach((os) => {
+          const card = el("article", "os t-" + os.tone);
+          card.dataset.search = (os.name + " " + os.purpose + " " + os.id).toLowerCase();
+
+          const ch = el("div", "os-head");
+          ch.append(el("span", "dot", ""), el("h3", "", os.name), el("span", "pill " + os.status, os.status === "needsdata" ? "needs data" : os.status));
+          ch.querySelector(".dot").style.background =
+            os.tone === "violet" ? "#a78bfa" : os.tone === "cyan" ? "#22d3ee" :
+            os.tone === "green" ? "#34d399" : os.tone === "amber" ? "#fbbf24" :
+            os.tone === "pink" ? "#f472b6" : "#6ea8fe";
+
+          const purpose = el("p", "purpose", os.purpose);
+          const prompt = el("div", "prompt", resolve(os.starter));
+
+          const actions = el("div", "actions");
+          const btn = el("button", "btn-copy");
+          btn.append(document.createTextNode("▶ Copy conversation starter"));
+          btn.addEventListener("click", () => copyText(resolve(os.starter), btn));
+          const links = el("div", "links");
+          os.links.forEach((l) => {
+            const a = el("a", "", l.label);
+            a.href = l.href;
+            links.append(a);
+          });
+          actions.append(btn, links);
+
+          card.append(ch, purpose, prompt, actions);
+          grid.appendChild(card);
+          cards.push(card);
+        });
+
+        g.appendChild(grid);
+        groupsRoot.appendChild(g);
+      });
+
+      // Live filter
+      const search = document.getElementById("search");
+      const empty = document.getElementById("empty");
+      const countHint = document.getElementById("count-hint");
+      const updateCount = (n) => { countHint.textContent = n + (n === 1 ? " OS" : " OSes"); };
+      updateCount(cards.length);
+
+      search.addEventListener("input", () => {
+        const q = search.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach((c) => {
+          const show = !q || c.dataset.search.includes(q);
+          c.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+        document.querySelectorAll(".group").forEach((g) => {
+          const any = [...g.querySelectorAll(".os")].some((c) => c.style.display !== "none");
+          g.style.display = any ? "" : "none";
+        });
+        empty.style.display = visible ? "none" : "block";
+        updateCount(visible);
+      });
+
+      // Clipboard with file:// fallback
+      function copyText(text, btn) {
+        const done = () => flashCopied(btn);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+        } else {
+          fallbackCopy(text, done);
+        }
+      }
+      function fallbackCopy(text, done) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+      const toast = document.getElementById("toast");
+      let toastTimer;
+      function flashCopied(btn) {
+        const label = btn.textContent;
+        btn.textContent = "✓ Copied";
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = label; btn.classList.remove("copied"); }, 1400);
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+      }
+    </script>
+  </body>
+</html>
