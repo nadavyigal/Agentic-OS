@@ -1,15 +1,16 @@
 # Project Status
 
-Last updated: 2026-05-15 17:12 IDT
+Last updated: 2026-05-31 IDT
 
-Source policy: local folder mode only. No GitHub status was used. Status is based on local Agent OS files and targeted git metadata checks.
+Source policy: local folder mode only. No GitHub status was used. Status is based on
+local task files (`tasks/todo.md`, `tasks/session-log.md`) read directly on 2026-05-31.
 
 ## Status Table
 
 | Project | Freshness | Status | Current Phase | Active Story | Last Completed Story | Next Recommended Story | Estimated Completion | Last Validation | Last Updated | Blockers | Risks |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Fresh | Device build passed; manual outdoor/background QA still required before external TestFlight | Route feature TestFlight polish / external beta prep | Manual outdoor/background recording and battery-delta check | Story 10: TestFlight Polish And Privacy Review, plus Agent OS status source-of-truth consolidation | Physical-device outdoor/background recording check, then archive/upload readiness | Not estimated in local files | 2026-05-15 physical-device Debug build passed on connected iPhone 13, bundle id `com.runsmart.lite`; simulator build passed; latest full iPhone 17 XCTest attempt still stalled with `NSMachErrorDomain Code=-308`. | 2026-05-15 | Manual outdoor/background recording and battery-delta check remains open | Location/background behavior, battery, Garmin missing map data, pre-existing AppIcon warnings, older actor-isolation warning noise |
-| ResumeBuilder iOS | Fresh | In progress; five-story tab/library spec completed, smoke QA and PR remain | Pre-release / TestFlight prep | Simulator smoke test all 5 tabs | Spec "Merge Track->Me, Redesign Optimized Resume, Real Resume Library" all 5 stories | Simulator smoke test all 5 tabs, create PR `claude/hungry-chatelet-a86030` -> `main`, then flip `BackendConfig.useMockLibraryService` once web API ships | 25% per local `tasks/progress.md` | Xcode build succeeded after each story commit. Manual smoke test all 5 tabs is still TODO. | 2026-05-15 | Resume Library backend endpoints are not live; mock service remains active | Swift 6 concurrency strictness, WKWebView PDF render fragility on real device, no Hebrew/RTL support, Resume Library backend endpoints not yet live |
+| RunSmart iOS | Fresh | Submit-ready (build 6 uploaded); portal tasks are the only remaining gate | App Store submission sprint | App Store Connect portal close-out (human-only) | Garmin freshness fix Stories 1+2; GPS/battery QA passed twice (5/27, 5/30); E7 Garmin/Wearable Depth; Flex Week Analytics (Story 8+9, PR #34) | Select processed build in ASC, add screenshots, enter demo credentials, confirm privacy questionnaire / age rating | 2026-06-01 target | GPS QA run 1: 7.23 km 2026-05-27 PASS; GPS QA run 2: 9.10 km 2026-05-30 PASS; simulator build and all focused tests passing | 2026-05-30 | App Store Connect portal tasks are human-only (cannot be automated): select build 6, upload screenshots, enter demo credentials, confirm privacy/age rating | App Store approval delay; Garmin webhook audit (Story 4) is backend/human investigation |
+| Resumely iOS | Fresh | Pre-submission; screenshots rendered (rb-aso-002 DONE); PostHog not yet integrated | Pre-submission sprint | Integrate PostHog + submit to App Store Connect | rb-aso-002 screenshots rendered; 55/55 tests passing; live optimize/design/expert flow stable | Integrate PostHog SDK; upload screenshots to ASC (needs credentials); submit for review | Unknown | XcodeBuildMCP build + test 55/55 passing on 2026-05-26; rb-aso-002 screenshots rendered 2026-05-28 | 2026-05-28 | App Store Connect upload blocked (no Fastlane config / ASC API key locally); PostHog SDK not yet integrated | Backend Resume Library endpoints not live; WKWebView PDF fragility; no Hebrew/RTL support |
 
 ## RunSmart iOS Detail
 
@@ -17,93 +18,94 @@ Source path: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunS
 
 Source files read:
 
-- `tasks/todo.md`
-- `tasks/session-log.md`
-- `tasks/lessons.md`
+- `tasks/todo.md` (read 2026-05-31)
+- `tasks/session-log.md` (read 2026-05-31)
 
-### Completed
+### Completed (since last status — 2026-05-15)
 
-- Route Stories 5-10 are recorded as complete through Story 10.
-- Story 10 completed TestFlight polish and privacy review.
-- Route/location privacy copy, weak GPS copy, Garmin missing-map copy, saved-route deletion copy, and TestFlight notes were updated.
-- Historical compile-blocker notes for `RunSmartTab` ambiguity and `GlassCard` redeclaration were triaged as resolved in the active simulator build.
-- Agent OS status source-of-truth was consolidated: the app repo task files are canonical and outer wrapper task files are pointer stubs.
-- Duplicate loose task files `tasks/todo 2.md` and `tasks/todo 3.md` were removed.
-- Connected physical device was discovered and a physical-device Debug build passed.
+- **GPS/battery QA**: two physical-device outdoor runs passed.
+  - Run 1 (2026-05-27): 7.23 km, 39:51, 1,135 GPS pts, no drift, background tracking held. PASS.
+  - Run 2 (2026-05-30): 9.10 km, 52:39, 5:47 avg pace, 1,432 GPS pts, route map rendered, RPE logged. Battery 52%→45% (7% drain). PASS.
+- **Garmin freshness fix (T2)**: Story 1 (proactive freshness UI) and Story 2 (widened 2-day window) DONE 2026-05-30.
+- **E7 Garmin/Wearable Depth**: 7-day HRV/recovery sparklines and Striver persona gating COMPLETE 2026-05-28. Focused tests: StriverPersonaGateTests (3/3), WellnessTrendMapperTests (4/4).
+- **App Store launch prep Phase 2+3** (2026-05-26): cross-user FlexWeek cache fix, FlexWeekCacheTests 4/4, screenshot regeneration with real WeeklyProgressCard data.
+- **Flex Week Stories 8+9** (2026-05-27): PostHog analytics for flex_week_triggered/confirmed/cancelled/intervention_shown/action. PR #34 open.
+- **PostHog PR #21** merge-conflict resolution DONE.
+
+### Analytics Status
+
+- PostHog SDK: **integrated** in `RunSmartLiteAppShell.swift`.
+- Events wired: `app_launched`, `tab_viewed`, `sign_in_completed`, `flex_week_triggered`, `flex_week_confirmed`, `flex_week_cancelled`, `flex_week_intervention_shown`, `flex_week_intervention_action`.
+- Missing from activation funnel: `run_started`, `run_completed`, `plan_created`, `onboarding_completed`. These are not yet tracked.
 
 ### Active
 
-- Manual outdoor/background recording and battery-delta check before external TestFlight.
+- App Store Connect portal close-out: select build 6 (once processed), upload screenshots, enter demo credentials, confirm privacy questionnaire / age rating / category.
 
 ### Blocked
 
-- External beta readiness remains blocked on manual outdoor/background/battery validation.
-- Full iPhone 17 XCTest validation on 2026-05-15 stalled during simulator launch and is not a test pass.
+- T2 Garmin freshness Story 4 (webhook audit) is backend/human investigation — cannot be automated.
+- All remaining App Store Connect portal tasks are human-only; no agent action required.
 
 ### Validation
 
-- Simulator build passed:
-  `xcodebuild -project "IOS RunSmart app.xcodeproj" -scheme "IOS RunSmart app" -destination "generic/platform=iOS Simulator" build`
-- Device discovery passed via `xcrun xctrace list devices` and `xcrun devicectl list devices`.
-- Connected device evidence: `Nadav.Yigal's iPhone`, iPhone 13, iOS 26.4.2.
-- Physical-device Debug build passed:
-  `xcodebuild -project "IOS RunSmart app.xcodeproj" -scheme "IOS RunSmart app" -destination "platform=iOS,id=00008110-00192DDA2143801E" build`
-- Device build evidence: `** BUILD SUCCEEDED **`, signing identity `Apple Development: nadav.yigal@gmail.com (V2D7D57MXR)`, provisioning profile `iOS Team Provisioning Profile: com.runsmart.lite`, bundle id `com.runsmart.lite`.
-- Story 10 full iPhone 17 XCTest passed on 2026-05-14.
-- Full iPhone 17 XCTest attempt on 2026-05-15 stalled with `NSMachErrorDomain Code=-308`.
+- GPS QA run 2 evidence: 9.10 km, 52:39, 1,432 GPS pts, battery 7% drain, route map + Coach Analysis rendered. 2026-05-30.
+- All focused tests green (see entries above).
 
 ### Next 3 Actions
 
-1. Run the manual outdoor/background recording and battery-delta check on the connected iPhone.
-2. Record exact device, route/run duration, lock/background behavior, battery delta, and any GPS/permission issues in local task files.
-3. After device QA passes, run archive/upload readiness: signing, bundle id, privacy strings, App Store Connect, and TestFlight release notes.
+1. Human: open App Store Connect, select processed build 6, upload 6.9" and 6.1" screenshots from `build/AppStoreExportClean`.
+2. Human: enter demo credentials in ASC portal; confirm privacy questionnaire, age rating (4+), category (Health & Fitness).
+3. Human: submit for review.
 
-## ResumeBuilder iOS Detail
+## Resumely iOS Detail
 
 Source path: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`
 
 Source files read:
 
-- `tasks/progress.md`
-- `tasks/todo.md`
-- `tasks/session-log.md`
-- `tasks/lessons.md`
+- `tasks/todo.md` (read 2026-05-31)
+- `tasks/session-log.md` (read 2026-05-31)
 
-### Completed
+### Completed (since last status — 2026-05-15)
 
-- Spec "Merge Track->Me, Redesign Optimized Resume, Real Resume Library" is marked complete across all 5 stories.
-- Story 1: tab restructure to Tailor / Optimized / Design / Expert / Me.
-- Story 3: Score + Tailor merged; `AppState.latestOptimizationId` set on optimize.
-- Story 2: Optimized Resume page redesigned preview-first with inline `ResumePreviewWebView`.
-- Story 5: Me/Profile page now contains applications inline; old ProfileV2 and standalone applications list deleted.
-- Story 4: Resume Library added with `SavedResume`, endpoints, real/mock service, view model, save prompt, and picker.
-- Deleted files recorded: `Features/Score/ScoreView.swift`, `Features/Score/ScoreViewModel.swift`, `Features/V2/Profile/ProfileViewV2.swift`, `Features/Track/ApplicationsListView.swift`.
+- End-to-end live stabilization: optimize/design/expert/preview flow stable through 2026-05-26.
+- 55/55 XCTest + Swift Testing passing as of 2026-05-26.
+- rb-aso-002: 5 screenshot slots rendered for iPhone 6.7" and 6.5". Upload blocked by missing ASC credentials/Fastlane config.
+- Backend expert prompts tightened; backend focused Jest contracts 24/24 passing.
+
+### Analytics Status
+
+- PostHog SDK: **not integrated**. No Swift file references PostHog.
+- There is no `AnalyticsService` or event tracking in the iOS codebase.
+- Required before submission: at minimum `app_launched`, `optimize_started`, `optimize_completed` (activation proxy).
 
 ### Active
 
-- Simulator smoke test all 5 tabs.
+- Integrate PostHog SDK and wire core events.
+- Upload screenshots to App Store Connect (blocked on ASC credentials / Fastlane config).
+- Submit for review.
 
 ### Blocked
 
-- Resume Library backend endpoints are not live; `BackendConfig.useMockLibraryService = true` remains active.
+- Resume Library backend (`/api/v1/resumes` list/save/rename/delete) not live; mock service active.
+- `/api/v1/styles/history` returning 500 — working around by not calling it.
+- App Store Connect upload credentials / ASC API key not found locally (no Fastlane config present).
+- Real-device smoke test with live account not yet run.
 
 ### Validation
 
-- `tasks/progress.md` says Xcode build succeeded after each story commit.
-- Manual simulator smoke test all 5 tabs remains TODO.
-- No latest QA report is listed.
+- XcodeBuildMCP test_sim: 55/55 passing (2026-05-26 most recent).
+- rb-aso-002 screenshot PNGs rendered and saved under `dist/app-store-screenshots/rb-aso-002/`.
 
 ### Next 3 Actions
 
-1. Run simulator smoke test across Tailor, Optimized, Design, Expert, and Me.
-2. Create PR `claude/hungry-chatelet-a86030` -> `main` after smoke QA.
-3. Flip `BackendConfig.useMockLibraryService = false` only after the web backend ships `/api/v1/resumes`.
+1. Integrate PostHog SDK (add to SPM, create minimal AnalyticsService, wire app_launched + optimize_completed).
+2. Set up Fastlane / ASC API key so screenshot upload can be automated.
+3. Submit Resumely to App Store for review.
 
 ## Data Quality Notes
 
-- RunSmart iOS has no `tasks/progress.md`; local lessons now explicitly say app repo `tasks/todo.md`, `tasks/session-log.md`, and `tasks/lessons.md` are canonical.
-- RunSmart iOS git branch is `routes`; latest local commit is `6cebead feat(routes): story 10 testflight polish`; status files are modified after that commit.
-- ResumeBuilder iOS git branch reports `main`; local latest commit is `5ee5e47 Merge pull request #10 from nadavyigal/claude/vigilant-cannon-c799a3`.
-- ResumeBuilder iOS local status says current branch is `claude/hungry-chatelet-a86030`; that appears to be the recommended PR/source branch rather than the currently checked-out branch.
-- ResumeBuilder iOS has untracked local files in `.claire/`, `.claude/`, `.derivedData-validation/`, and duplicated asset variants.
-
+- RunSmart iOS source-of-truth files are in the app repo; outer wrapper stubs point here.
+- PostHog token and host are read from environment / build config in RunSmartLiteAppShell — not hardcoded. Actual token value not read here (not needed for status).
+- Resumely iOS: local checkout confirmed on latest `main` as of 2026-05-26.
