@@ -56,3 +56,51 @@ App Store submission. Once the three experiment actions above are done, the app 
 Confirm App Store submission is in review. Begin LinkedIn founder launch post. Plan PLG landing page experiment. Wire lifecycle email if rs-analytics-001 is done.
 
 ---
+
+---
+
+## Week of 2026-05-28 — ResumeBuilder iOS, Cycle 1
+
+**Focused product**: ResumeBuilder iOS
+**Theme**: ASO listing v1 (English) — write Resumely App Store copy before first submission
+**Cycle type**: First distribution cycle; pre-launch; all metrics baseline at zero
+
+#### Decisions Locked This Cycle
+
+| Decision | Confirmed |
+|---|---|
+| App name | Resumely |
+| iOS launch pricing | Free (no IAP at launch; pricing deferred) |
+| App Store status | Pre-submission |
+| Hebrew approach | Single listing + Hebrew locale (in-app RTL deferred) |
+| ATS tool iOS CTA | Missing (confirmed blocker — web repo task) |
+| Apple Search Ads | Out of scope |
+
+#### Metrics
+
+All unknown — app is pre-submission. No App Store Connect data, no PostHog on iOS, no installs.
+
+#### Bottleneck
+
+The App Store listing does not exist. Zero acquisition can happen without it. Everything this cycle points at filling that gap.
+
+#### Experiments Queued This Week
+
+| ID | Score | Status | Asset Location |
+|---|---|---|---|
+| rb-aso-001 | 21 | awaiting founder review | `drafts/2026-05-28-rb-aso-001/listing-copy-v1.md` |
+| rb-aso-002 | 20 | awaiting founder review | `drafts/2026-05-28-rb-aso-002/screenshot-brief-v1.md` |
+| rb-dir-001 | 15 | awaiting review + App Store URL | `drafts/2026-05-28-rb-dir-001/directory-pack-v1.md` |
+
+#### Open Items Requiring Founder
+
+1. Review listing copy (rb-aso-001): confirm subtitle, description claims, privacy policy URL
+2. Review screenshot brief (rb-aso-002): confirm UI matches each slot claim; assign rendering
+3. Fix ATS tool result page: add App Store CTA with `ct=ats-tool-result` (web repo — highest Tier A blocker after listing)
+4. Confirm privacy policy URL is live (App Store submission blocker)
+5. Confirm support URL is live (App Store submission blocker)
+
+#### Next Week Focus
+
+Confirm listing copy is approved → screenshots rendered → submit Resumely to App Store review.
+Secondary: fix ATS tool result page iOS CTA in web repo.

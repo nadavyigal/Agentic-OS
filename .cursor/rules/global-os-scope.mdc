@@ -9,7 +9,7 @@ This workspace is the Global Agentic OS. It is a reference library, not a produc
 
 ## What to load
 
-- `AGENTS.md` or `CURSOR.md` for routing
+- `AGENTS.md` first, then `CURSOR.md` only for Cursor-specific routing
 - Relevant bridge file from `PROJECT-BRIDGES/` (one at a time)
 - Specific `GLOBAL-*.md` file when the task requires it
 - Templates or prompts only when creating or updating agent OS artifacts

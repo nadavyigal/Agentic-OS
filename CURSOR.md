@@ -1,7 +1,7 @@
-# CURSOR.md — Global Agentic OS
+# CURSOR.md - Global Agentic OS
 
 > Cursor-native router. Follow `AGENTS.md` for all cross-cutting rules.
-> `CLAUDE.md` is for Claude Code; `CODEX.md` is for Codex. Use them as parity references only.
+> `AGENTS.md` is the canonical source. `CLAUDE.md` is the Claude Code adapter.
 
 ## Session Start
 
@@ -57,6 +57,7 @@ Next session: [what to pick up first, with enough context to resume cold]
 | `AGENTS.md` | Canonical rules for all agents (read this first) |
 | `CURSOR.md` | This file; Cursor-specific routing |
 | `CLAUDE.md` | Claude Code routing; parity reference |
+| `.codex/` | Codex-only hooks and command rules |
 | `GLOBAL-AGENT-RULES.md` | Detailed agent rules |
 | `GLOBAL-STANDARDS.md` | Product, engineering, UI, and QA standards |
 | `PROJECT-BRIDGES/` | Per-product bridge files for cross-project context |

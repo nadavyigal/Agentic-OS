@@ -1,0 +1,41 @@
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Pushing code needs explicit confirmation.",
+)
+
+prefix_rule(
+    pattern = ["git", "reset", "--hard"],
+    decision = "forbidden",
+    justification = "This discards uncommitted work.",
+)
+
+prefix_rule(
+    pattern = ["rm", "-rf"],
+    decision = "forbidden",
+    justification = "Use explicit deletion with review instead of raw rm -rf.",
+)
+
+prefix_rule(
+    pattern = ["npm", "install"],
+    decision = "prompt",
+    justification = "New dependencies require approval.",
+)
+
+prefix_rule(
+    pattern = ["pnpm", "add"],
+    decision = "prompt",
+    justification = "New dependencies require approval.",
+)
+
+prefix_rule(
+    pattern = ["vercel", "deploy"],
+    decision = "prompt",
+    justification = "Deployments require explicit approval.",
+)
+
+prefix_rule(
+    pattern = ["supabase", "db", "push"],
+    decision = "prompt",
+    justification = "Database writes and migrations require explicit approval.",
+)

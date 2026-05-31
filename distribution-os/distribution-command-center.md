@@ -4,29 +4,28 @@ The single page that answers: what is this week about, what is shipping, what is
 
 ## This Week
 
-- **Week of**: 2026-05-27
-- **Focused product**: RunSmart
-- **Other product status**: scaffold installation sprint (ResumeBuilder — scaffold populated + installed in web repo 2026-05-28; first ASO session ready to run)
-- **Theme**: ASO finalization — lock the listing and analytics before App Store submission
+- **Week of**: 2026-05-28
+- **Focused product**: ResumeBuilder iOS (first distribution cycle — ASO v1)
+- **Other product status**: RunSmart — rs-aso-001, rs-aso-002, rs-analytics-001 awaiting founder action; App Store submission target 2026-06-01
+- **Theme**: ASO listing v1 (English) — write and file Resumely App Store listing copy before submission
 - **Top 3 experiments** (link to rows in `experiment-log.md`):
-  1. rs-aso-001 (score 24) — Description rewrite with approved Garmin sentence
-  2. rs-analytics-001 (score 22) — Instrument activation funnel events before launch
-  3. rs-aso-002 (score 18) — Screenshot caption overlays (A variants approved)
+  1. rb-aso-001 (score 21) — App Store listing copy v1 (subtitle, keywords, description)
+  2. rb-aso-002 (score 20) — Screenshot brief (5-slot sequence + copy overlays)
+  3. rb-dir-001 (score 15) — Directory submission pack v1 (5 directories; pending App Store URL)
 - **Assets in flight**:
-  - `distribution-os/projects/runsmart/scaffold/drafts/2026-05-27-rs-aso-001/description.txt` — approved description draft, ready to copy to fastlane
-  - `RunSmart iOS/.agent-os/distribution/screenshot-overlay-copy.md` — approved A variants, ready to render
-  - `RunSmart iOS/.agent-os/distribution/analytics-instrumentation-spec.md` — ready for product-code session
-  - `ResumeBuilder Web/.agent-os/distribution/` — scaffold v1 installed 2026-05-28; first ASO session ready
-- **Awaiting founder review**:
-  - rs-aso-001: copy `drafts/2026-05-27-rs-aso-001/description.txt` → `fastlane/metadata/en-US/description.txt`
-  - rs-aso-002: render screenshot overlays from approved copy table
-  - rs-analytics-001: execute spec in a product-code session
+  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-aso-001/listing-copy-v1.md` — **APPROVED, ready to file in App Store Connect**
+  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-aso-002/screenshot-brief-v1.md` — **APPROVED; screenshots rendered + exported; PR #34 ready to merge; upload to ASC is next**
+  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-dir-001/directory-pack-v1.md` — draft, awaiting App Store URL + founder review
+- **Awaiting founder action**:
+  - rb-aso-001 + rb-aso-002: **merge PR #34 → upload screenshots to App Store Connect → file listing copy → submit for review**
+  - rb-dir-001: confirm App Store URL when live; founder presses submit on each directory
 - **Awaiting external response**:
-  - App Store review submission — target submit 2026-06-01 (soft; may slip if overlays or analytics not done)
-  - App Store review process: expect 24–48h after submission
+  - Resumely App Store submission — listing copy approved + screenshots ready; pending founder upload + submit action
+  - RunSmart App Store review — target submit 2026-06-01
 - **Blocked**:
-  - All acquisition metrics blocked until App Store submit + review approval
-  - Email rs-email-001 blocked until rs-analytics-001 (analytics) done — need user events to fire before email triggers are meaningful
+  - rb-dir-001 submissions blocked on App Store URL (pre-submission)
+  - All Resumely acquisition metrics blocked until App Store listing is live
+  - ATS tool result page iOS CTA — confirmed missing; web repo fix needed before web feeder channel contributes installs
 
 ## Current Channel Status
 
@@ -49,13 +48,13 @@ The single page that answers: what is this week about, what is shipping, what is
 
 | Channel | Status | Owner Of Next Step | Notes |
 |---|---|---|---|
-| ASO | not started | Agent — first ASO session | Scaffold installed 2026-05-28; app-store-program.md needs real metadata from iOS repo |
+| ASO | awaiting review | Founder — review rb-aso-001 listing copy + rb-aso-002 screenshot brief | Listing copy v1 drafted 2026-05-28; subtitle/keywords/description ready for review |
 | Web landing pages with App Store CTA | not started | Agent — next focus week | iOS-first model; every mobile CTA points to App Store |
 | Free ATS tool (web → app) | not started | Agent — confirm scope with founder | Web tool result page hands off to App Store install |
-| Directories | not started | Agent — use directories.md + workflow 06 | 10-directory first-pass list ready in scaffold |
+| Directories | awaiting review | Founder — review directory pack; press submit after App Store live | rb-dir-001 pack drafted for 5 directories; blocked on App Store URL |
 | Lifecycle email | not started | Agent — next focus week | Needs analytics instrumentation first |
 | Conversion optimization | not started | Agent — next focus week | Signup → editor → export funnel |
-| Hebrew market | not started | Agent — confirm RTL + pricing first | RTL PDF and pricing decisions blocking |
+| Hebrew market | planned | Agent — after English listing is approved | Approach confirmed (single listing + locale); in-app RTL not yet built; Hebrew metadata deferred to T+30 after App Store live |
 | Programmatic SEO | not started | Agent — after ASO proves | Demoted to Tier B until ASO + landings prove install |
 | Career coach partnerships | not started | Agent — next focus week | |
 | LinkedIn job-seeker content | not started | Deferred | Tier C |

@@ -7,10 +7,12 @@ alwaysApply: true
 
 ## Session Start
 
-1. Read `~/.claude/MEMORY.md` for cross-project decisions.
-2. Read `~/.claude/ERRORS.md` for failed approaches.
-3. State the objective in one sentence before planning.
-4. Write a 5-step plan maximum before touching any file.
+1. Read `AGENTS.md` for canonical repo rules.
+2. Read `~/.claude/MEMORY.md` for cross-project decisions.
+3. Read `~/.claude/ERRORS.md` for failed approaches.
+4. Read `tasks/MEMORY.md` and `tasks/ERRORS.md` when they exist.
+5. State the objective in one sentence before planning.
+6. Write a 5-step plan maximum before touching any file.
 
 ## ERRORS Gate
 
@@ -19,6 +21,7 @@ Before proposing any fix or approach, check `~/.claude/ERRORS.md`. If a similar 
 ## Work Rules
 
 - This repo is a reference library, not a software product. No build commands, tests, or lint.
+- `AGENTS.md` is the shared source of truth. Keep Cursor, Claude, and Codex adapters lean.
 - Prefer decisions that work across all products, not just one.
 - Keep global docs lean. Do not duplicate content that lives in individual project files.
 - Load bridge files only for cross-project context. Do not read every file by default.
@@ -36,7 +39,7 @@ Before proposing any fix or approach, check `~/.claude/ERRORS.md`. If a similar 
 
 On "session end", "done for now", "wrapping up", or "let's stop here":
 
-1. Write to `~/.claude/MEMORY.md`:
+1. Write to `tasks/MEMORY.md` for repo-local work, or `~/.claude/MEMORY.md` for cross-project/global decisions:
 
 ```
 ## YYYY-MM-DD — [Brief session title]
