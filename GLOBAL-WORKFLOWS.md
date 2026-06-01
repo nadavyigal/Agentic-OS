@@ -52,6 +52,16 @@ Verify acceptance criteria, tests, UI, regressions, edge cases, security, and pe
 
 Output: QA report with evidence.
 
+## 6b. Taste Gate
+
+Standards say the work is allowed; taste says it is worth shipping. See `GLOBAL-TASTE.md`.
+
+- **Taste Check** (always, inline): before declaring done, confirm the change improves the product, fits the product's voice, carries no AI slop, and stays scoped. Resolve to PASS, REVISE, or REJECT.
+- **Taste Review** (when warranted): for UI, AI output, public-facing surfaces, or hard-to-reverse changes, run `SKILLS/taste-reviewer.md` across all five dimensions.
+- A REJECT stops the work and sends it back to brief or spec before more code. Do not carry a REVISE into PR.
+
+Output: taste verdict with any required fixes.
+
 ## 7. PR Summary
 
 Summarize what changed, why it changed, how it was tested, and known risks.

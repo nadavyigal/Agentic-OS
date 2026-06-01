@@ -117,6 +117,7 @@ Do not load the full Global OS for normal iOS tasks.
 - Use platform-native navigation, controls, permissions, and feedback.
 - Do not copy web layouts directly.
 - Every UI change needs simulator or device visual QA.
+- Taste rule (see `GLOBAL-TASTE.md`): RunSmart is a calm personal coach, not an analytics dashboard. PASS surfaces one clear next action in an encouraging human voice; REJECT a wall of charts, raw-metric dumps, or anxiety-inducing data where one sentence of coaching belongs.
 
 ## 12. QA Expectations
 

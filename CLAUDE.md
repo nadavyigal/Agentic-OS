@@ -33,6 +33,7 @@ See `PROJECT-PATHS.md` for the authoritative list and `PROJECT-STATUS.md` for cu
 | `OWNER.md` | Owner work style and communication preferences — read first for any new session |
 | `GLOBAL-AGENT-RULES.md` | Core rules for all agents across all projects |
 | `GLOBAL-STANDARDS.md` | Product, engineering, UI, and QA standards |
+| `GLOBAL-TASTE.md` | Taste & craft layer; pass/revise/reject judgment that protects products from generic AI output, overbuild, and weak UX. Paired with `SKILLS/taste-reviewer.md` |
 | `GLOBAL-WORKFLOWS.md` | Universal idea-to-shipping workflow; cross-project planning workflow |
 | `GLOBAL-QA-RULES.md` | Completion evidence requirements, visual QA, risky-change checklist |
 | `GLOBAL-SELF-IMPROVEMENT.md` | Protocol for capturing and applying cross-project lessons |
