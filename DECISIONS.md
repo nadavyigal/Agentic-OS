@@ -14,3 +14,15 @@ Impact:
 - Project-specific implementation docs stay local.
 - Agents load this folder selectively.
 
+## 2026-06-01: Vet Third-Party Skills Before Install
+
+Decision: Treat any third-party Claude skill as untrusted until reviewed. A skill runs with our tools and credentials, so it is a supply-chain surface.
+
+Reason: The skills ecosystem is growing fast (see `external-resources/06-claude-skills-ecosystem-map.md`). Convenience installs are a real risk.
+
+Impact:
+
+- Read a skill's source before installing; never paste-install on hype.
+- Prefer official (`anthropics/skills`) and already-trusted plugins (superpowers, gstack, vercel, supabase, frontend-design).
+- Use gstack `cso` skill supply-chain scanning for periodic review of installed skills.
+

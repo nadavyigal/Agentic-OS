@@ -37,6 +37,15 @@ These standards apply across products unless a local project OS says otherwise.
 - QA should check acceptance criteria, regressions, edge cases, security, and UX.
 - Do not mark work done if key verification was skipped.
 
+## Taste Standards
+
+Standards above define what is allowed. Taste defines what is worth shipping. See `GLOBAL-TASTE.md` for the full layer.
+
+- Run a **Taste Check** before declaring any work done: does it improve the product, fit the product's voice, carry no AI slop, and stay scoped?
+- Run a deeper **Taste Review** (`SKILLS/taste-reviewer.md`) for UI, AI output, public-facing surfaces, or hard-to-reverse changes.
+- Every taste judgment resolves to PASS, REVISE, or REJECT. A REJECT stops the work before more code is written; it is not a failure of effort.
+- Defend each product's center of gravity: RunSmart is a calm coach, not a dashboard; Resumely is a professional assistant, not a gimmick; AI Audit Toolkit is consultant-grade, not automation hype.
+
 ## Local Source Of Truth
 
 Every project should keep its own:

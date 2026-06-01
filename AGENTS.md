@@ -136,6 +136,7 @@ All durable architectural decisions are logged in `DECISIONS.md`. Read it before
 | `LESSONS.md` | Global lessons, repeated, expensive, or easy-to-forget issues |
 | `GLOBAL-AGENT-RULES.md` | Detailed agent rules if more context is needed |
 | `GLOBAL-STANDARDS.md` | Product, engineering, UI, and QA standards |
+| `GLOBAL-TASTE.md` | Taste & craft layer: pass/revise/reject judgment that protects products from generic AI output, overbuild, and weak UX. Read before Taste Check or Taste Review |
 | `GLOBAL-QA-RULES.md` | Completion evidence, visual QA, and risky-change checklist |
 | `GLOBAL-WORKFLOWS.md` | Universal idea-to-shipping and planning workflows |
 | `PROJECT-STATUS.md` | Current status per project |

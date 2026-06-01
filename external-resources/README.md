@@ -11,6 +11,7 @@ Curated articles and references about Claude Code setup, Agentic OS design, and 
 | [03](./03-personal-ai-system-7-layers.md) | How to Build a Personal AI System With Claude | Nav Toor | 128.5K | May 2026 |
 | [04](./04-how-to-actually-use-claude-18-steps.md) | How to Actually Use Claude — 18 Steps | Anatoli Kopadze | 11M | May 2026 |
 | [05](./05-claude-folder-as-ai-operating-system.md) | Your .claude Folder Is Your AI Operating System | Nainsi Dwivedi | 213.9K | May 2026 |
+| [06](./06-claude-skills-ecosystem-map.md) | The Claude Skills Ecosystem — These Are the Ones That Matter | Mr. Buzzoni (@polydao) | — | Jun 2026 |
 
 ## Key Themes Across All Articles
 
