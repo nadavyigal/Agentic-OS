@@ -89,6 +89,26 @@ even a recent, High status is not fully trustworthy until re-validated. Gaps are
 `executiveOverview.evidenceGapCount`. To clear a gap, re-run validation and update
 `Last Validation` with a date at or after the latest commit.
 
+## Open questions and decisions (repo-sourced)
+
+Add a `## Open Questions` or `## Decisions Needed` section (bullet items) to any task file to
+surface them on the global dashboard under "Open Questions & Decisions (from repos)" in
+`PROJECT-STATUS.md`. Items under `## Decisions Made` are ignored (those are resolved), and open
+questions containing "resolved/answered/closed" are skipped. This is how decisions and questions
+flow from the repos to the portfolio view instead of being hand-maintained.
+
+## Confidence-gated delegation
+
+Generated project prompts (`projectPrompts[].copyPrompt`) open with a trust directive derived
+from the project's source confidence:
+
+- **High** - may proceed from the parsed state, but still confirm specifics in the repo.
+- **Medium** - must verify the current state in the repo before acting.
+- **Low / Unknown** - must re-read the repo (and confirm the path) before doing anything.
+
+An evidence gap adds a "re-validate before trusting the recorded evidence" note. This keeps a
+low-trust status from being acted on as if it were proven.
+
 ## Minimum to reach High
 
 A project reaches High when its `tasks/progress.md` has a `Current Phase`, a

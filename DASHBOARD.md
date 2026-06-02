@@ -12,7 +12,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Run Center
 
-- Last refresh: 2026-06-02 16:23
+- Last refresh: 2026-06-02 16:34
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 

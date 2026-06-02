@@ -390,14 +390,34 @@ def scan_blockers(contents: dict[str, str]) -> list[str]:
     return list(dict.fromkeys(found))[:5]
 
 
+def section_bullets(text: str, heading_regex: str) -> list[str]:
+    """Bullet items listed under a matching `## Heading`, until the next heading/blank gap."""
+    out: list[str] = []
+    capturing = False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if re.match(heading_regex, stripped, re.IGNORECASE):
+            capturing = True
+            continue
+        if capturing:
+            if stripped.startswith("#"):
+                break
+            if stripped.startswith(("-", "*")):
+                item = stripped.lstrip("-* ").strip()
+                if item:
+                    out.append(item)
+    return out
+
+
 def extract_open_questions(contents: dict[str, str]) -> list[str]:
+    # Section-only: a loose "any line mentioning open questions" scan produced false positives
+    # (e.g. "Checked the historical open questions ..."). The `## Open Questions` section is the
+    # reliable convention; see STATUS-SCHEMA.md.
     found: list[str] = []
     for text in contents.values():
-        for line in text.splitlines():
-            if re.search(r"open question", line, re.IGNORECASE) and not re.search(
-                r"resolved|answered|closed|no open question", line, re.IGNORECASE
-            ):
-                cleaned = clean_value(line.lstrip("-*# ").strip())
+        for item in section_bullets(text, r"^#{2,4}\s*open questions?\b"):
+            if not re.search(r"resolved|answered|closed", item, re.IGNORECASE):
+                cleaned = clean_value(item)
                 if cleaned:
                     found.append(cleaned)
     return list(dict.fromkeys(found))[:5]
@@ -407,10 +427,16 @@ def extract_open_decisions(contents: dict[str, str]) -> list[str]:
     found: list[str] = []
     for text in contents.values():
         for line in text.splitlines():
+            if line.lstrip().startswith("#"):
+                continue
             if re.search(r"needs? decision|decision needed|open decision|undecided", line, re.IGNORECASE):
                 cleaned = clean_value(line.lstrip("-*# ").strip())
                 if cleaned:
                     found.append(cleaned)
+        for item in section_bullets(text, r"^#{2,4}\s*(?:open decisions?|decisions? (?:needed|to make|pending|open))\b"):
+            cleaned = clean_value(item)
+            if cleaned:
+                found.append(cleaned)
     return list(dict.fromkeys(found))[:5]
 
 
@@ -644,6 +670,24 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
     return health
 
 
+CONFIDENCE_DIRECTIVE = {
+    "High": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+    "Medium": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+    "Low": "Source confidence is Low: the status is narrative-only, with no local task files parsed. You MUST re-read the local repo to establish the real current state before doing anything.",
+    "Unknown": "Source confidence is Unknown: there is no reliable status source. Confirm the repo path exists and re-read the repo before acting.",
+}
+
+
+def confidence_directive(confidence: str, evidence_gap: bool) -> str:
+    directive = CONFIDENCE_DIRECTIVE.get(confidence, CONFIDENCE_DIRECTIVE["Unknown"])
+    if evidence_gap:
+        directive += (
+            " Note: the repo has commits newer than the last recorded validation, so re-validate "
+            "before trusting the recorded evidence."
+        )
+    return directive
+
+
 def build_project_prompts(status: dict[str, Any], project_health: list[dict[str, Any]]) -> list[dict[str, Any]]:
     projects = {project.get("id"): project for project in status.get("projects", [])}
     prompts: list[dict[str, Any]] = []
@@ -654,8 +698,11 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
         source_files = health.get("sourceFiles") or []
         source_list = ", ".join(source_files[:4]) if source_files else "tasks/MEMORY.md if present"
         next_action = health.get("nextAction") or project.get("nextRecommendedStory") or "Choose the smallest useful next action."
+        confidence = health.get("sourceConfidence", "Unknown")
+        directive = confidence_directive(confidence, bool(health.get("evidenceGap")))
         prompt = (
             f"Act as {role} for {health['name']}. "
+            f"{directive} "
             "First read the repo AGENTS.md if it exists, then read the listed source files: "
             f"{source_list}. Current state: {health.get('state', 'Unknown')}. "
             f"Next action: {next_action}. "
@@ -672,6 +719,8 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
                 "repoState": "Dirty" if health.get("dirty") else "Clean",
                 "branch": health.get("branch", "Unknown"),
                 "nextAction": next_action,
+                "sourceConfidence": confidence,
+                "trustDirective": directive,
                 "evidence": source_files,
                 "copyPrompt": prompt,
             }
@@ -924,6 +973,20 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["executiveOverview"]["driftWarningCount"] = len(drift_warnings)
     status["executiveOverview"]["driftProjects"] = sorted({w["project"] for w in drift_warnings})
 
+    # Decisions and open questions sourced from the repos themselves (not hand-curated).
+    open_questions: list[dict[str, Any]] = []
+    repo_decisions: list[dict[str, Any]] = []
+    for project in status.get("projects", []):
+        parse = project.get("taskParse") or {}
+        for question in parse.get("openQuestions", []):
+            open_questions.append({"project": project.get("name"), "question": question})
+        for decision in parse.get("decisionsNeeded", []):
+            repo_decisions.append({"project": project.get("name"), "decision": decision})
+    status["openQuestionsBoard"] = open_questions
+    status["repoDecisions"] = repo_decisions
+    status["executiveOverview"]["openQuestionCount"] = len(open_questions)
+    status["executiveOverview"]["repoDecisionCount"] = len(repo_decisions)
+
     write_json(STATUS_JSON, status)
     sync_project_status_fallback(status)
     write_project_status(status)
@@ -979,6 +1042,8 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "executiveOverview": status.get("executiveOverview", {}),
             "dataFlow": status.get("dataFlow", []),
             "driftWarnings": status.get("driftWarnings", []),
+            "openQuestionsBoard": status.get("openQuestionsBoard", []),
+            "repoDecisions": status.get("repoDecisions", []),
         }
         html = html[: match.start()] + match.group(1) + json.dumps(data, indent=2) + match.group(3) + html[match.end() :]
         path.write_text(html, encoding="utf-8")
@@ -1050,6 +1115,20 @@ def write_project_status(status: dict[str, Any]) -> None:
             )
     else:
         lines.append("None. Curated narrative matches the parsed source for all High-confidence projects.")
+
+    questions = status.get("openQuestionsBoard", [])
+    repo_decisions = status.get("repoDecisions", [])
+    lines += ["", "## Open Questions & Decisions (from repos)", ""]
+    if questions or repo_decisions:
+        for item in repo_decisions:
+            lines.append(f"- Decision needed [{item['project']}]: {clean_cell(item['decision'])}")
+        for item in questions:
+            lines.append(f"- Open question [{item['project']}]: {clean_cell(item['question'])}")
+    else:
+        lines.append(
+            "None surfaced from repos yet. Add a `## Open Questions` or `## Decisions Needed` "
+            "section (bullet items) to a project's task files to surface them here."
+        )
 
     lines += [
         "",
@@ -1288,6 +1367,17 @@ def verify() -> int:
         for warning in drift:
             if not all(key in warning for key in ("project", "field", "narrative", "parsed")):
                 errors.append(f"driftWarnings entry missing required keys: {warning!r}")
+
+    if not isinstance(status.get("openQuestionsBoard"), list):
+        errors.append("openQuestionsBoard missing or not a list")
+    if not isinstance(status.get("repoDecisions"), list):
+        errors.append("repoDecisions missing or not a list")
+    for prompt in status.get("projectPrompts", []):
+        if prompt.get("sourceConfidence") not in allowed_confidence:
+            errors.append(
+                f"projectPrompt '{prompt.get('project', '?')}' has invalid sourceConfidence: "
+                f"{prompt.get('sourceConfidence')!r}"
+            )
     for project in status.get("projects", []):
         if "taskParse" in project and project.get("sourceConfidence") not in allowed_confidence:
             errors.append(

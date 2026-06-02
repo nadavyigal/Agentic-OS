@@ -77,14 +77,23 @@ Shipped:
 - Confirmed live: 6 warnings across RunSmart iOS and Resumely iOS (curated narrative for both
   High projects had drifted from their repos).
 
-## Phase 5 - Operational: confidence-gated delegation
+## Phase 5 - Operational: confidence-gated delegation (DONE 2026-06-02)
 
-Problem: The agent queue and project prompts treat all projects equally regardless of trust.
+Problem: The project prompts treated all projects equally regardless of trust, and decisions
+were only ever hand-maintained.
 
-Story 5.1: In `build_project_prompts`, inject a confidence preamble: Low/Unknown prompts must
-start by re-reading the local repo before acting; High prompts can proceed from parsed state.
-Story 5.2: Build `decisionBoard` and an Open Questions panel from parsed `decisionsNeeded` and
-`openQuestions` instead of hand-maintained lists, so decisions come from the repos.
+Shipped:
+- Story 5.1: `confidence_directive` injects a trust preamble into every generated project prompt.
+  High may proceed from parsed state; Medium must verify in the repo; Low/Unknown must re-read
+  the repo first; an evidence gap adds a re-validate note. Surfaced as
+  `projectPrompts[].trustDirective` + `sourceConfidence` and validated in `verify`.
+- Story 5.2: `## Open Questions` and `## Decisions Needed` sections in any task file are parsed
+  (via `section_bullets`) and aggregated into `status.openQuestionsBoard` / `status.repoDecisions`,
+  shown in `PROJECT-STATUS.md` and counted in `executiveOverview`. The curated `decisionBoard` is
+  preserved (human synthesis); the repo-sourced board is additive, so decisions can flow up from
+  the repos. The loose open-question line scan was dropped after it produced a false positive;
+  extraction is section-based. Convention documented in `STATUS-SCHEMA.md` and dogfooded in the
+  Agentic OS `tasks/progress.md`.
 
 ## Phase 6 - Make the pipeline itself trustworthy
 
