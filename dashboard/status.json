@@ -120,9 +120,7 @@
         "qaNeeded": null,
         "estimatedCompletion": null,
         "decisionsNeeded": [],
-        "openQuestions": [
-          "Checked the historical open questions for `RunSmartTab` ambiguity and `GlassCard` redeclaration"
-        ],
+        "openQuestions": [],
         "evidence": {
           "tests": [],
           "buildStatus": null,
@@ -199,7 +197,7 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 7,
+        "dirtyCount": 13,
         "lastCommit": "2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -693,7 +691,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-02 16:23",
+    "lastRefresh": "2026-06-02 16:34",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -763,7 +761,7 @@
       "nextAction": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab",
       "blockerCount": 2,
       "dirty": true,
-      "dirtyCount": 7,
+      "dirtyCount": 13,
       "branch": "main...origin/main",
       "lastCommit": "2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304",
       "stale": false,
@@ -914,13 +912,15 @@
       "repoState": "Dirty",
       "branch": "main...origin/main [ahead 1]",
       "nextAction": "Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
         "tasks/session-log.md",
         "docs/specs/README.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md. Current state: App Store submission sprint (Build 6). Next action: Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA. Known blockers: Apple review outcome is external.; Garmin freshness Story 4 (webhook audit) is backend/human investigation.; Local repo has dirty release/planning files that need triage before 1.0.1 work.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md. Current state: App Store submission sprint (Build 6). Next action: Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA. Known blockers: Apple review outcome is external.; Garmin freshness Story 4 (webhook audit) is backend/human investigation.; Local repo has dirty release/planning files that need triage before 1.0.1 work.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -929,6 +929,8 @@
       "repoState": "Dirty",
       "branch": "main...origin/main",
       "nextAction": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -938,7 +940,7 @@
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -947,11 +949,13 @@
       "repoState": "Dirty",
       "branch": "main...origin/main [ahead 2]",
       "nextAction": "Triage modified/untracked files before more web work.",
+      "sourceConfidence": "Medium",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
       "evidence": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
       ],
-      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: Sprint 11 backend support / reference. Next action: Triage modified/untracked files before more web work.. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: Sprint 11 backend support / reference. Next action: Triage modified/untracked files before more web work.. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ai",
@@ -960,11 +964,13 @@
       "repoState": "Dirty",
       "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error",
       "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
+      "sourceConfidence": "Medium",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
       "evidence": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
       ],
-      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: PDF parse/render-preview rollout. Next action: Leave parked unless Resumely smoke exposes backend parse/render issues.. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: PDF parse/render-preview rollout. Next action: Leave parked unless Resumely smoke exposes backend parse/render issues.. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "agentic-os",
@@ -973,10 +979,12 @@
       "repoState": "Clean",
       "branch": "main",
       "nextAction": "Run dashboard JSON checks.",
+      "sourceConfidence": "Medium",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
       "evidence": [
         "tasks/MEMORY.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md. Current state: Cross-project status and executive refresh. Next action: Run dashboard JSON checks.. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md. Current state: Cross-project status and executive refresh. Next action: Run dashboard JSON checks.. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -1022,7 +1030,9 @@
     "driftProjects": [
       "Resumely iOS",
       "RunSmart iOS"
-    ]
+    ],
+    "openQuestionCount": 0,
+    "repoDecisionCount": 0
   },
   "dataFlow": [
     {
@@ -1053,13 +1063,13 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-02 16:23",
+    "lastRunAt": "2026-06-02 16:34",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
     "readyForNextSession": false,
@@ -1102,5 +1112,7 @@
       "narrative": "Signed build passed from /tmp DerivedData; full tests passed 53 XCTest + 5 Swift Testing; XcodeBuildMCP launch smoke passed on 2026-06-01.",
       "parsed": "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData"
     }
-  ]
+  ],
+  "openQuestionsBoard": [],
+  "repoDecisions": []
 }

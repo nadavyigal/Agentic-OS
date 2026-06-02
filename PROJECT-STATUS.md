@@ -11,7 +11,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | 3 | Yes (24) | Fresh | High | derived | 2026-05-31 234d2d5 Add UX redesign spec for 1.0.1 fast follow |
-| Resumely iOS | Pre-release (TestFlight prep) | Phase 2 — submit optimized resume + cover letter from Track/Me tab | 2 | Yes (7) | Fresh | High | tasks/progress.md | 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304 |
+| Resumely iOS | Pre-release (TestFlight prep) | Phase 2 — submit optimized resume + cover letter from Track/Me tab | 2 | Yes (13) | Fresh | High | tasks/progress.md | 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Fresh | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-02 673f6f1 chore: resolve merge conflicts with main |
 | Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | 0 | No | Fresh | Medium | derived | 2026-06-02 2ffad7e Merge pull request #2 from nadavyigal/codex/agentic-os-command-center-upgrade |
@@ -30,6 +30,10 @@ High-confidence projects whose curated narrative differs from the parsed local s
 - Resumely iOS (current phase): narrative = "Pre-submission QA and App Store upload" / parsed = "Pre-release (TestFlight prep)"
 - Resumely iOS (next story): narrative = "Run live smoke across optimize/design/expert/preview/export, verify events, upload screenshots/listing, submit" / parsed = "Phase 2 — submit optimized resume + cover letter from Track/Me tab"
 - Resumely iOS (last validation): narrative = "Signed build passed from /tmp DerivedData; full tests passed 53 XCTest + 5 Swift Testing; XcodeBuildMCP launch smoke passed on 2026-06-01." / parsed = "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData"
+
+## Open Questions & Decisions (from repos)
+
+None surfaced from repos yet. Add a `## Open Questions` or `## Decisions Needed` section (bullet items) to a project's task files to surface them here.
 
 ## Morning Brief
 
