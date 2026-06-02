@@ -31,7 +31,7 @@ How much each project's state is backed by parsed local task files versus narrat
 | Project | Confidence | Source | Last Validation |
 | --- | --- | --- | --- |
 | RunSmart iOS | High | derived | Swift parse validation passed for SupabaseRunSmartServices.swift after edit.; trackPlanGenerated call confirmed at line 271 via grep |
-| Resumely iOS | High | tasks/progress.md | Cursor report follow-up: signed `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 53 XCTest + 5 Swift Testing tests; XcodeBuildMCP build/run smoke succeeded on iPhone 17 with Home screenshot checked (2026-06-01). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData |
+| Resumely iOS | High | tasks/progress.md | Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData |
 | RunSmart Web | Medium | derived | Not parsed |
 | ResumeBuilder AI (Web) | Medium | derived | Not parsed |
 | Agentic OS | Medium | derived | Not parsed |

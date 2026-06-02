@@ -711,6 +711,59 @@ def build_executive_overview(status: dict[str, Any], project_health: list[dict[s
     }
 
 
+def normalize_text(value: Any) -> str:
+    text = re.sub(r"[^a-z0-9 ]+", " ", str(value or "").lower())
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def texts_disagree(narrative: Any, parsed: Any) -> bool:
+    """True when two free-text values genuinely diverge (not just punctuation/casing).
+
+    One string containing the other is treated as agreement, so a longer curated phrasing
+    that includes the parsed phrase is not flagged.
+    """
+    a, b = normalize_text(narrative), normalize_text(parsed)
+    if not a or not b or a == b:
+        return False
+    if a in b or b in a:
+        return False
+    return True
+
+
+# Curated project field -> parsed taskParse field -> human label, compared for High projects.
+DRIFT_FIELDS = [
+    ("currentPhase", "currentPhase", "current phase"),
+    ("nextRecommendedStory", "nextRecommendedStory", "next story"),
+    ("lastValidation", "lastValidation", "last validation"),
+]
+
+
+def compute_drift_warnings(status: dict[str, Any]) -> list[dict[str, Any]]:
+    """Flag High-confidence projects whose curated narrative diverges from the parsed source.
+
+    Parsed local task files are the trustworthy truth for a High project, so a curated field
+    that disagrees is drift the operator should reconcile (or consciously keep). Story 4.1.
+    """
+    warnings: list[dict[str, Any]] = []
+    for project in status.get("projects", []):
+        if project.get("sourceConfidence") != "High":
+            continue
+        parse = project.get("taskParse") or {}
+        for curated_key, parsed_key, label in DRIFT_FIELDS:
+            narrative = project.get(curated_key)
+            parsed = parse.get(parsed_key)
+            if narrative and parsed and texts_disagree(narrative, parsed):
+                warnings.append(
+                    {
+                        "project": project.get("name"),
+                        "field": label,
+                        "narrative": clean_cell(narrative),
+                        "parsed": clean_cell(parsed),
+                    }
+                )
+    return warnings
+
+
 def build_data_flow(status: dict[str, Any]) -> list[dict[str, Any]]:
     return [
         {
@@ -813,6 +866,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "embedded dashboard JSON parsed",
             "project-status.html fallback sync checked",
             "source confidence and freshness validated",
+            "drift warnings checked",
             "git diff --check",
         ],
         "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
@@ -864,6 +918,11 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "evidenceGap": health["evidenceGap"],
             "evidenceDate": health["evidenceDate"],
         }
+
+    drift_warnings = compute_drift_warnings(status)
+    status["driftWarnings"] = drift_warnings
+    status["executiveOverview"]["driftWarningCount"] = len(drift_warnings)
+    status["executiveOverview"]["driftProjects"] = sorted({w["project"] for w in drift_warnings})
 
     write_json(STATUS_JSON, status)
     sync_project_status_fallback(status)
@@ -919,6 +978,7 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "projectPrompts": status.get("projectPrompts", []),
             "executiveOverview": status.get("executiveOverview", {}),
             "dataFlow": status.get("dataFlow", []),
+            "driftWarnings": status.get("driftWarnings", []),
         }
         html = html[: match.start()] + match.group(1) + json.dumps(data, indent=2) + match.group(3) + html[match.end() :]
         path.write_text(html, encoding="utf-8")
@@ -974,6 +1034,22 @@ def write_project_status(status: dict[str, Any]) -> None:
             )
     else:
         lines.append("None. Every project's validation is at least as recent as its last commit.")
+
+    drift = status.get("driftWarnings", [])
+    lines += ["", "## Drift Warnings", ""]
+    if drift:
+        lines.append(
+            "High-confidence projects whose curated narrative differs from the parsed local "
+            "source. Reconcile the dashboard field or confirm the narrative is intentional:"
+        )
+        lines.append("")
+        for warning in drift:
+            lines.append(
+                f"- {warning['project']} ({warning['field']}): narrative = "
+                f"\"{warning['narrative']}\" / parsed = \"{warning['parsed']}\""
+            )
+    else:
+        lines.append("None. Curated narrative matches the parsed source for all High-confidence projects.")
 
     lines += [
         "",
@@ -1059,6 +1135,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
             lines.append(f"- {p['name']}: validated {p.get('evidenceDate') or 'unknown'}, latest commit is newer.")
     else:
         lines.append("- None. Every project's validation is at least as recent as its last commit.")
+
+    drift = status.get("driftWarnings", [])
+    lines += ["", "## Drift Warnings", ""]
+    if drift:
+        for warning in drift:
+            lines.append(f"- {warning['project']} ({warning['field']}): curated narrative differs from parsed source.")
+    else:
+        lines.append("- None. Curated narrative matches the parsed source for all High-confidence projects.")
 
     lines += ["", "## Validation", ""]
     lines += [f"- {check}" for check in status.get("runCenter", {}).get("checksRun", [])]
@@ -1196,6 +1280,14 @@ def verify() -> int:
                 f"projectHealth '{health.get('name', '?')}' has non-boolean evidenceGap: "
                 f"{health.get('evidenceGap')!r}"
             )
+
+    drift = status.get("driftWarnings")
+    if not isinstance(drift, list):
+        errors.append("driftWarnings missing or not a list")
+    else:
+        for warning in drift:
+            if not all(key in warning for key in ("project", "field", "narrative", "parsed")):
+                errors.append(f"driftWarnings entry missing required keys: {warning!r}")
     for project in status.get("projects", []):
         if "taskParse" in project and project.get("sourceConfidence") not in allowed_confidence:
             errors.append(
@@ -1219,6 +1311,7 @@ def verify() -> int:
     print("- embedded dashboard JSON parsed")
     print("- project-status.html fallback is synced")
     print("- source confidence and freshness values valid")
+    print("- drift warnings well-formed")
     print("- dashboard links resolve")
     print("- git diff --check passed")
     return 0
@@ -1262,6 +1355,13 @@ def refresh(args: argparse.Namespace) -> int:
     print("- sources read:")
     for source in status["runCenter"]["sourcesRead"]:
         print(f"  - {source}")
+    drift = status.get("driftWarnings", [])
+    if drift:
+        print(f"- drift warnings ({len(drift)}): curated narrative differs from parsed source")
+        for warning in drift:
+            print(f"  - {warning['project']} ({warning['field']})")
+    else:
+        print("- drift warnings: none")
     print("- no external dashboards or production services were queried")
     return 0
 

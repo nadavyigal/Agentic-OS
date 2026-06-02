@@ -12,7 +12,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Run Center
 
-- Last refresh: 2026-06-02 16:04
+- Last refresh: 2026-06-02 16:23
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -21,7 +21,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | Yes | Fresh | High |
-| Resumely iOS | Pre-release (TestFlight prep) | Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs | Yes | Fresh | High |
+| Resumely iOS | Pre-release (TestFlight prep) | Phase 2 — submit optimized resume + cover letter from Track/Me tab | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
 | Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | No | Fresh | Medium |
@@ -43,7 +43,16 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Evidence Gaps
 
-- Resumely iOS: validated 2026-06-01, latest commit is newer.
+- None. Every project's validation is at least as recent as its last commit.
+
+## Drift Warnings
+
+- RunSmart iOS (current phase): curated narrative differs from parsed source.
+- RunSmart iOS (next story): curated narrative differs from parsed source.
+- RunSmart iOS (last validation): curated narrative differs from parsed source.
+- Resumely iOS (current phase): curated narrative differs from parsed source.
+- Resumely iOS (next story): curated narrative differs from parsed source.
+- Resumely iOS (last validation): curated narrative differs from parsed source.
 
 ## Validation
 
@@ -51,4 +60,5 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 - embedded dashboard JSON parsed
 - project-status.html fallback sync checked
 - source confidence and freshness validated
+- drift warnings checked
 - git diff --check

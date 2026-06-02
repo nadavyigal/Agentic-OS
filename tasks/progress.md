@@ -3,10 +3,10 @@
 Project: Global Agentic OS
 Status: Active
 Current Phase: Dashboard trust upgrade (top-tier roadmap execution)
-Active Story: Phases 0–3 shipped on PR #3; awaiting direction on Phase 4
-Last Completed Story: Phase 3 — validation evidence linking (structured evidence extraction + evidence-gap flagging)
-Next Recommended Story: Phase 4 — drift detection (curated narrative vs parsed High status). Web-repo progress.md seeding stays on hold pending approval.
-Estimated Completion: Phases 0–3 done; Phase 2.3 web seeding and Phases 4–6 remain
+Active Story: Phase 4 — drift detection shipped on its own PR stacked on PR #3
+Last Completed Story: Phase 4 — drift detection (flag curated narrative that diverges from parsed High source)
+Next Recommended Story: Phase 5 — confidence-gated delegation (Low/Unknown prompts must re-read the repo; build decision/open-question panels from parsed data). Web-repo progress.md seeding stays on hold pending approval.
+Estimated Completion: Phases 0–4 done; Phase 2.3 web seeding and Phases 5–6 remain
 Blockers: —
 Risks: Parser changes could regress dashboard status; product-repo schema seeding needs owner approval; global summaries go stale if repos are not re-read
 Last Validation: ./agentic-os verify passed — status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked.

@@ -11,16 +11,25 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | 3 | Yes (24) | Fresh | High | derived | 2026-05-31 234d2d5 Add UX redesign spec for 1.0.1 fast follow |
-| Resumely iOS | Pre-release (TestFlight prep) | Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304 |
+| Resumely iOS | Pre-release (TestFlight prep) | Phase 2 — submit optimized resume + cover letter from Track/Me tab | 2 | Yes (7) | Fresh | High | tasks/progress.md | 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Fresh | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-02 673f6f1 chore: resolve merge conflicts with main |
 | Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | 0 | No | Fresh | Medium | derived | 2026-06-02 2ffad7e Merge pull request #2 from nadavyigal/codex/agentic-os-command-center-upgrade |
 
 ## Evidence Gaps
 
-Latest commit post-dates the last validation (code moved since the last proof):
+None. Every project's validation is at least as recent as its last commit.
 
-- Resumely iOS: validated 2026-06-01, last commit 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304
+## Drift Warnings
+
+High-confidence projects whose curated narrative differs from the parsed local source. Reconcile the dashboard field or confirm the narrative is intentional:
+
+- RunSmart iOS (current phase): narrative = "App Store review plus 1.0.1 planning" / parsed = "App Store submission sprint (Build 6)"
+- RunSmart iOS (next story): narrative = "After review outcome, convert Sprint 11 specs into a scoped 1.0.1 implementation plan" / parsed = "Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA"
+- RunSmart iOS (last validation): narrative = "GPS QA run 2: 9.10 km 2026-05-30 PASS. 6.5-inch screenshot upload set verified at 1242 x 2688. Prior focused release tests green." / parsed = "Swift parse validation passed for SupabaseRunSmartServices.swift after edit.; trackPlanGenerated call confirmed at line 271 via grep"
+- Resumely iOS (current phase): narrative = "Pre-submission QA and App Store upload" / parsed = "Pre-release (TestFlight prep)"
+- Resumely iOS (next story): narrative = "Run live smoke across optimize/design/expert/preview/export, verify events, upload screenshots/listing, submit" / parsed = "Phase 2 — submit optimized resume + cover letter from Track/Me tab"
+- Resumely iOS (last validation): narrative = "Signed build passed from /tmp DerivedData; full tests passed 53 XCTest + 5 Swift Testing; XcodeBuildMCP launch smoke passed on 2026-06-01." / parsed = "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData"
 
 ## Morning Brief
 
