@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agentic OS - Data Flow</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">OS</span><span><strong>Agentic OS</strong><small>Data Flow</small></span></a>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html">Decisions</a><a href="./metrics.html">Metrics</a><a href="./data-flow.html" class="active" aria-current="page">Data Flow</a>
+      </nav>
+    </header>
+    <main class="page-shell">
+      <section class="hero"><div><p class="eyebrow">Data flow</p><h1>How local project evidence becomes dashboard guidance.</h1><p class="hero-copy">This is the map from files, git, and memory into prompts you can paste into the right repo.</p></div></section>
+      <section id="flow" class="project-grid"></section>
+      <section class="board"><div class="board-header"><p class="eyebrow">Sources read</p><h2>Latest refresh evidence</h2></div><div id="sources" class="priority-board"></div></section>
+    </main>
+    <script>
+      init();
+      async function init() {
+        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
+        document.getElementById("flow").innerHTML = (data.dataFlow || []).map((f) => `<article class="project-card"><h3>${esc(f.step)}</h3><p>${esc(f.source)}</p><p class="meta-line">${esc(f.output)}</p></article>`).join("");
+        document.getElementById("sources").innerHTML = `<div><ul>${(data.runCenter?.sourcesRead || []).map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div>`;
+      }
+      function esc(value) { return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    </script>
+  </body>
+</html>

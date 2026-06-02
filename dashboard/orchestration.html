@@ -152,14 +152,18 @@
         </div>
         <div class="stamp">
           <div>Generated <strong id="stamp-date"></strong></div>
-          <div>Source: local Agentic OS repo · <a style="color:var(--accent)" href="./command-center.html">OS Command Center →</a> · <a style="color:var(--accent)" href="./index.html">Project Status →</a></div>
+          <div>Source: local Agentic OS repo · <a style="color:var(--accent)" href="./index.html">OS Command Center →</a> · <a style="color:var(--accent)" href="./project-status.html">Project Status →</a></div>
         </div>
       </header>
 
       <nav class="osnav" aria-label="Dashboards">
-        <a href="./command-center.html">Command Center</a>
+        <a href="./index.html">Command Center</a>
         <a href="./orchestration.html" class="active" aria-current="page">Orchestration Map</a>
-        <a href="./index.html">Project Status</a>
+        <a href="./project-status.html">Project Status</a>
+        <a href="./executive.html">Executive</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./metrics.html">Metrics</a>
+        <a href="./data-flow.html">Data Flow</a>
       </nav>
 
       <div class="launch" id="launch"></div>
@@ -168,46 +172,46 @@
 
       <footer>
         <span>Single-file artifact · opens via file:// · regenerate when status changes.</span>
-        <span><a href="./command-center.html">OS Command Center</a> · <a href="./index.html">Project Status dashboard</a> · <a href="../DASHBOARD.md">DASHBOARD.md</a> · <a href="../distribution-os/distribution-command-center.md">Distribution Command Center</a></span>
+        <span><a href="./index.html">OS Command Center</a> · <a href="./project-status.html">Project Status</a> · <a href="./executive.html">Executive</a> · <a href="./decisions.html">Decisions</a> · <a href="./metrics.html">Metrics</a> · <a href="./data-flow.html">Data Flow</a></span>
       </footer>
     </div>
 
     <script id="os-data" type="application/json">
 {
-  "generated": "2026-05-31",
+  "generated": "2026-06-02 13:54",
   "launch": [
     {
       "label": "RunSmart iOS",
-      "tone": "green",
-      "state": "Submitted to App Store review"
+      "tone": "blue",
+      "state": "v1.0 in review context; frozen"
     },
     {
       "label": "Resumely iOS",
       "tone": "amber",
-      "state": "Pre-submission (PostHog in; ASC + smoke next)"
+      "state": "Pre-submit: smoke + ASC upload next"
     },
     {
-      "label": "App Review ETA",
-      "tone": "blue",
-      "state": "24–48h for RunSmart"
+      "label": "Executive OS",
+      "tone": "green",
+      "state": "EXD-004 decided; status refreshed"
     }
   ],
   "kpis": [
     {
       "v": "1",
-      "l": "App submitted to review"
+      "l": "App in review context"
     },
     {
       "v": "2",
       "l": "Apps with PostHog wired"
     },
     {
-      "v": "1",
-      "l": "Next-version spec drafted (RS 1.0.1)"
+      "v": "4",
+      "l": "Active project repos checked"
     },
     {
-      "v": "7",
-      "l": "Agent roles defined"
+      "v": "3",
+      "l": "Submission gates remaining"
     }
   ],
   "layers": [
@@ -243,7 +247,7 @@
         },
         {
           "t": "Atlas (future)",
-          "s": "Cross-repo automation — concept only, do not build yet",
+          "s": "Cross-repo automation \u2014 concept only, do not build yet",
           "p": "idle",
           "pill": "idle"
         }
@@ -257,27 +261,27 @@
       "cards": [
         {
           "t": "RunSmart iOS",
-          "s": "Submitted to review; E7 Garmin trends shipped; 1.0.1 UX spec drafted",
-          "p": "submitted",
-          "pill": "ready"
+          "s": "v1.0 frozen in review context; 1.0.1 UX + voice specs drafted",
+          "p": "review",
+          "pill": "progress"
         },
         {
           "t": "Resumely iOS",
-          "s": "PostHog integrated + PR#36 UX shipped; ASC creds + smoke QA next",
+          "s": "PostHog + PR#36 UX + June 1 export/preview fixes; smoke + ASC next",
           "p": "progress",
           "pill": "progress"
         },
         {
           "t": "RunSmart Web",
-          "s": "Product-logic source for the iOS coach",
-          "p": "reference",
-          "pill": "idle"
+          "s": "B1 voice-cue endpoint committed; dirty tree needs triage",
+          "p": "support",
+          "pill": "progress"
         },
         {
           "t": "ResumeBuilder Web",
-          "s": "Backend + distribution support for Resumely",
-          "p": "reference",
-          "pill": "idle"
+          "s": "PDF parse/render branch active; rollout plan unchecked",
+          "p": "support",
+          "pill": "progress"
         }
       ]
     },
@@ -288,20 +292,20 @@
       "desc": "Acquisition engine. ASO is the live wedge; everything else is staged behind App Store approval.",
       "cards": [
         {
-          "t": "ASO — RunSmart",
-          "s": "Submit-ready; portal steps remain",
-          "p": "ready",
-          "pill": "ready"
-        },
-        {
-          "t": "ASO — Resumely",
-          "s": "rb-aso-001 copy awaiting approval",
+          "t": "ASO - RunSmart",
+          "s": "In review context; launch assets wait for Apple outcome",
           "p": "review",
           "pill": "progress"
         },
         {
+          "t": "ASO - Resumely",
+          "s": "Listing/screenshots ready enough for upload after smoke",
+          "p": "ready",
+          "pill": "ready"
+        },
+        {
           "t": "App Store Screenshots",
-          "s": "RunSmart 5 slots; Resumely rb-aso-002 added",
+          "s": "RunSmart 6.5 upload set verified; Resumely rb-aso-002 rendered",
           "p": "ready",
           "pill": "ready"
         },
@@ -313,25 +317,19 @@
         },
         {
           "t": "Directories",
-          "s": "rb-dir-001 pack drafted (5 dirs)",
+          "s": "rb-dir-001 pack waits for App Store URL",
           "p": "planned",
           "pill": "planned"
         },
         {
           "t": "LinkedIn Founder",
-          "s": "Launch-week cadence, not started",
+          "s": "Launch-week cadence waits for approval/submission",
           "p": "planned",
           "pill": "planned"
         },
         {
           "t": "Lifecycle Email",
-          "s": "Resend via Supabase; blocked on analytics",
-          "p": "blocked",
-          "pill": "blocked"
-        },
-        {
-          "t": "Partnerships",
-          "s": "Coach / career-coach outreach — later",
+          "s": "Planned after live activation events exist",
           "p": "planned",
           "pill": "planned"
         },
@@ -350,38 +348,38 @@
       "desc": "Turning installs into activated users. Funnels are designed; data starts once apps are live.",
       "cards": [
         {
-          "t": "Activation Funnel — RS",
-          "s": "First AI-coached run within 7 days (north-star) — events live",
+          "t": "Activation Funnel - RS",
+          "s": "Activation events wired; production values still Needs Data",
           "p": "wired",
           "pill": "ready"
         },
         {
-          "t": "Core-Loop Funnel — RB",
-          "s": "Upload → optimize → preview → export",
+          "t": "Core-Loop Funnel - RB",
+          "s": "Upload -> optimize -> preview -> export; live smoke remains",
           "p": "wired",
           "pill": "progress"
         },
         {
-          "t": "PostHog — RunSmart",
-          "s": "SDK + activation events wired and firing",
+          "t": "PostHog - RunSmart",
+          "s": "SDK + activation events wired",
           "p": "wired",
           "pill": "ready"
         },
         {
-          "t": "PostHog — Resumely",
-          "s": "Integrated via AnalyticsService (PR #35→#36); PII guard + de-dup",
+          "t": "PostHog - Resumely",
+          "s": "Integrated via AnalyticsService; PII guard + de-dup; live event verification next",
           "p": "wired",
           "pill": "ready"
         },
         {
           "t": "Conversion Review",
-          "s": "Workflow 09 — signup→editor→export",
+          "s": "Workflow 09 after production/TestFlight data exists",
           "p": "planned",
           "pill": "planned"
         },
         {
-          "t": "Web → App Store CTA",
-          "s": "Attribution tags (at=/ct=) not yet wired",
+          "t": "Web -> App Store CTA",
+          "s": "Attribution tags and mobile handoff still planned",
           "p": "planned",
           "pill": "planned"
         }
@@ -451,7 +449,7 @@
         },
         {
           "t": "RunSmart Domain (24)",
-          "s": "plan-generator, readiness-check, garmin, ios-expert…",
+          "s": "plan-generator, readiness-check, garmin, ios-expert\u2026",
           "p": "core",
           "pill": "ready"
         },
@@ -500,68 +498,69 @@
       "desc": "Active sprints and distribution experiments driving this week.",
       "cards": [
         {
-          "t": "Sprint 01 — RS Archive/Submit",
-          "s": "Build 6 submitted to App Store review",
-          "p": "done",
-          "pill": "ready"
-        },
-        {
-          "t": "Sprint 02 — Resumely Ready",
-          "s": "PostHog in + PR#36 UX shipped; ASC creds + smoke remain",
-          "p": "progress",
+          "t": "RunSmart v1.0 Review",
+          "s": "Build 6 frozen in Apple review context; monitor only",
+          "p": "watch",
           "pill": "progress"
         },
         {
-          "t": "RS 1.0.1 UX redesign",
-          "s": "Fast-follow UX spec drafted — scope to confirm",
+          "t": "RunSmart Sprint 11",
+          "s": "1.0.1 UX redesign + voice coach specs drafted; wait for review outcome",
           "p": "spec",
           "pill": "planned"
         },
         {
-          "t": "E7 Garmin Depth",
-          "s": "Striver-gated 7-day HRV + readiness trends shipped (PR #36)",
+          "t": "Resumely Submit Sprint",
+          "s": "June 1 stabilization done; smoke + ASC upload remain",
+          "p": "progress",
+          "pill": "progress"
+        },
+        {
+          "t": "RB PostHog",
+          "s": "Resumely analytics integrated before submission; verify live events",
           "p": "done",
           "pill": "ready"
         },
         {
-          "t": "rb-posthog-001",
-          "s": "Resumely analytics integrated + PII guard (PR #35→#36)",
+          "t": "RS Voice B1",
+          "s": "RunSmart Web /api/coach/voice-cue endpoint committed",
           "p": "done",
           "pill": "ready"
         },
         {
-          "t": "rs-analytics-001",
-          "s": "RunSmart activation events — wired and firing",
-          "p": "done",
-          "pill": "ready"
+          "t": "Web Rollout",
+          "s": "ResumeBuilder plan.rollout.md shadow enablement unchecked",
+          "p": "blocked",
+          "pill": "blocked"
         }
       ]
     },
     {
       "id": "todos",
       "tag": "Layer 7",
-      "title": "Todos — Portfolio Action Board",
+      "title": "Todos \u2014 Portfolio Action Board",
       "desc": "Now / Next / Later / Blocked across both products.",
       "todos": {
         "now": [
-          "RunSmart: monitor App Store review; respond to Apple feedback",
-          "Resumely: set up Fastlane / ASC API key for upload",
-          "Resumely: real-device smoke test with live account → submit"
+          "Resumely: authenticated real-device smoke after June 1 fixes",
+          "Resumely: verify PostHog/export coverage from a keyed build",
+          "Resumely: upload screenshots/listing and submit",
+          "RunSmart: monitor App Store review; keep v1.0 frozen"
         ],
         "next": [
-          "RunSmart: confirm 1.0.1 fast-follow UX redesign scope",
-          "RunSmart: wire run_started + run_completed events",
-          "Resumely: confirm PostHog export_success coverage"
+          "RunSmart: scope 1.0.1 after review outcome",
+          "RunSmart Web: triage dirty tree before more voice work",
+          "ResumeBuilder Web: finish rollout only if Resumely smoke needs it"
         ],
         "later": [
-          "Both: directories + SEO landings after approval",
+          "Both: revenue, cost, and activation dashboards once live",
           "Resumely: /api/v1/resumes backend, Hebrew/RTL",
-          "Both: CFO OS — revenue, cost, gross-margin instrumentation"
+          "RunSmart: Garmin webhook audit and activation funnel review"
         ],
         "blocked": [
-          "Acquisition metrics until apps are live",
-          "Resumely ASC upload until Fastlane / ASC creds configured",
-          "Resume Library until /api/v1/resumes ships"
+          "RunSmart review outcome depends on Apple",
+          "Resumely ASC upload until credentials or portal session exist",
+          "Resumely Resume Library until /api/v1/resumes returns JSON"
         ]
       }
     },
@@ -573,31 +572,31 @@
       "cards": [
         {
           "t": "CEO OS",
-          "s": "Strategy, priorities, OKRs, decisions",
+          "s": "Focus: Resumely smoke + submit while RunSmart waits on Apple",
           "p": "active",
           "pill": "progress"
         },
         {
           "t": "CFO / Monetization OS",
-          "s": "Budget, revenue, pricing, runway — Needs Data",
+          "s": "Budget, revenue, pricing, runway - Needs Data",
           "p": "needs-data",
           "pill": "blocked"
         },
         {
           "t": "Analysis OS",
-          "s": "Research, ideation, opportunity discovery",
+          "s": "Research after both apps clear submission gates",
           "p": "ready",
           "pill": "ready"
         },
         {
           "t": "Decision Board",
-          "s": "EXD-002/003 resolved; Q2/Q3 OKRs drafted",
+          "s": "EXD-004 decided; open choices are scope/upload path/timing",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Executive Metrics",
-          "s": "Financial + strategic scorecard — sources defined, values pending",
+          "s": "Sources defined; live revenue/activation values pending",
           "p": "needs-data",
           "pill": "blocked"
         }
@@ -611,37 +610,37 @@
       "cards": [
         {
           "t": "Global Memory",
-          "s": "~/.claude/MEMORY.md — cross-project decisions, read first",
+          "s": "~/.claude/MEMORY.md \u2014 cross-project decisions, read first",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Project Memory",
-          "s": "tasks/MEMORY.md — repo-local session history + decisions",
+          "s": "tasks/MEMORY.md \u2014 repo-local session history + decisions",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Errors Ledger",
-          "s": "ERRORS.md (global + tasks/) — failed approaches, never re-propose",
+          "s": "ERRORS.md (global + tasks/) \u2014 failed approaches, never re-propose",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Lessons",
-          "s": "LESSONS.md + executive-os/EXECUTIVE-LESSONS.md — recurring fixes",
+          "s": "LESSONS.md + executive-os/EXECUTIVE-LESSONS.md \u2014 recurring fixes",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Decisions",
-          "s": "DECISIONS.md + EXECUTIVE-DECISIONS.md — durable architectural calls",
+          "s": "DECISIONS.md + EXECUTIVE-DECISIONS.md \u2014 durable architectural calls",
           "p": "active",
           "pill": "ready"
         },
         {
           "t": "Auto-Memory",
-          "s": "~/.claude/.../memory/ — Claude's per-fact files + MEMORY.md index",
+          "s": "~/.claude/.../memory/ \u2014 Claude's per-fact files + MEMORY.md index",
           "p": "active",
           "pill": "ready"
         }

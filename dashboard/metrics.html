@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agentic OS - Metrics</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">OS</span><span><strong>Agentic OS</strong><small>Metrics</small></span></a>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html">Decisions</a><a href="./metrics.html" class="active" aria-current="page">Metrics</a><a href="./data-flow.html">Data Flow</a>
+      </nav>
+    </header>
+    <main class="page-shell">
+      <section class="hero"><div><p class="eyebrow">Metrics</p><h1>What is measured, what is missing, and what must stay honest.</h1><p id="metric-note" class="hero-copy"></p></div></section>
+      <section class="metric-grid">
+        <article><span id="projects" class="metric-value">0</span><span class="metric-label">Projects</span></article>
+        <article><span id="dirty" class="metric-value">0</span><span class="metric-label">Dirty repos</span></article>
+        <article><span id="blocked" class="metric-value">0</span><span class="metric-label">Blocked projects</span></article>
+        <article><span id="sources" class="metric-value">0</span><span class="metric-label">Sources read</span></article>
+      </section>
+      <section class="board"><div class="board-header"><p class="eyebrow">QA</p><h2>Validation board</h2></div><div id="qa" class="qa-board"></div></section>
+    </main>
+    <script>
+      init();
+      async function init() {
+        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
+        const overview = data.executiveOverview || {};
+        const health = data.projectHealth || [];
+        document.getElementById("metric-note").textContent = overview.metricStatus || "";
+        document.getElementById("projects").textContent = health.length;
+        document.getElementById("dirty").textContent = health.filter((p) => p.dirty).length;
+        document.getElementById("blocked").textContent = health.filter((p) => Number(p.blockerCount || 0) > 0).length;
+        document.getElementById("sources").textContent = (data.runCenter?.sourcesRead || []).length;
+        document.getElementById("qa").innerHTML = (data.qaBoard || []).map((q) => `<article><h3>${esc(q.project)}</h3><p>${esc(q.testStatus || q.status || "")}</p><p class="meta-line">${esc(q.latestValidationDate || "")}</p></article>`).join("");
+      }
+      function esc(value) { return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    </script>
+  </body>
+</html>

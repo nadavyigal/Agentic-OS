@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agentic OS - Decisions</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html"><span class="brand-mark">OS</span><span><strong>Agentic OS</strong><small>Decisions</small></span></a>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html" class="active" aria-current="page">Decisions</a><a href="./metrics.html">Metrics</a><a href="./data-flow.html">Data Flow</a>
+      </nav>
+    </header>
+    <main class="page-shell">
+      <section class="hero"><div><p class="eyebrow">Decisions</p><h1>Open choices that change priority, release, or focus.</h1><p class="hero-copy">Pulled from <code>dashboard/status.json</code> and the Executive OS decision layer.</p></div></section>
+      <section id="decisions" class="project-grid"></section>
+    </main>
+    <script>
+      init();
+      async function init() {
+        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
+        document.getElementById("decisions").innerHTML = (data.decisionBoard || []).map((d) => `
+          <article class="project-card">
+            <h3>${esc(d.decision)}</h3>
+            <p>${esc(d.whyItMatters)}</p>
+            <p class="meta-line">Project: ${esc(d.project)} · Urgency: ${esc(d.urgency)}</p>
+            <p><strong>Recommendation:</strong> ${esc(d.recommendedOption)}</p>
+            <p class="meta-line">Options: ${esc(d.options)}</p>
+          </article>`).join("");
+      }
+      function esc(value) { return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    </script>
+  </body>
+</html>

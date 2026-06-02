@@ -4,6 +4,13 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
+## 2026-06-01 - Cross-project closeout, morning brief, status refresh
+Worked on: End-of-day cross-project closeout across RunSmart, Resumely, web support repos, Agentic OS, and Executive OS.
+Completed: Ran the morning-brief evidence protocol from local files and git. Refreshed `PROJECT-STATUS.md`, `DASHBOARD.md`, `dashboard/status.json`, `dashboard/index.html` fallback JSON, `dashboard/orchestration.html`, `executive-os/EXECUTIVE-DASHBOARD.md`, `executive-os/EXECUTIVE-DECISIONS.md`, and `executive-os/EXECUTIVE-METRICS.md`. Updated EXD-004 to Decided because Resumely PostHog was integrated before first App Store submission.
+In progress: Resumely iOS still needs authenticated real-device smoke, PostHog/export coverage confirmation, and ASC upload/submit. RunSmart iOS is in Apple review context and should keep v1.0 artifacts frozen. RunSmart Web and ResumeBuilder Web both need dirty-tree triage before further implementation.
+Decisions: Treat Resumely smoke + submit as the next highest-leverage portfolio action. Do not start broad RunSmart 1.0.1 implementation until v1.0 review outcome is known. Continue using local project files and git as status evidence; no external dashboards were queried.
+Next session: Start with Resumely iOS device smoke from `tasks/session-log.md`, then upload/submit if it passes. If RunSmart receives Apple feedback first, handle that before 1.0.1 work.
+
 ## 2026-05-31 (eve) - Dashboard suite: unify design, status refresh, Planner + Runs + Memory
 Worked on: Second pass on the dashboard suite per founder feedback (5 points).
 Completed: (1) Status refresh from product-repo git: RunSmart iOS submitted to review + E7 Garmin HRV/readiness trends shipped + 1.0.1 fast-follow UX spec drafted; Resumely iOS PostHog integrated (PR #35 into #36) + PR#36 UX transformation + PII guard. Updated status.json, index.html embedded copy, orchestration.html. (2) Unified design: rewrote styles.css to the dark theme; all three pages share one top nav (.osnav). (3) Added Layer 9 "Memory & Learning" to the orchestration map. (4) Command Center Planner group (generate sprint / resolve decisions / draft feature) fusing action + decision boards. (5) Command Center Runs group (morning-brief, exec-review, distribution, qa, risk, lessons, pr-summary).

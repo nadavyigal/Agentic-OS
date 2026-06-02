@@ -2,69 +2,64 @@
 
 This is a lightweight static dashboard suite for the Global Agentic OS. It does not replace `../DASHBOARD.md`; it is a visual companion generated from `../PROJECT-STATUS.md`. Three pages share one dark design and a common top nav:
 
-- **Command Center** (`command-center.html`): plan the next move, run a workflow, or talk to any OS.
+- **Command Center** (`index.html` / `command-center.html`): plan the next move, run a workflow, copy project prompts, or talk to any OS.
 - **Orchestration Map** (`orchestration.html`): the layered system map, Layers 0 to 9.
-- **Project Status** (`index.html`): project cards, action board, decision board, QA board.
+- **Project Status** (`project-status.html`): project cards, action board, decision board, QA board.
+- **Executive** (`executive.html`): portfolio overview, focus, risk, dirty repos, blocked projects, and per-project prompts.
+- **Decisions** (`decisions.html`): open portfolio decisions and recommendations.
+- **Metrics** (`metrics.html`): honest metric status, QA evidence, and missing data state.
+- **Data Flow** (`data-flow.html`): how local files and git evidence become dashboard data and copy-ready prompts.
 
-## Open Locally
+## One Command
 
-Open any of the three pages in a browser, or serve the folder for the live `status.json` path:
+Run the morning command from the repo root to refresh local evidence, sync generated dashboard files, verify JSON/links, serve the dashboard, and open the Command Center:
 
 ```bash
-cd dashboard && python3 -m http.server 8787 --bind 127.0.0.1
+./agentic-os morning
 ```
 
-No backend, database, authentication, paid service, or build step is required. When
-served by a static file server, `index.html` loads `status.json`; opened via `file://`
-it uses the embedded JSON fallback.
+Available commands:
+
+- `./agentic-os morning`: refresh, verify, serve `dashboard/`, and open `index.html`.
+- `./agentic-os refresh`: refresh files only, no server.
+- `./agentic-os serve`: serve the current dashboard only.
+- `./agentic-os verify`: parse dashboard JSON, check embedded fallbacks, verify local links, and run `git diff --check`.
+
+No backend, database, authentication, paid service, or build step is required. When served by the local static file server, pages load `status.json`; opened via `file://`, they use embedded JSON fallbacks.
 
 ## Files
 
-- `index.html`: Project Status dashboard. Dark theme via `styles.css`; reads `status.json`.
-- `command-center.html`: OS Command Center (see below). Self-contained dark theme.
+- `index.html`: Command Center home page. Self-contained dark theme; reads `status.json` and uses `cc-data` fallback.
+- `command-center.html`: compatibility alias for the Command Center.
+- `project-status.html`: Project Status dashboard. Dark theme via `styles.css`; reads `status.json`.
 - `orchestration.html`: layered Orchestration Map (Layers 0 to 9) with embedded status JSON.
+- `executive.html`: Executive overview page backed by `status.json`.
+- `decisions.html`: Decision board page backed by `status.json`.
+- `metrics.html`: Metrics and QA page backed by `status.json`.
+- `data-flow.html`: Data-flow explanation page backed by `status.json`.
 - `styles.css`: dark theme for `index.html` (palette shared with the other two pages).
 - `status.json`: easy-to-edit dashboard data copied from `PROJECT-STATUS.md`.
 - `README.md`: this usage note.
 
 ## OS Command Center
 
-`command-center.html` is the centralized launcher. It is fully static and respects
-the guardrails below: no backend, no API keys, no chat box. Every card has a one-click
-"Copy prompt" button that puts a context-loaded prompt on the clipboard to paste into
-Claude Code or Cursor, plus deep links into the relevant docs. A live filter box
-searches all cards. It has four kinds of group:
+`index.html` is the first screen for the local OS. It is fully static and respects the guardrails below: no backend, no API keys, no chat box. The dominant answer is "what should I do next?", backed by Today’s Focus, blockers, one-command status, project health, and copy-ready delegation cards.
 
-- **Planner** — fuses the Action Board and Decision Board into one-click prompts:
-  generate the next sprint, resolve open decisions, or draft the next feature plan.
-- **OS roster** — CEO, CFO, Analysis, Director, Distribution, Growth, and the delivery
-  agents (Architect, PM, QA, Release Manager, UI/UX).
-- **Runs / Workflows** — runnable workflows (morning brief, weekly exec review, weekly
-  distribution, QA review, risk review, update lessons, PR summary).
-- **Memory & Learning** — recall context, log session end, review lessons and decisions.
+The main sections are:
 
-To add or improve a card, edit the embedded `<script id="cc-data">` JSON block: append
-to a group's `items` array (set `name`, `tone`, `status`, `purpose`, `starter`,
-`links`), or add a whole new group with its own `tag`, `title`, and `items`. Use
-`{date}` in a `starter` to auto-fill the generated date. Tones: `violet`, `cyan`,
-`green`, `amber`, `pink`, `accent`. Statuses: `ready`, `active`, `needsdata`.
+- **Daily Run Result**: last OS command, check state, recommended repo prompt, and the last project prompt copied in this browser.
+- **Plan**: priority board and next planning moves.
+- **Monitor**: project health, blockers, dirty flags, stale flags, and next action per project.
+- **Delegate**: compact agent cards with role, when to use, suggested task, evidence, and collapsed prompt preview.
+- **Progress**: one copy-ready next prompt per project repo, including Agentic OS.
+- **Run**: command cards for morning, refresh, verify, serve, and review prompts.
+- **Learn**: links into memory, lessons, decisions, and session-end updates.
+
+The Command Center reads `status.json` on localhost and falls back to the embedded `<script id="cc-data">` JSON block when opened directly.
 
 ## Update Status
 
-When status changes, update `status.json`, then mirror it into the embedded
-`<script id="status-data">` block in `index.html` so `file://` opening stays current.
-Sync command (run from `dashboard/`):
-
-```bash
-python3 - <<'PY'
-import re, json
-s=open("status.json",encoding="utf-8").read(); json.loads(s)
-h=open("index.html",encoding="utf-8").read()
-h=re.sub(r'(<script id="status-data" type="application/json">\n).*?(\n    </script>)',
-         lambda m: m.group(1)+s.rstrip("\n")+m.group(2), h, count=1, flags=re.S)
-open("index.html","w",encoding="utf-8").write(h); print("synced")
-PY
-```
+When status changes, run `./agentic-os refresh` from the repo root. The refresh layer updates `status.json`, the embedded Project Status fallback, generated markdown status files, Executive OS status, and the Command Center fallback.
 
 ## Scope Guardrails
 

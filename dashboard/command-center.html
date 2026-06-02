@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Agentic OS — Command Center</title>
+    <title>Agentic OS - Command Center</title>
     <style>
       :root {
+        color-scheme: dark;
         --bg: #0b0f1a;
         --bg-2: #11172a;
         --panel: #151d33;
@@ -21,627 +22,1197 @@
         --violet: #a78bfa;
         --cyan: #22d3ee;
         --pink: #f472b6;
-        --radius: 14px;
+        --radius: 12px;
+        --shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
         font-synthesis: none;
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
       body {
-        background: radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.08), transparent),
+        min-height: 100vh;
+        background: radial-gradient(900px 500px at 70% -10%, rgba(34, 211, 238, 0.08), transparent),
           linear-gradient(180deg, var(--bg), var(--bg-2));
         background-color: var(--bg);
         color: var(--ink);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-        min-height: 100vh;
       }
-      .wrap { max-width: 1240px; margin: 0 auto; padding: 28px 22px 80px; }
-
-      header.top {
-        display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
-        gap: 18px; border-bottom: 1px solid var(--line); padding-bottom: 22px; margin-bottom: 22px;
+      a { color: inherit; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px clamp(18px, 4vw, 46px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(11, 15, 26, 0.84);
+        backdrop-filter: blur(16px);
       }
-      .brand { display: flex; align-items: center; gap: 14px; }
-      .mark {
-        width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
-        font-weight: 800; letter-spacing: .5px; color: #06122b;
-        background: linear-gradient(135deg, var(--violet), var(--cyan));
-        box-shadow: 0 8px 24px rgba(167,139,250,.35);
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
       }
-      .brand h1 { font-size: 20px; margin: 0; letter-spacing: .2px; }
-      .brand p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; max-width: 560px; }
-      .stamp { text-align: right; color: var(--muted); font-size: 12.5px; }
-      .stamp a { color: var(--accent); text-decoration: none; }
-      .stamp strong { color: var(--ink); }
-
-      /* Controls */
-      .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 4px 0 26px; }
-      .search {
-        flex: 1; min-width: 220px; background: var(--panel); border: 1px solid var(--line);
-        border-radius: 10px; padding: 11px 14px; color: var(--ink); font-size: 13.5px;
+      .brand-mark {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--accent), var(--cyan));
+        color: #06122b;
+        font-weight: 850;
+        letter-spacing: 0;
       }
-      .search::placeholder { color: var(--faint); }
-      .search:focus { outline: none; border-color: var(--accent); }
-      .hint { color: var(--faint); font-size: 12px; white-space: nowrap; }
-
-      /* Shared dashboard nav */
-      .osnav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
-      .osnav a { font-size: 13px; color: var(--muted); text-decoration: none; padding: 7px 14px;
-        border-radius: 999px; border: 1px solid var(--line); background: var(--panel); }
-      .osnav a:hover { color: var(--ink); border-color: #36507f; }
-      .osnav a.active { color: #06122b; background: linear-gradient(135deg, var(--accent), var(--cyan));
-        border-color: transparent; font-weight: 700; }
-
-      /* Group */
-      .group { margin: 0 0 14px; }
-      .group-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 26px 0 12px; }
-      .group-head h2 { font-size: 14px; margin: 0; letter-spacing: .4px; text-transform: uppercase; }
-      .group-head .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--faint); }
-      .group-head .gline { flex: 1; height: 1px; background: var(--line); }
-
-      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-
-      .os {
-        position: relative; background: linear-gradient(180deg, var(--panel), var(--bg-2));
-        border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 14px;
-        display: flex; flex-direction: column; gap: 10px; transition: border-color .12s ease, transform .12s ease;
+      .brand strong,
+      .brand small { display: block; }
+      .brand small { color: var(--muted); }
+      .osnav { display: flex; flex-wrap: wrap; gap: 8px; }
+      .osnav a,
+      .chip-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 7px 13px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--panel);
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 650;
+        text-decoration: none;
       }
-      .os:hover { border-color: #36507f; transform: translateY(-2px); }
-      .os::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--accent); }
-      .os.t-violet::before { background: var(--violet); }
-      .os.t-cyan::before { background: var(--cyan); }
-      .os.t-green::before { background: var(--green); }
-      .os.t-amber::before { background: var(--amber); }
-      .os.t-pink::before { background: var(--pink); }
-      .os.t-accent::before { background: var(--accent); }
-
-      .os-head { display: flex; align-items: center; gap: 9px; }
-      .os-head .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
-      .os-head h3 { font-size: 15px; margin: 0; }
-      .os-head .pill { font-size: 10.5px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line);
-        color: var(--muted); margin-left: auto; white-space: nowrap; }
-      .pill.ready { color: var(--green); border-color: rgba(52,211,153,.4); }
-      .pill.active { color: var(--amber); border-color: rgba(251,191,36,.4); }
-      .pill.needsdata { color: var(--red); border-color: rgba(248,113,113,.4); }
-      .os .purpose { color: var(--muted); font-size: 12.5px; margin: 0; }
-
-      .prompt {
-        background: #0c1426; border: 1px solid var(--line); border-radius: 9px; padding: 10px 11px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px;
-        color: #b9c6e6; max-height: 92px; overflow: auto; white-space: pre-wrap; line-height: 1.45;
+      .osnav a:hover,
+      .chip-link:hover { color: var(--ink); border-color: #36507f; }
+      .osnav a.active {
+        color: #06122b;
+        background: linear-gradient(135deg, var(--accent), var(--cyan));
+        border-color: transparent;
+        font-weight: 760;
       }
-      .prompt::-webkit-scrollbar { width: 8px; }
-      .prompt::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
-
-      .actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-      .btn-copy {
-        background: linear-gradient(135deg, var(--accent), var(--cyan)); color: #06122b; border: none;
-        border-radius: 8px; padding: 8px 13px; font-size: 12.5px; font-weight: 700; cursor: pointer;
-        display: inline-flex; align-items: center; gap: 7px;
+      .shell {
+        width: min(1240px, 100%);
+        margin: 0 auto;
+        padding: 24px clamp(18px, 4vw, 32px) 64px;
       }
-      .btn-copy:hover { filter: brightness(1.06); }
-      .btn-copy.copied { background: var(--green); }
-      .links { display: flex; flex-wrap: wrap; gap: 6px; }
-      .links a {
-        font-size: 11.5px; color: var(--muted); text-decoration: none; background: var(--panel-2);
-        border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.95fr);
+        gap: 16px;
+        align-items: stretch;
       }
-      .links a:hover { color: var(--ink); border-color: #36507f; }
-      .links a::before { content: "⧉ "; color: var(--faint); }
-
-      .empty { color: var(--faint); font-size: 13px; padding: 30px 4px; text-align: center; display: none; }
-
-      footer { margin-top: 34px; color: var(--faint); font-size: 12px; border-top: 1px solid var(--line);
-        padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-      footer a { color: var(--accent); text-decoration: none; }
-
+      .focus-card,
+      .run-card,
+      .panel,
+      .task-card,
+      .project-card,
+      .mini-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, var(--panel), var(--bg-2));
+        box-shadow: var(--shadow);
+      }
+      .focus-card {
+        padding: clamp(20px, 3vw, 28px);
+        min-height: 260px;
+      }
+      .eyebrow {
+        margin: 0;
+        color: var(--faint);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 820px;
+        margin: 7px 0 14px;
+        font-size: clamp(1.9rem, 4vw, 3.4rem);
+        line-height: 1.02;
+        letter-spacing: 0.2px;
+      }
+      h2 { margin: 0; font-size: 1.1rem; }
+      h3 { margin: 0; font-size: 1rem; }
+      p { margin: 0; }
+      .summary { max-width: 840px; color: var(--muted); font-size: 0.98rem; }
+      .next-action {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid rgba(110, 168, 254, 0.35);
+        border-radius: 10px;
+        background: rgba(110, 168, 254, 0.08);
+      }
+      .next-action strong { display: block; margin-bottom: 4px; }
+      .run-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px;
+      }
+      .command {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 13px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #0c1426;
+        color: #c8d4ee;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.84rem;
+      }
+      .copy-btn,
+      .tab-btn {
+        border: 0;
+        border-radius: 9px;
+        cursor: pointer;
+        font: inherit;
+      }
+      .copy-btn {
+        min-height: 34px;
+        padding: 8px 12px;
+        background: linear-gradient(135deg, var(--accent), var(--cyan));
+        color: #06122b;
+        font-size: 0.82rem;
+        font-weight: 780;
+        white-space: nowrap;
+      }
+      .copy-btn.secondary {
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--ink);
+      }
+      .copy-btn.copied { background: var(--green); color: #06122b; }
+      .run-meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .mini-card {
+        padding: 12px;
+        box-shadow: none;
+      }
+      .mini-card .label { color: var(--faint); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+      .mini-card .value { margin-top: 4px; color: var(--ink); font-weight: 720; }
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 28px;
+        padding: 5px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .pill::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--faint);
+        content: "";
+      }
+      .pill.good::before { background: var(--green); }
+      .pill.warn::before { background: var(--amber); }
+      .pill.bad::before { background: var(--red); }
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 24px 0 16px;
+      }
+      .tab-btn {
+        min-height: 38px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--muted);
+        font-weight: 750;
+      }
+      .tab-btn.active {
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--accent), var(--cyan));
+        color: #06122b;
+      }
+      .section { display: none; }
+      .section.active { display: block; }
+      .panel { padding: 18px; }
+      .panel-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 14px;
+      }
+      .panel-head p { color: var(--muted); max-width: 660px; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 12px;
+      }
+      .task-card,
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        padding: 15px;
+        box-shadow: none;
+      }
+      .task-card::before,
+      .project-card::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        background: var(--accent);
+        content: "";
+      }
+      .tone-release::before { background: var(--amber); }
+      .tone-ceo::before { background: var(--violet); }
+      .tone-director::before { background: var(--cyan); }
+      .tone-qa::before { background: var(--green); }
+      .tone-dirty::before { background: var(--amber); }
+      .tone-blocked::before { background: var(--red); }
+      .task-top,
+      .project-top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .muted { color: var(--muted); }
+      .fine { color: var(--faint); font-size: 0.82rem; }
+      .task-card p,
+      .project-card p { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
+      .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #0c1426;
+      }
+      summary {
+        cursor: pointer;
+        padding: 9px 11px;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 720;
+      }
+      pre {
+        margin: 0;
+        padding: 0 11px 11px;
+        color: #b9c6e6;
+        white-space: pre-wrap;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.78rem;
+        line-height: 1.45;
+      }
+      .board-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .board-list ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 10px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .board-list li {
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        background: var(--panel-2);
+        padding: 9px 10px;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
       .toast {
-        position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px);
-        background: var(--green); color: #06122b; font-weight: 700; font-size: 13px;
-        padding: 10px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.4);
-        opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease;
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        transform: translateX(-50%) translateY(18px);
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: var(--green);
+        color: #06122b;
+        font-size: 0.86rem;
+        font-weight: 780;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.16s ease, transform 0.16s ease;
       }
       .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-      @media (max-width: 720px) {
-        .grid { grid-template-columns: 1fr; }
-        .stamp { text-align: left; }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 28px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+        color: var(--faint);
+        font-size: 0.82rem;
+      }
+      @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; }
+        .board-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .topbar { align-items: start; flex-direction: column; }
+      }
+      @media (max-width: 620px) {
+        .board-list,
+        .run-meta { grid-template-columns: 1fr; }
+      }
+      .daily-run {
+        margin-top: 16px;
+      }
+      .daily-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .daily-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <header class="top">
-        <div class="brand">
-          <div class="mark">OS</div>
-          <div>
-            <h1>Agentic OS — Command Center</h1>
-            <p>One place to plan the next move, run a workflow, or talk to any OS. Each card copies a context-loaded prompt you paste into Claude Code or Cursor, plus deep links into its docs.</p>
-          </div>
-        </div>
-        <div class="stamp">
-          <div>Updated <strong id="stamp-date"></strong></div>
-          <div>Static · no backend · no secrets</div>
-        </div>
-      </header>
-
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Global Agentic OS">
+        <span class="brand-mark">OS</span>
+        <span>
+          <strong>Agentic OS</strong>
+          <small>Command Center</small>
+        </span>
+      </a>
       <nav class="osnav" aria-label="Dashboards">
-        <a href="./command-center.html" class="active" aria-current="page">Command Center</a>
+        <a href="./index.html" class="active" aria-current="page">Command Center</a>
+        <a href="./project-status.html">Project Status</a>
         <a href="./orchestration.html">Orchestration Map</a>
-        <a href="./index.html">Project Status</a>
+        <a href="./executive.html">Executive</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./metrics.html">Metrics</a>
+        <a href="./data-flow.html">Data Flow</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="hero" aria-label="Today focus">
+        <article class="focus-card">
+          <p class="eyebrow">Today's focus</p>
+          <h1 id="focus-title">Refresh the OS, then pick the next move.</h1>
+          <p id="focus-summary" class="summary"></p>
+          <div class="next-action">
+            <strong>What should I do next?</strong>
+            <p id="next-action"></p>
+          </div>
+          <div id="status-row" class="status-row"></div>
+        </article>
+
+        <aside class="run-card" aria-label="One command">
+          <div>
+            <p class="eyebrow">One command</p>
+            <h2>Localhost control loop</h2>
+          </div>
+          <div class="command">
+            <span id="command-text">./agentic-os morning</span>
+            <button class="copy-btn" data-copy-target="command-text" type="button">Copy</button>
+          </div>
+          <div class="run-meta">
+            <div class="mini-card">
+              <span class="label">Last refresh</span>
+              <div id="last-refresh" class="value">Unknown</div>
+            </div>
+            <div class="mini-card">
+              <span class="label">Localhost</span>
+              <div id="localhost-url" class="value">Not running</div>
+            </div>
+            <div class="mini-card">
+              <span class="label">Sources read</span>
+              <div id="sources-count" class="value">0</div>
+            </div>
+            <div class="mini-card">
+              <span class="label">Checks</span>
+              <div id="checks-count" class="value">0</div>
+            </div>
+          </div>
+          <p id="safe-mode" class="fine"></p>
+        </aside>
+      </section>
+
+      <section class="panel daily-run" aria-label="Daily Run Result">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Daily run result</p>
+            <h2 id="daily-title">Morning loop status</h2>
+          </div>
+          <p id="daily-summary">Run the morning loop to refresh the operating picture.</p>
+        </div>
+        <div class="daily-grid">
+          <div class="mini-card"><span class="label">Last command</span><div id="daily-command" class="value">Unknown</div></div>
+          <div class="mini-card"><span class="label">Checks</span><div id="daily-checks" class="value">Unknown</div></div>
+          <div class="mini-card"><span class="label">Next repo</span><div id="daily-repo" class="value">Unknown</div></div>
+          <div class="mini-card"><span class="label">Last copied</span><div id="daily-last-copied" class="value">None yet</div></div>
+        </div>
+        <p id="daily-prompt-label" class="fine"></p>
+        <pre id="daily-recommended-prompt" hidden></pre>
+        <div class="daily-actions">
+          <button id="daily-copy" class="copy-btn" data-copy-target="daily-recommended-prompt" type="button">Copy recommended prompt</button>
+          <a class="chip-link" href="./data-flow.html">View data flow</a>
+          <a class="chip-link" href="./executive.html">Executive overview</a>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="Command Center sections">
+        <button class="tab-btn active" type="button" data-tab="plan">Plan</button>
+        <button class="tab-btn" type="button" data-tab="monitor">Monitor</button>
+        <button class="tab-btn" type="button" data-tab="delegate">Delegate</button>
+        <button class="tab-btn" type="button" data-tab="progress">Progress</button>
+        <button class="tab-btn" type="button" data-tab="run">Run</button>
+        <button class="tab-btn" type="button" data-tab="learn">Learn</button>
       </nav>
 
-      <div class="controls">
-        <input id="search" class="search" type="search" placeholder="Filter OSes and agents — e.g. ceo, research, distribution, qa…" autocomplete="off" />
-        <span class="hint" id="count-hint"></span>
-      </div>
+      <section id="plan" class="section active">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Plan</p>
+              <h2>Action board</h2>
+            </div>
+            <p>Use this to choose the next block of work without reopening every project.</p>
+          </div>
+          <div id="priority-board" class="board-list"></div>
+        </div>
+      </section>
 
-      <div id="groups"></div>
-      <div class="empty" id="empty">No OS matches that filter.</div>
+      <section id="monitor" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Monitor</p>
+              <h2>Project health</h2>
+            </div>
+            <p>Dirty repos are shown explicitly. The OS does not clean or normalize product repos during refresh.</p>
+          </div>
+          <div id="project-health" class="grid"></div>
+        </div>
+      </section>
+
+      <section id="delegate" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Delegate</p>
+              <h2>Agent queue</h2>
+            </div>
+            <p>Copy a task packet into Codex, Claude, or Cursor. Nothing runs from the page.</p>
+          </div>
+          <div id="agent-queue" class="grid"></div>
+        </div>
+      </section>
+
+      <section id="progress" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Progress</p>
+              <h2>Project prompts</h2>
+            </div>
+            <p>Copy one prompt inside the matching project repo to make the next concrete move.</p>
+          </div>
+          <div id="project-prompts" class="grid"></div>
+        </div>
+      </section>
+
+      <section id="run" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Run</p>
+              <h2>Workflow launchers</h2>
+            </div>
+            <p>These are copy-ready commands and prompts for common Agentic OS runs.</p>
+          </div>
+          <div id="run-grid" class="grid"></div>
+        </div>
+      </section>
+
+      <section id="learn" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Learn</p>
+              <h2>Memory and links</h2>
+            </div>
+            <p>Use this when you are done for the day or need to reload context before planning.</p>
+          </div>
+          <div id="learn-grid" class="grid"></div>
+          <div class="links">
+            <a class="chip-link" href="../tasks/MEMORY.md">Agentic OS Memory</a>
+            <a class="chip-link" href="../DECISIONS.md">Decisions</a>
+            <a class="chip-link" href="../LESSONS.md">Lessons</a>
+            <a class="chip-link" href="../executive-os/EXECUTIVE-DASHBOARD.md">Executive Dashboard</a>
+            <a class="chip-link" href="../DASHBOARD.md">Markdown Dashboard</a>
+          </div>
+        </div>
+      </section>
 
       <footer>
-        <span>Static artifact · opens via file:// · no backend, no secrets. Copy a starter, paste into your agent.</span>
-        <span><a href="./orchestration.html">Orchestration Map</a> · <a href="./index.html">Project Status</a> · <a href="../executive-os/README.md">Executive OS</a> · <a href="../distribution-os/distribution-command-center.md">Distribution Center</a></span>
+        <span>Static localhost dashboard. No backend, auth, secrets, production writes, or external dashboard calls.</span>
+        <span>Source of truth: <code>dashboard/status.json</code> plus local project repos.</span>
       </footer>
-    </div>
+    </main>
 
-    <div class="toast" id="toast">Copied — paste into Claude Code or Cursor</div>
+    <div id="toast" class="toast">Copied</div>
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-05-31",
-  "groups": [
-    {
-      "tag": "Planner",
-      "title": "Plan the next move",
-      "items": [
-        {
-          "id": "sprint",
-          "name": "Generate next sprint",
-          "tone": "pink",
-          "status": "ready",
-          "purpose": "Fuse the Action Board (Now / Next) and the Decision Board into one concrete, reviewable one-week sprint.",
-          "starter": "Act as the Director with CEO OS judgment. Read PROJECT-STATUS.md, dashboard/status.json (priorityBoard, decisionBoard, executiveBoard) and executive-os/EXECUTIVE-DECISIONS.md. Then: (1) resolve each open decision on the Decision Board with a recommended option, (2) pick the top 3 actions from the Now column, (3) produce a one-week sprint plan as a markdown file under sprints/ using TEMPLATES/development-story-template.md for each story (goal, acceptance criteria, test, scope-gate note). Keep it to one reviewable story at a time. End with the single story I should start first and why.",
-          "links": [
-            { "label": "PROJECT-STATUS.md", "href": "../PROJECT-STATUS.md" },
-            { "label": "status.json", "href": "./status.json" },
-            { "label": "story template", "href": "../TEMPLATES/development-story-template.md" },
-            { "label": "sprints/", "href": "../sprints/" }
-          ]
-        },
-        {
-          "id": "decisions",
-          "name": "Resolve open decisions",
-          "tone": "pink",
-          "status": "ready",
-          "purpose": "Work only the Decision Board: options, a recommendation, cost of delay, then log the call.",
-          "starter": "Act as the CEO OS. Read dashboard/status.json (decisionBoard) and executive-os/EXECUTIVE-DECISIONS.md. For each open decision: state the options, give one recommended option with the reasoning, and the cost of delay. Then write the resolutions into executive-os/EXECUTIVE-DECISIONS.md dated {date} using TEMPLATES/decision-template.md. End with the one decision that unblocks the most work.",
-          "links": [
-            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" },
-            { "label": "decision template", "href": "../TEMPLATES/decision-template.md" },
-            { "label": "status.json", "href": "./status.json" }
-          ]
-        },
-        {
-          "id": "feature",
-          "name": "Draft next feature plan",
-          "tone": "pink",
-          "status": "ready",
-          "purpose": "Turn a Later-column item or a drafted spec (e.g. RunSmart 1.0.1) into an implementation plan.",
-          "starter": "Act as the Architect with PM judgment. Read PROJECT-STATUS.md (the Later column) and the relevant product spec (e.g. the RunSmart 1.0.1 fast-follow UX redesign spec in the RunSmart iOS repo). Pick the highest-leverage next feature and produce an implementation plan using PROMPTS/plan-feature.md: architecture, data flow, key files, edge cases, tests, risks. Do not write code. Apply the scope gate. End with a 5-step plan and the open questions to resolve first.",
-          "links": [
-            { "label": "plan-feature prompt", "href": "../PROMPTS/plan-feature.md" },
-            { "label": "story template", "href": "../TEMPLATES/development-story-template.md" },
-            { "label": "PROJECT-STATUS.md", "href": "../PROJECT-STATUS.md" }
-          ]
-        }
+  "generated": "2026-06-02",
+  "fallbackStatus": {
+    "summary": {
+      "overallStatus": "RunSmart iOS v1.0 build 6 is in App Store review context and should stay frozen. Resumely iOS cleared analytics and UX/export gates on June 1, so the next constraint is an authenticated real-device smoke plus App Store Connect upload. RunSmart Web and ResumeBuilder Web are support repos and need dirty-tree triage before more implementation.",
+      "bestNextAction": "Resumely iOS: run the authenticated device smoke from tasks/session-log.md, verify PostHog/export coverage, then upload screenshots/listing and submit. RunSmart iOS: monitor Apple review and do not mutate v1.0 release artifacts.",
+      "mainBlockers": [
+        "RunSmart iOS: Apple review outcome is external; v1.0 artifacts should remain frozen.",
+        "Resumely iOS: no local Fastlane config / ASC API key, or manual portal upload is needed.",
+        "Resumely iOS: real-device authenticated smoke has not been run after the June 1 fixes.",
+        "RunSmart Web: dirty local tree with many modified/untracked files before more voice work.",
+        "ResumeBuilder Web: rollout plan remains unchecked on a dirty PDF parse branch.",
+        "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web)."
+      ],
+      "needsDecision": [
+        "RunSmart 1.0.1: wait for v1.0 review outcome, then choose the smallest Sprint 11 scope.",
+        "Resumely iOS: Fastlane / ASC API key versus manual App Store Connect upload.",
+        "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ]
     },
-    {
-      "tag": "Layer 8",
-      "title": "Executive Intelligence",
-      "items": [
-        {
-          "id": "ceo",
-          "name": "CEO OS",
-          "tone": "violet",
-          "status": "active",
-          "purpose": "Strategy, OKRs, weekly priorities, portfolio tradeoffs, and the one decision that matters this week.",
-          "starter": "Act as the CEO OS for the Agentic OS portfolio. Read executive-os/CEO-OS.md, executive-os/EXECUTIVE-DECISIONS.md, executive-os/EXECUTIVE-METRICS.md and executive-os/EXECUTIVE-RHYTHM.md. Then run the Weekly CEO Review for {date} following executive-os/workflows/weekly-ceo-review.md. Do not invent financial or user numbers; mark every unknown as \"unknown — need: <source>\". End with the single highest-leverage decision I must make this week and a recommended option.",
-          "links": [
-            { "label": "CEO-OS.md", "href": "../executive-os/CEO-OS.md" },
-            { "label": "weekly-ceo-review.md", "href": "../executive-os/workflows/weekly-ceo-review.md" },
-            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" },
-            { "label": "review prompt", "href": "../PROMPTS/executive-weekly-review.md" }
-          ]
-        },
-        {
-          "id": "cfo",
-          "name": "CFO / Monetization OS",
-          "tone": "amber",
-          "status": "needsdata",
-          "purpose": "Budget, revenue, pricing, unit economics, cost control, and runway. Markdown-first, never invents numbers.",
-          "starter": "Act as the CFO / Monetization OS. Read executive-os/CFO-OS.md, executive-os/EXECUTIVE-METRICS.md and distribution-os/metrics-dashboard.md. Run the Monthly Finance Review per executive-os/workflows/monthly-finance-review.md. Never invent revenue, cost, conversion, or user numbers; every missing value is \"unknown — need: <source>\". Include risks and a validation plan. End with what to monetize next and what to stop spending on.",
-          "links": [
-            { "label": "CFO-OS.md", "href": "../executive-os/CFO-OS.md" },
-            { "label": "monthly-finance-review.md", "href": "../executive-os/workflows/monthly-finance-review.md" },
-            { "label": "EXECUTIVE-METRICS.md", "href": "../executive-os/EXECUTIVE-METRICS.md" },
-            { "label": "finance prompt", "href": "../PROMPTS/cfo-monthly-review.md" }
-          ]
-        },
-        {
-          "id": "analysis",
-          "name": "Analysis OS",
-          "tone": "cyan",
-          "status": "ready",
-          "purpose": "Research, ideation, competitor and market scans, opportunity discovery, consultancy-style recommendations.",
-          "starter": "Act as the Analysis OS. Read executive-os/ANALYSIS-OS.md and follow executive-os/workflows/research-brief.md. Topic: <STATE YOUR QUESTION HERE>. Structure the output exactly as: Facts, Sources, Assumptions, Insights, Opportunities, Risks, Recommendations, Open questions, Decision needed. Score every opportunity on impact, confidence, effort, revenue potential, strategic fit, and risk before recommending it. Cite or label source quality for every research claim. End with a confidence level and one recommended next step.",
-          "links": [
-            { "label": "ANALYSIS-OS.md", "href": "../executive-os/ANALYSIS-OS.md" },
-            { "label": "research-brief.md", "href": "../executive-os/workflows/research-brief.md" },
-            { "label": "opportunity-card", "href": "../executive-os/templates/opportunity-card-template.md" },
-            { "label": "research prompt", "href": "../PROMPTS/analysis-research-sprint.md" }
-          ]
-        }
+    "priorityBoard": {
+      "now": [
+        "Resumely iOS: run authenticated real-device smoke through optimize, design, expert, preview/export.",
+        "Resumely iOS: verify PostHog Live Events/export coverage from a keyed build.",
+        "Resumely iOS: upload screenshots/listing and submit after smoke passes.",
+        "RunSmart iOS: monitor App Store review and keep v1.0 frozen."
+      ],
+      "next": [
+        "RunSmart iOS: after review outcome, scope 1.0.1 from Sprint 11 planning artifacts.",
+        "RunSmart Web: triage dirty tree before more voice work.",
+        "ResumeBuilder Web: complete rollout shadow enablement only if Resumely smoke exposes backend blockers."
+      ],
+      "later": [
+        "Both apps: revenue, cost, and activation dashboards once App Store data exists.",
+        "Resumely iOS: Resume Library backend, PDF/export QA expansion, Hebrew/RTL.",
+        "RunSmart iOS: Garmin webhook audit and post-launch activation funnel review."
+      ],
+      "blocked": [
+        "RunSmart iOS App Store review outcome depends on Apple.",
+        "Resumely iOS ASC upload until credentials or portal session are available.",
+        "Resumely Resume Library until /api/v1/resumes returns JSON."
       ]
     },
+    "runCenter": {
+      "lastRefresh": "2026-06-02 13:54",
+      "command": "./agentic-os morning",
+      "localhostUrl": "http://127.0.0.1:8788/index.html",
+      "sourcesRead": [
+        "Agentic OS: tasks/MEMORY.md",
+        "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
+        "ResumeBuilder AI (Web): tasks/MEMORY.md",
+        "Resumely iOS: docs/product/current-product-state.md",
+        "Resumely iOS: docs/product/product-vision.md",
+        "Resumely iOS: docs/specs/README.md",
+        "Resumely iOS: tasks/MEMORY.md",
+        "Resumely iOS: tasks/progress.md",
+        "Resumely iOS: tasks/session-log.md",
+        "Resumely iOS: tasks/todo.md",
+        "RunSmart Web: docs/agent-os/project-context.md",
+        "RunSmart Web: tasks/MEMORY.md",
+        "RunSmart iOS: docs/specs/README.md",
+        "RunSmart iOS: tasks/MEMORY.md",
+        "RunSmart iOS: tasks/session-log.md",
+        "RunSmart iOS: tasks/todo.md"
+      ],
+      "checksRun": [
+        "dashboard/status.json parsed",
+        "embedded dashboard JSON parsed",
+        "project-status.html fallback sync checked",
+        "git diff --check"
+      ],
+      "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
+      "synthesisNote": "This refresh is deterministic. For richer narrative synthesis, copy a Command Center prompt into Codex or Claude."
+    },
+    "projectHealth": [
+      {
+        "id": "runsmart-ios",
+        "name": "RunSmart iOS",
+        "state": "App Store review plus 1.0.1 planning",
+        "nextAction": "Monitor App Store review and respond to Apple feedback.",
+        "blockerCount": 3,
+        "dirty": true,
+        "dirtyCount": 24,
+        "branch": "main...origin/main [ahead 1]",
+        "lastCommit": "2026-05-31 234d2d5 Add UX redesign spec for 1.0.1 fast follow",
+        "stale": false,
+        "sourceFiles": [
+          "tasks/MEMORY.md",
+          "tasks/todo.md",
+          "tasks/session-log.md",
+          "docs/specs/README.md"
+        ]
+      },
+      {
+        "id": "resumebuilder-ios",
+        "name": "Resumely iOS",
+        "state": "Pre-submission QA and App Store upload",
+        "nextAction": "Run the authenticated device smoke from tasks/session-log.md.",
+        "blockerCount": 3,
+        "dirty": true,
+        "dirtyCount": 1,
+        "branch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
+        "lastCommit": "2026-06-01 402a0b4 Fix preview and export stability",
+        "stale": false,
+        "sourceFiles": [
+          "tasks/MEMORY.md",
+          "tasks/todo.md",
+          "tasks/progress.md",
+          "tasks/session-log.md",
+          "docs/specs/README.md",
+          "docs/product/product-vision.md",
+          "docs/product/current-product-state.md"
+        ]
+      },
+      {
+        "id": "runsmart-web",
+        "name": "RunSmart Web",
+        "state": "Sprint 11 backend support / reference",
+        "nextAction": "Triage modified/untracked files before more web work.",
+        "blockerCount": 1,
+        "dirty": true,
+        "dirtyCount": 36,
+        "branch": "main...origin/main [ahead 2]",
+        "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
+        "stale": false,
+        "sourceFiles": [
+          "tasks/MEMORY.md",
+          "docs/agent-os/project-context.md"
+        ]
+      },
+      {
+        "id": "agentic-os",
+        "name": "Agentic OS",
+        "state": "Cross-project status and executive refresh",
+        "nextAction": "Run dashboard JSON checks.",
+        "blockerCount": 0,
+        "dirty": true,
+        "dirtyCount": 19,
+        "branch": "main",
+        "lastCommit": "2026-06-01 a34cfc2 Merge pull request #1 from nadavyigal/claude/affectionate-leakey-1dd175",
+        "stale": false,
+        "sourceFiles": [
+          "tasks/MEMORY.md"
+        ]
+      },
+      {
+        "id": "resumebuilder-ai",
+        "name": "ResumeBuilder AI (Web)",
+        "state": "PDF parse/render-preview rollout",
+        "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
+        "blockerCount": 2,
+        "dirty": true,
+        "dirtyCount": 2,
+        "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error",
+        "lastCommit": "2026-06-02 673f6f1 chore: resolve merge conflicts with main",
+        "stale": false,
+        "sourceFiles": [
+          "tasks/MEMORY.md",
+          "docs/agent-os/project-context.md"
+        ]
+      }
+    ],
+    "agentQueue": [
+      {
+        "role": "Release Manager",
+        "task": "Run Resumely iOS live-device smoke, then prepare ASC upload.",
+        "whenToUse": "Use when the next move touches App Store readiness, screenshots, smoke QA, or submission gates.",
+        "evidence": "PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md",
+        "starter": "Act as the Release Manager for Resumely iOS. Read PROJECT-STATUS.md and the ResumeBuilder iOS tasks/session-log.md. Produce the exact smoke checklist, expected evidence, and ASC upload sequence. Do not submit or upload without explicit approval."
+      },
+      {
+        "role": "CEO OS",
+        "task": "Resolve the next portfolio decision and keep focus tight.",
+        "whenToUse": "Use when there are competing next moves across RunSmart, Resumely, distribution, and backend support.",
+        "evidence": "executive-os/EXECUTIVE-DASHBOARD.md, dashboard/status.json decisionBoard",
+        "starter": "Act as CEO OS. Read dashboard/status.json and executive-os/EXECUTIVE-DASHBOARD.md. Pick the one highest-leverage decision, recommend an option, state cost of delay, and list the single next action."
+      },
+      {
+        "role": "Director / Orchestrator",
+        "task": "Turn the current Action Board into one reviewable work packet.",
+        "whenToUse": "Use when you want the next agent task delegated without losing source context.",
+        "evidence": "dashboard/status.json priorityBoard and projectHealth",
+        "starter": "Act as Director. Read dashboard/status.json, especially priorityBoard, projectHealth, and agentQueue. Create one decision-complete task packet for the recommended agent. Include goal, files to read, acceptance criteria, checks, and what not to touch."
+      },
+      {
+        "role": "QA",
+        "task": "Verify dashboard or product readiness with evidence.",
+        "whenToUse": "Use before calling a status, UI, or release task done.",
+        "evidence": "GLOBAL-QA-RULES.md, dashboard runCenter checksRun",
+        "starter": "Act as QA. Read GLOBAL-QA-RULES.md and dashboard/status.json. Build a focused QA checklist for the target change, run the available checks, and report pass/fail with evidence and missing validation."
+      }
+    ],
+    "projectPrompts": [
+      {
+        "projectId": "runsmart-ios",
+        "project": "RunSmart iOS",
+        "role": "iOS Release / Product Engineer",
+        "repoState": "Dirty",
+        "branch": "main...origin/main [ahead 1]",
+        "nextAction": "Monitor App Store review and respond to Apple feedback.",
+        "evidence": [
+          "tasks/MEMORY.md",
+          "tasks/todo.md",
+          "tasks/session-log.md",
+          "docs/specs/README.md"
+        ],
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md. Current state: App Store review plus 1.0.1 planning. Next action: Monitor App Store review and respond to Apple feedback.. Known blockers: Apple review outcome is external.; Garmin freshness Story 4 (webhook audit) is backend/human investigation.; Local repo has dirty release/planning files that need triage before 1.0.1 work.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      },
+      {
+        "projectId": "resumebuilder-ios",
+        "project": "Resumely iOS",
+        "role": "iOS Release Manager",
+        "repoState": "Dirty",
+        "branch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
+        "nextAction": "Run the authenticated device smoke from tasks/session-log.md.",
+        "evidence": [
+          "tasks/MEMORY.md",
+          "tasks/todo.md",
+          "tasks/progress.md",
+          "tasks/session-log.md",
+          "docs/specs/README.md",
+          "docs/product/product-vision.md",
+          "docs/product/current-product-state.md"
+        ],
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-submission QA and App Store upload. Next action: Run the authenticated device smoke from tasks/session-log.md.. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      },
+      {
+        "projectId": "runsmart-web",
+        "project": "RunSmart Web",
+        "role": "Backend Support Engineer",
+        "repoState": "Dirty",
+        "branch": "main...origin/main [ahead 2]",
+        "nextAction": "Triage modified/untracked files before more web work.",
+        "evidence": [
+          "tasks/MEMORY.md",
+          "docs/agent-os/project-context.md"
+        ],
+        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: Sprint 11 backend support / reference. Next action: Triage modified/untracked files before more web work.. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      },
+      {
+        "projectId": "agentic-os",
+        "project": "Agentic OS",
+        "role": "Agentic OS Operator",
+        "repoState": "Dirty",
+        "branch": "main",
+        "nextAction": "Run dashboard JSON checks.",
+        "evidence": [
+          "tasks/MEMORY.md"
+        ],
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md. Current state: Cross-project status and executive refresh. Next action: Run dashboard JSON checks.. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      },
+      {
+        "projectId": "resumebuilder-ai",
+        "project": "ResumeBuilder AI (Web)",
+        "role": "Backend Rollout Engineer",
+        "repoState": "Dirty",
+        "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error",
+        "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
+        "evidence": [
+          "tasks/MEMORY.md",
+          "docs/agent-os/project-context.md"
+        ],
+        "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: PDF parse/render-preview rollout. Next action: Leave parked unless Resumely smoke exposes backend parse/render issues.. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      }
+    ],
+    "executiveOverview": {
+      "headline": "Resumely iOS: run the authenticated device smoke from tasks/session-log.md, verify PostHog/export coverage, then upload screenshots/listing and submit. RunSmart iOS: monitor Apple review and do not mutate v1.0 release artifacts.",
+      "portfolioState": "RunSmart iOS v1.0 build 6 is in App Store review context and should stay frozen. Resumely iOS cleared analytics and UX/export gates on June 1, so the next constraint is an authenticated real-device smoke plus App Store Connect upload. RunSmart Web and ResumeBuilder Web are support repos and need dirty-tree triage before more implementation.",
+      "focus": [
+        "Resumely iOS: authenticated real-device smoke and event/export verification.",
+        "Resumely iOS: ASC upload and submit after smoke passes.",
+        "RunSmart iOS: monitor App Store review, then scope 1.0.1 after review outcome."
+      ],
+      "risks": [
+        "RunSmart iOS: Apple review outcome is external; v1.0 artifacts should remain frozen.",
+        "Resumely iOS: no local Fastlane config / ASC API key, or manual portal upload is needed.",
+        "Resumely iOS: real-device authenticated smoke has not been run after the June 1 fixes.",
+        "RunSmart Web: dirty local tree with many modified/untracked files before more voice work.",
+        "ResumeBuilder Web: rollout plan remains unchecked on a dirty PDF parse branch.",
+        "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web)."
+      ],
+      "openDecisionCount": 3,
+      "blockedProjectCount": 4,
+      "dirtyProjectCount": 5,
+      "dirtyProjects": [
+        "RunSmart iOS",
+        "Resumely iOS",
+        "RunSmart Web",
+        "Agentic OS",
+        "ResumeBuilder AI (Web)"
+      ],
+      "blockedProjects": [
+        "RunSmart iOS",
+        "Resumely iOS",
+        "RunSmart Web",
+        "ResumeBuilder AI (Web)"
+      ],
+      "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
+      "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired."
+    },
+    "dataFlow": [
+      {
+        "step": "1. Project paths",
+        "source": "PROJECT-PATHS.md",
+        "output": "Canonical local folders for RunSmart, Resumely, web support repos, and Agentic OS."
+      },
+      {
+        "step": "2. Local evidence",
+        "source": "git status/log plus tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md",
+        "output": "Dirty flags, branch state, last commit, source files read, blockers, and next actions."
+      },
+      {
+        "step": "3. Shared contract",
+        "source": "dashboard/status.json",
+        "output": "projects, projectHealth, executiveOverview, projectPrompts, dailyRunResult, agentQueue, decisions, QA, metrics, and runCenter."
+      },
+      {
+        "step": "4. Localhost dashboards",
+        "source": "dashboard/*.html",
+        "output": "Command Center, Project Status, Orchestration, Executive, Decisions, Metrics, and Data Flow pages."
+      },
+      {
+        "step": "5. Delegation",
+        "source": "dailyRunResult plus copy-ready prompts",
+        "output": "Paste the recommended prompt inside the right project repo to make one concrete progress step."
+      }
+    ]
+  },
+  "runs": [
     {
-      "tag": "Layers 0 & 2",
-      "title": "Orchestration & Growth",
-      "items": [
-        {
-          "id": "director",
-          "name": "Director / Orchestrator",
-          "tone": "violet",
-          "status": "active",
-          "purpose": "Routes multi-agent work, enforces the planning protocol, and gives the cross-project morning brief.",
-          "starter": "Act as the Director / Orchestrator. Read SKILLS/director-agent.md, GLOBAL-AGENT-RULES.md and GLOBAL-WORKFLOWS.md. Give me a cross-project morning brief for {date} using PROMPTS/morning-brief.md across RunSmart (web + iOS) and Resumely iOS: what shipped, what is in flight, what is blocked, and the single best next focus. Then propose which agent role should own each top action.",
-          "links": [
-            { "label": "director-agent.md", "href": "../SKILLS/director-agent.md" },
-            { "label": "GLOBAL-AGENT-RULES.md", "href": "../GLOBAL-AGENT-RULES.md" },
-            { "label": "GLOBAL-WORKFLOWS.md", "href": "../GLOBAL-WORKFLOWS.md" },
-            { "label": "morning-brief prompt", "href": "../PROMPTS/morning-brief.md" }
-          ]
-        },
-        {
-          "id": "distribution",
-          "name": "Distribution OS",
-          "tone": "green",
-          "status": "active",
-          "purpose": "Acquisition engine: ASO, SEO, directories, lifecycle email, partnerships. ASO is the live wedge.",
-          "starter": "Act as the Distribution OS. Read distribution-os/distribution-command-center.md, distribution-os/weekly-growth-review.md and distribution-os/operating-principles.md. Run this week's distribution review for {date}: what shipped, what moved, what is blocked, and the top 3 growth actions for next week. ASO is the live wedge; keep post-approval channels staged. Cite the source file for each status and do not invent metrics.",
-          "links": [
-            { "label": "command-center.md", "href": "../distribution-os/distribution-command-center.md" },
-            { "label": "weekly-growth-review.md", "href": "../distribution-os/weekly-growth-review.md" },
-            { "label": "channel-backlog.md", "href": "../distribution-os/channel-backlog.md" },
-            { "label": "weekly run prompt", "href": "../distribution-os/prompts/weekly-distribution-run.md" }
-          ]
-        },
-        {
-          "id": "growth",
-          "name": "Growth Agent",
-          "tone": "green",
-          "status": "active",
-          "purpose": "Executes distribution campaigns and growth experiments, then reads the results.",
-          "starter": "Act as the Growth agent. Read SKILLS/growth-agent.md and distribution-os/operating-principles.md. Design one distribution experiment I can run this week with a clear hypothesis, the single metric it moves, the channel, the effort, and how we will read the result. Follow PROMPTS/distribution-campaign.md. Do not invent baseline metrics; mark unknowns and state how to capture them.",
-          "links": [
-            { "label": "growth-agent.md", "href": "../SKILLS/growth-agent.md" },
-            { "label": "experiment-log.md", "href": "../distribution-os/experiment-log.md" },
-            { "label": "campaign prompt", "href": "../PROMPTS/distribution-campaign.md" }
-          ]
-        }
-      ]
+      "name": "Morning refresh",
+      "tone": "director",
+      "purpose": "Refresh local evidence, sync dashboards, verify, and serve localhost.",
+      "starter": "./agentic-os morning"
     },
     {
-      "tag": "Layer 4",
-      "title": "Delivery Agents",
-      "items": [
-        {
-          "id": "architect",
-          "name": "Architect",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Plans and technical design before any code. Diagrams, data flow, edge cases.",
-          "starter": "Act as the Architect agent. Read SKILLS/architect-agent.md and the planning protocol. Feature/problem: <DESCRIBE IT>. Produce an implementation plan following PROMPTS/plan-feature.md: architecture, data flow, key files, edge cases, test coverage, and risks. Do not write code yet. End with a step-by-step plan in 5 steps or fewer and the open questions you need answered first.",
-          "links": [
-            { "label": "architect-agent.md", "href": "../SKILLS/architect-agent.md" },
-            { "label": "plan-feature prompt", "href": "../PROMPTS/plan-feature.md" }
-          ]
-        },
-        {
-          "id": "pm",
-          "name": "Product Manager",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Specs, scope gates, and story slicing. Keeps work to one reviewable story at a time.",
-          "starter": "Act as the Product Manager agent. Read SKILLS/product-manager-agent.md. Goal: <DESCRIBE IT>. Slice it into the smallest reviewable stories, each with acceptance criteria and a test. Apply the scope gate: flag anything that would touch more than 3 unexpected files. Follow PROMPTS/implement-story.md for the first story only. End by asking me to confirm the first story before any code.",
-          "links": [
-            { "label": "product-manager-agent.md", "href": "../SKILLS/product-manager-agent.md" },
-            { "label": "implement-story prompt", "href": "../PROMPTS/implement-story.md" }
-          ]
-        },
-        {
-          "id": "qa",
-          "name": "QA",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Evidence-based completion gates. Nothing is done without lint pass, test pass, or manual QA.",
-          "starter": "Act as the QA agent. Read SKILLS/qa-agent.md and GLOBAL-QA-RULES.md. Target: <PROJECT / CHANGE>. Produce a QA plan and run it following PROMPTS/qa-review.md: what to test, expected vs actual, and the completion evidence required. Do not mark anything done without lint pass, test pass, or a manual QA report. End with a clear pass/fail and the exact evidence captured.",
-          "links": [
-            { "label": "qa-agent.md", "href": "../SKILLS/qa-agent.md" },
-            { "label": "GLOBAL-QA-RULES.md", "href": "../GLOBAL-QA-RULES.md" },
-            { "label": "qa-review prompt", "href": "../PROMPTS/qa-review.md" }
-          ]
-        },
-        {
-          "id": "release",
-          "name": "Release Manager",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Archive, upload, submit, changelog. Owns the path from green build to App Store.",
-          "starter": "Act as the Release Manager agent. Read SKILLS/release-manager-agent.md. Target release: <PROJECT / BUILD>. Walk the release checklist: signing, bundle id, privacy strings, screenshots, release notes, and submit steps. Never deploy, submit, or run migrations without my explicit yes in the message. Draft the PR summary using PROMPTS/pr-summary.md and end with the exact remaining manual steps.",
-          "links": [
-            { "label": "release-manager-agent.md", "href": "../SKILLS/release-manager-agent.md" },
-            { "label": "pr-summary prompt", "href": "../PROMPTS/pr-summary.md" }
-          ]
-        },
-        {
-          "id": "uiux",
-          "name": "UI / UX",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Design review, visual hierarchy, and App Store screenshot quality.",
-          "starter": "Act as the UI / UX agent. Read SKILLS/ui-ux-agent.md. Target: <SCREEN / FLOW / SCREENSHOTS>. Run a design review following PROMPTS/ui-review.md: visual hierarchy, spacing, consistency, accessibility, and any AI-slop patterns. Give concrete, specific fixes tied to the actual screens, not generic advice. End with a prioritized fix list.",
-          "links": [
-            { "label": "ui-ux-agent.md", "href": "../SKILLS/ui-ux-agent.md" },
-            { "label": "ui-review prompt", "href": "../PROMPTS/ui-review.md" }
-          ]
-        }
-      ]
+      "name": "Refresh only",
+      "tone": "director",
+      "purpose": "Update status artifacts without starting a server.",
+      "starter": "./agentic-os refresh"
     },
     {
-      "tag": "Runs",
-      "title": "Runs / Workflows",
-      "items": [
-        {
-          "id": "morning-brief",
-          "name": "Morning Brief",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Cross-project status: what shipped, what is in flight, what is blocked, and the best next focus.",
-          "starter": "Run the morning brief for {date}: read PROMPTS/morning-brief.md and execute it across RunSmart (web + iOS) and Resumely iOS. Read recent git activity, MEMORY.md, todos, and active plans. Output a one-page brief ending with the single recommended focus for today.",
-          "links": [
-            { "label": "morning-brief.md", "href": "../PROMPTS/morning-brief.md" }
-          ]
-        },
-        {
-          "id": "exec-review",
-          "name": "Weekly Exec Review",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "The Weekly CEO Review: priorities, decisions, OKR progress, and the week's top 3.",
-          "starter": "Run the Weekly Exec Review for {date}: read PROMPTS/executive-weekly-review.md and executive-os/workflows/weekly-ceo-review.md and execute. Pull from DASHBOARD.md, PROJECT-STATUS.md, EXECUTIVE-DASHBOARD.md and EXECUTIVE-DECISIONS.md. Invent no numbers. End with the week's top 3 and the one decision to make.",
-          "links": [
-            { "label": "executive-weekly-review.md", "href": "../PROMPTS/executive-weekly-review.md" },
-            { "label": "exec-review.md", "href": "../PROMPTS/exec-review.md" }
-          ]
-        },
-        {
-          "id": "distribution-weekly",
-          "name": "Weekly Distribution Run",
-          "tone": "green",
-          "status": "ready",
-          "purpose": "This week's growth review and the next distribution actions.",
-          "starter": "Run the weekly distribution review for {date}: read distribution-os/prompts/weekly-distribution-run.md and distribution-os/weekly-growth-review.md and execute. What shipped, what moved, what is blocked, and the top 3 growth actions. Cite source files; invent no metrics.",
-          "links": [
-            { "label": "weekly-distribution-run.md", "href": "../distribution-os/prompts/weekly-distribution-run.md" },
-            { "label": "daily-distribution-check.md", "href": "../distribution-os/prompts/daily-distribution-check.md" }
-          ]
-        },
-        {
-          "id": "qa-review",
-          "name": "QA Review",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Evidence-based completion gate for a change before it ships.",
-          "starter": "Run a QA review: read PROMPTS/qa-review.md and GLOBAL-QA-RULES.md and execute against <PROJECT / CHANGE>. Produce a QA plan, run it, and report pass/fail with the exact evidence (lint, tests, manual QA). Do not mark done without evidence.",
-          "links": [
-            { "label": "qa-review.md", "href": "../PROMPTS/qa-review.md" },
-            { "label": "GLOBAL-QA-RULES.md", "href": "../GLOBAL-QA-RULES.md" }
-          ]
-        },
-        {
-          "id": "risk-review",
-          "name": "Risk Review",
-          "tone": "amber",
-          "status": "ready",
-          "purpose": "Surface what could go wrong before a risky or irreversible change.",
-          "starter": "Run a risk review: read PROMPTS/risk-review.md and execute against <CHANGE / PLAN>. Identify the top risks, likelihood, blast radius, and the mitigation or validation for each. End with a go / no-go recommendation.",
-          "links": [
-            { "label": "risk-review.md", "href": "../PROMPTS/risk-review.md" }
-          ]
-        },
-        {
-          "id": "update-lessons",
-          "name": "Update Lessons",
-          "tone": "green",
-          "status": "ready",
-          "purpose": "Capture a recurring bug or hard-won fix so the OS does not relearn it.",
-          "starter": "Run the lessons update: read PROMPTS/update-lessons.md and execute. Capture today's recurring issue or fix into the right LESSONS file using TEMPLATES/lesson-template.md. Keep it concise and auditable.",
-          "links": [
-            { "label": "update-lessons.md", "href": "../PROMPTS/update-lessons.md" },
-            { "label": "lesson template", "href": "../TEMPLATES/lesson-template.md" }
-          ]
-        },
-        {
-          "id": "pr-summary",
-          "name": "PR Summary",
-          "tone": "accent",
-          "status": "ready",
-          "purpose": "Draft a clean PR summary from the current diff.",
-          "starter": "Run the PR summary: read PROMPTS/pr-summary.md and execute against the current branch diff. Summarize what changed and why, test evidence, risk, and what was not done, using TEMPLATES/pr-summary-template.md.",
-          "links": [
-            { "label": "pr-summary.md", "href": "../PROMPTS/pr-summary.md" },
-            { "label": "pr-summary template", "href": "../TEMPLATES/pr-summary-template.md" }
-          ]
-        }
-      ]
+      "name": "Verify",
+      "tone": "qa",
+      "purpose": "Parse JSON, check fallback sync, verify links, and run whitespace checks.",
+      "starter": "./agentic-os verify"
     },
     {
-      "tag": "Layer 9",
-      "title": "Memory & Learning",
-      "items": [
-        {
-          "id": "recall",
-          "name": "Recall context",
-          "tone": "green",
-          "status": "ready",
-          "purpose": "Load what was decided, what failed, and where you left off before starting work.",
-          "starter": "Recall my working context: read ~/.claude/MEMORY.md, ~/.claude/ERRORS.md, tasks/MEMORY.md and tasks/ERRORS.md. Summarize the open decisions, the failed approaches I must not repeat, and where I left off. End with the first thing I should pick up.",
-          "links": [
-            { "label": "tasks/MEMORY.md", "href": "../tasks/MEMORY.md" },
-            { "label": "tasks/ERRORS.md", "href": "../tasks/ERRORS.md" },
-            { "label": "DECISIONS.md", "href": "../DECISIONS.md" }
-          ]
-        },
-        {
-          "id": "session-end",
-          "name": "Log session end",
-          "tone": "green",
-          "status": "ready",
-          "purpose": "Write the session summary so any future session can resume cold.",
-          "starter": "Log the session end for {date}: write a session summary to tasks/MEMORY.md using TEMPLATES/session-summary-template.md (worked on, completed, in progress, decisions, next session). If an approach failed more than once, append it to tasks/ERRORS.md. List files changed, tests run, and what was NOT done.",
-          "links": [
-            { "label": "tasks/MEMORY.md", "href": "../tasks/MEMORY.md" },
-            { "label": "session-summary template", "href": "../TEMPLATES/session-summary-template.md" }
-          ]
-        },
-        {
-          "id": "lessons-decisions",
-          "name": "Lessons & Decisions",
-          "tone": "green",
-          "status": "ready",
-          "purpose": "The durable ledgers: recurring lessons and cross-project architectural decisions.",
-          "starter": "Review the learning ledgers: read LESSONS.md, executive-os/EXECUTIVE-LESSONS.md, DECISIONS.md and executive-os/EXECUTIVE-DECISIONS.md. Tell me which lessons are still active and whether any recent work contradicts a logged decision.",
-          "links": [
-            { "label": "LESSONS.md", "href": "../LESSONS.md" },
-            { "label": "EXECUTIVE-LESSONS.md", "href": "../executive-os/EXECUTIVE-LESSONS.md" },
-            { "label": "DECISIONS.md", "href": "../DECISIONS.md" },
-            { "label": "EXECUTIVE-DECISIONS.md", "href": "../executive-os/EXECUTIVE-DECISIONS.md" }
-          ]
-        }
-      ]
+      "name": "Weekly exec review",
+      "tone": "ceo",
+      "purpose": "Copy into an agent when you want the CEO OS weekly review.",
+      "starter": "Run the Weekly Exec Review for today. Read PROMPTS/executive-weekly-review.md, executive-os/workflows/weekly-ceo-review.md, DASHBOARD.md, PROJECT-STATUS.md, executive-os/EXECUTIVE-DASHBOARD.md, and executive-os/EXECUTIVE-DECISIONS.md. Invent no numbers. End with the week's top 3 and the one decision to make."
+    },
+    {
+      "name": "QA review",
+      "tone": "qa",
+      "purpose": "Copy into an agent before calling a release or dashboard task done.",
+      "starter": "Act as QA. Read GLOBAL-QA-RULES.md and run a focused QA review against the target change. Report pass/fail with exact evidence, checks not run, open questions, and what was not done."
+    }
+  ],
+  "learning": [
+    {
+      "name": "Recall context",
+      "tone": "director",
+      "purpose": "Reload memory and failed approaches before planning.",
+      "starter": "Recall context: read ~/.claude/MEMORY.md, ~/.claude/ERRORS.md, tasks/MEMORY.md, and tasks/ERRORS.md. Summarize open decisions, failed approaches not to repeat, and the first thing to pick up."
+    },
+    {
+      "name": "Log session end",
+      "tone": "director",
+      "purpose": "Write the end-of-day memory entry.",
+      "starter": "Log session end for today: update tasks/MEMORY.md using TEMPLATES/session-summary-template.md. If an approach failed more than once, append it to tasks/ERRORS.md. List files changed, tests run, open questions, and what was not done."
+    },
+    {
+      "name": "Lessons review",
+      "tone": "qa",
+      "purpose": "Check whether recent work created a reusable lesson.",
+      "starter": "Review LESSONS.md, executive-os/EXECUTIVE-LESSONS.md, DECISIONS.md, and executive-os/EXECUTIVE-DECISIONS.md. Tell me which lessons are active and whether recent work contradicts any decision."
     }
   ]
 }
     </script>
     <script>
-      const data = JSON.parse(document.getElementById("cc-data").textContent);
-      const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x !== undefined) e.textContent = x; return e; };
+      const cc = JSON.parse(document.getElementById("cc-data").textContent);
+      let status = cc.fallbackStatus;
 
-      document.getElementById("stamp-date").textContent = data.generated;
+      const $ = (selector) => document.querySelector(selector);
+      const make = (tag, className, text) => {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (text !== undefined) el.textContent = text;
+        return el;
+      };
 
-      const resolve = (s) => s.replace(/\{date\}/g, data.generated);
+      init();
 
-      const cards = [];
-      const groupsRoot = document.getElementById("groups");
+      async function init() {
+        try {
+          const response = await fetch("./status.json", { cache: "no-store" });
+          if (response.ok) status = await response.json();
+        } catch (error) {
+          status = cc.fallbackStatus;
+        }
+        render();
+        wireTabs();
+        wireCopyButtons();
+      }
 
-      data.groups.forEach((group) => {
-        const g = el("section", "group");
-        const head = el("div", "group-head");
-        head.append(el("span", "tag", group.tag), el("h2", "", group.title), el("span", "gline"));
-        g.appendChild(head);
+      function render() {
+        const summary = status.summary || {};
+        const runCenter = status.runCenter || {};
+        $("#focus-title").textContent = "Plan the next move from live local evidence.";
+        $("#focus-summary").textContent = summary.overallStatus || "Run ./agentic-os morning to refresh local status.";
+        $("#next-action").textContent = summary.bestNextAction || "Run ./agentic-os morning.";
+        $("#last-refresh").textContent = runCenter.lastRefresh || "Unknown";
+        $("#localhost-url").textContent = runCenter.localhostUrl || "Not running";
+        $("#sources-count").textContent = String((runCenter.sourcesRead || []).length);
+        $("#checks-count").textContent = String((runCenter.checksRun || []).length);
+        $("#safe-mode").textContent = runCenter.safeMode || "No external actions are triggered.";
+        renderDailyRunResult();
+        renderStatusRow();
+        renderPriorityBoard();
+        renderProjectHealth();
+        renderAgentQueue();
+        renderProjectPrompts();
+        renderPromptCards("#run-grid", cc.runs || []);
+        renderPromptCards("#learn-grid", cc.learning || []);
+      }
 
-        const grid = el("div", "grid");
-        group.items.forEach((os) => {
-          const card = el("article", "os t-" + os.tone);
-          card.dataset.search = (os.name + " " + os.purpose + " " + os.id).toLowerCase();
+      function renderStatusRow() {
+        const root = $("#status-row");
+        root.textContent = "";
+        const health = status.projectHealth || [];
+        const dirty = health.filter((p) => p.dirty).length;
+        const blockers = health.reduce((sum, p) => sum + Number(p.blockerCount || 0), 0);
+        const pills = [
+          { label: `${health.length} projects checked`, tone: "good" },
+          { label: `${dirty} dirty repos`, tone: dirty ? "warn" : "good" },
+          { label: `${blockers} blockers`, tone: blockers ? "warn" : "good" }
+        ];
+        pills.forEach((pill) => root.append(make("span", `pill ${pill.tone}`, pill.label)));
+      }
 
-          const ch = el("div", "os-head");
-          ch.append(el("span", "dot", ""), el("h3", "", os.name), el("span", "pill " + os.status, os.status === "needsdata" ? "needs data" : os.status));
-          ch.querySelector(".dot").style.background =
-            os.tone === "violet" ? "#a78bfa" : os.tone === "cyan" ? "#22d3ee" :
-            os.tone === "green" ? "#34d399" : os.tone === "amber" ? "#fbbf24" :
-            os.tone === "pink" ? "#f472b6" : "#6ea8fe";
+      function renderDailyRunResult() {
+        const result = status.dailyRunResult || {};
+        const lastCopied = readLastCopiedPrompt();
+        $("#daily-title").textContent = result.readyForNextSession ? "Ready for the next project move." : "Run checks before the next project move.";
+        $("#daily-summary").textContent = result.summary || "Run ./agentic-os morning to refresh the operating picture.";
+        $("#daily-command").textContent = result.lastCommand || "./agentic-os morning";
+        $("#daily-checks").textContent = result.checksStatus || "Unknown";
+        $("#daily-repo").textContent = result.recommendedPromptProject || "Unknown";
+        $("#daily-last-copied").textContent = lastCopied ? lastCopied.project : "None yet";
+        $("#daily-prompt-label").textContent = `Recommended: ${result.recommendedPromptProject || "Unknown"} · ${result.recommendedPromptRole || "Project Operator"} · ${result.targetRepoState || "Unknown"}`;
+        $("#daily-recommended-prompt").textContent = result.recommendedPrompt || "";
+        const copyButton = $("#daily-copy");
+        copyButton.dataset.copyLabel = result.recommendedPromptProject || "Recommended prompt";
+      }
 
-          const purpose = el("p", "purpose", os.purpose);
-          const prompt = el("div", "prompt", resolve(os.starter));
+      function readLastCopiedPrompt() {
+        try {
+          return JSON.parse(localStorage.getItem("agentic-os:last-copied-prompt") || "null");
+        } catch (error) {
+          return null;
+        }
+      }
 
-          const actions = el("div", "actions");
-          const btn = el("button", "btn-copy");
-          btn.append(document.createTextNode("▶ Copy prompt"));
-          btn.addEventListener("click", () => copyText(resolve(os.starter), btn));
-          const links = el("div", "links");
-          os.links.forEach((l) => {
-            const a = el("a", "", l.label);
-            a.href = l.href;
-            links.append(a);
+      function rememberCopiedPrompt(label, text) {
+        if (!text || !text.startsWith("Act as ")) return;
+        const record = { project: label || "Project prompt", copiedAt: new Date().toLocaleString() };
+        localStorage.setItem("agentic-os:last-copied-prompt", JSON.stringify(record));
+        $("#daily-last-copied").textContent = record.project;
+      }
+
+      function renderPriorityBoard() {
+        const root = $("#priority-board");
+        root.textContent = "";
+        const board = status.priorityBoard || {};
+        [
+          ["now", "Now"],
+          ["next", "Next"],
+          ["later", "Later"],
+          ["blocked", "Blocked"]
+        ].forEach(([key, label]) => {
+          const card = make("article", "mini-card");
+          card.append(make("span", "label", label));
+          const ul = make("ul");
+          (board[key] || ["None listed."]).forEach((item) => ul.append(make("li", "", item)));
+          card.append(ul);
+          root.append(card);
+        });
+      }
+
+      function renderProjectHealth() {
+        const root = $("#project-health");
+        root.textContent = "";
+        (status.projectHealth || []).forEach((project) => {
+          const card = make("article", `project-card ${project.dirty ? "tone-dirty" : project.blockerCount ? "tone-blocked" : ""}`);
+          const top = make("div", "project-top");
+          const title = make("div");
+          title.append(make("h3", "", project.name), make("div", "fine", project.branch || "unknown branch"));
+          top.append(title, make("span", project.dirty ? "pill warn" : "pill good", project.dirty ? `${project.dirtyCount} dirty` : "clean"));
+          card.append(top);
+          card.append(make("p", "", project.state || "Unknown"));
+          card.append(make("p", "", `Next: ${project.nextAction || "Refresh local status."}`));
+          card.append(make("p", "fine", project.lastCommit || "No commit data"));
+          root.append(card);
+        });
+      }
+
+      function renderAgentQueue() {
+        const root = $("#agent-queue");
+        root.textContent = "";
+        const queue = status.agentQueue || cc.fallbackStatus.agentQueue || [];
+        renderPromptCards("#agent-queue", queue.map((item) => ({
+          name: item.role,
+          tone: toneForRole(item.role),
+          purpose: `${item.task} ${item.whenToUse ? "When: " + item.whenToUse : ""}`,
+          starter: item.starter,
+          evidence: item.evidence
+        })));
+      }
+
+      function renderProjectPrompts() {
+        renderPromptCards("#project-prompts", (status.projectPrompts || []).map((item) => ({
+          name: item.project,
+          tone: item.repoState === "Dirty" ? "dirty" : "qa",
+          purpose: `${item.nextAction} Branch: ${item.branch || "unknown"}.`,
+          starter: item.copyPrompt,
+          evidence: `${item.role} · ${item.repoState}`
+        })));
+      }
+
+      function renderPromptCards(selector, items) {
+        const root = $(selector);
+        root.textContent = "";
+        items.forEach((item) => {
+          const card = make("article", `task-card tone-${item.tone || toneForRole(item.name)}`);
+          const top = make("div", "task-top");
+          const title = make("div");
+          title.append(make("h3", "", item.name), make("div", "fine", item.evidence || ""));
+          top.append(title);
+          card.append(top, make("p", "", item.purpose || ""));
+          const actions = make("div", "card-actions");
+          const btn = make("button", "copy-btn", "Copy task");
+          btn.type = "button";
+          btn.dataset.copyText = item.starter || "";
+          btn.dataset.copyLabel = item.name || "Project prompt";
+          actions.append(btn);
+          card.append(actions);
+          const details = make("details");
+          const summary = make("summary", "", "Prompt preview");
+          const pre = make("pre", "", item.starter || "");
+          details.append(summary, pre);
+          card.append(details);
+          root.append(card);
+        });
+      }
+
+      function toneForRole(role) {
+        const value = (role || "").toLowerCase();
+        if (value.includes("release")) return "release";
+        if (value.includes("ceo") || value.includes("cfo")) return "ceo";
+        if (value.includes("qa")) return "qa";
+        return "director";
+      }
+
+      function wireTabs() {
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+            document.querySelectorAll(".section").forEach((section) => section.classList.remove("active"));
+            btn.classList.add("active");
+            document.getElementById(btn.dataset.tab).classList.add("active");
           });
-          actions.append(btn, links);
-
-          card.append(ch, purpose, prompt, actions);
-          grid.appendChild(card);
-          cards.push(card);
         });
+      }
 
-        g.appendChild(grid);
-        groupsRoot.appendChild(g);
-      });
-
-      // Live filter
-      const search = document.getElementById("search");
-      const empty = document.getElementById("empty");
-      const countHint = document.getElementById("count-hint");
-      const updateCount = (n) => { countHint.textContent = n + (n === 1 ? " OS" : " OSes"); };
-      updateCount(cards.length);
-
-      search.addEventListener("input", () => {
-        const q = search.value.trim().toLowerCase();
-        let visible = 0;
-        cards.forEach((c) => {
-          const show = !q || c.dataset.search.includes(q);
-          c.style.display = show ? "" : "none";
-          if (show) visible++;
+      function wireCopyButtons() {
+        document.body.addEventListener("click", (event) => {
+          const btn = event.target.closest(".copy-btn");
+          if (!btn) return;
+          const text = btn.dataset.copyText || (btn.dataset.copyTarget ? document.getElementById(btn.dataset.copyTarget).textContent : "");
+          rememberCopiedPrompt(btn.dataset.copyLabel, text);
+          copyText(text, btn);
         });
-        document.querySelectorAll(".group").forEach((g) => {
-          const any = [...g.querySelectorAll(".os")].some((c) => c.style.display !== "none");
-          g.style.display = any ? "" : "none";
-        });
-        empty.style.display = visible ? "none" : "block";
-        updateCount(visible);
-      });
+      }
 
-      // Clipboard with file:// fallback
       function copyText(text, btn) {
-        const done = () => flashCopied(btn);
+        const done = () => flash(btn);
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
         } else {
           fallbackCopy(text, done);
         }
       }
+
       function fallbackCopy(text, done) {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand("copy"); } catch (e) {}
-        document.body.removeChild(ta);
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
         done();
       }
-      const toast = document.getElementById("toast");
-      let toastTimer;
-      function flashCopied(btn) {
-        const label = btn.textContent;
-        btn.textContent = "✓ Copied";
+
+      function flash(btn) {
+        const old = btn.textContent;
+        btn.textContent = "Copied";
         btn.classList.add("copied");
-        setTimeout(() => { btn.textContent = label; btn.classList.remove("copied"); }, 1400);
+        const toast = $("#toast");
         toast.classList.add("show");
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove("show"), 1600);
+        window.setTimeout(() => {
+          btn.textContent = old;
+          btn.classList.remove("copied");
+          toast.classList.remove("show");
+        }, 1200);
       }
     </script>
   </body>
