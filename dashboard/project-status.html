@@ -1,3 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Global Agentic OS Dashboard</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Global Agentic OS">
+        <span class="brand-mark">OS</span>
+        <span>
+          <strong>Global Agentic OS</strong>
+          <small>Project Status</small>
+        </span>
+      </a>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./index.html">Command Center</a>
+        <a href="./orchestration.html">Orchestration Map</a>
+        <a href="./project-status.html" class="active" aria-current="page">Project Status</a>
+        <a href="./executive.html">Executive</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./metrics.html">Metrics</a>
+        <a href="./data-flow.html">Data Flow</a>
+      </nav>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Portfolio control room</p>
+          <h1>Clear project status without replacing the Markdown source of truth.</h1>
+          <p id="source-line" class="hero-copy"></p>
+        </div>
+        <aside class="summary-panel" aria-label="Portfolio summary">
+          <span class="label">Best next action</span>
+          <p id="best-next-action"></p>
+        </aside>
+      </section>
+
+      <section class="metric-grid" aria-label="Portfolio metrics">
+        <article>
+          <span class="metric-value" id="metric-active">0</span>
+          <span class="metric-label">Active projects</span>
+        </article>
+        <article>
+          <span class="metric-value" id="metric-blocked">0</span>
+          <span class="metric-label">Projects with blockers</span>
+        </article>
+        <article>
+          <span class="metric-value" id="metric-qa">0</span>
+          <span class="metric-label">Need QA</span>
+        </article>
+        <article>
+          <span class="metric-value" id="metric-decisions">0</span>
+          <span class="metric-label">Open decisions</span>
+        </article>
+      </section>
+
+      <section class="section-header">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2>Project Cards</h2>
+        </div>
+        <p id="overall-status"></p>
+      </section>
+      <section id="project-grid" class="project-grid" aria-label="Project cards"></section>
+
+      <section class="board-grid" aria-label="Priority and blockers boards">
+        <article class="board">
+          <div class="board-header">
+            <p class="eyebrow">Priority</p>
+            <h2>Action Board</h2>
+          </div>
+          <div id="priority-board" class="priority-board"></div>
+        </article>
+        <article class="board">
+          <div class="board-header">
+            <p class="eyebrow">Decisions</p>
+            <h2>Decision Board</h2>
+          </div>
+          <div id="decision-board" class="decision-board"></div>
+        </article>
+      </section>
+
+      <section class="board">
+        <div class="board-header">
+          <p class="eyebrow">Validation</p>
+          <h2>QA Board</h2>
+        </div>
+        <div id="qa-board" class="qa-board"></div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Reads <code>status.json</code> over http; embedded fallback on file://. Source of truth: <code>../PROJECT-STATUS.md</code>.</span>
+        <nav id="nav-links" class="nav-links" aria-label="Document links"></nav>
+      </footer>
+    </main>
+
+    <script id="status-data" type="application/json">
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
@@ -770,3 +871,201 @@
     "summary": "Resumely iOS: run the authenticated device smoke from tasks/session-log.md, verify PostHog/export coverage, then upload screenshots/listing and submit. RunSmart iOS: monitor Apple review and do not mutate v1.0 release artifacts."
   }
 }
+    </script>
+    <script>
+      const toneLabels = {
+        fresh: "Fresh",
+        submission: "Submitted",
+        "pre-submission": "Pre-submission",
+        qa: "Needs QA",
+        blocked: "Blocked",
+        reference: "Reference",
+        unknown: "Unknown"
+      };
+
+      const priorityLabels = {
+        now: "Now",
+        next: "Next",
+        later: "Later",
+        blocked: "Blocked"
+      };
+
+      function getEmbeddedData() {
+        return JSON.parse(document.getElementById("status-data").textContent);
+      }
+
+      async function loadData() {
+        if (window.location.protocol === "file:") {
+          return getEmbeddedData();
+        }
+
+        try {
+          const response = await fetch("./status.json", { cache: "no-store" });
+          if (!response.ok) throw new Error("status.json could not be loaded");
+          return await response.json();
+        } catch (error) {
+          console.warn("Using embedded dashboard data.", error);
+          return getEmbeddedData();
+        }
+      }
+
+      function el(tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
+      }
+
+      function list(items, className = "compact-list") {
+        const ul = el("ul", className);
+        items.forEach((item) => ul.appendChild(el("li", "", item)));
+        return ul;
+      }
+
+      function progress(project) {
+        const wrap = el("div", "progress-wrap");
+        const top = el("div", "progress-top");
+        top.append(el("span", "", "Progress"));
+        top.append(el("strong", "", project.progressLabel));
+        const bar = el("div", "progress-bar");
+        const fill = el("span", project.progressPercent === null ? "unknown-fill" : "");
+        fill.style.width = project.progressPercent === null ? "100%" : `${project.progressPercent}%`;
+        bar.appendChild(fill);
+        wrap.append(top, bar);
+        return wrap;
+      }
+
+      function meta(label, value) {
+        const item = el("div", "meta-item");
+        item.append(el("span", "", label), el("strong", "", value));
+        return item;
+      }
+
+      function linkButton(label, href) {
+        if (!href) {
+          const span = el("span", "link-button disabled", "Path not confirmed");
+          span.setAttribute("aria-disabled", "true");
+          return span;
+        }
+        const anchor = el("a", "link-button", label);
+        anchor.href = href;
+        return anchor;
+      }
+
+      function renderProjects(projects) {
+        const grid = document.getElementById("project-grid");
+        projects.forEach((project) => {
+          const card = el("article", `project-card tone-${project.statusTone}`);
+          const header = el("div", "card-header");
+          const titleWrap = el("div");
+          titleWrap.append(el("p", "eyebrow", project.type), el("h3", "", project.name));
+          header.append(titleWrap, el("span", "status-pill", toneLabels[project.statusTone] || project.statusTone));
+
+          const status = el("p", "status-text", project.status);
+          const metaGrid = el("div", "meta-grid");
+          metaGrid.append(
+            meta("Freshness", project.freshness),
+            meta("Updated", project.lastUpdated),
+            meta("Phase", project.currentPhase),
+            meta("Estimate", project.estimatedCompletion)
+          );
+
+          const section = el("div", "card-section");
+          section.append(el("span", "label", "Active story"), el("p", "", project.activeStory));
+          const validation = el("div", "validation-callout");
+          validation.append(el("span", "label", "Validation"), el("p", "", project.validationState));
+
+          const blockerSection = el("div", "split-section");
+          const blockers = el("div");
+          blockers.append(el("span", "label", "Blockers"), list(project.blockers));
+          const risks = el("div");
+          risks.append(el("span", "label", "Risks"), list(project.risks));
+          blockerSection.append(blockers, risks);
+
+          const actions = el("div", "card-section");
+          actions.append(el("span", "label", "Next actions"), list(project.nextActions, "numbered-list"));
+
+          const links = el("div", "card-links");
+          links.append(linkButton("Bridge", project.links.bridge), linkButton("Repo", project.links.repo));
+
+          card.append(header, status, progress(project), metaGrid, section, validation, blockerSection, actions, links);
+          grid.appendChild(card);
+        });
+      }
+
+      function renderPriorityBoard(priorityBoard) {
+        const board = document.getElementById("priority-board");
+        Object.entries(priorityLabels).forEach(([key, label]) => {
+          const column = el("section", `priority-column ${key}`);
+          column.append(el("h3", "", label), list(priorityBoard[key] || []));
+          board.appendChild(column);
+        });
+      }
+
+      function renderDecisionBoard(decisions) {
+        const board = document.getElementById("decision-board");
+        decisions.forEach((decision) => {
+          const row = el("article", "decision-item");
+          row.append(
+            el("span", `urgency urgency-${decision.urgency.toLowerCase()}`, decision.urgency),
+            el("h3", "", decision.decision),
+            el("p", "muted", `${decision.project}: ${decision.whyItMatters}`),
+            el("p", "", decision.recommendedOption)
+          );
+          board.appendChild(row);
+        });
+      }
+
+      function renderQABoard(items) {
+        const board = document.getElementById("qa-board");
+        items.forEach((item) => {
+          const card = el("article", "qa-item");
+          card.append(el("h3", "", item.project));
+          card.append(
+            meta("Build", item.buildStatus),
+            meta("Tests", item.testStatus),
+            meta("Manual QA", item.manualQAStatus),
+            meta("TestFlight", item.testFlightReadiness),
+            meta("Latest validation", item.latestValidationDate),
+            meta("Missing", item.missingValidation)
+          );
+          board.appendChild(card);
+        });
+      }
+
+      function renderNav(navigation) {
+        const nav = document.getElementById("nav-links");
+        navigation.forEach((link) => {
+          const anchor = el("a", "", link.label);
+          anchor.href = link.href;
+          nav.appendChild(anchor);
+        });
+      }
+
+      function renderMetrics(data) {
+        const activeProjects = data.projects.filter((project) => project.freshness === "Fresh").length;
+        const blockedProjects = data.projects.filter((project) => project.blockers.length > 0).length;
+        const qaProjects = data.qaBoard.length;
+        document.getElementById("metric-active").textContent = activeProjects;
+        document.getElementById("metric-blocked").textContent = blockedProjects;
+        document.getElementById("metric-qa").textContent = qaProjects;
+        document.getElementById("metric-decisions").textContent = data.decisionBoard.length;
+      }
+
+      loadData().then((data) => {
+        document.title = data.metadata.title;
+        document.getElementById("source-line").textContent =
+          `Last updated ${data.metadata.lastUpdated}. Source: ${data.metadata.sourceOfTruth}. ${data.metadata.sourcePolicy}`;
+        document.getElementById("best-next-action").textContent = data.summary.bestNextAction;
+        document.getElementById("overall-status").textContent = data.summary.overallStatus;
+
+        renderNav(data.navigation);
+        renderMetrics(data);
+        renderProjects(data.projects);
+        renderPriorityBoard(data.priorityBoard);
+        renderDecisionBoard(data.decisionBoard);
+        renderQABoard(data.qaBoard);
+      });
+    </script>
+  </body>
+</html>

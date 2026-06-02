@@ -1,0 +1,786 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import contextlib
+import http.server
+import json
+import os
+import re
+import socket
+import socketserver
+import subprocess
+import sys
+import webbrowser
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parents[2]
+DASHBOARD = ROOT / "dashboard"
+STATUS_JSON = DASHBOARD / "status.json"
+INDEX_HTML = DASHBOARD / "index.html"
+PROJECT_STATUS_HTML = DASHBOARD / "project-status.html"
+COMMAND_CENTER_HTML = DASHBOARD / "command-center.html"
+ORCHESTRATION_HTML = DASHBOARD / "orchestration.html"
+
+
+PROJECT_ALIASES = {
+    "RunSmart iOS": ("runsmart-ios", "RunSmart iOS"),
+    "ResumeBuilder iOS": ("resumebuilder-ios", "Resumely iOS"),
+    "RunSmart Web": ("runsmart-web", "RunSmart Web"),
+    "ResumeBuilder Web": ("resumebuilder-ai", "ResumeBuilder AI (Web)"),
+    "Global Agentic OS": ("agentic-os", "Agentic OS"),
+}
+
+
+DEFAULT_AGENT_QUEUE = [
+    {
+        "role": "Release Manager",
+        "task": "Run Resumely iOS live-device smoke, then prepare ASC upload.",
+        "whenToUse": "Use when the next move touches App Store readiness, screenshots, smoke QA, or submission gates.",
+        "evidence": "PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md",
+        "starter": "Act as the Release Manager for Resumely iOS. Read PROJECT-STATUS.md and the ResumeBuilder iOS tasks/session-log.md. Produce the exact smoke checklist, expected evidence, and ASC upload sequence. Do not submit or upload without explicit approval.",
+    },
+    {
+        "role": "CEO OS",
+        "task": "Resolve the next portfolio decision and keep focus tight.",
+        "whenToUse": "Use when there are competing next moves across RunSmart, Resumely, distribution, and backend support.",
+        "evidence": "executive-os/EXECUTIVE-DASHBOARD.md, dashboard/status.json decisionBoard",
+        "starter": "Act as CEO OS. Read dashboard/status.json and executive-os/EXECUTIVE-DASHBOARD.md. Pick the one highest-leverage decision, recommend an option, state cost of delay, and list the single next action.",
+    },
+    {
+        "role": "Director / Orchestrator",
+        "task": "Turn the current Action Board into one reviewable work packet.",
+        "whenToUse": "Use when you want the next agent task delegated without losing source context.",
+        "evidence": "dashboard/status.json priorityBoard and projectHealth",
+        "starter": "Act as Director. Read dashboard/status.json, especially priorityBoard, projectHealth, and agentQueue. Create one decision-complete task packet for the recommended agent. Include goal, files to read, acceptance criteria, checks, and what not to touch.",
+    },
+    {
+        "role": "QA",
+        "task": "Verify dashboard or product readiness with evidence.",
+        "whenToUse": "Use before calling a status, UI, or release task done.",
+        "evidence": "GLOBAL-QA-RULES.md, dashboard runCenter checksRun",
+        "starter": "Act as QA. Read GLOBAL-QA-RULES.md and dashboard/status.json. Build a focused QA checklist for the target change, run the available checks, and report pass/fail with evidence and missing validation.",
+    },
+]
+
+
+PROJECT_PROMPT_ROLES = {
+    "runsmart-ios": "iOS Release / Product Engineer",
+    "resumebuilder-ios": "iOS Release Manager",
+    "runsmart-web": "Backend Support Engineer",
+    "resumebuilder-ai": "Backend Rollout Engineer",
+    "agentic-os": "Agentic OS Operator",
+}
+
+
+@dataclass
+class ProjectEvidence:
+    project_id: str
+    name: str
+    path: Path
+    exists: bool
+    branch: str
+    dirty: bool
+    dirty_count: int
+    last_commit: str
+    source_files: list[str]
+
+
+def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        cmd,
+        cwd=str(cwd),
+        text=True,
+        capture_output=True,
+        timeout=timeout,
+        check=False,
+    )
+
+
+def today_idt() -> str:
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def now_label() -> str:
+    return datetime.now().strftime("%Y-%m-%d %H:%M")
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_json(path: Path, data: dict[str, Any]) -> None:
+    path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+
+
+def parse_project_paths() -> list[tuple[str, Path]]:
+    text = (ROOT / "PROJECT-PATHS.md").read_text(encoding="utf-8")
+    rows: list[tuple[str, Path]] = []
+    for line in text.splitlines():
+        if not line.startswith("| ") or "`/" not in line:
+            continue
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        if len(cells) < 2:
+            continue
+        name = re.sub(r"`", "", cells[0]).strip()
+        path_match = re.search(r"`([^`]+)`", cells[1])
+        if name in PROJECT_ALIASES and path_match:
+            rows.append((name, Path(path_match.group(1))))
+    if "Global Agentic OS" not in {name for name, _ in rows}:
+        rows.append(("Global Agentic OS", ROOT))
+    return rows
+
+
+def record_if_exists(path: Path, root: Path, sources: list[str]) -> str:
+    if not path.exists():
+        return ""
+    try:
+        sources.append(str(path.relative_to(root)))
+    except ValueError:
+        sources.append(str(path))
+    return path.read_text(encoding="utf-8", errors="replace")
+
+
+def collect_evidence() -> list[ProjectEvidence]:
+    evidence: list[ProjectEvidence] = []
+    for source_name, path in parse_project_paths():
+        project_id, display_name = PROJECT_ALIASES[source_name]
+        sources: list[str] = []
+        exists = path.exists()
+        branch = "missing"
+        dirty = False
+        dirty_count = 0
+        last_commit = "No git data"
+
+        if exists:
+            for rel in [
+                "tasks/MEMORY.md",
+                "tasks/todo.md",
+                "tasks/progress.md",
+                "tasks/session-log.md",
+                "docs/agent-os/project-context.md",
+                "docs/specs/README.md",
+                "docs/product/product-vision.md",
+                "docs/product/current-product-state.md",
+            ]:
+                record_if_exists(path / rel, path, sources)
+
+            status = run(["git", "status", "--short", "--branch"], cwd=path)
+            if status.returncode == 0:
+                lines = status.stdout.splitlines()
+                branch = lines[0].replace("## ", "") if lines else "unknown"
+                dirty_count = max(0, len(lines) - 1)
+                dirty = dirty_count > 0
+
+            commit = run(["git", "log", "-1", "--pretty=%cd %h %s", "--date=short"], cwd=path)
+            if commit.returncode == 0 and commit.stdout.strip():
+                last_commit = commit.stdout.strip()
+
+        evidence.append(
+            ProjectEvidence(
+                project_id=project_id,
+                name=display_name,
+                path=path,
+                exists=exists,
+                branch=branch,
+                dirty=dirty,
+                dirty_count=dirty_count,
+                last_commit=last_commit,
+                source_files=sources,
+            )
+        )
+    return evidence
+
+
+def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any]) -> list[dict[str, Any]]:
+    by_id = {p.get("id"): p for p in status.get("projects", [])}
+    health: list[dict[str, Any]] = []
+    for item in evidence:
+        project = by_id.get(item.project_id, {})
+        blockers = project.get("blockers") or []
+        next_actions = project.get("nextActions") or []
+        next_action = next_actions[0] if next_actions else project.get("nextRecommendedStory", "Refresh local status.")
+        health.append(
+            {
+                "id": item.project_id,
+                "name": item.name,
+                "state": project.get("currentPhase") or project.get("status") or "Unknown",
+                "nextAction": next_action,
+                "blockerCount": len(blockers),
+                "dirty": item.dirty,
+                "dirtyCount": item.dirty_count,
+                "branch": item.branch,
+                "lastCommit": item.last_commit,
+                "stale": not item.exists,
+                "sourceFiles": item.source_files,
+            }
+        )
+    return health
+
+
+def build_project_prompts(status: dict[str, Any], project_health: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    projects = {project.get("id"): project for project in status.get("projects", [])}
+    prompts: list[dict[str, Any]] = []
+    for health in project_health:
+        project = projects.get(health["id"], {})
+        role = PROJECT_PROMPT_ROLES.get(health["id"], "Project Operator")
+        blockers = project.get("blockers") or []
+        source_files = health.get("sourceFiles") or []
+        source_list = ", ".join(source_files[:4]) if source_files else "tasks/MEMORY.md if present"
+        next_action = health.get("nextAction") or project.get("nextRecommendedStory") or "Choose the smallest useful next action."
+        prompt = (
+            f"Act as {role} for {health['name']}. "
+            "First read the repo AGENTS.md if it exists, then read the listed source files: "
+            f"{source_list}. Current state: {health.get('state', 'Unknown')}. "
+            f"Next action: {next_action}. "
+            f"Known blockers: {'; '.join(blockers[:3]) if blockers else 'none listed'}. "
+            "Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, "
+            "acceptance criteria, checks to run, and what must not be touched. "
+            "Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        )
+        prompts.append(
+            {
+                "projectId": health["id"],
+                "project": health["name"],
+                "role": role,
+                "repoState": "Dirty" if health.get("dirty") else "Clean",
+                "branch": health.get("branch", "Unknown"),
+                "nextAction": next_action,
+                "evidence": source_files,
+                "copyPrompt": prompt,
+            }
+        )
+    return prompts
+
+
+def build_executive_overview(status: dict[str, Any], project_health: list[dict[str, Any]]) -> dict[str, Any]:
+    dirty = [project["name"] for project in project_health if project.get("dirty")]
+    blocked = [project["name"] for project in project_health if project.get("blockerCount", 0) > 0]
+    decisions = status.get("decisionBoard", [])
+    metrics = status.get("executiveBoard", {})
+    return {
+        "headline": status.get("summary", {}).get("bestNextAction", "Choose the next progress move."),
+        "portfolioState": status.get("summary", {}).get("overallStatus", "No executive summary available."),
+        "focus": metrics.get("top3", []),
+        "risks": status.get("summary", {}).get("mainBlockers", []),
+        "openDecisionCount": len(decisions),
+        "blockedProjectCount": len(blocked),
+        "dirtyProjectCount": len(dirty),
+        "dirtyProjects": dirty,
+        "blockedProjects": blocked,
+        "financialSnapshot": metrics.get("financialSnapshot", "Needs Data"),
+        "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
+    }
+
+
+def build_data_flow(status: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "step": "1. Project paths",
+            "source": "PROJECT-PATHS.md",
+            "output": "Canonical local folders for RunSmart, Resumely, web support repos, and Agentic OS.",
+        },
+        {
+            "step": "2. Local evidence",
+            "source": "git status/log plus tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md",
+            "output": "Dirty flags, branch state, last commit, source files read, blockers, and next actions.",
+        },
+        {
+            "step": "3. Shared contract",
+            "source": "dashboard/status.json",
+            "output": "projects, projectHealth, executiveOverview, projectPrompts, dailyRunResult, agentQueue, decisions, QA, metrics, and runCenter.",
+        },
+        {
+            "step": "4. Localhost dashboards",
+            "source": "dashboard/*.html",
+            "output": "Command Center, Project Status, Orchestration, Executive, Decisions, Metrics, and Data Flow pages.",
+        },
+        {
+            "step": "5. Delegation",
+            "source": "dailyRunResult plus copy-ready prompts",
+            "output": "Paste the recommended prompt inside the right project repo to make one concrete progress step.",
+        },
+    ]
+
+
+def build_daily_run_result(
+    status: dict[str, Any],
+    project_prompts: list[dict[str, Any]],
+    command: str,
+    port: int,
+    checks_status: str,
+) -> dict[str, Any]:
+    recommended = select_recommended_prompt(status, project_prompts)
+    return {
+        "lastCommand": command,
+        "lastRunAt": now_label(),
+        "checksStatus": checks_status,
+        "checksCompletedAt": "",
+        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "recommendedPromptProject": recommended.get("project", "No project prompt available"),
+        "recommendedPromptRole": recommended.get("role", "Project Operator"),
+        "recommendedPrompt": recommended.get("copyPrompt", "Run ./agentic-os refresh to generate project prompts."),
+        "targetRepoState": recommended.get("repoState", "Unknown"),
+        "targetBranch": recommended.get("branch", "Unknown"),
+        "readyForNextSession": checks_status == "Passed",
+        "summary": status.get("summary", {}).get("bestNextAction", "Run the morning loop and choose the next project prompt."),
+    }
+
+
+def select_recommended_prompt(status: dict[str, Any], project_prompts: list[dict[str, Any]]) -> dict[str, Any]:
+    if not project_prompts:
+        return {}
+    next_action = status.get("summary", {}).get("bestNextAction", "").lower()
+    aliases = {
+        "resumebuilder-ios": ["resumely", "resumebuilder ios", "resume builder ios"],
+        "runsmart-ios": ["runsmart ios", "run smart ios"],
+        "runsmart-web": ["runsmart web", "run smart web"],
+        "resumebuilder-ai": ["resumebuilder web", "resumebuilder ai", "resume builder web"],
+        "agentic-os": ["agentic os", "command center"],
+    }
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for prompt in project_prompts:
+        terms = [prompt.get("project", "").lower(), prompt.get("projectId", "").lower()]
+        terms.extend(aliases.get(prompt.get("projectId", ""), []))
+        positions = [next_action.find(term) for term in terms if term and term in next_action]
+        if positions:
+            ranked.append((min(positions), prompt))
+    if ranked:
+        return sorted(ranked, key=lambda item: item[0])[0][1]
+    return project_prompts[0]
+
+
+def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") -> dict[str, Any]:
+    status = read_json(STATUS_JSON)
+    evidence = collect_evidence()
+    project_health = project_health_from(evidence, status)
+    sources = sorted({f"{item.name}: {src}" for item in evidence for src in item.source_files})
+    generated = today_idt()
+
+    status.setdefault("metadata", {})
+    status["metadata"]["lastUpdated"] = f"{generated} IDT"
+    status["metadata"]["sourcePolicy"] = (
+        "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, "
+        "task memory/todo/session files, and existing dashboard status. No external dashboards queried."
+    )
+
+    status["runCenter"] = {
+        "lastRefresh": now_label(),
+        "command": command,
+        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "sourcesRead": sources,
+        "checksRun": [
+            "dashboard/status.json parsed",
+            "embedded dashboard JSON parsed",
+            "project-status.html fallback sync checked",
+            "git diff --check",
+        ],
+        "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
+        "synthesisNote": "This refresh is deterministic. For richer narrative synthesis, copy a Command Center prompt into Codex or Claude.",
+    }
+    status["projectHealth"] = project_health
+    status["agentQueue"] = DEFAULT_AGENT_QUEUE
+    status["projectPrompts"] = build_project_prompts(status, project_health)
+    status["executiveOverview"] = build_executive_overview(status, project_health)
+    status["dataFlow"] = build_data_flow(status)
+    status["dailyRunResult"] = build_daily_run_result(
+        status=status,
+        project_prompts=status["projectPrompts"],
+        command=command,
+        port=port,
+        checks_status="Pending verify",
+    )
+
+    dirty_projects = [p["name"] for p in project_health if p["dirty"]]
+    if dirty_projects:
+        status.setdefault("summary", {})["mainBlockers"] = list(
+            dict.fromkeys(status.get("summary", {}).get("mainBlockers", []) + [f"Dirty local repo state: {', '.join(dirty_projects)}."])
+        )
+
+    for project in status.get("projects", []):
+        health = next((p for p in project_health if p["id"] == project.get("id")), None)
+        if not health:
+            continue
+        project["lastUpdated"] = generated
+        project["localEvidence"] = {
+            "branch": health["branch"],
+            "dirty": health["dirty"],
+            "dirtyCount": health["dirtyCount"],
+            "lastCommit": health["lastCommit"],
+            "sourceFiles": health["sourceFiles"],
+        }
+
+    write_json(STATUS_JSON, status)
+    sync_project_status_fallback(status)
+    write_project_status(status)
+    write_dashboard(status)
+    write_executive_dashboard(status)
+    update_command_center_generated(generated, status)
+    update_orchestration_generated(status)
+    return status
+
+
+def mark_daily_run_verified(port: int, passed: bool) -> None:
+    status = read_json(STATUS_JSON)
+    result = status.setdefault("dailyRunResult", {})
+    result["checksStatus"] = "Passed" if passed else "Failed"
+    result["checksCompletedAt"] = now_label()
+    result["readyForNextSession"] = passed
+    result["localhostUrl"] = f"http://127.0.0.1:{port}/index.html"
+    write_json(STATUS_JSON, status)
+    sync_project_status_fallback(status)
+    update_command_center_generated(today_idt(), status)
+
+
+def sync_project_status_fallback(status: dict[str, Any] | None = None) -> None:
+    if status is None:
+        status = read_json(STATUS_JSON)
+    source = json.dumps(status, indent=2)
+    html = PROJECT_STATUS_HTML.read_text(encoding="utf-8")
+    html = re.sub(
+        r'(<script id="status-data" type="application/json">\n).*?(\n    </script>)',
+        lambda m: m.group(1) + source + m.group(2),
+        html,
+        count=1,
+        flags=re.S,
+    )
+    PROJECT_STATUS_HTML.write_text(html, encoding="utf-8")
+
+
+def update_command_center_generated(generated: str, status: dict[str, Any]) -> None:
+    for path in [INDEX_HTML, COMMAND_CENTER_HTML]:
+        html = path.read_text(encoding="utf-8")
+        match = re.search(r'(<script id="cc-data" type="application/json">\n)(.*?)(\n    </script>)', html, flags=re.S)
+        if not match:
+            continue
+        data = json.loads(match.group(2))
+        data["generated"] = generated
+        data["fallbackStatus"] = {
+            "summary": status.get("summary", {}),
+            "priorityBoard": status.get("priorityBoard", {}),
+            "runCenter": status.get("runCenter", {}),
+            "projectHealth": status.get("projectHealth", []),
+            "agentQueue": status.get("agentQueue", []),
+            "projectPrompts": status.get("projectPrompts", []),
+            "executiveOverview": status.get("executiveOverview", {}),
+            "dataFlow": status.get("dataFlow", []),
+        }
+        html = html[: match.start()] + match.group(1) + json.dumps(data, indent=2) + match.group(3) + html[match.end() :]
+        path.write_text(html, encoding="utf-8")
+
+
+def update_orchestration_generated(status: dict[str, Any]) -> None:
+    html = ORCHESTRATION_HTML.read_text(encoding="utf-8")
+    match = re.search(r'(<script id="os-data" type="application/json">\n)(.*?)(\n    </script>)', html, flags=re.S)
+    if not match:
+        return
+    data = json.loads(match.group(2))
+    data["generated"] = status.get("runCenter", {}).get("lastRefresh") or status.get("metadata", {}).get("lastUpdated", today_idt())
+    html = html[: match.start()] + match.group(1) + json.dumps(data, indent=2) + match.group(3) + html[match.end() :]
+    ORCHESTRATION_HTML.write_text(html, encoding="utf-8")
+
+
+def write_project_status(status: dict[str, Any]) -> None:
+    lines = [
+        "# Project Status",
+        "",
+        f"Last updated: {status['metadata']['lastUpdated']}",
+        "",
+        "Source policy: local folder mode. Generated by `./agentic-os refresh` from local project paths, git state, task files, and `dashboard/status.json`. No external production dashboards were queried.",
+        "",
+        "## Status Table",
+        "",
+        "| Project | State | Next Action | Blockers | Dirty | Last Commit |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for p in status.get("projectHealth", []):
+        lines.append(
+            f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | {p['blockerCount']} | "
+            f"{'Yes (' + str(p['dirtyCount']) + ')' if p['dirty'] else 'No'} | {clean_cell(p['lastCommit'])} |"
+        )
+
+    lines += [
+        "",
+        "## Morning Brief",
+        "",
+        status.get("summary", {}).get("overallStatus", "No summary available."),
+        "",
+        "## What To Do Next",
+        "",
+        status.get("summary", {}).get("bestNextAction", "Refresh status and choose the next action."),
+        "",
+        "## Action Board",
+        "",
+    ]
+    for key, title in [("now", "Now"), ("next", "Next"), ("later", "Later"), ("blocked", "Blocked")]:
+        lines += [f"### {title}", ""]
+        items = status.get("priorityBoard", {}).get(key, [])
+        lines += [f"- {item}" for item in items] or ["- None listed."]
+        lines.append("")
+
+    lines += ["## Agent Queue", ""]
+    for item in status.get("agentQueue", []):
+        lines.append(f"- **{item['role']}** - {item['task']}")
+    lines += ["", "## Sources Read", ""]
+    sources = status.get("runCenter", {}).get("sourcesRead", [])
+    lines += [f"- {src}" for src in sources] or ["- No source files recorded."]
+    lines.append("")
+    (ROOT / "PROJECT-STATUS.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_dashboard(status: dict[str, Any]) -> None:
+    lines = [
+        "# Portfolio Dashboard",
+        "",
+        f"Last updated: {status['metadata']['lastUpdated']}",
+        "",
+        status["metadata"]["sourcePolicy"],
+        "",
+        "## Executive Summary",
+        "",
+        status.get("summary", {}).get("overallStatus", "No summary available."),
+        "",
+        f"Best next action: {status.get('summary', {}).get('bestNextAction', 'Refresh status.')}",
+        "",
+        "## Run Center",
+        "",
+        f"- Last refresh: {status.get('runCenter', {}).get('lastRefresh', 'Unknown')}",
+        f"- Localhost: `{status.get('runCenter', {}).get('localhostUrl', 'Unknown')}`",
+        f"- Safe mode: {status.get('runCenter', {}).get('safeMode', 'Unknown')}",
+        "",
+        "## Project Health",
+        "",
+        "| Project | State | Next Action | Dirty |",
+        "| --- | --- | --- | --- |",
+    ]
+    for p in status.get("projectHealth", []):
+        lines.append(f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | {'Yes' if p['dirty'] else 'No'} |")
+
+    lines += [
+        "",
+        "## Decision Board",
+        "",
+        "| Decision | Project | Recommendation | Urgency |",
+        "| --- | --- | --- | --- |",
+    ]
+    for decision in status.get("decisionBoard", []):
+        lines.append(
+            f"| {clean_cell(decision.get('decision', ''))} | {clean_cell(decision.get('project', ''))} | "
+            f"{clean_cell(decision.get('recommendedOption', ''))} | {clean_cell(decision.get('urgency', ''))} |"
+        )
+
+    lines += ["", "## Agent Delegation", ""]
+    for item in status.get("agentQueue", []):
+        lines.append(f"- **{item['role']}**: {item['task']} Evidence: {item['evidence']}")
+    lines += ["", "## Validation", ""]
+    lines += [f"- {check}" for check in status.get("runCenter", {}).get("checksRun", [])]
+    lines.append("")
+    (ROOT / "DASHBOARD.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def write_executive_dashboard(status: dict[str, Any]) -> None:
+    executive = status.get("executiveBoard", {})
+    lines = [
+        "# Executive Dashboard",
+        "",
+        "Manual source-of-truth dashboard for the Executive Intelligence OS. Financial cells stay `Needs Data` until a real source exists.",
+        "",
+        f"Last updated: {status['metadata']['lastUpdated']}",
+        "",
+        "## Executive Summary",
+        "",
+        status.get("summary", {}).get("overallStatus", "No summary available."),
+        "",
+        "## CEO Focus",
+        "",
+    ]
+    lines += [f"- {item}" for item in executive.get("top3", [])] or ["- Refresh status and choose the next focus."]
+    lines += [
+        "",
+        "## Financial Snapshot",
+        "",
+        f"{executive.get('financialSnapshot', 'Needs Data - no revenue/cost instrumentation wired.')}",
+        "",
+        "## Open Decisions",
+        "",
+    ]
+    lines += [f"- {item}" for item in executive.get("openDecisions", [])] or ["- None listed."]
+    lines += ["", "## Risk Board", ""]
+    for blocker in status.get("summary", {}).get("mainBlockers", []):
+        lines.append(f"- {blocker}")
+    lines += ["", "## Next Recommended Actions", ""]
+    for item in status.get("priorityBoard", {}).get("now", []):
+        lines.append(f"1. {item}")
+    lines.append("")
+    (ROOT / "executive-os" / "EXECUTIVE-DASHBOARD.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def clean_cell(value: Any) -> str:
+    return str(value).replace("|", "/").replace("\n", " ").strip()
+
+
+def extract_json_script(path: Path, script_id: str) -> Any | None:
+    text = path.read_text(encoding="utf-8")
+    match = re.search(
+        rf'<script id="{re.escape(script_id)}" type="application/json">\n(.*?)\n\s*</script>',
+        text,
+        flags=re.S,
+    )
+    if not match:
+        return None
+    return json.loads(match.group(1))
+
+
+def verify_links() -> list[str]:
+    errors: list[str] = []
+    html_files = [
+        INDEX_HTML,
+        PROJECT_STATUS_HTML,
+        COMMAND_CENTER_HTML,
+        ORCHESTRATION_HTML,
+        DASHBOARD / "executive.html",
+        DASHBOARD / "decisions.html",
+        DASHBOARD / "metrics.html",
+        DASHBOARD / "data-flow.html",
+    ]
+    literal_href = re.compile(r'href="([^"]+)"')
+    for html_file in html_files:
+        html = html_file.read_text(encoding="utf-8")
+        hrefs = literal_href.findall(html)
+        if html_file in [INDEX_HTML, COMMAND_CENTER_HTML]:
+            cc = extract_json_script(html_file, "cc-data") or {}
+            for group in cc.get("groups", []):
+                for item in group.get("items", []):
+                    for link in item.get("links", []):
+                        hrefs.append(link.get("href", ""))
+        for href in hrefs:
+            if not href or href.startswith(("#", "http:", "https:", "file:", "mailto:")):
+                continue
+            target = (html_file.parent / href).resolve()
+            if not target.exists():
+                errors.append(f"{html_file.relative_to(ROOT)} -> missing link {href}")
+    return errors
+
+
+def verify() -> int:
+    errors: list[str] = []
+    status = read_json(STATUS_JSON)
+    if extract_json_script(INDEX_HTML, "cc-data") is None:
+        errors.append("dashboard/index.html missing parseable cc-data JSON")
+    project_status = extract_json_script(PROJECT_STATUS_HTML, "status-data")
+    if project_status != status:
+        errors.append("dashboard/project-status.html embedded status-data is not synced with dashboard/status.json")
+    if extract_json_script(COMMAND_CENTER_HTML, "cc-data") is None:
+        errors.append("dashboard/command-center.html missing parseable cc-data JSON")
+    if extract_json_script(ORCHESTRATION_HTML, "os-data") is None:
+        errors.append("dashboard/orchestration.html missing parseable os-data JSON")
+    errors.extend(verify_links())
+
+    diff = run(["git", "diff", "--check"], cwd=ROOT)
+    if diff.returncode != 0:
+        errors.append(diff.stdout.strip() or diff.stderr.strip() or "git diff --check failed")
+
+    if errors:
+        print("verify failed:")
+        for error in errors:
+            print(f"- {error}")
+        return 1
+    print("verify passed")
+    print("- dashboard/status.json parsed")
+    print("- embedded dashboard JSON parsed")
+    print("- project-status.html fallback is synced")
+    print("- dashboard links resolve")
+    print("- git diff --check passed")
+    return 0
+
+
+def find_port(start: int) -> int:
+    port = start
+    while port < start + 100:
+        with contextlib.closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
+            if sock.connect_ex(("127.0.0.1", port)) != 0:
+                return port
+        port += 1
+    raise RuntimeError("No free localhost port found")
+
+
+def serve(port: int, open_browser: bool = True) -> int:
+    port = find_port(port)
+    os.chdir(DASHBOARD)
+    handler = http.server.SimpleHTTPRequestHandler
+    url = f"http://127.0.0.1:{port}/index.html"
+
+    class ReusableTCPServer(socketserver.TCPServer):
+        allow_reuse_address = True
+
+    with ReusableTCPServer(("127.0.0.1", port), handler) as httpd:
+        print(f"Agentic OS Command Center: {url}")
+        print("Press Ctrl-C to stop.")
+        if open_browser:
+            webbrowser.open(url)
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\nStopped Agentic OS server.")
+    return 0
+
+
+def refresh(args: argparse.Namespace) -> int:
+    status = update_status_json(port=args.port, command=f"./agentic-os {args.command}")
+    print("refreshed Agentic OS")
+    print(f"- last refresh: {status['runCenter']['lastRefresh']}")
+    print("- sources read:")
+    for source in status["runCenter"]["sourcesRead"]:
+        print(f"  - {source}")
+    print("- no external dashboards or production services were queried")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="./agentic-os", description="Local Agentic OS command center")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    morning = sub.add_parser("morning", help="refresh, verify, serve localhost, and open Command Center")
+    morning.add_argument("--port", type=int, default=8787)
+    morning.add_argument("--no-open", action="store_true", help="serve without opening a browser")
+
+    refresh_cmd = sub.add_parser("refresh", help="refresh status files without serving")
+    refresh_cmd.add_argument("--port", type=int, default=8787)
+
+    serve_cmd = sub.add_parser("serve", help="serve the current dashboard")
+    serve_cmd.add_argument("--port", type=int, default=8787)
+    serve_cmd.add_argument("--no-open", action="store_true", help="serve without opening a browser")
+
+    sub.add_parser("verify", help="verify dashboard JSON, fallback sync, links, and whitespace")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if args.command == "refresh":
+        return refresh(args)
+    if args.command == "verify":
+        return verify()
+    if args.command == "serve":
+        return serve(args.port, open_browser=not args.no_open)
+    if args.command == "morning":
+        rc = refresh(args)
+        if rc != 0:
+            return rc
+        rc = verify()
+        if rc != 0:
+            mark_daily_run_verified(args.port, passed=False)
+            return rc
+        mark_daily_run_verified(args.port, passed=True)
+        return serve(args.port, open_browser=not args.no_open)
+    parser.print_help()
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

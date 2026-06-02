@@ -37,6 +37,22 @@ body {
 
 a { color: inherit; }
 
+.copy-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent, var(--blue)), var(--cyan));
+  color: #06122b;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 780;
+}
+
 .topbar {
   position: sticky;
   top: 0;

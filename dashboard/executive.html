@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agentic OS - Executive</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="Global Agentic OS">
+        <span class="brand-mark">OS</span>
+        <span><strong>Agentic OS</strong><small>Executive</small></span>
+      </a>
+      <nav class="osnav" aria-label="Dashboards">
+        <a href="./index.html">Command Center</a>
+        <a href="./project-status.html">Project Status</a>
+        <a href="./orchestration.html">Orchestration Map</a>
+        <a href="./executive.html" class="active" aria-current="page">Executive</a>
+        <a href="./decisions.html">Decisions</a>
+        <a href="./metrics.html">Metrics</a>
+        <a href="./data-flow.html">Data Flow</a>
+      </nav>
+    </header>
+    <main class="page-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Executive overview</p>
+          <h1>Portfolio state, focus, risk, and the next progress move.</h1>
+          <p id="portfolio-state" class="hero-copy"></p>
+        </div>
+        <aside class="summary-panel">
+          <span class="label">Best next action</span>
+          <p id="headline"></p>
+        </aside>
+      </section>
+      <section class="metric-grid">
+        <article><span id="metric-dirty" class="metric-value">0</span><span class="metric-label">Dirty repos</span></article>
+        <article><span id="metric-blocked" class="metric-value">0</span><span class="metric-label">Blocked projects</span></article>
+        <article><span id="metric-decisions" class="metric-value">0</span><span class="metric-label">Open decisions</span></article>
+        <article><span id="metric-money" class="metric-value">Needs Data</span><span class="metric-label">Financial snapshot</span></article>
+      </section>
+      <section class="board-grid">
+        <article class="board"><div class="board-header"><p class="eyebrow">CEO focus</p><h2>Top focus</h2></div><div id="focus" class="priority-board"></div></article>
+        <article class="board"><div class="board-header"><p class="eyebrow">Risk</p><h2>Risk board</h2></div><div id="risks" class="priority-board"></div></article>
+      </section>
+      <section class="board">
+        <div class="board-header"><p class="eyebrow">Project prompts</p><h2>Copy into the matching repo</h2></div>
+        <div id="prompts" class="project-grid"></div>
+      </section>
+    </main>
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const card = (title, body) => `<article class="project-card"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`;
+      init();
+      async function init() {
+        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
+        const executive = data.executiveOverview || {};
+        $("portfolio-state").textContent = executive.portfolioState || "";
+        $("headline").textContent = executive.headline || "";
+        $("metric-dirty").textContent = executive.dirtyProjectCount ?? 0;
+        $("metric-blocked").textContent = executive.blockedProjectCount ?? 0;
+        $("metric-decisions").textContent = executive.openDecisionCount ?? 0;
+        $("metric-money").textContent = executive.financialSnapshot || "Needs Data";
+        $("focus").innerHTML = list(executive.focus || []);
+        $("risks").innerHTML = list(executive.risks || []);
+        $("prompts").innerHTML = (data.projectPrompts || []).map((item) => promptCard(item)).join("");
+        document.querySelectorAll("[data-copy]").forEach((button) => button.addEventListener("click", () => copy(button)));
+      }
+      function list(items) {
+        return `<div><ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`;
+      }
+      function promptCard(item) {
+        return `<article class="project-card">
+          <h3>${escapeHtml(item.project)}</h3>
+          <p>${escapeHtml(item.nextAction)}</p>
+          <p class="meta-line">${escapeHtml(item.role)} · ${escapeHtml(item.repoState)} · ${escapeHtml(item.branch || "")}</p>
+          <button class="copy-mini" data-copy="${escapeAttr(item.copyPrompt)}">Copy prompt</button>
+        </article>`;
+      }
+      function copy(button) {
+        navigator.clipboard.writeText(button.dataset.copy || "");
+        button.textContent = "Copied";
+        setTimeout(() => button.textContent = "Copy prompt", 1200);
+      }
+      function escapeHtml(value) {
+        return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      }
+      function escapeAttr(value) { return escapeHtml(value).replace(/`/g, "&#96;"); }
+    </script>
+  </body>
+</html>
