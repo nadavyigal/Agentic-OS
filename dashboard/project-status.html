@@ -121,7 +121,8 @@
       "Resumely iOS: real-device authenticated smoke has not been run after the June 1 fixes.",
       "RunSmart Web: dirty local tree with many modified/untracked files before more voice work.",
       "ResumeBuilder Web: rollout plan remains unchecked on a dirty PDF parse branch.",
-      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web)."
+      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web).",
+      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web)."
     ],
     "needsDecision": [
       "RunSmart 1.0.1: wait for v1.0 review outcome, then choose the smallest Sprint 11 scope.",
@@ -199,8 +200,51 @@
           "tasks/todo.md",
           "tasks/session-log.md",
           "docs/specs/README.md"
-        ]
-      }
+        ],
+        "sourceConfidence": "High",
+        "preferredSource": "derived",
+        "freshness": "Fresh",
+        "freshestDate": "2026-05-31",
+        "evidenceGap": false,
+        "evidenceDate": "2026-05-31"
+      },
+      "taskParse": {
+        "status": null,
+        "currentPhase": "App Store submission sprint (Build 6)",
+        "activeStory": "App Store submission sprint (Build 6)",
+        "lastCompletedStory": "App Store Connect 6.5-inch screenshot upload blocker \u2014 COMPLETE",
+        "nextRecommendedStory": "Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA",
+        "blockers": [],
+        "risks": [],
+        "lastValidation": "Swift parse validation passed for SupabaseRunSmartServices.swift after edit.; trackPlanGenerated call confirmed at line 271 via grep",
+        "lastUpdated": "2026-05-31",
+        "qaNeeded": null,
+        "estimatedCompletion": null,
+        "decisionsNeeded": [],
+        "openQuestions": [
+          "Checked the historical open questions for `RunSmartTab` ambiguity and `GlassCard` redeclaration"
+        ],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": "2026-05-31"
+        },
+        "preferredSource": "derived",
+        "sourcesUsed": [
+          "tasks/todo.md",
+          "tasks/session-log.md",
+          "tasks/MEMORY.md",
+          "tasks/lessons.md"
+        ],
+        "missing": [
+          "tasks/progress.md",
+          "tasks/ERRORS.md"
+        ],
+        "sourceConfidence": "High",
+        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+      },
+      "sourceConfidence": "High"
     },
     {
       "id": "resumebuilder-ios",
@@ -254,10 +298,10 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
+        "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 1,
-        "lastCommit": "2026-06-01 402a0b4 Fix preview and export stability",
+        "lastCommit": "2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -266,8 +310,61 @@
           "docs/specs/README.md",
           "docs/product/product-vision.md",
           "docs/product/current-product-state.md"
-        ]
-      }
+        ],
+        "sourceConfidence": "High",
+        "preferredSource": "tasks/progress.md",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-02",
+        "evidenceGap": true,
+        "evidenceDate": "2026-06-01"
+      },
+      "taskParse": {
+        "status": "In Progress",
+        "currentPhase": "Pre-release (TestFlight prep)",
+        "activeStory": "Resumely Pre-Submission UX/UI Transformation (PR #36 QA fixes complete on branch `cursor/resumely-pre-submission-ux-cb5f`)",
+        "lastCompletedStory": "rb-aso-002 \u2014 App Store screenshot renderer (2026-05-28)",
+        "nextRecommendedStory": "Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs",
+        "blockers": [
+          "`/api/v1/resumes` returns production Next.js 404 HTML",
+          "backend route must ship before Resume Library can be re-enabled"
+        ],
+        "risks": [
+          "Swift 6 concurrency strictness",
+          "PDF render via WKWebView (fragile on real device)",
+          "no Hebrew/RTL support",
+          "live backend endpoint gaps now surface real user-visible errors instead of mock fallback content",
+          "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
+        ],
+        "lastValidation": "Cursor report follow-up: signed `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 53 XCTest + 5 Swift Testing tests; XcodeBuildMCP build/run smoke succeeded on iPhone 17 with Home screenshot checked (2026-06-01). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData",
+        "lastUpdated": "2026-06-01",
+        "qaNeeded": null,
+        "estimatedCompletion": "68%",
+        "decisionsNeeded": [],
+        "openQuestions": [],
+        "evidence": {
+          "tests": [
+            "53 XCTest",
+            "5 Swift Testing"
+          ],
+          "buildStatus": "succeeded",
+          "qaDocs": [],
+          "evidenceDate": "2026-06-01"
+        },
+        "preferredSource": "tasks/progress.md",
+        "sourcesUsed": [
+          "tasks/progress.md",
+          "tasks/todo.md",
+          "tasks/session-log.md",
+          "tasks/MEMORY.md",
+          "tasks/lessons.md"
+        ],
+        "missing": [
+          "tasks/ERRORS.md"
+        ],
+        "sourceConfidence": "High",
+        "notes": ""
+      },
+      "sourceConfidence": "High"
     },
     {
       "id": "runsmart-web",
@@ -313,15 +410,56 @@
         "sourceFiles": [
           "tasks/MEMORY.md",
           "docs/agent-os/project-context.md"
-        ]
-      }
+        ],
+        "sourceConfidence": "Medium",
+        "preferredSource": "derived",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-01",
+        "evidenceGap": false,
+        "evidenceDate": null
+      },
+      "taskParse": {
+        "status": null,
+        "currentPhase": null,
+        "activeStory": null,
+        "lastCompletedStory": null,
+        "nextRecommendedStory": null,
+        "blockers": [],
+        "risks": [],
+        "lastValidation": null,
+        "lastUpdated": null,
+        "qaNeeded": null,
+        "estimatedCompletion": null,
+        "decisionsNeeded": [],
+        "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
+        "preferredSource": "derived",
+        "sourcesUsed": [
+          "tasks/MEMORY.md",
+          "tasks/ERRORS.md",
+          "tasks/lessons.md"
+        ],
+        "missing": [
+          "tasks/progress.md",
+          "tasks/todo.md",
+          "tasks/session-log.md"
+        ],
+        "sourceConfidence": "Medium",
+        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+      },
+      "sourceConfidence": "Medium"
     },
     {
       "id": "resumebuilder-ai",
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Needs Review",
+      "freshness": "Fresh",
       "statusTone": "reference",
       "status": "Backend/reference project for Resumely. PDF parse/render-preview fix exists on fix/pdf-parse-xref-error, but rollout shadow enablement remains unchecked and the branch is dirty.",
       "currentPhase": "PDF parse/render-preview rollout",
@@ -361,8 +499,49 @@
         "sourceFiles": [
           "tasks/MEMORY.md",
           "docs/agent-os/project-context.md"
-        ]
-      }
+        ],
+        "sourceConfidence": "Medium",
+        "preferredSource": "derived",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-02",
+        "evidenceGap": false,
+        "evidenceDate": null
+      },
+      "taskParse": {
+        "status": null,
+        "currentPhase": null,
+        "activeStory": null,
+        "lastCompletedStory": null,
+        "nextRecommendedStory": null,
+        "blockers": [],
+        "risks": [],
+        "lastValidation": null,
+        "lastUpdated": null,
+        "qaNeeded": null,
+        "estimatedCompletion": null,
+        "decisionsNeeded": [],
+        "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
+        "preferredSource": "derived",
+        "sourcesUsed": [
+          "tasks/MEMORY.md",
+          "tasks/ERRORS.md",
+          "tasks/lessons.md"
+        ],
+        "missing": [
+          "tasks/progress.md",
+          "tasks/todo.md",
+          "tasks/session-log.md"
+        ],
+        "sourceConfidence": "Medium",
+        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+      },
+      "sourceConfidence": "Medium"
     },
     {
       "id": "atlas",
@@ -400,7 +579,8 @@
       "links": {
         "bridge": "../PROJECT-BRIDGES/atlas.md",
         "repo": null
-      }
+      },
+      "sourceConfidence": "Unknown"
     },
     {
       "id": "agentic-os",
@@ -435,13 +615,54 @@
       },
       "localEvidence": {
         "branch": "main",
-        "dirty": true,
-        "dirtyCount": 19,
-        "lastCommit": "2026-06-01 a34cfc2 Merge pull request #1 from nadavyigal/claude/affectionate-leakey-1dd175",
+        "dirty": false,
+        "dirtyCount": 0,
+        "lastCommit": "2026-06-02 2ffad7e Merge pull request #2 from nadavyigal/codex/agentic-os-command-center-upgrade",
         "sourceFiles": [
           "tasks/MEMORY.md"
-        ]
-      }
+        ],
+        "sourceConfidence": "Medium",
+        "preferredSource": "derived",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-02",
+        "evidenceGap": false,
+        "evidenceDate": null
+      },
+      "taskParse": {
+        "status": null,
+        "currentPhase": null,
+        "activeStory": null,
+        "lastCompletedStory": null,
+        "nextRecommendedStory": null,
+        "blockers": [],
+        "risks": [],
+        "lastValidation": null,
+        "lastUpdated": null,
+        "qaNeeded": null,
+        "estimatedCompletion": null,
+        "decisionsNeeded": [],
+        "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
+        "preferredSource": "derived",
+        "sourcesUsed": [
+          "tasks/MEMORY.md",
+          "tasks/ERRORS.md"
+        ],
+        "missing": [
+          "tasks/progress.md",
+          "tasks/todo.md",
+          "tasks/session-log.md",
+          "tasks/lessons.md"
+        ],
+        "sourceConfidence": "Medium",
+        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+      },
+      "sourceConfidence": "Medium"
     }
   ],
   "priorityBoard": {
@@ -573,9 +794,9 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-02 13:54",
-    "command": "./agentic-os morning",
-    "localhostUrl": "http://127.0.0.1:8788/index.html",
+    "lastRefresh": "2026-06-02 16:04",
+    "command": "./agentic-os refresh",
+    "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: tasks/MEMORY.md",
       "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
@@ -598,6 +819,7 @@
       "dashboard/status.json parsed",
       "embedded dashboard JSON parsed",
       "project-status.html fallback sync checked",
+      "source confidence and freshness validated",
       "git diff --check"
     ],
     "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
@@ -607,32 +829,54 @@
     {
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
-      "state": "App Store review plus 1.0.1 planning",
-      "nextAction": "Monitor App Store review and respond to Apple feedback.",
+      "state": "App Store submission sprint (Build 6)",
+      "nextAction": "Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA",
       "blockerCount": 3,
       "dirty": true,
       "dirtyCount": 24,
       "branch": "main...origin/main [ahead 1]",
       "lastCommit": "2026-05-31 234d2d5 Add UX redesign spec for 1.0.1 fast follow",
       "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-05-31",
+      "evidenceGap": false,
+      "evidenceDate": "2026-05-31",
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
         "tasks/session-log.md",
         "docs/specs/README.md"
-      ]
+      ],
+      "sourceConfidence": "High",
+      "preferredSource": "derived",
+      "parsedLastValidation": "Swift parse validation passed for SupabaseRunSmartServices.swift after edit.; trackPlanGenerated call confirmed at line 271 via grep",
+      "parsedLastUpdated": "2026-05-31",
+      "parsedActiveStory": "App Store submission sprint (Build 6)"
     },
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Pre-submission QA and App Store upload",
-      "nextAction": "Run the authenticated device smoke from tasks/session-log.md.",
-      "blockerCount": 3,
+      "state": "Pre-release (TestFlight prep)",
+      "nextAction": "Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs",
+      "blockerCount": 2,
       "dirty": true,
       "dirtyCount": 1,
-      "branch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
-      "lastCommit": "2026-06-01 402a0b4 Fix preview and export stability",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304",
       "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-02",
+      "evidenceGap": true,
+      "evidenceDate": "2026-06-01",
+      "evidenceTests": [
+        "53 XCTest",
+        "5 Swift Testing"
+      ],
+      "buildStatus": "succeeded",
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -641,7 +885,12 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md"
-      ]
+      ],
+      "sourceConfidence": "High",
+      "preferredSource": "tasks/progress.md",
+      "parsedLastValidation": "Cursor report follow-up: signed `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 53 XCTest + 5 Swift Testing tests; XcodeBuildMCP build/run smoke succeeded on iPhone 17 with Home screenshot checked (2026-06-01). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData",
+      "parsedLastUpdated": "2026-06-01",
+      "parsedActiveStory": "Resumely Pre-Submission UX/UI Transformation (PR #36 QA fixes complete on branch `cursor/resumely-pre-submission-ux-cb5f`)"
     },
     {
       "id": "runsmart-web",
@@ -654,25 +903,22 @@
       "branch": "main...origin/main [ahead 2]",
       "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
       "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-01",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
-      ]
-    },
-    {
-      "id": "agentic-os",
-      "name": "Agentic OS",
-      "state": "Cross-project status and executive refresh",
-      "nextAction": "Run dashboard JSON checks.",
-      "blockerCount": 0,
-      "dirty": true,
-      "dirtyCount": 19,
-      "branch": "main",
-      "lastCommit": "2026-06-01 a34cfc2 Merge pull request #1 from nadavyigal/claude/affectionate-leakey-1dd175",
-      "stale": false,
-      "sourceFiles": [
-        "tasks/MEMORY.md"
-      ]
+      ],
+      "sourceConfidence": "Medium",
+      "preferredSource": "derived",
+      "parsedLastValidation": null,
+      "parsedLastUpdated": null,
+      "parsedActiveStory": null
     },
     {
       "id": "resumebuilder-ai",
@@ -685,10 +931,49 @@
       "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error",
       "lastCommit": "2026-06-02 673f6f1 chore: resolve merge conflicts with main",
       "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-02",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
-      ]
+      ],
+      "sourceConfidence": "Medium",
+      "preferredSource": "derived",
+      "parsedLastValidation": null,
+      "parsedLastUpdated": null,
+      "parsedActiveStory": null
+    },
+    {
+      "id": "agentic-os",
+      "name": "Agentic OS",
+      "state": "Cross-project status and executive refresh",
+      "nextAction": "Run dashboard JSON checks.",
+      "blockerCount": 0,
+      "dirty": false,
+      "dirtyCount": 0,
+      "branch": "main",
+      "lastCommit": "2026-06-02 2ffad7e Merge pull request #2 from nadavyigal/codex/agentic-os-command-center-upgrade",
+      "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-02",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
+      "sourceFiles": [
+        "tasks/MEMORY.md"
+      ],
+      "sourceConfidence": "Medium",
+      "preferredSource": "derived",
+      "parsedLastValidation": null,
+      "parsedLastUpdated": null,
+      "parsedActiveStory": null
     }
   ],
   "agentQueue": [
@@ -728,22 +1013,22 @@
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
       "branch": "main...origin/main [ahead 1]",
-      "nextAction": "Monitor App Store review and respond to Apple feedback.",
+      "nextAction": "Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
         "tasks/session-log.md",
         "docs/specs/README.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md. Current state: App Store review plus 1.0.1 planning. Next action: Monitor App Store review and respond to Apple feedback.. Known blockers: Apple review outcome is external.; Garmin freshness Story 4 (webhook audit) is backend/human investigation.; Local repo has dirty release/planning files that need triage before 1.0.1 work.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/specs/README.md. Current state: App Store submission sprint (Build 6). Next action: Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA. Known blockers: Apple review outcome is external.; Garmin freshness Story 4 (webhook audit) is backend/human investigation.; Local repo has dirty release/planning files that need triage before 1.0.1 work.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
-      "nextAction": "Run the authenticated device smoke from tasks/session-log.md.",
+      "branch": "main...origin/main",
+      "nextAction": "Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -753,7 +1038,7 @@
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-submission QA and App Store upload. Next action: Run the authenticated device smoke from tasks/session-log.md.. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -769,18 +1054,6 @@
       "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: Sprint 11 backend support / reference. Next action: Triage modified/untracked files before more web work.. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
-      "projectId": "agentic-os",
-      "project": "Agentic OS",
-      "role": "Agentic OS Operator",
-      "repoState": "Dirty",
-      "branch": "main",
-      "nextAction": "Run dashboard JSON checks.",
-      "evidence": [
-        "tasks/MEMORY.md"
-      ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md. Current state: Cross-project status and executive refresh. Next action: Run dashboard JSON checks.. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
-    },
-    {
       "projectId": "resumebuilder-ai",
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
@@ -792,6 +1065,18 @@
         "docs/agent-os/project-context.md"
       ],
       "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md. Current state: PDF parse/render-preview rollout. Next action: Leave parked unless Resumely smoke exposes backend parse/render issues.. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+    },
+    {
+      "projectId": "agentic-os",
+      "project": "Agentic OS",
+      "role": "Agentic OS Operator",
+      "repoState": "Clean",
+      "branch": "main",
+      "nextAction": "Run dashboard JSON checks.",
+      "evidence": [
+        "tasks/MEMORY.md"
+      ],
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md. Current state: Cross-project status and executive refresh. Next action: Run dashboard JSON checks.. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -808,16 +1093,16 @@
       "Resumely iOS: real-device authenticated smoke has not been run after the June 1 fixes.",
       "RunSmart Web: dirty local tree with many modified/untracked files before more voice work.",
       "ResumeBuilder Web: rollout plan remains unchecked on a dirty PDF parse branch.",
-      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web)."
+      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, Agentic OS, ResumeBuilder AI (Web).",
+      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web)."
     ],
     "openDecisionCount": 3,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "Agentic OS",
       "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
@@ -826,6 +1111,13 @@
       "RunSmart Web",
       "ResumeBuilder AI (Web)"
     ],
+    "staleProjectCount": 0,
+    "staleProjects": [],
+    "evidenceGapCount": 1,
+    "evidenceGapProjects": [
+      "Resumely iOS"
+    ],
+    "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
     "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired."
   },
@@ -857,17 +1149,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-02 13:54",
-    "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-02 13:54",
-    "localhostUrl": "http://127.0.0.1:8788/index.html",
+    "lastCommand": "./agentic-os refresh",
+    "lastRunAt": "2026-06-02 16:04",
+    "checksStatus": "Pending verify",
+    "checksCompletedAt": "",
+    "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-submission QA and App Store upload. Next action: Run the authenticated device smoke from tasks/session-log.md.. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "codex/preview-export-stability...origin/codex/preview-export-stability [gone]",
-    "readyForNextSession": true,
+    "targetBranch": "main...origin/main",
+    "readyForNextSession": false,
     "summary": "Resumely iOS: run the authenticated device smoke from tasks/session-log.md, verify PostHog/export coverage, then upload screenshots/listing and submit. RunSmart iOS: monitor Apple review and do not mutate v1.0 release artifacts."
   }
 }

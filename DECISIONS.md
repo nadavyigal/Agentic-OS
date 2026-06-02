@@ -26,3 +26,17 @@ Impact:
 - Prefer official (`anthropics/skills`) and already-trusted plugins (superpowers, gstack, vercel, supabase, frontend-design).
 - Use gstack `cso` skill supply-chain scanning for periodic review of installed skills.
 
+## 2026-06-02: Dashboard Trust Rule
+
+Decision: Global status must be parsed from local project task files when available. Existing `dashboard/status.json` narratives are fallback context, not proof of current status.
+
+Reason: The refresh previously leaned on curated narrative fields that could drift from reality. Parsing local task files (`tasks/progress.md`, then `tasks/todo.md` + latest `tasks/session-log.md` + `tasks/MEMORY.md`) ties each project's state to source evidence and exposes how trustworthy that state is.
+
+Impact:
+
+- The refresh parses local task files and attaches a `taskParse` block plus a `sourceConfidence` rating (High / Medium / Low / Unknown) to every project.
+- `tasks/progress.md` is the preferred status source; when absent, status is derived from todo + latest session-log + MEMORY; when no task files exist, the project is marked Low (narrative only) or Unknown (no source).
+- High confidence requires parsed validation evidence (passed build/tests/QA). Without it, confidence caps at Medium.
+- `PROJECT-STATUS.md`, `DASHBOARD.md`, and `executive-os/EXECUTIVE-DASHBOARD.md` surface the confidence column so a reader can tell parsed truth from narrative.
+- Agents must not treat a narrative-only (Low) status as confirmed; re-read the local repo before acting on it.
+

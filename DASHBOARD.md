@@ -12,19 +12,19 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Run Center
 
-- Last refresh: 2026-06-02 13:54
-- Localhost: `http://127.0.0.1:8788/index.html`
+- Last refresh: 2026-06-02 16:04
+- Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
 ## Project Health
 
-| Project | State | Next Action | Dirty |
-| --- | --- | --- | --- |
-| RunSmart iOS | App Store review plus 1.0.1 planning | Monitor App Store review and respond to Apple feedback. | Yes |
-| Resumely iOS | Pre-submission QA and App Store upload | Run the authenticated device smoke from tasks/session-log.md. | Yes |
-| RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes |
-| Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | Yes |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes |
+| Project | State | Next Action | Dirty | Freshness | Confidence |
+| --- | --- | --- | --- | --- | --- |
+| RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | Yes | Fresh | High |
+| Resumely iOS | Pre-release (TestFlight prep) | Upload rb-aso-002 screenshots to App Store Connect once an ASC API key/session is available, then confirm Privacy Policy and Support URLs | Yes | Fresh | High |
+| RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Fresh | Medium |
+| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
+| Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | No | Fresh | Medium |
 
 ## Decision Board
 
@@ -41,9 +41,14 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 - **Director / Orchestrator**: Turn the current Action Board into one reviewable work packet. Evidence: dashboard/status.json priorityBoard and projectHealth
 - **QA**: Verify dashboard or product readiness with evidence. Evidence: GLOBAL-QA-RULES.md, dashboard runCenter checksRun
 
+## Evidence Gaps
+
+- Resumely iOS: validated 2026-06-01, latest commit is newer.
+
 ## Validation
 
 - dashboard/status.json parsed
 - embedded dashboard JSON parsed
 - project-status.html fallback sync checked
+- source confidence and freshness validated
 - git diff --check

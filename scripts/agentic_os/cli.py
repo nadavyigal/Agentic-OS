@@ -12,7 +12,7 @@ import socketserver
 import subprocess
 import sys
 import webbrowser
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -77,6 +77,48 @@ PROJECT_PROMPT_ROLES = {
 }
 
 
+# Local task files the parser reads, in preference order. tasks/progress.md is the
+# preferred status source when present; the rest are used to derive or enrich status.
+TASK_FILES = [
+    "tasks/progress.md",
+    "tasks/todo.md",
+    "tasks/session-log.md",
+    "tasks/MEMORY.md",
+    "tasks/ERRORS.md",
+    "tasks/lessons.md",
+]
+
+# Maps a lowercased `Key: Value` label from tasks/progress.md to a parsed field name.
+PROGRESS_KEY_MAP = {
+    "status": "status",
+    "current phase": "currentPhase",
+    "active story": "activeStory",
+    "last completed story": "lastCompletedStory",
+    "next recommended story": "nextRecommendedStory",
+    "blockers": "blockers",
+    "risks": "risks",
+    "last validation": "lastValidation",
+    "last updated": "lastUpdated",
+    "latest qa report": "qaNeeded",
+    "estimated completion": "estimatedCompletion",
+}
+
+# Tokens that mean "no real value" when they are the entire field value.
+EMPTY_TOKENS = {"", "-", "—", "–", "none", "n/a", "na", "tbd", "pending", "todo"}
+
+# Validation evidence: positive signals must appear and not be negated.
+VALIDATION_POSITIVE = re.compile(
+    r"(\bpass(ed|es|ing)?\b|\bsucceeded\b|\bsuccess\b|\bgreen\b|\bverified\b|"
+    r"\bbuild succeeded\b|tests? (?:passed|green)|✓|✅)",
+    re.IGNORECASE,
+)
+VALIDATION_NEGATIVE = re.compile(
+    r"(not (?:yet )?(?:validated|run|done|tested|verified)|no validation|"
+    r"\buntested\b|\bunverified\b|\bunclear\b|validation pending|pending verify)",
+    re.IGNORECASE,
+)
+
+
 @dataclass
 class ProjectEvidence:
     project_id: str
@@ -88,6 +130,7 @@ class ProjectEvidence:
     dirty_count: int
     last_commit: str
     source_files: list[str]
+    task_parse: dict[str, Any] = field(default_factory=dict)
 
 
 def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
@@ -107,6 +150,83 @@ def today_idt() -> str:
 
 def now_label() -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M")
+
+
+# Freshness thresholds (days). Aligned with metadata.freshnessRule in status.json.
+FRESHNESS_FRESH_DAYS = 2
+FRESHNESS_REVIEW_DAYS = 7
+CONFIDENCE_DOWNGRADE = {"High": "Medium", "Medium": "Low", "Low": "Unknown", "Unknown": "Unknown"}
+
+
+def parse_date(value: Any) -> datetime | None:
+    if not value:
+        return None
+    match = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(value))
+    if not match:
+        return None
+    try:
+        return datetime(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+    except ValueError:
+        return None
+
+
+def compute_freshness(dates: list[datetime | None]) -> tuple[str, str | None]:
+    """Freshness label from the newest available date. Day granularity is enough."""
+    valid = [d for d in dates if d is not None]
+    if not valid:
+        return "Unknown", None
+    freshest = max(valid)
+    days = (datetime.now() - freshest).days
+    if days <= FRESHNESS_FRESH_DAYS:
+        label = "Fresh"
+    elif days <= FRESHNESS_REVIEW_DAYS:
+        label = "Needs Review"
+    else:
+        label = "Stale"
+    return label, freshest.strftime("%Y-%m-%d")
+
+
+def latest_date_in(text: str | None) -> datetime | None:
+    """The most recent YYYY-MM-DD found in free text, or None."""
+    dates = [parse_date(token) for token in re.findall(r"\d{4}-\d{2}-\d{2}", text or "")]
+    valid = [d for d in dates if d is not None]
+    return max(valid) if valid else None
+
+
+# Build-result phrasing in validation text.
+BUILD_OK = re.compile(r"build succeeded|xcodebuild build[^.]*succeed|build passed|compil\w+[^.]*(?:passed|succeeded)", re.IGNORECASE)
+BUILD_FAIL = re.compile(r"build failed|compile error|compilation failed", re.IGNORECASE)
+# Test-count phrasing, e.g. "53 XCTest", "5 Swift Testing", "12 tests".
+TEST_COUNT = re.compile(r"(\d+)\s+(XCTest|Swift Testing|tests?|specs?|unit tests?)", re.IGNORECASE)
+
+
+def extract_evidence(parse: dict[str, Any]) -> dict[str, Any]:
+    """Pull structured proof out of the free-text validation line.
+
+    Captures test counts, a build result, and any docs/ QA links, plus the most recent
+    date the evidence references (falling back to Last Updated). Story 3.1.
+    """
+    text = parse.get("lastValidation") or ""
+    evidence: dict[str, Any] = {"tests": [], "buildStatus": None, "qaDocs": [], "evidenceDate": None}
+
+    for match in TEST_COUNT.finditer(text):
+        evidence["tests"].append(f"{match.group(1)} {match.group(2)}")
+    evidence["tests"] = list(dict.fromkeys(evidence["tests"]))
+
+    if BUILD_OK.search(text):
+        evidence["buildStatus"] = "succeeded"
+    elif BUILD_FAIL.search(text):
+        evidence["buildStatus"] = "failed"
+
+    qa_docs = re.findall(r"docs/[\w./-]+", text)
+    qa_field = parse.get("qaNeeded")
+    if qa_field and str(qa_field).startswith("docs/"):
+        qa_docs.append(qa_field)
+    evidence["qaDocs"] = list(dict.fromkeys(qa_docs))
+
+    dated = latest_date_in(text)
+    evidence["evidenceDate"] = dated.strftime("%Y-%m-%d") if dated else parse.get("lastUpdated")
+    return evidence
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -143,6 +263,254 @@ def record_if_exists(path: Path, root: Path, sources: list[str]) -> str:
     except ValueError:
         sources.append(str(path))
     return path.read_text(encoding="utf-8", errors="replace")
+
+
+def empty_task_parse() -> dict[str, Any]:
+    return {
+        "status": None,
+        "currentPhase": None,
+        "activeStory": None,
+        "lastCompletedStory": None,
+        "nextRecommendedStory": None,
+        "blockers": [],
+        "risks": [],
+        "lastValidation": None,
+        "lastUpdated": None,
+        "qaNeeded": None,
+        "estimatedCompletion": None,
+        "decisionsNeeded": [],
+        "openQuestions": [],
+        "evidence": {"tests": [], "buildStatus": None, "qaDocs": [], "evidenceDate": None},
+        "preferredSource": "none",
+        "sourcesUsed": [],
+        "missing": [],
+        "sourceConfidence": "Unknown",
+        "notes": "",
+    }
+
+
+def clean_value(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = re.sub(r"\s+", " ", str(value)).strip().rstrip(".").strip()
+    if text.lower() in EMPTY_TOKENS:
+        return None
+    return text or None
+
+
+def split_list(value: Any) -> list[str]:
+    cleaned = clean_value(value)
+    if not cleaned:
+        return []
+    parts = re.split(r"\s*;\s*", cleaned)
+    return [p.strip() for p in parts if p.strip() and p.strip().lower() not in EMPTY_TOKENS]
+
+
+def has_validation_evidence(text: str | None) -> bool:
+    if not text:
+        return False
+    if VALIDATION_NEGATIVE.search(text):
+        return False
+    return bool(VALIDATION_POSITIVE.search(text))
+
+
+def keyed_fields(text: str) -> dict[str, str]:
+    """Parse leading `Key: Value` metadata lines (tasks/progress.md style)."""
+    fields: dict[str, str] = {}
+    for line in text.splitlines():
+        if ":" not in line or line.lstrip().startswith(("#", "|", "-", ">", "*")):
+            continue
+        key, _, value = line.partition(":")
+        normalized = key.strip().lower()
+        if normalized in PROGRESS_KEY_MAP and normalized not in fields:
+            fields[normalized] = value.strip()
+    return fields
+
+
+def section_value(text: str, heading: str) -> str | None:
+    """Return the first non-empty, non-heading line after a heading line."""
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if line.strip() == heading:
+            for follow in lines[index + 1:]:
+                stripped = follow.strip()
+                if not stripped:
+                    continue
+                if stripped.startswith("#"):
+                    return None
+                return clean_value(stripped)
+    return None
+
+
+def latest_session_entry(text: str) -> tuple[str | None, str | None]:
+    """Find the most recent dated session entry (`## YYYY-MM-DD - title`)."""
+    pattern = re.compile(r"^#{2,3}\s*(\d{4}-\d{2}-\d{2})(?:\s*[-—:]\s*(.*))?\s*$")
+    for line in text.splitlines():
+        match = pattern.match(line)
+        if match:
+            return match.group(1), clean_value(match.group(2) or "")
+    return None, None
+
+
+def latest_validation_block(text: str) -> str | None:
+    """Join bullet lines under the first `### Validation` heading in a session log."""
+    lines = text.splitlines()
+    for index, line in enumerate(lines):
+        if re.match(r"^#{2,4}\s*validation\b", line.strip(), re.IGNORECASE):
+            collected: list[str] = []
+            for follow in lines[index + 1:]:
+                stripped = follow.strip()
+                if not stripped:
+                    if collected:
+                        break
+                    continue
+                if stripped.startswith("#"):
+                    break
+                collected.append(stripped.lstrip("-* ").strip())
+            joined = "; ".join(collected).strip()
+            return clean_value(joined)
+    return None
+
+
+def todo_validation_line(text: str) -> str | None:
+    for line in text.splitlines():
+        if re.search(r"\bPASS\b", line) and re.search(r"\d{4}-\d{2}-\d{2}", line):
+            return clean_value(re.sub(r"[*\[\]]|- \[.\]", " ", line))
+    return None
+
+
+def scan_blockers(contents: dict[str, str]) -> list[str]:
+    found: list[str] = []
+    for text in contents.values():
+        for line in text.splitlines():
+            match = re.match(r"^\s*Blockers?:\s*(.+)$", line, re.IGNORECASE)
+            if match:
+                found.extend(split_list(match.group(1)))
+    # de-dupe, keep order
+    return list(dict.fromkeys(found))[:5]
+
+
+def extract_open_questions(contents: dict[str, str]) -> list[str]:
+    found: list[str] = []
+    for text in contents.values():
+        for line in text.splitlines():
+            if re.search(r"open question", line, re.IGNORECASE) and not re.search(
+                r"resolved|answered|closed|no open question", line, re.IGNORECASE
+            ):
+                cleaned = clean_value(line.lstrip("-*# ").strip())
+                if cleaned:
+                    found.append(cleaned)
+    return list(dict.fromkeys(found))[:5]
+
+
+def extract_open_decisions(contents: dict[str, str]) -> list[str]:
+    found: list[str] = []
+    for text in contents.values():
+        for line in text.splitlines():
+            if re.search(r"needs? decision|decision needed|open decision|undecided", line, re.IGNORECASE):
+                cleaned = clean_value(line.lstrip("-*# ").strip())
+                if cleaned:
+                    found.append(cleaned)
+    return list(dict.fromkeys(found))[:5]
+
+
+def derive_status(result: dict[str, Any], contents: dict[str, str]) -> None:
+    """Derive status when tasks/progress.md is absent (todo + session-log + MEMORY)."""
+    todo = contents.get("tasks/todo.md", "")
+    session = contents.get("tasks/session-log.md", "")
+
+    # The most recent dated session entry is the freshest signal for the current phase.
+    date, title = latest_session_entry(session)
+    if date:
+        result["lastUpdated"] = date
+    if title:
+        result["currentPhase"] = title
+
+    # The todo "Current Task" is the active or last-completed story.
+    current_task = section_value(todo, "## Current Task")
+    if current_task:
+        if re.search(r"\b(complete|completed|done|shipped)\b", current_task, re.IGNORECASE):
+            result["lastCompletedStory"] = current_task
+        else:
+            result["activeStory"] = current_task
+        result["currentPhase"] = result["currentPhase"] or current_task
+
+    if not result["activeStory"] and title:
+        result["activeStory"] = title
+
+    validation = latest_validation_block(session) or todo_validation_line(todo)
+    if validation:
+        result["lastValidation"] = validation
+
+    next_action = section_value(session, "### Next Recommended Action") or section_value(
+        todo, "## Next Recommended Story"
+    )
+    if next_action:
+        result["nextRecommendedStory"] = next_action
+
+    result["blockers"] = scan_blockers(contents)
+
+
+def compute_confidence(result: dict[str, Any]) -> str:
+    if not result["sourcesUsed"]:
+        return "Unknown"
+    if has_validation_evidence(result.get("lastValidation")):
+        return "High"
+    return "Medium"
+
+
+def parse_task_files(path: Path) -> dict[str, Any]:
+    """Read local task files and extract structured, source-backed status.
+
+    Preference order: tasks/progress.md (structured `Key: Value`) when present,
+    otherwise derive from tasks/todo.md + latest tasks/session-log.md + tasks/MEMORY.md.
+    When no task files exist, confidence stays Unknown and `missing` explains the gap.
+    """
+    result = empty_task_parse()
+
+    if not path.exists():
+        result["missing"] = list(TASK_FILES)
+        result["notes"] = "Project path not found on disk; no local task files could be read."
+        return result
+
+    contents: dict[str, str] = {}
+    for rel in TASK_FILES:
+        file_path = path / rel
+        if file_path.exists():
+            contents[rel] = file_path.read_text(encoding="utf-8", errors="replace")
+            result["sourcesUsed"].append(rel)
+        else:
+            result["missing"].append(rel)
+
+    if not contents:
+        result["notes"] = (
+            "No local task files found (progress/todo/session-log/MEMORY/ERRORS/lessons). "
+            "Status falls back to existing dashboard narrative."
+        )
+        return result
+
+    progress = contents.get("tasks/progress.md")
+    if progress:
+        result["preferredSource"] = "tasks/progress.md"
+        for key, field_name in keyed_fields(progress).items():
+            target = PROGRESS_KEY_MAP[key]
+            if target in ("blockers", "risks"):
+                result[target] = split_list(field_name)
+            else:
+                result[target] = clean_value(field_name)
+    else:
+        result["preferredSource"] = "derived"
+        result["notes"] = (
+            "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md "
+            "because tasks/progress.md is absent."
+        )
+        derive_status(result, contents)
+
+    result["decisionsNeeded"] = extract_open_decisions(contents)
+    result["openQuestions"] = extract_open_questions(contents)
+    result["evidence"] = extract_evidence(result)
+    result["sourceConfidence"] = compute_confidence(result)
+    return result
 
 
 def collect_evidence() -> list[ProjectEvidence]:
@@ -191,9 +559,26 @@ def collect_evidence() -> list[ProjectEvidence]:
                 dirty_count=dirty_count,
                 last_commit=last_commit,
                 source_files=sources,
+                task_parse=parse_task_files(path),
             )
         )
     return evidence
+
+
+def resolve_confidence(parse: dict[str, Any], project: dict[str, Any], exists: bool) -> str:
+    """Project-level confidence: prefer parsed local truth, fall back to narrative.
+
+    High/Medium come straight from the parser (local task files were read). When no
+    task files exist but the path is present and dashboard narrative is available, the
+    status is narrative-only -> Low. Missing path or no source at all -> Unknown.
+    """
+    parsed = parse.get("sourceConfidence", "Unknown")
+    if parsed in ("High", "Medium"):
+        return parsed
+    has_narrative = bool(project.get("currentPhase") or project.get("status"))
+    if exists and has_narrative:
+        return "Low"
+    return "Unknown"
 
 
 def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any]) -> list[dict[str, Any]]:
@@ -201,22 +586,59 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
     health: list[dict[str, Any]] = []
     for item in evidence:
         project = by_id.get(item.project_id, {})
-        blockers = project.get("blockers") or []
+        parse = item.task_parse or empty_task_parse()
+        blockers = parse.get("blockers") or project.get("blockers") or []
         next_actions = project.get("nextActions") or []
-        next_action = next_actions[0] if next_actions else project.get("nextRecommendedStory", "Refresh local status.")
+        next_action = (
+            parse.get("nextRecommendedStory")
+            or (next_actions[0] if next_actions else None)
+            or project.get("nextRecommendedStory")
+            or "Refresh local status."
+        )
+        state = (
+            parse.get("currentPhase")
+            or project.get("currentPhase")
+            or parse.get("status")
+            or project.get("status")
+            or "Unknown"
+        )
+        confidence = resolve_confidence(parse, project, item.exists)
+        freshness, freshest_date = compute_freshness(
+            [parse_date(parse.get("lastUpdated")), parse_date(item.last_commit)]
+        )
+        # Stale evidence cannot support a confident status: downgrade one level.
+        if freshness == "Stale":
+            confidence = CONFIDENCE_DOWNGRADE[confidence]
+        # Evidence gap: code committed after the last validation = proof predates the code.
+        evidence = parse.get("evidence") or {}
+        evidence_date = parse_date(evidence.get("evidenceDate"))
+        commit_date = parse_date(item.last_commit)
+        evidence_gap = bool(evidence_date and commit_date and commit_date > evidence_date)
         health.append(
             {
                 "id": item.project_id,
                 "name": item.name,
-                "state": project.get("currentPhase") or project.get("status") or "Unknown",
+                "state": state,
                 "nextAction": next_action,
                 "blockerCount": len(blockers),
                 "dirty": item.dirty,
                 "dirtyCount": item.dirty_count,
                 "branch": item.branch,
                 "lastCommit": item.last_commit,
-                "stale": not item.exists,
+                "stale": freshness == "Stale" or not item.exists,
+                "freshness": freshness,
+                "freshestDate": freshest_date,
+                "evidenceGap": evidence_gap,
+                "evidenceDate": evidence.get("evidenceDate"),
+                "evidenceTests": evidence.get("tests") or [],
+                "buildStatus": evidence.get("buildStatus"),
+                "qaDocs": evidence.get("qaDocs") or [],
                 "sourceFiles": item.source_files,
+                "sourceConfidence": confidence,
+                "preferredSource": parse.get("preferredSource", "none"),
+                "parsedLastValidation": parse.get("lastValidation"),
+                "parsedLastUpdated": parse.get("lastUpdated"),
+                "parsedActiveStory": parse.get("activeStory"),
             }
         )
     return health
@@ -260,6 +682,13 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
 def build_executive_overview(status: dict[str, Any], project_health: list[dict[str, Any]]) -> dict[str, Any]:
     dirty = [project["name"] for project in project_health if project.get("dirty")]
     blocked = [project["name"] for project in project_health if project.get("blockerCount", 0) > 0]
+    stale = [project["name"] for project in project_health if project.get("freshness") == "Stale"]
+    evidence_gaps = [project["name"] for project in project_health if project.get("evidenceGap")]
+    low_trust = [
+        project["name"]
+        for project in project_health
+        if project.get("sourceConfidence") in ("Low", "Unknown")
+    ]
     decisions = status.get("decisionBoard", [])
     metrics = status.get("executiveBoard", {})
     return {
@@ -272,6 +701,11 @@ def build_executive_overview(status: dict[str, Any], project_health: list[dict[s
         "dirtyProjectCount": len(dirty),
         "dirtyProjects": dirty,
         "blockedProjects": blocked,
+        "staleProjectCount": len(stale),
+        "staleProjects": stale,
+        "evidenceGapCount": len(evidence_gaps),
+        "evidenceGapProjects": evidence_gaps,
+        "lowTrustProjects": low_trust,
         "financialSnapshot": metrics.get("financialSnapshot", "Needs Data"),
         "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
     }
@@ -358,6 +792,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status = read_json(STATUS_JSON)
     evidence = collect_evidence()
     project_health = project_health_from(evidence, status)
+    parse_by_id = {item.project_id: item.task_parse for item in evidence}
     sources = sorted({f"{item.name}: {src}" for item in evidence for src in item.source_files})
     generated = today_idt()
 
@@ -377,6 +812,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "dashboard/status.json parsed",
             "embedded dashboard JSON parsed",
             "project-status.html fallback sync checked",
+            "source confidence and freshness validated",
             "git diff --check",
         ],
         "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
@@ -402,9 +838,18 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         )
 
     for project in status.get("projects", []):
+        parse = parse_by_id.get(project.get("id"))
+        if parse is not None:
+            project["taskParse"] = parse
         health = next((p for p in project_health if p["id"] == project.get("id")), None)
         if not health:
+            # Conceptual or path-less project (e.g. Atlas): no local source to parse.
+            project["sourceConfidence"] = resolve_confidence(
+                parse or empty_task_parse(), project, exists=False
+            )
             continue
+        project["sourceConfidence"] = health["sourceConfidence"]
+        project["freshness"] = health["freshness"]
         project["lastUpdated"] = generated
         project["localEvidence"] = {
             "branch": health["branch"],
@@ -412,6 +857,12 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "dirtyCount": health["dirtyCount"],
             "lastCommit": health["lastCommit"],
             "sourceFiles": health["sourceFiles"],
+            "sourceConfidence": health["sourceConfidence"],
+            "preferredSource": health["preferredSource"],
+            "freshness": health["freshness"],
+            "freshestDate": health["freshestDate"],
+            "evidenceGap": health["evidenceGap"],
+            "evidenceDate": health["evidenceDate"],
         }
 
     write_json(STATUS_JSON, status)
@@ -494,14 +945,35 @@ def write_project_status(status: dict[str, Any]) -> None:
         "",
         "## Status Table",
         "",
-        "| Project | State | Next Action | Blockers | Dirty | Last Commit |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "Confidence is parsed from local task files: High = task file parsed with validation "
+        "evidence; Medium = task file parsed, validation unclear; Low = no task files, dashboard "
+        "narrative only; Unknown = no reliable source. Stale evidence (newest signal older than "
+        "7 days) downgrades confidence one level.",
+        "",
+        "| Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for p in status.get("projectHealth", []):
         lines.append(
             f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | {p['blockerCount']} | "
-            f"{'Yes (' + str(p['dirtyCount']) + ')' if p['dirty'] else 'No'} | {clean_cell(p['lastCommit'])} |"
+            f"{'Yes (' + str(p['dirtyCount']) + ')' if p['dirty'] else 'No'} | "
+            f"{clean_cell(p.get('freshness', 'Unknown'))} | "
+            f"{clean_cell(p.get('sourceConfidence', 'Unknown'))} | {clean_cell(p.get('preferredSource', 'none'))} | "
+            f"{clean_cell(p['lastCommit'])} |"
         )
+
+    gaps = [p for p in status.get("projectHealth", []) if p.get("evidenceGap")]
+    lines += ["", "## Evidence Gaps", ""]
+    if gaps:
+        lines.append("Latest commit post-dates the last validation (code moved since the last proof):")
+        lines.append("")
+        for p in gaps:
+            lines.append(
+                f"- {p['name']}: validated {p.get('evidenceDate') or 'unknown'}, "
+                f"last commit {clean_cell(p['lastCommit'])}"
+            )
+    else:
+        lines.append("None. Every project's validation is at least as recent as its last commit.")
 
     lines += [
         "",
@@ -554,11 +1026,15 @@ def write_dashboard(status: dict[str, Any]) -> None:
         "",
         "## Project Health",
         "",
-        "| Project | State | Next Action | Dirty |",
-        "| --- | --- | --- | --- |",
+        "| Project | State | Next Action | Dirty | Freshness | Confidence |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     for p in status.get("projectHealth", []):
-        lines.append(f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | {'Yes' if p['dirty'] else 'No'} |")
+        lines.append(
+            f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | "
+            f"{'Yes' if p['dirty'] else 'No'} | {clean_cell(p.get('freshness', 'Unknown'))} | "
+            f"{clean_cell(p.get('sourceConfidence', 'Unknown'))} |"
+        )
 
     lines += [
         "",
@@ -576,6 +1052,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
     lines += ["", "## Agent Delegation", ""]
     for item in status.get("agentQueue", []):
         lines.append(f"- **{item['role']}**: {item['task']} Evidence: {item['evidence']}")
+    gaps = [p for p in status.get("projectHealth", []) if p.get("evidenceGap")]
+    lines += ["", "## Evidence Gaps", ""]
+    if gaps:
+        for p in gaps:
+            lines.append(f"- {p['name']}: validated {p.get('evidenceDate') or 'unknown'}, latest commit is newer.")
+    else:
+        lines.append("- None. Every project's validation is at least as recent as its last commit.")
+
     lines += ["", "## Validation", ""]
     lines += [f"- {check}" for check in status.get("runCenter", {}).get("checksRun", [])]
     lines.append("")
@@ -609,6 +1093,21 @@ def write_executive_dashboard(status: dict[str, Any]) -> None:
         "",
     ]
     lines += [f"- {item}" for item in executive.get("openDecisions", [])] or ["- None listed."]
+    lines += [
+        "",
+        "## Status Confidence",
+        "",
+        "How much each project's state is backed by parsed local task files versus narrative only.",
+        "",
+        "| Project | Confidence | Source | Last Validation |",
+        "| --- | --- | --- | --- |",
+    ]
+    for p in status.get("projectHealth", []):
+        lines.append(
+            f"| {p['name']} | {clean_cell(p.get('sourceConfidence', 'Unknown'))} | "
+            f"{clean_cell(p.get('preferredSource', 'none'))} | "
+            f"{clean_cell(p.get('parsedLastValidation') or 'Not parsed')} |"
+        )
     lines += ["", "## Risk Board", ""]
     for blocker in status.get("summary", {}).get("mainBlockers", []):
         lines.append(f"- {blocker}")
@@ -678,6 +1177,32 @@ def verify() -> int:
         errors.append("dashboard/command-center.html missing parseable cc-data JSON")
     if extract_json_script(ORCHESTRATION_HTML, "os-data") is None:
         errors.append("dashboard/orchestration.html missing parseable os-data JSON")
+
+    allowed_confidence = {"High", "Medium", "Low", "Unknown"}
+    allowed_freshness = {"Fresh", "Needs Review", "Stale", "Unknown"}
+    for health in status.get("projectHealth", []):
+        confidence = health.get("sourceConfidence")
+        if confidence not in allowed_confidence:
+            errors.append(
+                f"projectHealth '{health.get('name', '?')}' has invalid sourceConfidence: {confidence!r}"
+            )
+        freshness = health.get("freshness")
+        if freshness not in allowed_freshness:
+            errors.append(
+                f"projectHealth '{health.get('name', '?')}' has invalid freshness: {freshness!r}"
+            )
+        if not isinstance(health.get("evidenceGap"), bool):
+            errors.append(
+                f"projectHealth '{health.get('name', '?')}' has non-boolean evidenceGap: "
+                f"{health.get('evidenceGap')!r}"
+            )
+    for project in status.get("projects", []):
+        if "taskParse" in project and project.get("sourceConfidence") not in allowed_confidence:
+            errors.append(
+                f"project '{project.get('name', '?')}' has invalid sourceConfidence: "
+                f"{project.get('sourceConfidence')!r}"
+            )
+
     errors.extend(verify_links())
 
     diff = run(["git", "diff", "--check"], cwd=ROOT)
@@ -693,6 +1218,7 @@ def verify() -> int:
     print("- dashboard/status.json parsed")
     print("- embedded dashboard JSON parsed")
     print("- project-status.html fallback is synced")
+    print("- source confidence and freshness values valid")
     print("- dashboard links resolve")
     print("- git diff --check passed")
     return 0

@@ -4,12 +4,14 @@ Use this for cross-project or global OS work only. Product-specific tasks belong
 
 ## Ready
 
+- Execute the Agentic OS Top-Tier Plan (`OS-UPGRADE-PLAN.md`); Phases 0-1 done, Phase 2 next: standardize the status schema so Medium projects can reach High.
 - Create/update local Agent OS files inside RunSmart Web.
 - Create/update local Agent OS files inside RunSmart iOS.
 - Create bridge files for new products as they become active.
 
 ## Later
 
+- Audit `INTENT-LOG.md` on or after 2026-06-16: decide keep / promote into the memory system / delete.
 - Define Atlas v0 orchestration scope.
 - Create shared release checklist across web and iOS.
 - Create shared AI output quality rubric for product-facing AI features.

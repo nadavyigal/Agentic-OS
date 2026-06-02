@@ -1,30 +1,33 @@
 # Project Paths
 
-Last checked: 2026-05-15 17:12 IDT
+Last checked: 2026-06-02 IDT
 
-These paths were discovered from local folders that contain Agent OS status files. Update this file when a repo moves.
+Canonical local folders for the projects shown on the Agentic OS dashboard. The refresh
+pipeline (`scripts/agentic_os/cli.py`) discovers a project only when its row name matches a
+known alias and its path cell contains a backtick path, so keep the Name column stable.
+Update this file when a repo moves.
 
-## Active Local Projects
+## Active Dashboard Projects
 
 | Project | Local Path | Status Source | Notes |
 | --- | --- | --- | --- |
-| RunSmart iOS | `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app` | `tasks/todo.md`, `tasks/session-log.md`, `tasks/lessons.md` | App repo task memory is canonical. Outer wrapper status files should only point here. No `tasks/progress.md` exists in the app repo. |
-| ResumeBuilder iOS | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP` | `tasks/progress.md`, `tasks/todo.md`, `tasks/session-log.md`, `tasks/lessons.md` | Main checkout status files are current as of 2026-05-15. |
+| RunSmart iOS | `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app` | `tasks/todo.md`, `tasks/session-log.md`, `tasks/MEMORY.md`, `tasks/lessons.md` | No `tasks/progress.md`; status is derived from todo + latest session-log + MEMORY. |
+| ResumeBuilder iOS | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP` | `tasks/progress.md` (preferred), `tasks/todo.md`, `tasks/session-log.md`, `tasks/MEMORY.md`, `tasks/lessons.md` | Shown as "Resumely iOS". `tasks/progress.md` is the canonical structured status source. |
+| RunSmart Web | `/Users/nadavyigal/Documents/RunSmart` | `tasks/MEMORY.md`, `tasks/ERRORS.md`, `tasks/lessons.md` | No `tasks/progress.md` or `tasks/todo.md`; derived status only. Support/backend repo. |
+| ResumeBuilder Web | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-` | `tasks/MEMORY.md`, `tasks/ERRORS.md`, `tasks/lessons.md` | Shown as "ResumeBuilder AI (Web)". No `tasks/progress.md`; derived status only. |
+| Global Agentic OS | `/Users/nadavyigal/Documents/Projects /Agentic OS` | `tasks/MEMORY.md` | This dashboard workspace. Shown as "Agentic OS". |
 
-## Known But Not Active In This Dashboard
-
-| Project | Local Path | Notes |
-| --- | --- | --- |
-| RunSmart Web | `/Users/nadavyigal/Documents/RunSmart` | Not included in this dashboard because the request focused on iOS projects and no current status pull was requested. |
-| Global Agentic OS | `/Users/nadavyigal/Documents/Projects /Agentic OS` | Current global dashboard workspace. |
-
-## Recently Confirmed
+## Conceptual / Path Unknown
 
 | Project | Local Path | Notes |
 | --- | --- | --- |
-| ResumeBuilder Web | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-` | Next.js app; minimal tasks/ (MEMORY, ERRORS, lessons) |
+| Atlas | Unknown | Future orchestration layer. No repo path confirmed; stays a curated concept entry with Unknown source confidence until a path exists. |
 
-## Missing Or Ambiguous Paths
+## Source Confidence Reference
 
-- Atlas repo path is not confirmed here.
+The refresh assigns a confidence to each project based on what it could actually read:
 
+- **High** - a local task file was parsed and validation evidence (passed build/tests/QA) was found.
+- **Medium** - a local task file was parsed but validation evidence was unclear.
+- **Low** - no local task files were found; only the existing dashboard narrative was available.
+- **Unknown** - no reliable source (missing path or no task files and no narrative).
