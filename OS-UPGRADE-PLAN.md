@@ -16,16 +16,20 @@ block and `sourceConfidence` (High/Medium/Low/Unknown); confidence columns in
 `PROJECT-STATUS.md`, `DASHBOARD.md`, `executive-os/EXECUTIVE-DASHBOARD.md`; the Dashboard
 Trust Rule in `DECISIONS.md`. This is the foundation every later phase depends on.
 
-## Phase 1 - Freshness and staleness enforcement
+## Phase 1 - Freshness and staleness enforcement (DONE 2026-06-02)
 
-Problem: `status.json.metadata.freshnessRule` defines fresh/needsReview/stale/unknown but
-nothing computes it. Status can be confidently wrong because it is old.
+Problem: `status.json.metadata.freshnessRule` defined fresh/needsReview/stale/unknown but
+nothing computed it. Status could be confidently wrong because it was old.
 
-Story 1.1: Compute per-project freshness from the newest of parsed `lastUpdated` and the
-last git commit date. Set `projectHealth[].freshness` and downgrade `sourceConfidence` by
-one level when the freshest signal is older than 7 days (High to Medium, etc.).
-Story 1.2: Add a `stale` count to `executiveOverview` and a "Stale" badge column to the
-status table. Verify: refresh with a backdated fixture marks the project stale.
+Shipped:
+- `compute_freshness` derives a per-project freshness label (Fresh <= 2d, Needs Review <= 7d,
+  Stale > 7d, Unknown when no date) from the newest of parsed `lastUpdated` and the last git
+  commit date; set on `projectHealth[].freshness` and `freshestDate`.
+- Stale evidence downgrades `sourceConfidence` one level (High->Medium->Low->Unknown) via
+  `CONFIDENCE_DOWNGRADE`, so an old repo cannot keep a High rating.
+- `executiveOverview` now carries `staleProjectCount`/`staleProjects` and `lowTrustProjects`;
+  `PROJECT-STATUS.md` and `DASHBOARD.md` gained a Freshness column; `verify` validates the
+  freshness vocabulary. Boundary cases unit-checked (today/2d/5d/20d/none/newest-wins).
 
 ## Phase 2 - Standardize the status schema so Medium becomes High
 

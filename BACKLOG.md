@@ -4,7 +4,7 @@ Use this for cross-project or global OS work only. Product-specific tasks belong
 
 ## Ready
 
-- Execute the Agentic OS Top-Tier Plan (`OS-UPGRADE-PLAN.md`); Phase 1 next: freshness/staleness enforcement.
+- Execute the Agentic OS Top-Tier Plan (`OS-UPGRADE-PLAN.md`); Phases 0-1 done, Phase 2 next: standardize the status schema so Medium projects can reach High.
 - Create/update local Agent OS files inside RunSmart Web.
 - Create/update local Agent OS files inside RunSmart iOS.
 - Create bridge files for new products as they become active.

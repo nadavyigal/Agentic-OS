@@ -152,6 +152,40 @@ def now_label() -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M")
 
 
+# Freshness thresholds (days). Aligned with metadata.freshnessRule in status.json.
+FRESHNESS_FRESH_DAYS = 2
+FRESHNESS_REVIEW_DAYS = 7
+CONFIDENCE_DOWNGRADE = {"High": "Medium", "Medium": "Low", "Low": "Unknown", "Unknown": "Unknown"}
+
+
+def parse_date(value: Any) -> datetime | None:
+    if not value:
+        return None
+    match = re.search(r"(\d{4})-(\d{2})-(\d{2})", str(value))
+    if not match:
+        return None
+    try:
+        return datetime(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+    except ValueError:
+        return None
+
+
+def compute_freshness(dates: list[datetime | None]) -> tuple[str, str | None]:
+    """Freshness label from the newest available date. Day granularity is enough."""
+    valid = [d for d in dates if d is not None]
+    if not valid:
+        return "Unknown", None
+    freshest = max(valid)
+    days = (datetime.now() - freshest).days
+    if days <= FRESHNESS_FRESH_DAYS:
+        label = "Fresh"
+    elif days <= FRESHNESS_REVIEW_DAYS:
+        label = "Needs Review"
+    else:
+        label = "Stale"
+    return label, freshest.strftime("%Y-%m-%d")
+
+
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -524,6 +558,12 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
             or "Unknown"
         )
         confidence = resolve_confidence(parse, project, item.exists)
+        freshness, freshest_date = compute_freshness(
+            [parse_date(parse.get("lastUpdated")), parse_date(item.last_commit)]
+        )
+        # Stale evidence cannot support a confident status: downgrade one level.
+        if freshness == "Stale":
+            confidence = CONFIDENCE_DOWNGRADE[confidence]
         health.append(
             {
                 "id": item.project_id,
@@ -535,7 +575,9 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "dirtyCount": item.dirty_count,
                 "branch": item.branch,
                 "lastCommit": item.last_commit,
-                "stale": not item.exists,
+                "stale": freshness == "Stale" or not item.exists,
+                "freshness": freshness,
+                "freshestDate": freshest_date,
                 "sourceFiles": item.source_files,
                 "sourceConfidence": confidence,
                 "preferredSource": parse.get("preferredSource", "none"),
@@ -585,6 +627,12 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
 def build_executive_overview(status: dict[str, Any], project_health: list[dict[str, Any]]) -> dict[str, Any]:
     dirty = [project["name"] for project in project_health if project.get("dirty")]
     blocked = [project["name"] for project in project_health if project.get("blockerCount", 0) > 0]
+    stale = [project["name"] for project in project_health if project.get("freshness") == "Stale"]
+    low_trust = [
+        project["name"]
+        for project in project_health
+        if project.get("sourceConfidence") in ("Low", "Unknown")
+    ]
     decisions = status.get("decisionBoard", [])
     metrics = status.get("executiveBoard", {})
     return {
@@ -597,6 +645,9 @@ def build_executive_overview(status: dict[str, Any], project_health: list[dict[s
         "dirtyProjectCount": len(dirty),
         "dirtyProjects": dirty,
         "blockedProjects": blocked,
+        "staleProjectCount": len(stale),
+        "staleProjects": stale,
+        "lowTrustProjects": low_trust,
         "financialSnapshot": metrics.get("financialSnapshot", "Needs Data"),
         "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
     }
@@ -703,7 +754,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "dashboard/status.json parsed",
             "embedded dashboard JSON parsed",
             "project-status.html fallback sync checked",
-            "source confidence values validated",
+            "source confidence and freshness validated",
             "git diff --check",
         ],
         "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
@@ -740,6 +791,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             )
             continue
         project["sourceConfidence"] = health["sourceConfidence"]
+        project["freshness"] = health["freshness"]
         project["lastUpdated"] = generated
         project["localEvidence"] = {
             "branch": health["branch"],
@@ -749,6 +801,8 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "sourceFiles": health["sourceFiles"],
             "sourceConfidence": health["sourceConfidence"],
             "preferredSource": health["preferredSource"],
+            "freshness": health["freshness"],
+            "freshestDate": health["freshestDate"],
         }
 
     write_json(STATUS_JSON, status)
@@ -833,15 +887,17 @@ def write_project_status(status: dict[str, Any]) -> None:
         "",
         "Confidence is parsed from local task files: High = task file parsed with validation "
         "evidence; Medium = task file parsed, validation unclear; Low = no task files, dashboard "
-        "narrative only; Unknown = no reliable source.",
+        "narrative only; Unknown = no reliable source. Stale evidence (newest signal older than "
+        "7 days) downgrades confidence one level.",
         "",
-        "| Project | State | Next Action | Blockers | Dirty | Confidence | Source | Last Commit |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for p in status.get("projectHealth", []):
         lines.append(
             f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | {p['blockerCount']} | "
             f"{'Yes (' + str(p['dirtyCount']) + ')' if p['dirty'] else 'No'} | "
+            f"{clean_cell(p.get('freshness', 'Unknown'))} | "
             f"{clean_cell(p.get('sourceConfidence', 'Unknown'))} | {clean_cell(p.get('preferredSource', 'none'))} | "
             f"{clean_cell(p['lastCommit'])} |"
         )
@@ -897,13 +953,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
         "",
         "## Project Health",
         "",
-        "| Project | State | Next Action | Dirty | Confidence |",
-        "| --- | --- | --- | --- | --- |",
+        "| Project | State | Next Action | Dirty | Freshness | Confidence |",
+        "| --- | --- | --- | --- | --- | --- |",
     ]
     for p in status.get("projectHealth", []):
         lines.append(
             f"| {p['name']} | {clean_cell(p['state'])} | {clean_cell(p['nextAction'])} | "
-            f"{'Yes' if p['dirty'] else 'No'} | {clean_cell(p.get('sourceConfidence', 'Unknown'))} |"
+            f"{'Yes' if p['dirty'] else 'No'} | {clean_cell(p.get('freshness', 'Unknown'))} | "
+            f"{clean_cell(p.get('sourceConfidence', 'Unknown'))} |"
         )
 
     lines += [
@@ -1041,11 +1098,17 @@ def verify() -> int:
         errors.append("dashboard/orchestration.html missing parseable os-data JSON")
 
     allowed_confidence = {"High", "Medium", "Low", "Unknown"}
+    allowed_freshness = {"Fresh", "Needs Review", "Stale", "Unknown"}
     for health in status.get("projectHealth", []):
         confidence = health.get("sourceConfidence")
         if confidence not in allowed_confidence:
             errors.append(
                 f"projectHealth '{health.get('name', '?')}' has invalid sourceConfidence: {confidence!r}"
+            )
+        freshness = health.get("freshness")
+        if freshness not in allowed_freshness:
+            errors.append(
+                f"projectHealth '{health.get('name', '?')}' has invalid freshness: {freshness!r}"
             )
     for project in status.get("projects", []):
         if "taskParse" in project and project.get("sourceConfidence") not in allowed_confidence:
@@ -1069,7 +1132,7 @@ def verify() -> int:
     print("- dashboard/status.json parsed")
     print("- embedded dashboard JSON parsed")
     print("- project-status.html fallback is synced")
-    print("- source confidence values valid")
+    print("- source confidence and freshness values valid")
     print("- dashboard links resolve")
     print("- git diff --check passed")
     return 0
