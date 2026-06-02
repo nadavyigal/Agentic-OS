@@ -650,7 +650,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-02 15:36",
+    "lastRefresh": "2026-06-02 15:52",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -974,7 +974,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-02 15:36",
+    "lastRunAt": "2026-06-02 15:52",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",

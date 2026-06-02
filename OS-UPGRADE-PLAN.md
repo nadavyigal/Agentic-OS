@@ -31,17 +31,18 @@ Shipped:
   `PROJECT-STATUS.md` and `DASHBOARD.md` gained a Freshness column; `verify` validates the
   freshness vocabulary. Boundary cases unit-checked (today/2d/5d/20d/none/newest-wins).
 
-## Phase 2 - Standardize the status schema so Medium becomes High
+## Phase 2 - Standardize the status schema so Medium becomes High (IN PROGRESS 2026-06-02)
 
 Problem: RunSmart Web, ResumeBuilder Web, and Agentic OS sit at Medium because they have no
 `tasks/progress.md` and no validation block. The ceiling is the input format, not the parser.
 
-Story 2.1: Add `TEMPLATES/progress-template.md` matching the keyed format the parser already
-reads best (the Resumely iOS `tasks/progress.md` shape: Status, Current Phase, Active Story,
-Last Completed Story, Next Recommended Story, Blockers, Risks, Last Validation, Last Updated).
-Story 2.2: Add `STATUS-SCHEMA.md` documenting the exact keys and the validation-evidence
-vocabulary the parser scores. Story 2.3: Seed `tasks/progress.md` in the three web/OS repos
-(in those repos, not from here) so they can reach High.
+- Story 2.1 (DONE): `TEMPLATES/progress-template.md` — the keyed format the parser reads best.
+- Story 2.2 (DONE): `STATUS-SCHEMA.md` — exact keys, preference order, validation-evidence
+  vocabulary, confidence levels, and the freshness/downgrade rule. Registered in the File Map.
+- Story 2.3 (PARTIAL): seeded `tasks/progress.md` in the Agentic OS repo (parses to High).
+  RunSmart Web and ResumeBuilder Web are product repos and must be seeded inside those repos
+  with owner approval, not from here; they stay Medium until a real `Last Validation` is
+  recorded there.
 
 ## Phase 3 - Validation evidence linking
 

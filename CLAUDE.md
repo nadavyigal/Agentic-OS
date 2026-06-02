@@ -44,6 +44,7 @@ See `PROJECT-PATHS.md` for the authoritative list and `PROJECT-STATUS.md` for cu
 | `LESSONS.md` | Global lessons — repeated, expensive, or easy-to-forget issues only |
 | `BACKLOG.md` | Cross-project and global OS work items only |
 | `DASHBOARD.md` | Detailed narrative dashboard; companion to `dashboard/status.json` |
+| `STATUS-SCHEMA.md` | Contract the refresh parser reads from `tasks/progress.md` (keys, validation vocabulary, confidence + freshness rules). Follow it so a project can reach High confidence. Paired with `TEMPLATES/progress-template.md` |
 | `CURSOR.md` | Cursor-native router; points to `AGENTS.md` with Cursor-specific notes |
 | `docs/cursor-setup.md` | How to set up Cursor with the Agent OS (rules, memory mapping, bootstrapping) |
 | `PROMPTS/` | Reusable agent prompts: `plan-feature`, `risk-review`, `implement-story`, `qa-review`, `bug-fix`, `pr-summary`, `ui-review`, `repo-onboarding`, `update-lessons`, `create-project-bridge`, `morning-brief`, `exec-review`, `bootstrap-cursor-os` |

@@ -11,6 +11,7 @@ Use this for cross-project or global OS work only. Product-specific tasks belong
 
 ## Later
 
+- Audit `INTENT-LOG.md` on or after 2026-06-16: decide keep / promote into the memory system / delete.
 - Define Atlas v0 orchestration scope.
 - Create shared release checklist across web and iOS.
 - Create shared AI output quality rubric for product-facing AI features.
