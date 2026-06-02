@@ -319,9 +319,9 @@
       "taskParse": {
         "status": "In Progress",
         "currentPhase": "Pre-release (TestFlight prep)",
-        "activeStory": "Manual amend on optimized resume complete; next planned story is submit + cover letter from Track",
-        "lastCompletedStory": "Manual amend on optimized resume sections (2026-06-02)",
-        "nextRecommendedStory": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab",
+        "activeStory": "Phase 2 submit package complete; next planned story is authenticated real-device package smoke",
+        "lastCompletedStory": "Phase 2 submit optimized resume + cover letter package (2026-06-02)",
+        "nextRecommendedStory": "Authenticated device smoke for submit package and Track/Me application asset visibility",
         "blockers": [
           "`/api/v1/resumes` returns production Next.js 404 HTML",
           "backend route must ship before Resume Library can be re-enabled"
@@ -333,15 +333,15 @@
           "live backend endpoint gaps now surface real user-visible errors instead of mock fallback content",
           "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
         ],
-        "lastValidation": "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData",
+        "lastValidation": "Phase 2 submit package: focused `OptimizedResumeViewModelTests` passed 11/11; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 66 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked at `/tmp/resumebuilder-smoke/phase2-submit-package-launch-late.png` (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but signed build/test passes from `/tmp` DerivedData",
         "lastUpdated": "2026-06-02",
         "qaNeeded": null,
-        "estimatedCompletion": "70%",
+        "estimatedCompletion": "75%",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [
-            "63 XCTest",
+            "66 XCTest",
             "5 Swift Testing"
           ],
           "buildStatus": "succeeded",
@@ -792,7 +792,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-02 16:34",
+    "lastRefresh": "2026-06-02 16:45",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -814,6 +814,7 @@
       "RunSmart iOS: tasks/todo.md"
     ],
     "checksRun": [
+      "parser unit tests",
       "dashboard/status.json parsed",
       "embedded dashboard JSON parsed",
       "project-status.html fallback sync checked",
@@ -859,7 +860,7 @@
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
       "state": "Pre-release (TestFlight prep)",
-      "nextAction": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab",
+      "nextAction": "Authenticated device smoke for submit package and Track/Me application asset visibility",
       "blockerCount": 2,
       "dirty": true,
       "dirtyCount": 13,
@@ -871,7 +872,7 @@
       "evidenceGap": false,
       "evidenceDate": "2026-06-02",
       "evidenceTests": [
-        "63 XCTest",
+        "66 XCTest",
         "5 Swift Testing"
       ],
       "buildStatus": "succeeded",
@@ -887,9 +888,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData",
+      "parsedLastValidation": "Phase 2 submit package: focused `OptimizedResumeViewModelTests` passed 11/11; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 66 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked at `/tmp/resumebuilder-smoke/phase2-submit-package-launch-late.png` (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but signed build/test passes from `/tmp` DerivedData",
       "parsedLastUpdated": "2026-06-02",
-      "parsedActiveStory": "Manual amend on optimized resume complete; next planned story is submit + cover letter from Track"
+      "parsedActiveStory": "Phase 2 submit package complete; next planned story is authenticated real-device package smoke"
     },
     {
       "id": "runsmart-web",
@@ -1029,7 +1030,7 @@
       "role": "iOS Release Manager",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab",
+      "nextAction": "Authenticated device smoke for submit package and Track/Me application asset visibility",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1041,7 +1042,7 @@
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Authenticated device smoke for submit package and Track/Me application asset visibility. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1164,13 +1165,13 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-02 16:34",
+    "lastRunAt": "2026-06-02 16:45",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Authenticated device smoke for submit package and Track/Me application asset visibility. Known blockers: No local Fastlane config / ASC API key. App Store upload requires manual setup or portal upload.; Real-device smoke with a live account not completed after June 1 fixes.; Resume Library backend (/api/v1/resumes) not live; mock/disabled path remains.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
     "readyForNextSession": false,
@@ -1205,13 +1206,13 @@
       "project": "Resumely iOS",
       "field": "next story",
       "narrative": "Run live smoke across optimize/design/expert/preview/export, verify events, upload screenshots/listing, submit",
-      "parsed": "Phase 2 \u2014 submit optimized resume + cover letter from Track/Me tab"
+      "parsed": "Authenticated device smoke for submit package and Track/Me application asset visibility"
     },
     {
       "project": "Resumely iOS",
       "field": "last validation",
       "narrative": "Signed build passed from /tmp DerivedData; full tests passed 53 XCTest + 5 Swift Testing; XcodeBuildMCP launch smoke passed on 2026-06-01.",
-      "parsed": "Manual amend follow-up: focused `OptimizedResumeViewModelTests` passed 8/8; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 63 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but compile/test pass with signing disabled and signed build passes from `/tmp` DerivedData"
+      "parsed": "Phase 2 submit package: focused `OptimizedResumeViewModelTests` passed 11/11; `xcodebuild build` succeeded on iPhone 17 simulator using `/tmp/resumebuilder-derived`; full `xcodebuild test` passed 66 XCTest + 5 Swift Testing tests; `simctl` install/launch smoke succeeded on booted iPhone 17 with Home screenshot checked at `/tmp/resumebuilder-smoke/phase2-submit-package-launch-late.png` (2026-06-02). Default project-local `.derivedData` codesign is blocked by FileProvider/Finder extended attributes, but signed build/test passes from `/tmp` DerivedData"
     }
   ],
   "openQuestionsBoard": [],

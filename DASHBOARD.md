@@ -12,7 +12,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Run Center
 
-- Last refresh: 2026-06-02 16:34
+- Last refresh: 2026-06-02 16:45
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -21,7 +21,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | Yes | Fresh | High |
-| Resumely iOS | Pre-release (TestFlight prep) | Phase 2 — submit optimized resume + cover letter from Track/Me tab | Yes | Fresh | High |
+| Resumely iOS | Pre-release (TestFlight prep) | Authenticated device smoke for submit package and Track/Me application asset visibility | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
 | Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | No | Fresh | Medium |
@@ -56,6 +56,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Validation
 
+- parser unit tests
 - dashboard/status.json parsed
 - embedded dashboard JSON parsed
 - project-status.html fallback sync checked

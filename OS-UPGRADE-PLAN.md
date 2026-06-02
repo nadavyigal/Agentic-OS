@@ -95,15 +95,21 @@ Shipped:
   extraction is section-based. Convention documented in `STATUS-SCHEMA.md` and dogfooded in the
   Agentic OS `tasks/progress.md`.
 
-## Phase 6 - Make the pipeline itself trustworthy
+## Phase 6 - Make the pipeline itself trustworthy (DONE 2026-06-02)
 
-Problem: The refresh script has no tests. A parser regression would silently corrupt status.
+Problem: The refresh script had no tests. A parser regression would silently corrupt status.
 
-Story 6.1: Add `scripts/agentic_os/test_cli.py` (stdlib `unittest`) with fixtures for the three
-real shapes: progress.md present, derived (todo + session-log), and missing path. Assert
-confidence, preferred source, and key fields. Story 6.2: Add a `./agentic-os test` subcommand
-and run it inside `verify`. Story 6.3: Optional pre-commit hook that runs `./agentic-os refresh
---no-serve` and fails on dirty drift so committed status is always current.
+Shipped:
+- Story 6.1: `scripts/agentic_os/test_cli.py` - 18 hermetic stdlib `unittest` cases (no repos,
+  git, or network). Covers the pure helpers (clean_value, freshness, texts_disagree, evidence
+  extraction, section parsing, decision/question extraction) and `parse_task_files` for all four
+  shapes: progress.md present (High), progress.md without validation (Medium), derived from
+  todo + session-log (High), and missing path / no task files (Unknown).
+- Story 6.2: `./agentic-os test` runs the suite; `verify` runs it first (quietly) and fails if
+  any test fails, so a broken parser blocks the refresh pipeline. Added to `runCenter.checksRun`.
+- Story 6.3 (deferred, opt-in): a pre-commit hook that runs `./agentic-os refresh` and fails on
+  dirty drift is intentionally not auto-installed (installing git hooks is intrusive). It can be
+  added on request as a documented, opt-in `hooks/` script.
 
 ## Operating principles for this plan
 
