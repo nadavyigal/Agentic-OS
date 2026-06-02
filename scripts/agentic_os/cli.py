@@ -19,6 +19,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[2]
+SCRIPT_DIR = Path(__file__).resolve().parent
 DASHBOARD = ROOT / "dashboard"
 STATUS_JSON = DASHBOARD / "status.json"
 INDEX_HTML = DASHBOARD / "index.html"
@@ -911,6 +912,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         "localhostUrl": f"http://127.0.0.1:{port}/index.html",
         "sourcesRead": sources,
         "checksRun": [
+            "parser unit tests",
             "dashboard/status.json parsed",
             "embedded dashboard JSON parsed",
             "project-status.html fallback sync checked",
@@ -1328,9 +1330,29 @@ def verify_links() -> list[str]:
     return errors
 
 
+def run_tests(verbosity: int = 2) -> bool:
+    """Run the parser unit suite (scripts/agentic_os/test_cli.py) in-process."""
+    import io
+    import unittest
+
+    if str(SCRIPT_DIR) not in sys.path:
+        sys.path.insert(0, str(SCRIPT_DIR))
+    loader = unittest.TestLoader()
+    try:
+        suite = loader.loadTestsFromName("test_cli")
+    except Exception as exc:  # noqa: BLE001 - surface any import/collection failure
+        print(f"could not load parser tests: {exc}")
+        return False
+    stream = sys.stderr if verbosity >= 2 else io.StringIO()
+    result = unittest.TextTestRunner(stream=stream, verbosity=verbosity).run(suite)
+    return result.wasSuccessful()
+
+
 def verify() -> int:
     errors: list[str] = []
     status = read_json(STATUS_JSON)
+    if not run_tests(verbosity=0):
+        errors.append("parser unit tests failed (run ./agentic-os test for detail)")
     if extract_json_script(INDEX_HTML, "cc-data") is None:
         errors.append("dashboard/index.html missing parseable cc-data JSON")
     project_status = extract_json_script(PROJECT_STATUS_HTML, "status-data")
@@ -1397,6 +1419,7 @@ def verify() -> int:
             print(f"- {error}")
         return 1
     print("verify passed")
+    print("- parser unit tests passed")
     print("- dashboard/status.json parsed")
     print("- embedded dashboard JSON parsed")
     print("- project-status.html fallback is synced")
@@ -1472,6 +1495,7 @@ def build_parser() -> argparse.ArgumentParser:
     serve_cmd.add_argument("--no-open", action="store_true", help="serve without opening a browser")
 
     sub.add_parser("verify", help="verify dashboard JSON, fallback sync, links, and whitespace")
+    sub.add_parser("test", help="run the parser unit tests")
     return parser
 
 
@@ -1480,6 +1504,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.command == "refresh":
         return refresh(args)
+    if args.command == "test":
+        return 0 if run_tests(verbosity=2) else 1
     if args.command == "verify":
         return verify()
     if args.command == "serve":

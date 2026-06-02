@@ -3,10 +3,10 @@
 Project: Global Agentic OS
 Status: Active
 Current Phase: Dashboard trust upgrade (top-tier roadmap execution)
-Active Story: Phase 5 — confidence-gated delegation shipped on its own PR stacked on the Phase 4 branch
-Last Completed Story: Phase 5 — trust-directive prompts + repo-sourced open questions/decisions
-Next Recommended Story: Phase 6 — parser unit tests + ./agentic-os test in verify. Web-repo progress.md seeding stays on hold pending approval.
-Estimated Completion: Phases 0–5 done; Phase 2.3 web seeding and Phase 6 remain
+Active Story: Phase 6 — parser unit tests + ./agentic-os test wired into verify (final roadmap phase)
+Last Completed Story: Phase 6 — 18-test hermetic suite; verify gates on it
+Next Recommended Story: All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16.
+Estimated Completion: Roadmap complete (Phases 0–6); only opt-in/held items remain
 Blockers: —
 Risks: Parser changes could regress dashboard status; product-repo schema seeding needs owner approval; global summaries go stale if repos are not re-read
 Last Validation: ./agentic-os verify passed — status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked.
