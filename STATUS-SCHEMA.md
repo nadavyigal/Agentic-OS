@@ -72,6 +72,23 @@ Freshness is the age of the newest of `Last Updated` and the last git commit dat
 **Stale evidence downgrades confidence one level** (High -> Medium -> Low -> Unknown): an
 inactive repo cannot keep a confident status.
 
+## Evidence extraction and gaps
+
+The parser pulls structured proof out of the `Last Validation` text and surfaces it under
+`taskParse.evidence`:
+
+- **tests** - counts like `53 XCTest`, `5 Swift Testing`, `12 tests`.
+- **buildStatus** - `succeeded` or `failed`, from phrasing like `build succeeded`.
+- **qaDocs** - any `docs/...` paths referenced (or a `Latest QA Report` path).
+- **evidenceDate** - the most recent date in the validation text, else `Last Updated`.
+
+**Evidence gap:** when the project's last git commit date is *newer* than `evidenceDate`,
+`projectHealth[].evidenceGap` is set true. It means the code moved since the last proof, so
+even a recent, High status is not fully trustworthy until re-validated. Gaps are listed in the
+`## Evidence Gaps` section of `PROJECT-STATUS.md` and `DASHBOARD.md` and counted in
+`executiveOverview.evidenceGapCount`. To clear a gap, re-run validation and update
+`Last Validation` with a date at or after the latest commit.
+
 ## Minimum to reach High
 
 A project reaches High when its `tasks/progress.md` has a `Current Phase`, a

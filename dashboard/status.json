@@ -103,7 +103,9 @@
         "sourceConfidence": "High",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-05-31"
+        "freshestDate": "2026-05-31",
+        "evidenceGap": false,
+        "evidenceDate": "2026-05-31"
       },
       "taskParse": {
         "status": null,
@@ -121,6 +123,12 @@
         "openQuestions": [
           "Checked the historical open questions for `RunSmartTab` ambiguity and `GlassCard` redeclaration"
         ],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": "2026-05-31"
+        },
         "preferredSource": "derived",
         "sourcesUsed": [
           "tasks/todo.md",
@@ -205,7 +213,9 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-02"
+        "freshestDate": "2026-06-02",
+        "evidenceGap": true,
+        "evidenceDate": "2026-06-01"
       },
       "taskParse": {
         "status": "In Progress",
@@ -230,6 +240,15 @@
         "estimatedCompletion": "68%",
         "decisionsNeeded": [],
         "openQuestions": [],
+        "evidence": {
+          "tests": [
+            "53 XCTest",
+            "5 Swift Testing"
+          ],
+          "buildStatus": "succeeded",
+          "qaDocs": [],
+          "evidenceDate": "2026-06-01"
+        },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
           "tasks/progress.md",
@@ -294,7 +313,9 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-01"
+        "freshestDate": "2026-06-01",
+        "evidenceGap": false,
+        "evidenceDate": null
       },
       "taskParse": {
         "status": null,
@@ -310,6 +331,12 @@
         "estimatedCompletion": null,
         "decisionsNeeded": [],
         "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
         "preferredSource": "derived",
         "sourcesUsed": [
           "tasks/MEMORY.md",
@@ -375,7 +402,9 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-02"
+        "freshestDate": "2026-06-02",
+        "evidenceGap": false,
+        "evidenceDate": null
       },
       "taskParse": {
         "status": null,
@@ -391,6 +420,12 @@
         "estimatedCompletion": null,
         "decisionsNeeded": [],
         "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
         "preferredSource": "derived",
         "sourcesUsed": [
           "tasks/MEMORY.md",
@@ -488,7 +523,9 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-02"
+        "freshestDate": "2026-06-02",
+        "evidenceGap": false,
+        "evidenceDate": null
       },
       "taskParse": {
         "status": null,
@@ -504,6 +541,12 @@
         "estimatedCompletion": null,
         "decisionsNeeded": [],
         "openQuestions": [],
+        "evidence": {
+          "tests": [],
+          "buildStatus": null,
+          "qaDocs": [],
+          "evidenceDate": null
+        },
         "preferredSource": "derived",
         "sourcesUsed": [
           "tasks/MEMORY.md",
@@ -650,7 +693,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-02 15:52",
+    "lastRefresh": "2026-06-02 16:04",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -695,6 +738,11 @@
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-05-31",
+      "evidenceGap": false,
+      "evidenceDate": "2026-05-31",
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -720,6 +768,14 @@
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-02",
+      "evidenceGap": true,
+      "evidenceDate": "2026-06-01",
+      "evidenceTests": [
+        "53 XCTest",
+        "5 Swift Testing"
+      ],
+      "buildStatus": "succeeded",
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -748,6 +804,11 @@
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-01",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
@@ -771,6 +832,11 @@
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-02",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "docs/agent-os/project-context.md"
@@ -794,6 +860,11 @@
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-02",
+      "evidenceGap": false,
+      "evidenceDate": null,
+      "evidenceTests": [],
+      "buildStatus": null,
+      "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md"
       ],
@@ -941,6 +1012,10 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
+    "evidenceGapCount": 1,
+    "evidenceGapProjects": [
+      "Resumely iOS"
+    ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
     "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired."
@@ -974,7 +1049,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-02 15:52",
+    "lastRunAt": "2026-06-02 16:04",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",

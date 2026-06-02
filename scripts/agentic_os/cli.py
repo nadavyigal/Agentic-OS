@@ -186,6 +186,49 @@ def compute_freshness(dates: list[datetime | None]) -> tuple[str, str | None]:
     return label, freshest.strftime("%Y-%m-%d")
 
 
+def latest_date_in(text: str | None) -> datetime | None:
+    """The most recent YYYY-MM-DD found in free text, or None."""
+    dates = [parse_date(token) for token in re.findall(r"\d{4}-\d{2}-\d{2}", text or "")]
+    valid = [d for d in dates if d is not None]
+    return max(valid) if valid else None
+
+
+# Build-result phrasing in validation text.
+BUILD_OK = re.compile(r"build succeeded|xcodebuild build[^.]*succeed|build passed|compil\w+[^.]*(?:passed|succeeded)", re.IGNORECASE)
+BUILD_FAIL = re.compile(r"build failed|compile error|compilation failed", re.IGNORECASE)
+# Test-count phrasing, e.g. "53 XCTest", "5 Swift Testing", "12 tests".
+TEST_COUNT = re.compile(r"(\d+)\s+(XCTest|Swift Testing|tests?|specs?|unit tests?)", re.IGNORECASE)
+
+
+def extract_evidence(parse: dict[str, Any]) -> dict[str, Any]:
+    """Pull structured proof out of the free-text validation line.
+
+    Captures test counts, a build result, and any docs/ QA links, plus the most recent
+    date the evidence references (falling back to Last Updated). Story 3.1.
+    """
+    text = parse.get("lastValidation") or ""
+    evidence: dict[str, Any] = {"tests": [], "buildStatus": None, "qaDocs": [], "evidenceDate": None}
+
+    for match in TEST_COUNT.finditer(text):
+        evidence["tests"].append(f"{match.group(1)} {match.group(2)}")
+    evidence["tests"] = list(dict.fromkeys(evidence["tests"]))
+
+    if BUILD_OK.search(text):
+        evidence["buildStatus"] = "succeeded"
+    elif BUILD_FAIL.search(text):
+        evidence["buildStatus"] = "failed"
+
+    qa_docs = re.findall(r"docs/[\w./-]+", text)
+    qa_field = parse.get("qaNeeded")
+    if qa_field and str(qa_field).startswith("docs/"):
+        qa_docs.append(qa_field)
+    evidence["qaDocs"] = list(dict.fromkeys(qa_docs))
+
+    dated = latest_date_in(text)
+    evidence["evidenceDate"] = dated.strftime("%Y-%m-%d") if dated else parse.get("lastUpdated")
+    return evidence
+
+
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -237,6 +280,7 @@ def empty_task_parse() -> dict[str, Any]:
         "estimatedCompletion": None,
         "decisionsNeeded": [],
         "openQuestions": [],
+        "evidence": {"tests": [], "buildStatus": None, "qaDocs": [], "evidenceDate": None},
         "preferredSource": "none",
         "sourcesUsed": [],
         "missing": [],
@@ -464,6 +508,7 @@ def parse_task_files(path: Path) -> dict[str, Any]:
 
     result["decisionsNeeded"] = extract_open_decisions(contents)
     result["openQuestions"] = extract_open_questions(contents)
+    result["evidence"] = extract_evidence(result)
     result["sourceConfidence"] = compute_confidence(result)
     return result
 
@@ -564,6 +609,11 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
         # Stale evidence cannot support a confident status: downgrade one level.
         if freshness == "Stale":
             confidence = CONFIDENCE_DOWNGRADE[confidence]
+        # Evidence gap: code committed after the last validation = proof predates the code.
+        evidence = parse.get("evidence") or {}
+        evidence_date = parse_date(evidence.get("evidenceDate"))
+        commit_date = parse_date(item.last_commit)
+        evidence_gap = bool(evidence_date and commit_date and commit_date > evidence_date)
         health.append(
             {
                 "id": item.project_id,
@@ -578,6 +628,11 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "stale": freshness == "Stale" or not item.exists,
                 "freshness": freshness,
                 "freshestDate": freshest_date,
+                "evidenceGap": evidence_gap,
+                "evidenceDate": evidence.get("evidenceDate"),
+                "evidenceTests": evidence.get("tests") or [],
+                "buildStatus": evidence.get("buildStatus"),
+                "qaDocs": evidence.get("qaDocs") or [],
                 "sourceFiles": item.source_files,
                 "sourceConfidence": confidence,
                 "preferredSource": parse.get("preferredSource", "none"),
@@ -628,6 +683,7 @@ def build_executive_overview(status: dict[str, Any], project_health: list[dict[s
     dirty = [project["name"] for project in project_health if project.get("dirty")]
     blocked = [project["name"] for project in project_health if project.get("blockerCount", 0) > 0]
     stale = [project["name"] for project in project_health if project.get("freshness") == "Stale"]
+    evidence_gaps = [project["name"] for project in project_health if project.get("evidenceGap")]
     low_trust = [
         project["name"]
         for project in project_health
@@ -647,6 +703,8 @@ def build_executive_overview(status: dict[str, Any], project_health: list[dict[s
         "blockedProjects": blocked,
         "staleProjectCount": len(stale),
         "staleProjects": stale,
+        "evidenceGapCount": len(evidence_gaps),
+        "evidenceGapProjects": evidence_gaps,
         "lowTrustProjects": low_trust,
         "financialSnapshot": metrics.get("financialSnapshot", "Needs Data"),
         "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
@@ -803,6 +861,8 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "preferredSource": health["preferredSource"],
             "freshness": health["freshness"],
             "freshestDate": health["freshestDate"],
+            "evidenceGap": health["evidenceGap"],
+            "evidenceDate": health["evidenceDate"],
         }
 
     write_json(STATUS_JSON, status)
@@ -902,6 +962,19 @@ def write_project_status(status: dict[str, Any]) -> None:
             f"{clean_cell(p['lastCommit'])} |"
         )
 
+    gaps = [p for p in status.get("projectHealth", []) if p.get("evidenceGap")]
+    lines += ["", "## Evidence Gaps", ""]
+    if gaps:
+        lines.append("Latest commit post-dates the last validation (code moved since the last proof):")
+        lines.append("")
+        for p in gaps:
+            lines.append(
+                f"- {p['name']}: validated {p.get('evidenceDate') or 'unknown'}, "
+                f"last commit {clean_cell(p['lastCommit'])}"
+            )
+    else:
+        lines.append("None. Every project's validation is at least as recent as its last commit.")
+
     lines += [
         "",
         "## Morning Brief",
@@ -979,6 +1052,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
     lines += ["", "## Agent Delegation", ""]
     for item in status.get("agentQueue", []):
         lines.append(f"- **{item['role']}**: {item['task']} Evidence: {item['evidence']}")
+    gaps = [p for p in status.get("projectHealth", []) if p.get("evidenceGap")]
+    lines += ["", "## Evidence Gaps", ""]
+    if gaps:
+        for p in gaps:
+            lines.append(f"- {p['name']}: validated {p.get('evidenceDate') or 'unknown'}, latest commit is newer.")
+    else:
+        lines.append("- None. Every project's validation is at least as recent as its last commit.")
+
     lines += ["", "## Validation", ""]
     lines += [f"- {check}" for check in status.get("runCenter", {}).get("checksRun", [])]
     lines.append("")
@@ -1109,6 +1190,11 @@ def verify() -> int:
         if freshness not in allowed_freshness:
             errors.append(
                 f"projectHealth '{health.get('name', '?')}' has invalid freshness: {freshness!r}"
+            )
+        if not isinstance(health.get("evidenceGap"), bool):
+            errors.append(
+                f"projectHealth '{health.get('name', '?')}' has non-boolean evidenceGap: "
+                f"{health.get('evidenceGap')!r}"
             )
     for project in status.get("projects", []):
         if "taskParse" in project and project.get("sourceConfidence") not in allowed_confidence:

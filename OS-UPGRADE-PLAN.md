@@ -44,15 +44,18 @@ Problem: RunSmart Web, ResumeBuilder Web, and Agentic OS sit at Medium because t
   with owner approval, not from here; they stay Medium until a real `Last Validation` is
   recorded there.
 
-## Phase 3 - Validation evidence linking
+## Phase 3 - Validation evidence linking (DONE 2026-06-02)
 
-Problem: "Last Validation" is free text. Top tier proves it.
+Problem: "Last Validation" was free text. Top tier proves it.
 
-Story 3.1: Extend the parser to detect and capture structured evidence: test counts
-(`53 XCTest + 5 Swift Testing`), build result, and links to `docs/qa/*` files. Surface as
-`taskParse.evidence` with an `evidenceDate`. Story 3.2: Flag "evidence older than the last
-commit" as a trust gap (code moved since the last proof). Verify: a repo whose last commit
-post-dates its validation shows the gap.
+Shipped:
+- Story 3.1: `extract_evidence` captures test counts (`53 XCTest`, `5 Swift Testing`), build
+  result, and `docs/` QA links from the validation text, plus an `evidenceDate` (latest date
+  in the text, else Last Updated). Surfaced under `taskParse.evidence` and on `projectHealth`.
+- Story 3.2: `evidenceGap` flags when the last git commit post-dates `evidenceDate` (code moved
+  since the last proof). Listed in the `## Evidence Gaps` section of `PROJECT-STATUS.md` and
+  `DASHBOARD.md`, counted in `executiveOverview.evidenceGapCount`, validated in `verify`.
+  Confirmed live: Resumely iOS shows a gap (validated 2026-06-01, commit 2026-06-02).
 
 ## Phase 4 - Drift detection (truthful)
 

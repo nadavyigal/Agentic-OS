@@ -16,6 +16,12 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-02 673f6f1 chore: resolve merge conflicts with main |
 | Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | 0 | No | Fresh | Medium | derived | 2026-06-02 2ffad7e Merge pull request #2 from nadavyigal/codex/agentic-os-command-center-upgrade |
 
+## Evidence Gaps
+
+Latest commit post-dates the last validation (code moved since the last proof):
+
+- Resumely iOS: validated 2026-06-01, last commit 2026-06-02 24ad506 Merge pull request #42 from nadavyigal/claude/jovial-lederberg-f99304
+
 ## Morning Brief
 
 RunSmart iOS v1.0 build 6 is in App Store review context and should stay frozen. Resumely iOS cleared analytics and UX/export gates on June 1, so the next constraint is an authenticated real-device smoke plus App Store Connect upload. RunSmart Web and ResumeBuilder Web are support repos and need dirty-tree triage before more implementation.

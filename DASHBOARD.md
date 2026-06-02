@@ -12,7 +12,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Run Center
 
-- Last refresh: 2026-06-02 15:52
+- Last refresh: 2026-06-02 16:04
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -40,6 +40,10 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 - **CEO OS**: Resolve the next portfolio decision and keep focus tight. Evidence: executive-os/EXECUTIVE-DASHBOARD.md, dashboard/status.json decisionBoard
 - **Director / Orchestrator**: Turn the current Action Board into one reviewable work packet. Evidence: dashboard/status.json priorityBoard and projectHealth
 - **QA**: Verify dashboard or product readiness with evidence. Evidence: GLOBAL-QA-RULES.md, dashboard runCenter checksRun
+
+## Evidence Gaps
+
+- Resumely iOS: validated 2026-06-01, latest commit is newer.
 
 ## Validation
 
