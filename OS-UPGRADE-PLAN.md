@@ -57,15 +57,25 @@ Shipped:
   `DASHBOARD.md`, counted in `executiveOverview.evidenceGapCount`, validated in `verify`.
   Confirmed live: Resumely iOS shows a gap (validated 2026-06-01, commit 2026-06-02).
 
-## Phase 4 - Drift detection (truthful)
+## Phase 4 - Drift detection (DONE 2026-06-02)
 
-Problem: Curated `summary` / `dailyRunResult` narrative can silently contradict parsed High
-status. Today they coexist; top tier flags the contradiction.
+Problem: Curated per-project narrative could silently contradict the parsed High-confidence
+source. They coexisted; top tier flags the contradiction.
 
-Story 4.1: After refresh, diff the curated `summary.bestNextAction` against each High-confidence
-`taskParse.nextRecommendedStory`. When they disagree, emit a `driftWarnings` list and print it
-in the refresh output. Story 4.2: Add a `verify` check that fails if a project is High
-confidence but its curated narrative was hand-edited to something the parser does not support.
+Shipped:
+- Story 4.1: `compute_drift_warnings` compares curated `projects[]` fields (currentPhase,
+  nextRecommendedStory, lastValidation) against the parsed `taskParse` values for
+  High-confidence projects, using `texts_disagree` (normalized, substring-tolerant to avoid
+  punctuation noise). Emits `status.driftWarnings` + `executiveOverview.driftWarningCount`,
+  printed in the refresh output and shown in a `## Drift Warnings` section of
+  `PROJECT-STATUS.md` and `DASHBOARD.md`.
+- Story 4.2 (adjusted): `verify` checks `driftWarnings` is well-formed but does **not** hard-fail
+  on the presence of drift. Reason: a curated phase is human synthesis that can legitimately
+  differ from a parsed session title, so blocking the dashboard on every divergence would be
+  wrong. Drift is surfaced for reconciliation, not treated as a build break. A future
+  `verify --strict` or a `refresh --reconcile` (Phase 5+) can enforce or auto-heal.
+- Confirmed live: 6 warnings across RunSmart iOS and Resumely iOS (curated narrative for both
+  High projects had drifted from their repos).
 
 ## Phase 5 - Operational: confidence-gated delegation
 
