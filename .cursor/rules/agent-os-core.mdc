@@ -7,12 +7,12 @@ alwaysApply: true
 
 ## Session Start
 
-1. Read `AGENTS.md` for canonical repo rules.
+1. Read `DAILY.md` when doing daily Agentic OS ops; read `AGENTS.md` for canonical rules.
 2. Read `~/.claude/MEMORY.md` for cross-project decisions.
 3. Read `~/.claude/ERRORS.md` for failed approaches.
 4. Read `tasks/MEMORY.md` and `tasks/ERRORS.md` when they exist.
 5. State the objective in one sentence before planning.
-6. Write a 5-step plan maximum before touching any file.
+6. Write a 5-step plan maximum before touching any file (skip 5–6 for execution-mode work packets per `AGENTS.md`).
 
 ## ERRORS Gate
 

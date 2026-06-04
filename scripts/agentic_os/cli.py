@@ -757,6 +757,8 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                     elif "agentic" in lower:
                         repo_id = "agentic-os"
                 goal = section_value(text, "## Goal")
+                source_match = re.search(r"Source:\s*(.+)", text, re.IGNORECASE)
+                packet_source = clean_value(source_match.group(1)) if source_match else None
                 # Build a copy-ready prompt: repo instruction + full packet body.
                 # This IS the prompt the founder pastes into Claude Code for that repo.
                 if repo_path:
@@ -786,6 +788,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "repoId": repo_id,
                         "repoPath": repo_path,
                         "goal": goal,
+                        "source": packet_source,
                         "path": str(packet.relative_to(root)),
                         "copyPrompt": prompt_header + text,
                     }
@@ -925,6 +928,206 @@ def check_repo_integrity(root: Path) -> dict[str, Any]:
     }
 
 
+def _is_strategic_plan(plan: dict[str, Any]) -> bool:
+    path = (plan.get("path") or "").lower()
+    kind = (plan.get("kind") or "").lower()
+    if kind == "gtm":
+        return True
+    markers = ("gtm", "launch", "monetization", "distribution", "business-gtm")
+    return any(m in path for m in markers)
+
+
+def _packet_links_plan(packet: dict[str, Any], plan_path: str) -> bool:
+    source = (packet.get("source") or "").lower()
+    path_key = plan_path.replace("\\", "/").lower()
+    name = Path(plan_path).name.lower()
+    stem = Path(plan_path).stem.lower()
+    hay = f"{source} {packet.get('path', '')}".lower()
+    return name in hay or stem in hay or path_key in hay
+
+
+def _packet_is_active(packet: dict[str, Any]) -> bool:
+    status = (packet.get("status") or "").lower()
+    return status.startswith("active")
+
+
+def build_plan_execution_status(
+    saved_plans: list[dict[str, Any]],
+    work_packets: list[dict[str, Any]],
+    root: Path,
+) -> dict[str, Any]:
+    """Index strategic plans vs active work packets — never label a plan Stale.
+
+    Plans (GTM, launch, monetization, distribution) stay in savedPlans for full text.
+    This surface is titles + executionStatus only: active, needs_next_packet, research_only.
+    """
+    seen_paths: set[str] = set()
+    rows: list[dict[str, Any]] = []
+
+    def add_row(
+        *,
+        title: str,
+        path: str,
+        project: str,
+        project_id: str,
+        execution_status: str,
+        active_packet: str | None = None,
+        note: str | None = None,
+    ) -> None:
+        norm = path.replace("\\", "/")
+        if norm in seen_paths:
+            return
+        seen_paths.add(norm)
+        rows.append(
+            {
+                "title": title,
+                "path": norm,
+                "project": project,
+                "projectId": project_id,
+                "executionStatus": execution_status,
+                "activePacket": active_packet,
+                "note": note,
+            }
+        )
+
+    for entry in saved_plans:
+        for plan in entry.get("plans") or []:
+            if not _is_strategic_plan(plan):
+                continue
+            path = plan.get("path") or ""
+            active = next(
+                (p for p in work_packets if _packet_is_active(p) and _packet_links_plan(p, path)),
+                None,
+            )
+            if active:
+                add_row(
+                    title=plan.get("title") or Path(path).stem,
+                    path=path,
+                    project=entry["project"],
+                    project_id=entry["projectId"],
+                    execution_status="active",
+                    active_packet=active.get("title"),
+                )
+            else:
+                add_row(
+                    title=plan.get("title") or Path(path).stem,
+                    path=path,
+                    project=entry["project"],
+                    project_id=entry["projectId"],
+                    execution_status="needs_next_packet",
+                    note="COO: extract next milestone into one work packet.",
+                )
+
+    gtm_v0 = root / "executive-os" / "BUSINESS-GTM-PLAN-V0.md"
+    if gtm_v0.exists():
+        rel = "executive-os/BUSINESS-GTM-PLAN-V0.md"
+        if rel not in seen_paths:
+            active = next(
+                (p for p in work_packets if _packet_is_active(p) and _packet_links_plan(p, rel)),
+                None,
+            )
+            add_row(
+                title="Business + GTM Plan v0",
+                path=rel,
+                project="Agentic OS",
+                project_id="agentic-os",
+                execution_status="active" if active else "needs_next_packet",
+                active_packet=active.get("title") if active else None,
+                note=None if active else "Portfolio GTM source — next packet from COO review.",
+            )
+
+    research_dir = root / "executive-os" / "research"
+    if research_dir.is_dir():
+        for doc in sorted(research_dir.glob("*.md")):
+            rel = str(doc.relative_to(root)).replace("\\", "/")
+            add_row(
+                title=doc.stem.replace("-", " ").title(),
+                path=rel,
+                project="Agentic OS",
+                project_id="agentic-os",
+                execution_status="research_only",
+                note="Research input — not daily execution.",
+            )
+
+    order = {"active": 0, "needs_next_packet": 1, "research_only": 2}
+    rows.sort(key=lambda r: (order.get(r["executionStatus"], 9), r["project"], r["title"]))
+    needs = sum(1 for r in rows if r["executionStatus"] == "needs_next_packet")
+    active_count = sum(1 for r in rows if r["executionStatus"] == "active")
+    return {
+        "plans": rows,
+        "activeCount": active_count,
+        "needsNextPacket": needs,
+        "researchOnlyCount": sum(1 for r in rows if r["executionStatus"] == "research_only"),
+        "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate.",
+    }
+
+
+def build_portfolio_trust(
+    project_health: list[dict[str, Any]],
+    repo_integrity: dict[str, Any],
+    run_center: dict[str, Any],
+    plan_execution: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Whether the founder can trust today's dashboard for App Store / ship claims."""
+    today = datetime.now().date()
+    refresh_today = False
+    last_refresh = run_center.get("lastRefresh") or ""
+    date_match = re.search(r"(\d{4}-\d{2}-\d{2})", last_refresh)
+    if date_match:
+        parsed = parse_date(date_match.group(1))
+        if parsed:
+            refresh_today = parsed.date() == today
+
+    apps = [p for p in project_health if p.get("id") in APP_IDS]
+    stale_apps = [p["name"] for p in apps if p.get("freshness") == "Stale"]
+    dirty_apps = [p["name"] for p in apps if p.get("dirty")]
+    low_conf = [
+        p["name"]
+        for p in apps
+        if (p.get("sourceConfidence") or "").lower() in ("low", "unknown")
+    ]
+
+    level = "actionable"
+    reasons: list[str] = []
+    if not repo_integrity.get("synced"):
+        level = "refresh_required"
+        reasons.extend(repo_integrity.get("notes") or [])
+    elif not refresh_today:
+        level = "caution"
+        reasons.append("Morning refresh was not run today. Run ./agentic-os morning before trusting status.")
+    else:
+        if stale_apps:
+            level = "caution"
+            reasons.append(f"Stale progress evidence: {', '.join(stale_apps)}.")
+        if dirty_apps:
+            level = "caution"
+            reasons.append(f"Dirty repos: {', '.join(dirty_apps)}.")
+        if low_conf:
+            level = "caution"
+            reasons.append(f"Low source confidence: {', '.join(low_conf)}.")
+
+    labels = {
+        "actionable": "Actionable",
+        "caution": "Use caution",
+        "refresh_required": "Needs sync first",
+    }
+    needs = (plan_execution or {}).get("needsNextPacket", 0)
+    if needs and level == "actionable":
+        reasons.append(
+            f"{needs} strategic plan(s) need the next work packet (COO review) — plans are not abandoned."
+        )
+    if not reasons:
+        reasons.append("Sync clean, refreshed today, app evidence is current enough to act.")
+
+    return {
+        "level": level,
+        "label": labels[level],
+        "reasons": reasons,
+        "refreshToday": refresh_today,
+        "needsNextPacketCount": needs,
+    }
+
+
 def build_saved_plans(project_health: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Flatten per-project plans into one portfolio board, recent first, GTM always kept.
 
@@ -958,6 +1161,7 @@ def build_saved_plans(project_health: list[dict[str, Any]]) -> list[dict[str, An
 def build_derived_summary(
     project_health: list[dict[str, Any]],
     saved_plans: list[dict[str, Any]] | None = None,
+    plan_execution: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Assemble the portfolio headline + priority board purely from parsed repo truth.
 
@@ -1029,6 +1233,13 @@ def build_derived_summary(
                 f"{entry['project']}: {entry['total']} saved plan(s) — latest \"{latest['title']}\" "
                 f"({latest.get('date') or 'undated'}). See Saved Plans."
             )
+
+    needs_packets = (plan_execution or {}).get("needsNextPacket", 0)
+    if needs_packets:
+        later.append(
+            f"Portfolio: {needs_packets} strategic plan(s) need the next work packet — "
+            "run COO operating review (see Command Center plan index)."
+        )
 
     return {
         "overallStatus": overall,
@@ -1453,7 +1664,13 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["decisions"] = parse_decisions(ROOT)
     status["executiveLoop"] = build_executive_loop(status["decisions"], registry, ROOT)
     status["repoIntegrity"] = check_repo_integrity(ROOT)
-    derived = build_derived_summary(project_health, saved_plans)
+    status["planExecution"] = build_plan_execution_status(
+        saved_plans, registry.get("workPackets", []), ROOT
+    )
+    status["portfolioTrust"] = build_portfolio_trust(
+        project_health, status["repoIntegrity"], status["runCenter"], status["planExecution"]
+    )
+    derived = build_derived_summary(project_health, saved_plans, status["planExecution"])
     freshest_dates = [parse_date(p.get("freshestDate")) for p in project_health]
     freshest = max([d for d in freshest_dates if d], default=None)
     summary = status.setdefault("summary", {})
@@ -1610,6 +1827,8 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "decisions": status.get("decisions", []),
             "executiveLoop": status.get("executiveLoop", {}),
             "repoIntegrity": status.get("repoIntegrity", {}),
+            "portfolioTrust": status.get("portfolioTrust", {}),
+            "planExecution": status.get("planExecution", {}),
             "openQuestionsBoard": status.get("openQuestionsBoard", []),
             "repoDecisions": status.get("repoDecisions", []),
         }

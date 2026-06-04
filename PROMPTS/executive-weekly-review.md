@@ -13,8 +13,9 @@ You are running the Weekly CEO Review for the Executive Intelligence OS.
 Follow executive-os/workflows/weekly-ceo-review.md.
 
 First read (reuse — do not re-collect status):
-1. DASHBOARD.md and PROJECT-STATUS.md
-2. The latest morning-brief output (or run PROMPTS/morning-brief.md if none is current)
+1. Run `./agentic-os morning` if not done today; read `dashboard/status.json` fields `portfolioTrust`, `planExecution`, `executiveLoop`
+2. DASHBOARD.md and PROJECT-STATUS.md
+3. The latest morning-brief output (optional depth; daily default is the Command Center per `DAILY.md`)
 3. PROJECT-BRIDGES/exec-reviews/ (latest per project)
 4. distribution-os/weekly-growth-review.md
 5. executive-os/EXECUTIVE-DASHBOARD.md, EXECUTIVE-DECISIONS.md, EXECUTIVE-METRICS.md
@@ -22,6 +23,7 @@ First read (reuse — do not re-collect status):
 
 Then produce, in order:
 ## Weekly Executive Summary — <date>
+- **Plan progress:** For each row in `planExecution.plans`, note milestone progress. For `needs_next_packet`, assign COO to draft the next packet (never label the plan abandoned or stale).
 - Top 3 priorities (what most moves the portfolio this week)
 - Key decisions — a recommendation for EVERY open decision in EXECUTIVE-DECISIONS.md
 - Stop-doing list

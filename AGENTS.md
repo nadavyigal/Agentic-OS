@@ -46,6 +46,8 @@ The Agentic OS is the founder's operating system, not a throwaway app. Informati
    The work packet content (goal, task, constraints, validation) is identical for all three tools — only how you open the session differs.
 4. **Anything you create must surface on the dashboard.** The OS registry auto-discovers `executive-os/*-OS.md`, `executive-os/agents/`, `executive-os/work-packets/`, `SKILLS/`, and saved plans. Put new artifacts there, run `./agentic-os morning`, and confirm they appear (the "How it connects" page shows a red 0 if a source is empty).
 
+**Daily operations:** read `DAILY.md` first for the three-tier daily path. Executive OS files, prompts, workflows, research, and long-running plans remain available via Tier 2 and weekly rituals — daily work routes to them when needed, it does not replace them.
+
 ## Global Work Rules
 
 1. Read before planning. Never plan from memory about file content. Read the actual files.
@@ -70,10 +72,27 @@ Before claiming done:
 
 ## Before Executing Any Task
 
+Use **one** mode per session.
+
+### Planning mode (default for ambiguous or greenfield work)
+
 1. Restate what you understood: the action, the deliverable, and what success looks like.
 2. List the 3 rules from the memory files that matter most for this specific task.
 3. Write your execution plan in 5 steps maximum.
 4. If anything is unclear, ask before proceeding — never fill gaps silently.
+
+Then execute.
+
+### Execution mode (scoped work packet or copy prompt)
+
+Applies when the user pasted a work packet (or project copy prompt) that already includes **Goal**, **Task**, **Constraints**, and **Validation**, or when executing from `executive-os/work-packets/` with those sections present.
+
+1. Restate the goal and validation in one sentence each.
+2. Do **not** ask scope or "would you like me to…" questions. Use judgment on implementation details.
+3. Ask only on hard blockers: wrong repo, missing credentials, missing device, cannot run stated validation.
+4. Skip "list 3 rules from memory" and skip a 5-step plan unless the user asks for a plan.
+
+Executive **reviews** (CEO, COO, CFO, Analysis weekly/monthly prompts) still follow their prompt workflows, not execution mode.
 
 Then execute. Go beyond the basics. Deliver like a real production build.
 

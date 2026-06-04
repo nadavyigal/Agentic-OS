@@ -5,19 +5,20 @@
 
 ## Session Start
 
+**Daily ops in this repo:** read `DAILY.md` first, then run or use output from `./agentic-os morning`.
+
+**Any session:**
+
 1. Read `~/.claude/MEMORY.md` — global decisions. Never contradict a logged decision without flagging it first.
 2. Read `~/.claude/ERRORS.md` — global failed approaches. Never propose an approach already logged here.
 3. Read `tasks/MEMORY.md` if it exists in the current project.
 4. Read `tasks/ERRORS.md` if it exists in the current project.
 5. State the objective in one sentence before planning anything.
-6. Write a 5-step plan maximum before touching any file.
+6. Write a 5-step plan maximum before touching any file (skip steps 5–6 in **execution mode**; see `AGENTS.md`).
 
 ## Before Executing Any Task
 
-1. Restate what you understood: the action, the deliverable, and what success looks like.
-2. List the 3 rules from the memory files that matter most for this specific task.
-3. Write your execution plan in 5 steps maximum.
-4. If anything is unclear, ask before proceeding.
+Follow `AGENTS.md` **Planning mode** or **Execution mode**. Execution mode applies to pasted work packets with Goal, Task, Constraints, and Validation: no scope questions, no "3 rules" ritual, ask only on hard blockers.
 
 ## Working Inside a Product Repo
 

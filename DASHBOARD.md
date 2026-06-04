@@ -12,8 +12,8 @@ Best next action: Resumely iOS: Unlock/authorize Apple Distribution private-key 
 
 ## Run Center
 
-- Last refresh: 2026-06-04 14:10
-- Localhost: `http://127.0.0.1:8789/index.html`
+- Last refresh: 2026-06-04 17:08
+- Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
 ## Project Health

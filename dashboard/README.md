@@ -6,9 +6,9 @@ This is a lightweight static dashboard suite for the Global Agentic OS. It does 
 - **Orchestration Map** (`orchestration.html`): the layered system map, Layers 0 to 9.
 - **Project Status** (`project-status.html`): project cards, action board, decision board, QA board.
 - **Executive** (`executive.html`): portfolio overview, focus, risk, dirty repos, blocked projects, and per-project prompts.
-- **Decisions** (`decisions.html`): open portfolio decisions and recommendations.
-- **Metrics** (`metrics.html`): honest metric status, QA evidence, and missing data state.
 - **Data Flow** (`data-flow.html`): how local files and git evidence become dashboard data and copy-ready prompts.
+
+Removed legacy pages (`decisions.html`, `metrics.html`) — decisions and metrics live on the Command Center and `executive-os/` files.
 
 ## One Command
 
@@ -46,8 +46,6 @@ Because the brief is re-derived from the repos every run, stale hand-written pro
 - `project-status.html`: Project Status dashboard. Dark theme via `styles.css`; reads `status.json`.
 - `orchestration.html`: layered Orchestration Map (Layers 0 to 9) with embedded status JSON.
 - `executive.html`: Executive overview page backed by `status.json`.
-- `decisions.html`: Decision board page backed by `status.json`.
-- `metrics.html`: Metrics and QA page backed by `status.json`.
 - `data-flow.html`: Data-flow explanation page backed by `status.json`.
 - `styles.css`: dark theme for `index.html` (palette shared with the other two pages).
 - `status.json`: easy-to-edit dashboard data copied from `PROJECT-STATUS.md`.
@@ -59,6 +57,8 @@ Because the brief is re-derived from the repos every run, stale hand-written pro
 
 The main sections are:
 
+- **Portfolio trust**: whether sync, refresh, and app evidence are safe enough to act on ship/review claims.
+- **Strategic plan index**: `active` / `needs_next_packet` / `research_only` (never "stale plan").
 - **Daily Run Result**: last OS command, check state, recommended repo prompt, and the last project prompt copied in this browser.
 - **Plan**: priority board and next planning moves.
 - **Monitor**: project health, blockers, dirty flags, stale flags, and next action per project.

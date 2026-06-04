@@ -1,5 +1,7 @@
 # CEO OS
 
+> **Not daily** — route here for weekly CEO review, portfolio tradeoffs, and OKRs. Daily path: `DAILY.md` → `./agentic-os morning`.
+
 ## Purpose
 
 The CEO OS is responsible for strategic focus, goals, priorities, operating rhythm,

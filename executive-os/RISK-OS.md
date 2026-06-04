@@ -1,5 +1,7 @@
 # Risk OS
 
+> **Not daily** — route here before risky or irreversible ship decisions. Daily path: trust banner on the Command Center.
+
 The safety gate of the executive layer. It answers one question before anything ships: what could go wrong, and is this safe and reversible?
 
 ## Purpose

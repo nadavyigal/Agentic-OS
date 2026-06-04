@@ -1,13 +1,15 @@
 # morning-brief
 
 ## When to Use
-At the start of any work session to re-orient across all active projects. Especially useful after stopping without running session-end rituals.
+
+**Daily default:** run `./agentic-os morning` and read the Command Center (`DAILY.md` Tier 0). That is the morning brief for normal work days.
+
+Use this prompt for a **deeper spoken or written brief** when you need cross-project narrative beyond the dashboard: after a long break, before weekly CEO review, or when localhost is unavailable.
 
 ## How to Invoke
-In the Agentic OS Claude Code session, say:
-- "morning brief"
-- "give me my morning brief"
-- "what's the status across all projects"
+
+1. **Daily:** `./agentic-os morning` from the Agentic OS repo (see `DAILY.md`).
+2. **Deep brief:** In Agentic OS, say "morning brief", "give me my morning brief", or "what's the status across all projects" and follow the reading protocol below.
 
 ---
 

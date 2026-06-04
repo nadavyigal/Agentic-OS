@@ -1,5 +1,7 @@
 # Analysis OS
 
+> **Not daily** — route here for research sprints and opportunity scans. Daily path: Command Center; research artifacts show as `research_only` in the plan index.
+
 ## Purpose
 
 The Analysis OS is responsible for structured thinking, research, ideation, evidence
