@@ -63,6 +63,16 @@ Phase 2 (tracked in `EXECUTIVE-BACKLOG.md`):
 - Report template: `templates/monthly-finance-report-template.md`.
 - Data-source policy reused from `../distribution-os/data/source-of-truth-policy.md`.
 
+## Monetization Model Shape (EXD-005, EXD-009 — decided 2026-06-04)
+
+**Model:** Freemium with a permanent free tier and a free activation moment. Subscription as primary.
+
+**RunSmart:** Free = week 1 full plan + first run logged. Paid = adaptive weeks 2+ plans, advanced wearable depth, voice coach, race planning. Upgrade trigger: after plan adapts to week 1 runs. Price: `NEEDS_DATA` — market range $79-$120/year. See `work-packets/WP-2-monetization-spec.md`.
+
+**Resumely:** Free = 1 full optimize + 1 export. Paid = unlimited per-job tailoring, additional exports, ATS deep-dive, cover letters, expert modes. Upgrade trigger: second optimize attempt. Price: `NEEDS_DATA` — market range $9-$13/week / $25-$30/month. See `work-packets/WP-2-monetization-spec.md`.
+
+**Timing gate (EXD-009):** Do not set prices or activate paywalls until first-cohort D7 activation is readable. Ready-to-build spec exists in `work-packets/WP-2-monetization-spec.md`.
+
 ## Rules
 
 - Never invent numbers. Separate known figures from `Needs Data`.
