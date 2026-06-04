@@ -12,12 +12,12 @@
     }
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 Pre-release (TestFlight prep): Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
-    "bestNextAction": "Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
+    "overallStatus": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "bestNextAction": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
     "mainBlockers": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: `/api/v1/resumes` returns production Next.js 404 HTML",
-      "Resumely iOS: backend route must ship before Resume Library can be re-enabled",
+      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+      "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
       "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.",
@@ -95,7 +95,7 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 3,
         "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -181,14 +181,14 @@
       "freshness": "Fresh",
       "statusTone": "pre-submission",
       "status": "Pre-submission. Latest: pre-archive production audit done 2026-06-03 (bare print() calls wrapped). Phase 2 submit package complete. PostHog WP-1 key fix done (Run Script + PlistBuddy). Strong optimization mode, ATS uplift, manual section edit, and Me package hub all shipped. ASC upload path resolved: manual Xcode Organizer (no Fastlane, no .p8). Device smoke blocked on founder unlocking iPhone 13.",
-      "currentPhase": "Pre-release (TestFlight prep)",
-      "activeStory": "WP-1 in progress \u2014 PostHog key fix shipped; device smoke blocked on founder unlocking device",
-      "lastCompletedStory": "WP-1 PostHog fix: Run Script build phase now injects POSTHOG_API_KEY into Info.plist; all tests pass; device binary built (2026-06-03)",
-      "nextRecommendedStory": "Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
+      "currentPhase": "App Store submission readiness",
+      "activeStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access",
+      "lastCompletedStory": "Release readiness fixes: API_BASE_URL is generated into Info.plist, source-code API URL fallback removed, Swift warnings cleaned up, `Secrets.swift.example` excluded from the app bundle, Release archive succeeds (2026-06-04)",
+      "nextRecommendedStory": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "WP-1 session (2026-06-03): PostHog Run Script fix verified \u2014 POSTHOG_API_KEY and POSTHOG_HOST appear in both simulator and iphoneos Debug Info.plist. Full test suite passed: 70 XCTest + 5 Swift Testing (all pass after analytics test update). Simulator launch screenshot confirmed Home renders at /var/tmp/resumebuilder-smoke/wp1-launch.png. Device build (iphoneos Debug) compiled and signed successfully at /var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/. iPhone 13 UDID 00008110-00192DDA2143801E was unavailable (locked) during install attempt \u2014 founder must unlock and install manually",
+      "lastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
       "lastUpdated": "2026-06-04",
       "blockers": [
@@ -228,7 +228,7 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 6,
+        "dirtyCount": 8,
         "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -244,19 +244,19 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-03",
+        "freshestDate": "2026-06-04",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-03"
+        "evidenceDate": "2026-06-04"
       },
       "taskParse": {
         "status": "In Progress",
-        "currentPhase": "Pre-release (TestFlight prep)",
-        "activeStory": "WP-1 in progress \u2014 PostHog key fix shipped; device smoke blocked on founder unlocking device",
-        "lastCompletedStory": "WP-1 PostHog fix: Run Script build phase now injects POSTHOG_API_KEY into Info.plist; all tests pass; device binary built (2026-06-03)",
-        "nextRecommendedStory": "Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
+        "currentPhase": "App Store submission readiness",
+        "activeStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access",
+        "lastCompletedStory": "Release readiness fixes: API_BASE_URL is generated into Info.plist, source-code API URL fallback removed, Swift warnings cleaned up, `Secrets.swift.example` excluded from the app bundle, Release archive succeeds (2026-06-04)",
+        "nextRecommendedStory": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
         "blockers": [
-          "`/api/v1/resumes` returns production Next.js 404 HTML",
-          "backend route must ship before Resume Library can be re-enabled"
+          "App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+          "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
         ],
         "risks": [
           "Swift 6 concurrency strictness",
@@ -265,20 +265,20 @@
           "live backend endpoint gaps now surface real user-visible errors instead of mock fallback content",
           "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
         ],
-        "lastValidation": "WP-1 session (2026-06-03): PostHog Run Script fix verified \u2014 POSTHOG_API_KEY and POSTHOG_HOST appear in both simulator and iphoneos Debug Info.plist. Full test suite passed: 70 XCTest + 5 Swift Testing (all pass after analytics test update). Simulator launch screenshot confirmed Home renders at /var/tmp/resumebuilder-smoke/wp1-launch.png. Device build (iphoneos Debug) compiled and signed successfully at /var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/. iPhone 13 UDID 00008110-00192DDA2143801E was unavailable (locked) during install attempt \u2014 founder must unlock and install manually",
-        "lastUpdated": "2026-06-03",
+        "lastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
+        "lastUpdated": "2026-06-04",
         "qaNeeded": null,
-        "estimatedCompletion": "78%",
+        "estimatedCompletion": "88%",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [
-            "70 XCTest",
+            "72 XCTest",
             "5 Swift Testing"
           ],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-03"
+          "evidenceDate": "2026-06-04"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -575,8 +575,8 @@
       "localEvidence": {
         "branch": "main",
         "dirty": true,
-        "dirtyCount": 10,
-        "lastCommit": "2026-06-04 24fb6de refactor(agentic-os): simplify dashboard \u2014 delete decisions/metrics tabs, fix links, clarify OS + loop",
+        "dirtyCount": 9,
+        "lastCommit": "2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -648,7 +648,7 @@
   "priorityBoard": {
     "now": [
       "RunSmart iOS: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
-      "Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events"
+      "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect"
     ],
     "next": [
       "RunSmart Web: Triage modified/untracked files before more web work.",
@@ -665,7 +665,7 @@
     ],
     "blocked": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: backend route must ship before Resume Library can be re-enabled"
+      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)"
     ]
   },
   "qaBoard": [
@@ -782,9 +782,9 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-04 12:22",
+    "lastRefresh": "2026-06-04 13:47",
     "command": "./agentic-os refresh",
-    "localhostUrl": "http://127.0.0.1:8789/dashboard/index.html",
+    "localhostUrl": "http://127.0.0.1:8789/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -986,7 +986,7 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 3,
       "branch": "main...origin/main",
       "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
       "stale": false,
@@ -1030,12 +1030,12 @@
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Pre-release (TestFlight prep)",
-      "nextAction": "Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
+      "state": "App Store submission readiness",
+      "nextAction": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
       "blockerCount": 2,
       "blockers": [
-        "`/api/v1/resumes` returns production Next.js 404 HTML",
-        "backend route must ship before Resume Library can be re-enabled"
+        "App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+        "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
       ],
       "gtm": {
         "exists": false,
@@ -1061,16 +1061,16 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 6,
+      "dirtyCount": 8,
       "branch": "main...origin/main",
       "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-03",
+      "freshestDate": "2026-06-04",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-03",
+      "evidenceDate": "2026-06-04",
       "evidenceTests": [
-        "70 XCTest",
+        "72 XCTest",
         "5 Swift Testing"
       ],
       "buildStatus": null,
@@ -1088,9 +1088,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "WP-1 session (2026-06-03): PostHog Run Script fix verified \u2014 POSTHOG_API_KEY and POSTHOG_HOST appear in both simulator and iphoneos Debug Info.plist. Full test suite passed: 70 XCTest + 5 Swift Testing (all pass after analytics test update). Simulator launch screenshot confirmed Home renders at /var/tmp/resumebuilder-smoke/wp1-launch.png. Device build (iphoneos Debug) compiled and signed successfully at /var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/. iPhone 13 UDID 00008110-00192DDA2143801E was unavailable (locked) during install attempt \u2014 founder must unlock and install manually",
-      "parsedLastUpdated": "2026-06-03",
-      "parsedActiveStory": "WP-1 in progress \u2014 PostHog key fix shipped; device smoke blocked on founder unlocking device"
+      "parsedLastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
+      "parsedLastUpdated": "2026-06-04",
+      "parsedActiveStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access"
     },
     {
       "id": "runsmart-web",
@@ -1275,9 +1275,9 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 10,
+      "dirtyCount": 9,
       "branch": "main",
-      "lastCommit": "2026-06-04 24fb6de refactor(agentic-os): simplify dashboard \u2014 delete decisions/metrics tabs, fix links, clarify OS + loop",
+      "lastCommit": "2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-04",
@@ -1372,7 +1372,7 @@
       "role": "iOS Release Manager",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
+      "nextAction": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1386,7 +1386,7 @@
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1446,8 +1446,8 @@
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
-    "portfolioState": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 Pre-release (TestFlight prep): Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "headline": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+    "portfolioState": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1455,8 +1455,8 @@
     ],
     "risks": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: `/api/v1/resumes` returns production Next.js 404 HTML",
-      "Resumely iOS: backend route must ship before Resume Library can be re-enabled",
+      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+      "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
       "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
@@ -1520,17 +1520,17 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-04 12:22",
+    "lastRunAt": "2026-06-04 13:47",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
-    "localhostUrl": "http://127.0.0.1:8789/dashboard/index.html",
+    "localhostUrl": "http://127.0.0.1:8789/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Pre-release (TestFlight prep). Next action: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events"
+    "summary": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect"
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
@@ -1788,6 +1788,7 @@
         "title": "Work Packet WP-1 (Active)",
         "status": "Active",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
+        "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
         "decision": "EXD-006"
       },
@@ -1795,6 +1796,7 @@
         "title": "Work Packet WP-2 (Active)",
         "status": "Active",
         "project": null,
+        "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
         "decision": "EXD-005"
       }
@@ -1980,6 +1982,7 @@
         "title": "Work Packet WP-1 (Active)",
         "status": "Active",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
+        "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
         "decision": "EXD-006"
       },
@@ -1987,19 +1990,21 @@
         "title": "Work Packet WP-2 (Active)",
         "status": "Active",
         "project": null,
+        "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
         "decision": "EXD-005"
       }
     ],
-    "brainstormExists": true
+    "brainstormExists": true,
+    "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 3,
+    "uncommitted": 1,
     "extraWorktrees": 1,
     "synced": false,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   }

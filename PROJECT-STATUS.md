@@ -10,17 +10,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review | After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-03 db0a23d chore(release): bump build 8 → 9, version 1.0 → 1.0.1 on main |
-| Resumely iOS | Pre-release (TestFlight prep) | Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70 |
+| RunSmart iOS | App Store Review | After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post | 1 | Yes (3) | Fresh | High | tasks/progress.md | 2026-06-03 db0a23d chore(release): bump build 8 → 9, version 1.0 → 1.0.1 on main |
+| Resumely iOS | App Store submission readiness | Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (10) | Fresh | High | tasks/progress.md | 2026-06-04 24fb6de refactor(agentic-os): simplify dashboard — delete decisions/metrics tabs, fix links, clarify OS + loop |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (9) | Fresh | High | tasks/progress.md | 2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-02, last commit 2026-06-04 24fb6de refactor(agentic-os): simplify dashboard — delete decisions/metrics tabs, fix links, clarify OS + loop
+- Agentic OS: validated 2026-06-02, last commit 2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets
 
 ## Drift Warnings
 
@@ -35,18 +35,18 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 ## Morning Brief
 
-RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — Pre-release (TestFlight prep): Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
 ## What To Do Next
 
-Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events
+Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect
 
 ## Action Board
 
 ### Now
 
 - RunSmart iOS: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post
-- Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events
+- Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect
 
 ### Next
 
@@ -66,7 +66,7 @@ Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs op
 ### Blocked
 
 - RunSmart iOS: Apple review outcome is external
-- Resumely iOS: backend route must ship before Resume Library can be re-enabled
+- Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)
 
 ## Agent Queue
 

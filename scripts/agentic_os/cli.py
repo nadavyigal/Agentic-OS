@@ -746,6 +746,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "title": title,
                         "status": clean_value(status_match.group(1)) if status_match else "Unknown",
                         "project": clean_value(project_match.group(1)) if project_match else None,
+                        "goal": section_value(text, "## Goal"),
                         "path": str(packet.relative_to(root)),
                     }
                 )
@@ -820,6 +821,12 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
         review = parse_date(d.get("review"))
         d["reviewOverdue"] = bool(review and review < today)
     brainstorm = root / "executive-os" / "NEXT-MOVES.md"
+    brainstorm_text = ""
+    if brainstorm.exists():
+        # Strip the heading clutter; keep the body so it can render inline on the dashboard.
+        raw = brainstorm.read_text(encoding="utf-8", errors="replace")
+        body_lines = [ln for ln in raw.splitlines() if ln.strip() and not ln.strip().startswith("#")]
+        brainstorm_text = "\n".join(body_lines).strip()
     return {
         "stages": [
             {"name": "Morning", "what": "./agentic-os morning reads every repo and refreshes status."},
@@ -832,6 +839,7 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
         "openDecisions": open_decisions[:8],
         "workPackets": packets,
         "brainstormExists": brainstorm.exists(),
+        "brainstorm": brainstorm_text,
     }
 
 
@@ -1326,7 +1334,7 @@ def build_daily_run_result(
         "lastRunAt": now_label(),
         "checksStatus": checks_status,
         "checksCompletedAt": "",
-        "localhostUrl": f"http://127.0.0.1:{port}/dashboard/index.html",
+        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
         "recommendedPromptProject": recommended.get("project", "No project prompt available"),
         "recommendedPromptRole": recommended.get("role", "Project Operator"),
         "recommendedPrompt": recommended.get("copyPrompt", "Run ./agentic-os refresh to generate project prompts."),
@@ -1378,7 +1386,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["runCenter"] = {
         "lastRefresh": now_label(),
         "command": command,
-        "localhostUrl": f"http://127.0.0.1:{port}/dashboard/index.html",
+        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
         "sourcesRead": sources,
         "checksRun": [
             "parser unit tests",
@@ -1518,7 +1526,7 @@ def mark_daily_run_verified(port: int, passed: bool) -> None:
     result["checksStatus"] = "Passed" if passed else "Failed"
     result["checksCompletedAt"] = now_label()
     result["readyForNextSession"] = passed
-    result["localhostUrl"] = f"http://127.0.0.1:{port}/dashboard/index.html"
+    result["localhostUrl"] = f"http://127.0.0.1:{port}/index.html"
     write_json(STATUS_JSON, status)
     sync_project_status_fallback(status)
     update_command_center_generated(today_idt(), status)
@@ -1958,11 +1966,12 @@ def find_port(start: int) -> int:
 
 def serve(port: int, open_browser: bool = True) -> int:
     port = find_port(port)
-    # Serve from the repo ROOT (not dashboard/) so cross-doc links like ../executive-os/NEXT-MOVES.md
-    # and ../executive-os/EXECUTIVE-DASHBOARD.md actually resolve instead of failing path traversal.
-    os.chdir(ROOT)
+    # Serve from dashboard/ so the simple URL http://127.0.0.1:PORT/index.html works.
+    # Content that lives outside dashboard/ (brainstorm, work packets) is read INTO status.json
+    # by the parser and rendered inline, so there are no cross-directory links to break.
+    os.chdir(DASHBOARD)
     handler = http.server.SimpleHTTPRequestHandler
-    url = f"http://127.0.0.1:{port}/dashboard/index.html"
+    url = f"http://127.0.0.1:{port}/index.html"
 
     class ReusableTCPServer(socketserver.TCPServer):
         allow_reuse_address = True
