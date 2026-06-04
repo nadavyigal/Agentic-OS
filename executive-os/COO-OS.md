@@ -1,5 +1,7 @@
 # COO OS
 
+> **Not daily** — route here when sequencing is unclear or the Command Center shows **Needs next packet** for a strategic plan. Daily path: active work packets on the Command Center.
+
 The minimal operations layer. It turns a plan into an ordered, executable sequence and decides what becomes a work packet. It is intentionally thin: enough to move from plan to execution without standing up the full Executive OS.
 
 ## Purpose
@@ -13,6 +15,7 @@ It is run by `agents/coo-agent.md` and operated via `workflows/coo-operating-rev
 - Execution sequencing (first, second, third).
 - Bottleneck identification (what is blocked, by what, and who owns the unblock).
 - Work packet creation (one focused, repo-bound task at a time).
+- **Long-running plans** (GTM, launch, monetization, distribution): the plan stays the strategy source; the COO extracts the **next milestone** into one packet with `Source:` pointing at the plan. If the dashboard shows `needs_next_packet`, draft that packet — the plan is not abandoned.
 - Repo routing (which local project receives the next packet).
 - Handoffs between sessions and roles.
 - Release readiness sequencing (what must pass before a submit/deploy action, which the founder still triggers).

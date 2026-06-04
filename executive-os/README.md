@@ -28,9 +28,14 @@ Plus a thin operations layer (not a sub-OS): **COO OS** (`COO-OS.md`): execution
 
 The current portfolio plan is `BUSINESS-GTM-PLAN-V0.md` (Business + GTM Plan v0 for RunSmart iOS and Resumely iOS); its open CEO decisions are logged in `EXECUTIVE-DECISIONS.md` and its work packets are tracked in `work-packets/`.
 
+## Daily vs executive depth
+
+- **Every work day:** `../DAILY.md` (Tier 0 morning loop). Executive files below are **not** deleted; open them when Tier 2 or weekly rhythm says so.
+- **This folder** remains the full Layer 8 library (CEO, COO, CFO, Analysis, research, decisions, work packets).
+
 ## Read Order
 
-1. `EXECUTIVE-RHYTHM.md` — the operating cadence; start here.
+1. `EXECUTIVE-RHYTHM.md` — the operating cadence; start here for weekly/monthly work.
 2. The sub-OS doc relevant to today's work: `CEO-OS.md`, `CFO-OS.md`, or
    `ANALYSIS-OS.md`.
 3. `EXECUTIVE-DASHBOARD.md` — the manual source-of-truth dashboard.

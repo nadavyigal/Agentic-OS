@@ -288,6 +288,92 @@ class TestDerivedSummary(unittest.TestCase):
         self.assertIn("No product status", d["overallStatus"])
         self.assertEqual(d["priorityBoard"]["now"], ["Run ./agentic-os morning to refresh local status."])
 
+    def test_derived_later_mentions_needs_next_packet(self):
+        pe = {"needsNextPacket": 2}
+        d = cli.build_derived_summary(self._health(), plan_execution=pe)
+        self.assertTrue(any("need the next work packet" in x for x in d["priorityBoard"]["later"]))
+
+
+class TestPortfolioTrust(unittest.TestCase):
+    def _health(self):
+        return [
+            {
+                "id": "runsmart-ios",
+                "name": "RunSmart iOS",
+                "freshness": "Fresh",
+                "dirty": False,
+                "sourceConfidence": "High",
+            },
+            {
+                "id": "resumebuilder-ios",
+                "name": "Resumely iOS",
+                "freshness": "Stale",
+                "dirty": True,
+                "sourceConfidence": "Medium",
+            },
+        ]
+
+    def test_synced_and_fresh_is_actionable(self):
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": "2026-06-04 09:00 IDT"},
+            {"needsNextPacket": 1},
+        )
+        self.assertEqual(trust["level"], "caution")
+        self.assertIn("Stale", " ".join(trust["reasons"]))
+
+    def test_unsynced_is_refresh_required(self):
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": False, "notes": ["On branch 'feat', not main."]},
+            {"lastRefresh": "2026-06-04 09:00 IDT"},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+
+
+class TestPlanExecutionStatus(unittest.TestCase):
+    def test_active_packet_links_gtm_plan(self):
+        saved = [
+            {
+                "project": "Resumely iOS",
+                "projectId": "resumebuilder-ios",
+                "plans": [
+                    {
+                        "title": "GTM",
+                        "path": ".agent-os/distribution/gtm-plan.md",
+                        "kind": "gtm",
+                    }
+                ],
+            }
+        ]
+        packets = [
+            {
+                "title": "WP-1 smoke",
+                "status": "Active",
+                "source": "BUSINESS-GTM-PLAN-V0.md Section 10",
+            }
+        ]
+        pe = cli.build_plan_execution_status(saved, packets, cli.ROOT)
+        statuses = {p["executionStatus"] for p in pe["plans"]}
+        self.assertIn("active", statuses)
+        self.assertTrue(all(p["executionStatus"] != "Stale" for p in pe["plans"]))
+
+    def test_plan_without_packet_is_needs_next_packet(self):
+        saved = [
+            {
+                "project": "RunSmart iOS",
+                "projectId": "runsmart-ios",
+                "plans": [
+                    {"title": "Launch", "path": "docs/plans/launch-plan.md", "kind": "plan"}
+                ],
+            }
+        ]
+        pe = cli.build_plan_execution_status(saved, [], cli.ROOT)
+        row = next(p for p in pe["plans"] if "launch-plan" in p["path"])
+        self.assertEqual(row["executionStatus"], "needs_next_packet")
+        self.assertGreaterEqual(pe["needsNextPacket"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

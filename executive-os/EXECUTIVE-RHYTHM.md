@@ -6,10 +6,10 @@ and which existing artifact it reuses.
 
 | Cadence | Ritual | Run / reuse | Output |
 |---|---|---|---|
-| Daily | Check-in | Glance at `EXECUTIVE-DASHBOARD.md` Top 3 + Decision Board | Adjust today's focus |
+| Daily | Check-in | `DAILY.md` Tier 0: `./agentic-os morning` + Command Center (trust, packets, plan index) | One execution move; executive docs only if needed |
 | On-demand | COO Operating Review | `PROMPTS/coo-operating-review.md` → `workflows/coo-operating-review.md` | Next execution sequence + one work packet |
 | Weekly | CEO Review | `PROMPTS/executive-weekly-review.md` → `workflows/weekly-ceo-review.md` | Top 3, decisions, stop-doing, delegation, dashboard update |
-| Weekly | Product review | `PROMPTS/morning-brief.md` (existing) | Cross-project execution status feeding the CEO Review |
+| Weekly | Product review | `./agentic-os morning` + `PROMPTS/morning-brief.md` (optional depth) | Cross-project execution status + **plan progress** (`planExecution` index, `needs_next_packet`) |
 | Weekly | Distribution review | `../distribution-os/weekly-growth-review.md` (existing) | Channel status feeding the CEO Review |
 | Monthly | CFO Review | `PROMPTS/cfo-monthly-review.md` → `workflows/monthly-finance-review.md` | Financial snapshot, runway, risks, recommended financial actions |
 | Monthly | Strategy review | `workflows/weekly-ceo-review.md` run at portfolio depth | Portfolio tradeoffs, focus rules check |

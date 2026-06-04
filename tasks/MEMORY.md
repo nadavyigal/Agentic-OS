@@ -4,6 +4,12 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
+## 2026-06-04 — Daily OS simplification (routing, trust, plan index)
+Worked on: Execute approved daily-os simplification plan (routing only; no executive file deletion).
+Completed: `DAILY.md` (Tier 0/1/2 + executive routing table). Planning vs execution mode in `AGENTS.md` / `CURSOR.md` / `.cursor/rules/agent-os-core.mdc`. `build_portfolio_trust()` + `build_plan_execution_status()` in `cli.py` (`portfolioTrust`, `planExecution` on status.json + cc-data fallback). Command Center: trust banner, strategic plan index, active packets first, freshness/confidence pills on project cards. `PROMPTS/morning-brief.md` daily default = `./agentic-os morning`; weekly/COO prompts reference `needs_next_packet`. Not-daily banners on CEO/COO/CFO/Analysis/Risk OS. 33 tests pass; `./agentic-os refresh` + `verify` pass.
+Decisions: Plan execution vocabulary is `active` | `needs_next_packet` | `research_only` — never label a strategic plan Stale. `needs_next_packet` does not downgrade portfolio trust.
+Next session: Open Command Center after `./agentic-os morning` and confirm trust banner matches git reality; commit this batch when ready.
+
 ## 2026-06-04 (PM) - Consolidated to main, pruned worktrees, executive loop + sync wired
 Done this session (all on main, committed):
 - MERGED the dashboard/registry/COO work to main (FF). PRUNED 10 stale worktrees after committing each one's uncommitted work to its own branch (zero loss; branches still exist). Consolidated additive founder work into main: executive-os/research/ (Analysis OS briefs), sprints/2026-05-28 + 2026-05-29, distribution drafts, PROMPTS/resumely-ios-next-sprint.md. Only `main` + the live session worktree remain.
