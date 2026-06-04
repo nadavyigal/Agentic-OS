@@ -1,0 +1,30 @@
+---
+status: draft — awaiting founder approval
+experiment: rb-aso-001
+authored: agent 2026-05-29
+app: Resumely (iOS, free at launch)
+copy-to: fastlane/metadata/en-US/description.txt (after founder approval)
+notes: No "guaranteed interview", no "ATS hack", no resume-writing-service claims (per messaging.md). Free at launch — no paywall language.
+---
+
+Resumely tailors your resume to the job you actually want.
+
+Paste a job description, upload your current resume, and Resumely rewrites it to match the role, checks it against common ATS (applicant tracking system) criteria, and gives you a clear score so you know where you stand before you apply.
+
+WHAT YOU CAN DO
+- Tailor for a specific job: optimize your resume against any pasted job description, not a generic template.
+- Check your ATS score: see how your resume reads to automated screeners and what to improve.
+- Apply a professional design: choose from Traditional, Modern, Creative, and Corporate layouts.
+- Run Expert review: get focused suggestions for summaries, quantified bullet points, keyword coverage, and cover letters, then apply the ones you choose.
+- Export a clean PDF: download a ready-to-send resume that keeps its formatting.
+
+HOW IT WORKS
+1. Sign in with Apple.
+2. Upload a text-based PDF of your resume.
+3. Paste the job description you are targeting.
+4. Optimize, review your ATS score, pick a design, and export.
+
+BUILT FOR JOB SEEKERS
+Resumely is for people who are actively applying and tired of sending the same generic resume to every role. Each optimization is specific to one job, so your application speaks to what that employer is looking for.
+
+Resumely does not guarantee interviews or offers, and it is not a resume-writing service. It is a tool that helps you tailor, check, and present your own experience more clearly.
