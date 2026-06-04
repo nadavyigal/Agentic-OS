@@ -576,7 +576,7 @@
         "branch": "main",
         "dirty": false,
         "dirtyCount": 0,
-        "lastCommit": "2026-06-04 1157873 feat(agentic-os): executive loop (decisions->work packets), sync check, simple metrics, no-worktree rule",
+        "lastCommit": "2026-06-04 81c345d fix(agentic-os): sync check ignores generated dashboard artifacts (only real source drift flags Needs sync)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -782,7 +782,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-04 10:52",
+    "lastRefresh": "2026-06-04 10:54",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8789/index.html",
     "sourcesRead": [
@@ -1277,7 +1277,7 @@
       "dirty": false,
       "dirtyCount": 0,
       "branch": "main",
-      "lastCommit": "2026-06-04 1157873 feat(agentic-os): executive loop (decisions->work packets), sync check, simple metrics, no-worktree rule",
+      "lastCommit": "2026-06-04 81c345d fix(agentic-os): sync check ignores generated dashboard artifacts (only real source drift flags Needs sync)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-04",
@@ -1519,7 +1519,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-04 10:52",
+    "lastRunAt": "2026-06-04 10:54",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8789/index.html",

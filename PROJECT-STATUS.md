@@ -14,13 +14,13 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Pre-release (TestFlight prep) | Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-03 be0b21d chore(release): pre-archive production audit — wrap bare print() calls in #if DEBUG |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | No | Fresh | High | tasks/progress.md | 2026-06-04 1157873 feat(agentic-os): executive loop (decisions->work packets), sync check, simple metrics, no-worktree rule |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | No | Fresh | High | tasks/progress.md | 2026-06-04 81c345d fix(agentic-os): sync check ignores generated dashboard artifacts (only real source drift flags Needs sync) |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-02, last commit 2026-06-04 1157873 feat(agentic-os): executive loop (decisions->work packets), sync check, simple metrics, no-worktree rule
+- Agentic OS: validated 2026-06-02, last commit 2026-06-04 81c345d fix(agentic-os): sync check ignores generated dashboard artifacts (only real source drift flags Needs sync)
 
 ## Drift Warnings
 
