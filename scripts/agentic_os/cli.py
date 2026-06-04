@@ -845,7 +845,18 @@ def check_repo_integrity(root: Path) -> dict[str, Any]:
     branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=root)
     current = branch.stdout.strip() if branch.returncode == 0 else "unknown"
     dirty = run(["git", "status", "--short"], cwd=root)
-    uncommitted = len([ln for ln in dirty.stdout.splitlines() if ln.strip()]) if dirty.returncode == 0 else 0
+    # Generated dashboard artifacts churn on every refresh; their change is not "unsynced work".
+    # The sync signal should only flag REAL source drift, so exclude generated paths from the count.
+    generated_prefixes = (
+        "dashboard/", "DASHBOARD.md", "PROJECT-STATUS.md", "executive-os/EXECUTIVE-DASHBOARD.md",
+    )
+    real_changes = []
+    if dirty.returncode == 0:
+        for line in dirty.stdout.splitlines():
+            path = line[3:].strip().strip('"') if len(line) > 3 else ""
+            if path and not path.startswith(generated_prefixes):
+                real_changes.append(path)
+    uncommitted = len(real_changes)
     wt = run(["git", "worktree", "list"], cwd=root)
     worktrees = [ln for ln in wt.stdout.splitlines() if ln.strip()] if wt.returncode == 0 else []
     extra_worktrees = max(0, len(worktrees) - 1)
