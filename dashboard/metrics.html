@@ -5,38 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Agentic OS - Metrics</title>
     <link rel="stylesheet" href="./styles.css">
+    <style>
+      table.metrics { width: 100%; border-collapse: collapse; margin-top: 10px; }
+      table.metrics th, table.metrics td { text-align: left; padding: 11px 12px; border-bottom: 1px solid #263354; vertical-align: top; }
+      table.metrics th { color: #93a0c2; font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase; }
+      table.metrics td.measured { font-weight: 700; color: #e8edf9; white-space: nowrap; }
+      table.metrics td.how { color: #93a0c2; font-size: 0.9rem; }
+      .out-ok { color: #34d399; font-weight: 700; }
+      .out-need { color: #fbbf24; font-weight: 700; }
+    </style>
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="./index.html"><span class="brand-mark">OS</span><span><strong>Agentic OS</strong><small>Metrics</small></span></a>
       <nav class="osnav" aria-label="Dashboards">
-        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html">Decisions</a><a href="./metrics.html" class="active" aria-current="page">Metrics</a><a href="./data-flow.html">Data Flow</a>
+        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html">Decisions</a><a href="./metrics.html" class="active" aria-current="page">Metrics</a><a href="./data-flow.html">How it connects</a>
       </nav>
     </header>
     <main class="page-shell">
-      <section class="hero"><div><p class="eyebrow">Metrics</p><h1>What is measured, what is missing, and what must stay honest.</h1><p id="metric-note" class="hero-copy"></p></div></section>
-      <section class="metric-grid">
-        <article><span id="projects" class="metric-value">0</span><span class="metric-label">Projects</span></article>
-        <article><span id="dirty" class="metric-value">0</span><span class="metric-label">Dirty repos</span></article>
-        <article><span id="blocked" class="metric-value">0</span><span class="metric-label">Blocked projects</span></article>
-        <article><span id="sources" class="metric-value">0</span><span class="metric-label">Sources read</span></article>
+      <section class="hero"><div>
+        <p class="eyebrow">Metrics</p>
+        <h1>What's measured, how, and the number.</h1>
+        <p class="hero-copy">Only what the OS actually tracks. <span class="out-need">Needs data</span> means the source isn't wired yet, never a guess.</p>
+      </div></section>
+      <section class="board">
+        <table class="metrics">
+          <thead><tr><th>Measured</th><th>How (short)</th><th>Output</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
       </section>
-      <section class="board"><div class="board-header"><p class="eyebrow">QA</p><h2>Validation board</h2></div><div id="qa" class="qa-board"></div></section>
     </main>
     <script>
-      init();
-      async function init() {
-        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
-        const overview = data.executiveOverview || {};
-        const health = data.projectHealth || [];
-        document.getElementById("metric-note").textContent = overview.metricStatus || "";
-        document.getElementById("projects").textContent = health.length;
-        document.getElementById("dirty").textContent = health.filter((p) => p.dirty).length;
-        document.getElementById("blocked").textContent = health.filter((p) => Number(p.blockerCount || 0) > 0).length;
-        document.getElementById("sources").textContent = (data.runCenter?.sourcesRead || []).length;
-        document.getElementById("qa").innerHTML = (data.qaBoard || []).map((q) => `<article><h3>${esc(q.project)}</h3><p>${esc(q.testStatus || q.status || "")}</p><p class="meta-line">${esc(q.latestValidationDate || "")}</p></article>`).join("");
-      }
-      function esc(value) { return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+      (async () => {
+        let d = {};
+        try { const r = await fetch("./status.json", { cache: "no-store" }); if (r.ok) d = await r.json(); } catch (e) {}
+        const health = d.projectHealth || [];
+        const reg = d.osRegistry || {};
+        const plans = (d.savedPlans || []).reduce((s, e) => s + Number(e.total || 0), 0);
+        const decisions = d.decisions || [];
+        const openD = decisions.filter((x) => (x.status || "").toLowerCase().startsWith("open")).length;
+        const qaDates = (d.qaBoard || []).map((q) => q.latestValidationDate).filter(Boolean).sort().reverse();
+        const ok = (t) => `<span class="out-ok">${t}</span>`;
+        const need = (t) => `<span class="out-need">${t}</span>`;
+        const rows = [
+          ["Projects tracked", "Parse each repo's tasks/progress.md + git", ok(`${health.length} tracked, ${health.filter((p) => p.dirty).length} dirty`)],
+          ["Blocked projects", "Blockers listed in task files", health.filter((p) => Number(p.blockerCount || 0) > 0).length ? need(`${health.filter((p) => Number(p.blockerCount || 0) > 0).length} blocked`) : ok("0 blocked")],
+          ["Last validation", "Latest validation/test line per repo", qaDates.length ? ok(qaDates[0]) : need("none recorded")],
+          ["Saved plans", "Scan plan / spec / GTM folders", ok(`${plans} on file`)],
+          ["Open decisions", "Parse EXECUTIVE-DECISIONS.md", openD ? need(`${openD} open of ${decisions.length}`) : ok(`0 open of ${decisions.length}`)],
+          ["Active work packets", "Scan executive-os/work-packets/", ok(`${(reg.workPackets || []).length} active`)],
+          ["Activation funnel (D1/D7)", "PostHog events in the apps", need("Needs data — no production usage yet")],
+          ["Revenue / MRR", "CFO OS (manual entry)", need("Needs data — not monetized yet")],
+          ["Runway", "CFO OS (manual entry)", need("Needs data — no cost sheet wired")]
+        ];
+        document.getElementById("rows").innerHTML = rows.map((r) =>
+          `<tr><td class="measured">${r[0]}</td><td class="how">${r[1]}</td><td>${r[2]}</td></tr>`
+        ).join("");
+      })();
     </script>
   </body>
 </html>

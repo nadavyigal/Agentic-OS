@@ -486,6 +486,19 @@
       <section class="panel">
         <div class="panel-head">
           <div>
+            <p class="eyebrow">Operating loop</p>
+            <h2>How a morning turns into the next move</h2>
+          </div>
+          <p>Status → executive review → decisions → work packets → brainstorm. Each open decision links to the packet it becomes.</p>
+        </div>
+        <div id="loop-stages" class="grid"></div>
+        <div id="loop-decisions" style="margin-top: 14px;"></div>
+        <p style="margin-top:10px;"><a class="chip-link" href="../executive-os/NEXT-MOVES.md">Brainstorm / next moves</a> <a class="chip-link" href="./decisions.html">All decisions</a></p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
             <p class="eyebrow">Projects</p>
             <h2>Status by project</h2>
           </div>
@@ -530,7 +543,7 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-06-03",
+      "evidenceFreshDate": "2026-06-04",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
@@ -557,7 +570,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-04 10:30",
+      "lastRefresh": "2026-06-04 10:51",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8789/index.html",
       "sourcesRead": [
@@ -1050,13 +1063,13 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 6,
         "branch": "main",
-        "lastCommit": "2026-06-02 6cfa4fd Merge pull request #6 from nadavyigal/claude/phase6-parser-tests",
+        "lastCommit": "2026-06-04 64abe24 chore(agentic-os): consolidate additive work from worktrees (sprints, research, resumely next-sprint prompt, rb-aso draft)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-02",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-04",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-02",
         "evidenceTests": [],
         "buildStatus": null,
@@ -1209,7 +1222,7 @@
         "branch": "main",
         "nextAction": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -1217,7 +1230,7 @@
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
-        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md, docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md. Current state: Dashboard trust upgrade (top-tier roadmap execution). Next action: All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md, docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md. Current state: Dashboard trust upgrade (top-tier roadmap execution). Next action: All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
     ],
     "executiveOverview": {
@@ -1254,8 +1267,10 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 0,
-      "evidenceGapProjects": [],
+      "evidenceGapCount": 1,
+      "evidenceGapProjects": [
+        "Agentic OS"
+      ],
       "lowTrustProjects": [],
       "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
       "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
@@ -1544,7 +1559,8 @@
           "title": "Work Packet WP-1 (Active)",
           "status": "Active",
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
-          "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md"
+          "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
+          "decision": "EXD-006"
         }
       ],
       "skillAgents": [
@@ -1600,6 +1616,198 @@
           "purpose": "The executive layer that sits on top of the Global Agentic OS. It does not replace",
           "path": "executive-os/README.md"
         }
+      ]
+    },
+    "decisions": [
+      {
+        "id": "EXD-009",
+        "date": "2026-06-02",
+        "area": "Growth",
+        "decision": "Introduce monetization before or after reading first-cohort activation",
+        "recommendation": "After: read activation first, consistent with CEO-OS focus rule 5",
+        "owner": "Nadav",
+        "review": "2026-09-30",
+        "status": "Open"
+      },
+      {
+        "id": "EXD-008",
+        "date": "2026-06-02",
+        "area": "Release",
+        "decision": "RunSmart iOS 1.0.1 scope after the v1.0 review outcome",
+        "recommendation": "Wait for the v1.0 review outcome, then cherry-pick the highest-impact Sprint 11 stories",
+        "owner": "Nadav",
+        "review": "2026-06-16",
+        "status": "Open"
+      },
+      {
+        "id": "EXD-007",
+        "date": "2026-06-02",
+        "area": "Strategy",
+        "decision": "Ratify the separate-brand portfolio model for RunSmart and Resumely",
+        "recommendation": "Keep brands and audiences separate; share only the operating layer (workflows, ASO skill, analytics conventions, Executive OS)",
+        "owner": "Nadav",
+        "review": "2026-06-30",
+        "status": "Open"
+      },
+      {
+        "id": "EXD-006",
+        "date": "2026-06-02",
+        "area": "Release",
+        "decision": "Resumely iOS App Store Connect upload path",
+        "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
+        "owner": "Nadav",
+        "review": "2026-06-09",
+        "status": "Open"
+      },
+      {
+        "id": "EXD-005",
+        "date": "2026-06-02",
+        "area": "Finance",
+        "decision": "Choose the monetization model per app (free vs paid structure)",
+        "recommendation": "Decide the model shape now (freemium with a free activation moment); set the price after first-cohort activation data",
+        "owner": "Nadav",
+        "review": "2026-06-30",
+        "status": "Open"
+      },
+      {
+        "id": "EXD-004",
+        "date": "2026-05-31",
+        "area": "Growth",
+        "decision": "Integrate PostHog in Resumely iOS before first App Store submission",
+        "recommendation": "Integrate before submit",
+        "owner": "Nadav",
+        "review": "2026-06-07",
+        "status": "Decided"
+      },
+      {
+        "id": "EXD-003",
+        "date": "2026-05-30",
+        "area": "Release",
+        "decision": "Refresh stale 2026-05-15 portfolio status before relying on it",
+        "recommendation": "Pull fresh local status",
+        "owner": "Nadav",
+        "review": "2026-06-06",
+        "status": "Decided"
+      },
+      {
+        "id": "EXD-002",
+        "date": "2026-05-30",
+        "area": "Growth",
+        "decision": "Wire minimal analytics before any new feature work",
+        "recommendation": "Instrument first",
+        "owner": "Nadav",
+        "review": "2026-06-13",
+        "status": "Decided"
+      },
+      {
+        "id": "EXD-001",
+        "date": "2026-05-30",
+        "area": "Strategy",
+        "decision": "Add Executive Intelligence OS as Layer 8, markdown-first, phased",
+        "recommendation": "Phased spine",
+        "owner": "Nadav",
+        "review": "2026-06-30",
+        "status": "Decided"
+      }
+    ],
+    "executiveLoop": {
+      "stages": [
+        {
+          "name": "Morning",
+          "what": "./agentic-os morning reads every repo and refreshes status."
+        },
+        {
+          "name": "Project status",
+          "what": "Per-project state, blockers, and next action."
+        },
+        {
+          "name": "Executive review",
+          "what": "CEO / COO / CFO / Analysis read status and add remarks."
+        },
+        {
+          "name": "Decisions",
+          "what": "5 open of 9 logged in EXECUTIVE-DECISIONS.md."
+        },
+        {
+          "name": "Work packets",
+          "what": "1 active. One focused repo task per decision that needs execution."
+        },
+        {
+          "name": "Brainstorm / next moves",
+          "what": "Open ideas in NEXT-MOVES.md."
+        }
+      ],
+      "openDecisions": [
+        {
+          "id": "EXD-009",
+          "date": "2026-06-02",
+          "area": "Growth",
+          "decision": "Introduce monetization before or after reading first-cohort activation",
+          "recommendation": "After: read activation first, consistent with CEO-OS focus rule 5",
+          "owner": "Nadav",
+          "review": "2026-09-30",
+          "status": "Open"
+        },
+        {
+          "id": "EXD-008",
+          "date": "2026-06-02",
+          "area": "Release",
+          "decision": "RunSmart iOS 1.0.1 scope after the v1.0 review outcome",
+          "recommendation": "Wait for the v1.0 review outcome, then cherry-pick the highest-impact Sprint 11 stories",
+          "owner": "Nadav",
+          "review": "2026-06-16",
+          "status": "Open"
+        },
+        {
+          "id": "EXD-007",
+          "date": "2026-06-02",
+          "area": "Strategy",
+          "decision": "Ratify the separate-brand portfolio model for RunSmart and Resumely",
+          "recommendation": "Keep brands and audiences separate; share only the operating layer (workflows, ASO skill, analytics conventions, Executive OS)",
+          "owner": "Nadav",
+          "review": "2026-06-30",
+          "status": "Open"
+        },
+        {
+          "id": "EXD-006",
+          "date": "2026-06-02",
+          "area": "Release",
+          "decision": "Resumely iOS App Store Connect upload path",
+          "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
+          "owner": "Nadav",
+          "review": "2026-06-09",
+          "status": "Open"
+        },
+        {
+          "id": "EXD-005",
+          "date": "2026-06-02",
+          "area": "Finance",
+          "decision": "Choose the monetization model per app (free vs paid structure)",
+          "recommendation": "Decide the model shape now (freemium with a free activation moment); set the price after first-cohort activation data",
+          "owner": "Nadav",
+          "review": "2026-06-30",
+          "status": "Open"
+        }
+      ],
+      "workPackets": [
+        {
+          "title": "Work Packet WP-1 (Active)",
+          "status": "Active",
+          "project": "Resumely iOS (ResumeBuilder IOS APP)",
+          "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
+          "decision": "EXD-006"
+        }
+      ],
+      "brainstormExists": true
+    },
+    "repoIntegrity": {
+      "branch": "main",
+      "uncommitted": 6,
+      "extraWorktrees": 1,
+      "synced": false,
+      "notes": [
+        "6 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
     "openQuestionsBoard": [
@@ -1707,10 +1915,16 @@
         const runCenter = status.runCenter || {};
         $("#focus-summary").textContent = summary.overallStatus || "Run ./agentic-os morning.";
         $("#next-action").textContent = summary.bestNextAction || "Run ./agentic-os morning.";
+        const integ = status.repoIntegrity || {};
         const tagEl = $("#synthesis-tag");
         if (tagEl) {
-          tagEl.textContent = `Live from your repos · refreshed ${runCenter.lastRefresh || "unknown"}`;
-          tagEl.className = "pill good";
+          if (integ.synced) {
+            tagEl.textContent = `Synced · on main, committed · refreshed ${runCenter.lastRefresh || "unknown"}`;
+            tagEl.className = "pill good";
+          } else {
+            tagEl.textContent = `Needs sync · ${(integ.notes || []).join(" ")}`;
+            tagEl.className = "pill warn";
+          }
         }
         $("#last-refresh").textContent = runCenter.lastRefresh || "Unknown";
         $("#localhost-url").textContent = runCenter.localhostUrl || "Not running";
@@ -1719,7 +1933,42 @@
         renderStatusRow();
         renderCommands();
         renderRegistry();
+        renderLoop();
         renderProjectHealth();
+      }
+
+      function renderLoop() {
+        const loop = status.executiveLoop || {};
+        const stages = $("#loop-stages");
+        if (stages) {
+          stages.textContent = "";
+          (loop.stages || []).forEach((st, i) => {
+            const card = make("article", "task-card");
+            card.append(make("h3", "", `${i + 1}. ${st.name}`));
+            card.append(make("p", "", st.what || ""));
+            stages.append(card);
+          });
+        }
+        const dec = $("#loop-decisions");
+        if (dec) {
+          dec.textContent = "";
+          const packetsByDecision = {};
+          (loop.workPackets || []).forEach((p) => { if (p.decision) packetsByDecision[p.decision] = p; });
+          const open = loop.openDecisions || [];
+          if (!open.length) {
+            dec.append(make("p", "fine", "No open decisions. Decided items have flowed to work packets."));
+            return;
+          }
+          dec.append(make("p", "eyebrow", `Open decisions → work packets (${open.length})`));
+          open.forEach((d) => {
+            const card = make("article", "task-card tone-blocked");
+            card.append(make("h3", "", `${d.id} · ${d.decision}`));
+            if (d.recommendation) card.append(make("p", "", `Recommend: ${d.recommendation}`));
+            const wp = packetsByDecision[d.id];
+            card.append(make("div", "fine", wp ? `→ Work packet: ${wp.title} (${wp.status})` : "→ No work packet yet"));
+            dec.append(card);
+          });
+        }
       }
 
       function renderCommands() {

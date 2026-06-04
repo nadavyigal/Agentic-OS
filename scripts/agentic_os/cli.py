@@ -768,6 +768,104 @@ def build_os_registry(root: Path) -> dict[str, Any]:
     return registry
 
 
+def parse_decisions(root: Path) -> list[dict[str, Any]]:
+    """Read the executive decisions log into structured rows (newest decisions first).
+
+    Source: executive-os/EXECUTIVE-DECISIONS.md markdown table. Open decisions are what the
+    founder still has to call; Decided ones should flow into work packets. This makes the
+    decisions real (parsed) instead of a hand-kept dashboard list.
+    """
+    decisions: list[dict[str, Any]] = []
+    path = root / "executive-os" / "EXECUTIVE-DECISIONS.md"
+    if not path.exists():
+        return decisions
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip().startswith("| EXD-"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) < 12:
+            continue
+        status_raw = cells[11]
+        state = status_raw.split("-")[0].split("—")[0].strip() or "Unknown"
+        decisions.append(
+            {
+                "id": cells[0],
+                "date": cells[1],
+                "area": cells[2],
+                "decision": cells[3],
+                "recommendation": cells[5],
+                "owner": cells[9],
+                "review": cells[10],
+                "status": state,
+            }
+        )
+    decisions.sort(key=lambda d: d["id"], reverse=True)
+    return decisions
+
+
+def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, Any], root: Path) -> dict[str, Any]:
+    """Assemble the operating loop the founder asked to see, end to end.
+
+    morning -> project status -> executive review -> decisions -> work packets -> brainstorm.
+    Links each work packet to the decision it came from (via 'Related decision: EXD-xxx').
+    """
+    packets = registry.get("workPackets", [])
+    # Link packets to decisions by scanning each packet file for "Related decision: EXD-xxx".
+    for packet in packets:
+        related = None
+        packet_path = root / packet.get("path", "")
+        if packet_path.exists():
+            match = re.search(r"Related decision:\s*(EXD-\d+)", packet_path.read_text(encoding="utf-8", errors="replace"))
+            related = match.group(1) if match else None
+        packet["decision"] = related
+    open_decisions = [d for d in decisions if d["status"].lower().startswith("open")]
+    brainstorm = root / "executive-os" / "NEXT-MOVES.md"
+    return {
+        "stages": [
+            {"name": "Morning", "what": "./agentic-os morning reads every repo and refreshes status."},
+            {"name": "Project status", "what": "Per-project state, blockers, and next action."},
+            {"name": "Executive review", "what": "CEO / COO / CFO / Analysis read status and add remarks."},
+            {"name": "Decisions", "what": f"{len(open_decisions)} open of {len(decisions)} logged in EXECUTIVE-DECISIONS.md."},
+            {"name": "Work packets", "what": f"{len(packets)} active. One focused repo task per decision that needs execution."},
+            {"name": "Brainstorm / next moves", "what": ("Open ideas in NEXT-MOVES.md." if brainstorm.exists() else "Add executive-os/NEXT-MOVES.md to capture ideas.")},
+        ],
+        "openDecisions": open_decisions[:8],
+        "workPackets": packets,
+        "brainstormExists": brainstorm.exists(),
+    }
+
+
+def check_repo_integrity(root: Path) -> dict[str, Any]:
+    """Cross-tool sync signal: is everything committed and on main, with no stray worktrees?
+
+    The founder works across Codex, Claude Code, and Cursor; the only shared truth is git.
+    This surfaces uncommitted changes, the current branch vs main, and extra worktrees so
+    drift between tools is visible instead of silently losing work.
+    """
+    branch = run(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=root)
+    current = branch.stdout.strip() if branch.returncode == 0 else "unknown"
+    dirty = run(["git", "status", "--short"], cwd=root)
+    uncommitted = len([ln for ln in dirty.stdout.splitlines() if ln.strip()]) if dirty.returncode == 0 else 0
+    wt = run(["git", "worktree", "list"], cwd=root)
+    worktrees = [ln for ln in wt.stdout.splitlines() if ln.strip()] if wt.returncode == 0 else []
+    extra_worktrees = max(0, len(worktrees) - 1)
+    synced = current == "main" and uncommitted == 0 and extra_worktrees == 0
+    notes: list[str] = []
+    if current != "main":
+        notes.append(f"On branch '{current}', not main. Merge to main so all tools see it.")
+    if uncommitted:
+        notes.append(f"{uncommitted} uncommitted change(s). Commit so nothing is lost between sessions/tools.")
+    if extra_worktrees:
+        notes.append(f"{extra_worktrees} extra worktree(s) open. Consolidate to main; do not work in worktrees.")
+    return {
+        "branch": current,
+        "uncommitted": uncommitted,
+        "extraWorktrees": extra_worktrees,
+        "synced": synced,
+        "notes": notes or ["Clean: on main, fully committed, no stray worktrees."],
+    }
+
+
 def build_saved_plans(project_health: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Flatten per-project plans into one portfolio board, recent first, GTM always kept.
 
@@ -1291,7 +1389,11 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     # Trust = the dashboard is literally the repos, re-derived each time `./agentic-os morning` runs.
     saved_plans = build_saved_plans(project_health)
     status["savedPlans"] = saved_plans
-    status["osRegistry"] = build_os_registry(ROOT)
+    registry = build_os_registry(ROOT)
+    status["osRegistry"] = registry
+    status["decisions"] = parse_decisions(ROOT)
+    status["executiveLoop"] = build_executive_loop(status["decisions"], registry, ROOT)
+    status["repoIntegrity"] = check_repo_integrity(ROOT)
     derived = build_derived_summary(project_health, saved_plans)
     freshest_dates = [parse_date(p.get("freshestDate")) for p in project_health]
     freshest = max([d for d in freshest_dates if d], default=None)
@@ -1446,6 +1548,9 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "driftWarnings": status.get("driftWarnings", []),
             "savedPlans": status.get("savedPlans", []),
             "osRegistry": status.get("osRegistry", {}),
+            "decisions": status.get("decisions", []),
+            "executiveLoop": status.get("executiveLoop", {}),
+            "repoIntegrity": status.get("repoIntegrity", {}),
             "openQuestionsBoard": status.get("openQuestionsBoard", []),
             "repoDecisions": status.get("repoDecisions", []),
         }
@@ -1872,6 +1977,14 @@ def refresh(args: argparse.Namespace) -> int:
     exec_os = [o["name"] for o in reg.get("executiveOS", [])]
     print(f"- executive OS surfaced: {', '.join(exec_os) if exec_os else 'none found'}")
     print(f"- executive agents: {len(reg.get('executiveAgents', []))} | active work packets: {len(reg.get('workPackets', []))} | skill agents: {len(reg.get('skillAgents', []))}")
+    decisions = status.get("decisions", [])
+    open_d = [d for d in decisions if d.get("status", "").lower().startswith("open")]
+    print(f"- decisions: {len(open_d)} open of {len(decisions)} logged (decisions -> work packets)")
+    integ = status.get("repoIntegrity", {})
+    if integ.get("synced"):
+        print("- sync: CLEAN (on main, committed, no stray worktrees). All tools see the same truth.")
+    else:
+        print(f"- sync: ATTENTION — {' '.join(integ.get('notes', []))}")
     total_plans = sum(entry.get("total", 0) for entry in status.get("savedPlans", []))
     plan_projects = [f"{e['project']} ({e['total']})" for e in status.get("savedPlans", [])]
     print(f"- saved plans surfaced: {total_plans} across {len(status.get('savedPlans', []))} projects"

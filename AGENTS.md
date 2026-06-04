@@ -32,6 +32,15 @@ Before doing anything — in this order:
 5. State the objective in one sentence before planning anything.
 6. Write a 5-step plan maximum before touching any file.
 
+## Single Source Of Truth — No Worktrees (read first)
+
+The Agentic OS is the founder's operating system, not a throwaway app. Information must never be lost between sessions or tools.
+
+1. **Work on `main`. Do not create git worktrees or feature branches for OS work.** Per-session worktrees are what caused real losses (a whole COO OS and GTM plans stranded in unmerged worktrees). If you find yourself in a worktree, consolidate to `main`.
+2. **Commit when you finish a unit of work, and merge to `main` before the session ends.** Nothing stays uncommitted. "Done" means committed on `main`.
+3. **The founder works across Codex, Claude Code, and Cursor.** The only shared truth is the git repo on `main`. Before starting, check `git status` and `git worktree list`. After, commit. `./agentic-os morning` prints a sync line and the dashboard shows a "Synced / Needs sync" tag — if it says Needs sync, fix it before stopping.
+4. **Anything you create must surface on the dashboard.** The OS registry auto-discovers `executive-os/*-OS.md`, `executive-os/agents/`, `executive-os/work-packets/`, `SKILLS/`, and saved plans. Put new artifacts there, run `./agentic-os morning`, and confirm they appear (the "How it connects" page shows a red 0 if a source is empty).
+
 ## Global Work Rules
 
 1. Read before planning. Never plan from memory about file content. Read the actual files.

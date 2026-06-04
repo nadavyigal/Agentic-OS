@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 dev
 
 ## Run Center
 
-- Last refresh: 2026-06-04 10:30
+- Last refresh: 2026-06-04 10:51
 - Localhost: `http://127.0.0.1:8789/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -44,7 +44,7 @@ Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 dev
 
 ## Evidence Gaps
 
-- None. Every project's validation is at least as recent as its last commit.
+- Agentic OS: validated 2026-06-02, latest commit is newer.
 
 ## Drift Warnings
 
