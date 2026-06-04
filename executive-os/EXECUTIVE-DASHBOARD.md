@@ -44,7 +44,7 @@ How much each project's state is backed by parsed local task files versus narrat
 - RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.
 - ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.
 - ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.
-- Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web).
+- Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web), Agentic OS.
 
 ## Next Recommended Actions
 

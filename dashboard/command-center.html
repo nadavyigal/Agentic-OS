@@ -417,8 +417,8 @@
         <a href="./project-status.html">Project Status</a>
         <a href="./orchestration.html">Orchestration Map</a>
         <a href="./executive.html">Executive</a>
-        <a href="./decisions.html">Decisions</a>
-        <a href="./metrics.html">Metrics</a>
+
+
         <a href="./data-flow.html">Data Flow</a>
       </nav>
     </header>
@@ -493,7 +493,7 @@
         </div>
         <div id="loop-stages" class="grid"></div>
         <div id="loop-decisions" style="margin-top: 14px;"></div>
-        <p style="margin-top:10px;"><a class="chip-link" href="../executive-os/NEXT-MOVES.md">Brainstorm / next moves</a> <a class="chip-link" href="./decisions.html">All decisions</a></p>
+        <p style="margin-top:10px;"><a class="chip-link" href="../executive-os/NEXT-MOVES.md">Brainstorm / next moves</a> <a class="chip-link" href="../executive-os/EXECUTIVE-DECISIONS.md">All decisions</a></p>
       </section>
 
       <section class="panel">
@@ -536,7 +536,7 @@
         "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
         "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
         "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.",
-        "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web)."
+        "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web), Agentic OS."
       ],
       "needsDecision": [
         "RunSmart iOS: if build 8 is rejected again, decide minimal fix scope vs. expanding to v2 feature set.",
@@ -570,9 +570,9 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-04 10:54",
+      "lastRefresh": "2026-06-04 11:57",
       "command": "./agentic-os refresh",
-      "localhostUrl": "http://127.0.0.1:8789/index.html",
+      "localhostUrl": "http://127.0.0.1:8789/dashboard/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
         "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -849,9 +849,9 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 1,
-        "branch": "main...origin/main [ahead 1, behind 2]",
-        "lastCommit": "2026-06-03 be0b21d chore(release): pre-archive production audit \u2014 wrap bare print() calls in #if DEBUG",
+        "dirtyCount": 6,
+        "branch": "main...origin/main",
+        "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-03",
@@ -1062,10 +1062,10 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 14,
         "branch": "main",
-        "lastCommit": "2026-06-04 81c345d fix(agentic-os): sync check ignores generated dashboard artifacts (only real source drift flags Needs sync)",
+        "lastCommit": "2026-06-04 b0c7a8c chore(agentic-os): refresh dashboard artifacts",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-04",
@@ -1159,7 +1159,7 @@
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1, behind 2]",
+        "branch": "main...origin/main",
         "nextAction": "Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize\u2192design\u2192expert\u2192export smoke, screenshots PostHog Live Events",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1218,7 +1218,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main",
         "nextAction": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
         "sourceConfidence": "High",
@@ -1251,12 +1251,13 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 5,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -1504,7 +1505,7 @@
           "purpose": "Runs the parser unit tests."
         }
       ],
-      "executiveOS": [
+      "leadership": [
         {
           "name": "Analysis OS",
           "purpose": "The Analysis OS is responsible for structured thinking, research, ideation, evidence",
@@ -1524,33 +1525,16 @@
           "name": "COO OS",
           "purpose": "The minimal operations layer. It turns a plan into an ordered, executable sequence and decides what becomes a work packet. It is intentionally thin: enough t...",
           "path": "executive-os/COO-OS.md"
-        }
-      ],
-      "executiveAgents": [
-        {
-          "name": "Analysis Director Agent",
-          "purpose": "Routes research, ideation, and opportunity work. Owns the quality bar for Analysis OS",
-          "path": "executive-os/agents/analysis-director.md"
         },
         {
-          "name": "CEO Agent",
-          "purpose": "Owns focus, prioritization, OKRs, decisions, and portfolio tradeoffs. Decides what",
-          "path": "executive-os/agents/ceo-agent.md"
+          "name": "Risk OS",
+          "purpose": "The safety gate of the executive layer. It answers one question before anything ships: what could go wrong, and is this safe and reversible?",
+          "path": "executive-os/RISK-OS.md"
         },
         {
-          "name": "CFO Agent",
-          "purpose": "Owns budget, financial reporting, runway, costs, and financial visibility across the",
-          "path": "executive-os/agents/cfo-agent.md"
-        },
-        {
-          "name": "Chief of Staff Agent",
-          "purpose": "Turns CEO priorities into an operating rhythm: agendas, dashboards, follow-ups, and",
-          "path": "executive-os/agents/chief-of-staff-agent.md"
-        },
-        {
-          "name": "COO Agent",
-          "purpose": "Turns a plan into an ordered execution sequence and emits at most one focused work packet per run. Owns sequencing, bottlenecks, repo routing, QA order, stat...",
-          "path": "executive-os/agents/coo-agent.md"
+          "name": "Distribution OS",
+          "purpose": "Cross-product distribution operating system for RunSmart and ResumeBuilder AI. Sits inside the Agentic OS. Drives a disciplined cycle:",
+          "path": "distribution-os/README.md"
         }
       ],
       "workPackets": [
@@ -1602,18 +1586,6 @@
           "name": "UI/UX Agent",
           "purpose": "Reviews and improves user experience, visual quality, layout, copy, and platform fit.",
           "path": "SKILLS/ui-ux-agent.md"
-        }
-      ],
-      "systems": [
-        {
-          "name": "distribution-os",
-          "purpose": "Cross-product distribution operating system for RunSmart and ResumeBuilder AI. Sits inside the Agentic OS. Drives a disciplined cycle:",
-          "path": "distribution-os/README.md"
-        },
-        {
-          "name": "executive-os",
-          "purpose": "The executive layer that sits on top of the Global Agentic OS. It does not replace",
-          "path": "executive-os/README.md"
         }
       ]
     },
@@ -1801,10 +1773,11 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 2,
       "extraWorktrees": 1,
       "synced": false,
       "notes": [
+        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
@@ -1957,13 +1930,17 @@
             dec.append(make("p", "fine", "No open decisions. Decided items have flowed to work packets."));
             return;
           }
-          dec.append(make("p", "eyebrow", `Open decisions → work packets (${open.length})`));
+          dec.append(make("p", "eyebrow", `Open decisions — how each becomes a work plan (${open.length})`));
+          dec.append(make("p", "fine", "Path: you decide it → the COO turns it into a work packet → a skill agent executes that packet. Below, each open decision shows where it is on that path."));
           open.forEach((d) => {
             const card = make("article", "task-card tone-blocked");
             card.append(make("h3", "", `${d.id} · ${d.decision}`));
-            if (d.recommendation) card.append(make("p", "", `Recommend: ${d.recommendation}`));
+            if (d.recommendation) card.append(make("p", "", `Recommended call: ${d.recommendation}`));
             const wp = packetsByDecision[d.id];
-            card.append(make("div", "fine", wp ? `→ Work packet: ${wp.title} (${wp.status})` : "→ No work packet yet"));
+            const step = wp
+              ? `Work plan ready → ${wp.title} (${wp.status}). A skill agent can execute it.`
+              : "Next step: you make this call, then the COO writes its work packet. No work plan yet.";
+            card.append(make("div", "fine", step));
             dec.append(card);
           });
         }
@@ -1988,10 +1965,8 @@
         root.textContent = "";
         const reg = status.osRegistry || {};
         const groups = [
-          ["Executive OS layers", reg.executiveOS],
-          ["Active work packets", reg.workPackets],
-          ["Executive agents", reg.executiveAgents],
-          ["Skill agents", reg.skillAgents]
+          ["Executive OS — your leadership (reviews status, makes decisions)", reg.leadership],
+          ["Skill agents — your builders (execute the work packets)", reg.skillAgents]
         ];
         groups.forEach(([label, items]) => {
           if (!items || !items.length) return;
@@ -2002,9 +1977,7 @@
           items.forEach((it) => {
             const card = make("article", "task-card");
             card.append(make("h3", "", it.name || it.title));
-            if (it.status) card.append(make("div", "fine", `Status: ${it.status}${it.project ? " · " + it.project : ""}`));
             if (it.purpose) card.append(make("p", "", it.purpose));
-            card.append(make("div", "fine", it.path || ""));
             grid.append(card);
           });
           block.append(grid);

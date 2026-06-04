@@ -25,7 +25,7 @@
     <header class="topbar">
       <a class="brand" href="./index.html"><span class="brand-mark">OS</span><span><strong>Agentic OS</strong><small>How it connects</small></span></a>
       <nav class="osnav" aria-label="Dashboards">
-        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./decisions.html">Decisions</a><a href="./metrics.html">Metrics</a><a href="./data-flow.html" class="active" aria-current="page">How it connects</a>
+        <a href="./index.html">Command Center</a><a href="./project-status.html">Project Status</a><a href="./orchestration.html">Orchestration Map</a><a href="./executive.html">Executive</a><a href="./data-flow.html" class="active" aria-current="page">How it connects</a>
       </nav>
     </header>
     <main class="page-shell">
@@ -40,8 +40,8 @@
           <div class="flow-col">
             <h3>Sources (your repos)</h3>
             <div class="flow-box"><div class="t">Project repos <span id="c-projects" class="flow-count ok">&ndash;</span></div><div class="d">progress.md, todo, session log, git state</div></div>
-            <div class="flow-box"><div class="t">Executive OS <span id="c-execos" class="flow-count ok">&ndash;</span></div><div class="d">CEO / COO / CFO / Analysis layers</div></div>
-            <div class="flow-box"><div class="t">Executive agents <span id="c-agents" class="flow-count ok">&ndash;</span></div><div class="d">CEO, COO, CFO, Analysis, Chief of Staff</div></div>
+            <div class="flow-box"><div class="t">Executive OS <span id="c-execos" class="flow-count ok">&ndash;</span></div><div class="d">CEO / COO / CFO / Analysis / Risk / Distribution</div></div>
+            <div class="flow-box"><div class="t">Skill agents <span id="c-agents" class="flow-count ok">&ndash;</span></div><div class="d">The builders: architect, QA, release, etc.</div></div>
             <div class="flow-box"><div class="t">Work packets <span id="c-packets" class="flow-count ok">&ndash;</span></div><div class="d">executive-os/work-packets/</div></div>
             <div class="flow-box"><div class="t">Saved plans &amp; GTM <span id="c-plans" class="flow-count ok">&ndash;</span></div><div class="d">docs/plans, docs/specs, distribution GTM</div></div>
           </div>
@@ -63,10 +63,6 @@
         <p class="legend">If a source shows <b style="color:#f87171">0</b>, the dashboard is not seeing what you saved there. Put it in that folder (or tell the agent where it lives) and re-run the morning loop.</p>
       </section>
 
-      <section class="board">
-        <div class="board-header"><p class="eyebrow">Sources read on the last run</p><h2>Proof of what was scanned</h2></div>
-        <div id="sources" class="priority-board"></div>
-      </section>
     </main>
 
     <script id="df-data" type="application/json">
@@ -89,27 +85,12 @@
         const reg = s.osRegistry || {};
         const plans = (s.savedPlans || []).reduce((sum, e) => sum + Number(e.total || 0), 0);
         setCount("#c-projects", (s.projectHealth || []).length);
-        setCount("#c-execos", (reg.executiveOS || []).length);
-        setCount("#c-agents", (reg.executiveAgents || []).length);
+        setCount("#c-execos", (reg.leadership || []).length);
+        setCount("#c-agents", (reg.skillAgents || []).length);
         setCount("#c-packets", (reg.workPackets || []).length);
         setCount("#c-plans", plans);
         setCount("#c-checks", (rc.checksRun || []).length);
         $("#freshness").textContent = "Last refresh: " + (rc.lastRefresh || "unknown") + ".";
-        const src = $("#sources");
-        src.textContent = "";
-        const lines = rc.sourcesRead || [];
-        if (!lines.length) {
-          const d = document.createElement("div");
-          d.className = "priority-item";
-          d.textContent = "No sources recorded yet. Run ./agentic-os morning.";
-          src.append(d);
-        }
-        lines.forEach((line) => {
-          const d = document.createElement("div");
-          d.className = "priority-item";
-          d.textContent = line;
-          src.append(d);
-        });
       }
 
       (async () => {

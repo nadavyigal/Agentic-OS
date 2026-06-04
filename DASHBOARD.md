@@ -12,8 +12,8 @@ Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 dev
 
 ## Run Center
 
-- Last refresh: 2026-06-04 10:54
-- Localhost: `http://127.0.0.1:8789/index.html`
+- Last refresh: 2026-06-04 11:57
+- Localhost: `http://127.0.0.1:8789/dashboard/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
 ## Project Health
@@ -24,7 +24,7 @@ Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 dev
 | Resumely iOS | Pre-release (TestFlight prep) | Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | No | Fresh | High |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | Yes | Fresh | High |
 
 ## Decision Board
 

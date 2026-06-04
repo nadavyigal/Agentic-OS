@@ -714,31 +714,26 @@ def _doc_summary(path: Path) -> tuple[str, str]:
 
 
 def build_os_registry(root: Path) -> dict[str, Any]:
-    """Auto-discover every part of the Agentic OS from the repo itself.
+    """Auto-discover the Agentic OS from the repo itself, in two plain groups.
 
-    This is the trust backbone: the dashboard lists what ACTUALLY EXISTS on disk (executive
-    sub-OS, executive agents, active work packets, skill agents, sibling systems, commands),
-    not a hand-maintained list. Anything the founder creates under these folders surfaces on
-    the next run, so a real artifact (COO OS, a work packet, a GTM plan) can never silently vanish.
+    - leadership: the Executive OS (CEO/COO/CFO/Analysis/Risk + Distribution). These review
+      status and make decisions. The matching agent file is just how each is run, so it is not
+      listed separately (that double-listing was confusing).
+    - skillAgents: the builders that execute work packets (architect, QA, release, etc.).
+    Work packets and commands are returned too, for the loop and commands sections.
+    Anything created under these folders surfaces on the next run — nothing can silently vanish.
     """
     registry: dict[str, Any] = {
         "commands": [{"name": name, "purpose": purpose} for name, purpose in OS_COMMANDS],
-        "executiveOS": [],
-        "executiveAgents": [],
+        "leadership": [],
         "workPackets": [],
         "skillAgents": [],
-        "systems": [],
     }
     exec_dir = root / "executive-os"
     if exec_dir.is_dir():
         for sub_os in sorted(exec_dir.glob("*-OS.md")):
             title, purpose = _doc_summary(sub_os)
-            registry["executiveOS"].append({"name": title, "purpose": purpose, "path": str(sub_os.relative_to(root))})
-        agents_dir = exec_dir / "agents"
-        if agents_dir.is_dir():
-            for agent in sorted(agents_dir.glob("*.md")):
-                title, purpose = _doc_summary(agent)
-                registry["executiveAgents"].append({"name": title, "purpose": purpose, "path": str(agent.relative_to(root))})
+            registry["leadership"].append({"name": title, "purpose": purpose, "path": str(sub_os.relative_to(root))})
         packets_dir = exec_dir / "work-packets"
         if packets_dir.is_dir():
             for packet in sorted(packets_dir.glob("*.md")):
@@ -754,17 +749,16 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "path": str(packet.relative_to(root)),
                     }
                 )
+    # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.
+    dist_readme = root / "distribution-os" / "README.md"
+    if dist_readme.exists():
+        _, purpose = _doc_summary(dist_readme)
+        registry["leadership"].append({"name": "Distribution OS", "purpose": purpose or "Cross-product launch and growth.", "path": "distribution-os/README.md"})
     skills_dir = root / "SKILLS"
     if skills_dir.is_dir():
         for skill in sorted(skills_dir.glob("*.md")):
             title, purpose = _doc_summary(skill)
             registry["skillAgents"].append({"name": title, "purpose": purpose, "path": str(skill.relative_to(root))})
-    for system_name in ("distribution-os", "executive-os"):
-        system_dir = root / system_name
-        readme = system_dir / "README.md"
-        if system_dir.is_dir() and readme.exists():
-            _, purpose = _doc_summary(readme)
-            registry["systems"].append({"name": system_name, "purpose": purpose, "path": f"{system_name}/README.md"})
     return registry
 
 
@@ -1326,7 +1320,7 @@ def build_daily_run_result(
         "lastRunAt": now_label(),
         "checksStatus": checks_status,
         "checksCompletedAt": "",
-        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "localhostUrl": f"http://127.0.0.1:{port}/dashboard/index.html",
         "recommendedPromptProject": recommended.get("project", "No project prompt available"),
         "recommendedPromptRole": recommended.get("role", "Project Operator"),
         "recommendedPrompt": recommended.get("copyPrompt", "Run ./agentic-os refresh to generate project prompts."),
@@ -1378,7 +1372,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["runCenter"] = {
         "lastRefresh": now_label(),
         "command": command,
-        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "localhostUrl": f"http://127.0.0.1:{port}/dashboard/index.html",
         "sourcesRead": sources,
         "checksRun": [
             "parser unit tests",
@@ -1518,7 +1512,7 @@ def mark_daily_run_verified(port: int, passed: bool) -> None:
     result["checksStatus"] = "Passed" if passed else "Failed"
     result["checksCompletedAt"] = now_label()
     result["readyForNextSession"] = passed
-    result["localhostUrl"] = f"http://127.0.0.1:{port}/index.html"
+    result["localhostUrl"] = f"http://127.0.0.1:{port}/dashboard/index.html"
     write_json(STATUS_JSON, status)
     sync_project_status_fallback(status)
     update_command_center_generated(today_idt(), status)
@@ -1825,8 +1819,6 @@ def verify_links() -> list[str]:
         COMMAND_CENTER_HTML,
         ORCHESTRATION_HTML,
         DASHBOARD / "executive.html",
-        DASHBOARD / "decisions.html",
-        DASHBOARD / "metrics.html",
         DASHBOARD / "data-flow.html",
     ]
     literal_href = re.compile(r'href="([^"]+)"')
@@ -1960,9 +1952,11 @@ def find_port(start: int) -> int:
 
 def serve(port: int, open_browser: bool = True) -> int:
     port = find_port(port)
-    os.chdir(DASHBOARD)
+    # Serve from the repo ROOT (not dashboard/) so cross-doc links like ../executive-os/NEXT-MOVES.md
+    # and ../executive-os/EXECUTIVE-DASHBOARD.md actually resolve instead of failing path traversal.
+    os.chdir(ROOT)
     handler = http.server.SimpleHTTPRequestHandler
-    url = f"http://127.0.0.1:{port}/index.html"
+    url = f"http://127.0.0.1:{port}/dashboard/index.html"
 
     class ReusableTCPServer(socketserver.TCPServer):
         allow_reuse_address = True
@@ -1985,9 +1979,9 @@ def refresh(args: argparse.Namespace) -> int:
     print(f"- last refresh: {status['runCenter']['lastRefresh']}")
     print("- brief: rebuilt from parsed repo truth (one process, always current).")
     reg = status.get("osRegistry", {})
-    exec_os = [o["name"] for o in reg.get("executiveOS", [])]
-    print(f"- executive OS surfaced: {', '.join(exec_os) if exec_os else 'none found'}")
-    print(f"- executive agents: {len(reg.get('executiveAgents', []))} | active work packets: {len(reg.get('workPackets', []))} | skill agents: {len(reg.get('skillAgents', []))}")
+    leaders = [o["name"] for o in reg.get("leadership", [])]
+    print(f"- Executive OS (leadership): {', '.join(leaders) if leaders else 'none found'}")
+    print(f"- work packets: {len(reg.get('workPackets', []))} | skill agents (builders): {len(reg.get('skillAgents', []))}")
     decisions = status.get("decisions", [])
     open_d = [d for d in decisions if d.get("status", "").lower().startswith("open")]
     print(f"- decisions: {len(open_d)} open of {len(decisions)} logged (decisions -> work packets)")
