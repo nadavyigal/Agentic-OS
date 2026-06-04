@@ -1,6 +1,6 @@
 # Work Packet WP-2 (Active)
 
-- Status: Active
+- Status: Research + spec complete, waiting for activation data to implement
 - Created: 2026-06-04
 - Source: EXD-005 (model shape) + EXD-009 (timing)
 - Routed by: COO OS
@@ -41,11 +41,15 @@ Define the freemium model for both apps now — the free activation moment, the 
 - Which gated feature each segment values most (drives the paywall line).
 
 ## Build-readiness checklist (so implementation is instant when data arrives)
-- [ ] Free vs paid feature matrix per app (1 page each).
-- [ ] Paywall placement spec (which screen, which trigger event).
-- [ ] PostHog events needed to read activation → paywall conversion.
-- [ ] StoreKit / IAP product IDs drafted (no prices committed).
-- [ ] Price experiment plan (A/B once there is traffic).
+- [x] Free vs paid feature matrix per app: `executive-os/work-packets/WP-2-monetization-spec.md` Section 1.
+- [x] Paywall placement spec (which screen, which trigger event): `executive-os/work-packets/WP-2-monetization-spec.md` Section 2.
+- [x] PostHog events needed to read activation to paywall conversion: `executive-os/work-packets/WP-2-monetization-spec.md` Section 3.
+- [x] StoreKit / IAP product IDs drafted (no prices committed): `executive-os/work-packets/WP-2-monetization-spec.md` Section 4.
+- [x] Price experiment plan (A/B once there is traffic): `executive-os/work-packets/WP-2-monetization-spec.md` Section 5.
+
+## Research outputs
+- Competitor pricing research: `executive-os/research/WP-2-competitor-pricing-research.md`
+- Full CFO spec: `executive-os/work-packets/WP-2-monetization-spec.md`
 
 ## Constraints
 - Do not implement a paywall or set a price until activation data exists (EXD-009).
