@@ -38,7 +38,7 @@ On a real, signed, authenticated device build:
 1. Smoke the core path: optimize -> design -> expert -> preview/export.
 2. Confirm PostHog Live Events receives app_launched, optimize_completed, and export_success from this build.
 3. Confirm export output (PDF / share) renders correctly.
-4. Resolve the ASC upload path (EXD-006): check for a Fastlane API key; if absent, note that manual portal upload is the path.
+4. Confirm the ASC upload path (EXD-006): Fastlane API key present? If absent, the upload uses the Claude Chrome extension to fill the App Store Connect portal — founder will share a screenshot folder link when we reach that step.
 Stop at "ready to upload" with evidence. Do NOT upload or submit in this packet.
 
 ## Constraints

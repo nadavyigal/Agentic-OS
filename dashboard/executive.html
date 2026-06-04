@@ -45,16 +45,20 @@
         <article class="board"><div class="board-header"><p class="eyebrow">Risk</p><h2>Risk board</h2></div><div id="risks" class="priority-board"></div></article>
       </section>
       <section class="board">
-        <div class="board-header"><p class="eyebrow">Project prompts</p><h2>Copy into the matching repo</h2></div>
-        <div id="prompts" class="project-grid"></div>
+        <div class="board-header">
+          <p class="eyebrow">Work packets</p>
+          <h2>Active tasks — copy into the right repo's Claude Code session</h2>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;margin:0 0 14px">Each packet = one focused task. Repo is listed first. Hit Copy and paste into Claude Code for that repo.</p>
+        <div id="packets" class="project-grid"></div>
       </section>
     </main>
     <script>
       const $ = (id) => document.getElementById(id);
-      const card = (title, body) => `<article class="project-card"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`;
       init();
       async function init() {
-        const data = await fetch("./status.json", { cache: "no-store" }).then((r) => r.json());
+        let data = {};
+        try { const r = await fetch("./status.json", { cache: "no-store" }); if (r.ok) data = await r.json(); } catch(e) {}
         const executive = data.executiveOverview || {};
         $("portfolio-state").textContent = executive.portfolioState || "";
         $("headline").textContent = executive.headline || "";
@@ -64,29 +68,33 @@
         $("metric-money").textContent = executive.financialSnapshot || "Needs Data";
         $("focus").innerHTML = list(executive.focus || []);
         $("risks").innerHTML = list(executive.risks || []);
-        $("prompts").innerHTML = (data.projectPrompts || []).map((item) => promptCard(item)).join("");
-        document.querySelectorAll("[data-copy]").forEach((button) => button.addEventListener("click", () => copy(button)));
+        const packets = (data.executiveLoop || {}).workPackets || [];
+        $("packets").innerHTML = packets.length
+          ? packets.map(packetCard).join("")
+          : '<p style="color:var(--muted)">No active work packets. Decided, executable decisions become work packets in executive-os/work-packets/.</p>';
+        document.querySelectorAll(".copy-btn-exec").forEach((btn) => btn.addEventListener("click", () => {
+          navigator.clipboard.writeText(btn.dataset.copy || "");
+          btn.textContent = "Copied!";
+          setTimeout(() => btn.textContent = "Copy to Claude Code", 1400);
+        }));
       }
-      function list(items) {
-        return `<div><ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`;
-      }
-      function promptCard(item) {
+      function packetCard(p) {
+        const repoLabel = p.repoPath
+          ? `<strong style="color:var(--cyan);font-size:.8rem">REPO: ${esc(p.repoId || "?")} — ${esc(p.repoPath)}</strong>`
+          : `<strong style="color:var(--muted);font-size:.8rem">${p.repoId === "research" ? "RESEARCH — no repo; run in Agentic OS" : "REPO: not specified"}</strong>`;
         return `<article class="project-card">
-          <h3>${escapeHtml(item.project)}</h3>
-          <p>${escapeHtml(item.nextAction)}</p>
-          <p class="meta-line">${escapeHtml(item.role)} · ${escapeHtml(item.repoState)} · ${escapeHtml(item.branch || "")}</p>
-          <button class="copy-mini" data-copy="${escapeAttr(item.copyPrompt)}">Copy prompt</button>
+          ${repoLabel}
+          <h3>${esc(p.title)}</h3>
+          <p class="meta-line">${esc(p.status || "")}${p.decision ? " · from " + esc(p.decision) : ""}</p>
+          ${p.goal ? `<p>${esc(p.goal)}</p>` : ""}
+          <button class="copy-mini copy-btn-exec" data-copy="${escAttr(p.copyPrompt || "")}">Copy to Claude Code</button>
         </article>`;
       }
-      function copy(button) {
-        navigator.clipboard.writeText(button.dataset.copy || "");
-        button.textContent = "Copied";
-        setTimeout(() => button.textContent = "Copy prompt", 1200);
+      function list(items) {
+        return `<div><ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></div>`;
       }
-      function escapeHtml(value) {
-        return String(value || "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-      }
-      function escapeAttr(value) { return escapeHtml(value).replace(/`/g, "&#96;"); }
+      function esc(v) { return String(v||"").replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+      function escAttr(v) { return esc(v).replace(/`/g,"&#96;"); }
     </script>
   </body>
 </html>

@@ -14,13 +14,13 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store submission readiness | Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (9) | Fresh | High | tasks/progress.md | 2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (6) | Fresh | High | tasks/progress.md | 2026-06-04 9d0d11e fix(dashboard): render work packets + brainstorm inline; restore simple /index.html URL |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-02, last commit 2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets
+- Agentic OS: validated 2026-06-02, last commit 2026-06-04 9d0d11e fix(dashboard): render work packets + brainstorm inline; restore simple /index.html URL
 
 ## Drift Warnings
 

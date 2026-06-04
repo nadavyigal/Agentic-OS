@@ -741,13 +741,42 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                 title, _ = _doc_summary(packet)
                 status_match = re.search(r"Status:\s*([A-Za-z ]+)", text)
                 project_match = re.search(r"##\s*Project\s*\n+\s*(.+)", text)
+                path_match = re.search(r"Path:\s*`?([^`\n]+)`?", text)
+                project_raw = clean_value(project_match.group(1)) if project_match else None
+                repo_path = clean_value(path_match.group(1)) if path_match else None
+                # Map the project line to a short repo id so the dashboard can label it clearly.
+                repo_id = "research"
+                if repo_path:
+                    lower = repo_path.lower()
+                    if "runsmart" in lower and ("ios" in lower or "app" in lower):
+                        repo_id = "runsmart-ios"
+                    elif "runsmart" in lower:
+                        repo_id = "runsmart-web"
+                    elif "resumebuilder" in lower or "resumely" in lower:
+                        repo_id = "resumebuilder-ios"
+                    elif "agentic" in lower:
+                        repo_id = "agentic-os"
+                goal = section_value(text, "## Goal")
+                # Build a copy-ready prompt: repo instruction + full packet body.
+                # This IS the prompt the founder pastes into Claude Code for that repo.
+                if repo_path:
+                    prompt_header = (
+                        f"Open the repo at: {repo_path}\n"
+                        f"Start a new Claude Code session in that directory.\n\n"
+                        f"--- WORK PACKET ---\n"
+                    )
+                else:
+                    prompt_header = "--- WORK PACKET (no specific repo — run in Agentic OS) ---\n\n"
                 registry["workPackets"].append(
                     {
                         "title": title,
                         "status": clean_value(status_match.group(1)) if status_match else "Unknown",
-                        "project": clean_value(project_match.group(1)) if project_match else None,
-                        "goal": section_value(text, "## Goal"),
+                        "project": project_raw,
+                        "repoId": repo_id,
+                        "repoPath": repo_path,
+                        "goal": goal,
                         "path": str(packet.relative_to(root)),
+                        "copyPrompt": prompt_header + text,
                     }
                 )
     # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.

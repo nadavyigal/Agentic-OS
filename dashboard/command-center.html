@@ -571,7 +571,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-04 13:47",
+      "lastRefresh": "2026-06-04 14:03",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8789/index.html",
       "sourcesRead": [
@@ -1064,9 +1064,9 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 9,
+        "dirtyCount": 6,
         "branch": "main",
-        "lastCommit": "2026-06-04 af8e7f9 feat(executive): sync decisions to reality + WP-2 monetization + visible work packets",
+        "lastCommit": "2026-06-04 9d0d11e fix(dashboard): render work packets + brainstorm inline; restore simple /index.html URL",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-04",
@@ -1543,16 +1543,22 @@
           "title": "Work Packet WP-1 (Active)",
           "status": "Active",
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
+          "repoId": "resumebuilder-ios",
+          "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
           "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
+          "copyPrompt": "Open the repo at: /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\nStart a new Claude Code session in that directory.\n\n--- WORK PACKET ---\n# Work Packet WP-1 (Active)\n\n- Status: Active\n- Created: 2026-06-02\n- Source: BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)\n- Routed by: COO OS (first COO Operating Review run)\n- Escalation: none (CEO / CFO / Analysis / Risk all No)\n- Related decision: EXD-006 (Resumely ASC upload path)\n\n---\n\n# Work Packet\n\n## Owner Role\nRelease Manager / QA (local iOS)\n\n## Project\nResumely iOS (ResumeBuilder IOS APP)\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n\n## Goal\nConfirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload.\n\n## Context\nResumely cleared analytics and UX/export gates on 2026-06-01, but the authenticated real-device smoke has not been run and PostHog live-event coverage is unverified in a production-style build. This is the current portfolio bottleneck: it is the one step that moves a second app toward review and unlocks the first readable funnel. RunSmart iOS is frozen in Apple review, so no founder action moves it this week.\n\n## Read First\n- AGENTS.md\n- CLAUDE.md\n- tasks/progress.md (canonical status source for this repo)\n- tasks/todo.md\n- tasks/session-log.md\n- tasks/lessons.md\n- Latest submit-package / smoke notes referenced in tasks/session-log.md\n\n## Task\nOn a real, signed, authenticated device build:\n1. Smoke the core path: optimize -> design -> expert -> preview/export.\n2. Confirm PostHog Live Events receives app_launched, optimize_completed, and export_success from this build.\n3. Confirm export output (PDF / share) renders correctly.\n4. Confirm the ASC upload path (EXD-006): Fastlane API key present? If absent, the upload uses the Claude Chrome extension to fill the App Store Connect portal \u2014 founder will share a screenshot folder link when we reach that step.\nStop at \"ready to upload\" with evidence. Do NOT upload or submit in this packet.\n\n## Constraints\n- Do not touch unrelated files.\n- Do not deploy, submit, bill, email, or change production services without explicit approval.\n- Do not invent validation results.\n- Do not add events beyond the wired set, and no new dependencies.\n- Keep the task to one focused work session.\n\n## Validation\n- Device smoke screenshots for each step (optimize, design, expert, preview/export).\n- PostHog screenshot showing the 3 events received from this build.\n- Export output visual check.\n- A clear statement of the ASC upload path (Fastlane key present? yes/no).\n\n## Completion Gate\nBefore final response, update or report:\n- tasks/todo.md\n- tasks/progress.md, if present\n- tasks/session-log.md\n- tasks/lessons.md only if a reusable lesson was learned\n\n## Final Output\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- Remaining risks\n- Next recommended action\n",
           "decision": "EXD-006"
         },
         {
           "title": "Work Packet WP-2 (Active)",
           "status": "Active",
           "project": null,
+          "repoId": "research",
+          "repoPath": null,
           "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
           "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
+          "copyPrompt": "--- WORK PACKET (no specific repo \u2014 run in Agentic OS) ---\n\n# Work Packet WP-2 (Active)\n\n- Status: Active\n- Created: 2026-06-04\n- Source: EXD-005 (model shape) + EXD-009 (timing)\n- Routed by: COO OS\n- Escalation: CFO (pricing), Analysis (research) \u2014 both for input, not blocking\n- Related decision: EXD-005, EXD-009\n\n---\n\n# Work Packet\n\n## Owner Role\nCFO OS + Analysis OS (research & design now). Implementation is later, after activation data.\n\n## Goal\nDefine the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch.\n\n## Decided (EXD-005, EXD-009)\n- Model shape: **freemium with a free activation moment**, both apps.\n- Timing: monetize **after** first-cohort activation is readable (do not paywall at launch).\n- Price: **set later**, from activation data. Not now.\n\n## Initial recommendation (advice \u2014 refine with research + data)\n**RunSmart (running coach):**\n- Free activation moment: onboarding \u2192 first AI plan generated \u2192 first run logged \u2192 week-1 adherence. All free. This is the \"this coach knows me\" moment; gating it kills retention.\n- Paywall line (candidate): adaptive/Flex Week, advanced Garmin/wearable depth, voice coach, long-horizon race plans.\n- Upgrade trigger: after the user feels the plan adapt to them (week 2-3), not before.\n\n**Resumely (resume builder):**\n- Free activation moment: one full optimize \u2192 preview \u2192 first export, so the user sees a better resume once.\n- Paywall line (candidate): additional optimizations/exports, Expert modes (cover letter, ATS deep-dive), design templates beyond a starter set.\n- Upgrade trigger: at the second resume / second job application.\n\n**Shape:** subscription as primary (recurring value: ongoing coaching / ongoing job search), with the free tier permanently usable so activation is never blocked. Revisit one-time-unlock only if subscription activation is weak.\n\n## Research needed (Analysis OS) \u2014 to confirm before locking price\n- Competitor pricing & free-tier lines: Runna, Nike Run Club, Strava (RunSmart); Teal, Rezi, Kickresume, Jobscan (Resumely).\n- Willingness-to-pay signals for each audience (rookie runner vs. job seeker urgency).\n- Which gated feature each segment values most (drives the paywall line).\n\n## Build-readiness checklist (so implementation is instant when data arrives)\n- [ ] Free vs paid feature matrix per app (1 page each).\n- [ ] Paywall placement spec (which screen, which trigger event).\n- [ ] PostHog events needed to read activation \u2192 paywall conversion.\n- [ ] StoreKit / IAP product IDs drafted (no prices committed).\n- [ ] Price experiment plan (A/B once there is traffic).\n\n## Constraints\n- Do not implement a paywall or set a price until activation data exists (EXD-009).\n- No new dependencies; no production/billing changes without explicit founder approval.\n- Research only uses public sources; never invent numbers (mark unknowns \"need: <source>\").\n\n## Validation / Done\n- Feature matrix + paywall spec + events list exist and are reviewed.\n- EXD-005 / EXD-009 reference this packet; CFO-OS.md updated with the model shape (price still Needs Data).\n\n## Next recommended action\nAnalysis OS runs the competitor + willingness-to-pay research brief; CFO OS drafts the free/paid matrix and paywall spec from the recommendation above. Keep price blank until activation data.\n",
           "decision": "EXD-005"
         }
       ],
@@ -1635,7 +1641,7 @@
         "date": "2026-06-02",
         "area": "Release",
         "decision": "Resumely iOS App Store Connect upload path",
-        "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
+        "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
         "owner": "Nadav",
         "review": "2026-06-09",
         "status": "Open",
@@ -1725,7 +1731,7 @@
           "date": "2026-06-02",
           "area": "Release",
           "decision": "Resumely iOS App Store Connect upload path",
-          "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
+          "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
           "owner": "Nadav",
           "review": "2026-06-09",
           "status": "Open",
@@ -1737,16 +1743,22 @@
           "title": "Work Packet WP-1 (Active)",
           "status": "Active",
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
+          "repoId": "resumebuilder-ios",
+          "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
           "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
+          "copyPrompt": "Open the repo at: /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\nStart a new Claude Code session in that directory.\n\n--- WORK PACKET ---\n# Work Packet WP-1 (Active)\n\n- Status: Active\n- Created: 2026-06-02\n- Source: BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)\n- Routed by: COO OS (first COO Operating Review run)\n- Escalation: none (CEO / CFO / Analysis / Risk all No)\n- Related decision: EXD-006 (Resumely ASC upload path)\n\n---\n\n# Work Packet\n\n## Owner Role\nRelease Manager / QA (local iOS)\n\n## Project\nResumely iOS (ResumeBuilder IOS APP)\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n\n## Goal\nConfirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload.\n\n## Context\nResumely cleared analytics and UX/export gates on 2026-06-01, but the authenticated real-device smoke has not been run and PostHog live-event coverage is unverified in a production-style build. This is the current portfolio bottleneck: it is the one step that moves a second app toward review and unlocks the first readable funnel. RunSmart iOS is frozen in Apple review, so no founder action moves it this week.\n\n## Read First\n- AGENTS.md\n- CLAUDE.md\n- tasks/progress.md (canonical status source for this repo)\n- tasks/todo.md\n- tasks/session-log.md\n- tasks/lessons.md\n- Latest submit-package / smoke notes referenced in tasks/session-log.md\n\n## Task\nOn a real, signed, authenticated device build:\n1. Smoke the core path: optimize -> design -> expert -> preview/export.\n2. Confirm PostHog Live Events receives app_launched, optimize_completed, and export_success from this build.\n3. Confirm export output (PDF / share) renders correctly.\n4. Confirm the ASC upload path (EXD-006): Fastlane API key present? If absent, the upload uses the Claude Chrome extension to fill the App Store Connect portal \u2014 founder will share a screenshot folder link when we reach that step.\nStop at \"ready to upload\" with evidence. Do NOT upload or submit in this packet.\n\n## Constraints\n- Do not touch unrelated files.\n- Do not deploy, submit, bill, email, or change production services without explicit approval.\n- Do not invent validation results.\n- Do not add events beyond the wired set, and no new dependencies.\n- Keep the task to one focused work session.\n\n## Validation\n- Device smoke screenshots for each step (optimize, design, expert, preview/export).\n- PostHog screenshot showing the 3 events received from this build.\n- Export output visual check.\n- A clear statement of the ASC upload path (Fastlane key present? yes/no).\n\n## Completion Gate\nBefore final response, update or report:\n- tasks/todo.md\n- tasks/progress.md, if present\n- tasks/session-log.md\n- tasks/lessons.md only if a reusable lesson was learned\n\n## Final Output\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- Remaining risks\n- Next recommended action\n",
           "decision": "EXD-006"
         },
         {
           "title": "Work Packet WP-2 (Active)",
           "status": "Active",
           "project": null,
+          "repoId": "research",
+          "repoPath": null,
           "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
           "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
+          "copyPrompt": "--- WORK PACKET (no specific repo \u2014 run in Agentic OS) ---\n\n# Work Packet WP-2 (Active)\n\n- Status: Active\n- Created: 2026-06-04\n- Source: EXD-005 (model shape) + EXD-009 (timing)\n- Routed by: COO OS\n- Escalation: CFO (pricing), Analysis (research) \u2014 both for input, not blocking\n- Related decision: EXD-005, EXD-009\n\n---\n\n# Work Packet\n\n## Owner Role\nCFO OS + Analysis OS (research & design now). Implementation is later, after activation data.\n\n## Goal\nDefine the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch.\n\n## Decided (EXD-005, EXD-009)\n- Model shape: **freemium with a free activation moment**, both apps.\n- Timing: monetize **after** first-cohort activation is readable (do not paywall at launch).\n- Price: **set later**, from activation data. Not now.\n\n## Initial recommendation (advice \u2014 refine with research + data)\n**RunSmart (running coach):**\n- Free activation moment: onboarding \u2192 first AI plan generated \u2192 first run logged \u2192 week-1 adherence. All free. This is the \"this coach knows me\" moment; gating it kills retention.\n- Paywall line (candidate): adaptive/Flex Week, advanced Garmin/wearable depth, voice coach, long-horizon race plans.\n- Upgrade trigger: after the user feels the plan adapt to them (week 2-3), not before.\n\n**Resumely (resume builder):**\n- Free activation moment: one full optimize \u2192 preview \u2192 first export, so the user sees a better resume once.\n- Paywall line (candidate): additional optimizations/exports, Expert modes (cover letter, ATS deep-dive), design templates beyond a starter set.\n- Upgrade trigger: at the second resume / second job application.\n\n**Shape:** subscription as primary (recurring value: ongoing coaching / ongoing job search), with the free tier permanently usable so activation is never blocked. Revisit one-time-unlock only if subscription activation is weak.\n\n## Research needed (Analysis OS) \u2014 to confirm before locking price\n- Competitor pricing & free-tier lines: Runna, Nike Run Club, Strava (RunSmart); Teal, Rezi, Kickresume, Jobscan (Resumely).\n- Willingness-to-pay signals for each audience (rookie runner vs. job seeker urgency).\n- Which gated feature each segment values most (drives the paywall line).\n\n## Build-readiness checklist (so implementation is instant when data arrives)\n- [ ] Free vs paid feature matrix per app (1 page each).\n- [ ] Paywall placement spec (which screen, which trigger event).\n- [ ] PostHog events needed to read activation \u2192 paywall conversion.\n- [ ] StoreKit / IAP product IDs drafted (no prices committed).\n- [ ] Price experiment plan (A/B once there is traffic).\n\n## Constraints\n- Do not implement a paywall or set a price until activation data exists (EXD-009).\n- No new dependencies; no production/billing changes without explicit founder approval.\n- Research only uses public sources; never invent numbers (mark unknowns \"need: <source>\").\n\n## Validation / Done\n- Feature matrix + paywall spec + events list exist and are reviewed.\n- EXD-005 / EXD-009 reference this packet; CFO-OS.md updated with the model shape (price still Needs Data).\n\n## Next recommended action\nAnalysis OS runs the competitor + willingness-to-pay research brief; CFO OS drafts the free/paid matrix and paywall spec from the recommendation above. Keep price blank until activation data.\n",
           "decision": "EXD-005"
         }
       ],
@@ -1755,11 +1767,11 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 1,
+      "uncommitted": 3,
       "extraWorktrees": 1,
       "synced": false,
       "notes": [
-        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
@@ -1913,10 +1925,21 @@
             const grid = make("div", "grid");
             packets.forEach((p) => {
               const card = make("article", "task-card tone-qa");
+              // Repo first — that's the key routing information
+              const repoLabel = p.repoPath
+                ? `Repo: ${p.repoId || "unknown"} — ${p.repoPath}`
+                : (p.repoId === "research" ? "Research task (no repo — run in Agentic OS)" : "Repo: not specified");
+              card.append(make("strong", "fine", repoLabel));
               card.append(make("h3", "", p.title || "Work packet"));
-              card.append(make("div", "fine", `${p.status || "Unknown"}${p.project ? " · " + p.project : ""}${p.decision ? " · from " + p.decision : ""}`));
+              card.append(make("div", "fine", `${p.status || "Unknown"}${p.decision ? " · from " + p.decision : ""}`));
               if (p.goal) card.append(make("p", "", p.goal));
-              card.append(make("div", "fine", p.path || ""));
+              if (p.copyPrompt) {
+                const btn = make("button", "copy-btn", "Copy to Claude Code");
+                btn.type = "button";
+                btn.dataset.copyText = p.copyPrompt;
+                btn.dataset.copyLabel = p.title || "Work packet";
+                card.append(btn);
+              }
               grid.append(card);
             });
             pkRoot.append(grid);
