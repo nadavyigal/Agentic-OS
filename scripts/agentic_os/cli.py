@@ -761,12 +761,23 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                 # This IS the prompt the founder pastes into Claude Code for that repo.
                 if repo_path:
                     prompt_header = (
-                        f"Open the repo at: {repo_path}\n"
-                        f"Start a new Claude Code session in that directory.\n\n"
+                        f"Repo: {repo_path}\n"
+                        f"\n"
+                        f"How to start:\n"
+                        f"  Claude Code → cd \"{repo_path}\" && claude\n"
+                        f"  Cursor      → open \"{repo_path}\" in Cursor, paste this in the AI panel\n"
+                        f"  Codex       → create a task, paste this as the full task context\n"
+                        f"\n"
                         f"--- WORK PACKET ---\n"
                     )
                 else:
-                    prompt_header = "--- WORK PACKET (no specific repo — run in Agentic OS) ---\n\n"
+                    prompt_header = (
+                        "No specific repo — run this in the Agentic OS directory.\n"
+                        "  Claude Code → cd \"Agentic OS\" && claude\n"
+                        "  Cursor      → open Agentic OS folder, paste in AI panel\n"
+                        "  Codex       → paste as task context\n\n"
+                        "--- WORK PACKET ---\n"
+                    )
                 registry["workPackets"].append(
                     {
                         "title": title,

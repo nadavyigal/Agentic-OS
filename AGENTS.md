@@ -39,6 +39,11 @@ The Agentic OS is the founder's operating system, not a throwaway app. Informati
 1. **Work on `main`. Do not create git worktrees or feature branches for OS work.** Per-session worktrees are what caused real losses (a whole COO OS and GTM plans stranded in unmerged worktrees). If you find yourself in a worktree, consolidate to `main`.
 2. **Commit when you finish a unit of work, and merge to `main` before the session ends.** Nothing stays uncommitted. "Done" means committed on `main`.
 3. **The founder works across Codex, Claude Code, and Cursor.** The only shared truth is the git repo on `main`. Before starting, check `git status` and `git worktree list`. After, commit. `./agentic-os morning` prints a sync line and the dashboard shows a "Synced / Needs sync" tag — if it says Needs sync, fix it before stopping.
+   **Work packet routing by tool:**
+   - Claude Code: `cd "<repo_path>" && claude` — the packet context is in AGENTS.md / CLAUDE.md automatically.
+   - Cursor: open the repo folder in Cursor, paste the work packet in the AI panel (Cmd+L or Cmd+I).
+   - Codex: create a new task, paste the full work packet as the task context; Codex reads it from the top.
+   The work packet content (goal, task, constraints, validation) is identical for all three tools — only how you open the session differs.
 4. **Anything you create must surface on the dashboard.** The OS registry auto-discovers `executive-os/*-OS.md`, `executive-os/agents/`, `executive-os/work-packets/`, `SKILLS/`, and saved plans. Put new artifacts there, run `./agentic-os morning`, and confirm they appear (the "How it connects" page shows a red 0 if a source is empty).
 
 ## Global Work Rules
