@@ -24,6 +24,10 @@ first. No invented data. Every unknown number is written as `unknown — need:
 - **CEO OS** (`CEO-OS.md`) — strategy, OKRs, weekly priorities, decisions, operating
   cadence, portfolio tradeoffs.
 
+Plus a thin operations layer (not a sub-OS): **COO OS** (`COO-OS.md`): execution sequencing, bottlenecks, work packets, QA order, and escalation routing; run via `PROMPTS/coo-operating-review.md`.
+
+The current portfolio plan is `BUSINESS-GTM-PLAN-V0.md` (Business + GTM Plan v0 for RunSmart iOS and Resumely iOS); its open CEO decisions are logged in `EXECUTIVE-DECISIONS.md` and its work packets are tracked in `work-packets/`.
+
 ## Read Order
 
 1. `EXECUTIVE-RHYTHM.md` — the operating cadence; start here.

@@ -7,6 +7,7 @@ and which existing artifact it reuses.
 | Cadence | Ritual | Run / reuse | Output |
 |---|---|---|---|
 | Daily | Check-in | Glance at `EXECUTIVE-DASHBOARD.md` Top 3 + Decision Board | Adjust today's focus |
+| On-demand | COO Operating Review | `PROMPTS/coo-operating-review.md` → `workflows/coo-operating-review.md` | Next execution sequence + one work packet |
 | Weekly | CEO Review | `PROMPTS/executive-weekly-review.md` → `workflows/weekly-ceo-review.md` | Top 3, decisions, stop-doing, delegation, dashboard update |
 | Weekly | Product review | `PROMPTS/morning-brief.md` (existing) | Cross-project execution status feeding the CEO Review |
 | Weekly | Distribution review | `../distribution-os/weekly-growth-review.md` (existing) | Channel status feeding the CEO Review |

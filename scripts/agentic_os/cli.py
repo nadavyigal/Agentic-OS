@@ -89,6 +89,44 @@ TASK_FILES = [
     "tasks/lessons.md",
 ]
 
+# GTM / distribution plans the parser reads so launch context is never lost from the
+# dashboard. First match wins. Without these, a real GTM plan stays invisible no matter
+# how fresh the run (the failure that hid runsmart-ios/.agent-os/distribution/gtm-plan.md).
+GTM_RELPATHS = [
+    ".agent-os/distribution/gtm-plan.md",
+    "docs/distribution/gtm-plan.md",
+    "distribution/gtm-plan.md",
+    ".agent-os/distribution/gtm.md",
+]
+
+# Headings whose first content line is the product's one-line positioning.
+POSITIONING_HEADINGS = [
+    "## 1. One-Line Positioning",
+    "## One-Line Positioning",
+    "## Positioning",
+    "## 1. Positioning",
+]
+
+# The two shippable apps, in best-next-action priority order. Used to rank the derived
+# headline so the founder sees the most actionable app move first.
+APP_IDS = ["resumebuilder-ios", "runsmart-ios"]
+# All real product repos (apps + their web/back-end support repos).
+PRODUCT_IDS = {"runsmart-ios", "resumebuilder-ios", "runsmart-web", "resumebuilder-ai"}
+
+# Directories where the founder's saved plans / specs / GTM live. Every saved plan must
+# surface on the dashboard (the founder's rule: "any plan I asked to save must surface").
+# Scanned per project; first-level *.md only (no deep recursion, to keep it fast and honest).
+PLAN_DIRS = [
+    ("docs/superpowers/plans", "plan"),
+    ("docs/plans", "plan"),
+    ("docs/superpowers/specs", "spec"),
+    ("docs/specs", "spec"),
+    (".agent-os/distribution", "gtm"),
+    ("docs/distribution", "gtm"),
+]
+# How many recent plans to surface per project on the dashboard (GTM plans are always kept).
+PLANS_PER_PROJECT = 6
+
 # Maps a lowercased `Key: Value` label from tasks/progress.md to a parsed field name.
 PROGRESS_KEY_MAP = {
     "status": "status",
@@ -132,6 +170,8 @@ class ProjectEvidence:
     last_commit: str
     source_files: list[str]
     task_parse: dict[str, Any] = field(default_factory=dict)
+    gtm: dict[str, Any] = field(default_factory=dict)
+    plans: list[dict[str, Any]] = field(default_factory=list)
 
 
 def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
@@ -540,6 +580,312 @@ def parse_task_files(path: Path) -> dict[str, Any]:
     return result
 
 
+def parse_gtm(path: Path) -> dict[str, Any]:
+    """Read a project's GTM / distribution plan so launch context surfaces on the dashboard.
+
+    Returns positioning, declared status, the relative path, and the freshest date found.
+    A missing plan yields exists=False rather than an error, so projects without GTM are fine.
+    """
+    info: dict[str, Any] = {
+        "exists": False,
+        "path": None,
+        "positioning": None,
+        "status": None,
+        "lastUpdated": None,
+    }
+    if not path.exists():
+        return info
+    for rel in GTM_RELPATHS:
+        gtm_file = path / rel
+        if not gtm_file.exists():
+            continue
+        text = gtm_file.read_text(encoding="utf-8", errors="replace")
+        info["exists"] = True
+        info["path"] = rel
+        for heading in POSITIONING_HEADINGS:
+            value = section_value(text, heading)
+            if value:
+                info["positioning"] = value
+                break
+        status_match = re.search(r"^status:\s*(.+)$", text, re.IGNORECASE | re.MULTILINE)
+        if status_match:
+            info["status"] = clean_value(status_match.group(1))
+        dated = latest_date_in(text)
+        info["lastUpdated"] = dated.strftime("%Y-%m-%d") if dated else None
+        break
+    return info
+
+
+def _plan_title(text: str, fallback: str) -> str:
+    """First markdown heading is the plan title; else a humanized filename."""
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("# "):
+            return clean_value(stripped[2:]) or fallback
+        if stripped.startswith("## "):
+            return clean_value(stripped[3:]) or fallback
+    return fallback
+
+
+def collect_plans(path: Path) -> list[dict[str, Any]]:
+    """Every saved plan/spec/GTM in a repo, newest first.
+
+    The founder's rule: any plan they asked to save must surface on the dashboard. This scans
+    the known plan directories so a saved plan can never silently disappear. README index files
+    are skipped as noise; GTM/distribution plans are flagged so they are always kept on display.
+    """
+    plans: list[dict[str, Any]] = []
+    if not path.exists():
+        return plans
+    seen: set[str] = set()
+    for rel_dir, kind in PLAN_DIRS:
+        directory = path / rel_dir
+        if not directory.is_dir():
+            continue
+        for plan_file in sorted(directory.glob("*.md")):
+            name_lower = plan_file.name.lower()
+            if name_lower == "readme.md":
+                continue
+            # Distribution folders hold many reference docs (audience, channels, competitors...);
+            # only the actual plans there ("*plan*", e.g. gtm-plan.md, weekly-plan.md) are saved plans.
+            if kind == "gtm" and "plan" not in name_lower:
+                continue
+            rel = str(plan_file.relative_to(path))
+            if rel in seen:
+                continue
+            seen.add(rel)
+            # Within a distribution folder, only a *gtm* file is the GTM plan; other *plan* files
+            # (e.g. weekly-plan.md) are ordinary plans.
+            effective_kind = kind
+            if kind == "gtm" and "gtm" not in name_lower:
+                effective_kind = "plan"
+            text = plan_file.read_text(encoding="utf-8", errors="replace")
+            dated = latest_date_in(plan_file.name) or latest_date_in(text)
+            status_match = re.search(r"^status:\s*(.+)$", text, re.IGNORECASE | re.MULTILINE)
+            plans.append(
+                {
+                    "title": _plan_title(text, plan_file.stem.replace("-", " ").replace("_", " ")),
+                    "path": rel,
+                    "date": dated.strftime("%Y-%m-%d") if dated else None,
+                    "status": clean_value(status_match.group(1)) if status_match else None,
+                    "kind": effective_kind,
+                }
+            )
+    plans.sort(key=lambda p: (p["date"] or "0000-00-00", p["path"]), reverse=True)
+    return plans
+
+
+# Every `./agentic-os` command and a plain-language description of what it does.
+OS_COMMANDS = [
+    ("./agentic-os morning", "The one command. Refreshes from every repo, surfaces all OS layers and plans, rebuilds the brief, updates the dashboard, verifies, and opens it on localhost."),
+    ("./agentic-os refresh", "Rebuilds the dashboard data from local repos. No server."),
+    ("./agentic-os serve", "Opens the current dashboard on localhost. No refresh."),
+    ("./agentic-os verify", "Checks the dashboard data, links, and tests all line up."),
+    ("./agentic-os test", "Runs the parser unit tests."),
+]
+
+
+def _doc_summary(path: Path) -> tuple[str, str]:
+    """Title (first H1) and a one-line plain-language purpose (first real sentence) of a doc."""
+    text = path.read_text(encoding="utf-8", errors="replace")
+    lines = text.splitlines()
+    title = path.stem.replace("-", " ").replace("_", " ")
+    purpose = ""
+    for index, line in enumerate(lines):
+        if line.strip().startswith("# "):
+            title = clean_value(line.strip()[2:]) or title
+            for follow in lines[index + 1:]:
+                stripped = follow.strip()
+                if not stripped or stripped.startswith(("#", "-", "*", "|", ">", "```", "---")):
+                    continue
+                purpose = stripped
+                break
+            break
+    if not purpose:
+        for line in lines:
+            stripped = line.strip()
+            if stripped and not stripped.startswith(("#", "-", "*", "|", ">", "```", "---")):
+                purpose = stripped
+                break
+    purpose = re.sub(r"\s+", " ", purpose).strip()
+    if len(purpose) > 160:
+        purpose = purpose[:157].rstrip() + "..."
+    return title, purpose
+
+
+def build_os_registry(root: Path) -> dict[str, Any]:
+    """Auto-discover every part of the Agentic OS from the repo itself.
+
+    This is the trust backbone: the dashboard lists what ACTUALLY EXISTS on disk (executive
+    sub-OS, executive agents, active work packets, skill agents, sibling systems, commands),
+    not a hand-maintained list. Anything the founder creates under these folders surfaces on
+    the next run, so a real artifact (COO OS, a work packet, a GTM plan) can never silently vanish.
+    """
+    registry: dict[str, Any] = {
+        "commands": [{"name": name, "purpose": purpose} for name, purpose in OS_COMMANDS],
+        "executiveOS": [],
+        "executiveAgents": [],
+        "workPackets": [],
+        "skillAgents": [],
+        "systems": [],
+    }
+    exec_dir = root / "executive-os"
+    if exec_dir.is_dir():
+        for sub_os in sorted(exec_dir.glob("*-OS.md")):
+            title, purpose = _doc_summary(sub_os)
+            registry["executiveOS"].append({"name": title, "purpose": purpose, "path": str(sub_os.relative_to(root))})
+        agents_dir = exec_dir / "agents"
+        if agents_dir.is_dir():
+            for agent in sorted(agents_dir.glob("*.md")):
+                title, purpose = _doc_summary(agent)
+                registry["executiveAgents"].append({"name": title, "purpose": purpose, "path": str(agent.relative_to(root))})
+        packets_dir = exec_dir / "work-packets"
+        if packets_dir.is_dir():
+            for packet in sorted(packets_dir.glob("*.md")):
+                text = packet.read_text(encoding="utf-8", errors="replace")
+                title, _ = _doc_summary(packet)
+                status_match = re.search(r"Status:\s*([A-Za-z ]+)", text)
+                project_match = re.search(r"##\s*Project\s*\n+\s*(.+)", text)
+                registry["workPackets"].append(
+                    {
+                        "title": title,
+                        "status": clean_value(status_match.group(1)) if status_match else "Unknown",
+                        "project": clean_value(project_match.group(1)) if project_match else None,
+                        "path": str(packet.relative_to(root)),
+                    }
+                )
+    skills_dir = root / "SKILLS"
+    if skills_dir.is_dir():
+        for skill in sorted(skills_dir.glob("*.md")):
+            title, purpose = _doc_summary(skill)
+            registry["skillAgents"].append({"name": title, "purpose": purpose, "path": str(skill.relative_to(root))})
+    for system_name in ("distribution-os", "executive-os"):
+        system_dir = root / system_name
+        readme = system_dir / "README.md"
+        if system_dir.is_dir() and readme.exists():
+            _, purpose = _doc_summary(readme)
+            registry["systems"].append({"name": system_name, "purpose": purpose, "path": f"{system_name}/README.md"})
+    return registry
+
+
+def build_saved_plans(project_health: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Flatten per-project plans into one portfolio board, recent first, GTM always kept.
+
+    Each project keeps the most recent PLANS_PER_PROJECT plans plus all GTM plans, with a total
+    count so nothing looks hidden. This is the surface that guarantees a saved plan is visible.
+    """
+    board: list[dict[str, Any]] = []
+    for project in project_health:
+        plans = project.get("plans") or []
+        if not plans:
+            continue
+        gtm = [p for p in plans if p.get("kind") == "gtm"]
+        recent = plans[:PLANS_PER_PROJECT]
+        # union (recent + all gtm), de-duped by path, preserving recent-first order
+        chosen: list[dict[str, Any]] = []
+        for plan in recent + gtm:
+            if plan not in chosen:
+                chosen.append(plan)
+        board.append(
+            {
+                "project": project["name"],
+                "projectId": project["id"],
+                "total": len(plans),
+                "shown": len(chosen),
+                "plans": chosen,
+            }
+        )
+    return board
+
+
+def build_derived_summary(
+    project_health: list[dict[str, Any]],
+    saved_plans: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Assemble the portfolio headline + priority board purely from parsed repo truth.
+
+    This is the single source for the headline. It used to be hand-written prose that nothing
+    regenerated, so it went stale (showing 'build 6 in review' after build 8 shipped). Everything
+    here is derived from each repo's parsed status, so it can never contradict the repos and is
+    rebuilt on every `./agentic-os morning`. The two shippable apps get their next step inline;
+    support repos show their phase only.
+    """
+    by_id = {p.get("id"): p for p in project_health}
+    products = [p for p in project_health if p.get("id") in PRODUCT_IDS]
+
+    def headline_part(project: dict[str, Any]) -> str:
+        phase = clean_cell(project.get("state") or "Unknown")
+        if project.get("id") in APP_IDS and project.get("nextAction"):
+            return f"{project['name']} — {phase}: {clean_cell(project['nextAction'])}"
+        return f"{project['name']} — {phase}"
+
+    overall = " · ".join(headline_part(p) for p in products) or "No product status parsed from local repos."
+
+    def actionable(project: dict[str, Any]) -> bool:
+        action = (project.get("nextAction") or "").lower()
+        return bool(action) and not action.startswith(("monitor", "refresh local", "none"))
+
+    ranked = [by_id[i] for i in APP_IDS if i in by_id]
+    best_src = next(
+        (p for p in ranked if actionable(p)),
+        ranked[0] if ranked else (products[0] if products else None),
+    )
+    best = (
+        f"{best_src['name']}: {best_src.get('nextAction') or 'Refresh local status.'}"
+        if best_src
+        else "Run ./agentic-os morning to refresh local status."
+    )
+
+    now: list[str] = []
+    nxt: list[str] = []
+    later: list[str] = []
+    blocked: list[str] = []
+    blockers_all: list[str] = []
+
+    for project in products:
+        line = f"{project['name']}: {project.get('nextAction') or 'Refresh local status.'}"
+        if project.get("id") in APP_IDS:
+            now.append(line)
+        else:
+            nxt.append(line)
+        for blocker in project.get("blockers") or []:
+            blockers_all.append(f"{project['name']}: {blocker}")
+            if re.search(
+                r"external|apple|founder|backend|credential|locked|review outcome|not live",
+                blocker,
+                re.IGNORECASE,
+            ):
+                blocked.append(f"{project['name']}: {blocker}")
+        gtm = project.get("gtm") or {}
+        if gtm.get("exists") and gtm.get("positioning"):
+            later.append(
+                f"{project['name']} GTM ready ({gtm.get('status') or 'draft'}): "
+                f"{gtm['positioning']} — see {gtm.get('path')}"
+            )
+
+    # Surface saved-plan presence in the board so the founder sees that plans they asked to
+    # save exist and where (the full list is the Saved Plans board).
+    for entry in saved_plans or []:
+        latest = entry["plans"][0] if entry.get("plans") else None
+        if latest:
+            later.append(
+                f"{entry['project']}: {entry['total']} saved plan(s) — latest \"{latest['title']}\" "
+                f"({latest.get('date') or 'undated'}). See Saved Plans."
+            )
+
+    return {
+        "overallStatus": overall,
+        "bestNextAction": best,
+        "mainBlockers": list(dict.fromkeys(blockers_all)),
+        "priorityBoard": {
+            "now": now or ["Run ./agentic-os morning to refresh local status."],
+            "next": nxt or ["None parsed."],
+            "later": later or ["None parsed."],
+            "blocked": list(dict.fromkeys(blocked)) or ["None parsed."],
+        },
+    }
+
+
 def collect_evidence() -> list[ProjectEvidence]:
     evidence: list[ProjectEvidence] = []
     for source_name, path in parse_project_paths():
@@ -575,6 +921,15 @@ def collect_evidence() -> list[ProjectEvidence]:
             if commit.returncode == 0 and commit.stdout.strip():
                 last_commit = commit.stdout.strip()
 
+        gtm = parse_gtm(path) if exists else {"exists": False, "path": None, "positioning": None, "status": None, "lastUpdated": None}
+        if gtm.get("exists") and gtm.get("path"):
+            sources.append(gtm["path"])
+
+        plans = collect_plans(path) if exists else []
+        for plan in plans:
+            if plan["path"] not in sources:
+                sources.append(plan["path"])
+
         evidence.append(
             ProjectEvidence(
                 project_id=project_id,
@@ -587,6 +942,8 @@ def collect_evidence() -> list[ProjectEvidence]:
                 last_commit=last_commit,
                 source_files=sources,
                 task_parse=parse_task_files(path),
+                gtm=gtm,
+                plans=plans,
             )
         )
     return evidence
@@ -648,6 +1005,9 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "state": state,
                 "nextAction": next_action,
                 "blockerCount": len(blockers),
+                "blockers": blockers,
+                "gtm": item.gtm or {"exists": False},
+                "plans": item.plans or [],
                 "dirty": item.dirty,
                 "dirtyCount": item.dirty_count,
                 "branch": item.branch,
@@ -921,9 +1281,32 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "git diff --check",
         ],
         "safeMode": "No App Store, billing, production, email, or external service action is triggered.",
-        "synthesisNote": "This refresh is deterministic. For richer narrative synthesis, copy a Command Center prompt into Codex or Claude.",
+        "synthesisNote": "One process: `./agentic-os morning` refreshes evidence, surfaces every saved plan, rebuilds the brief from repo truth, updates the HTML, verifies, and serves localhost. No separate synthesis step.",
     }
     status["projectHealth"] = project_health
+
+    # ONE process, ONE source of truth. The headline, priority board, and blockers are ALWAYS
+    # rebuilt from parsed repo truth (each repo's tasks/progress.md + every saved plan) on every
+    # run. There is no hand-written overlay to go stale and no separate "write the brief" step.
+    # Trust = the dashboard is literally the repos, re-derived each time `./agentic-os morning` runs.
+    saved_plans = build_saved_plans(project_health)
+    status["savedPlans"] = saved_plans
+    status["osRegistry"] = build_os_registry(ROOT)
+    derived = build_derived_summary(project_health, saved_plans)
+    freshest_dates = [parse_date(p.get("freshestDate")) for p in project_health]
+    freshest = max([d for d in freshest_dates if d], default=None)
+    summary = status.setdefault("summary", {})
+    summary["overallStatus"] = derived["overallStatus"]
+    summary["bestNextAction"] = derived["bestNextAction"]
+    summary["mainBlockers"] = derived["mainBlockers"]
+    summary["evidenceFreshDate"] = freshest.strftime("%Y-%m-%d") if freshest else None
+    summary["generatedFrom"] = "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
+    # Retire the old two-mode fields so nothing downstream can resurrect the dual process.
+    for stale_key in ("synthesisMode", "derived", "synthesizedOn"):
+        summary.pop(stale_key, None)
+    # The priority board is always rebuilt from parsed truth (a board of facts, not prose).
+    status["priorityBoard"] = derived["priorityBoard"]
+
     status["agentQueue"] = DEFAULT_AGENT_QUEUE
     status["projectPrompts"] = build_project_prompts(status, project_health)
     status["executiveOverview"] = build_executive_overview(status, project_health)
@@ -956,6 +1339,23 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         project["sourceConfidence"] = health["sourceConfidence"]
         project["freshness"] = health["freshness"]
         project["lastUpdated"] = generated
+        project["gtm"] = health.get("gtm") or {"exists": False}
+
+        # Auto-drive the displayed per-project narrative from parsed repo truth when the
+        # parse is High confidence (tasks/progress.md with validation evidence). This is the
+        # core trust fix: a project card can no longer show prose the repo contradicts.
+        if health["sourceConfidence"] == "High" and parse:
+            for display_key, parsed_key in [
+                ("currentPhase", "currentPhase"),
+                ("activeStory", "activeStory"),
+                ("nextRecommendedStory", "nextRecommendedStory"),
+                ("lastCompletedStory", "lastCompletedStory"),
+                ("lastValidation", "lastValidation"),
+            ]:
+                value = parse.get(parsed_key)
+                if value:
+                    project[display_key] = value
+
         project["localEvidence"] = {
             "branch": health["branch"],
             "dirty": health["dirty"],
@@ -1044,6 +1444,8 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "executiveOverview": status.get("executiveOverview", {}),
             "dataFlow": status.get("dataFlow", []),
             "driftWarnings": status.get("driftWarnings", []),
+            "savedPlans": status.get("savedPlans", []),
+            "osRegistry": status.get("osRegistry", {}),
             "openQuestionsBoard": status.get("openQuestionsBoard", []),
             "repoDecisions": status.get("repoDecisions", []),
         }
@@ -1465,6 +1867,17 @@ def refresh(args: argparse.Namespace) -> int:
     status = update_status_json(port=args.port, command=f"./agentic-os {args.command}")
     print("refreshed Agentic OS")
     print(f"- last refresh: {status['runCenter']['lastRefresh']}")
+    print("- brief: rebuilt from parsed repo truth (one process, always current).")
+    reg = status.get("osRegistry", {})
+    exec_os = [o["name"] for o in reg.get("executiveOS", [])]
+    print(f"- executive OS surfaced: {', '.join(exec_os) if exec_os else 'none found'}")
+    print(f"- executive agents: {len(reg.get('executiveAgents', []))} | active work packets: {len(reg.get('workPackets', []))} | skill agents: {len(reg.get('skillAgents', []))}")
+    total_plans = sum(entry.get("total", 0) for entry in status.get("savedPlans", []))
+    plan_projects = [f"{e['project']} ({e['total']})" for e in status.get("savedPlans", [])]
+    print(f"- saved plans surfaced: {total_plans} across {len(status.get('savedPlans', []))} projects"
+          + (f" — {', '.join(plan_projects)}" if plan_projects else ""))
+    gtm_projects = [p["name"] for p in status.get("projectHealth", []) if (p.get("gtm") or {}).get("exists")]
+    print(f"- GTM plans: {', '.join(gtm_projects) if gtm_projects else 'none found'}")
     print("- sources read:")
     for source in status["runCenter"]["sourcesRead"]:
         print(f"  - {source}")

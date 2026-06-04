@@ -169,5 +169,125 @@ class TestDriftAndConfidence(unittest.TestCase):
         self.assertIn("re-validate", cli.confidence_directive("High", True).lower())
 
 
+class TestGtm(unittest.TestCase):
+    def test_parse_gtm_present(self):
+        with tempfile.TemporaryDirectory() as d:
+            dist = Path(d) / ".agent-os" / "distribution"
+            dist.mkdir(parents=True)
+            (dist / "gtm-plan.md").write_text(
+                "---\nstatus: draft\n---\n"
+                "## 1. One-Line Positioning\n\n"
+                "The AI running coach for beginners.\n\n"
+                "last_updated: 2026-05-28\n",
+                encoding="utf-8",
+            )
+            gtm = cli.parse_gtm(Path(d))
+            self.assertTrue(gtm["exists"])
+            self.assertEqual(gtm["status"], "draft")
+            self.assertIn("running coach", gtm["positioning"])
+            self.assertEqual(gtm["path"], ".agent-os/distribution/gtm-plan.md")
+            self.assertEqual(gtm["lastUpdated"], "2026-05-28")
+
+    def test_parse_gtm_absent(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertFalse(cli.parse_gtm(Path(d))["exists"])
+
+    def test_parse_gtm_missing_path(self):
+        self.assertFalse(cli.parse_gtm(Path("/nonexistent/xyz123"))["exists"])
+
+
+class TestPlans(unittest.TestCase):
+    def test_collect_plans_finds_and_sorts(self):
+        with tempfile.TemporaryDirectory() as d:
+            plans_dir = Path(d) / "docs" / "superpowers" / "plans"
+            plans_dir.mkdir(parents=True)
+            (plans_dir / "2026-06-03-build-8.md").write_text("# Build 8 resubmission\nbody", encoding="utf-8")
+            (plans_dir / "2026-05-01-old-plan.md").write_text("# Old plan\nbody", encoding="utf-8")
+            (plans_dir / "README.md").write_text("# Index\n", encoding="utf-8")  # skipped as noise
+            dist = Path(d) / ".agent-os" / "distribution"
+            dist.mkdir(parents=True)
+            (dist / "gtm-plan.md").write_text("---\nstatus: draft\n---\n# GTM Plan\nlast_updated: 2026-05-28\n", encoding="utf-8")
+            plans = cli.collect_plans(Path(d))
+            titles = [p["title"] for p in plans]
+            self.assertIn("Build 8 resubmission", titles)
+            self.assertIn("GTM Plan", titles)
+            self.assertNotIn("Index", titles)  # README skipped
+            # newest first
+            self.assertEqual(plans[0]["date"], "2026-06-03")
+            gtm = next(p for p in plans if p["kind"] == "gtm")
+            self.assertEqual(gtm["status"], "draft")
+
+    def test_collect_plans_missing_path(self):
+        self.assertEqual(cli.collect_plans(Path("/nonexistent/xyz123")), [])
+
+    def test_build_saved_plans_keeps_gtm_and_counts(self):
+        plans = [{"title": f"P{i}", "path": f"docs/plans/p{i}.md", "date": f"2026-06-0{i%9}", "kind": "plan", "status": None} for i in range(1, 9)]
+        plans.append({"title": "GTM", "path": ".agent-os/distribution/gtm-plan.md", "date": "2026-01-01", "kind": "gtm", "status": "draft"})
+        health = [{"id": "runsmart-ios", "name": "RunSmart iOS", "plans": plans}]
+        board = cli.build_saved_plans(health)
+        self.assertEqual(board[0]["total"], 9)
+        # GTM (old, kind=gtm) is always kept even though it is past the recent cap
+        self.assertTrue(any(p["kind"] == "gtm" for p in board[0]["plans"]))
+
+
+class TestDerivedSummary(unittest.TestCase):
+    def _health(self):
+        return [
+            {
+                "id": "runsmart-ios",
+                "name": "RunSmart iOS",
+                "state": "App Store Review",
+                "nextAction": "Monitor build 8 review",
+                "blockers": ["Apple review outcome is external"],
+                "dirty": False,
+                "freshestDate": "2026-06-03",
+                "gtm": {"exists": True, "positioning": "AI running coach", "status": "draft", "path": ".agent-os/distribution/gtm-plan.md"},
+            },
+            {
+                "id": "resumebuilder-ios",
+                "name": "Resumely iOS",
+                "state": "Pre-release",
+                "nextAction": "Founder runs device smoke on iPhone 13",
+                "blockers": ["Device locked during session"],
+                "dirty": True,
+                "freshestDate": "2026-06-03",
+                "gtm": {"exists": False},
+            },
+            {
+                "id": "agentic-os",
+                "name": "Agentic OS",
+                "state": "Reference",
+                "nextAction": "Run checks",
+                "blockers": [],
+                "dirty": False,
+                "freshestDate": "2026-06-04",
+                "gtm": {"exists": False},
+            },
+        ]
+
+    def test_overall_includes_products_excludes_os(self):
+        d = cli.build_derived_summary(self._health())
+        self.assertIn("RunSmart iOS", d["overallStatus"])
+        self.assertIn("Resumely iOS", d["overallStatus"])
+        self.assertNotIn("Agentic OS", d["overallStatus"])
+
+    def test_best_action_prefers_actionable_app(self):
+        # Resumely has a real next action; RunSmart only "monitors" -> Resumely wins.
+        d = cli.build_derived_summary(self._health())
+        self.assertIn("Resumely iOS", d["bestNextAction"])
+        self.assertIn("device smoke", d["bestNextAction"])
+
+    def test_board_now_has_apps_and_gtm_in_later(self):
+        d = cli.build_derived_summary(self._health())
+        self.assertTrue(any("Founder runs device smoke" in x for x in d["priorityBoard"]["now"]))
+        self.assertTrue(any("GTM ready" in x for x in d["priorityBoard"]["later"]))
+        self.assertTrue(any("external" in x.lower() for x in d["priorityBoard"]["blocked"]))
+
+    def test_empty_health_is_safe(self):
+        d = cli.build_derived_summary([])
+        self.assertIn("No product status", d["overallStatus"])
+        self.assertEqual(d["priorityBoard"]["now"], ["Run ./agentic-os morning to refresh local status."])
+
+
 if __name__ == "__main__":
     unittest.main()

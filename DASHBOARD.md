@@ -1,38 +1,39 @@
 # Portfolio Dashboard
 
-Last updated: 2026-06-02 IDT
+Last updated: 2026-06-04 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS v1.0 build 6 is in App Store review context and should stay frozen. Resumely iOS cleared analytics and UX/export gates on June 1, so the next constraint is an authenticated real-device smoke plus App Store Connect upload. RunSmart Web and ResumeBuilder Web are support repos and need dirty-tree triage before more implementation.
+RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — Pre-release (TestFlight prep): Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
-Best next action: Resumely iOS: run the authenticated device smoke from tasks/session-log.md, verify PostHog/export coverage, then upload screenshots/listing and submit. RunSmart iOS: monitor Apple review and do not mutate v1.0 release artifacts.
+Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events
 
 ## Run Center
 
-- Last refresh: 2026-06-02 16:45
-- Localhost: `http://127.0.0.1:8787/index.html`
+- Last refresh: 2026-06-04 10:30
+- Localhost: `http://127.0.0.1:8789/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
 ## Project Health
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store submission sprint (Build 6) | Run a short simulator UI smoke through each root tab after the existing release branch is ready for interactive QA | Yes | Fresh | High |
-| Resumely iOS | Pre-release (TestFlight prep) | Authenticated device smoke for submit package and Track/Me application asset visibility | Yes | Fresh | High |
-| RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Fresh | Medium |
+| RunSmart iOS | App Store Review | After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post | Yes | Fresh | High |
+| Resumely iOS | Pre-release (TestFlight prep) | Founder unlocks iPhone 13, installs the WP-1 device build, runs optimize→design→expert→export smoke, screenshots PostHog Live Events | Yes | Fresh | High |
+| RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Cross-project status and executive refresh | Run dashboard JSON checks. | No | Fresh | Medium |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | Yes | Fresh | High |
 
 ## Decision Board
 
 | Decision | Project | Recommendation | Urgency |
 | --- | --- | --- | --- |
-| RunSmart 1.0.1 smallest safe scope | RunSmart iOS | Wait for v1.0 review outcome, then cherry-pick the highest-impact Sprint 11 stories. | Medium |
-| Resumely iOS App Store upload path | Resumely iOS | Use Fastlane if credentials are available; otherwise manual portal upload after smoke passes. | High |
-| ResumeBuilder Web rollout timing | ResumeBuilder AI Web | Defer unless Resumely smoke finds backend blockers. | Medium |
+| RunSmart iOS: build 8 rejection response scope | RunSmart iOS | Minimal fix targeting only the rejection reason. Ship as build 9. Save v2 feature scope for after approval. | Conditional — only if build 8 is rejected |
+| RunSmart iOS: when to flip VOICE_COACH_ENABLED in Vercel | RunSmart iOS | Flip after approval + physical-device voice QA passes. Do not flip before the app is live. | Post-approval |
+| Resumely iOS: App Store upload path | Resumely iOS | Manual Xcode Organizer path. EXD-006 resolved: no Fastlane, no .p8 key found. Xcode Organizer is the path. | High — next action after device smoke |
+| ResumeBuilder Web rollout timing | ResumeBuilder AI Web | Defer unless Resumely smoke finds backend blockers. | Low |
 
 ## Agent Delegation
 
@@ -47,12 +48,7 @@ Best next action: Resumely iOS: run the authenticated device smoke from tasks/se
 
 ## Drift Warnings
 
-- RunSmart iOS (current phase): curated narrative differs from parsed source.
-- RunSmart iOS (next story): curated narrative differs from parsed source.
-- RunSmart iOS (last validation): curated narrative differs from parsed source.
-- Resumely iOS (current phase): curated narrative differs from parsed source.
-- Resumely iOS (next story): curated narrative differs from parsed source.
-- Resumely iOS (last validation): curated narrative differs from parsed source.
+- None. Curated narrative matches the parsed source for all High-confidence projects.
 
 ## Validation
 

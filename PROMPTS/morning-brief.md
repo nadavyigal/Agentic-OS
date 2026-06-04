@@ -130,6 +130,12 @@ For each project, top 2-3 specific next actions (name the file, story, or comman
 
 ---
 
+## One process
+
+There is one process for the morning brief: run `./agentic-os morning`. It refreshes evidence from every repo, surfaces every saved plan (including GTM), rebuilds the headline + priority board from parsed `tasks/progress.md` truth, updates the dashboard HTML, verifies, and serves localhost. Do NOT hand-write a separate narrative into `dashboard/status.json` — the script re-derives it every run, so any hand-edit is overwritten by design. If asked for a morning brief, run `./agentic-os morning` and read the result back from the dashboard; never write status from memory.
+
+The text-only reading protocol below is for when you need a spoken brief without the dashboard (e.g. no localhost). It uses the same source files the script parses.
+
 ## Brief Rules
 
 - Never paste file contents verbatim. Synthesize.

@@ -27,6 +27,18 @@ Available commands:
 
 No backend, database, authentication, paid service, or build step is required. When served by the local static file server, pages load `status.json`; opened via `file://`, they use embedded JSON fallbacks.
 
+## One process, one source of truth
+
+There is exactly one process: `./agentic-os morning`. It refreshes evidence, surfaces every saved plan, rebuilds the brief, updates the HTML, verifies, and serves the dashboard on localhost. There is no separate "write the brief" step.
+
+Everything a human reads first — `summary.overallStatus`, `summary.bestNextAction`, the priority board, the per-project cards — is **rebuilt from parsed repo truth on every run**:
+
+- The headline and priority board are derived from each repo's `tasks/progress.md` (or `tasks/todo.md` + latest `tasks/session-log.md` when progress.md is absent). The two shippable apps get their next step inline; support repos show their phase.
+- High-confidence per-project cards are overwritten from parsed truth, so a card can never show prose its repo disproves.
+- **Saved Plans & Requests**: every plan/spec/GTM you saved (scanned from `docs/superpowers/plans`, `docs/plans`, `docs/superpowers/specs`, `docs/specs`, and the `*plan*` files under `.agent-os/distribution`) is listed per project, newest first, with GTM always kept in view and a total count so nothing looks hidden.
+
+Because the brief is re-derived from the repos every run, stale hand-written prose is structurally impossible — the failure where the dashboard showed "build 6 in review" after build 8 shipped cannot recur. The dashboard's "Live from repos" tag shows the refresh time and how many plans were surfaced.
+
 ## Files
 
 - `index.html`: Command Center home page. Self-contained dark theme; reads `status.json` and uses `cc-data` fallback.
