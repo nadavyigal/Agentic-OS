@@ -4,6 +4,17 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
+## 2026-06-04 (PM) - Consolidated to main, pruned worktrees, executive loop + sync wired
+Done this session (all on main, committed):
+- MERGED the dashboard/registry/COO work to main (FF). PRUNED 10 stale worktrees after committing each one's uncommitted work to its own branch (zero loss; branches still exist). Consolidated additive founder work into main: executive-os/research/ (Analysis OS briefs), sprints/2026-05-28 + 2026-05-29, distribution drafts, PROMPTS/resumely-ios-next-sprint.md. Only `main` + the live session worktree remain.
+- NO-WORKTREE RULE in AGENTS.md (top section): work on main, commit + merge before session end, cross-tool (Codex/Claude/Cursor) sync via git, anything created must surface via the registry.
+- check_repo_integrity(): sync signal (branch vs main, uncommitted count, stray worktrees) printed by refresh + shown as Synced/Needs-sync tag on the Command Center. This is how cross-tool drift becomes visible.
+- parse_decisions() (reads EXECUTIVE-DECISIONS.md, 9 rows, 5 open) + build_executive_loop(): links each work packet to its decision via "Related decision: EXD-xxx" (EXD-006 -> WP-1 confirmed). Command Center now shows the loop: Morning -> Project status -> Executive review -> Decisions -> Work packets -> Brainstorm.
+- executive-os/NEXT-MOVES.md = brainstorm/plan space, surfaced in the loop.
+- metrics.html rewritten to a measured / how / output table; honest "Needs data".
+- 28 tests pass, verify passed, screenshot-confirmed render. Commits 30ab995, 64abe24, 1157873 + generated refresh.
+OPEN: decisions.html still renders the older hand-curated decisionBoard (Command Center loop is the authoritative decisions->packets view now). The live session worktree (elastic-babbage-020866) still shows as "1 extra worktree" in the sync check until this session closes — it is fully merged to main, harmless. Other pruned branches (determined-mahavira had distribution edits; crazy-cori/eloquent/etc. have commits) still exist if anything needs recovering.
+
 ## 2026-06-04 - ROOT CAUSE of "lost information": worktree fragmentation + OS registry fix
 CRITICAL LESSON: The founder's COO OS (executive-os/COO-OS.md, agents/coo-agent.md, workflows/coo-operating-review.md, BUSINESS-GTM-PLAN-V0.md, work-packets/WP-1, PROMPTS/coo-operating-review.md, + edits to EXECUTIVE-DECISIONS/RHYTHM/README) was created in worktree `clever-shannon-04b041` and NEVER committed/merged. My dashboard work was uncommitted in `elastic-babbage-020866`. There are 12 worktrees, all branched off the same commit, none merged. The dashboard reads the MAIN repo, which had neither. THIS is why information "kept disappearing": parallel uncommitted worktrees + a dashboard that only surfaced hand-wired things.
 Fixes shipped (in elastic-babbage-020866):
