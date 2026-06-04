@@ -813,6 +813,12 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
             related = match.group(1) if match else None
         packet["decision"] = related
     open_decisions = [d for d in decisions if d["status"].lower().startswith("open")]
+    # Flag decisions whose review date has passed, so a stale "open" decision (like an EXD that
+    # reality already resolved) gets caught and revisited instead of lingering.
+    today = datetime.now()
+    for d in open_decisions:
+        review = parse_date(d.get("review"))
+        d["reviewOverdue"] = bool(review and review < today)
     brainstorm = root / "executive-os" / "NEXT-MOVES.md"
     return {
         "stages": [

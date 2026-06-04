@@ -492,8 +492,9 @@
           <p>Status → executive review → decisions → work packets → brainstorm. Each open decision links to the packet it becomes.</p>
         </div>
         <div id="loop-stages" class="grid"></div>
-        <div id="loop-decisions" style="margin-top: 14px;"></div>
-        <p style="margin-top:10px;"><a class="chip-link" href="../executive-os/NEXT-MOVES.md">Brainstorm / next moves</a> <a class="chip-link" href="../executive-os/EXECUTIVE-DECISIONS.md">All decisions</a></p>
+        <div id="loop-packets" style="margin-top: 16px;"></div>
+        <div id="loop-decisions" style="margin-top: 16px;"></div>
+        <p style="margin-top:10px;"><a class="chip-link" href="../executive-os/NEXT-MOVES.md">Brainstorm / next moves</a> <a class="chip-link" href="../executive-os/EXECUTIVE-DECISIONS.md">All decisions</a> <a class="chip-link" href="../executive-os/work-packets/">Work packets folder</a></p>
       </section>
 
       <section class="panel">
@@ -570,7 +571,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-04 11:57",
+      "lastRefresh": "2026-06-04 12:22",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8789/dashboard/index.html",
       "sourcesRead": [
@@ -1063,9 +1064,9 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 14,
+        "dirtyCount": 10,
         "branch": "main",
-        "lastCommit": "2026-06-04 b0c7a8c chore(agentic-os): refresh dashboard artifacts",
+        "lastCommit": "2026-06-04 24fb6de refactor(agentic-os): simplify dashboard \u2014 delete decisions/metrics tabs, fix links, clarify OS + loop",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-04",
@@ -1544,6 +1545,13 @@
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
           "decision": "EXD-006"
+        },
+        {
+          "title": "Work Packet WP-2 (Active)",
+          "status": "Active",
+          "project": null,
+          "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
+          "decision": "EXD-005"
         }
       ],
       "skillAgents": [
@@ -1598,7 +1606,7 @@
         "recommendation": "After: read activation first, consistent with CEO-OS focus rule 5",
         "owner": "Nadav",
         "review": "2026-09-30",
-        "status": "Open"
+        "status": "Decided"
       },
       {
         "id": "EXD-008",
@@ -1608,7 +1616,7 @@
         "recommendation": "Wait for the v1.0 review outcome, then cherry-pick the highest-impact Sprint 11 stories",
         "owner": "Nadav",
         "review": "2026-06-16",
-        "status": "Open"
+        "status": "Superseded"
       },
       {
         "id": "EXD-007",
@@ -1618,7 +1626,7 @@
         "recommendation": "Keep brands and audiences separate; share only the operating layer (workflows, ASO skill, analytics conventions, Executive OS)",
         "owner": "Nadav",
         "review": "2026-06-30",
-        "status": "Open"
+        "status": "Decided"
       },
       {
         "id": "EXD-006",
@@ -1628,7 +1636,8 @@
         "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
         "owner": "Nadav",
         "review": "2026-06-09",
-        "status": "Open"
+        "status": "Open",
+        "reviewOverdue": false
       },
       {
         "id": "EXD-005",
@@ -1638,7 +1647,7 @@
         "recommendation": "Decide the model shape now (freemium with a free activation moment); set the price after first-cohort activation data",
         "owner": "Nadav",
         "review": "2026-06-30",
-        "status": "Open"
+        "status": "Decided"
       },
       {
         "id": "EXD-004",
@@ -1697,11 +1706,11 @@
         },
         {
           "name": "Decisions",
-          "what": "5 open of 9 logged in EXECUTIVE-DECISIONS.md."
+          "what": "1 open of 9 logged in EXECUTIVE-DECISIONS.md."
         },
         {
           "name": "Work packets",
-          "what": "1 active. One focused repo task per decision that needs execution."
+          "what": "2 active. One focused repo task per decision that needs execution."
         },
         {
           "name": "Brainstorm / next moves",
@@ -1710,36 +1719,6 @@
       ],
       "openDecisions": [
         {
-          "id": "EXD-009",
-          "date": "2026-06-02",
-          "area": "Growth",
-          "decision": "Introduce monetization before or after reading first-cohort activation",
-          "recommendation": "After: read activation first, consistent with CEO-OS focus rule 5",
-          "owner": "Nadav",
-          "review": "2026-09-30",
-          "status": "Open"
-        },
-        {
-          "id": "EXD-008",
-          "date": "2026-06-02",
-          "area": "Release",
-          "decision": "RunSmart iOS 1.0.1 scope after the v1.0 review outcome",
-          "recommendation": "Wait for the v1.0 review outcome, then cherry-pick the highest-impact Sprint 11 stories",
-          "owner": "Nadav",
-          "review": "2026-06-16",
-          "status": "Open"
-        },
-        {
-          "id": "EXD-007",
-          "date": "2026-06-02",
-          "area": "Strategy",
-          "decision": "Ratify the separate-brand portfolio model for RunSmart and Resumely",
-          "recommendation": "Keep brands and audiences separate; share only the operating layer (workflows, ASO skill, analytics conventions, Executive OS)",
-          "owner": "Nadav",
-          "review": "2026-06-30",
-          "status": "Open"
-        },
-        {
           "id": "EXD-006",
           "date": "2026-06-02",
           "area": "Release",
@@ -1747,17 +1726,8 @@
           "recommendation": "Fastlane if credentials exist, else manual portal upload after the device smoke passes",
           "owner": "Nadav",
           "review": "2026-06-09",
-          "status": "Open"
-        },
-        {
-          "id": "EXD-005",
-          "date": "2026-06-02",
-          "area": "Finance",
-          "decision": "Choose the monetization model per app (free vs paid structure)",
-          "recommendation": "Decide the model shape now (freemium with a free activation moment); set the price after first-cohort activation data",
-          "owner": "Nadav",
-          "review": "2026-06-30",
-          "status": "Open"
+          "status": "Open",
+          "reviewOverdue": false
         }
       ],
       "workPackets": [
@@ -1767,17 +1737,24 @@
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
           "decision": "EXD-006"
+        },
+        {
+          "title": "Work Packet WP-2 (Active)",
+          "status": "Active",
+          "project": null,
+          "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
+          "decision": "EXD-005"
         }
       ],
       "brainstormExists": true
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 2,
+      "uncommitted": 3,
       "extraWorktrees": 1,
       "synced": false,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
@@ -1920,11 +1897,32 @@
             stages.append(card);
           });
         }
+        const packets = loop.workPackets || [];
+        const pkRoot = $("#loop-packets");
+        if (pkRoot) {
+          pkRoot.textContent = "";
+          pkRoot.append(make("p", "eyebrow", `Work packets — the active build tasks (${packets.length})`));
+          if (!packets.length) {
+            pkRoot.append(make("p", "fine", "None yet. A decided, executable decision becomes a work packet here."));
+          } else {
+            const grid = make("div", "grid");
+            packets.forEach((p) => {
+              const card = make("article", "task-card tone-qa");
+              card.append(make("h3", "", p.title || "Work packet"));
+              card.append(make("div", "fine", `${p.status || "Unknown"}${p.project ? " · " + p.project : ""}${p.decision ? " · from " + p.decision : ""}`));
+              const a = make("a", "chip-link", "Open packet");
+              a.href = "../" + (p.path || "");
+              card.append(a);
+              grid.append(card);
+            });
+            pkRoot.append(grid);
+          }
+        }
         const dec = $("#loop-decisions");
         if (dec) {
           dec.textContent = "";
           const packetsByDecision = {};
-          (loop.workPackets || []).forEach((p) => { if (p.decision) packetsByDecision[p.decision] = p; });
+          packets.forEach((p) => { if (p.decision) packetsByDecision[p.decision] = p; });
           const open = loop.openDecisions || [];
           if (!open.length) {
             dec.append(make("p", "fine", "No open decisions. Decided items have flowed to work packets."));
@@ -1935,6 +1933,7 @@
           open.forEach((d) => {
             const card = make("article", "task-card tone-blocked");
             card.append(make("h3", "", `${d.id} · ${d.decision}`));
+            if (d.reviewOverdue) card.append(make("div", "fine", "⚠ Review overdue — revisit; reality may have moved past this."));
             if (d.recommendation) card.append(make("p", "", `Recommended call: ${d.recommendation}`));
             const wp = packetsByDecision[d.id];
             const step = wp

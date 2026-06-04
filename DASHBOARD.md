@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder unlocks iPhone 13, installs the WP-1 dev
 
 ## Run Center
 
-- Last refresh: 2026-06-04 11:57
+- Last refresh: 2026-06-04 12:22
 - Localhost: `http://127.0.0.1:8789/dashboard/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
