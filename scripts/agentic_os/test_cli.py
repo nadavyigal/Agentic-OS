@@ -81,6 +81,61 @@ class TestPureHelpers(unittest.TestCase):
         text = "## Decisions Needed\n- pick path\n## Decisions Made\n- shipped X"
         self.assertEqual(cli.extract_open_decisions({"tasks/x.md": text}), ["pick path"])
 
+    def test_current_weekly_review_preserves_executive_dashboard(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            executive = root / "executive-os"
+            executive.mkdir()
+            dashboard = executive / "EXECUTIVE-DASHBOARD.md"
+            dashboard.write_text("manual weekly judgment\n", encoding="utf-8")
+            (executive / "WEEKLY-CEO-LATEST.md").write_text(
+                f"# Review\n\n- Reviewed: {datetime.now().strftime('%Y-%m-%d')}\n",
+                encoding="utf-8",
+            )
+            original_root = cli.ROOT
+            cli.ROOT = root
+            try:
+                cli.write_executive_dashboard(
+                    {
+                        "metadata": {"lastUpdated": "2026-06-05"},
+                        "summary": {},
+                        "executiveBoard": {},
+                        "projectHealth": [],
+                        "priorityBoard": {},
+                    }
+                )
+            finally:
+                cli.ROOT = original_root
+            self.assertEqual(dashboard.read_text(encoding="utf-8"), "manual weekly judgment\n")
+
+    def test_stale_weekly_review_allows_executive_dashboard_refresh(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            executive = root / "executive-os"
+            executive.mkdir()
+            dashboard = executive / "EXECUTIVE-DASHBOARD.md"
+            dashboard.write_text("stale judgment\n", encoding="utf-8")
+            stale_date = (datetime.now() - timedelta(days=8)).strftime("%Y-%m-%d")
+            (executive / "WEEKLY-CEO-LATEST.md").write_text(
+                f"# Review\n\n- Reviewed: {stale_date}\n",
+                encoding="utf-8",
+            )
+            original_root = cli.ROOT
+            cli.ROOT = root
+            try:
+                cli.write_executive_dashboard(
+                    {
+                        "metadata": {"lastUpdated": "2026-06-05"},
+                        "summary": {"overallStatus": "Current status"},
+                        "executiveBoard": {},
+                        "projectHealth": [],
+                        "priorityBoard": {},
+                    }
+                )
+            finally:
+                cli.ROOT = original_root
+            self.assertIn("# Executive Dashboard", dashboard.read_text(encoding="utf-8"))
+
 
 class TestParseTaskFiles(unittest.TestCase):
     def test_progress_present_high(self):

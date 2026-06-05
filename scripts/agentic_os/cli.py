@@ -2219,6 +2219,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
 
 
 def write_executive_dashboard(status: dict[str, Any]) -> None:
+    weekly_review = ROOT / "executive-os" / "WEEKLY-CEO-LATEST.md"
+    if weekly_review.exists():
+        reviewed = parse_date(_metadata_value(weekly_review.read_text(encoding="utf-8"), "Reviewed"))
+        if reviewed is not None:
+            review_age = (datetime.now() - reviewed).days
+            if 0 <= review_age <= FRESHNESS_REVIEW_DAYS:
+                return
+
     executive = status.get("executiveBoard", {})
     lines = [
         "# Executive Dashboard",
