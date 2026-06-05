@@ -1,114 +1,98 @@
 # Clarity Funnel — Builder profile
 
-Voice: direct, structured, execution-oriented. Outputs should be pasteable into Cursor, Claude Code, or Codex as task context.
+Voice: direct, structured, execution-oriented. Same **session latch** as everyday, plus scope and validation language builders expect.
 
-## CLARIFY template
+Clarity Funnel here = **stay aligned while building**, not "emit PROMPT for a new chat" unless user asks.
 
-```markdown
-## CLARIFY
+## Session latch
 
-| Field | Value |
-|-------|--------|
-| **Goal** | {one sentence} |
-| **Not in scope** | {comma-separated cuts} |
-| **Validation** | {how we know the artifact is done} |
-| **Assumptions** | {only if needed} |
-```
+Same as everyday: START → periodic footer → CHECK → WRAP. North star includes **observable validation**.
 
-Rules:
+## Funnel stages
 
-- Validation must be observable (sections present, word limit, tests named), not vibes.
-- Not in scope must include at least: no unrequested implementation, no new dependencies unless asked.
+Intent → Focus → Shape → Move → Done
 
-## ALIGN (embedded)
+| Stage | Builder meaning |
+|-------|-----------------|
+| Intent | Goal + validation one-liner |
+| Focus | Scope cuts + file/touch budget |
+| Shape | Artifact structure emerging |
+| Move | Next implementation or review step |
+| Done | Done-when met or handoff ready |
 
-Scope budget defaults unless user overrides:
-
-| Artifact type | Budget |
-|---------------|--------|
-| Planning only | No code, no file edits, no installs |
-| Implementation | Name max files (default 3 unexpected); one story at a time |
-| Review only | No fixes unless user asks |
-
-Alignment footer for PROMPT:
-
-```text
-SCOPE LOCK: {goal}. If the session drifts to {common drift for this ask}, STOP and restate goal + validation before continuing.
-```
-
-## REVIEW (embedded)
-
-Pass all before PROMPT:
-
-- PROMPT includes GOAL, TASK, CONSTRAINTS, VALIDATION (or equivalent headers)
-- No platform expansion hidden inside "while we're here"
-- FINISH includes done-when checkboxes and handoff line
-
-## PROMPT template (hero)
+## START template
 
 ```markdown
-## PROMPT (copy this)
+# ◈ Clarity Funnel · builder
+
+**North star:** {goal one sentence}
+
+**Validation:** {observable done-when}
+
+**Not in scope:** {comma-separated cuts}
+
+**Funnel:** Intent → **Focus** · Shape · Move · Done
+
+**Try saying next**
+> {one line — e.g. "List the 3 files we'd touch and the done-when checks"}
+
+---
+*check · wrap · release*
+```
+
+## CHECK template
+
+Everyday CHECK block, plus:
+
+```markdown
+**Scope:** {planning only | implementation | review} · max {N} unexpected files
+**Validation gap:** {what's not checkable yet, or "none"}
+```
+
+**Drift** should name technical wander: new deps, extra files, scope creep.
+
+## WRAP template
+
+Everyday WRAP, plus optional tail:
+
+```markdown
+**Work packet**
+- Status: {Ready | Needs answers | Review only}
+- Done when:
+  - [ ] {checkable}
+  - [ ] {checkable}
+- Next action: {single imperative}
+```
+
+## PROMPT appendix (only on request)
+
+If user says "reuse in Cursor" / "work packet for another session", append:
+
+```markdown
+## Reuse prompt
 
 \`\`\`text
-MODE: {planning | implementation | review}
-
-GOAL:
-{one sentence}
-
-TASK:
-{what the next agent session should produce}
-
-CONSTRAINTS:
-- {bullet}
-- {bullet}
-
-VALIDATION:
-- {checkable item}
-- {checkable item}
-
-REQUIRED OUTPUT SECTIONS:
-- {header list}
-
-ASK FIRST (max 2 questions, then proceed with stated assumptions if unanswered):
-1) {question}
-2) {question}
+GOAL: ...
+TASK: ...
+CONSTRAINTS: ...
+VALIDATION: ...
 \`\`\`
-
-*SCOPE LOCK: {goal one-liner}*
 ```
 
-## FINISH template (secondary)
+Default path is **same session**, not export.
 
-```markdown
-## FINISH
+## ALIGN / REVIEW (silent)
 
-**Work packet**
-- Status: {Ready to run | Needs answers | Review only}
-- Done when:
-  - [ ] {item}
-  - [ ] {item}
+Same as everyday, plus:
 
-**Next action**
-{single imperative}
-
-**Session handoff**
-{If chat drifts to X, paste: ...}
-
-**Files / checks** (implementation only)
-- Files touched: {list or "none yet"}
-- Checks run: {list or "pending"}
-```
+- Validation is observable
+- No hidden platform expansion
+- FINISH checkboxes only in WRAP or on request
 
 ## Example: team AI strategy ask
 
-**Input:** same everyday demo paragraph (strategy creep).
+**North star:** One-page 30-day adoption outline with one workflow and ≤3 tools.
 
-**CLARIFY:**
+**Validation:** Sections present, word limit, no procurement scope.
 
-- Goal: one-page 30-day team AI adoption plan
-- Not in scope: procurement, LMS, committee, custom tooling
-- Validation: 1 workflow, ≤3 tools, 4-week bullets, 3 signals, manager script ≤5 sentences
-
-**PROMPT:** MODE Planning only; required sections GOAL through MANAGER LAUNCH SCRIPT; max 400 words; 2 ask-first questions.
-
-**FINISH:** work packet with done-when checkboxes and drift stop line for "build internal AI platform."
+**START:** Focus stage — structure not drafted yet. No full plan in START.

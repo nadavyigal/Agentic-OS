@@ -1,80 +1,76 @@
-# Frozen demo output — Builder profile
+# Frozen demo — Builder · team AI strategy ask
 
-**Input:**
+Same three-act arc as everyday, with validation and work packet on WRAP.
+
+**Demo input:**
 
 > Help me create a strategy for my team to start using AI better at work. We tried a few tools but people are confused and I want a clear plan.
 
 ---
 
-## CLARIFY
+## Act 1 — START
 
-| Field | Value |
-|-------|--------|
-| **Goal** | Ship a 30-day team AI adoption plan one page long, with one canonical workflow and tool rules. |
-| **Not in scope** | Tool procurement, LMS, AI committee, custom integrations, company-wide transformation |
-| **Validation** | Plan has: goal sentence, 1 workflow, ≤3 tools, 4-week bullets, 3 success signals, manager script ≤5 sentences |
-| **Assumptions** | Mixed skill team; confusion is tool/overchoice, not hostility |
+# ◈ Clarity Funnel · builder
+
+**North star:** One-page 30-day adoption outline with one workflow and ≤3 tools.
+
+**Validation:** Goal sentence, 1 workflow, 4-week bullets, 3 signals, manager script ≤5 sentences.
+
+**Not in scope:** Procurement, LMS, committee, custom tooling.
+
+**Funnel:** Intent → **Focus** · Shape · Move · Done
+
+**Try saying next**
+> List required sections and max word count before we draft anything.
+
+---
+*check · wrap · release*
 
 ---
 
-## PROMPT (copy this)
+## Act 2 — CHECK
 
-```text
-MODE: Planning only. Do not propose building software or buying tools.
+## Funnel check
 
-GOAL:
-Produce a one-page 30-day team AI adoption plan with one canonical workflow.
+**North star:** One-page 30-day adoption outline with one workflow and ≤3 tools.
 
-TASK:
-Write the plan document only. No implementation, no new tools, no policy program beyond 5 team rules.
+**Stage:** Focus → **Shape**
 
-CONSTRAINTS:
-- Max 400 words unless user asks for detail
-- Plain language
-- No "digital transformation" framing
-- Max 3 tools in tool map
+**Clearer since we started**
+- Required sections locked
+- Planning-only mode (no implementation)
 
-VALIDATION:
-- GOAL is exactly one sentence
-- Exactly one CANONICAL WORKFLOW (5 steps max)
-- WEEK-BY-WEEK covers W1–W4 only
-- MANAGER LAUNCH SCRIPT is 5 sentences or fewer
+**Still fuzzy**
+- Team size / top tasks (ask-first)
 
-REQUIRED OUTPUT SECTIONS:
-- GOAL (1 sentence)
-- DIAGNOSIS (3 bullets: why confusion happens)
-- CANONICAL WORKFLOW (1 workflow, 5 steps max)
-- TOOL MAP (table: task → tool → when not to use)
-- 30-DAY ROLLOUT (W1–W4, 3 bullets/week max)
-- TEAM RULES (5 bullets: privacy, verification, quality bar)
-- SUCCESS SIGNALS (3 observable, week-4 check)
-- MANAGER LAUNCH SCRIPT (5 sentences)
+**Drift:** None
 
-ASK FIRST (max 2 questions, then proceed with stated assumptions if unanswered):
-1) Team size and roles (rough)?
-2) Top 2 weekly tasks to target with AI?
-```
+**Certainty:** Getting clearer
 
-*SCOPE LOCK: one-page 30-day team AI adoption plan. If the session drifts to "build an internal AI platform," STOP and restate goal + validation before continuing.*
+**Scope:** planning only · max 0 files
+**Validation gap:** need team size + top 2 tasks for tool map
 
 ---
 
-## FINISH
+## Act 3 — WRAP
+
+## Session wrap
+
+**North star:** One-page adoption outline, observable validation.
+
+**Where we landed:** Shape
+
+**What's clear now**
+- Section list + word limit
+- Scope cuts documented
+
+**Worth doing next**
+- Answer 2 ask-first questions, then draft in this chat
 
 **Work packet**
-- Status: Ready to run in next chat after 2 clarifying answers
+- Status: Needs answers
 - Done when:
-  - [ ] One-page plan exists
-  - [ ] Exactly one workflow named
-  - [ ] ≤3 tools in tool map
-  - [ ] Manager script copied to team channel
-
-**Next action**  
-Paste PROMPT above into chat; answer 2 questions; save output against FINISH checklist.
-
-**Session handoff**  
-If chat drifts to "build an internal AI platform" or tool procurement, paste: *SCOPE LOCK: planning artifact only — one-page 30-day adoption plan.*
-
-**Files / checks**
-- Files touched: none (planning only)
-- Checks run: pending (user saves plan doc)
+  - [ ] One-page plan in thread
+  - [ ] ≤3 tools in map
+  - [ ] Manager script ≤5 sentences
+- Next action: Reply with team size and top 2 weekly tasks.

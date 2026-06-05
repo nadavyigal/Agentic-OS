@@ -1,48 +1,87 @@
-# ◈ Clarity Funnel
+# Frozen demo — Everyday · team AI strategy ask
 
-**messy ask → clear outcome**
+Three-act walkthrough for hackathon. Same input throughout.
 
----
+**Demo input:**
 
-### You said
 > Help me create a strategy for my team to start using AI better at work. We tried a few tools but people are confused and I want a clear plan.
 
-### You meant
-Get your team using **one AI workflow on real work** starting this week — not another tool pilot or strategy deck.
+---
 
-### We cut
-- Company-wide "AI transformation"
-- Tool comparison / vendor bake-off
-- Training slides nobody will open
+## Act 1 — START (latch)
 
-*Assumed: ~8 people, mixed roles; confusion = too many tools, no shared workflow.*
+# ◈ Clarity Funnel
+
+**North star:** Get your team using **one AI workflow on real work this week**, not another tool pilot or strategy document.
+
+**Funnel:** Intent → **Focus** · Shape · Move · Done
+*You named tool confusion; we have not chosen one workflow yet.*
+
+**Clear already**
+- Team already tried tools (energy is there)
+- Pain is confusion, not resistance
+
+**Still fuzzy**
+- Which single tool for 30 days
+- What "one workflow" means in your team's real tasks
+
+**Try saying next**
+> Help me pick one tool and one simple workflow for emails and meeting notes — we have about 8 people, mixed roles.
+
+---
+*Say **check** anytime · I'll nudge every few replies · **wrap** when you're done*
 
 ---
 
-### Your answer
+## Act 2 — CHECK (after 2–3 chat turns)
 
-**Pick one tool for 30 days** (team vote today — ChatGPT *or* Claude, not both).
+*User and AI discussed: vote on ChatGPT vs Claude, paste→draft→human check→send.*
 
-**One workflow everyone follows**
-1. Paste context (notes, brief, prior email)
-2. Ask for **one** output (email, summary, or checklist)
-3. **You** check facts and privacy
-4. Send or publish
-5. One line in team chat: what you used AI for
+## Funnel check
 
-**Use this · Not that**
-- **Emails & docs** → team default chat tool · not confidential client data
-- **Meeting notes** → same tool + shared prompt snippet · not without consent
-- **Tone / shorten** → same tool · not legal, HR, or pricing alone
+**North star:** Get your team using **one AI workflow on real work this week**, not another tool pilot or strategy document.
 
-**Say this Monday**
-> We're not doing an AI program. For 30 days we use one tool and one workflow: paste → draft → you check → send. Vote today. Three volunteers try it daily starting Wednesday.
+**Stage:** Focus → **Shape**
+*Moved forward — one workflow named; tool choice still open.*
+
+**Clearer since we started**
+- Workflow steps are defined (paste → draft → you check → send)
+- Scope cut: no company-wide transformation
+
+**Still fuzzy**
+- Final tool vote
+- Who posts the shared prompt snippet
+
+**Drift:** None
+
+**Certainty:** Getting clearer
+*You're narrowing; not ready for a rollout deck yet.*
+
+**Try saying next**
+> Write a 3-sentence message I can post in team chat to start the tool vote today.
 
 ---
 
-### → Today
-- [ ] **Post a poll in team chat: one AI tool for the next 30 days**
+## Act 3 — WRAP
+
+*User says `wrap`.*
+
+## Session wrap
+
+**North star:** One workflow on real work this week, not a strategy program.
+
+**Where we landed:** Shape
+
+**What's clear now**
+- One workflow everyone can follow
+- One tool for 30 days (vote, not bake-off)
+- Confidential work stays out of AI
+
+**Still open**
+- Exact tool winner after poll
+
+**Worth doing next**
+- Post the 3-sentence vote message in team chat today
 
 ---
-
-*Want week-by-week detail? Reply **expand**. Different angle (tool rules vs rollout)? Reply **focus B**.*
+*Reply **release** to turn off funnel nudges · or keep chatting with **check** anytime*
