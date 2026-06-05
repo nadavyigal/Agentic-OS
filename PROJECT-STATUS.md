@@ -14,7 +14,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store submission readiness | Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build | 2 | Yes (20) | Fresh | High | tasks/progress.md | 2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (29) | Fresh | High | tasks/progress.md | 2026-06-05 c7c1344 preserve clarity funnel session-companion updates |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-05 e40aed7 add advanced OS patterns lean pilot |
 
 ## Evidence Gaps
 

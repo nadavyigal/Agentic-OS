@@ -122,7 +122,7 @@
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
       "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.",
-      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web), Agentic OS."
+      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web)."
     ],
     "needsDecision": [
       "RunSmart iOS: if build 8 is rejected again, decide minimal fix scope vs. expanding to v2 feature set.",
@@ -673,9 +673,9 @@
       },
       "localEvidence": {
         "branch": "main",
-        "dirty": true,
-        "dirtyCount": 29,
-        "lastCommit": "2026-06-05 c7c1344 preserve clarity funnel session-companion updates",
+        "dirty": false,
+        "dirtyCount": 0,
+        "lastCommit": "2026-06-05 e40aed7 add advanced OS patterns lean pilot",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -882,8 +882,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 12:57",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-06-05 12:58",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1388,10 +1388,10 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 29,
+      "dirty": false,
+      "dirtyCount": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 c7c1344 preserve clarity funnel session-companion updates",
+      "lastCommit": "2026-06-05 e40aed7 add advanced OS patterns lean pilot",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1546,7 +1546,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1580,13 +1580,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1634,17 +1633,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 12:57",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-06-05 12:58",
+    "checksStatus": "Passed",
+    "checksCompletedAt": "2026-06-05 12:58",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main [behind 4]",
-    "readyForNextSession": false,
+    "readyForNextSession": true,
     "summary": "Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build"
   },
   "driftWarnings": [],
@@ -2223,11 +2222,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 20,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "20 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -2302,10 +2301,10 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Needs sync first",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "20 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Dirty repos: RunSmart iOS, Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 2

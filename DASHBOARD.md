@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Upload the screenshot folders in App Store Conne
 
 ## Run Center
 
-- Last refresh: 2026-06-05 12:57
+- Last refresh: 2026-06-05 12:58
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,7 +24,7 @@ Best next action: Resumely iOS: Upload the screenshot folders in App Store Conne
 | Resumely iOS | App Store submission readiness | Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
 
 ## Decision Board
 
