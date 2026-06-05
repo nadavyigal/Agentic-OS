@@ -12,20 +12,25 @@ One page for every work day. Executive OS, research, decisions, and long-running
 
 2. Open the Command Center (localhost link from the command output).
 
-3. Read in order:
+3. Read only the first two sections:
 
-   - **Sync / trust** pill — if "Needs sync" or trust is not actionable, fix git sync or re-run morning before trusting status.
-   - **Do this next** — derived from product repo `tasks/progress.md` (or derived task files).
-   - **Work packets (Active)** — in the operating loop; these are what you execute today.
-   - **Strategic plans (index)** — titles and status only (`active`, `needs_next_packet`, `research_only`). Do **not** open full plan files in Tier 0.
+   - **Suggested next actions** — choose one action. Each card says where to do
+     it and includes a copy button when an agent prompt is useful.
+   - **Active work packets** — copy one only if this section shows an active
+     packet. It names the exact product repo where the packet should be pasted.
+     If it says "No active work packet today," there is nothing to paste.
 
 4. Trust rule: do not treat App Store review, submit readiness, or "ready to ship" claims as authoritative unless sync is clean and portfolio trust is **actionable**.
 
 ## Tier 1 — Execute (one move)
 
-1. Copy **one** active work packet from the Command Center (or the recommended project prompt).
-2. Open the **target product repo** (not Agentic OS) in Claude Code, Cursor, or Codex.
-3. Paste the packet as the session context.
+1. Copy **one** active work packet from the Command Center.
+2. Open the exact **target product repo** printed on the packet card.
+3. Paste the packet as the new task context.
+
+Closed, research-complete, and ready-for-later packets remain in
+`executive-os/work-packets/` as history. They do not appear in the daily Active
+work packets section and should not be pasted into a product repo.
 
 Agent reads in the product repo only: `AGENTS.md` / `CLAUDE.md`, `tasks/MEMORY.md`, `tasks/ERRORS.md`, and files named in the packet.
 

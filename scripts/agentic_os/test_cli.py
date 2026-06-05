@@ -505,6 +505,8 @@ class TestFounderNextActions(unittest.TestCase):
 
         self.assertEqual(actions[0]["title"], "Check App Store Connect")
         self.assertEqual(actions[1]["title"], "Continue the COO-selected action")
+        self.assertIn("Agentic OS repo", actions[1]["where"])
+        self.assertTrue(actions[1]["copyPrompt"])
         self.assertFalse(any(action["title"] == "Run a COO operating review" for action in actions))
 
     def test_missing_coo_review_suggests_review_when_plans_need_packets(self):

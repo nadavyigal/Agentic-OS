@@ -1747,6 +1747,8 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
             "title": "Check App Store Connect",
             "detail": f"Check {', '.join(apps_in_review)}. If Apple has not responded, do not change the submitted builds.",
             "type": "manual-founder",
+            "where": "App Store Connect",
+            "copyPrompt": None,
         })
 
     active_packets = [
@@ -1759,6 +1761,8 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
             "title": f"Run active packet: {packet.get('title', 'work packet')}",
             "detail": f"Copy it into {packet.get('repoId') or 'the target repo'} and execute one focused session.",
             "type": "local-repo",
+            "where": packet.get("repoPath") or packet.get("repoId") or "Target product repo",
+            "copyPrompt": packet.get("copyPrompt"),
         })
     else:
         review = status.get("latestCooReview") or {}
@@ -1769,12 +1773,21 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
                 "title": "Continue the COO-selected action",
                 "detail": review["selectedNextAction"],
                 "type": review.get("actionType") or "global-OS",
+                "where": "Agentic OS repo, in this Codex thread",
+                "copyPrompt": (
+                    "Continue the latest COO-selected action. Read "
+                    "executive-os/COO-LATEST-REVIEW.md and the Source file named there. "
+                    "Execute only the selected next action. Do not publish, email, deploy, "
+                    "submit, or touch product code without explicit approval."
+                ),
             })
         elif status.get("planExecution", {}).get("needsNextPacket", 0):
             actions.append({
                 "title": "Run a COO operating review",
                 "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
                 "type": "global-OS",
+                "where": "Agentic OS repo, in this Codex thread",
+                "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md.",
             })
 
     if len(actions) < 3:
@@ -1782,6 +1795,8 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
             "title": "Use the Weekly CEO Review only for a priority choice",
             "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
             "type": "executive",
+            "where": "Agentic OS repo, in this Codex thread",
+            "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md.",
         })
     return actions[:3]
 

@@ -433,7 +433,7 @@
         <a href="./index.html" class="active" aria-current="page">Command Center</a>
         <a href="./project-status.html">Project Status</a>
         <a href="./orchestration.html">Orchestration Map</a>
-        <a href="./executive.html">Executive</a>
+        <a href="./executive.html">Weekly Executive</a>
 
 
         <a href="./data-flow.html">Data Flow</a>
@@ -445,14 +445,10 @@
 
       <section class="hero" id="hero-section" aria-label="Status">
         <article class="focus-card">
-          <p class="eyebrow">Where things stand</p>
+          <p class="eyebrow">Start here after morning or refresh</p>
           <h1 id="focus-title">Portfolio status</h1>
           <div style="margin: 4px 0 10px;"><span id="synthesis-tag" class="pill good"></span></div>
           <p id="focus-summary" class="summary"></p>
-          <div class="next-action">
-            <strong>Do this next</strong>
-            <p id="next-action"></p>
-          </div>
           <div id="status-row" class="status-row"></div>
         </article>
 
@@ -489,6 +485,17 @@
           <p>Rebuilt after every morning or refresh from trust, active packets, plan state, and the latest COO review.</p>
         </div>
         <div id="founder-next-actions" class="grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Active work packets</p>
+            <h2>What to paste into a project</h2>
+          </div>
+          <p>Only packets shown here are executable. Copy one, open the named product repo in Codex, Claude Code, or Cursor, and paste it as the task.</p>
+        </div>
+        <div id="active-work-packets"></div>
       </section>
 
       <section class="panel" id="plan-execution-panel">
@@ -533,7 +540,6 @@
           <p>Status → executive review → decisions → work packets → brainstorm. Each open decision links to the packet it becomes.</p>
         </div>
         <div id="loop-stages" class="grid"></div>
-        <div id="loop-packets" style="margin-top: 16px;"></div>
         <div id="loop-decisions" style="margin-top: 16px;"></div>
         <div id="loop-brainstorm" style="margin-top: 16px;"></div>
       </section>
@@ -552,8 +558,7 @@
       <div class="links">
         <a class="chip-link" href="./data-flow.html">How it connects (diagram)</a>
         <a class="chip-link" href="./project-status.html">Full project status</a>
-        <a class="chip-link" href="./executive.html">Executive overview</a>
-        <a class="chip-link" href="../executive-os/EXECUTIVE-DASHBOARD.md">Executive dashboard</a>
+        <a class="chip-link" href="./executive.html">Weekly executive overview</a>
       </div>
 
       <footer>
@@ -2129,7 +2134,6 @@
         const summary = status.summary || {};
         const runCenter = status.runCenter || {};
         $("#focus-summary").textContent = summary.overallStatus || "Run ./agentic-os morning.";
-        $("#next-action").textContent = summary.bestNextAction || "Run ./agentic-os morning.";
         const integ = status.repoIntegrity || {};
         const tagEl = $("#synthesis-tag");
         if (tagEl) {
@@ -2148,6 +2152,7 @@
         renderTrustBanner();
         renderStatusRow();
         renderFounderNextActions();
+        renderActiveWorkPackets();
         renderPlanExecution();
         renderCommands();
         renderRegistry();
@@ -2237,8 +2242,46 @@
           card.append(make("p", "eyebrow", `${index + 1} · ${action.type || "action"}`));
           card.append(make("h3", "", action.title || "Next action"));
           card.append(make("p", "", action.detail || ""));
+          if (action.where) card.append(make("p", "fine", `Where: ${action.where}`));
+          if (action.copyPrompt) {
+            const btn = make("button", "copy-btn", "Copy prompt");
+            btn.type = "button";
+            btn.dataset.copyText = action.copyPrompt;
+            btn.dataset.copyLabel = action.title || "Next action";
+            card.append(btn);
+          }
           root.append(card);
         });
+      }
+
+      function renderActiveWorkPackets() {
+        const root = $("#active-work-packets");
+        if (!root) return;
+        root.textContent = "";
+        const packets = (status.executiveLoop || {}).workPackets || [];
+        const active = packets.filter((packet) => (packet.status || "").toLowerCase().startsWith("active"));
+        if (!active.length) {
+          const card = make("article", "task-card");
+          card.append(make("h3", "", "No active work packet today"));
+          card.append(make("p", "", "There is nothing to paste into a product repo. Follow one Suggested next action above."));
+          card.append(make("p", "fine", `${packets.length} closed or reference packet(s) are retained in executive-os/work-packets/ for history, not daily execution.`));
+          root.append(card);
+          return;
+        }
+        const grid = make("div", "grid");
+        active.forEach((packet) => {
+          const card = make("article", "task-card tone-qa");
+          card.append(make("p", "eyebrow", `Paste into: ${packet.repoPath || packet.repoId || "target repo"}`));
+          card.append(make("h3", "", packet.title || "Active work packet"));
+          if (packet.goal) card.append(make("p", "", packet.goal));
+          const btn = make("button", "copy-btn", "Copy packet");
+          btn.type = "button";
+          btn.dataset.copyText = packet.copyPrompt || "";
+          btn.dataset.copyLabel = packet.title || "Work packet";
+          card.append(btn);
+          grid.append(card);
+        });
+        root.append(grid);
       }
 
       function renderLoop() {
@@ -2254,55 +2297,6 @@
           });
         }
         const packets = loop.workPackets || [];
-        const pkRoot = $("#loop-packets");
-        if (pkRoot) {
-          pkRoot.textContent = "";
-          const sorted = [...packets].sort((a, b) => {
-            const aActive = (a.status || "").toLowerCase().startsWith("active") ? 0 : 1;
-            const bActive = (b.status || "").toLowerCase().startsWith("active") ? 0 : 1;
-            return aActive - bActive || (a.title || "").localeCompare(b.title || "");
-          });
-          const activeN = sorted.filter((p) => (p.status || "").toLowerCase().startsWith("active")).length;
-          pkRoot.append(make("p", "eyebrow", `Work packets (${activeN} active · ${sorted.length} total)`));
-          if (!sorted.length) {
-            pkRoot.append(make("p", "fine", "None yet. A decided, executable decision becomes a work packet here."));
-          } else {
-            const grid = make("div", "grid");
-            sorted.forEach((p) => {
-              const card = make("article", "task-card tone-qa");
-              // Repo first — that's the key routing information
-              const repoLabel = p.repoPath
-                ? `Repo: ${p.repoId || "unknown"} — ${p.repoPath}`
-                : (p.repoId === "research" ? "Research task (no repo — run in Agentic OS)" : "Repo: not specified");
-              card.append(make("strong", "fine", repoLabel));
-              card.append(make("h3", "", p.title || "Work packet"));
-              card.append(make("div", "fine", `${p.status || "Unknown"}${p.decision ? " · from " + p.decision : ""}`));
-              const metadata = [];
-              if (p.workflowPattern && p.workflowPattern !== "normal") metadata.push(`Pattern: ${p.workflowPattern}`);
-              if (p.inputTrust && p.inputTrust !== "trusted") metadata.push(`Input: ${p.inputTrust}`);
-              if (p.outcomeLoop) metadata.push(`Loop: ${p.outcomeLoop}`);
-              if (metadata.length) {
-                const badges = make("div", "status-row");
-                metadata.forEach((item) => badges.append(make("span", "pill", item)));
-                card.append(badges);
-              }
-              if (p.goal) card.append(make("p", "", p.goal));
-              if (p.successSignal) card.append(make("p", "fine", `Success: ${p.successSignal}`));
-              const isActive = (p.status || "").toLowerCase().startsWith("active");
-              if (p.copyPrompt && isActive) {
-                const btn = make("button", "copy-btn", "Copy to Claude Code");
-                btn.type = "button";
-                btn.dataset.copyText = p.copyPrompt;
-                btn.dataset.copyLabel = p.title || "Work packet";
-                card.append(btn);
-              } else if (!isActive) {
-                card.append(make("p", "fine", "History only. Do not copy or execute this packet."));
-              }
-              grid.append(card);
-            });
-            pkRoot.append(grid);
-          }
-        }
         const dec = $("#loop-decisions");
         if (dec) {
           dec.textContent = "";
