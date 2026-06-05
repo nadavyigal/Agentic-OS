@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 ## Run Center
 
-- Last refresh: 2026-06-05 16:53
+- Last refresh: 2026-06-05 17:04
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,7 +24,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
 
@@ -37,7 +37,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 ## Agent Delegation
 
-- **Release Manager**: Run Resumely iOS live-device smoke, then prepare ASC upload. Evidence: PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md
+- **Release Manager**: Handle an App Store review outcome without reopening completed submission work. Evidence: PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md
 - **CEO OS**: Resolve the next portfolio decision and keep focus tight. Evidence: executive-os/EXECUTIVE-DASHBOARD.md, dashboard/status.json decisionBoard
 - **Director / Orchestrator**: Turn the current Action Board into one reviewable work packet. Evidence: dashboard/status.json priorityBoard and projectHealth
 - **QA**: Verify dashboard or product readiness with evidence. Evidence: GLOBAL-QA-RULES.md, dashboard runCenter checksRun

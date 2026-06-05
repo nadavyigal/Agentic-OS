@@ -40,10 +40,10 @@ PROJECT_ALIASES = {
 DEFAULT_AGENT_QUEUE = [
     {
         "role": "Release Manager",
-        "task": "Run Resumely iOS live-device smoke, then prepare ASC upload.",
-        "whenToUse": "Use when the next move touches App Store readiness, screenshots, smoke QA, or submission gates.",
+        "task": "Handle an App Store review outcome without reopening completed submission work.",
+        "whenToUse": "Use only after Apple approves, rejects, or requests information for either submitted app.",
         "evidence": "PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md",
-        "starter": "Act as the Release Manager for Resumely iOS. Read PROJECT-STATUS.md and the ResumeBuilder iOS tasks/session-log.md. Produce the exact smoke checklist, expected evidence, and ASC upload sequence. Do not submit or upload without explicit approval.",
+        "starter": "Act as Release Manager. Read dashboard/status.json and the target iOS repo tasks/progress.md plus tasks/session-log.md. If there is no new Apple review outcome, stop and report that monitoring is the only action. If Apple responded, create one focused response packet from the exact review message. Do not resubmit or change release scope without explicit approval.",
     },
     {
         "role": "CEO OS",
@@ -798,10 +798,11 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "  Codex       → paste as task context\n\n"
                         "--- WORK PACKET ---\n"
                     )
+                packet_status = clean_value(status_match.group(1)) if status_match else "Unknown"
                 registry["workPackets"].append(
                     {
                         "title": title,
-                        "status": clean_value(status_match.group(1)) if status_match else "Unknown",
+                        "status": packet_status,
                         "project": project_raw,
                         "repoId": repo_id,
                         "repoPath": repo_path,
@@ -812,7 +813,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "outcomeLoop": outcome_loop,
                         "successSignal": success_signal,
                         "path": str(packet.relative_to(root)),
-                        "copyPrompt": prompt_header + text,
+                        "copyPrompt": prompt_header + text if packet_status.lower().startswith("active") else None,
                     }
                 )
         loops_dir = exec_dir / "loops"
@@ -941,6 +942,7 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
     Links each work packet to the decision it came from (via 'Related decision: EXD-xxx').
     """
     packets = registry.get("workPackets", [])
+    active_packets = [packet for packet in packets if _packet_is_active(packet)]
     # Link packets to decisions by scanning each packet file for "Related decision: EXD-xxx".
     for packet in packets:
         related = None
@@ -969,7 +971,7 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
             {"name": "Project status", "what": "Per-project state, blockers, and next action."},
             {"name": "Executive review", "what": "CEO / COO / CFO / Analysis read status and add remarks."},
             {"name": "Decisions", "what": f"{len(open_decisions)} open of {len(decisions)} logged in EXECUTIVE-DECISIONS.md."},
-            {"name": "Work packets", "what": f"{len(packets)} active. One focused repo task per decision that needs execution."},
+            {"name": "Work packets", "what": f"{len(active_packets)} active, {len(packets)} total. Copy only Active packets; closed packets are history."},
             {"name": "Brainstorm / next moves", "what": ("Open ideas in NEXT-MOVES.md." if brainstorm.exists() else "Add executive-os/NEXT-MOVES.md to capture ideas.")},
         ],
         "openDecisions": open_decisions[:8],

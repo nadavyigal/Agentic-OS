@@ -14,7 +14,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | 2 | Yes (16) | Fresh | High | tasks/progress.md | 2026-06-05 524bc9a record Resumely App Store submission |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-05 59351f9 refresh dashboard after product status commits |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (11) | Fresh | High | tasks/progress.md | 2026-06-05 302e67f refresh dashboard after localhost restart |
 
 ## Evidence Gaps
 
@@ -60,7 +60,7 @@ Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the revi
 - RunSmart Web: 6 saved plan(s) — latest "RunSmart iOS App — Implementation Plan v2" (2026-03-17). See Saved Plans.
 - ResumeBuilder AI (Web): 2 saved plan(s) — latest "GTM Plan — ResumeBuilder iOS" (2026-05-28). See Saved Plans.
 - Agentic OS: 4 saved plan(s) — latest "Design: Pre-Launch Sprint — Two-Track GTM Prep" (2026-06-04). See Saved Plans.
-- Portfolio: 2 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
+- Portfolio: 4 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
 
 ### Blocked
 
@@ -69,7 +69,7 @@ Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the revi
 
 ## Agent Queue
 
-- **Release Manager** - Run Resumely iOS live-device smoke, then prepare ASC upload.
+- **Release Manager** - Handle an App Store review outcome without reopening completed submission work.
 - **CEO OS** - Resolve the next portfolio decision and keep focus tight.
 - **Director / Orchestrator** - Turn the current Action Board into one reviewable work packet.
 - **QA** - Verify dashboard or product readiness with evidence.
