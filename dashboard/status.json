@@ -575,7 +575,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 a2cf3af draft RunSmart founder launch post",
+        "lastCommit": "2026-06-05 419000b Run weekly executive review",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -782,7 +782,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 17:43",
+    "lastRefresh": "2026-06-05 17:50",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
     "sourcesRead": [
@@ -1296,7 +1296,7 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 a2cf3af draft RunSmart founder launch post",
+      "lastCommit": "2026-06-05 419000b Run weekly executive review",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1539,7 +1539,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 17:43",
+    "lastRunAt": "2026-06-05 17:50",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
