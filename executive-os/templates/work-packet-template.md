@@ -2,9 +2,20 @@
 
 A work packet is created only when a task must run inside a local project repo, the project is clear, the owner role is clear, the expected validation is clear, and the task fits one focused work session. Global-OS work is not packetized. Copy the block below and fill it in.
 
+Optional routing metadata defaults to `Workflow pattern: normal` and
+`Input trust: trusted`. Add an outcome loop only when the packet advances a
+multi-session business outcome.
+
 ---
 
 # Work Packet
+
+- Status: Draft
+- Source: [Plan, decision, or status source]
+- Workflow pattern: normal
+- Input trust: trusted
+- Outcome loop: [Optional loop slug]
+- Success signal: [Observable evidence or metric]
 
 ## Owner Role
 [Local role]

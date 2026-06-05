@@ -169,6 +169,95 @@ class TestDriftAndConfidence(unittest.TestCase):
         self.assertIn("re-validate", cli.confidence_directive("High", True).lower())
 
 
+class TestOSRegistry(unittest.TestCase):
+    def test_packet_metadata_defaults_remain_backward_compatible(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-1.md").write_text(
+                "# Work Packet WP-1 (Active)\n"
+                "- Status: Active\n"
+                "- Source: launch-plan.md\n\n"
+                "## Project\nExample\n\n"
+                "## Goal\nShip the change.\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            self.assertEqual(packet["workflowPattern"], "normal")
+            self.assertEqual(packet["inputTrust"], "trusted")
+            self.assertIsNone(packet["outcomeLoop"])
+            self.assertIsNone(packet["successSignal"])
+
+    def test_packet_metadata_and_operating_artifacts_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            packets = root / "executive-os" / "work-packets"
+            loops = root / "executive-os" / "loops"
+            context = root / "executive-os" / "context"
+            packets.mkdir(parents=True)
+            loops.mkdir(parents=True)
+            context.mkdir(parents=True)
+
+            (packets / "WP-1.md").write_text(
+                "# Work Packet WP-1 (Active)\n"
+                "- Status: Active\n"
+                "- Workflow pattern: independent-review\n"
+                "- Input trust: untrusted\n"
+                "- Outcome loop: resumely-submission\n"
+                "- Success signal: signed smoke evidence exists\n\n"
+                "## Project\nResumely iOS\n\n"
+                "## Goal\nProduce evidence.\n",
+                encoding="utf-8",
+            )
+            (loops / "README.md").write_text("# Outcome Loops\n", encoding="utf-8")
+            (loops / "resumely-submission.md").write_text(
+                "# Outcome Loop: Resumely Submission\n"
+                "- Status: active\n"
+                "- Owner: COO OS\n"
+                "- Outcome: approved and live with analytics verified\n"
+                "- Source: BUSINESS-GTM-PLAN-V0.md\n"
+                "- Linked packet: WP-1-resumely-device-smoke.md\n"
+                "- Leading signal: submit-ready evidence exists\n"
+                "- Result metric: App Store status is Ready for Sale\n"
+                "- Current milestone: authenticated device smoke\n"
+                "- Constraint: founder-controlled upload\n"
+                "- Last reviewed: 2026-06-05\n"
+                "- Evidence source: product tasks/progress.md\n"
+                "- Memory destination: product tasks/session-log.md\n"
+                "- Close condition: approved and analytics verified\n",
+                encoding="utf-8",
+            )
+            (context / "README.md").write_text("# Context Checkpoints\n", encoding="utf-8")
+            (context / "2026-06-05-offer.md").write_text(
+                "# Context Checkpoint: Offer\n"
+                "- Status: ready-for-promotion\n"
+                "- Topic: AI Audit offer\n"
+                "- Purpose: define the first sellable version\n"
+                "- Created: 2026-06-05\n"
+                "- Last updated: 2026-06-05\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+            packet = registry["workPackets"][0]
+            loop = registry["outcomeLoops"][0]
+            checkpoint = registry["contextCheckpoints"][0]
+
+            self.assertEqual(packet["workflowPattern"], "independent-review")
+            self.assertEqual(packet["inputTrust"], "untrusted")
+            self.assertEqual(packet["outcomeLoop"], "resumely-submission")
+            self.assertEqual(packet["successSignal"], "signed smoke evidence exists")
+            self.assertEqual(loop["status"], "active")
+            self.assertEqual(loop["owner"], "COO OS")
+            self.assertEqual(loop["resultMetric"], "App Store status is Ready for Sale")
+            self.assertEqual(checkpoint["status"], "ready-for-promotion")
+            self.assertEqual(checkpoint["topic"], "AI Audit offer")
+            self.assertEqual(len(registry["outcomeLoops"]), 1)
+            self.assertEqual(len(registry["contextCheckpoints"]), 1)
+
+
 class TestGtm(unittest.TestCase):
     def test_parse_gtm_present(self):
         with tempfile.TemporaryDirectory() as d:
@@ -314,20 +403,22 @@ class TestPortfolioTrust(unittest.TestCase):
         ]
 
     def test_synced_and_fresh_is_actionable(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
             self._health(),
             {"synced": True, "notes": []},
-            {"lastRefresh": "2026-06-04 09:00 IDT"},
+            {"lastRefresh": today_refresh},
             {"needsNextPacket": 1},
         )
         self.assertEqual(trust["level"], "caution")
         self.assertIn("Stale", " ".join(trust["reasons"]))
 
     def test_unsynced_is_refresh_required(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
             self._health(),
             {"synced": False, "notes": ["On branch 'feat', not main."]},
-            {"lastRefresh": "2026-06-04 09:00 IDT"},
+            {"lastRefresh": today_refresh},
         )
         self.assertEqual(trust["level"], "refresh_required")
 

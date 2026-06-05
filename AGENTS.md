@@ -94,6 +94,11 @@ Applies when the user pasted a work packet (or project copy prompt) that already
 
 Executive **reviews** (CEO, COO, CFO, Analysis weekly/monthly prompts) still follow their prompt workflows, not execution mode.
 
+If a packet declares `Workflow pattern`, follow the escalation table in
+`GLOBAL-WORKFLOWS.md`. `Workflow pattern` routes how work is performed; it does
+not replace or rename Execution mode. If `Input trust: untrusted`, apply the
+structured-extraction and approval controls in that same workflow file.
+
 Then execute. Go beyond the basics. Deliver like a real production build.
 
 ## Do NOT Introduce Unless Asked

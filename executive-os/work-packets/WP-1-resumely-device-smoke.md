@@ -3,6 +3,10 @@
 - Status: Active
 - Created: 2026-06-02
 - Source: BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)
+- Workflow pattern: normal
+- Input trust: trusted
+- Outcome loop: resumely-submission
+- Success signal: Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete.
 - Routed by: COO OS (first COO Operating Review run)
 - Escalation: none (CEO / CFO / Analysis / Risk all No)
 - Related decision: EXD-006 (Resumely ASC upload path)

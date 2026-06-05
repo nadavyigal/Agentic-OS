@@ -713,6 +713,16 @@ def _doc_summary(path: Path) -> tuple[str, str]:
     return title, purpose
 
 
+def _metadata_value(text: str, label: str) -> str | None:
+    """Read a top-level Markdown metadata line such as `- Status: active`."""
+    match = re.search(
+        rf"^\s*[-*]?\s*{re.escape(label)}:\s*(.+?)\s*$",
+        text,
+        re.IGNORECASE | re.MULTILINE,
+    )
+    return clean_value(match.group(1)) if match else None
+
+
 def build_os_registry(root: Path) -> dict[str, Any]:
     """Auto-discover the Agentic OS from the repo itself, in two plain groups.
 
@@ -720,13 +730,15 @@ def build_os_registry(root: Path) -> dict[str, Any]:
       status and make decisions. The matching agent file is just how each is run, so it is not
       listed separately (that double-listing was confusing).
     - skillAgents: the builders that execute work packets (architect, QA, release, etc.).
-    Work packets and commands are returned too, for the loop and commands sections.
+    Work packets, outcome loops, context checkpoints, and commands are returned too.
     Anything created under these folders surfaces on the next run — nothing can silently vanish.
     """
     registry: dict[str, Any] = {
         "commands": [{"name": name, "purpose": purpose} for name, purpose in OS_COMMANDS],
         "leadership": [],
         "workPackets": [],
+        "outcomeLoops": [],
+        "contextCheckpoints": [],
         "skillAgents": [],
     }
     exec_dir = root / "executive-os"
@@ -757,8 +769,11 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                     elif "agentic" in lower:
                         repo_id = "agentic-os"
                 goal = section_value(text, "## Goal")
-                source_match = re.search(r"Source:\s*(.+)", text, re.IGNORECASE)
-                packet_source = clean_value(source_match.group(1)) if source_match else None
+                packet_source = _metadata_value(text, "Source")
+                workflow_pattern = _metadata_value(text, "Workflow pattern") or "normal"
+                input_trust = _metadata_value(text, "Input trust") or "trusted"
+                outcome_loop = _metadata_value(text, "Outcome loop")
+                success_signal = _metadata_value(text, "Success signal")
                 # Build a copy-ready prompt: repo instruction + full packet body.
                 # This IS the prompt the founder pastes into Claude Code for that repo.
                 if repo_path:
@@ -789,8 +804,56 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "repoPath": repo_path,
                         "goal": goal,
                         "source": packet_source,
+                        "workflowPattern": workflow_pattern,
+                        "inputTrust": input_trust,
+                        "outcomeLoop": outcome_loop,
+                        "successSignal": success_signal,
                         "path": str(packet.relative_to(root)),
                         "copyPrompt": prompt_header + text,
+                    }
+                )
+        loops_dir = exec_dir / "loops"
+        if loops_dir.is_dir():
+            for loop_file in sorted(loops_dir.glob("*.md")):
+                if loop_file.name.lower() == "readme.md":
+                    continue
+                text = loop_file.read_text(encoding="utf-8", errors="replace")
+                title, _ = _doc_summary(loop_file)
+                registry["outcomeLoops"].append(
+                    {
+                        "title": title,
+                        "status": _metadata_value(text, "Status") or "unknown",
+                        "owner": _metadata_value(text, "Owner"),
+                        "outcome": _metadata_value(text, "Outcome"),
+                        "source": _metadata_value(text, "Source"),
+                        "linkedPacket": _metadata_value(text, "Linked packet"),
+                        "leadingSignal": _metadata_value(text, "Leading signal"),
+                        "resultMetric": _metadata_value(text, "Result metric"),
+                        "currentMilestone": _metadata_value(text, "Current milestone"),
+                        "constraint": _metadata_value(text, "Constraint"),
+                        "lastReviewed": _metadata_value(text, "Last reviewed"),
+                        "evidenceSource": _metadata_value(text, "Evidence source"),
+                        "memoryDestination": _metadata_value(text, "Memory destination"),
+                        "closeCondition": _metadata_value(text, "Close condition"),
+                        "path": str(loop_file.relative_to(root)),
+                    }
+                )
+        context_dir = exec_dir / "context"
+        if context_dir.is_dir():
+            for checkpoint_file in sorted(context_dir.glob("*.md"), reverse=True):
+                if checkpoint_file.name.lower() == "readme.md":
+                    continue
+                text = checkpoint_file.read_text(encoding="utf-8", errors="replace")
+                title, _ = _doc_summary(checkpoint_file)
+                registry["contextCheckpoints"].append(
+                    {
+                        "title": title,
+                        "status": _metadata_value(text, "Status") or "unknown",
+                        "topic": _metadata_value(text, "Topic"),
+                        "purpose": _metadata_value(text, "Purpose"),
+                        "created": _metadata_value(text, "Created"),
+                        "lastUpdated": _metadata_value(text, "Last updated"),
+                        "path": str(checkpoint_file.relative_to(root)),
                     }
                 )
     # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.
@@ -2255,7 +2318,12 @@ def refresh(args: argparse.Namespace) -> int:
     reg = status.get("osRegistry", {})
     leaders = [o["name"] for o in reg.get("leadership", [])]
     print(f"- Executive OS (leadership): {', '.join(leaders) if leaders else 'none found'}")
-    print(f"- work packets: {len(reg.get('workPackets', []))} | skill agents (builders): {len(reg.get('skillAgents', []))}")
+    print(
+        f"- work packets: {len(reg.get('workPackets', []))}"
+        f" | outcome loops: {len(reg.get('outcomeLoops', []))}"
+        f" | context checkpoints: {len(reg.get('contextCheckpoints', []))}"
+        f" | skill agents (builders): {len(reg.get('skillAgents', []))}"
+    )
     decisions = status.get("decisions", [])
     open_d = [d for d in decisions if d.get("status", "").lower().startswith("open")]
     print(f"- decisions: {len(open_d)} open of {len(decisions)} logged (decisions -> work packets)")

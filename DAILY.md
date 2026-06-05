@@ -41,6 +41,7 @@ Use when sequencing is unclear, you need a decision, or it is weekly review time
 | Weekly portfolio / tradeoffs | `PROMPTS/executive-weekly-review.md` + `executive-os/CEO-OS.md` |
 | Finance / pricing / monetization shape | `PROMPTS/cfo-monthly-review.md` + `executive-os/CFO-OS.md` |
 | Competitor / market research | `PROMPTS/analysis-research-sprint.md` + `executive-os/research/` |
+| Vague major idea before scoping | `PROMPTS/context-extraction.md` + `executive-os/workflows/context-extraction.md` |
 | New idea before it is a decision | `executive-os/NEXT-MOVES.md` |
 | Log or resolve a strategic call | `executive-os/EXECUTIVE-DECISIONS.md` |
 | Launch / channels / distribution | `distribution-os/` + project GTM plans (read in **weekly** review, not daily) |

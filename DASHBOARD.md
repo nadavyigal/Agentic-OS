@@ -1,18 +1,18 @@
 # Portfolio Dashboard
 
-Last updated: 2026-06-04 IDT
+Last updated: 2026-06-05 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — App Store submission readiness: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
-Best next action: Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect
+Best next action: Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build
 
 ## Run Center
 
-- Last refresh: 2026-06-04 20:40
+- Last refresh: 2026-06-05 12:57
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -21,10 +21,10 @@ Best next action: Resumely iOS: Unlock/authorize Apple Distribution private-key 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | App Store Review | After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post | Yes | Fresh | High |
-| Resumely iOS | App Store submission readiness | Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect | Yes | Fresh | High |
+| Resumely iOS | App Store submission readiness | Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | Yes | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
 
@@ -44,7 +44,7 @@ Best next action: Resumely iOS: Unlock/authorize Apple Distribution private-key 
 
 ## Evidence Gaps
 
-- Agentic OS: validated 2026-06-02, latest commit is newer.
+- None. Every project's validation is at least as recent as its last commit.
 
 ## Drift Warnings
 

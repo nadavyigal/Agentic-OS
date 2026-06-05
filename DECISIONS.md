@@ -40,3 +40,23 @@ Impact:
 - `PROJECT-STATUS.md`, `DASHBOARD.md`, and `executive-os/EXECUTIVE-DASHBOARD.md` surface the confidence column so a reader can tell parsed truth from narrative.
 - Agents must not treat a narrative-only (Low) status as confirmed; re-read the local repo before acting on it.
 
+## 2026-06-05: Escalation Patterns Stay Optional And Outcome-Led
+
+Decision: Keep normal work-packet execution as the default. Use only three
+optional workflow patterns (`parallel-research`, `independent-review`,
+`evaluator-loop`), treat input trust as a separate security property, and pilot
+one evidence-backed outcome loop before creating more.
+
+Reason: The daily OS is intentionally simple. Additional orchestration is useful
+only when it improves research coverage, independent review, measurable revision,
+or continuity across a real multi-session business outcome.
+
+Impact:
+
+- `Workflow pattern` does not replace Execution mode.
+- Untrusted external content is reduced to structured, source-linked facts before
+  it can drive actions; session separation alone is not a security boundary.
+- Context extraction remains an on-demand founder interview with an approval gate
+  before durable promotion.
+- Additional outcome-loop cards require two successful COO reviews of the pilot
+  without status duplication.

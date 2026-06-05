@@ -50,12 +50,15 @@ The current portfolio plan is `BUSINESS-GTM-PLAN-V0.md` (Business + GTM Plan v0 
 | Weekly CEO Review | `../DASHBOARD.md`, `../PROJECT-STATUS.md`, `PROMPTS/morning-brief.md` output, `PROMPTS/exec-review.md` output, `../distribution-os/weekly-growth-review.md`, `EXECUTIVE-DASHBOARD.md`, `EXECUTIVE-DECISIONS.md`, `EXECUTIVE-METRICS.md` |
 | Monthly Finance Review | `../distribution-os/metrics-dashboard.md`, `../distribution-os/data/source-of-truth-policy.md`, `EXECUTIVE-METRICS.md` |
 | Research Brief | `templates/evidence-table-template.md`, `templates/opportunity-card-template.md`, web/search tools when available |
+| Context Extraction | `workflows/context-extraction.md`, `templates/context-checkpoint-template.md`, `context/` |
 
 ## Folder Map
 
 - `agents/` — single-responsibility executive agent role definitions.
 - `workflows/` — step-by-step executive workflows.
 - `templates/` — blank templates for research, decisions, OKRs, finance.
+- `context/` — durable founder-interview checkpoints before promotion.
+- `loops/` — lightweight outcome loops that connect strategy to evidence.
 - Root docs — the three sub-OS, dashboard, decisions, metrics, rhythm, lessons,
   backlog.
 
@@ -67,6 +70,8 @@ Run these from `PROMPTS/` (root of the Agentic OS):
 - `PROMPTS/cfo-monthly-review.md` — run the Monthly Finance Review.
 - `PROMPTS/analysis-research-sprint.md` — run a research brief → evidence →
   opportunities.
+- `PROMPTS/context-extraction.md` — run a one-question-at-a-time founder
+  interview and save a durable checkpoint.
 
 ## What This Is Not
 
