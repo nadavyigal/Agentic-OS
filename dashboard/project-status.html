@@ -673,10 +673,10 @@
       },
       "localEvidence": {
         "branch": "main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 6,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 791e046 close stale submission packets",
+        "lastCommit": "2026-06-05 e16b086 refresh dashboard after packet closure",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -883,9 +883,9 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 17:05",
+    "lastRefresh": "2026-06-05 17:22",
     "command": "./agentic-os refresh",
-    "localhostUrl": "http://127.0.0.1:8787/index.html",
+    "localhostUrl": "http://127.0.0.1:8788/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -1393,11 +1393,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 6,
       "extraWorktrees": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 791e046 close stale submission packets",
+      "lastCommit": "2026-06-05 e16b086 refresh dashboard after packet closure",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1552,7 +1552,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1586,12 +1586,13 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 5,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1640,17 +1641,24 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 17:05",
+    "lastRunAt": "2026-06-05 17:22",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
-    "localhostUrl": "http://127.0.0.1:8787/index.html",
+    "localhostUrl": "http://127.0.0.1:8788/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main [ahead 1, behind 4]",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope"
+    "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
+    "nextActions": [
+      {
+        "title": "Restore dashboard trust",
+        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+        "type": "system"
+      }
+    ]
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
@@ -2100,11 +2108,10 @@
       "date": "2026-06-02",
       "area": "Release",
       "decision": "Resumely iOS App Store Connect upload path",
-      "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
+      "recommendation": "Use the founder-controlled App Store Connect path available at submission time.",
       "owner": "Nadav",
       "review": "2026-06-09",
-      "status": "Open",
-      "reviewOverdue": false
+      "status": "Decided"
     },
     {
       "id": "EXD-005",
@@ -2173,7 +2180,7 @@
       },
       {
         "name": "Decisions",
-        "what": "1 open of 9 logged in EXECUTIVE-DECISIONS.md."
+        "what": "0 open of 9 logged in EXECUTIVE-DECISIONS.md."
       },
       {
         "name": "Work packets",
@@ -2184,19 +2191,7 @@
         "what": "Open ideas in NEXT-MOVES.md."
       }
     ],
-    "openDecisions": [
-      {
-        "id": "EXD-006",
-        "date": "2026-06-02",
-        "area": "Release",
-        "decision": "Resumely iOS App Store Connect upload path",
-        "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
-        "owner": "Nadav",
-        "review": "2026-06-09",
-        "status": "Open",
-        "reviewOverdue": false
-      }
-    ],
+    "openDecisions": [],
     "workPackets": [
       {
         "title": "Work Packet WP-1 (Closed)",
@@ -2252,11 +2247,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 0,
+    "uncommitted": 4,
     "extraWorktrees": 0,
-    "synced": true,
+    "synced": false,
     "notes": [
-      "Clean: on main, fully committed, no stray worktrees."
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2331,10 +2326,10 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "actionable",
-    "label": "Actionable",
+    "level": "refresh_required",
+    "label": "Needs sync first",
     "reasons": [
-      "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -2342,6 +2337,14 @@
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (7)."
     ]
+  },
+  "latestCooReview": {
+    "reviewed": "2026-06-05",
+    "selectedNextAction": "Prepare the first RunSmart launch-window draft (A1 founder LinkedIn post) without publishing",
+    "actionType": "global-OS",
+    "source": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+    "revisitWhen": "Apple responds for either submitted app, or the next morning after 2026-06-05",
+    "path": "executive-os/COO-LATEST-REVIEW.md"
   }
 }
     </script>

@@ -480,6 +480,17 @@
         </aside>
       </section>
 
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Suggested next actions</p>
+            <h2>Choose one, not all</h2>
+          </div>
+          <p>Rebuilt after every morning or refresh from trust, active packets, plan state, and the latest COO review.</p>
+        </div>
+        <div id="founder-next-actions" class="grid"></div>
+      </section>
+
       <section class="panel" id="plan-execution-panel">
         <div class="panel-head">
           <div>
@@ -601,9 +612,9 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-05 17:05",
+      "lastRefresh": "2026-06-05 17:22",
       "command": "./agentic-os refresh",
-      "localhostUrl": "http://127.0.0.1:8787/index.html",
+      "localhostUrl": "http://127.0.0.1:8788/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
         "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -1111,11 +1122,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 6,
         "extraWorktrees": 0,
         "branch": "main",
-        "lastCommit": "2026-06-05 791e046 close stale submission packets",
+        "lastCommit": "2026-06-05 e16b086 refresh dashboard after packet closure",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-05",
@@ -1270,7 +1281,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1304,12 +1315,13 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 5,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -1784,11 +1796,10 @@
         "date": "2026-06-02",
         "area": "Release",
         "decision": "Resumely iOS App Store Connect upload path",
-        "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
+        "recommendation": "Use the founder-controlled App Store Connect path available at submission time.",
         "owner": "Nadav",
         "review": "2026-06-09",
-        "status": "Open",
-        "reviewOverdue": false
+        "status": "Decided"
       },
       {
         "id": "EXD-005",
@@ -1857,7 +1868,7 @@
         },
         {
           "name": "Decisions",
-          "what": "1 open of 9 logged in EXECUTIVE-DECISIONS.md."
+          "what": "0 open of 9 logged in EXECUTIVE-DECISIONS.md."
         },
         {
           "name": "Work packets",
@@ -1868,19 +1879,7 @@
           "what": "Open ideas in NEXT-MOVES.md."
         }
       ],
-      "openDecisions": [
-        {
-          "id": "EXD-006",
-          "date": "2026-06-02",
-          "area": "Release",
-          "decision": "Resumely iOS App Store Connect upload path",
-          "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
-          "owner": "Nadav",
-          "review": "2026-06-09",
-          "status": "Open",
-          "reviewOverdue": false
-        }
-      ],
+      "openDecisions": [],
       "workPackets": [
         {
           "title": "Work Packet WP-1 (Closed)",
@@ -1936,18 +1935,18 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 4,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "actionable",
-      "label": "Actionable",
+      "level": "refresh_required",
+      "label": "Needs sync first",
       "reasons": [
-        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
@@ -2149,6 +2148,7 @@
         if (safe) safe.textContent = runCenter.safeMode || "";
         renderTrustBanner();
         renderStatusRow();
+        renderFounderNextActions();
         renderPlanExecution();
         renderCommands();
         renderRegistry();
@@ -2220,6 +2220,24 @@
           card.append(top);
           if (plan.activePacket) card.append(make("p", "", `Packet: ${plan.activePacket}`));
           if (plan.note) card.append(make("p", "fine", plan.note));
+          root.append(card);
+        });
+      }
+
+      function renderFounderNextActions() {
+        const root = $("#founder-next-actions");
+        if (!root) return;
+        root.textContent = "";
+        const actions = (status.dailyRunResult || {}).nextActions || [];
+        if (!actions.length) {
+          root.append(make("p", "fine", "No next action generated. Run ./agentic-os refresh."));
+          return;
+        }
+        actions.forEach((action, index) => {
+          const card = make("article", "task-card");
+          card.append(make("p", "eyebrow", `${index + 1} · ${action.type || "action"}`));
+          card.append(make("h3", "", action.title || "Next action"));
+          card.append(make("p", "", action.detail || ""));
           root.append(card);
         });
       }

@@ -1694,6 +1694,7 @@ def build_daily_run_result(
     checks_status: str,
 ) -> dict[str, Any]:
     recommended = select_recommended_prompt(status, project_prompts)
+    next_actions = build_founder_next_actions(status)
     return {
         "lastCommand": command,
         "lastRunAt": now_label(),
@@ -1707,7 +1708,82 @@ def build_daily_run_result(
         "targetBranch": recommended.get("branch", "Unknown"),
         "readyForNextSession": checks_status == "Passed",
         "summary": status.get("summary", {}).get("bestNextAction", "Run the morning loop and choose the next project prompt."),
+        "nextActions": next_actions,
     }
+
+
+def parse_latest_coo_review(root: Path) -> dict[str, Any] | None:
+    path = root / "executive-os" / "COO-LATEST-REVIEW.md"
+    if not path.exists():
+        return None
+    text = path.read_text(encoding="utf-8", errors="replace")
+    return {
+        "reviewed": _metadata_value(text, "Reviewed"),
+        "selectedNextAction": _metadata_value(text, "Selected next action"),
+        "actionType": _metadata_value(text, "Action type"),
+        "source": _metadata_value(text, "Source"),
+        "revisitWhen": _metadata_value(text, "Revisit when"),
+        "path": str(path.relative_to(root)),
+    }
+
+
+def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
+    trust = status.get("portfolioTrust", {})
+    if trust.get("level") != "actionable":
+        return [{
+            "title": "Restore dashboard trust",
+            "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+            "type": "system",
+        }]
+
+    actions: list[dict[str, str]] = []
+    apps_in_review = [
+        project["name"]
+        for project in status.get("projectHealth", [])
+        if project.get("id") in APP_IDS and "review" in (project.get("state") or "").lower()
+    ]
+    if apps_in_review:
+        actions.append({
+            "title": "Check App Store Connect",
+            "detail": f"Check {', '.join(apps_in_review)}. If Apple has not responded, do not change the submitted builds.",
+            "type": "manual-founder",
+        })
+
+    active_packets = [
+        packet for packet in status.get("executiveLoop", {}).get("workPackets", [])
+        if _packet_is_active(packet)
+    ]
+    if active_packets:
+        packet = active_packets[0]
+        actions.append({
+            "title": f"Run active packet: {packet.get('title', 'work packet')}",
+            "detail": f"Copy it into {packet.get('repoId') or 'the target repo'} and execute one focused session.",
+            "type": "local-repo",
+        })
+    else:
+        review = status.get("latestCooReview") or {}
+        reviewed = parse_date(review.get("reviewed"))
+        fresh_review = bool(reviewed and reviewed.date() == datetime.now().date())
+        if fresh_review and review.get("selectedNextAction"):
+            actions.append({
+                "title": "Continue the COO-selected action",
+                "detail": review["selectedNextAction"],
+                "type": review.get("actionType") or "global-OS",
+            })
+        elif status.get("planExecution", {}).get("needsNextPacket", 0):
+            actions.append({
+                "title": "Run a COO operating review",
+                "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+                "type": "global-OS",
+            })
+
+    if len(actions) < 3:
+        actions.append({
+            "title": "Use the Weekly CEO Review only for a priority choice",
+            "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+            "type": "executive",
+        })
+    return actions[:3]
 
 
 def select_recommended_prompt(status: dict[str, Any], project_prompts: list[dict[str, Any]]) -> dict[str, Any]:
@@ -1781,6 +1857,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["planExecution"] = build_plan_execution_status(
         saved_plans, registry.get("workPackets", []), ROOT
     )
+    status["latestCooReview"] = parse_latest_coo_review(ROOT)
     status["portfolioTrust"] = build_portfolio_trust(
         project_health, status["repoIntegrity"], status["runCenter"], status["planExecution"]
     )
@@ -2385,6 +2462,9 @@ def refresh(args: argparse.Namespace) -> int:
           + (f" — {', '.join(plan_projects)}" if plan_projects else ""))
     gtm_projects = [p["name"] for p in status.get("projectHealth", []) if (p.get("gtm") or {}).get("exists")]
     print(f"- GTM plans: {', '.join(gtm_projects) if gtm_projects else 'none found'}")
+    print("- suggested next actions:")
+    for index, action in enumerate(status.get("dailyRunResult", {}).get("nextActions", []), start=1):
+        print(f"  {index}. {action.get('title')}: {action.get('detail')}")
     print("- sources read:")
     for source in status["runCenter"]["sourcesRead"]:
         print(f"  - {source}")

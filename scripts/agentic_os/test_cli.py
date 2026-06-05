@@ -484,6 +484,43 @@ class TestPortfolioTrust(unittest.TestCase):
         self.assertTrue(any("Extra product worktrees" in item for item in trust["hygieneWarnings"]))
 
 
+class TestFounderNextActions(unittest.TestCase):
+    def test_fresh_coo_review_replaces_repeat_review_suggestion(self):
+        status = {
+            "portfolioTrust": {"level": "actionable"},
+            "projectHealth": [
+                {"id": "runsmart-ios", "name": "RunSmart iOS", "state": "App Store Review"},
+                {"id": "resumebuilder-ios", "name": "Resumely iOS", "state": "App Store Review"},
+            ],
+            "executiveLoop": {"workPackets": []},
+            "planExecution": {"needsNextPacket": 2},
+            "latestCooReview": {
+                "reviewed": datetime.now().strftime("%Y-%m-%d"),
+                "selectedNextAction": "Draft the launch post.",
+                "actionType": "global-OS",
+            },
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Check App Store Connect")
+        self.assertEqual(actions[1]["title"], "Continue the COO-selected action")
+        self.assertFalse(any(action["title"] == "Run a COO operating review" for action in actions))
+
+    def test_missing_coo_review_suggests_review_when_plans_need_packets(self):
+        status = {
+            "portfolioTrust": {"level": "actionable"},
+            "projectHealth": [],
+            "executiveLoop": {"workPackets": []},
+            "planExecution": {"needsNextPacket": 1},
+            "latestCooReview": None,
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Run a COO operating review")
+
+
 class TestPlanExecutionStatus(unittest.TestCase):
     def test_active_packet_links_gtm_plan(self):
         saved = [

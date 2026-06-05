@@ -12,8 +12,8 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 ## Run Center
 
-- Last refresh: 2026-06-05 17:05
-- Localhost: `http://127.0.0.1:8787/index.html`
+- Last refresh: 2026-06-05 17:22
+- Localhost: `http://127.0.0.1:8788/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
 ## Project Health
@@ -24,7 +24,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
 
