@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 ## Run Center
 
-- Last refresh: 2026-06-05 16:47
+- Last refresh: 2026-06-05 16:49
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 

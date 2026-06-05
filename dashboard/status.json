@@ -90,11 +90,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "dirty": true,
-        "dirtyCount": 5,
+        "dirtyCount": 2,
         "extraWorktrees": 2,
-        "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
+        "lastCommit": "2026-06-05 4a230e5 record RunSmart build 9 App Store submission",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -223,11 +223,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main [behind 4]",
+        "branch": "main...origin/main [ahead 1, behind 4]",
         "dirty": true,
-        "dirtyCount": 20,
+        "dirtyCount": 16,
         "extraWorktrees": 7,
-        "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
+        "lastCommit": "2026-06-05 524bc9a record Resumely App Store submission",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -575,7 +575,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 6922a8a fix dashboard trust and surface research",
+        "lastCommit": "2026-06-05 d2ec66e refresh morning dashboard after submissions",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -782,7 +782,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 16:47",
+    "lastRefresh": "2026-06-05 16:49",
     "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -988,10 +988,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 5,
+      "dirtyCount": 2,
       "extraWorktrees": 2,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-06-05 4a230e5 record RunSmart build 9 App Store submission",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1071,10 +1071,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 20,
+      "dirtyCount": 16,
       "extraWorktrees": 7,
-      "branch": "main...origin/main [behind 4]",
-      "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
+      "branch": "main...origin/main [ahead 1, behind 4]",
+      "lastCommit": "2026-06-05 524bc9a record Resumely App Store submission",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1296,7 +1296,7 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 6922a8a fix dashboard trust and surface research",
+      "lastCommit": "2026-06-05 d2ec66e refresh morning dashboard after submissions",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1356,7 +1356,7 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "main...origin/main [ahead 1]",
       "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1391,7 +1391,7 @@
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "main...origin/main [behind 4]",
+      "branch": "main...origin/main [ahead 1, behind 4]",
       "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1539,15 +1539,15 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-05 16:47",
+    "lastRunAt": "2026-06-05 16:49",
     "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-05 16:47",
+    "checksCompletedAt": "2026-06-05 16:49",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "main...origin/main [behind 4]",
+    "targetBranch": "main...origin/main [ahead 1, behind 4]",
     "readyForNextSession": true,
     "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope"
   },
