@@ -673,10 +673,10 @@
       },
       "localEvidence": {
         "branch": "main",
-        "dirty": true,
-        "dirtyCount": 6,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 e16b086 refresh dashboard after packet closure",
+        "lastCommit": "2026-06-05 0fadd21 add COO review next-action guidance",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -883,7 +883,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 17:22",
+    "lastRefresh": "2026-06-05 17:23",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
     "sourcesRead": [
@@ -1393,11 +1393,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 6,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 e16b086 refresh dashboard after packet closure",
+      "lastCommit": "2026-06-05 0fadd21 add COO review next-action guidance",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1552,7 +1552,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1586,13 +1586,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1641,7 +1640,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 17:22",
+    "lastRunAt": "2026-06-05 17:23",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
@@ -1654,9 +1653,19 @@
     "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
     "nextActions": [
       {
-        "title": "Restore dashboard trust",
-        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-        "type": "system"
+        "title": "Check App Store Connect",
+        "detail": "Check RunSmart iOS, Resumely iOS. If Apple has not responded, do not change the submitted builds.",
+        "type": "manual-founder"
+      },
+      {
+        "title": "Continue the COO-selected action",
+        "detail": "Prepare the first RunSmart launch-window draft (A1 founder LinkedIn post) without publishing",
+        "type": "global-OS"
+      },
+      {
+        "title": "Use the Weekly CEO Review only for a priority choice",
+        "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+        "type": "executive"
       }
     ]
   },
@@ -2247,11 +2256,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 4,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -2326,10 +2335,10 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Needs sync first",
+    "level": "actionable",
+    "label": "Actionable",
     "reasons": [
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
