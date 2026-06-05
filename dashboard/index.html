@@ -601,7 +601,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-05 16:43",
+      "lastRefresh": "2026-06-05 16:47",
       "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1111,11 +1111,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 10,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main",
-        "lastCommit": "2026-06-05 f83fc05 refresh dashboard after advanced OS pilot",
+        "lastCommit": "2026-06-05 6922a8a fix dashboard trust and surface research",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-05",
@@ -1203,7 +1203,7 @@
           "docs/specs/e7-garmin-wearable-depth.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope. Known blockers: Apple review outcome for build 8 is external (submitted 2026-06-03).; If Apple rejects build 8 again, must triage feedback before v2 scope expands.; Voice coach VOICE_COACH_ENABLED not yet flipped to true in Vercel.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope. Known blockers: Apple review outcome is external. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
@@ -1226,7 +1226,7 @@
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -1270,7 +1270,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1304,13 +1304,12 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 5,
+      "dirtyProjectCount": 4,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)",
-        "Agentic OS"
+        "ResumeBuilder AI (Web)"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -1937,18 +1936,18 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 2,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Needs sync first",
+      "level": "actionable",
+      "label": "Actionable",
       "reasons": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "2 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 2,
