@@ -14,13 +14,13 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store submission readiness | Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70 |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (19) | Fresh | High | tasks/progress.md | 2026-06-04 b885a8c Merge pull request #7 from nadavyigal/claude/tender-tharp-8f23b7 |
+| Agentic OS | Dashboard trust upgrade (top-tier roadmap execution) | All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16 | 0 | Yes (7) | Fresh | High | tasks/progress.md | 2026-06-04 546437a Add daily OS path with portfolio trust and plan execution index. |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-02, last commit 2026-06-04 b885a8c Merge pull request #7 from nadavyigal/claude/tender-tharp-8f23b7
+- Agentic OS: validated 2026-06-02, last commit 2026-06-04 546437a Add daily OS path with portfolio trust and plan execution index.
 
 ## Drift Warnings
 

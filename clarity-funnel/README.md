@@ -2,14 +2,14 @@
 
 Guided AI work skill for everyday users and power builders. Clarifies goals, improves prompts, keeps chats aligned, reviews answers, and turns messy conversations into usable outcomes.
 
-**Hero moment:** copy-ready **PROMPT**. **Secondary:** **FINISH** checklist or work packet. **CLARIFY** is always first. **ALIGN** and **REVIEW** are embedded guardrails.
+**Everyday hero:** full **DELIVER** (designed plan) in **one session**. **FINISH** checklist at the end. No copy-paste to another chat. **Builder:** deliverable + work packet tail.
 
 ## Quick start
 
 1. Copy this folder to a skills directory (see below).
 2. Paste a messy chat, plan, or vague ask.
 3. Invoke **clarity-funnel** (or use the one-shot opener on the landing page).
-4. Copy **PROMPT** into your next AI chat; use **FINISH** to close the loop.
+4. Read your plan and checklist; refine in the same chat if needed.
 
 ## Demo input
 
@@ -50,7 +50,7 @@ For hackathon/demo: host `landing/` on GitHub Pages or Vercel and point a QR cod
 ## Pipeline
 
 ```text
-CLARIFY → ALIGN (silent) → REVIEW (silent) → PROMPT → FINISH
+Everyday: CLARIFY → ALIGN (silent) → REVIEW (silent) → DELIVER → FINISH
 ```
 
 ## Profiles
