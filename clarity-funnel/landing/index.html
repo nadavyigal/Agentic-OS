@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clarity Funnel — QR AI work skill</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f1a;
+      --surface: #151d33;
+      --text: #e8edf9;
+      --muted: #93a0c2;
+      --line: #263354;
+      --blue: #6ea8fe;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--bg), #11172a);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 1.75rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); margin: 0 0 28px; font-size: 1.05rem; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+    .tab {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 600;
+      text-align: center;
+    }
+    .tab.active {
+      border-color: var(--blue);
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(110,168,254,0.15), rgba(34,211,238,0.08));
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card h2 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 12px; }
+    .card p { margin: 0 0 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    pre {
+      background: #0a0e18;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      font-size: 0.82rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #06122b;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+    .steps { padding-left: 1.2rem; margin: 0; }
+    .steps li { margin-bottom: 8px; color: var(--muted); }
+    .steps strong { color: var(--text); }
+    .tag { display: inline-block; font-size: 0.75rem; padding: 2px 8px; border-radius: 6px; background: rgba(52,211,153,0.15); color: var(--green); margin-right: 6px; }
+    .hidden { display: none; }
+    footer { margin-top: 40px; font-size: 0.8rem; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Clarity Funnel</h1>
+    <p class="sub">Turn messy AI chats into prompts that work. Clarify → copy-ready prompt → finished outcome.</p>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab active" data-profile="everyday" role="tab" aria-selected="true">Everyday</button>
+      <button type="button" class="tab" data-profile="builder" role="tab" aria-selected="false">Builder</button>
+    </div>
+
+    <div id="panel-everyday">
+      <div class="card">
+        <h2>Try it</h2>
+        <p>Paste this into any chat after installing the skill, or use it as a demo input:</p>
+        <pre id="demo-input-everyday">Help me create a strategy for my team to start using AI better at work. We tried a few tools but people are confused and I want a clear plan.</pre>
+        <button type="button" class="btn" data-copy="demo-input-everyday">Copy demo input</button>
+      </div>
+      <div class="card">
+        <h2>What you get</h2>
+        <p><span class="tag">1</span> <strong>CLARIFY</strong> — one-sentence goal and what to cut</p>
+        <p><span class="tag">2</span> <strong>PROMPT</strong> — copy block for your next AI chat (hero)</p>
+        <p><span class="tag">3</span> <strong>FINISH</strong> — checklist and summary you can save</p>
+        <p style="color: var(--muted); font-size: 0.9rem;">Align and review run inside the skill so chats stay focused.</p>
+      </div>
+    </div>
+
+    <div id="panel-builder" class="hidden">
+      <div class="card">
+        <h2>Try it</h2>
+        <p>Same messy input — builder profile emits a work packet and a strict planning prompt:</p>
+        <pre id="demo-input-builder">Help me create a strategy for my team to start using AI better at work. We tried a few tools but people are confused and I want a clear plan.</pre>
+        <button type="button" class="btn" data-copy="demo-input-builder">Copy demo input</button>
+      </div>
+      <div class="card">
+        <h2>What you get</h2>
+        <p><span class="tag">1</span> Goal, scope cuts, validation table</p>
+        <p><span class="tag">2</span> Execution-style <strong>PROMPT</strong> with constraints</p>
+        <p><span class="tag">3</span> <strong>FINISH</strong> work packet + session handoff</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Install — Cursor</h2>
+      <ol class="steps">
+        <li>Copy the skill folder to <strong>~/.cursor/skills/clarity-funnel/</strong> (or <strong>.cursor/skills/clarity-funnel/</strong> in a project).</li>
+        <li>Ensure <strong>SKILL.md</strong> and <strong>profiles/</strong> are inside that folder.</li>
+        <li>In Cursor, invoke <strong>clarity-funnel</strong> or say: "Run Clarity Funnel on this paste."</li>
+      </ol>
+      <button type="button" class="btn secondary" id="copy-cursor-hint">Copy install path hint</button>
+    </div>
+
+    <div class="card">
+      <h2>Install — any chat (no install)</h2>
+      <p>Paste this one-shot line, then your messy paragraph:</p>
+      <pre id="oneshot-prompt">Act as Clarity Funnel (everyday profile). Steps: (1) CLARIFY — one-sentence goal, cut list, optional A/B/C focus with default. (2) Silently align and review — stay scoped, no strategy bloat. (3) PROMPT — one copy block for my next chat. (4) FINISH — checklist and short summary. Compress, don't lecture. Here is my input:</pre>
+      <button type="button" class="btn" data-copy="oneshot-prompt">Copy one-shot opener</button>
+    </div>
+
+    <div class="card">
+      <h2>Install — Claude Code</h2>
+      <ol class="steps">
+        <li>Copy <strong>clarity-funnel/</strong> to <strong>~/.claude/skills/clarity-funnel/</strong>.</li>
+        <li>Run <strong>/clarity-funnel</strong> or ask Claude to read the skill and process your paste.</li>
+      </ol>
+    </div>
+
+    <footer>
+      Clarity Funnel · QR-addable AI work skill · Not office-hours — get what you meant out of this chat.
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panelEveryday = document.getElementById("panel-everyday");
+    const panelBuilder = document.getElementById("panel-builder");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        const profile = tab.dataset.profile;
+        panelEveryday.classList.toggle("hidden", profile !== "everyday");
+        panelBuilder.classList.toggle("hidden", profile !== "builder");
+      });
+    });
+
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-copy");
+        const el = document.getElementById(id);
+        if (!el) return;
+        navigator.clipboard.writeText(el.textContent.trim()).then(() => {
+          const label = btn.textContent;
+          btn.textContent = "Copied!";
+          setTimeout(() => { btn.textContent = label; }, 1500);
+        });
+      });
+    });
+
+    document.getElementById("copy-cursor-hint").addEventListener("click", () => {
+      const text = "~/.cursor/skills/clarity-funnel/  (copy entire clarity-funnel folder: SKILL.md + profiles/)";
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("copy-cursor-hint");
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = "Copy install path hint"; }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>
