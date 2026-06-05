@@ -170,6 +170,34 @@ class TestDriftAndConfidence(unittest.TestCase):
 
 
 class TestOSRegistry(unittest.TestCase):
+    def test_side_projects_and_research_topics_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            side_project = root / "clarity-funnel"
+            research = root / "executive-os" / "research"
+            side_project.mkdir(parents=True)
+            research.mkdir(parents=True)
+            (side_project / "README.md").write_text(
+                "# Clarity Funnel\n\nA structured brainstorm for testing a new project idea.\n",
+                encoding="utf-8",
+            )
+            (side_project / "SKILL.md").write_text("# Skill\n", encoding="utf-8")
+            (research / "README.md").write_text("# Research\n", encoding="utf-8")
+            (research / "2026-06-05-new-project.md").write_text(
+                "# New Project Research\n\nEvidence and questions for a possible product.\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+
+            self.assertEqual(registry["sideProjects"][0]["name"], "Clarity Funnel")
+            self.assertEqual(registry["sideProjects"][0]["path"], "clarity-funnel/README.md")
+            self.assertEqual(registry["researchTopics"][0]["name"], "New Project Research")
+            self.assertEqual(
+                registry["researchTopics"][0]["path"],
+                "executive-os/research/2026-06-05-new-project.md",
+            )
+
     def test_packet_metadata_defaults_remain_backward_compatible(self):
         with tempfile.TemporaryDirectory() as d:
             packets = Path(d) / "executive-os" / "work-packets"
@@ -421,6 +449,39 @@ class TestPortfolioTrust(unittest.TestCase):
             {"lastRefresh": today_refresh},
         )
         self.assertEqual(trust["level"], "refresh_required")
+
+    def test_dirty_apps_are_hygiene_warnings_not_evidence_failures(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        health = [
+            {
+                "id": "runsmart-ios",
+                "name": "RunSmart iOS",
+                "freshness": "Fresh",
+                "dirty": True,
+                "dirtyCount": 2,
+                "extraWorktrees": 1,
+                "sourceConfidence": "High",
+            },
+            {
+                "id": "resumebuilder-ios",
+                "name": "Resumely iOS",
+                "freshness": "Fresh",
+                "dirty": True,
+                "dirtyCount": 3,
+                "extraWorktrees": 7,
+                "sourceConfidence": "High",
+            },
+        ]
+
+        trust = cli.build_portfolio_trust(
+            health,
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+
+        self.assertEqual(trust["level"], "actionable")
+        self.assertTrue(any("Uncommitted files" in item for item in trust["hygieneWarnings"]))
+        self.assertTrue(any("Extra product worktrees" in item for item in trust["hygieneWarnings"]))
 
 
 class TestPlanExecutionStatus(unittest.TestCase):

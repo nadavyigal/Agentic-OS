@@ -167,6 +167,7 @@ class ProjectEvidence:
     branch: str
     dirty: bool
     dirty_count: int
+    extra_worktrees: int
     last_commit: str
     source_files: list[str]
     task_parse: dict[str, Any] = field(default_factory=dict)
@@ -740,6 +741,8 @@ def build_os_registry(root: Path) -> dict[str, Any]:
         "outcomeLoops": [],
         "contextCheckpoints": [],
         "skillAgents": [],
+        "sideProjects": [],
+        "researchTopics": [],
     }
     exec_dir = root / "executive-os"
     if exec_dir.is_dir():
@@ -856,6 +859,19 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "path": str(checkpoint_file.relative_to(root)),
                     }
                 )
+        research_dir = exec_dir / "research"
+        if research_dir.is_dir():
+            for research_file in sorted(research_dir.glob("*.md"), reverse=True):
+                if research_file.name.lower() == "readme.md":
+                    continue
+                title, purpose = _doc_summary(research_file)
+                registry["researchTopics"].append(
+                    {
+                        "name": title,
+                        "purpose": purpose,
+                        "path": str(research_file.relative_to(root)),
+                    }
+                )
     # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.
     dist_readme = root / "distribution-os" / "README.md"
     if dist_readme.exists():
@@ -866,6 +882,20 @@ def build_os_registry(root: Path) -> dict[str, Any]:
         for skill in sorted(skills_dir.glob("*.md")):
             title, purpose = _doc_summary(skill)
             registry["skillAgents"].append({"name": title, "purpose": purpose, "path": str(skill.relative_to(root))})
+    for candidate in sorted(root.iterdir()) if root.is_dir() else []:
+        if not candidate.is_dir() or candidate.name.startswith("."):
+            continue
+        readme = candidate / "README.md"
+        skill = candidate / "SKILL.md"
+        if readme.exists() and skill.exists():
+            title, purpose = _doc_summary(readme)
+            registry["sideProjects"].append(
+                {
+                    "name": title,
+                    "purpose": purpose,
+                    "path": str(readme.relative_to(root)),
+                }
+            )
     return registry
 
 
@@ -1144,6 +1174,11 @@ def build_portfolio_trust(
     apps = [p for p in project_health if p.get("id") in APP_IDS]
     stale_apps = [p["name"] for p in apps if p.get("freshness") == "Stale"]
     dirty_apps = [p["name"] for p in apps if p.get("dirty")]
+    app_worktrees = [
+        f"{p['name']} ({p.get('extraWorktrees', 0)})"
+        for p in apps
+        if p.get("extraWorktrees", 0)
+    ]
     low_conf = [
         p["name"]
         for p in apps
@@ -1162,9 +1197,6 @@ def build_portfolio_trust(
         if stale_apps:
             level = "caution"
             reasons.append(f"Stale progress evidence: {', '.join(stale_apps)}.")
-        if dirty_apps:
-            level = "caution"
-            reasons.append(f"Dirty repos: {', '.join(dirty_apps)}.")
         if low_conf:
             level = "caution"
             reasons.append(f"Low source confidence: {', '.join(low_conf)}.")
@@ -1182,12 +1214,19 @@ def build_portfolio_trust(
     if not reasons:
         reasons.append("Sync clean, refreshed today, app evidence is current enough to act.")
 
+    hygiene_warnings: list[str] = []
+    if dirty_apps:
+        hygiene_warnings.append(f"Uncommitted files in product repos: {', '.join(dirty_apps)}.")
+    if app_worktrees:
+        hygiene_warnings.append(f"Extra product worktrees retained for review: {', '.join(app_worktrees)}.")
+
     return {
         "level": level,
         "label": labels[level],
         "reasons": reasons,
         "refreshToday": refresh_today,
         "needsNextPacketCount": needs,
+        "hygieneWarnings": hygiene_warnings,
     }
 
 
@@ -1326,6 +1365,7 @@ def collect_evidence() -> list[ProjectEvidence]:
         branch = "missing"
         dirty = False
         dirty_count = 0
+        extra_worktrees = 0
         last_commit = "No git data"
 
         if exists:
@@ -1352,6 +1392,13 @@ def collect_evidence() -> list[ProjectEvidence]:
             if commit.returncode == 0 and commit.stdout.strip():
                 last_commit = commit.stdout.strip()
 
+            worktrees = run(["git", "worktree", "list", "--porcelain"], cwd=path)
+            if worktrees.returncode == 0:
+                worktree_count = sum(
+                    1 for line in worktrees.stdout.splitlines() if line.startswith("worktree ")
+                )
+                extra_worktrees = max(0, worktree_count - 1)
+
         gtm = parse_gtm(path) if exists else {"exists": False, "path": None, "positioning": None, "status": None, "lastUpdated": None}
         if gtm.get("exists") and gtm.get("path"):
             sources.append(gtm["path"])
@@ -1370,6 +1417,7 @@ def collect_evidence() -> list[ProjectEvidence]:
                 branch=branch,
                 dirty=dirty,
                 dirty_count=dirty_count,
+                extra_worktrees=extra_worktrees,
                 last_commit=last_commit,
                 source_files=sources,
                 task_parse=parse_task_files(path),
@@ -1441,6 +1489,7 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "plans": item.plans or [],
                 "dirty": item.dirty,
                 "dirtyCount": item.dirty_count,
+                "extraWorktrees": item.extra_worktrees,
                 "branch": item.branch,
                 "lastCommit": item.last_commit,
                 "stale": freshness == "Stale" or not item.exists,
@@ -1486,7 +1535,7 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
     for health in project_health:
         project = projects.get(health["id"], {})
         role = PROJECT_PROMPT_ROLES.get(health["id"], "Project Operator")
-        blockers = project.get("blockers") or []
+        blockers = health.get("blockers") or project.get("blockers") or []
         source_files = health.get("sourceFiles") or []
         source_list = ", ".join(source_files[:4]) if source_files else "tasks/MEMORY.md if present"
         next_action = health.get("nextAction") or project.get("nextRecommendedStory") or "Choose the smallest useful next action."
@@ -1760,12 +1809,6 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         checks_status="Pending verify",
     )
 
-    dirty_projects = [p["name"] for p in project_health if p["dirty"]]
-    if dirty_projects:
-        status.setdefault("summary", {})["mainBlockers"] = list(
-            dict.fromkeys(status.get("summary", {}).get("mainBlockers", []) + [f"Dirty local repo state: {', '.join(dirty_projects)}."])
-        )
-
     for project in status.get("projects", []):
         parse = parse_by_id.get(project.get("id"))
         if parse is not None:
@@ -1796,11 +1839,13 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
                 value = parse.get(parsed_key)
                 if value:
                     project[display_key] = value
+            project["blockers"] = health.get("blockers") or []
 
         project["localEvidence"] = {
             "branch": health["branch"],
             "dirty": health["dirty"],
             "dirtyCount": health["dirtyCount"],
+            "extraWorktrees": health["extraWorktrees"],
             "lastCommit": health["lastCommit"],
             "sourceFiles": health["sourceFiles"],
             "sourceConfidence": health["sourceConfidence"],

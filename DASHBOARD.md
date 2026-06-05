@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — App Store Review: After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post · Resumely iOS — App Store submission readiness: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope · Resumely iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
-Best next action: Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build
+Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope
 
 ## Run Center
 
-- Last refresh: 2026-06-05 12:58
+- Last refresh: 2026-06-05 16:43
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,11 +20,11 @@ Best next action: Resumely iOS: Upload the screenshot folders in App Store Conne
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review | After review approval — merge version-2 to main, update PROJECT-STATUS.md, publish launch post | Yes | Fresh | High |
-| Resumely iOS | App Store submission readiness | Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build | Yes | Fresh | High |
+| RunSmart iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope | Yes | Fresh | High |
+| Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
 

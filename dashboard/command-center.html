@@ -558,16 +558,15 @@
   "generated": "2026-06-05",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
-      "bestNextAction": "Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build",
+      "overallStatus": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+      "bestNextAction": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
       "mainBlockers": [
         "RunSmart iOS: Apple review outcome is external",
-        "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+        "Resumely iOS: Apple review outcome is external",
         "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
         "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
         "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
-        "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.",
-        "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web)."
+        "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
       ],
       "needsDecision": [
         "RunSmart iOS: if build 8 is rejected again, decide minimal fix scope vs. expanding to v2 feature set.",
@@ -579,8 +578,8 @@
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
-        "Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build"
+        "RunSmart iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
+        "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope"
       ],
       "next": [
         "RunSmart Web: Triage modified/untracked files before more web work.",
@@ -598,11 +597,11 @@
       ],
       "blocked": [
         "RunSmart iOS: Apple review outcome is external",
-        "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)"
+        "Resumely iOS: Apple review outcome is external"
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-05 12:58",
+      "lastRefresh": "2026-06-05 16:43",
       "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -674,7 +673,7 @@
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
         "state": "App Store Review",
-        "nextAction": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
         "blockerCount": 1,
         "blockers": [
           "Apple review outcome is external"
@@ -808,14 +807,15 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 3,
+        "dirtyCount": 5,
+        "extraWorktrees": 2,
         "branch": "main...origin/main",
         "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-03",
+        "freshestDate": "2026-06-05",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-03",
+        "evidenceDate": "2026-06-05",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -845,18 +845,18 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "Build 8 archived and uploaded 2026-06-03. All tests passed. Visual QA passed on iPhone 17 Pro, iPhone 17 Pro Max, iPad Air 11-inch (M3). Onboarding scroll fix confirmed in code review and build. Bug review passed (checks A, B, E, F, G automated; checks C, D require manual verification after sign-in). Executive OS gate passed",
-        "parsedLastUpdated": "2026-06-03",
-        "parsedActiveStory": "Monitor Apple review; respond to feedback if rejected again"
+        "parsedLastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
+        "parsedLastUpdated": "2026-06-05",
+        "parsedActiveStory": "Monitor Apple review for RunSmart 1.0.1 build 9"
       },
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "App Store submission readiness",
-        "nextAction": "Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build",
+        "state": "App Store Review",
+        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
         "blockerCount": 2,
         "blockers": [
-          "App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+          "Apple review outcome is external",
           "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
         ],
         "gtm": {
@@ -891,6 +891,7 @@
         ],
         "dirty": true,
         "dirtyCount": 20,
+        "extraWorktrees": 7,
         "branch": "main...origin/main [behind 4]",
         "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
         "stale": false,
@@ -915,9 +916,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "App Store screenshot correction pass (2026-06-05): 10 fresh native simulator captures validated as unique opaque RGB PNGs at the portal-requested 1242x2688; screenshots 1, 6, and 10 visually inspected",
+        "parsedLastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
         "parsedLastUpdated": "2026-06-05",
-        "parsedActiveStory": "App Store screenshot generator complete \u2014 upload-ready iPhone and iPad folders generated"
+        "parsedActiveStory": "Monitor Apple review for Resumely 1.0 build 1"
       },
       {
         "id": "runsmart-web",
@@ -981,6 +982,7 @@
         ],
         "dirty": true,
         "dirtyCount": 36,
+        "extraWorktrees": 1,
         "branch": "main...origin/main [ahead 2]",
         "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
         "stale": false,
@@ -1042,6 +1044,7 @@
         ],
         "dirty": true,
         "dirtyCount": 2,
+        "extraWorktrees": 1,
         "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
         "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
         "stale": false,
@@ -1108,10 +1111,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 10,
+        "extraWorktrees": 0,
         "branch": "main",
-        "lastCommit": "2026-06-05 e40aed7 add advanced OS patterns lean pilot",
+        "lastCommit": "2026-06-05 f83fc05 refresh dashboard after advanced OS pilot",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-05",
@@ -1172,7 +1176,7 @@
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
         "branch": "main...origin/main",
-        "nextAction": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -1199,7 +1203,7 @@
           "docs/specs/e7-garmin-wearable-depth.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post. Known blockers: Apple review outcome for build 8 is external (submitted 2026-06-03).; If Apple rejects build 8 again, must triage feedback before v2 scope expands.; Voice coach VOICE_COACH_ENABLED not yet flipped to true in Vercel.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope. Known blockers: Apple review outcome for build 8 is external (submitted 2026-06-03).; If Apple rejects build 8 again, must triage feedback before v2 scope expands.; Voice coach VOICE_COACH_ENABLED not yet flipped to true in Vercel.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
@@ -1207,7 +1211,7 @@
         "role": "iOS Release Manager",
         "repoState": "Dirty",
         "branch": "main...origin/main [behind 4]",
-        "nextAction": "Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build",
+        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -1222,7 +1226,7 @@
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -1266,7 +1270,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1283,8 +1287,8 @@
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build",
-      "portfolioState": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Upload the screenshot folders in App Store Connect, then authorize the Apple Distribution key and upload the build \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+      "headline": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
+      "portfolioState": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1292,7 +1296,7 @@
       ],
       "risks": [
         "RunSmart iOS: Apple review outcome is external",
-        "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+        "Resumely iOS: Apple review outcome is external",
         "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
         "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
         "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
@@ -1300,12 +1304,13 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 5,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -1718,6 +1723,30 @@
           "purpose": "Reviews and improves user experience, visual quality, layout, copy, and platform fit.",
           "path": "SKILLS/ui-ux-agent.md"
         }
+      ],
+      "sideProjects": [
+        {
+          "name": "Clarity Funnel",
+          "purpose": "Session companion for AI chats. Helps everyday users feel the conversation is **staying on track** and getting **clearer over time** \u2014 not one-shot plans or...",
+          "path": "clarity-funnel/README.md"
+        }
+      ],
+      "researchTopics": [
+        {
+          "name": "Analysis OS \u2014 Competitor Pricing Research Brief",
+          "purpose": "1. **RunSmart paywall line is validated**: Adaptive week 2+ plans are gated by the closest direct competitor (Runna). This is the right cut.",
+          "path": "executive-os/research/WP-2-competitor-pricing-research.md"
+        },
+        {
+          "name": "Research Brief: \u05d7\u05d1\u05d5\u05e8\u05ea \u05d4\u05de\u05d5\u05e0\u05d3\u05d9\u05d0\u05dc \u2014 New Product Opportunity Assessment",
+          "purpose": "1. FIFA World Cup 2026 opens June 11, 2026, and closes July 19, 2026 \u2014 39 days of tournament. 48 teams, 104 matches across 3 host countries (USA, Canada, Mex...",
+          "path": "executive-os/research/2026-05-31-chavurat-hamundial-research-brief.md"
+        },
+        {
+          "name": "Opportunity Card OC-001: \u05d7\u05d1\u05d5\u05e8\u05ea \u05d4\u05de\u05d5\u05e0\u05d3\u05d9\u05d0\u05dc \u2014 Web MVP Launch by June 7",
+          "purpose": "",
+          "path": "executive-os/research/2026-05-31-chavurat-hamundial-opportunity-card.md"
+        }
       ]
     },
     "decisions": [
@@ -1908,21 +1937,25 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 2,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "caution",
-      "label": "Use caution",
+      "level": "refresh_required",
+      "label": "Needs sync first",
       "reasons": [
-        "Dirty repos: RunSmart iOS, Resumely iOS."
+        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
-      "needsNextPacketCount": 2
+      "needsNextPacketCount": 2,
+      "hygieneWarnings": [
+        "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+        "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (7)."
+      ]
     },
     "planExecution": {
       "plans": [
@@ -2149,6 +2182,13 @@
         const ul = make("ul");
         (trust.reasons || []).forEach((r) => ul.append(make("li", "", r)));
         root.append(ul);
+        const hygiene = trust.hygieneWarnings || [];
+        if (hygiene.length) {
+          root.append(make("p", "eyebrow", "Git hygiene, separate from evidence trust"));
+          const hygieneList = make("ul");
+          hygiene.forEach((item) => hygieneList.append(make("li", "", item)));
+          root.append(hygieneList);
+        }
       }
 
       function renderPlanExecution() {
@@ -2308,7 +2348,9 @@
         const reg = status.osRegistry || {};
         const groups = [
           ["Executive OS — your leadership (reviews status, makes decisions)", reg.leadership],
-          ["Skill agents — your builders (execute the work packets)", reg.skillAgents]
+          ["Skill agents — your builders (execute the work packets)", reg.skillAgents],
+          ["Side projects and brainstorms", reg.sideProjects],
+          ["Research topics", reg.researchTopics]
         ];
         groups.forEach(([label, items]) => {
           if (!items || !items.length) return;
@@ -2350,14 +2392,16 @@
         }
         root.append(loopBlock);
 
-        const checkpoints = (reg.contextCheckpoints || []).filter((item) => {
+        const allCheckpoints = reg.contextCheckpoints || [];
+        const activeCheckpoints = allCheckpoints.filter((item) => {
           const state = (item.status || "").toLowerCase();
           return state === "open" || state === "ready-for-promotion";
         });
+        const checkpoints = activeCheckpoints.length ? activeCheckpoints : allCheckpoints;
         const contextBlock = make("div");
-        contextBlock.append(make("p", "eyebrow", `Context checkpoints (${checkpoints.length} open or ready · ${(reg.contextCheckpoints || []).length} total)`));
+        contextBlock.append(make("p", "eyebrow", `Context checkpoints (${activeCheckpoints.length} open or ready · ${allCheckpoints.length} total)`));
         if (!checkpoints.length) {
-          contextBlock.append(make("p", "fine", "No open founder interviews."));
+          contextBlock.append(make("p", "fine", "No founder interviews or promoted context checkpoints indexed."));
         } else {
           const grid = make("div", "grid");
           checkpoints.slice(0, 3).forEach((item) => {
@@ -2377,10 +2421,12 @@
         root.textContent = "";
         const health = status.projectHealth || [];
         const dirty = health.filter((p) => p.dirty).length;
+        const worktrees = health.reduce((sum, p) => sum + Number(p.extraWorktrees || 0), 0);
         const blockers = health.reduce((sum, p) => sum + Number(p.blockerCount || 0), 0);
         const pills = [
           { label: `${health.length} projects checked`, tone: "good" },
           { label: `${dirty} dirty repos`, tone: dirty ? "warn" : "good" },
+          { label: `${worktrees} extra worktrees`, tone: worktrees ? "warn" : "good" },
           { label: `${blockers} blockers`, tone: blockers ? "warn" : "good" }
         ];
         pills.forEach((pill) => root.append(make("span", `pill ${pill.tone}`, pill.label)));
@@ -2450,7 +2496,8 @@
           const conf = project.sourceConfidence || "Unknown";
           meta.append(
             make("span", fresh === "Stale" ? "pill warn" : "pill good", `Freshness: ${fresh}`),
-            make("span", /high/i.test(conf) ? "pill good" : /medium/i.test(conf) ? "pill warn" : "pill warn", `Confidence: ${conf}`)
+            make("span", /high/i.test(conf) ? "pill good" : /medium/i.test(conf) ? "pill warn" : "pill warn", `Confidence: ${conf}`),
+            make("span", project.extraWorktrees ? "pill warn" : "pill good", `${project.extraWorktrees || 0} extra worktrees`)
           );
           card.append(meta);
           card.append(make("p", "", project.state || "Unknown"));
