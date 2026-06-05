@@ -575,7 +575,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 0fadd21 add COO review next-action guidance",
+        "lastCommit": "2026-06-05 e861178 simplify command center daily flow",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -782,7 +782,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 17:23",
+    "lastRefresh": "2026-06-05 17:36",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
     "sourcesRead": [
@@ -1296,7 +1296,7 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main",
-      "lastCommit": "2026-06-05 0fadd21 add COO review next-action guidance",
+      "lastCommit": "2026-06-05 e861178 simplify command center daily flow",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-05",
@@ -1539,7 +1539,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 17:23",
+    "lastRunAt": "2026-06-05 17:36",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8788/index.html",
@@ -1554,17 +1554,23 @@
       {
         "title": "Check App Store Connect",
         "detail": "Check RunSmart iOS, Resumely iOS. If Apple has not responded, do not change the submitted builds.",
-        "type": "manual-founder"
+        "type": "manual-founder",
+        "where": "App Store Connect",
+        "copyPrompt": null
       },
       {
         "title": "Continue the COO-selected action",
         "detail": "Prepare the first RunSmart launch-window draft (A1 founder LinkedIn post) without publishing",
-        "type": "global-OS"
+        "type": "global-OS",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Continue the latest COO-selected action. Read executive-os/COO-LATEST-REVIEW.md and the Source file named there. Execute only the selected next action. Do not publish, email, deploy, submit, or touch product code without explicit approval."
       },
       {
         "title": "Use the Weekly CEO Review only for a priority choice",
         "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-        "type": "executive"
+        "type": "executive",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
       }
     ]
   },
