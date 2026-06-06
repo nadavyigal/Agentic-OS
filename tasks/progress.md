@@ -2,15 +2,15 @@
 
 Project: Global Agentic OS
 Status: Active
-Current Phase: Dashboard trust upgrade (top-tier roadmap execution)
-Active Story: Phase 6 — parser unit tests + ./agentic-os test wired into verify (final roadmap phase)
-Last Completed Story: Phase 6 — 18-test hermetic suite; verify gates on it
-Next Recommended Story: All roadmap phases (0–6) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16.
-Estimated Completion: Roadmap complete (Phases 0–6); only opt-in/held items remain
+Current Phase: Advanced OS patterns lean pilot
+Active Story: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops
+Last Completed Story: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility
+Next Recommended Story: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative.
+Estimated Completion: Pilot implementation complete; operating validation remains
 Blockers: —
-Risks: Parser changes could regress dashboard status; product-repo schema seeding needs owner approval; global summaries go stale if repos are not re-read
-Last Validation: ./agentic-os verify passed — status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked.
-Last Updated: 2026-06-02
+Risks: Outcome loops could duplicate project status if expanded before the pilot is reviewed; untrusted input still requires least-privilege tools and founder approval for consequential actions
+Last Validation: 35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05.
+Last Updated: 2026-06-05
 Latest QA Report: —
 
 <!--

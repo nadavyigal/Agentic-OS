@@ -15,7 +15,13 @@ It is run by `agents/coo-agent.md` and operated via `workflows/coo-operating-rev
 - Execution sequencing (first, second, third).
 - Bottleneck identification (what is blocked, by what, and who owns the unblock).
 - Work packet creation (one focused, repo-bound task at a time).
+- Workflow routing: keep the default `normal`; select an advanced mode from
+  `GLOBAL-WORKFLOWS.md` only when the packet has a concrete research, risk,
+  taste, loop, or input-trust reason.
 - **Long-running plans** (GTM, launch, monetization, distribution): the plan stays the strategy source; the COO extracts the **next milestone** into one packet with `Source:` pointing at the plan. If the dashboard shows `needs_next_packet`, draft that packet — the plan is not abandoned.
+- Outcome loops: when a plan requires repeated milestones across sessions, link
+  it to one lightweight card under `loops/`. Ask which loop needs attention,
+  advance it from source evidence, and avoid copying project status into it.
 - Repo routing (which local project receives the next packet).
 - Handoffs between sessions and roles.
 - Release readiness sequencing (what must pass before a submit/deploy action, which the founder still triggers).
@@ -80,6 +86,11 @@ Create a work packet **only when all four hold**:
 
 Global-OS work (drafts, sequencing, status hygiene, channel scoring) is **not** packetized. It runs in this OS. Use `templates/work-packet-template.md` for the packet format. Active packets are saved one-file-per-packet under `work-packets/` with a status header (e.g. `work-packets/WP-1-resumely-device-smoke.md`).
 
+Routing and loop fields are optional. Use the normal/trusted defaults for
+ordinary scoped execution. If the source contains untrusted external content,
+mark it explicitly and carry only structured, source-linked facts into action
+steps.
+
 ## Workflows
 
 Phase 1 (live):
@@ -91,6 +102,7 @@ Phase 1 (live):
 - `../DASHBOARD.md`, `../PROJECT-STATUS.md`, `../dashboard/status.json` - portfolio status and action board.
 - `BUSINESS-GTM-PLAN-V0.md` - the current plan and its work-packet outlines (WP-1..WP-5).
 - `EXECUTIVE-DECISIONS.md` - to see which decisions are open (escalation signal).
+- `loops/` - active multi-session outcomes and their current milestone.
 - The relevant `PROJECT-BRIDGES/*.md` only when repo routing needs it.
 
 ## Rules

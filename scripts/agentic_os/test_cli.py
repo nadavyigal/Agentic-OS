@@ -81,6 +81,61 @@ class TestPureHelpers(unittest.TestCase):
         text = "## Decisions Needed\n- pick path\n## Decisions Made\n- shipped X"
         self.assertEqual(cli.extract_open_decisions({"tasks/x.md": text}), ["pick path"])
 
+    def test_current_weekly_review_preserves_executive_dashboard(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            executive = root / "executive-os"
+            executive.mkdir()
+            dashboard = executive / "EXECUTIVE-DASHBOARD.md"
+            dashboard.write_text("manual weekly judgment\n", encoding="utf-8")
+            (executive / "WEEKLY-CEO-LATEST.md").write_text(
+                f"# Review\n\n- Reviewed: {datetime.now().strftime('%Y-%m-%d')}\n",
+                encoding="utf-8",
+            )
+            original_root = cli.ROOT
+            cli.ROOT = root
+            try:
+                cli.write_executive_dashboard(
+                    {
+                        "metadata": {"lastUpdated": "2026-06-05"},
+                        "summary": {},
+                        "executiveBoard": {},
+                        "projectHealth": [],
+                        "priorityBoard": {},
+                    }
+                )
+            finally:
+                cli.ROOT = original_root
+            self.assertEqual(dashboard.read_text(encoding="utf-8"), "manual weekly judgment\n")
+
+    def test_stale_weekly_review_allows_executive_dashboard_refresh(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            executive = root / "executive-os"
+            executive.mkdir()
+            dashboard = executive / "EXECUTIVE-DASHBOARD.md"
+            dashboard.write_text("stale judgment\n", encoding="utf-8")
+            stale_date = (datetime.now() - timedelta(days=8)).strftime("%Y-%m-%d")
+            (executive / "WEEKLY-CEO-LATEST.md").write_text(
+                f"# Review\n\n- Reviewed: {stale_date}\n",
+                encoding="utf-8",
+            )
+            original_root = cli.ROOT
+            cli.ROOT = root
+            try:
+                cli.write_executive_dashboard(
+                    {
+                        "metadata": {"lastUpdated": "2026-06-05"},
+                        "summary": {"overallStatus": "Current status"},
+                        "executiveBoard": {},
+                        "projectHealth": [],
+                        "priorityBoard": {},
+                    }
+                )
+            finally:
+                cli.ROOT = original_root
+            self.assertIn("# Executive Dashboard", dashboard.read_text(encoding="utf-8"))
+
 
 class TestParseTaskFiles(unittest.TestCase):
     def test_progress_present_high(self):
@@ -167,6 +222,150 @@ class TestDriftAndConfidence(unittest.TestCase):
         self.assertIn("may proceed", cli.confidence_directive("High", False).lower())
         self.assertIn("must re-read", cli.confidence_directive("Low", False).lower())
         self.assertIn("re-validate", cli.confidence_directive("High", True).lower())
+
+
+class TestOSRegistry(unittest.TestCase):
+    def test_side_projects_and_research_topics_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            side_project = root / "clarity-funnel"
+            research = root / "executive-os" / "research"
+            side_project.mkdir(parents=True)
+            research.mkdir(parents=True)
+            (side_project / "README.md").write_text(
+                "# Clarity Funnel\n\nA structured brainstorm for testing a new project idea.\n",
+                encoding="utf-8",
+            )
+            (side_project / "SKILL.md").write_text("# Skill\n", encoding="utf-8")
+            (research / "README.md").write_text("# Research\n", encoding="utf-8")
+            (research / "2026-06-05-new-project.md").write_text(
+                "# New Project Research\n\nEvidence and questions for a possible product.\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+
+            self.assertEqual(registry["sideProjects"][0]["name"], "Clarity Funnel")
+            self.assertEqual(registry["sideProjects"][0]["path"], "clarity-funnel/README.md")
+            self.assertEqual(registry["researchTopics"][0]["name"], "New Project Research")
+            self.assertEqual(
+                registry["researchTopics"][0]["path"],
+                "executive-os/research/2026-06-05-new-project.md",
+            )
+
+    def test_packet_metadata_defaults_remain_backward_compatible(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-1.md").write_text(
+                "# Work Packet WP-1 (Active)\n"
+                "- Status: Active\n"
+                "- Source: launch-plan.md\n\n"
+                "## Project\nExample\n\n"
+                "## Goal\nShip the change.\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            self.assertEqual(packet["workflowPattern"], "normal")
+            self.assertEqual(packet["inputTrust"], "trusted")
+            self.assertIsNone(packet["outcomeLoop"])
+            self.assertIsNone(packet["successSignal"])
+
+    def test_packet_metadata_and_operating_artifacts_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            packets = root / "executive-os" / "work-packets"
+            loops = root / "executive-os" / "loops"
+            context = root / "executive-os" / "context"
+            packets.mkdir(parents=True)
+            loops.mkdir(parents=True)
+            context.mkdir(parents=True)
+
+            (packets / "WP-1.md").write_text(
+                "# Work Packet WP-1 (Active)\n"
+                "- Status: Active\n"
+                "- Workflow pattern: adversarial-review\n"
+                "- Input trust: untrusted\n"
+                "- Outcome loop: resumely-submission\n"
+                "- Loop: Resumely submission readiness loop\n"
+                "- Signal: signed smoke evidence requested\n"
+                "- Memory update: tasks/progress.md\n"
+                "- Success signal: signed smoke evidence exists\n\n"
+                "## Project\nResumely iOS\n\n"
+                "## Goal\nProduce evidence.\n",
+                encoding="utf-8",
+            )
+            (loops / "README.md").write_text("# Outcome Loops\n", encoding="utf-8")
+            (loops / "resumely-submission.md").write_text(
+                "# Outcome Loop: Resumely Submission\n"
+                "- Status: active\n"
+                "- Owner: COO OS\n"
+                "- Outcome: approved and live with analytics verified\n"
+                "- Source: BUSINESS-GTM-PLAN-V0.md\n"
+                "- Linked packet: WP-1-resumely-device-smoke.md\n"
+                "- Leading signal: submit-ready evidence exists\n"
+                "- Result metric: App Store status is Ready for Sale\n"
+                "- Current milestone: authenticated device smoke\n"
+                "- Constraint: founder-controlled upload\n"
+                "- Last reviewed: 2026-06-05\n"
+                "- Evidence source: product tasks/progress.md\n"
+                "- Memory destination: product tasks/session-log.md\n"
+                "- Close condition: approved and analytics verified\n",
+                encoding="utf-8",
+            )
+            (context / "README.md").write_text("# Context Checkpoints\n", encoding="utf-8")
+            (context / "2026-06-05-offer.md").write_text(
+                "# Context Checkpoint: Offer\n"
+                "- Status: ready-for-promotion\n"
+                "- Topic: AI Audit offer\n"
+                "- Purpose: define the first sellable version\n"
+                "- Created: 2026-06-05\n"
+                "- Last updated: 2026-06-05\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+            packet = registry["workPackets"][0]
+            loop = registry["outcomeLoops"][0]
+            checkpoint = registry["contextCheckpoints"][0]
+
+            self.assertEqual(packet["workflowPattern"], "adversarial-review")
+            self.assertEqual(packet["inputTrust"], "untrusted")
+            self.assertEqual(packet["outcomeLoop"], "resumely-submission")
+            self.assertEqual(packet["loop"], "Resumely submission readiness loop")
+            self.assertEqual(packet["signal"], "signed smoke evidence requested")
+            self.assertEqual(packet["memoryUpdate"], "tasks/progress.md")
+            self.assertEqual(packet["successSignal"], "signed smoke evidence exists")
+            self.assertEqual(loop["status"], "active")
+            self.assertEqual(loop["owner"], "COO OS")
+            self.assertEqual(loop["resultMetric"], "App Store status is Ready for Sale")
+            self.assertEqual(checkpoint["status"], "ready-for-promotion")
+            self.assertEqual(checkpoint["topic"], "AI Audit offer")
+            self.assertEqual(len(registry["outcomeLoops"]), 1)
+            self.assertEqual(len(registry["contextCheckpoints"]), 1)
+
+    def test_brainstorm_checkpoints_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            brainstorms = root / "brainstorms"
+            brainstorms.mkdir()
+            (brainstorms / "README.md").write_text("# Brainstorms\n", encoding="utf-8")
+            (brainstorms / "2026-06-06-ai-audit.md").write_text(
+                "# Context Checkpoint: AI Audit\n"
+                "- Status: open\n"
+                "- Topic: AI Audit Toolkit\n"
+                "- Purpose: capture offer context\n"
+                "- Created: 2026-06-06\n"
+                "- Last updated: 2026-06-06\n",
+                encoding="utf-8",
+            )
+
+            checkpoint = cli.build_os_registry(root)["contextCheckpoints"][0]
+
+            self.assertEqual(checkpoint["topic"], "AI Audit Toolkit")
+            self.assertEqual(checkpoint["path"], "brainstorms/2026-06-06-ai-audit.md")
 
 
 class TestGtm(unittest.TestCase):
@@ -295,7 +494,7 @@ class TestDerivedSummary(unittest.TestCase):
 
 
 class TestPortfolioTrust(unittest.TestCase):
-    def _health(self):
+    def _health(self, *, freshness="Fresh", dirty=False, confidence="High", evidence_gap=False):
         return [
             {
                 "id": "runsmart-ios",
@@ -303,33 +502,136 @@ class TestPortfolioTrust(unittest.TestCase):
                 "freshness": "Fresh",
                 "dirty": False,
                 "sourceConfidence": "High",
+                "evidenceGap": False,
             },
             {
                 "id": "resumebuilder-ios",
                 "name": "Resumely iOS",
-                "freshness": "Stale",
-                "dirty": True,
-                "sourceConfidence": "Medium",
+                "freshness": freshness,
+                "dirty": dirty,
+                "sourceConfidence": confidence,
+                "evidenceGap": evidence_gap,
             },
         ]
 
-    def test_synced_and_fresh_is_actionable(self):
+    def test_clean_synced_fresh_apps_are_actionable(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
             self._health(),
             {"synced": True, "notes": []},
-            {"lastRefresh": "2026-06-04 09:00 IDT"},
-            {"needsNextPacket": 1},
+            {"lastRefresh": today_refresh},
         )
-        self.assertEqual(trust["level"], "caution")
-        self.assertIn("Stale", " ".join(trust["reasons"]))
+        self.assertEqual(trust["level"], "actionable")
+        self.assertIn("Sync clean, refreshed today, app evidence current.", trust["reasons"])
 
     def test_unsynced_is_refresh_required(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
             self._health(),
             {"synced": False, "notes": ["On branch 'feat', not main."]},
-            {"lastRefresh": "2026-06-04 09:00 IDT"},
+            {"lastRefresh": today_refresh},
         )
         self.assertEqual(trust["level"], "refresh_required")
+
+    def test_not_refreshed_today_is_refresh_required(self):
+        yesterday_refresh = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": yesterday_refresh},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        self.assertIn("Morning refresh was not run today.", trust["reasons"])
+
+    def test_stale_shippable_app_is_refresh_required(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(freshness="Stale"),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        self.assertTrue(any("Stale shippable app evidence" in reason for reason in trust["reasons"]))
+
+    def test_dirty_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(dirty=True),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+
+        self.assertEqual(trust["level"], "caution")
+        self.assertTrue(any("Dirty shippable app repo" in reason for reason in trust["reasons"]))
+        self.assertTrue(any("Uncommitted files" in item for item in trust["hygieneWarnings"]))
+
+    def test_needs_next_packet_alone_does_not_downgrade(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+            {"needsNextPacket": 3},
+        )
+        self.assertEqual(trust["level"], "actionable")
+        self.assertTrue(any("need the next work packet" in reason for reason in trust["reasons"]))
+
+    def test_low_confidence_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(confidence="Unknown"),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "caution")
+
+    def test_evidence_gap_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(evidence_gap=True),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "caution")
+
+
+class TestFounderNextActions(unittest.TestCase):
+    def test_fresh_coo_review_replaces_repeat_review_suggestion(self):
+        status = {
+            "portfolioTrust": {"level": "actionable"},
+            "projectHealth": [
+                {"id": "runsmart-ios", "name": "RunSmart iOS", "state": "App Store Review"},
+                {"id": "resumebuilder-ios", "name": "Resumely iOS", "state": "App Store Review"},
+            ],
+            "executiveLoop": {"workPackets": []},
+            "planExecution": {"needsNextPacket": 2},
+            "latestCooReview": {
+                "reviewed": datetime.now().strftime("%Y-%m-%d"),
+                "selectedNextAction": "Draft the launch post.",
+                "actionType": "global-OS",
+            },
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Check App Store Connect")
+        self.assertEqual(actions[1]["title"], "Continue the COO-selected action")
+        self.assertIn("Agentic OS repo", actions[1]["where"])
+        self.assertTrue(actions[1]["copyPrompt"])
+        self.assertFalse(any(action["title"] == "Run a COO operating review" for action in actions))
+
+    def test_missing_coo_review_suggests_review_when_plans_need_packets(self):
+        status = {
+            "portfolioTrust": {"level": "actionable"},
+            "projectHealth": [],
+            "executiveLoop": {"workPackets": []},
+            "planExecution": {"needsNextPacket": 1},
+            "latestCooReview": None,
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Run a COO operating review")
 
 
 class TestPlanExecutionStatus(unittest.TestCase):

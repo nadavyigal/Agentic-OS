@@ -4,6 +4,13 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
+## 2026-06-05 - Advanced OS patterns lean pilot
+Worked on: Added optional workflow routing, durable founder-context extraction, one Resumely submission outcome loop, and automatic registry/dashboard visibility.
+Completed: Consolidated all work onto `main`; added `normal | parallel-research | independent-review | evaluator-loop`, separate input-trust controls, context checkpoint workflow/template/prompt, one outcome-loop pilot linked to WP-1, parser fields, Command Center cards/badges, and data-flow counts. Preserved a concurrent Clarity Funnel update in its own commit.
+Decisions: Normal packet execution remains default. Session separation is not a security boundary. New outcome loops require two successful COO reviews of the pilot without duplicating project status.
+Validation: 35 parser tests passed; `./agentic-os verify` passed; registry refresh found 3 packets, 1 loop, and 1 context checkpoint.
+Next session: Run the COO review against `resumely-submission`, record Review 1 in the loop card, and do not add more loops yet.
+
 ## 2026-06-04 — Daily OS simplification (routing, trust, plan index)
 Worked on: Execute approved daily-os simplification plan (routing only; no executive file deletion).
 Completed: `DAILY.md` (Tier 0/1/2 + executive routing table). Planning vs execution mode in `AGENTS.md` / `CURSOR.md` / `.cursor/rules/agent-os-core.mdc`. `build_portfolio_trust()` + `build_plan_execution_status()` in `cli.py` (`portfolioTrust`, `planExecution` on status.json + cc-data fallback). Command Center: trust banner, strategic plan index, active packets first, freshness/confidence pills on project cards. `PROMPTS/morning-brief.md` daily default = `./agentic-os morning`; weekly/COO prompts reference `needs_next_packet`. Not-daily banners on CEO/COO/CFO/Analysis/Risk OS. 33 tests pass; `./agentic-os refresh` + `verify` pass.

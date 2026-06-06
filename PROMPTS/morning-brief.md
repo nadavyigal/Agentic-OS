@@ -4,18 +4,25 @@
 
 **Daily default:** run `./agentic-os morning` and read the Command Center (`DAILY.md` Tier 0). That is the morning brief for normal work days.
 
-Use this prompt for a **deeper spoken or written brief** when you need cross-project narrative beyond the dashboard: after a long break, before weekly CEO review, or when localhost is unavailable.
+The long reading protocol is only for:
+
+- Command Center unavailable.
+- Localhost unavailable.
+- Founder explicitly asks for a deep cross-project narrative.
+- Weekly CEO review preparation.
+
+Do not use the long protocol for normal daily work.
 
 ## How to Invoke
 
 1. **Daily:** `./agentic-os morning` from the Agentic OS repo (see `DAILY.md`).
-2. **Deep brief:** In Agentic OS, say "morning brief", "give me my morning brief", or "what's the status across all projects" and follow the reading protocol below.
+2. **Deep brief:** Use the reading protocol below only when one of the fallback conditions above is true.
 
 ---
 
 ## Reading Protocol
 
-Read all of the following in parallel before generating output. If a file does not exist, note it and skip — do not error.
+Fallback only: read all of the following in parallel before generating output. If a file does not exist, note it and skip, do not error.
 
 ### RunSmart Web
 Path: `/Users/nadavyigal/Documents/RunSmart`

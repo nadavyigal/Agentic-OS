@@ -19,32 +19,36 @@ Answer six questions every run: what is blocked, what happens first/second/third
 3. `templates/work-packet-template.md` - packet format.
 4. `BUSINESS-GTM-PLAN-V0.md` - plan and WP outlines, if present.
 5. `EXECUTIVE-DECISIONS.md` - open decisions (escalation signal).
+6. `loops/*.md` - active outcome loops, if present.
 
 ## Steps
 
 1. Read the inputs. Do not re-derive status that already exists; do not invent status.
-2. Identify the **current bottleneck**: the single thing most blocking forward motion, and who owns the unblock (founder, a repo, or another OS layer).
-3. Build the **execution sequence** (first/second/third). Tag each step: manual-founder / local-repo / global-OS / research / QA. Respect the focus rules in `COO-OS.md`.
-4. Run the **escalation test** for each layer using the triggers in `COO-OS.md`. Default each to No. Set Yes only when the blocker is genuinely owned by that layer; when Yes, write the exact decision/question.
-5. If the next step runs inside a local repo and all four work packet conditions hold, emit **one** work packet from the template. Otherwise emit no packet and say why (global-OS work, blocked externally, or escalation required).
-6. State **what not to touch** for the current step.
-7. Note any status drift you saw, but do not edit status files unless that is the explicit task.
+2. Review active outcome loops. Name the one needing attention, its latest
+   evidence, and its next milestone. If no loop applies, say so.
+3. Identify the **current bottleneck**: the single thing most blocking forward motion, and who owns the unblock (founder, a repo, or another OS layer).
+4. Build the **execution sequence** (first/second/third). Tag each step: manual-founder / local-repo / global-OS / research / QA. Respect the focus rules in `COO-OS.md`.
+5. Run the **escalation test** for each layer using the triggers in `COO-OS.md`. Default each to No. Set Yes only when the blocker is genuinely owned by that layer; when Yes, write the exact decision/question.
+6. If the next step runs inside a local repo and all four work packet conditions hold, emit **one** work packet from the template. Link its `Outcome loop` and `Success signal` when it advances a loop. Otherwise emit no packet and say why (global-OS work, blocked externally, or escalation required).
+7. State **what not to touch** for the current step.
+8. Note any status drift you saw, but do not edit status files unless that is the explicit task.
 
 ## Output Format
 
 ```
 ## COO Operating Review - <date>
 1. Operating summary
-2. Current bottleneck (owner of the unblock)
-3. Execution sequence (first / second / third, each tagged)
-4. Escalation needed:
+2. Loop needing attention (evidence + next milestone, or none)
+3. Current bottleneck (owner of the unblock)
+4. Execution sequence (first / second / third, each tagged)
+5. Escalation needed:
    - CEO: Yes/No
    - CFO: Yes/No
    - Analysis: Yes/No
    - Risk: Yes/No
    (If any Yes: the exact decision/question and owning layer)
-5. Work packet (one, only if execution in a repo is the next step) or "No packet - <reason>"
-6. What not to touch
+6. Work packet (one, only if execution in a repo is the next step) or "No packet - <reason>"
+7. What not to touch
 ```
 
 ## Escalation Rules
@@ -64,6 +68,7 @@ One packet per run, only when: the task runs in a local repo, the project is cle
 ## Completion Checklist
 
 - [ ] Operating summary + single bottleneck with unblock owner.
+- [ ] Active loop reviewed from evidence, or "none" stated.
 - [ ] Sequence ordered; each step tagged by work type.
 - [ ] Escalation Yes/No for all four layers; exact question where Yes.
 - [ ] One packet (if repo execution is next) or a stated reason for none.

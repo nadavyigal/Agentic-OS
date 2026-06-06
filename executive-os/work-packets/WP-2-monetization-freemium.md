@@ -1,4 +1,4 @@
-# Work Packet WP-2 (Active)
+# Work Packet WP-2 (Research Complete)
 
 - Status: Research + spec complete, waiting for activation data to implement
 - Created: 2026-06-04

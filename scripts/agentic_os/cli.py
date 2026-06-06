@@ -40,10 +40,10 @@ PROJECT_ALIASES = {
 DEFAULT_AGENT_QUEUE = [
     {
         "role": "Release Manager",
-        "task": "Run Resumely iOS live-device smoke, then prepare ASC upload.",
-        "whenToUse": "Use when the next move touches App Store readiness, screenshots, smoke QA, or submission gates.",
+        "task": "Handle an App Store review outcome without reopening completed submission work.",
+        "whenToUse": "Use only after Apple approves, rejects, or requests information for either submitted app.",
         "evidence": "PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md",
-        "starter": "Act as the Release Manager for Resumely iOS. Read PROJECT-STATUS.md and the ResumeBuilder iOS tasks/session-log.md. Produce the exact smoke checklist, expected evidence, and ASC upload sequence. Do not submit or upload without explicit approval.",
+        "starter": "Act as Release Manager. Read dashboard/status.json and the target iOS repo tasks/progress.md plus tasks/session-log.md. If there is no new Apple review outcome, stop and report that monitoring is the only action. If Apple responded, create one focused response packet from the exact review message. Do not resubmit or change release scope without explicit approval.",
     },
     {
         "role": "CEO OS",
@@ -167,6 +167,7 @@ class ProjectEvidence:
     branch: str
     dirty: bool
     dirty_count: int
+    extra_worktrees: int
     last_commit: str
     source_files: list[str]
     task_parse: dict[str, Any] = field(default_factory=dict)
@@ -713,6 +714,16 @@ def _doc_summary(path: Path) -> tuple[str, str]:
     return title, purpose
 
 
+def _metadata_value(text: str, label: str) -> str | None:
+    """Read a top-level Markdown metadata line such as `- Status: active`."""
+    match = re.search(
+        rf"^\s*[-*]?\s*{re.escape(label)}:\s*(.+?)\s*$",
+        text,
+        re.IGNORECASE | re.MULTILINE,
+    )
+    return clean_value(match.group(1)) if match else None
+
+
 def build_os_registry(root: Path) -> dict[str, Any]:
     """Auto-discover the Agentic OS from the repo itself, in two plain groups.
 
@@ -720,14 +731,18 @@ def build_os_registry(root: Path) -> dict[str, Any]:
       status and make decisions. The matching agent file is just how each is run, so it is not
       listed separately (that double-listing was confusing).
     - skillAgents: the builders that execute work packets (architect, QA, release, etc.).
-    Work packets and commands are returned too, for the loop and commands sections.
+    Work packets, outcome loops, context checkpoints, and commands are returned too.
     Anything created under these folders surfaces on the next run — nothing can silently vanish.
     """
     registry: dict[str, Any] = {
         "commands": [{"name": name, "purpose": purpose} for name, purpose in OS_COMMANDS],
         "leadership": [],
         "workPackets": [],
+        "outcomeLoops": [],
+        "contextCheckpoints": [],
         "skillAgents": [],
+        "sideProjects": [],
+        "researchTopics": [],
     }
     exec_dir = root / "executive-os"
     if exec_dir.is_dir():
@@ -757,8 +772,14 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                     elif "agentic" in lower:
                         repo_id = "agentic-os"
                 goal = section_value(text, "## Goal")
-                source_match = re.search(r"Source:\s*(.+)", text, re.IGNORECASE)
-                packet_source = clean_value(source_match.group(1)) if source_match else None
+                packet_source = _metadata_value(text, "Source")
+                workflow_pattern = _metadata_value(text, "Workflow pattern") or "normal"
+                input_trust = _metadata_value(text, "Input trust") or "trusted"
+                outcome_loop = _metadata_value(text, "Outcome loop")
+                loop = _metadata_value(text, "Loop")
+                signal = _metadata_value(text, "Signal")
+                memory_update = _metadata_value(text, "Memory update")
+                success_signal = _metadata_value(text, "Success signal")
                 # Build a copy-ready prompt: repo instruction + full packet body.
                 # This IS the prompt the founder pastes into Claude Code for that repo.
                 if repo_path:
@@ -780,19 +801,86 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "  Codex       → paste as task context\n\n"
                         "--- WORK PACKET ---\n"
                     )
+                packet_status = clean_value(status_match.group(1)) if status_match else "Unknown"
                 registry["workPackets"].append(
                     {
                         "title": title,
-                        "status": clean_value(status_match.group(1)) if status_match else "Unknown",
+                        "status": packet_status,
                         "project": project_raw,
                         "repoId": repo_id,
                         "repoPath": repo_path,
                         "goal": goal,
                         "source": packet_source,
+                        "workflowPattern": workflow_pattern,
+                        "inputTrust": input_trust,
+                        "outcomeLoop": outcome_loop,
+                        "loop": loop,
+                        "signal": signal,
+                        "memoryUpdate": memory_update,
+                        "successSignal": success_signal,
                         "path": str(packet.relative_to(root)),
-                        "copyPrompt": prompt_header + text,
+                        "copyPrompt": prompt_header + text if packet_status.lower().startswith("active") else None,
                     }
                 )
+        loops_dir = exec_dir / "loops"
+        if loops_dir.is_dir():
+            for loop_file in sorted(loops_dir.glob("*.md")):
+                if loop_file.name.lower() == "readme.md":
+                    continue
+                text = loop_file.read_text(encoding="utf-8", errors="replace")
+                title, _ = _doc_summary(loop_file)
+                registry["outcomeLoops"].append(
+                    {
+                        "title": title,
+                        "status": _metadata_value(text, "Status") or "unknown",
+                        "owner": _metadata_value(text, "Owner"),
+                        "outcome": _metadata_value(text, "Outcome"),
+                        "source": _metadata_value(text, "Source"),
+                        "linkedPacket": _metadata_value(text, "Linked packet"),
+                        "leadingSignal": _metadata_value(text, "Leading signal"),
+                        "resultMetric": _metadata_value(text, "Result metric"),
+                        "currentMilestone": _metadata_value(text, "Current milestone"),
+                        "constraint": _metadata_value(text, "Constraint"),
+                        "lastReviewed": _metadata_value(text, "Last reviewed"),
+                        "evidenceSource": _metadata_value(text, "Evidence source"),
+                        "memoryDestination": _metadata_value(text, "Memory destination"),
+                        "closeCondition": _metadata_value(text, "Close condition"),
+                        "path": str(loop_file.relative_to(root)),
+                    }
+                )
+        research_dir = exec_dir / "research"
+        if research_dir.is_dir():
+            for research_file in sorted(research_dir.glob("*.md"), reverse=True):
+                if research_file.name.lower() == "readme.md":
+                    continue
+                title, purpose = _doc_summary(research_file)
+                registry["researchTopics"].append(
+                    {
+                        "name": title,
+                        "purpose": purpose,
+                        "path": str(research_file.relative_to(root)),
+                    }
+                )
+    checkpoint_dirs = [root / "brainstorms", exec_dir / "context"]
+    for context_dir in checkpoint_dirs:
+        if not context_dir.is_dir():
+            continue
+        for checkpoint_file in sorted(context_dir.glob("*.md"), reverse=True):
+            if checkpoint_file.name.lower() == "readme.md":
+                continue
+            text = checkpoint_file.read_text(encoding="utf-8", errors="replace")
+            title, _ = _doc_summary(checkpoint_file)
+            registry["contextCheckpoints"].append(
+                {
+                    "title": title,
+                    "status": _metadata_value(text, "Status") or "unknown",
+                    "topic": _metadata_value(text, "Topic"),
+                    "purpose": _metadata_value(text, "Purpose"),
+                    "created": _metadata_value(text, "Created"),
+                    "lastUpdated": _metadata_value(text, "Last updated"),
+                    "path": str(checkpoint_file.relative_to(root)),
+                }
+            )
     # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.
     dist_readme = root / "distribution-os" / "README.md"
     if dist_readme.exists():
@@ -803,6 +891,20 @@ def build_os_registry(root: Path) -> dict[str, Any]:
         for skill in sorted(skills_dir.glob("*.md")):
             title, purpose = _doc_summary(skill)
             registry["skillAgents"].append({"name": title, "purpose": purpose, "path": str(skill.relative_to(root))})
+    for candidate in sorted(root.iterdir()) if root.is_dir() else []:
+        if not candidate.is_dir() or candidate.name.startswith("."):
+            continue
+        readme = candidate / "README.md"
+        skill = candidate / "SKILL.md"
+        if readme.exists() and skill.exists():
+            title, purpose = _doc_summary(readme)
+            registry["sideProjects"].append(
+                {
+                    "name": title,
+                    "purpose": purpose,
+                    "path": str(readme.relative_to(root)),
+                }
+            )
     return registry
 
 
@@ -848,6 +950,7 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
     Links each work packet to the decision it came from (via 'Related decision: EXD-xxx').
     """
     packets = registry.get("workPackets", [])
+    active_packets = [packet for packet in packets if _packet_is_active(packet)]
     # Link packets to decisions by scanning each packet file for "Related decision: EXD-xxx".
     for packet in packets:
         related = None
@@ -876,7 +979,7 @@ def build_executive_loop(decisions: list[dict[str, Any]], registry: dict[str, An
             {"name": "Project status", "what": "Per-project state, blockers, and next action."},
             {"name": "Executive review", "what": "CEO / COO / CFO / Analysis read status and add remarks."},
             {"name": "Decisions", "what": f"{len(open_decisions)} open of {len(decisions)} logged in EXECUTIVE-DECISIONS.md."},
-            {"name": "Work packets", "what": f"{len(packets)} active. One focused repo task per decision that needs execution."},
+            {"name": "Work packets", "what": f"{len(active_packets)} active, {len(packets)} total. Copy only Active packets; closed packets are history."},
             {"name": "Brainstorm / next moves", "what": ("Open ideas in NEXT-MOVES.md." if brainstorm.exists() else "Add executive-os/NEXT-MOVES.md to capture ideas.")},
         ],
         "openDecisions": open_decisions[:8],
@@ -1081,35 +1184,55 @@ def build_portfolio_trust(
     apps = [p for p in project_health if p.get("id") in APP_IDS]
     stale_apps = [p["name"] for p in apps if p.get("freshness") == "Stale"]
     dirty_apps = [p["name"] for p in apps if p.get("dirty")]
+    app_worktrees = [
+        f"{p['name']} ({p.get('extraWorktrees', 0)})"
+        for p in apps
+        if p.get("extraWorktrees", 0)
+    ]
     low_conf = [
         p["name"]
         for p in apps
         if (p.get("sourceConfidence") or "").lower() in ("low", "unknown")
     ]
+    evidence_gaps = [p["name"] for p in apps if p.get("evidenceGap")]
 
     level = "actionable"
     reasons: list[str] = []
     if not repo_integrity.get("synced"):
         level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
         reasons.extend(repo_integrity.get("notes") or [])
     elif not refresh_today:
+        level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
+        reasons.append("Morning refresh was not run today.")
+    elif stale_apps:
+        level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
+        reasons.append(f"Stale shippable app evidence: {', '.join(stale_apps)}.")
+    elif dirty_apps or low_conf or evidence_gaps:
         level = "caution"
-        reasons.append("Morning refresh was not run today. Run ./agentic-os morning before trusting status.")
-    else:
-        if stale_apps:
-            level = "caution"
-            reasons.append(f"Stale progress evidence: {', '.join(stale_apps)}.")
+        reasons.append(
+            "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps."
+        )
         if dirty_apps:
-            level = "caution"
-            reasons.append(f"Dirty repos: {', '.join(dirty_apps)}.")
+            reasons.append(f"Dirty shippable app repo: {', '.join(dirty_apps)}.")
         if low_conf:
             level = "caution"
             reasons.append(f"Low source confidence: {', '.join(low_conf)}.")
+        if evidence_gaps:
+            reasons.append(f"Evidence gap after latest commit: {', '.join(evidence_gaps)}.")
 
     labels = {
         "actionable": "Actionable",
         "caution": "Use caution",
-        "refresh_required": "Needs sync first",
+        "refresh_required": "Refresh required",
     }
     needs = (plan_execution or {}).get("needsNextPacket", 0)
     if needs and level == "actionable":
@@ -1117,7 +1240,13 @@ def build_portfolio_trust(
             f"{needs} strategic plan(s) need the next work packet (COO review) — plans are not abandoned."
         )
     if not reasons:
-        reasons.append("Sync clean, refreshed today, app evidence is current enough to act.")
+        reasons.append("Sync clean, refreshed today, app evidence current.")
+
+    hygiene_warnings: list[str] = []
+    if dirty_apps:
+        hygiene_warnings.append(f"Uncommitted files in product repos: {', '.join(dirty_apps)}.")
+    if app_worktrees:
+        hygiene_warnings.append(f"Extra product worktrees retained for review: {', '.join(app_worktrees)}.")
 
     return {
         "level": level,
@@ -1125,6 +1254,7 @@ def build_portfolio_trust(
         "reasons": reasons,
         "refreshToday": refresh_today,
         "needsNextPacketCount": needs,
+        "hygieneWarnings": hygiene_warnings,
     }
 
 
@@ -1263,6 +1393,7 @@ def collect_evidence() -> list[ProjectEvidence]:
         branch = "missing"
         dirty = False
         dirty_count = 0
+        extra_worktrees = 0
         last_commit = "No git data"
 
         if exists:
@@ -1289,6 +1420,13 @@ def collect_evidence() -> list[ProjectEvidence]:
             if commit.returncode == 0 and commit.stdout.strip():
                 last_commit = commit.stdout.strip()
 
+            worktrees = run(["git", "worktree", "list", "--porcelain"], cwd=path)
+            if worktrees.returncode == 0:
+                worktree_count = sum(
+                    1 for line in worktrees.stdout.splitlines() if line.startswith("worktree ")
+                )
+                extra_worktrees = max(0, worktree_count - 1)
+
         gtm = parse_gtm(path) if exists else {"exists": False, "path": None, "positioning": None, "status": None, "lastUpdated": None}
         if gtm.get("exists") and gtm.get("path"):
             sources.append(gtm["path"])
@@ -1307,6 +1445,7 @@ def collect_evidence() -> list[ProjectEvidence]:
                 branch=branch,
                 dirty=dirty,
                 dirty_count=dirty_count,
+                extra_worktrees=extra_worktrees,
                 last_commit=last_commit,
                 source_files=sources,
                 task_parse=parse_task_files(path),
@@ -1378,6 +1517,7 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "plans": item.plans or [],
                 "dirty": item.dirty,
                 "dirtyCount": item.dirty_count,
+                "extraWorktrees": item.extra_worktrees,
                 "branch": item.branch,
                 "lastCommit": item.last_commit,
                 "stale": freshness == "Stale" or not item.exists,
@@ -1423,7 +1563,7 @@ def build_project_prompts(status: dict[str, Any], project_health: list[dict[str,
     for health in project_health:
         project = projects.get(health["id"], {})
         role = PROJECT_PROMPT_ROLES.get(health["id"], "Project Operator")
-        blockers = project.get("blockers") or []
+        blockers = health.get("blockers") or project.get("blockers") or []
         source_files = health.get("sourceFiles") or []
         source_list = ", ".join(source_files[:4]) if source_files else "tasks/MEMORY.md if present"
         next_action = health.get("nextAction") or project.get("nextRecommendedStory") or "Choose the smallest useful next action."
@@ -1580,6 +1720,7 @@ def build_daily_run_result(
     checks_status: str,
 ) -> dict[str, Any]:
     recommended = select_recommended_prompt(status, project_prompts)
+    next_actions = build_founder_next_actions(status)
     return {
         "lastCommand": command,
         "lastRunAt": now_label(),
@@ -1593,7 +1734,97 @@ def build_daily_run_result(
         "targetBranch": recommended.get("branch", "Unknown"),
         "readyForNextSession": checks_status == "Passed",
         "summary": status.get("summary", {}).get("bestNextAction", "Run the morning loop and choose the next project prompt."),
+        "nextActions": next_actions,
     }
+
+
+def parse_latest_coo_review(root: Path) -> dict[str, Any] | None:
+    path = root / "executive-os" / "COO-LATEST-REVIEW.md"
+    if not path.exists():
+        return None
+    text = path.read_text(encoding="utf-8", errors="replace")
+    return {
+        "reviewed": _metadata_value(text, "Reviewed"),
+        "selectedNextAction": _metadata_value(text, "Selected next action"),
+        "actionType": _metadata_value(text, "Action type"),
+        "source": _metadata_value(text, "Source"),
+        "revisitWhen": _metadata_value(text, "Revisit when"),
+        "path": str(path.relative_to(root)),
+    }
+
+
+def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
+    trust = status.get("portfolioTrust", {})
+    if trust.get("level") != "actionable":
+        return [{
+            "title": "Restore dashboard trust",
+            "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+            "type": "system",
+        }]
+
+    actions: list[dict[str, str]] = []
+    apps_in_review = [
+        project["name"]
+        for project in status.get("projectHealth", [])
+        if project.get("id") in APP_IDS and "review" in (project.get("state") or "").lower()
+    ]
+    if apps_in_review:
+        actions.append({
+            "title": "Check App Store Connect",
+            "detail": f"Check {', '.join(apps_in_review)}. If Apple has not responded, do not change the submitted builds.",
+            "type": "manual-founder",
+            "where": "App Store Connect",
+            "copyPrompt": None,
+        })
+
+    active_packets = [
+        packet for packet in status.get("executiveLoop", {}).get("workPackets", [])
+        if _packet_is_active(packet)
+    ]
+    if active_packets:
+        packet = active_packets[0]
+        actions.append({
+            "title": f"Run active packet: {packet.get('title', 'work packet')}",
+            "detail": f"Copy it into {packet.get('repoId') or 'the target repo'} and execute one focused session.",
+            "type": "local-repo",
+            "where": packet.get("repoPath") or packet.get("repoId") or "Target product repo",
+            "copyPrompt": packet.get("copyPrompt"),
+        })
+    else:
+        review = status.get("latestCooReview") or {}
+        reviewed = parse_date(review.get("reviewed"))
+        fresh_review = bool(reviewed and reviewed.date() == datetime.now().date())
+        if fresh_review and review.get("selectedNextAction"):
+            actions.append({
+                "title": "Continue the COO-selected action",
+                "detail": review["selectedNextAction"],
+                "type": review.get("actionType") or "global-OS",
+                "where": "Agentic OS repo, in this Codex thread",
+                "copyPrompt": (
+                    "Continue the latest COO-selected action. Read "
+                    "executive-os/COO-LATEST-REVIEW.md and the Source file named there. "
+                    "Execute only the selected next action. Do not publish, email, deploy, "
+                    "submit, or touch product code without explicit approval."
+                ),
+            })
+        elif status.get("planExecution", {}).get("needsNextPacket", 0):
+            actions.append({
+                "title": "Run a COO operating review",
+                "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+                "type": "global-OS",
+                "where": "Agentic OS repo, in this Codex thread",
+                "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md.",
+            })
+
+    if len(actions) < 3:
+        actions.append({
+            "title": "Use the Weekly CEO Review only for a priority choice",
+            "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+            "type": "executive",
+            "where": "Agentic OS repo, in this Codex thread",
+            "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md.",
+        })
+    return actions[:3]
 
 
 def select_recommended_prompt(status: dict[str, Any], project_prompts: list[dict[str, Any]]) -> dict[str, Any]:
@@ -1667,6 +1898,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["planExecution"] = build_plan_execution_status(
         saved_plans, registry.get("workPackets", []), ROOT
     )
+    status["latestCooReview"] = parse_latest_coo_review(ROOT)
     status["portfolioTrust"] = build_portfolio_trust(
         project_health, status["repoIntegrity"], status["runCenter"], status["planExecution"]
     )
@@ -1696,12 +1928,6 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         port=port,
         checks_status="Pending verify",
     )
-
-    dirty_projects = [p["name"] for p in project_health if p["dirty"]]
-    if dirty_projects:
-        status.setdefault("summary", {})["mainBlockers"] = list(
-            dict.fromkeys(status.get("summary", {}).get("mainBlockers", []) + [f"Dirty local repo state: {', '.join(dirty_projects)}."])
-        )
 
     for project in status.get("projects", []):
         parse = parse_by_id.get(project.get("id"))
@@ -1733,11 +1959,13 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
                 value = parse.get(parsed_key)
                 if value:
                     project[display_key] = value
+            project["blockers"] = health.get("blockers") or []
 
         project["localEvidence"] = {
             "branch": health["branch"],
             "dirty": health["dirty"],
             "dirtyCount": health["dirtyCount"],
+            "extraWorktrees": health["extraWorktrees"],
             "lastCommit": health["lastCommit"],
             "sourceFiles": health["sourceFiles"],
             "sourceConfidence": health["sourceConfidence"],
@@ -2017,6 +2245,14 @@ def write_dashboard(status: dict[str, Any]) -> None:
 
 
 def write_executive_dashboard(status: dict[str, Any]) -> None:
+    weekly_review = ROOT / "executive-os" / "WEEKLY-CEO-LATEST.md"
+    if weekly_review.exists():
+        reviewed = parse_date(_metadata_value(weekly_review.read_text(encoding="utf-8"), "Reviewed"))
+        if reviewed is not None:
+            review_age = (datetime.now() - reviewed).days
+            if 0 <= review_age <= FRESHNESS_REVIEW_DAYS:
+                return
+
     executive = status.get("executiveBoard", {})
     lines = [
         "# Executive Dashboard",
@@ -2255,7 +2491,12 @@ def refresh(args: argparse.Namespace) -> int:
     reg = status.get("osRegistry", {})
     leaders = [o["name"] for o in reg.get("leadership", [])]
     print(f"- Executive OS (leadership): {', '.join(leaders) if leaders else 'none found'}")
-    print(f"- work packets: {len(reg.get('workPackets', []))} | skill agents (builders): {len(reg.get('skillAgents', []))}")
+    print(
+        f"- work packets: {len(reg.get('workPackets', []))}"
+        f" | outcome loops: {len(reg.get('outcomeLoops', []))}"
+        f" | context checkpoints: {len(reg.get('contextCheckpoints', []))}"
+        f" | skill agents (builders): {len(reg.get('skillAgents', []))}"
+    )
     decisions = status.get("decisions", [])
     open_d = [d for d in decisions if d.get("status", "").lower().startswith("open")]
     print(f"- decisions: {len(open_d)} open of {len(decisions)} logged (decisions -> work packets)")
@@ -2270,6 +2511,9 @@ def refresh(args: argparse.Namespace) -> int:
           + (f" — {', '.join(plan_projects)}" if plan_projects else ""))
     gtm_projects = [p["name"] for p in status.get("projectHealth", []) if (p.get("gtm") or {}).get("exists")]
     print(f"- GTM plans: {', '.join(gtm_projects) if gtm_projects else 'none found'}")
+    print("- suggested next actions:")
+    for index, action in enumerate(status.get("dailyRunResult", {}).get("nextActions", []), start=1):
+        print(f"  {index}. {action.get('title')}: {action.get('detail')}")
     print("- sources read:")
     for source in status["runCenter"]["sourcesRead"]:
         print(f"  - {source}")

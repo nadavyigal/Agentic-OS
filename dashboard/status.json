@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-04 IDT",
+    "lastUpdated": "2026-06-06 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -12,23 +12,22 @@
     }
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
-    "bestNextAction": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+    "overallStatus": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "bestNextAction": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
     "mainBlockers": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+      "Resumely iOS: Apple review outcome is external",
       "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
-      "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked.",
-      "Dirty local repo state: RunSmart iOS, Resumely iOS, RunSmart Web, ResumeBuilder AI (Web), Agentic OS."
+      "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
     ],
     "needsDecision": [
       "RunSmart iOS: if build 8 is rejected again, decide minimal fix scope vs. expanding to v2 feature set.",
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-04",
+    "evidenceFreshDate": "2026-06-06",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -42,19 +41,17 @@
       "status": "Build 6 was rejected by Apple (Guideline 2.1a \u2014 iPad Privacy onboarding button unreachable). Build 8 resubmitted 2026-06-03: onboarding scroll fix + full version-2 1.0.1 UX redesign (A1-A6, B2-B4) + VoiceCoach. Version-2 merged to main. Build 9 bumped on main. GTM plan at .agent-os/distribution/gtm-plan.md.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "App Store Review",
-      "activeStory": "Monitor Apple review; respond to feedback if rejected again",
-      "lastCompletedStory": "Build 8 submitted \u2014 onboarding scroll fix + 1.0.1 UX redesign (2026-06-03)",
-      "nextRecommendedStory": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+      "activeStory": "Monitor Apple review for RunSmart 1.0.1 build 9",
+      "lastCompletedStory": "RunSmart 1.0.1 build 9 submitted to App Store review (2026-06-05)",
+      "nextRecommendedStory": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "Build 8 archived and uploaded 2026-06-03. All tests passed. Visual QA passed on iPhone 17 Pro, iPhone 17 Pro Max, iPad Air 11-inch (M3). Onboarding scroll fix confirmed in code review and build. Bug review passed (checks A, B, E, F, G automated; checks C, D require manual verification after sign-in). Executive OS gate passed",
+      "lastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-04",
+      "lastUpdated": "2026-06-06",
       "blockers": [
-        "Apple review outcome for build 8 is external (submitted 2026-06-03).",
-        "If Apple rejects build 8 again, must triage feedback before v2 scope expands.",
-        "Voice coach VOICE_COACH_ENABLED not yet flipped to true in Vercel."
+        "Apple review outcome is external"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -93,10 +90,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "dirty": true,
-        "dirtyCount": 3,
-        "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
+        "dirtyCount": 2,
+        "extraWorktrees": 2,
+        "lastCommit": "2026-06-05 4a230e5 record RunSmart build 9 App Store submission",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -124,31 +122,31 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-03",
+        "freshestDate": "2026-06-05",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-03"
+        "evidenceDate": "2026-06-05"
       },
       "taskParse": {
         "status": "Submitted for Review",
         "currentPhase": "App Store Review",
-        "activeStory": "Monitor Apple review; respond to feedback if rejected again",
-        "lastCompletedStory": "Build 8 submitted \u2014 onboarding scroll fix + 1.0.1 UX redesign (2026-06-03)",
-        "nextRecommendedStory": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+        "activeStory": "Monitor Apple review for RunSmart 1.0.1 build 9",
+        "lastCompletedStory": "RunSmart 1.0.1 build 9 submitted to App Store review (2026-06-05)",
+        "nextRecommendedStory": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
         "blockers": [
           "Apple review outcome is external"
         ],
         "risks": [],
-        "lastValidation": "Build 8 archived and uploaded 2026-06-03. All tests passed. Visual QA passed on iPhone 17 Pro, iPhone 17 Pro Max, iPad Air 11-inch (M3). Onboarding scroll fix confirmed in code review and build. Bug review passed (checks A, B, E, F, G automated; checks C, D require manual verification after sign-in). Executive OS gate passed",
-        "lastUpdated": "2026-06-03",
+        "lastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
+        "lastUpdated": "2026-06-05",
         "qaNeeded": null,
-        "estimatedCompletion": "98%",
+        "estimatedCompletion": "Submitted; awaiting Apple review",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-03"
+          "evidenceDate": "2026-06-05"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -181,20 +179,19 @@
       "freshness": "Fresh",
       "statusTone": "pre-submission",
       "status": "Pre-submission. Latest: pre-archive production audit done 2026-06-03 (bare print() calls wrapped). Phase 2 submit package complete. PostHog WP-1 key fix done (Run Script + PlistBuddy). Strong optimization mode, ATS uplift, manual section edit, and Me package hub all shipped. ASC upload path resolved: manual Xcode Organizer (no Fastlane, no .p8). Device smoke blocked on founder unlocking iPhone 13.",
-      "currentPhase": "App Store submission readiness",
-      "activeStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access",
-      "lastCompletedStory": "Release readiness fixes: API_BASE_URL is generated into Info.plist, source-code API URL fallback removed, Swift warnings cleaned up, `Secrets.swift.example` excluded from the app bundle, Release archive succeeds (2026-06-04)",
-      "nextRecommendedStory": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+      "currentPhase": "App Store Review",
+      "activeStory": "Monitor Apple review for Resumely 1.0 build 1",
+      "lastCompletedStory": "Resumely 1.0 build 1 submitted to App Store review (2026-06-05)",
+      "nextRecommendedStory": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
+      "lastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-04",
+      "lastUpdated": "2026-06-06",
       "blockers": [
-        "Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).",
-        "ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).",
-        "Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships."
+        "Apple review outcome is external",
+        "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
       ],
       "risks": [
         "WKWebView PDF/export fragility on real device",
@@ -226,10 +223,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1, behind 4]",
         "dirty": true,
-        "dirtyCount": 8,
-        "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
+        "dirtyCount": 16,
+        "extraWorktrees": 7,
+        "lastCommit": "2026-06-05 524bc9a record Resumely App Store submission",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -238,24 +236,25 @@
           "docs/specs/README.md",
           "docs/product/product-vision.md",
           "docs/product/current-product-state.md",
+          "docs/specs/app-store-screenshot-generator.md",
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-04",
+        "freshestDate": "2026-06-05",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-04"
+        "evidenceDate": "2026-06-05"
       },
       "taskParse": {
-        "status": "In Progress",
-        "currentPhase": "App Store submission readiness",
-        "activeStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access",
-        "lastCompletedStory": "Release readiness fixes: API_BASE_URL is generated into Info.plist, source-code API URL fallback removed, Swift warnings cleaned up, `Secrets.swift.example` excluded from the app bundle, Release archive succeeds (2026-06-04)",
-        "nextRecommendedStory": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+        "status": "Submitted for Review",
+        "currentPhase": "App Store Review",
+        "activeStory": "Monitor Apple review for Resumely 1.0 build 1",
+        "lastCompletedStory": "Resumely 1.0 build 1 submitted to App Store review (2026-06-05)",
+        "nextRecommendedStory": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
         "blockers": [
-          "App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+          "Apple review outcome is external",
           "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
         ],
         "risks": [
@@ -265,20 +264,17 @@
           "live backend endpoint gaps now surface real user-visible errors instead of mock fallback content",
           "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
         ],
-        "lastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
-        "lastUpdated": "2026-06-04",
+        "lastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
+        "lastUpdated": "2026-06-05",
         "qaNeeded": null,
-        "estimatedCompletion": "88%",
+        "estimatedCompletion": "Submitted; awaiting Apple review",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
-          "tests": [
-            "72 XCTest",
-            "5 Swift Testing"
-          ],
+          "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-04"
+          "evidenceDate": "2026-06-05"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -320,7 +316,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No latest B1 validation was rerun during this status refresh.",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-04",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -343,6 +339,7 @@
         "branch": "main...origin/main [ahead 2]",
         "dirty": true,
         "dirtyCount": 36,
+        "extraWorktrees": 1,
         "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -409,7 +406,7 @@
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "reference",
       "status": "Backend/reference project for Resumely. PDF parse/render-preview fix exists on fix/pdf-parse-xref-error, but rollout shadow enablement remains unchecked and the branch is dirty.",
       "currentPhase": "PDF parse/render-preview rollout",
@@ -421,7 +418,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-04",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -445,6 +442,7 @@
         "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
         "dirty": true,
         "dirtyCount": 2,
+        "extraWorktrees": 1,
         "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -454,7 +452,7 @@
         ],
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-06-03",
         "evidenceGap": false,
         "evidenceDate": null
@@ -549,16 +547,16 @@
       "freshness": "Fresh",
       "statusTone": "reference",
       "status": "Manual coordination layer active. Morning brief, PROJECT-STATUS.md, DASHBOARD.md, dashboard status, orchestration map, and Executive OS are refreshed on 2026-06-01.",
-      "currentPhase": "Dashboard trust upgrade (top-tier roadmap execution)",
-      "activeStory": "Phase 6 \u2014 parser unit tests + ./agentic-os test wired into verify (final roadmap phase)",
-      "lastCompletedStory": "Phase 6 \u2014 18-test hermetic suite; verify gates on it",
-      "nextRecommendedStory": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
+      "currentPhase": "Advanced OS patterns lean pilot",
+      "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
+      "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
+      "nextRecommendedStory": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "estimatedCompletion": "Ongoing",
       "progressPercent": null,
       "progressLabel": "Active",
-      "lastValidation": "./agentic-os verify passed \u2014 status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked",
+      "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-04",
+      "lastUpdated": "2026-06-06",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -573,13 +571,15 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main",
+        "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
         "dirty": true,
-        "dirtyCount": 19,
-        "lastCommit": "2026-06-04 b885a8c Merge pull request #7 from nadavyigal/claude/tender-tharp-8f23b7",
+        "dirtyCount": 1,
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
+          "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
           "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
@@ -587,26 +587,25 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-04",
+        "freshestDate": "2026-06-06",
         "evidenceGap": true,
-        "evidenceDate": "2026-06-02"
+        "evidenceDate": "2026-06-05"
       },
       "taskParse": {
         "status": "Active",
-        "currentPhase": "Dashboard trust upgrade (top-tier roadmap execution)",
-        "activeStory": "Phase 6 \u2014 parser unit tests + ./agentic-os test wired into verify (final roadmap phase)",
-        "lastCompletedStory": "Phase 6 \u2014 18-test hermetic suite; verify gates on it",
-        "nextRecommendedStory": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
+        "currentPhase": "Advanced OS patterns lean pilot",
+        "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
+        "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
+        "nextRecommendedStory": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "blockers": [],
         "risks": [
-          "Parser changes could regress dashboard status",
-          "product-repo schema seeding needs owner approval",
-          "global summaries go stale if repos are not re-read"
+          "Outcome loops could duplicate project status if expanded before the pilot is reviewed",
+          "untrusted input still requires least-privilege tools and founder approval for consequential actions"
         ],
-        "lastValidation": "./agentic-os verify passed \u2014 status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked",
-        "lastUpdated": "2026-06-02",
+        "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
+        "lastUpdated": "2026-06-05",
         "qaNeeded": null,
-        "estimatedCompletion": "Roadmap complete (Phases 0\u20136); only opt-in/held items remain",
+        "estimatedCompletion": "Pilot implementation complete; operating validation remains",
         "decisionsNeeded": [
           "Should drift detection stay detect-only, or gain a `refresh --reconcile` that auto-heals curated narrative for High projects?",
           "Should web-repo (RunSmart Web, ResumeBuilder Web) `tasks/progress.md` seeding proceed now or stay on hold?"
@@ -619,7 +618,7 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-02"
+          "evidenceDate": "2026-06-05"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -647,8 +646,8 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
-      "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect"
+      "RunSmart iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
+      "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope"
     ],
     "next": [
       "RunSmart Web: Triage modified/untracked files before more web work.",
@@ -658,15 +657,15 @@
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: 17 saved plan(s) \u2014 latest \"RunSmart iOS \u2014 Resubmission as Build 8\" (2026-06-03). See Saved Plans.",
-      "Resumely iOS: 2 saved plan(s) \u2014 latest \"App Store Submission \u2014 WP3 Implementation Plan\" (2026-06-03). See Saved Plans.",
+      "Resumely iOS: 3 saved plan(s) \u2014 latest \"Feature Spec \u2014 App Store Screenshot Generator\" (2026-06-05). See Saved Plans.",
       "RunSmart Web: 6 saved plan(s) \u2014 latest \"RunSmart iOS App \u2014 Implementation Plan v2\" (2026-03-17). See Saved Plans.",
       "ResumeBuilder AI (Web): 2 saved plan(s) \u2014 latest \"GTM Plan \u2014 ResumeBuilder iOS\" (2026-05-28). See Saved Plans.",
-      "Agentic OS: 3 saved plan(s) \u2014 latest \"Design: Morning Brief Prompt\" (2026-05-24). See Saved Plans.",
-      "Portfolio: 1 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
+      "Agentic OS: 4 saved plan(s) \u2014 latest \"Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep\" (2026-06-04). See Saved Plans.",
+      "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)"
+      "Resumely iOS: Apple review outcome is external"
     ]
   },
   "qaBoard": [
@@ -783,13 +782,14 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-04 17:08",
+    "lastRefresh": "2026-06-06 15:31",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
       "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+      "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
       "Agentic OS: tasks/MEMORY.md",
       "Agentic OS: tasks/progress.md",
       "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
@@ -799,6 +799,7 @@
       "Resumely iOS: docs/product/current-product-state.md",
       "Resumely iOS: docs/product/product-vision.md",
       "Resumely iOS: docs/specs/README.md",
+      "Resumely iOS: docs/specs/app-store-screenshot-generator.md",
       "Resumely iOS: docs/specs/resumely-pre-submission-ux-ui-transformation.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-03-app-store-submission.md",
       "Resumely iOS: tasks/MEMORY.md",
@@ -853,7 +854,7 @@
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
       "state": "App Store Review",
-      "nextAction": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+      "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
       "blockerCount": 1,
       "blockers": [
         "Apple review outcome is external"
@@ -987,14 +988,15 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 3,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-03 db0a23d chore(release): bump build 8 \u2192 9, version 1.0 \u2192 1.0.1 on main",
+      "dirtyCount": 2,
+      "extraWorktrees": 2,
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-06-05 4a230e5 record RunSmart build 9 App Store submission",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-03",
+      "freshestDate": "2026-06-05",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-03",
+      "evidenceDate": "2026-06-05",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -1024,18 +1026,18 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "Build 8 archived and uploaded 2026-06-03. All tests passed. Visual QA passed on iPhone 17 Pro, iPhone 17 Pro Max, iPad Air 11-inch (M3). Onboarding scroll fix confirmed in code review and build. Bug review passed (checks A, B, E, F, G automated; checks C, D require manual verification after sign-in). Executive OS gate passed",
-      "parsedLastUpdated": "2026-06-03",
-      "parsedActiveStory": "Monitor Apple review; respond to feedback if rejected again"
+      "parsedLastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
+      "parsedLastUpdated": "2026-06-05",
+      "parsedActiveStory": "Monitor Apple review for RunSmart 1.0.1 build 9"
     },
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "App Store submission readiness",
-      "nextAction": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+      "state": "App Store Review",
+      "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
       "blockerCount": 2,
       "blockers": [
-        "App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+        "Apple review outcome is external",
         "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
       ],
       "gtm": {
@@ -1046,6 +1048,13 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "Feature Spec \u2014 App Store Screenshot Generator",
+          "path": "docs/specs/app-store-screenshot-generator.md",
+          "date": "2026-06-05",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "App Store Submission \u2014 WP3 Implementation Plan",
           "path": "docs/superpowers/plans/2026-06-03-app-store-submission.md",
@@ -1062,18 +1071,16 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 8,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-03 1f8ca29 Merge pull request #48 from nadavyigal/claude/cool-hawking-9cdd70",
+      "dirtyCount": 16,
+      "extraWorktrees": 7,
+      "branch": "main...origin/main [ahead 1, behind 4]",
+      "lastCommit": "2026-06-05 524bc9a record Resumely App Store submission",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-04",
+      "freshestDate": "2026-06-05",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-04",
-      "evidenceTests": [
-        "72 XCTest",
-        "5 Swift Testing"
-      ],
+      "evidenceDate": "2026-06-05",
+      "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
@@ -1084,14 +1091,15 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "App Store readiness pass (2026-06-04): `xcodebuild test` passed 72 XCTest + 5 Swift Testing on iPhone 17 simulator (iOS 26.5). Debug simulator smoke passed: app installed/launched and Home rendered; screenshot at `/var/tmp/resumebuilder-smoke.png`. Release archive succeeded at `/var/tmp/ResumeBuilder-ReleasePrep.xcarchive`; archive Info.plist contains API_BASE_URL, POSTHOG_API_KEY, POSTHOG_HOST, version 1.0 build 1, and bundle id `Resumebuilder-IOS.ResumeBuilder-IOS-APP`. App bundle no longer includes `Secrets.swift.example`. App Store Connect export attempted with automatic signing and reached Apple Distribution `codesign`, but stalled in SecurityServer private-key signing; requires local Keychain authorization before upload",
-      "parsedLastUpdated": "2026-06-04",
-      "parsedActiveStory": "2026-06-04 App Store archive readiness pass \u2014 code/build/test/simulator smoke passed; App Store export blocked by local Keychain signing access"
+      "parsedLastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
+      "parsedLastUpdated": "2026-06-05",
+      "parsedActiveStory": "Monitor Apple review for Resumely 1.0 build 1"
     },
     {
       "id": "runsmart-web",
@@ -1155,6 +1163,7 @@
       ],
       "dirty": true,
       "dirtyCount": 36,
+      "extraWorktrees": 1,
       "branch": "main...origin/main [ahead 2]",
       "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
       "stale": false,
@@ -1216,10 +1225,11 @@
       ],
       "dirty": true,
       "dirtyCount": 2,
+      "extraWorktrees": 1,
       "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
       "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-06-03",
       "evidenceGap": false,
       "evidenceDate": null,
@@ -1241,8 +1251,8 @@
     {
       "id": "agentic-os",
       "name": "Agentic OS",
-      "state": "Dashboard trust upgrade (top-tier roadmap execution)",
-      "nextAction": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
+      "state": "Advanced OS patterns lean pilot",
+      "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "blockerCount": 0,
       "blockers": [],
       "gtm": {
@@ -1253,6 +1263,13 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
+          "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "date": "2026-06-04",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "Design: Morning Brief Prompt",
           "path": "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
@@ -1276,38 +1293,40 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 19,
-      "branch": "main",
-      "lastCommit": "2026-06-04 b885a8c Merge pull request #7 from nadavyigal/claude/tender-tharp-8f23b7",
+      "dirtyCount": 1,
+      "extraWorktrees": 0,
+      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+      "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-04",
+      "freshestDate": "2026-06-06",
       "evidenceGap": true,
-      "evidenceDate": "2026-06-02",
+      "evidenceDate": "2026-06-05",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
         "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "./agentic-os verify passed \u2014 status.json parsed, embedded dashboard JSON synced, source confidence and freshness values valid, links resolve, git diff --check clean (2026-06-02). Parser boundary cases unit-checked",
-      "parsedLastUpdated": "2026-06-02",
-      "parsedActiveStory": "Phase 6 \u2014 parser unit tests + ./agentic-os test wired into verify (final roadmap phase)"
+      "parsedLastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
+      "parsedLastUpdated": "2026-06-05",
+      "parsedActiveStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops"
     }
   ],
   "agentQueue": [
     {
       "role": "Release Manager",
-      "task": "Run Resumely iOS live-device smoke, then prepare ASC upload.",
-      "whenToUse": "Use when the next move touches App Store readiness, screenshots, smoke QA, or submission gates.",
+      "task": "Handle an App Store review outcome without reopening completed submission work.",
+      "whenToUse": "Use only after Apple approves, rejects, or requests information for either submitted app.",
       "evidence": "PROJECT-STATUS.md, dashboard/status.json, ResumeBuilder iOS tasks/session-log.md",
-      "starter": "Act as the Release Manager for Resumely iOS. Read PROJECT-STATUS.md and the ResumeBuilder iOS tasks/session-log.md. Produce the exact smoke checklist, expected evidence, and ASC upload sequence. Do not submit or upload without explicit approval."
+      "starter": "Act as Release Manager. Read dashboard/status.json and the target iOS repo tasks/progress.md plus tasks/session-log.md. If there is no new Apple review outcome, stop and report that monitoring is the only action. If Apple responded, create one focused response packet from the exact review message. Do not resubmit or change release scope without explicit approval."
     },
     {
       "role": "CEO OS",
@@ -1337,8 +1356,8 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
-      "nextAction": "After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post",
+      "branch": "main...origin/main [ahead 1]",
+      "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1365,15 +1384,15 @@
         "docs/specs/e7-garmin-wearable-depth.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post. Known blockers: Apple review outcome for build 8 is external (submitted 2026-06-03).; If Apple rejects build 8 again, must triage feedback before v2 scope expands.; Voice coach VOICE_COACH_ENABLED not yet flipped to true in Vercel.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope. Known blockers: Apple review outcome is external. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
-      "nextAction": "Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
+      "branch": "main...origin/main [ahead 1, behind 4]",
+      "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1384,10 +1403,11 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1432,23 +1452,24 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main",
-      "nextAction": "All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16",
+      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+      "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
         "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md, docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md. Current state: Dashboard trust upgrade (top-tier roadmap execution). Next action: All roadmap phases (0\u20136) shipped. Remaining optional: Phase 2.3 web-repo progress.md seeding (on hold), Phase 6.3 opt-in pre-commit hook, and the INTENT-LOG audit on 2026-06-16. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect",
-    "portfolioState": "RunSmart iOS \u2014 App Store Review: After review approval \u2014 merge version-2 to main, update PROJECT-STATUS.md, publish launch post \u00b7 Resumely iOS \u2014 App Store submission readiness: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "headline": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
+    "portfolioState": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1456,7 +1477,7 @@
     ],
     "risks": [
       "RunSmart iOS: Apple review outcome is external",
-      "Resumely iOS: App Store Connect export stalls in `codesign` while using Apple Distribution private key `71915959D76E14CED4D4153118972F034D338A50` (local Keychain permission/unlock required)",
+      "Resumely iOS: Apple review outcome is external",
       "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
@@ -1521,17 +1542,24 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-04 17:08",
+    "lastRunAt": "2026-06-06 15:31",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect. Known blockers: Device smoke requires founder to unlock iPhone 13 (was locked during WP-1 session 2026-06-03).; ASC upload is manual Xcode Organizer path (no Fastlane, no .p8 key \u2014 EXD-006 resolved).; Resume Library backend (/api/v1/resumes) returns 404 HTML; disabled in iOS until backend ships.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "main...origin/main",
+    "targetBranch": "main...origin/main [ahead 1, behind 4]",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: Unlock/authorize Apple Distribution private-key access in Keychain/Xcode, then export/upload the existing archive through Xcode Organizer/App Store Connect"
+    "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
+    "nextActions": [
+      {
+        "title": "Restore dashboard trust",
+        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+        "type": "system"
+      }
+    ]
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
@@ -1608,9 +1636,16 @@
     {
       "project": "Resumely iOS",
       "projectId": "resumebuilder-ios",
-      "total": 2,
-      "shown": 2,
+      "total": 3,
+      "shown": 3,
       "plans": [
+        {
+          "title": "Feature Spec \u2014 App Store Screenshot Generator",
+          "path": "docs/specs/app-store-screenshot-generator.md",
+          "date": "2026-06-05",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "App Store Submission \u2014 WP3 Implementation Plan",
           "path": "docs/superpowers/plans/2026-06-03-app-store-submission.md",
@@ -1702,9 +1737,16 @@
     {
       "project": "Agentic OS",
       "projectId": "agentic-os",
-      "total": 3,
-      "shown": 3,
+      "total": 4,
+      "shown": 4,
       "plans": [
+        {
+          "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
+          "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "date": "2026-06-04",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "Design: Morning Brief Prompt",
           "path": "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
@@ -1786,27 +1828,41 @@
     ],
     "workPackets": [
       {
-        "title": "Work Packet WP-1 (Active)",
-        "status": "Active",
+        "title": "Work Packet WP-1 (Closed)",
+        "status": "Closed",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
         "repoId": "resumebuilder-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
         "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
         "source": "BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
-        "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n# Work Packet WP-1 (Active)\n\n- Status: Active\n- Created: 2026-06-02\n- Source: BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)\n- Routed by: COO OS (first COO Operating Review run)\n- Escalation: none (CEO / CFO / Analysis / Risk all No)\n- Related decision: EXD-006 (Resumely ASC upload path)\n\n---\n\n# Work Packet\n\n## Owner Role\nRelease Manager / QA (local iOS)\n\n## Project\nResumely iOS (ResumeBuilder IOS APP)\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n\n## Goal\nConfirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload.\n\n## Context\nResumely cleared analytics and UX/export gates on 2026-06-01, but the authenticated real-device smoke has not been run and PostHog live-event coverage is unverified in a production-style build. This is the current portfolio bottleneck: it is the one step that moves a second app toward review and unlocks the first readable funnel. RunSmart iOS is frozen in Apple review, so no founder action moves it this week.\n\n## Read First\n- AGENTS.md\n- CLAUDE.md\n- tasks/progress.md (canonical status source for this repo)\n- tasks/todo.md\n- tasks/session-log.md\n- tasks/lessons.md\n- Latest submit-package / smoke notes referenced in tasks/session-log.md\n\n## Task\nOn a real, signed, authenticated device build:\n1. Smoke the core path: optimize -> design -> expert -> preview/export.\n2. Confirm PostHog Live Events receives app_launched, optimize_completed, and export_success from this build.\n3. Confirm export output (PDF / share) renders correctly.\n4. Confirm the ASC upload path (EXD-006): Fastlane API key present? If absent, the upload uses the Claude Chrome extension to fill the App Store Connect portal \u2014 founder will share a screenshot folder link when we reach that step.\nStop at \"ready to upload\" with evidence. Do NOT upload or submit in this packet.\n\n## Constraints\n- Do not touch unrelated files.\n- Do not deploy, submit, bill, email, or change production services without explicit approval.\n- Do not invent validation results.\n- Do not add events beyond the wired set, and no new dependencies.\n- Keep the task to one focused work session.\n\n## Validation\n- Device smoke screenshots for each step (optimize, design, expert, preview/export).\n- PostHog screenshot showing the 3 events received from this build.\n- Export output visual check.\n- A clear statement of the ASC upload path (Fastlane key present? yes/no).\n\n## Completion Gate\nBefore final response, update or report:\n- tasks/todo.md\n- tasks/progress.md, if present\n- tasks/session-log.md\n- tasks/lessons.md only if a reusable lesson was learned\n\n## Final Output\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- Remaining risks\n- Next recommended action\n",
+        "copyPrompt": null,
         "decision": "EXD-006"
       },
       {
-        "title": "Work Packet WP-2 (Active)",
+        "title": "Work Packet WP-2 (Research Complete)",
         "status": "Research",
         "project": null,
         "repoId": "research",
         "repoPath": null,
         "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
         "source": "EXD-005 (model shape) + EXD-009 (timing)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
-        "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n# Work Packet WP-2 (Active)\n\n- Status: Research + spec complete, waiting for activation data to implement\n- Created: 2026-06-04\n- Source: EXD-005 (model shape) + EXD-009 (timing)\n- Routed by: COO OS\n- Escalation: CFO (pricing), Analysis (research) \u2014 both for input, not blocking\n- Related decision: EXD-005, EXD-009\n\n---\n\n# Work Packet\n\n## Owner Role\nCFO OS + Analysis OS (research & design now). Implementation is later, after activation data.\n\n## Goal\nDefine the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch.\n\n## Decided (EXD-005, EXD-009)\n- Model shape: **freemium with a free activation moment**, both apps.\n- Timing: monetize **after** first-cohort activation is readable (do not paywall at launch).\n- Price: **set later**, from activation data. Not now.\n\n## Initial recommendation (advice \u2014 refine with research + data)\n**RunSmart (running coach):**\n- Free activation moment: onboarding \u2192 first AI plan generated \u2192 first run logged \u2192 week-1 adherence. All free. This is the \"this coach knows me\" moment; gating it kills retention.\n- Paywall line (candidate): adaptive/Flex Week, advanced Garmin/wearable depth, voice coach, long-horizon race plans.\n- Upgrade trigger: after the user feels the plan adapt to them (week 2-3), not before.\n\n**Resumely (resume builder):**\n- Free activation moment: one full optimize \u2192 preview \u2192 first export, so the user sees a better resume once.\n- Paywall line (candidate): additional optimizations/exports, Expert modes (cover letter, ATS deep-dive), design templates beyond a starter set.\n- Upgrade trigger: at the second resume / second job application.\n\n**Shape:** subscription as primary (recurring value: ongoing coaching / ongoing job search), with the free tier permanently usable so activation is never blocked. Revisit one-time-unlock only if subscription activation is weak.\n\n## Research needed (Analysis OS) \u2014 to confirm before locking price\n- Competitor pricing & free-tier lines: Runna, Nike Run Club, Strava (RunSmart); Teal, Rezi, Kickresume, Jobscan (Resumely).\n- Willingness-to-pay signals for each audience (rookie runner vs. job seeker urgency).\n- Which gated feature each segment values most (drives the paywall line).\n\n## Build-readiness checklist (so implementation is instant when data arrives)\n- [x] Free vs paid feature matrix per app: `executive-os/work-packets/WP-2-monetization-spec.md` Section 1.\n- [x] Paywall placement spec (which screen, which trigger event): `executive-os/work-packets/WP-2-monetization-spec.md` Section 2.\n- [x] PostHog events needed to read activation to paywall conversion: `executive-os/work-packets/WP-2-monetization-spec.md` Section 3.\n- [x] StoreKit / IAP product IDs drafted (no prices committed): `executive-os/work-packets/WP-2-monetization-spec.md` Section 4.\n- [x] Price experiment plan (A/B once there is traffic): `executive-os/work-packets/WP-2-monetization-spec.md` Section 5.\n\n## Research outputs\n- Competitor pricing research: `executive-os/research/WP-2-competitor-pricing-research.md`\n- Full CFO spec: `executive-os/work-packets/WP-2-monetization-spec.md`\n\n## Constraints\n- Do not implement a paywall or set a price until activation data exists (EXD-009).\n- No new dependencies; no production/billing changes without explicit founder approval.\n- Research only uses public sources; never invent numbers (mark unknowns \"need: <source>\").\n\n## Validation / Done\n- Feature matrix + paywall spec + events list exist and are reviewed.\n- EXD-005 / EXD-009 reference this packet; CFO-OS.md updated with the model shape (price still Needs Data).\n\n## Next recommended action\nAnalysis OS runs the competitor + willingness-to-pay research brief; CFO OS drafts the free/paid matrix and paywall spec from the recommendation above. Keep price blank until activation data.\n",
+        "copyPrompt": null,
         "decision": "EXD-005"
       },
       {
@@ -1816,10 +1872,47 @@
         "repoId": "research",
         "repoPath": null,
         "goal": null,
-        "source": "`executive-os/research/WP-2-competitor-pricing-research.md`",
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-spec.md",
-        "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n# WP-2 Monetization Spec \u2014 Ready-to-Build\n## RunSmart + Resumely Freemium Implementation Spec\n\n- Date: 2026-06-04\n- Role: CFO OS\n- Status: Ready to build, implement after first-cohort activation data (EXD-009)\n- Research source: `executive-os/research/WP-2-competitor-pricing-research.md`\n- Decisions: EXD-005, EXD-009\n\n**Constraint:** Do not implement a paywall or set a price until activation data is readable. This spec exists so implementation is instant when the green light arrives.\n\n---\n\n## 1. Free vs Paid Feature Matrix\n\n### RunSmart\n\n| Feature | Free | Pro |\n|---|---|---|\n| Onboarding + goal setting | Yes | Yes |\n| AI training plan generated (week 1, full) | Yes | Yes |\n| GPS run tracking | Yes | Yes |\n| First run logged + weekly stats | Yes | Yes |\n| Basic Garmin / Apple Watch sync (data read) | Yes | Yes |\n| Run history + pace/distance charts | Yes | Yes |\n| Week 1 adherence summary | Yes | Yes |\n| Basic post-run debrief (distance, pace, HR) | Yes | Yes |\n| Weeks 2+ of adaptive plan (Flex Week, plan adjusts to actual runs) | No | Yes |\n| Advanced Garmin / HRV / readiness integration | No | Yes |\n| Voice coach cues during runs | No | Yes |\n| Long-horizon race plans (marathon, ultra, multi-cycle) | No | Yes |\n| Cross-training + strength session integration | No | Yes |\n| Deep post-run debrief (AI analysis of pacing, load, recovery) | No | Yes |\n| Goal race pace predictions + race-day strategy | No | Yes |\n\n**Free tier philosophy:** The \"this coach knows me\" moment is free, covering onboarding through week 1. Gating week 2 is when the adaptation value is first felt, which is the right upgrade moment (confirmed by Runna's model).\n\n**Subscription shape:** Annual-first (market standard; Runna $120/year, Strava $80/year). Monthly is available as the fallback.\n\n**Price cell:** `NEEDS_DATA`, set from D7 activation cohort. Expected range $79-$120/year / $10-$14/month (market; source: `executive-os/research/WP-2-competitor-pricing-research.md`). Do not hardcode.\n\n---\n\n### Resumely\n\n| Feature | Free | Pro |\n|---|---|---|\n| Resume import (PDF/LinkedIn) or build from scratch | Yes | Yes |\n| AI-powered optimization, 1 full round (analyze, improve bullets, keyword match) | Yes | Yes |\n| Resume preview (see the improved version) | Yes | Yes |\n| 1 PDF export / download | Yes | Yes |\n| Basic ATS score check (score + top 5 missing keywords) | Yes | Yes |\n| 1 starter design template | Yes | Yes |\n| Per-job AI tailoring (additional job descriptions) | No | Yes |\n| Additional exports and downloads | No | Yes |\n| Full ATS deep-dive (all keywords, section-by-section analysis) | No | Yes |\n| Unlimited cover letter generation | No | Yes |\n| Expert modes: LinkedIn optimization, interview prep, salary negotiation scripts | No | Yes |\n| Premium design templates (beyond starter) | No | Yes |\n| Job application tracker | No | Yes |\n\n**Free tier philosophy:** The user must see a better resume and export it once, free. This is the activation moment that drives conversion. Teal and Rezi both allow this. Gating before the first export is the market anti-pattern (Jobscan gets criticized for exactly this).\n\n**Subscription shape:** Weekly as the primary urgency tier (matches Teal's $9/week; job seekers are sprint-mode); monthly as standard; annual for power users. No lifetime plan until conversion data suggests it.\n\n**Price cell:** `NEEDS_DATA`, set from D7 activation cohort. Expected range $9-$13/week / $25-$30/month / $79-$96/year (market; source: `executive-os/research/WP-2-competitor-pricing-research.md`). Do not hardcode.\n\n---\n\n## 2. Paywall Placement Spec\n\n### RunSmart\n\n| Field | Value |\n|---|---|\n| Screen | Plan Detail view, week 2 workout cards |\n| Gate type | Soft gate: week 2 plan is visible (titles, distances) but locked; tapping reveals upgrade prompt |\n| Trigger event | User taps any week 2+ workout detail, OR `runsmart.retention.plan_adapt_triggered` fires |\n| CTA headline | \"Your plan adapted to week 1. Unlock to continue.\" |\n| CTA sub-text | \"Your coach updated [X] sessions based on how last week went.\" |\n| CTA primary button | \"Unlock Pro\" |\n| CTA secondary | \"Remind me later\" (7-day snooze) |\n| Dismiss behavior | User can see week 2 list but not workout detail |\n| Urgency lever | Show the specific adaptation (e.g., \"Tuesday's run moved from 8km to 6km. Your recovery matters.\"). This is the personalization proof. |\n| PostHog event at show | `runsmart.monetization.paywall_shown` (see Section 3) |\n\n### Resumely\n\n| Field | Value |\n|---|---|\n| Screen | Optimize flow, second job description entry (or second download attempt) |\n| Gate type | Soft gate: show ATS score delta preview for the second job (\"Your resume scores X% for this role, see the fixes\") but block the detailed analysis and download |\n| Trigger event | `resumebuilder.monetization.second_optimize_attempted` or `resumebuilder.monetization.second_export_attempted` |\n| CTA headline | \"Tailor your resume to every job\" |\n| CTA sub-text | \"You've already improved your resume once. Pro unlocks unlimited tailoring so every application is your best.\" |\n| CTA primary button | \"Unlock Pro\" |\n| CTA secondary | \"Use my existing resume\" (lets them download the already-optimized version, not the new one) |\n| Dismiss behavior | User can still export the first optimized resume; they just can't run a new optimization |\n| Urgency lever | Show the specific score improvement they're missing (\"Resume scores 61% for this job. Pro would bring it to 88%.\") |\n| PostHog event at show | `resumebuilder.monetization.paywall_shown` (see Section 3) |\n\n---\n\n## 3. PostHog Events \u2014 Activation to Conversion Funnel\n\nThese events are required to read the funnel before and after the paywall is live. Instrument these before flipping the paywall switch.\n\n**Event names must conform to `distribution-os/data/metrics-schema.md` naming rule: `{product}.{stage}.{metric_name}`, lowercase, dot-separated.**\n\n### RunSmart Events\n\n```text\nrunsmart.activation.onboarding_completed\n  properties: goal_type, experience_level, target_race\n\nrunsmart.activation.plan_generated\n  properties: plan_type, duration_weeks, target_race\n\nrunsmart.activation.first_run_logged\n  properties: distance_km, source (manual | gps | garmin)\n\nrunsmart.retention.week1_completed        <- activation milestone\n  properties: runs_completed, runs_missed, avg_pace\n\nrunsmart.retention.plan_adapt_triggered   <- precursor to paywall; plan changed based on week 1\n  properties: changes_count, reason\n\nrunsmart.monetization.paywall_shown\n  properties: trigger_event, screen, plan_week\n\nrunsmart.monetization.upgrade_cta_clicked\n  properties: trigger_event, screen, plan_week, cta_variant\n\nrunsmart.revenue.subscription_started\n  properties: plan_type (monthly | annual), price_usd\n\nrunsmart.revenue.subscription_cancelled\n  properties: plan_type, weeks_active, reason (if captured)\n```\n\n### Resumely Events\n\n```text\nresumebuilder.activation.resume_import_started\n  properties: source (pdf | linkedin | scratch)\n\nresumebuilder.activation.first_optimize_completed  <- activation start\n  properties: score_before, score_after, keywords_added\n\nresumebuilder.activation.resume_previewed\n  properties: template_id, score_after\n\nresumebuilder.activation.first_export_completed    <- activation complete\n  properties: format (pdf | docx)\n\nresumebuilder.monetization.second_optimize_attempted  <- paywall trigger precursor\n  properties: job_title, score_current\n\nresumebuilder.monetization.second_export_attempted    <- alternative paywall trigger\n  properties: is_new_version (bool)\n\nresumebuilder.monetization.paywall_shown\n  properties: trigger_event, screen\n\nresumebuilder.monetization.upgrade_cta_clicked\n  properties: trigger_event, screen, cta_variant\n\nresumebuilder.revenue.subscription_started\n  properties: plan_type (weekly | monthly | annual), price_usd\n\nresumebuilder.revenue.subscription_cancelled\n  properties: plan_type, days_active, reason (if captured)\n```\n\n**Funnel to read:**\n- RunSmart: `runsmart.activation.plan_generated` -> `runsmart.retention.week1_completed` -> `runsmart.monetization.paywall_shown` -> `runsmart.monetization.upgrade_cta_clicked` -> `runsmart.revenue.subscription_started`\n- Resumely: `resumebuilder.activation.first_optimize_completed` -> `resumebuilder.activation.first_export_completed` -> `resumebuilder.monetization.second_optimize_attempted` -> `resumebuilder.monetization.paywall_shown` -> `resumebuilder.monetization.upgrade_cta_clicked` -> `resumebuilder.revenue.subscription_started`\n\n**Activation metric to declare before monetizing (EXD-009):**\n- RunSmart: D7 activation = `runsmart.retention.week1_completed` / `runsmart.activation.plan_generated` >= threshold (set after first 50 users)\n- Resumely: D7 activation = `resumebuilder.activation.first_export_completed` / `resumebuilder.activation.resume_import_started` >= threshold\n\n---\n\n## 4. StoreKit / IAP Product IDs (Draft, No Prices)\n\nPrices are `NEEDS_DATA`. Only IDs and descriptions are drafted here. No product should be created in App Store Connect until EXD-009 green light.\n\n### RunSmart\n\n```text\ncom.runsmart.pro.monthly\n  - Display name: RunSmart Pro\n  - Type: Auto-renewable subscription\n  - Duration: 1 month\n  - Price: NEEDS_DATA (market range $10-$14/month)\n  - Free trial: 7 days\n\ncom.runsmart.pro.annual\n  - Display name: RunSmart Pro Annual\n  - Type: Auto-renewable subscription\n  - Duration: 1 year\n  - Price: NEEDS_DATA (market range $79-$120/year)\n  - Free trial: 7 days\n  - Introductory offer: first month free (optional, decide from data)\n```\n\nSubscription group: `RunSmart Pro` (one group; monthly and annual are the two options)\n\n### Resumely\n\n```text\ncom.resumely.pro.weekly\n  - Display name: Resumely Pro Weekly\n  - Type: Auto-renewable subscription\n  - Duration: 1 week\n  - Price: NEEDS_DATA (market range $9-$13/week)\n  - Free trial: none (high urgency, short horizon)\n\ncom.resumely.pro.monthly\n  - Display name: Resumely Pro\n  - Type: Auto-renewable subscription\n  - Duration: 1 month\n  - Price: NEEDS_DATA (market range $25-$30/month)\n  - Free trial: 3 days\n\ncom.resumely.pro.annual\n  - Display name: Resumely Pro Annual\n  - Type: Auto-renewable subscription\n  - Duration: 1 year\n  - Price: NEEDS_DATA (market range $79-$96/year)\n  - Free trial: 7 days\n```\n\nSubscription group: `Resumely Pro` (one group; weekly, monthly, and annual)\n\nNote on Resumely weekly: Teal's $9/week tier captures high-urgency job seekers who are actively applying. This tier should be the top CTA at the paywall if D7 activation data shows short-burst usage patterns (session clustering).\n\n---\n\n## 5. Price Experiment Plan\n\n**When to run:** After 300 total paywall exposures per app (minimum for statistical signal). Do not guess before this threshold.\n\n**How to run (Apple compliance):**\n\nPer Apple guidelines, the paywall must display the actual StoreKit-provided localized price. Use `Product.displayPrice` (StoreKit 2) or `SKProduct.localizedPrice` (StoreKit 1) at runtime. Never hardcode a price string in CTA copy.\n\nTo run a price experiment, vary the StoreKit product ID loaded by the paywall per user. Each variant maps to a different App Store Connect pricing tier (a separate product ID with a different price set in App Store Connect). Use RevenueCat Offerings or App Store Connect product configuration to assign variants, then display the localized price returned by StoreKit for whatever product ID the user is shown.\n\nDo not change the CTA display text to a price that differs from what StoreKit will actually charge. Doing so creates a UI/charge mismatch that is a review violation.\n\nPostHog feature flags control which product ID the paywall loads, not the displayed price string.\n\n### RunSmart Price Experiment\n\n- Variants (3-way): Annual product ID A vs B vs C, each pointing to a different App Store pricing tier (set actual $ values after cohort 1, within $79-$120/year range)\n- Primary metric: `runsmart.revenue.subscription_started` within 7 days of `runsmart.monetization.paywall_shown`\n- Secondary metric: 30-day retention of subscribers\n- Minimum sample: 100 paywall exposures per variant before reading\n- Duration: run until 95% statistical significance or 6 weeks, whichever comes first\n- Decision: pick the variant with highest subscription rate, weighted by 30-day retention\n\n### Resumely Price Experiment\n\n- First experiment: weekly vs monthly as the CTA default (which tier drives higher total revenue per activated user)\n- Second experiment: price of the default tier (set actual $ after cohort 1, within market range)\n- Primary metric: `resumebuilder.revenue.subscription_started` within 3 days of `resumebuilder.monetization.paywall_shown` (shorter window; job seekers decide fast)\n- Minimum sample: 100 paywall exposures per variant\n- Duration: run until 95% statistical significance or 4 weeks\n\n**Logging:** Log experiment start, winner, and decision in `executive-os/EXECUTIVE-DECISIONS.md` when the experiment runs.\n",
+        "copyPrompt": null,
         "decision": null
+      }
+    ],
+    "outcomeLoops": [
+      {
+        "title": "Outcome Loop: Resumely Submission",
+        "status": "active",
+        "owner": "COO OS",
+        "outcome": "Resumely is approved and live with launch analytics verified",
+        "source": "executive-os/BUSINESS-GTM-PLAN-V0.md",
+        "linkedPacket": "none - WP-1 closed after confirmed submission",
+        "leadingSignal": "Resumely 1.0 build 1 is Submitted for Review",
+        "resultMetric": "App Store status is Ready for Sale and launch events are visible in PostHog",
+        "currentMilestone": "Wait for Apple review outcome; respond only if Apple requests changes",
+        "constraint": "Apple review timing and outcome are external",
+        "lastReviewed": "2026-06-05",
+        "evidenceSource": "Resumely iOS tasks/progress.md and tasks/session-log.md",
+        "memoryDestination": "Resumely iOS tasks/progress.md and tasks/session-log.md",
+        "closeCondition": "App Store status is Ready for Sale and launch analytics are verified",
+        "path": "executive-os/loops/resumely-submission.md"
+      }
+    ],
+    "contextCheckpoints": [
+      {
+        "title": "Context Checkpoint: Advanced OS Patterns",
+        "status": "promoted",
+        "topic": "Advanced OS patterns for the Global Agentic OS",
+        "purpose": "Add useful escalation, founder-context, and outcome-feedback behavior without weakening the simplified daily path",
+        "created": "2026-06-05",
+        "lastUpdated": "2026-06-05",
+        "path": "executive-os/context/2026-06-05-advanced-os-patterns.md"
       }
     ],
     "skillAgents": [
@@ -1863,6 +1956,30 @@
         "purpose": "Reviews and improves user experience, visual quality, layout, copy, and platform fit.",
         "path": "SKILLS/ui-ux-agent.md"
       }
+    ],
+    "sideProjects": [
+      {
+        "name": "Clarity Funnel",
+        "purpose": "Session companion for AI chats. Helps everyday users feel the conversation is **staying on track** and getting **clearer over time** \u2014 not one-shot plans or...",
+        "path": "clarity-funnel/README.md"
+      }
+    ],
+    "researchTopics": [
+      {
+        "name": "Analysis OS \u2014 Competitor Pricing Research Brief",
+        "purpose": "1. **RunSmart paywall line is validated**: Adaptive week 2+ plans are gated by the closest direct competitor (Runna). This is the right cut.",
+        "path": "executive-os/research/WP-2-competitor-pricing-research.md"
+      },
+      {
+        "name": "Research Brief: \u05d7\u05d1\u05d5\u05e8\u05ea \u05d4\u05de\u05d5\u05e0\u05d3\u05d9\u05d0\u05dc \u2014 New Product Opportunity Assessment",
+        "purpose": "1. FIFA World Cup 2026 opens June 11, 2026, and closes July 19, 2026 \u2014 39 days of tournament. 48 teams, 104 matches across 3 host countries (USA, Canada, Mex...",
+        "path": "executive-os/research/2026-05-31-chavurat-hamundial-research-brief.md"
+      },
+      {
+        "name": "Opportunity Card OC-001: \u05d7\u05d1\u05d5\u05e8\u05ea \u05d4\u05de\u05d5\u05e0\u05d3\u05d9\u05d0\u05dc \u2014 Web MVP Launch by June 7",
+        "purpose": "",
+        "path": "executive-os/research/2026-05-31-chavurat-hamundial-opportunity-card.md"
+      }
     ]
   },
   "decisions": [
@@ -1901,11 +2018,10 @@
       "date": "2026-06-02",
       "area": "Release",
       "decision": "Resumely iOS App Store Connect upload path",
-      "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
+      "recommendation": "Use the founder-controlled App Store Connect path available at submission time.",
       "owner": "Nadav",
       "review": "2026-06-09",
-      "status": "Open",
-      "reviewOverdue": false
+      "status": "Decided"
     },
     {
       "id": "EXD-005",
@@ -1974,53 +2090,55 @@
       },
       {
         "name": "Decisions",
-        "what": "1 open of 9 logged in EXECUTIVE-DECISIONS.md."
+        "what": "0 open of 9 logged in EXECUTIVE-DECISIONS.md."
       },
       {
         "name": "Work packets",
-        "what": "3 active. One focused repo task per decision that needs execution."
+        "what": "0 active, 3 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
         "what": "Open ideas in NEXT-MOVES.md."
       }
     ],
-    "openDecisions": [
-      {
-        "id": "EXD-006",
-        "date": "2026-06-02",
-        "area": "Release",
-        "decision": "Resumely iOS App Store Connect upload path",
-        "recommendation": "Use Claude Chrome extension to fill the App Store Connect portal. Founder shares a screenshot folder link at the right step. Device smoke must pass first (WP-1).",
-        "owner": "Nadav",
-        "review": "2026-06-09",
-        "status": "Open",
-        "reviewOverdue": false
-      }
-    ],
+    "openDecisions": [],
     "workPackets": [
       {
-        "title": "Work Packet WP-1 (Active)",
-        "status": "Active",
+        "title": "Work Packet WP-1 (Closed)",
+        "status": "Closed",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
         "repoId": "resumebuilder-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
         "goal": "Confirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload",
         "source": "BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
-        "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n# Work Packet WP-1 (Active)\n\n- Status: Active\n- Created: 2026-06-02\n- Source: BUSINESS-GTM-PLAN-V0.md Section 10 (WP-1)\n- Routed by: COO OS (first COO Operating Review run)\n- Escalation: none (CEO / CFO / Analysis / Risk all No)\n- Related decision: EXD-006 (Resumely ASC upload path)\n\n---\n\n# Work Packet\n\n## Owner Role\nRelease Manager / QA (local iOS)\n\n## Project\nResumely iOS (ResumeBuilder IOS APP)\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n\n## Goal\nConfirm the submit build works end-to-end on a real authenticated device and that analytics fire, producing the evidence needed before the founder triggers the App Store Connect upload.\n\n## Context\nResumely cleared analytics and UX/export gates on 2026-06-01, but the authenticated real-device smoke has not been run and PostHog live-event coverage is unverified in a production-style build. This is the current portfolio bottleneck: it is the one step that moves a second app toward review and unlocks the first readable funnel. RunSmart iOS is frozen in Apple review, so no founder action moves it this week.\n\n## Read First\n- AGENTS.md\n- CLAUDE.md\n- tasks/progress.md (canonical status source for this repo)\n- tasks/todo.md\n- tasks/session-log.md\n- tasks/lessons.md\n- Latest submit-package / smoke notes referenced in tasks/session-log.md\n\n## Task\nOn a real, signed, authenticated device build:\n1. Smoke the core path: optimize -> design -> expert -> preview/export.\n2. Confirm PostHog Live Events receives app_launched, optimize_completed, and export_success from this build.\n3. Confirm export output (PDF / share) renders correctly.\n4. Confirm the ASC upload path (EXD-006): Fastlane API key present? If absent, the upload uses the Claude Chrome extension to fill the App Store Connect portal \u2014 founder will share a screenshot folder link when we reach that step.\nStop at \"ready to upload\" with evidence. Do NOT upload or submit in this packet.\n\n## Constraints\n- Do not touch unrelated files.\n- Do not deploy, submit, bill, email, or change production services without explicit approval.\n- Do not invent validation results.\n- Do not add events beyond the wired set, and no new dependencies.\n- Keep the task to one focused work session.\n\n## Validation\n- Device smoke screenshots for each step (optimize, design, expert, preview/export).\n- PostHog screenshot showing the 3 events received from this build.\n- Export output visual check.\n- A clear statement of the ASC upload path (Fastlane key present? yes/no).\n\n## Completion Gate\nBefore final response, update or report:\n- tasks/todo.md\n- tasks/progress.md, if present\n- tasks/session-log.md\n- tasks/lessons.md only if a reusable lesson was learned\n\n## Final Output\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- Remaining risks\n- Next recommended action\n",
+        "copyPrompt": null,
         "decision": "EXD-006"
       },
       {
-        "title": "Work Packet WP-2 (Active)",
+        "title": "Work Packet WP-2 (Research Complete)",
         "status": "Research",
         "project": null,
         "repoId": "research",
         "repoPath": null,
         "goal": "Define the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch",
         "source": "EXD-005 (model shape) + EXD-009 (timing)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
-        "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n# Work Packet WP-2 (Active)\n\n- Status: Research + spec complete, waiting for activation data to implement\n- Created: 2026-06-04\n- Source: EXD-005 (model shape) + EXD-009 (timing)\n- Routed by: COO OS\n- Escalation: CFO (pricing), Analysis (research) \u2014 both for input, not blocking\n- Related decision: EXD-005, EXD-009\n\n---\n\n# Work Packet\n\n## Owner Role\nCFO OS + Analysis OS (research & design now). Implementation is later, after activation data.\n\n## Goal\nDefine the freemium model for both apps now \u2014 the free activation moment, the paywall line, and the upgrade trigger \u2014 and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch.\n\n## Decided (EXD-005, EXD-009)\n- Model shape: **freemium with a free activation moment**, both apps.\n- Timing: monetize **after** first-cohort activation is readable (do not paywall at launch).\n- Price: **set later**, from activation data. Not now.\n\n## Initial recommendation (advice \u2014 refine with research + data)\n**RunSmart (running coach):**\n- Free activation moment: onboarding \u2192 first AI plan generated \u2192 first run logged \u2192 week-1 adherence. All free. This is the \"this coach knows me\" moment; gating it kills retention.\n- Paywall line (candidate): adaptive/Flex Week, advanced Garmin/wearable depth, voice coach, long-horizon race plans.\n- Upgrade trigger: after the user feels the plan adapt to them (week 2-3), not before.\n\n**Resumely (resume builder):**\n- Free activation moment: one full optimize \u2192 preview \u2192 first export, so the user sees a better resume once.\n- Paywall line (candidate): additional optimizations/exports, Expert modes (cover letter, ATS deep-dive), design templates beyond a starter set.\n- Upgrade trigger: at the second resume / second job application.\n\n**Shape:** subscription as primary (recurring value: ongoing coaching / ongoing job search), with the free tier permanently usable so activation is never blocked. Revisit one-time-unlock only if subscription activation is weak.\n\n## Research needed (Analysis OS) \u2014 to confirm before locking price\n- Competitor pricing & free-tier lines: Runna, Nike Run Club, Strava (RunSmart); Teal, Rezi, Kickresume, Jobscan (Resumely).\n- Willingness-to-pay signals for each audience (rookie runner vs. job seeker urgency).\n- Which gated feature each segment values most (drives the paywall line).\n\n## Build-readiness checklist (so implementation is instant when data arrives)\n- [x] Free vs paid feature matrix per app: `executive-os/work-packets/WP-2-monetization-spec.md` Section 1.\n- [x] Paywall placement spec (which screen, which trigger event): `executive-os/work-packets/WP-2-monetization-spec.md` Section 2.\n- [x] PostHog events needed to read activation to paywall conversion: `executive-os/work-packets/WP-2-monetization-spec.md` Section 3.\n- [x] StoreKit / IAP product IDs drafted (no prices committed): `executive-os/work-packets/WP-2-monetization-spec.md` Section 4.\n- [x] Price experiment plan (A/B once there is traffic): `executive-os/work-packets/WP-2-monetization-spec.md` Section 5.\n\n## Research outputs\n- Competitor pricing research: `executive-os/research/WP-2-competitor-pricing-research.md`\n- Full CFO spec: `executive-os/work-packets/WP-2-monetization-spec.md`\n\n## Constraints\n- Do not implement a paywall or set a price until activation data exists (EXD-009).\n- No new dependencies; no production/billing changes without explicit founder approval.\n- Research only uses public sources; never invent numbers (mark unknowns \"need: <source>\").\n\n## Validation / Done\n- Feature matrix + paywall spec + events list exist and are reviewed.\n- EXD-005 / EXD-009 reference this packet; CFO-OS.md updated with the model shape (price still Needs Data).\n\n## Next recommended action\nAnalysis OS runs the competitor + willingness-to-pay research brief; CFO OS drafts the free/paid matrix and paywall spec from the recommendation above. Keep price blank until activation data.\n",
+        "copyPrompt": null,
         "decision": "EXD-005"
       },
       {
@@ -2030,9 +2148,16 @@
         "repoId": "research",
         "repoPath": null,
         "goal": null,
-        "source": "`executive-os/research/WP-2-competitor-pricing-research.md`",
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-spec.md",
-        "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n# WP-2 Monetization Spec \u2014 Ready-to-Build\n## RunSmart + Resumely Freemium Implementation Spec\n\n- Date: 2026-06-04\n- Role: CFO OS\n- Status: Ready to build, implement after first-cohort activation data (EXD-009)\n- Research source: `executive-os/research/WP-2-competitor-pricing-research.md`\n- Decisions: EXD-005, EXD-009\n\n**Constraint:** Do not implement a paywall or set a price until activation data is readable. This spec exists so implementation is instant when the green light arrives.\n\n---\n\n## 1. Free vs Paid Feature Matrix\n\n### RunSmart\n\n| Feature | Free | Pro |\n|---|---|---|\n| Onboarding + goal setting | Yes | Yes |\n| AI training plan generated (week 1, full) | Yes | Yes |\n| GPS run tracking | Yes | Yes |\n| First run logged + weekly stats | Yes | Yes |\n| Basic Garmin / Apple Watch sync (data read) | Yes | Yes |\n| Run history + pace/distance charts | Yes | Yes |\n| Week 1 adherence summary | Yes | Yes |\n| Basic post-run debrief (distance, pace, HR) | Yes | Yes |\n| Weeks 2+ of adaptive plan (Flex Week, plan adjusts to actual runs) | No | Yes |\n| Advanced Garmin / HRV / readiness integration | No | Yes |\n| Voice coach cues during runs | No | Yes |\n| Long-horizon race plans (marathon, ultra, multi-cycle) | No | Yes |\n| Cross-training + strength session integration | No | Yes |\n| Deep post-run debrief (AI analysis of pacing, load, recovery) | No | Yes |\n| Goal race pace predictions + race-day strategy | No | Yes |\n\n**Free tier philosophy:** The \"this coach knows me\" moment is free, covering onboarding through week 1. Gating week 2 is when the adaptation value is first felt, which is the right upgrade moment (confirmed by Runna's model).\n\n**Subscription shape:** Annual-first (market standard; Runna $120/year, Strava $80/year). Monthly is available as the fallback.\n\n**Price cell:** `NEEDS_DATA`, set from D7 activation cohort. Expected range $79-$120/year / $10-$14/month (market; source: `executive-os/research/WP-2-competitor-pricing-research.md`). Do not hardcode.\n\n---\n\n### Resumely\n\n| Feature | Free | Pro |\n|---|---|---|\n| Resume import (PDF/LinkedIn) or build from scratch | Yes | Yes |\n| AI-powered optimization, 1 full round (analyze, improve bullets, keyword match) | Yes | Yes |\n| Resume preview (see the improved version) | Yes | Yes |\n| 1 PDF export / download | Yes | Yes |\n| Basic ATS score check (score + top 5 missing keywords) | Yes | Yes |\n| 1 starter design template | Yes | Yes |\n| Per-job AI tailoring (additional job descriptions) | No | Yes |\n| Additional exports and downloads | No | Yes |\n| Full ATS deep-dive (all keywords, section-by-section analysis) | No | Yes |\n| Unlimited cover letter generation | No | Yes |\n| Expert modes: LinkedIn optimization, interview prep, salary negotiation scripts | No | Yes |\n| Premium design templates (beyond starter) | No | Yes |\n| Job application tracker | No | Yes |\n\n**Free tier philosophy:** The user must see a better resume and export it once, free. This is the activation moment that drives conversion. Teal and Rezi both allow this. Gating before the first export is the market anti-pattern (Jobscan gets criticized for exactly this).\n\n**Subscription shape:** Weekly as the primary urgency tier (matches Teal's $9/week; job seekers are sprint-mode); monthly as standard; annual for power users. No lifetime plan until conversion data suggests it.\n\n**Price cell:** `NEEDS_DATA`, set from D7 activation cohort. Expected range $9-$13/week / $25-$30/month / $79-$96/year (market; source: `executive-os/research/WP-2-competitor-pricing-research.md`). Do not hardcode.\n\n---\n\n## 2. Paywall Placement Spec\n\n### RunSmart\n\n| Field | Value |\n|---|---|\n| Screen | Plan Detail view, week 2 workout cards |\n| Gate type | Soft gate: week 2 plan is visible (titles, distances) but locked; tapping reveals upgrade prompt |\n| Trigger event | User taps any week 2+ workout detail, OR `runsmart.retention.plan_adapt_triggered` fires |\n| CTA headline | \"Your plan adapted to week 1. Unlock to continue.\" |\n| CTA sub-text | \"Your coach updated [X] sessions based on how last week went.\" |\n| CTA primary button | \"Unlock Pro\" |\n| CTA secondary | \"Remind me later\" (7-day snooze) |\n| Dismiss behavior | User can see week 2 list but not workout detail |\n| Urgency lever | Show the specific adaptation (e.g., \"Tuesday's run moved from 8km to 6km. Your recovery matters.\"). This is the personalization proof. |\n| PostHog event at show | `runsmart.monetization.paywall_shown` (see Section 3) |\n\n### Resumely\n\n| Field | Value |\n|---|---|\n| Screen | Optimize flow, second job description entry (or second download attempt) |\n| Gate type | Soft gate: show ATS score delta preview for the second job (\"Your resume scores X% for this role, see the fixes\") but block the detailed analysis and download |\n| Trigger event | `resumebuilder.monetization.second_optimize_attempted` or `resumebuilder.monetization.second_export_attempted` |\n| CTA headline | \"Tailor your resume to every job\" |\n| CTA sub-text | \"You've already improved your resume once. Pro unlocks unlimited tailoring so every application is your best.\" |\n| CTA primary button | \"Unlock Pro\" |\n| CTA secondary | \"Use my existing resume\" (lets them download the already-optimized version, not the new one) |\n| Dismiss behavior | User can still export the first optimized resume; they just can't run a new optimization |\n| Urgency lever | Show the specific score improvement they're missing (\"Resume scores 61% for this job. Pro would bring it to 88%.\") |\n| PostHog event at show | `resumebuilder.monetization.paywall_shown` (see Section 3) |\n\n---\n\n## 3. PostHog Events \u2014 Activation to Conversion Funnel\n\nThese events are required to read the funnel before and after the paywall is live. Instrument these before flipping the paywall switch.\n\n**Event names must conform to `distribution-os/data/metrics-schema.md` naming rule: `{product}.{stage}.{metric_name}`, lowercase, dot-separated.**\n\n### RunSmart Events\n\n```text\nrunsmart.activation.onboarding_completed\n  properties: goal_type, experience_level, target_race\n\nrunsmart.activation.plan_generated\n  properties: plan_type, duration_weeks, target_race\n\nrunsmart.activation.first_run_logged\n  properties: distance_km, source (manual | gps | garmin)\n\nrunsmart.retention.week1_completed        <- activation milestone\n  properties: runs_completed, runs_missed, avg_pace\n\nrunsmart.retention.plan_adapt_triggered   <- precursor to paywall; plan changed based on week 1\n  properties: changes_count, reason\n\nrunsmart.monetization.paywall_shown\n  properties: trigger_event, screen, plan_week\n\nrunsmart.monetization.upgrade_cta_clicked\n  properties: trigger_event, screen, plan_week, cta_variant\n\nrunsmart.revenue.subscription_started\n  properties: plan_type (monthly | annual), price_usd\n\nrunsmart.revenue.subscription_cancelled\n  properties: plan_type, weeks_active, reason (if captured)\n```\n\n### Resumely Events\n\n```text\nresumebuilder.activation.resume_import_started\n  properties: source (pdf | linkedin | scratch)\n\nresumebuilder.activation.first_optimize_completed  <- activation start\n  properties: score_before, score_after, keywords_added\n\nresumebuilder.activation.resume_previewed\n  properties: template_id, score_after\n\nresumebuilder.activation.first_export_completed    <- activation complete\n  properties: format (pdf | docx)\n\nresumebuilder.monetization.second_optimize_attempted  <- paywall trigger precursor\n  properties: job_title, score_current\n\nresumebuilder.monetization.second_export_attempted    <- alternative paywall trigger\n  properties: is_new_version (bool)\n\nresumebuilder.monetization.paywall_shown\n  properties: trigger_event, screen\n\nresumebuilder.monetization.upgrade_cta_clicked\n  properties: trigger_event, screen, cta_variant\n\nresumebuilder.revenue.subscription_started\n  properties: plan_type (weekly | monthly | annual), price_usd\n\nresumebuilder.revenue.subscription_cancelled\n  properties: plan_type, days_active, reason (if captured)\n```\n\n**Funnel to read:**\n- RunSmart: `runsmart.activation.plan_generated` -> `runsmart.retention.week1_completed` -> `runsmart.monetization.paywall_shown` -> `runsmart.monetization.upgrade_cta_clicked` -> `runsmart.revenue.subscription_started`\n- Resumely: `resumebuilder.activation.first_optimize_completed` -> `resumebuilder.activation.first_export_completed` -> `resumebuilder.monetization.second_optimize_attempted` -> `resumebuilder.monetization.paywall_shown` -> `resumebuilder.monetization.upgrade_cta_clicked` -> `resumebuilder.revenue.subscription_started`\n\n**Activation metric to declare before monetizing (EXD-009):**\n- RunSmart: D7 activation = `runsmart.retention.week1_completed` / `runsmart.activation.plan_generated` >= threshold (set after first 50 users)\n- Resumely: D7 activation = `resumebuilder.activation.first_export_completed` / `resumebuilder.activation.resume_import_started` >= threshold\n\n---\n\n## 4. StoreKit / IAP Product IDs (Draft, No Prices)\n\nPrices are `NEEDS_DATA`. Only IDs and descriptions are drafted here. No product should be created in App Store Connect until EXD-009 green light.\n\n### RunSmart\n\n```text\ncom.runsmart.pro.monthly\n  - Display name: RunSmart Pro\n  - Type: Auto-renewable subscription\n  - Duration: 1 month\n  - Price: NEEDS_DATA (market range $10-$14/month)\n  - Free trial: 7 days\n\ncom.runsmart.pro.annual\n  - Display name: RunSmart Pro Annual\n  - Type: Auto-renewable subscription\n  - Duration: 1 year\n  - Price: NEEDS_DATA (market range $79-$120/year)\n  - Free trial: 7 days\n  - Introductory offer: first month free (optional, decide from data)\n```\n\nSubscription group: `RunSmart Pro` (one group; monthly and annual are the two options)\n\n### Resumely\n\n```text\ncom.resumely.pro.weekly\n  - Display name: Resumely Pro Weekly\n  - Type: Auto-renewable subscription\n  - Duration: 1 week\n  - Price: NEEDS_DATA (market range $9-$13/week)\n  - Free trial: none (high urgency, short horizon)\n\ncom.resumely.pro.monthly\n  - Display name: Resumely Pro\n  - Type: Auto-renewable subscription\n  - Duration: 1 month\n  - Price: NEEDS_DATA (market range $25-$30/month)\n  - Free trial: 3 days\n\ncom.resumely.pro.annual\n  - Display name: Resumely Pro Annual\n  - Type: Auto-renewable subscription\n  - Duration: 1 year\n  - Price: NEEDS_DATA (market range $79-$96/year)\n  - Free trial: 7 days\n```\n\nSubscription group: `Resumely Pro` (one group; weekly, monthly, and annual)\n\nNote on Resumely weekly: Teal's $9/week tier captures high-urgency job seekers who are actively applying. This tier should be the top CTA at the paywall if D7 activation data shows short-burst usage patterns (session clustering).\n\n---\n\n## 5. Price Experiment Plan\n\n**When to run:** After 300 total paywall exposures per app (minimum for statistical signal). Do not guess before this threshold.\n\n**How to run (Apple compliance):**\n\nPer Apple guidelines, the paywall must display the actual StoreKit-provided localized price. Use `Product.displayPrice` (StoreKit 2) or `SKProduct.localizedPrice` (StoreKit 1) at runtime. Never hardcode a price string in CTA copy.\n\nTo run a price experiment, vary the StoreKit product ID loaded by the paywall per user. Each variant maps to a different App Store Connect pricing tier (a separate product ID with a different price set in App Store Connect). Use RevenueCat Offerings or App Store Connect product configuration to assign variants, then display the localized price returned by StoreKit for whatever product ID the user is shown.\n\nDo not change the CTA display text to a price that differs from what StoreKit will actually charge. Doing so creates a UI/charge mismatch that is a review violation.\n\nPostHog feature flags control which product ID the paywall loads, not the displayed price string.\n\n### RunSmart Price Experiment\n\n- Variants (3-way): Annual product ID A vs B vs C, each pointing to a different App Store pricing tier (set actual $ values after cohort 1, within $79-$120/year range)\n- Primary metric: `runsmart.revenue.subscription_started` within 7 days of `runsmart.monetization.paywall_shown`\n- Secondary metric: 30-day retention of subscribers\n- Minimum sample: 100 paywall exposures per variant before reading\n- Duration: run until 95% statistical significance or 6 weeks, whichever comes first\n- Decision: pick the variant with highest subscription rate, weighted by 30-day retention\n\n### Resumely Price Experiment\n\n- First experiment: weekly vs monthly as the CTA default (which tier drives higher total revenue per activated user)\n- Second experiment: price of the default tier (set actual $ after cohort 1, within market range)\n- Primary metric: `resumebuilder.revenue.subscription_started` within 3 days of `resumebuilder.monetization.paywall_shown` (shorter window; job seekers decide fast)\n- Minimum sample: 100 paywall exposures per variant\n- Duration: run until 95% statistical significance or 4 weeks\n\n**Logging:** Log experiment start, winner, and decision in `executive-os/EXECUTIVE-DECISIONS.md` when the experiment runs.\n",
+        "copyPrompt": null,
         "decision": null
       }
     ],
@@ -2040,13 +2165,13 @@
     "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
-    "branch": "main",
-    "uncommitted": 16,
-    "extraWorktrees": 2,
+    "branch": "codex/agentic-os-followup-refinements",
+    "uncommitted": 1,
+    "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "16 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2056,24 +2181,33 @@
         "path": "executive-os/BUSINESS-GTM-PLAN-V0.md",
         "project": "Agentic OS",
         "projectId": "agentic-os",
-        "executionStatus": "active",
-        "activePacket": "Work Packet WP-1 (Active)",
-        "note": null
+        "executionStatus": "needs_next_packet",
+        "activePacket": null,
+        "note": "Portfolio GTM source \u2014 next packet from COO review."
       },
       {
-        "title": "GTM Plan \u2014 RunSmart iOS",
-        "path": ".agent-os/distribution/gtm-plan.md",
-        "project": "RunSmart iOS",
-        "projectId": "runsmart-ios",
-        "executionStatus": "active",
-        "activePacket": "Work Packet WP-1 (Active)",
-        "note": null
+        "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
+        "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "project": "Agentic OS",
+        "projectId": "agentic-os",
+        "executionStatus": "needs_next_packet",
+        "activePacket": null,
+        "note": "COO: extract next milestone into one work packet."
       },
       {
         "title": "ResumeBuilder \u2014 Weekly Plan",
         "path": ".agent-os/distribution/weekly-plan.md",
         "project": "ResumeBuilder AI (Web)",
         "projectId": "resumebuilder-ai",
+        "executionStatus": "needs_next_packet",
+        "activePacket": null,
+        "note": "COO: extract next milestone into one work packet."
+      },
+      {
+        "title": "GTM Plan \u2014 RunSmart iOS",
+        "path": ".agent-os/distribution/gtm-plan.md",
+        "project": "RunSmart iOS",
+        "projectId": "runsmart-ios",
         "executionStatus": "needs_next_packet",
         "activePacket": null,
         "note": "COO: extract next milestone into one work packet."
@@ -2106,19 +2240,32 @@
         "note": "Research input \u2014 not daily execution."
       }
     ],
-    "activeCount": 2,
-    "needsNextPacket": 1,
+    "activeCount": 0,
+    "needsNextPacket": 4,
     "researchOnlyCount": 3,
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
     "level": "refresh_required",
-    "label": "Needs sync first",
+    "label": "Refresh required",
     "reasons": [
-      "16 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
-    "needsNextPacketCount": 1
+    "needsNextPacketCount": 4,
+    "hygieneWarnings": [
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+      "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (7)."
+    ]
+  },
+  "latestCooReview": {
+    "reviewed": "2026-06-05",
+    "selectedNextAction": "Founder reviews the RunSmart A1 LinkedIn draft and either approves it for the post-approval queue or requests revisions",
+    "actionType": "manual-founder",
+    "source": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+    "revisitWhen": "Founder reviews A1, Apple responds for either submitted app, or the next morning after 2026-06-05",
+    "path": "executive-os/COO-LATEST-REVIEW.md"
   }
 }

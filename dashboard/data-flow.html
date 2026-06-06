@@ -43,6 +43,10 @@
             <div class="flow-box"><div class="t">Executive OS <span id="c-execos" class="flow-count ok">&ndash;</span></div><div class="d">CEO / COO / CFO / Analysis / Risk / Distribution</div></div>
             <div class="flow-box"><div class="t">Skill agents <span id="c-agents" class="flow-count ok">&ndash;</span></div><div class="d">The builders: architect, QA, release, etc.</div></div>
             <div class="flow-box"><div class="t">Work packets <span id="c-packets" class="flow-count ok">&ndash;</span></div><div class="d">executive-os/work-packets/</div></div>
+            <div class="flow-box"><div class="t">Outcome loops <span id="c-loops" class="flow-count ok">&ndash;</span></div><div class="d">executive-os/loops/</div></div>
+            <div class="flow-box"><div class="t">Context checkpoints <span id="c-context" class="flow-count ok">&ndash;</span></div><div class="d">executive-os/context/</div></div>
+            <div class="flow-box"><div class="t">Side projects &amp; brainstorms <span id="c-side-projects" class="flow-count ok">&ndash;</span></div><div class="d">Top-level folders with README.md + SKILL.md</div></div>
+            <div class="flow-box"><div class="t">Research topics <span id="c-research" class="flow-count ok">&ndash;</span></div><div class="d">executive-os/research/</div></div>
             <div class="flow-box"><div class="t">Saved plans &amp; GTM <span id="c-plans" class="flow-count ok">&ndash;</span></div><div class="d">docs/plans, docs/specs, distribution GTM</div></div>
           </div>
           <div class="arrow">&rarr;</div>
@@ -88,6 +92,10 @@
         setCount("#c-execos", (reg.leadership || []).length);
         setCount("#c-agents", (reg.skillAgents || []).length);
         setCount("#c-packets", (reg.workPackets || []).length);
+        setCount("#c-loops", (reg.outcomeLoops || []).length);
+        setCount("#c-context", (reg.contextCheckpoints || []).length);
+        setCount("#c-side-projects", (reg.sideProjects || []).length);
+        setCount("#c-research", (reg.researchTopics || []).length);
         setCount("#c-plans", plans);
         setCount("#c-checks", (rc.checksRun || []).length);
         $("#freshness").textContent = "Last refresh: " + (rc.lastRefresh || "unknown") + ".";
