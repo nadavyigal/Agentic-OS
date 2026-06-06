@@ -15,9 +15,9 @@ It is run by `agents/coo-agent.md` and operated via `workflows/coo-operating-rev
 - Execution sequencing (first, second, third).
 - Bottleneck identification (what is blocked, by what, and who owns the unblock).
 - Work packet creation (one focused, repo-bound task at a time).
-- Workflow routing: keep the default `normal`; select `parallel-research`,
-  `independent-review`, or `evaluator-loop` only when the packet has a concrete
-  research, risk, or quality reason.
+- Workflow routing: keep the default `normal`; select an advanced mode from
+  `GLOBAL-WORKFLOWS.md` only when the packet has a concrete research, risk,
+  taste, loop, or input-trust reason.
 - **Long-running plans** (GTM, launch, monetization, distribution): the plan stays the strategy source; the COO extracts the **next milestone** into one packet with `Source:` pointing at the plan. If the dashboard shows `needs_next_packet`, draft that packet — the plan is not abandoned.
 - Outcome loops: when a plan requires repeated milestones across sessions, link
   it to one lightweight card under `loops/`. Ask which loop needs attention,
@@ -86,9 +86,10 @@ Create a work packet **only when all four hold**:
 
 Global-OS work (drafts, sequencing, status hygiene, channel scoring) is **not** packetized. It runs in this OS. Use `templates/work-packet-template.md` for the packet format. Active packets are saved one-file-per-packet under `work-packets/` with a status header (e.g. `work-packets/WP-1-resumely-device-smoke.md`).
 
-Routing fields are optional. Use the normal/trusted defaults for ordinary scoped
-execution. If the source contains untrusted external content, mark it explicitly
-and carry only structured, source-linked facts into action steps.
+Routing and loop fields are optional. Use the normal/trusted defaults for
+ordinary scoped execution. If the source contains untrusted external content,
+mark it explicitly and carry only structured, source-linked facts into action
+steps.
 
 ## Workflows
 

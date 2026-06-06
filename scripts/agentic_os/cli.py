@@ -776,6 +776,9 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                 workflow_pattern = _metadata_value(text, "Workflow pattern") or "normal"
                 input_trust = _metadata_value(text, "Input trust") or "trusted"
                 outcome_loop = _metadata_value(text, "Outcome loop")
+                loop = _metadata_value(text, "Loop")
+                signal = _metadata_value(text, "Signal")
+                memory_update = _metadata_value(text, "Memory update")
                 success_signal = _metadata_value(text, "Success signal")
                 # Build a copy-ready prompt: repo instruction + full packet body.
                 # This IS the prompt the founder pastes into Claude Code for that repo.
@@ -811,6 +814,9 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "workflowPattern": workflow_pattern,
                         "inputTrust": input_trust,
                         "outcomeLoop": outcome_loop,
+                        "loop": loop,
+                        "signal": signal,
+                        "memoryUpdate": memory_update,
                         "successSignal": success_signal,
                         "path": str(packet.relative_to(root)),
                         "copyPrompt": prompt_header + text if packet_status.lower().startswith("active") else None,
@@ -842,24 +848,6 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "path": str(loop_file.relative_to(root)),
                     }
                 )
-        context_dir = exec_dir / "context"
-        if context_dir.is_dir():
-            for checkpoint_file in sorted(context_dir.glob("*.md"), reverse=True):
-                if checkpoint_file.name.lower() == "readme.md":
-                    continue
-                text = checkpoint_file.read_text(encoding="utf-8", errors="replace")
-                title, _ = _doc_summary(checkpoint_file)
-                registry["contextCheckpoints"].append(
-                    {
-                        "title": title,
-                        "status": _metadata_value(text, "Status") or "unknown",
-                        "topic": _metadata_value(text, "Topic"),
-                        "purpose": _metadata_value(text, "Purpose"),
-                        "created": _metadata_value(text, "Created"),
-                        "lastUpdated": _metadata_value(text, "Last updated"),
-                        "path": str(checkpoint_file.relative_to(root)),
-                    }
-                )
         research_dir = exec_dir / "research"
         if research_dir.is_dir():
             for research_file in sorted(research_dir.glob("*.md"), reverse=True):
@@ -873,6 +861,26 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "path": str(research_file.relative_to(root)),
                     }
                 )
+    checkpoint_dirs = [root / "brainstorms", exec_dir / "context"]
+    for context_dir in checkpoint_dirs:
+        if not context_dir.is_dir():
+            continue
+        for checkpoint_file in sorted(context_dir.glob("*.md"), reverse=True):
+            if checkpoint_file.name.lower() == "readme.md":
+                continue
+            text = checkpoint_file.read_text(encoding="utf-8", errors="replace")
+            title, _ = _doc_summary(checkpoint_file)
+            registry["contextCheckpoints"].append(
+                {
+                    "title": title,
+                    "status": _metadata_value(text, "Status") or "unknown",
+                    "topic": _metadata_value(text, "Topic"),
+                    "purpose": _metadata_value(text, "Purpose"),
+                    "created": _metadata_value(text, "Created"),
+                    "lastUpdated": _metadata_value(text, "Last updated"),
+                    "path": str(checkpoint_file.relative_to(root)),
+                }
+            )
     # Distribution OS is part of the executive layer (growth/launch), surfaced as leadership.
     dist_readme = root / "distribution-os" / "README.md"
     if dist_readme.exists():
@@ -1186,27 +1194,45 @@ def build_portfolio_trust(
         for p in apps
         if (p.get("sourceConfidence") or "").lower() in ("low", "unknown")
     ]
+    evidence_gaps = [p["name"] for p in apps if p.get("evidenceGap")]
 
     level = "actionable"
     reasons: list[str] = []
     if not repo_integrity.get("synced"):
         level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
         reasons.extend(repo_integrity.get("notes") or [])
     elif not refresh_today:
+        level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
+        reasons.append("Morning refresh was not run today.")
+    elif stale_apps:
+        level = "refresh_required"
+        reasons.append(
+            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+        )
+        reasons.append(f"Stale shippable app evidence: {', '.join(stale_apps)}.")
+    elif dirty_apps or low_conf or evidence_gaps:
         level = "caution"
-        reasons.append("Morning refresh was not run today. Run ./agentic-os morning before trusting status.")
-    else:
-        if stale_apps:
-            level = "caution"
-            reasons.append(f"Stale progress evidence: {', '.join(stale_apps)}.")
+        reasons.append(
+            "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps."
+        )
+        if dirty_apps:
+            reasons.append(f"Dirty shippable app repo: {', '.join(dirty_apps)}.")
         if low_conf:
             level = "caution"
             reasons.append(f"Low source confidence: {', '.join(low_conf)}.")
+        if evidence_gaps:
+            reasons.append(f"Evidence gap after latest commit: {', '.join(evidence_gaps)}.")
 
     labels = {
         "actionable": "Actionable",
         "caution": "Use caution",
-        "refresh_required": "Needs sync first",
+        "refresh_required": "Refresh required",
     }
     needs = (plan_execution or {}).get("needsNextPacket", 0)
     if needs and level == "actionable":
@@ -1214,7 +1240,7 @@ def build_portfolio_trust(
             f"{needs} strategic plan(s) need the next work packet (COO review) — plans are not abandoned."
         )
     if not reasons:
-        reasons.append("Sync clean, refreshed today, app evidence is current enough to act.")
+        reasons.append("Sync clean, refreshed today, app evidence current.")
 
     hygiene_warnings: list[str] = []
     if dirty_apps:

@@ -571,7 +571,7 @@
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-06-05",
+  "generated": "2026-06-06",
   "fallbackStatus": {
     "summary": {
       "overallStatus": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
@@ -589,7 +589,7 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-06-05",
+      "evidenceFreshDate": "2026-06-06",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
@@ -617,9 +617,9 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-05 17:50",
+      "lastRefresh": "2026-06-06 15:31",
       "command": "./agentic-os refresh",
-      "localhostUrl": "http://127.0.0.1:8788/index.html",
+      "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
         "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -1064,7 +1064,7 @@
         "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
         "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
         "stale": false,
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-06-03",
         "evidenceGap": false,
         "evidenceDate": null,
@@ -1127,15 +1127,15 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "branch": "main",
-        "lastCommit": "2026-06-05 419000b Run weekly executive review",
+        "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+        "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-05",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-06",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-05",
         "evidenceTests": [],
         "buildStatus": null,
@@ -1286,11 +1286,11 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
-        "branch": "main",
+        "repoState": "Dirty",
+        "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -1299,7 +1299,7 @@
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
-        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
     ],
     "executiveOverview": {
@@ -1320,12 +1320,13 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 5,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -1335,8 +1336,10 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 0,
-      "evidenceGapProjects": [],
+      "evidenceGapCount": 1,
+      "evidenceGapProjects": [
+        "Agentic OS"
+      ],
       "lowTrustProjects": [],
       "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
       "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
@@ -1629,6 +1632,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": "resumely-submission",
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
           "copyPrompt": null,
@@ -1645,6 +1651,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": null,
           "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
           "copyPrompt": null,
@@ -1661,6 +1670,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": null,
           "path": "executive-os/work-packets/WP-2-monetization-spec.md",
           "copyPrompt": null,
@@ -1896,6 +1908,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": "resumely-submission",
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
           "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
           "copyPrompt": null,
@@ -1912,6 +1927,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": null,
           "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
           "copyPrompt": null,
@@ -1928,6 +1946,9 @@
           "workflowPattern": "normal",
           "inputTrust": "trusted",
           "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
           "successSignal": null,
           "path": "executive-os/work-packets/WP-2-monetization-spec.md",
           "copyPrompt": null,
@@ -1938,19 +1959,22 @@
       "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
     },
     "repoIntegrity": {
-      "branch": "main",
-      "uncommitted": 0,
+      "branch": "codex/agentic-os-followup-refinements",
+      "uncommitted": 1,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "actionable",
-      "label": "Actionable",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,

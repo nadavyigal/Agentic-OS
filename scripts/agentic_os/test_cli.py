@@ -286,9 +286,12 @@ class TestOSRegistry(unittest.TestCase):
             (packets / "WP-1.md").write_text(
                 "# Work Packet WP-1 (Active)\n"
                 "- Status: Active\n"
-                "- Workflow pattern: independent-review\n"
+                "- Workflow pattern: adversarial-review\n"
                 "- Input trust: untrusted\n"
                 "- Outcome loop: resumely-submission\n"
+                "- Loop: Resumely submission readiness loop\n"
+                "- Signal: signed smoke evidence requested\n"
+                "- Memory update: tasks/progress.md\n"
                 "- Success signal: signed smoke evidence exists\n\n"
                 "## Project\nResumely iOS\n\n"
                 "## Goal\nProduce evidence.\n",
@@ -328,9 +331,12 @@ class TestOSRegistry(unittest.TestCase):
             loop = registry["outcomeLoops"][0]
             checkpoint = registry["contextCheckpoints"][0]
 
-            self.assertEqual(packet["workflowPattern"], "independent-review")
+            self.assertEqual(packet["workflowPattern"], "adversarial-review")
             self.assertEqual(packet["inputTrust"], "untrusted")
             self.assertEqual(packet["outcomeLoop"], "resumely-submission")
+            self.assertEqual(packet["loop"], "Resumely submission readiness loop")
+            self.assertEqual(packet["signal"], "signed smoke evidence requested")
+            self.assertEqual(packet["memoryUpdate"], "tasks/progress.md")
             self.assertEqual(packet["successSignal"], "signed smoke evidence exists")
             self.assertEqual(loop["status"], "active")
             self.assertEqual(loop["owner"], "COO OS")
@@ -339,6 +345,27 @@ class TestOSRegistry(unittest.TestCase):
             self.assertEqual(checkpoint["topic"], "AI Audit offer")
             self.assertEqual(len(registry["outcomeLoops"]), 1)
             self.assertEqual(len(registry["contextCheckpoints"]), 1)
+
+    def test_brainstorm_checkpoints_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            brainstorms = root / "brainstorms"
+            brainstorms.mkdir()
+            (brainstorms / "README.md").write_text("# Brainstorms\n", encoding="utf-8")
+            (brainstorms / "2026-06-06-ai-audit.md").write_text(
+                "# Context Checkpoint: AI Audit\n"
+                "- Status: open\n"
+                "- Topic: AI Audit Toolkit\n"
+                "- Purpose: capture offer context\n"
+                "- Created: 2026-06-06\n"
+                "- Last updated: 2026-06-06\n",
+                encoding="utf-8",
+            )
+
+            checkpoint = cli.build_os_registry(root)["contextCheckpoints"][0]
+
+            self.assertEqual(checkpoint["topic"], "AI Audit Toolkit")
+            self.assertEqual(checkpoint["path"], "brainstorms/2026-06-06-ai-audit.md")
 
 
 class TestGtm(unittest.TestCase):
@@ -467,7 +494,7 @@ class TestDerivedSummary(unittest.TestCase):
 
 
 class TestPortfolioTrust(unittest.TestCase):
-    def _health(self):
+    def _health(self, *, freshness="Fresh", dirty=False, confidence="High", evidence_gap=False):
         return [
             {
                 "id": "runsmart-ios",
@@ -475,26 +502,27 @@ class TestPortfolioTrust(unittest.TestCase):
                 "freshness": "Fresh",
                 "dirty": False,
                 "sourceConfidence": "High",
+                "evidenceGap": False,
             },
             {
                 "id": "resumebuilder-ios",
                 "name": "Resumely iOS",
-                "freshness": "Stale",
-                "dirty": True,
-                "sourceConfidence": "Medium",
+                "freshness": freshness,
+                "dirty": dirty,
+                "sourceConfidence": confidence,
+                "evidenceGap": evidence_gap,
             },
         ]
 
-    def test_synced_and_fresh_is_actionable(self):
+    def test_clean_synced_fresh_apps_are_actionable(self):
         today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
             self._health(),
             {"synced": True, "notes": []},
             {"lastRefresh": today_refresh},
-            {"needsNextPacket": 1},
         )
-        self.assertEqual(trust["level"], "caution")
-        self.assertIn("Stale", " ".join(trust["reasons"]))
+        self.assertEqual(trust["level"], "actionable")
+        self.assertIn("Sync clean, refreshed today, app evidence current.", trust["reasons"])
 
     def test_unsynced_is_refresh_required(self):
         today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
@@ -505,38 +533,66 @@ class TestPortfolioTrust(unittest.TestCase):
         )
         self.assertEqual(trust["level"], "refresh_required")
 
-    def test_dirty_apps_are_hygiene_warnings_not_evidence_failures(self):
-        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
-        health = [
-            {
-                "id": "runsmart-ios",
-                "name": "RunSmart iOS",
-                "freshness": "Fresh",
-                "dirty": True,
-                "dirtyCount": 2,
-                "extraWorktrees": 1,
-                "sourceConfidence": "High",
-            },
-            {
-                "id": "resumebuilder-ios",
-                "name": "Resumely iOS",
-                "freshness": "Fresh",
-                "dirty": True,
-                "dirtyCount": 3,
-                "extraWorktrees": 7,
-                "sourceConfidence": "High",
-            },
-        ]
-
+    def test_not_refreshed_today_is_refresh_required(self):
+        yesterday_refresh = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d 09:00 IDT")
         trust = cli.build_portfolio_trust(
-            health,
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": yesterday_refresh},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        self.assertIn("Morning refresh was not run today.", trust["reasons"])
+
+    def test_stale_shippable_app_is_refresh_required(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(freshness="Stale"),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        self.assertTrue(any("Stale shippable app evidence" in reason for reason in trust["reasons"]))
+
+    def test_dirty_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(dirty=True),
             {"synced": True, "notes": []},
             {"lastRefresh": today_refresh},
         )
 
-        self.assertEqual(trust["level"], "actionable")
+        self.assertEqual(trust["level"], "caution")
+        self.assertTrue(any("Dirty shippable app repo" in reason for reason in trust["reasons"]))
         self.assertTrue(any("Uncommitted files" in item for item in trust["hygieneWarnings"]))
-        self.assertTrue(any("Extra product worktrees" in item for item in trust["hygieneWarnings"]))
+
+    def test_needs_next_packet_alone_does_not_downgrade(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+            {"needsNextPacket": 3},
+        )
+        self.assertEqual(trust["level"], "actionable")
+        self.assertTrue(any("need the next work packet" in reason for reason in trust["reasons"]))
+
+    def test_low_confidence_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(confidence="Unknown"),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "caution")
+
+    def test_evidence_gap_shippable_app_is_caution(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(evidence_gap=True),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "caution")
 
 
 class TestFounderNextActions(unittest.TestCase):

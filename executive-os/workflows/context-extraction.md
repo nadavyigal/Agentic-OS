@@ -1,71 +1,64 @@
 # Workflow: Context Extraction
 
-A durable founder interview for vague ideas, major plans, offers, and proposed OS
-changes. It turns implicit context into a reviewable checkpoint before a decision
-or work packet is created.
+A lightweight founder interview for capturing what is in Nadav's head before
+major planning, GTM strategy, product briefs, monetization decisions, AI Audit
+Toolkit offer design, consulting/client workflows, new skills, or major OS
+workflow changes.
 
-## When To Use
-
-- The idea is important but Goal, audience, constraints, success criteria, or
-  non-goals are still unclear.
-- Founder taste, examples, or tradeoffs materially change the plan.
-- The work may span sessions and the reasoning must survive a context reset.
-
-Do not use this workflow for an already scoped work packet, routine COO
-sequencing, or Tier 0-1 daily execution. Clarity Funnel compresses a messy ask
-inside one chat; Context Extraction preserves a multi-turn founder interview.
+This is not daily. Do not run it when a work packet is already scoped.
 
 ## Output
 
-Save one checkpoint at:
+Save or resume one checkpoint at:
 
-`executive-os/context/YYYY-MM-DD-<topic-slug>.md`
+`brainstorms/YYYY-MM-DD-<topic-slug>.md`
 
-Start from `executive-os/templates/context-checkpoint-template.md`.
+If `brainstorms/` is missing, recommend creating it before the interview
+continues. Start from `executive-os/templates/context-checkpoint-template.md`
+when useful, but do not create more templates unless the founder asks.
 
-## Lifecycle
+## Checkpoint Fields
 
-`open -> ready-for-promotion -> promoted | closed`
+Each checkpoint should preserve:
 
-- `open`: interview is active or material gaps remain.
-- `ready-for-promotion`: the checkpoint is decision-complete and awaiting founder
-  approval.
-- `promoted`: approved content was moved into a decision, plan, or work packet.
-- `closed`: no promotion is needed.
+- Topic
+- Purpose
+- Current understanding
+- Q&A log
+- Extracted decisions
+- Assumptions
+- Constraints
+- Taste/preferences
+- Examples
+- Unknowns/gaps
+- Suggested doc updates
+- Recommended next work packet
 
 ## Interview Rules
 
 1. State the topic, purpose, and current understanding before the first question.
 2. Ask exactly one question per turn.
-3. After each founder answer, append the question and answer to the checkpoint,
-   update the extraction sections, and set `Last updated`.
-4. Default to no more than ten questions. Continue only when the founder
-   explicitly asks for deeper extraction.
-5. Label extracted statements as `Confirmed`, `Assumption`, or `Open`.
-6. Capture Goal, audience, constraints, success criteria, non-goals,
-   taste/preferences, examples, and unresolved decisions.
-7. Do not store secrets, credentials, customer data, or production data.
-8. Do not update `DECISIONS.md`, `EXECUTIVE-DECISIONS.md`, skills, plans, or active
-   work packets without founder approval.
+3. After every founder answer, checkpoint to the markdown file before asking the
+   next question.
+4. Label extracted statements as confirmed, assumption, or open.
+5. Do not store secrets, credentials, customer data, or production data.
+6. Do not auto-update durable docs, decisions, skills, plans, or active work
+   packets without founder approval.
 
 ## Completion
 
-When the required fields are clear:
+When the context is clear enough:
 
-1. Set status to `ready-for-promotion`.
-2. Summarize unresolved gaps without filling them silently.
-3. List suggested document updates as links only.
-4. Draft the next work packet only if repo, owner, task, constraints, and
+1. Summarize unresolved gaps without filling them silently.
+2. List suggested document updates as links and short notes only.
+3. Draft the next work packet only if repo, owner, task, constraints, and
    validation are all clear.
-5. Ask for the specific promotion decision, not broad permission to continue.
-
-After approval, apply only the approved updates, record their links in the
-checkpoint, and set status to `promoted`.
+4. Ask for the specific promotion decision before touching durable docs.
 
 ## Validation
 
-- The Q&A log contains one question per turn.
-- Every extracted claim has a label.
-- No durable decision or active packet was changed without approval.
-- The checkpoint has a current status and `Last updated` date.
+- The checkpoint contains one question per turn.
+- The checkpoint was updated after every founder answer.
+- No durable decision, durable doc, skill, plan, or active packet changed without
+  approval.
 - The proposed next step is bounded and source-linked.

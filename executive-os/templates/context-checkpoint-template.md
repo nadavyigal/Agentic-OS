@@ -22,37 +22,28 @@
 
 <Founder answer>
 
-## Extracted Context
+## Extracted Decisions
 
-### Goal
+- Confirmed:
+- Open:
+
+## Assumptions
+
+- Assumption:
+
+## Constraints
 
 - Confirmed:
 
-### Audience
+## Taste / Preferences
 
 - Confirmed:
 
-### Constraints
+## Examples
 
 - Confirmed:
 
-### Success Criteria
-
-- Confirmed:
-
-### Non-Goals
-
-- Confirmed:
-
-### Taste And Preferences
-
-- Confirmed:
-
-### Examples
-
-- Confirmed:
-
-### Decisions And Gaps
+## Unknowns / Gaps
 
 - Open:
 
@@ -69,3 +60,19 @@ Draft only when Project, Owner Role, Task, Constraints, and Validation are clear
 - Approved by founder:
 - Promoted to:
 - Promotion date:
+
+## Legacy Fields
+
+Use only when relevant.
+
+### Audience
+
+- Confirmed:
+
+### Success Criteria
+
+- Confirmed:
+
+### Non-Goals
+
+- Confirmed:

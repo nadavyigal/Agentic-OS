@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-05 IDT",
+    "lastUpdated": "2026-06-06 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -128,7 +128,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-05",
+    "evidenceFreshDate": "2026-06-06",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -150,7 +150,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-05",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Apple review outcome is external"
       ],
@@ -289,7 +289,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-05",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Apple review outcome is external",
         "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
@@ -417,7 +417,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No latest B1 validation was rerun during this status refresh.",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-05",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -507,7 +507,7 @@
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "reference",
       "status": "Backend/reference project for Resumely. PDF parse/render-preview fix exists on fix/pdf-parse-xref-error, but rollout shadow enablement remains unchecked and the branch is dirty.",
       "currentPhase": "PDF parse/render-preview rollout",
@@ -519,7 +519,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-05",
+      "lastUpdated": "2026-06-06",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -553,7 +553,7 @@
         ],
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-06-03",
         "evidenceGap": false,
         "evidenceDate": null
@@ -657,7 +657,7 @@
       "progressLabel": "Active",
       "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-05",
+      "lastUpdated": "2026-06-06",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -672,11 +672,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-05 419000b Run weekly executive review",
+        "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -688,8 +688,8 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-05",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-06",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-05"
       },
       "taskParse": {
@@ -883,9 +883,9 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-05 17:50",
+    "lastRefresh": "2026-06-06 15:31",
     "command": "./agentic-os refresh",
-    "localhostUrl": "http://127.0.0.1:8788/index.html",
+    "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -1330,7 +1330,7 @@
       "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
       "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-06-03",
       "evidenceGap": false,
       "evidenceDate": null,
@@ -1393,15 +1393,15 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "main",
-      "lastCommit": "2026-06-05 419000b Run weekly executive review",
+      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+      "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-05",
-      "evidenceGap": false,
+      "freshestDate": "2026-06-06",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-05",
       "evidenceTests": [],
       "buildStatus": null,
@@ -1552,11 +1552,11 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
-      "branch": "main",
+      "repoState": "Dirty",
+      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
@@ -1565,7 +1565,7 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -1586,12 +1586,13 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 5,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1601,8 +1602,10 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 0,
-    "evidenceGapProjects": [],
+    "evidenceGapCount": 1,
+    "evidenceGapProjects": [
+      "Agentic OS"
+    ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
     "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
@@ -1640,10 +1643,10 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-05 17:50",
+    "lastRunAt": "2026-06-06 15:31",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
-    "localhostUrl": "http://127.0.0.1:8788/index.html",
+    "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
@@ -1653,25 +1656,9 @@
     "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
     "nextActions": [
       {
-        "title": "Check App Store Connect",
-        "detail": "Check RunSmart iOS, Resumely iOS. If Apple has not responded, do not change the submitted builds.",
-        "type": "manual-founder",
-        "where": "App Store Connect",
-        "copyPrompt": null
-      },
-      {
-        "title": "Continue the COO-selected action",
-        "detail": "Founder reviews the RunSmart A1 LinkedIn draft and either approves it for the post-approval queue or requests revisions",
-        "type": "manual-founder",
-        "where": "Agentic OS repo, in this Codex thread",
-        "copyPrompt": "Continue the latest COO-selected action. Read executive-os/COO-LATEST-REVIEW.md and the Source file named there. Execute only the selected next action. Do not publish, email, deploy, submit, or touch product code without explicit approval."
-      },
-      {
-        "title": "Use the Weekly CEO Review only for a priority choice",
-        "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-        "type": "executive",
-        "where": "Agentic OS repo, in this Codex thread",
-        "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+        "title": "Restore dashboard trust",
+        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+        "type": "system"
       }
     ]
   },
@@ -1952,6 +1939,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
         "copyPrompt": null,
@@ -1968,6 +1958,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
         "copyPrompt": null,
@@ -1984,6 +1977,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-spec.md",
         "copyPrompt": null,
@@ -2219,6 +2215,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": "Authenticated device smoke, analytics evidence, export check, and upload-path evidence are complete",
         "path": "executive-os/work-packets/WP-1-resumely-device-smoke.md",
         "copyPrompt": null,
@@ -2235,6 +2234,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-freemium.md",
         "copyPrompt": null,
@@ -2251,6 +2253,9 @@
         "workflowPattern": "normal",
         "inputTrust": "trusted",
         "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
         "successSignal": null,
         "path": "executive-os/work-packets/WP-2-monetization-spec.md",
         "copyPrompt": null,
@@ -2261,12 +2266,13 @@
     "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
-    "branch": "main",
-    "uncommitted": 0,
+    "branch": "codex/agentic-os-followup-refinements",
+    "uncommitted": 1,
     "extraWorktrees": 0,
-    "synced": true,
+    "synced": false,
     "notes": [
-      "Clean: on main, fully committed, no stray worktrees."
+      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2341,10 +2347,12 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "actionable",
-    "label": "Actionable",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,

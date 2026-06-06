@@ -1,15 +1,17 @@
-# Context Checkpoints
+# Historical Context Checkpoints
 
-Durable founder interviews live here as:
+Historical founder interviews live here as:
 
 `YYYY-MM-DD-<topic-slug>.md`
 
+New Context Extraction checkpoints should be saved in `../../brainstorms/`.
 Use `../workflows/context-extraction.md` and start from
-`../templates/context-checkpoint-template.md`.
+`../templates/context-checkpoint-template.md` only when a template helps.
 
 ## Rules
 
-- Use only for important, unscoped topics that benefit from founder context.
+- Use `../../brainstorms/` for new important, unscoped topics that benefit from
+  founder context.
 - Ask one question per turn and save after every answer.
 - Keep the default interview to ten questions.
 - Use lifecycle states `open`, `ready-for-promotion`, `promoted`, or `closed`.

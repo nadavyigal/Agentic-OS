@@ -6,6 +6,25 @@ Optional routing metadata defaults to `Workflow pattern: normal` and
 `Input trust: trusted`. Add an outcome loop only when the packet advances a
 multi-session business outcome.
 
+Future important packets should include these optional but preferred fields when
+they help explain why the packet exists:
+
+- `Loop`: the business or operating loop this packet advances.
+- `Signal`: what changed or what evidence triggered this packet.
+- `Memory update`: what file or lesson should be updated after completion.
+
+Daily packets should not be isolated tasks. They should advance a loop when
+possible:
+
+`Signal -> Diagnosis -> Recommendation -> Action -> Result -> Memory`
+
+Example loops: RunSmart App Store launch loop, RunSmart GTM loop, ASO conversion
+loop, first 100 users learning loop, monetization readiness loop, Resumely
+submission readiness loop, AI Audit Toolkit client discovery loop, AI Audit
+Toolkit delivery loop.
+
+Keep this lean. Do not make work packets heavy just to fill optional fields.
+
 ---
 
 # Work Packet
@@ -15,6 +34,9 @@ multi-session business outcome.
 - Workflow pattern: normal
 - Input trust: trusted
 - Outcome loop: [Optional loop slug]
+- Loop: [Optional business or operating loop]
+- Signal: [Optional trigger or evidence]
+- Memory update: [Optional destination file or lesson]
 - Success signal: [Observable evidence or metric]
 
 ## Owner Role
