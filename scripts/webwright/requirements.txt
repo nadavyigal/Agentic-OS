@@ -1,0 +1,4 @@
+# Pinned versions for reproducible Webwright environment
+# Install with: pip install -r requirements.txt
+webwright==0.1.0
+playwright==1.44.0

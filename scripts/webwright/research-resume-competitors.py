@@ -34,9 +34,12 @@ def _load_env() -> None:
     if env_file.exists():
         for line in env_file.read_text().splitlines():
             line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                key, _, value = line.partition("=")
-                os.environ.setdefault(key.strip(), value.strip())
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, raw_value = line.partition("=")
+            # Strip inline comments (e.g. key=value  # comment)
+            value = raw_value.split(" #")[0].split("\t#")[0].strip()
+            os.environ.setdefault(key.strip(), value)
 
 
 def build_task(competitors: list[str]) -> str:

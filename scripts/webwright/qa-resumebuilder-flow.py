@@ -21,10 +21,14 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 SCRIPT_DIR = Path(__file__).parent
 OUTPUTS_DIR = SCRIPT_DIR / "outputs"
 FIXTURE_RESUME = SCRIPT_DIR / "test-fixtures" / "sample-resume.pdf"
+
+# Explicit allowlist of safe hostnames for staging
+SAFE_HOSTNAMES = {"localhost", "127.0.0.1", "0.0.0.0"}
 
 
 def _load_env() -> None:
@@ -32,20 +36,39 @@ def _load_env() -> None:
     if env_file.exists():
         for line in env_file.read_text().splitlines():
             line = line.strip()
-            if line and not line.startswith("#") and "=" in line:
-                key, _, value = line.partition("=")
-                os.environ.setdefault(key.strip(), value.strip())
+            if not line or line.startswith("#"):
+                continue
+            if "=" not in line:
+                continue
+            key, _, raw_value = line.partition("=")
+            # Strip inline comments (e.g. key=value  # comment)
+            value = raw_value.split(" #")[0].split("\t#")[0].strip()
+            os.environ.setdefault(key.strip(), value)
 
 
 def _guard_staging(base_url: str) -> None:
+    """
+    Refuse to run against production URLs when STAGING_ONLY=true (default).
+    Uses urlparse to inspect the hostname — not a substring match.
+    Safe hostnames: localhost, 127.0.0.1, or any host containing 'staging'.
+    """
     staging_only = os.environ.get("STAGING_ONLY", "true").lower()
-    if staging_only == "true":
-        if "localhost" not in base_url and "staging" not in base_url:
-            print(
-                f"ERROR: STAGING_ONLY=true but URL looks like production: {base_url}\n"
-                "Set STAGING_ONLY=false to allow this."
-            )
-            sys.exit(1)
+    if staging_only != "true":
+        return
+
+    hostname = urlparse(base_url).hostname or ""
+    is_safe = (
+        hostname in SAFE_HOSTNAMES
+        or "staging" in hostname
+        or hostname.startswith("192.168.")
+    )
+    if not is_safe:
+        print(
+            f"ERROR: STAGING_ONLY=true but URL hostname looks like production: {hostname!r}\n"
+            f"Full URL: {base_url}\n"
+            "Set STAGING_ONLY=false in .env to allow this."
+        )
+        sys.exit(1)
 
 
 def build_task(base_url: str, fixture_path: str) -> str:
@@ -116,8 +139,12 @@ def run(dry_run: bool = False) -> None:
     result = agent.run(task, start_url=base_url, workspace=str(output_dir))
 
     result_file = output_dir / "result.json"
-    with open(result_file, "w") as f:
-        json.dump(result, f, indent=2)
+    try:
+        with open(result_file, "w") as f:
+            json.dump(result, f, indent=2)
+    except TypeError:
+        with open(result_file, "w") as f:
+            json.dump({"raw": str(result)}, f, indent=2)
 
     print(f"Done. Results saved to {result_file}")
 
