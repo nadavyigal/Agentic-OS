@@ -1,0 +1,6 @@
+outputs/*
+!outputs/.gitkeep
+.env
+tools/webwright-env/
+__pycache__/
+*.pyc
