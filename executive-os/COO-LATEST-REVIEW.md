@@ -1,59 +1,56 @@
-# COO Operating Review - 2026-06-05
+# COO Operating Review - 2026-06-07
 
-- Status: selected action completed
-- Reviewed: 2026-06-05
-- Selected next action: Founder reviews the RunSmart A1 LinkedIn draft and either approves it for the post-approval queue or requests revisions.
+- Status: no executable packet selected
+- Reviewed: 2026-06-07
+- Selected next action: Founder checks App Store Connect for both submitted apps, then reviews the RunSmart A1 LinkedIn draft if there is no Apple response.
 - Action type: manual-founder
-- Source: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md
-- Revisit when: Founder reviews A1, Apple responds for either submitted app, or the next morning after 2026-06-05.
-
-## Completion Evidence
-
-- A1 draft created:
-  `distribution-os/projects/runsmart/scaffold/drafts/2026-06-05-rs-linkedin-launch/launch-post-v1.md`
-- Status remains `draft`.
-- No post, email, deployment, App Store action, Notion write, or Drive write was
-  performed.
+- Source: dashboard/status.json, executive-os/WEEKLY-CEO-LATEST.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, distribution-os/projects/runsmart/scaffold/drafts/2026-06-05-rs-linkedin-launch/launch-post-v1.md
+- Revisit when: Apple responds for RunSmart or Resumely, the founder approves or revises A1, or the next morning review needs to clear another `needs_next_packet` row.
 
 ## 1. Operating Summary
 
-RunSmart 1.0.1 build 9 and Resumely 1.0 build 1 are both submitted and waiting
-for Apple review. There are no active executable work packets. Product code
-should remain untouched unless Apple provides a concrete review outcome.
+There is no clear active executable packet. WP-1 is closed, WP-2 is research/spec
+complete and waiting for first-cohort activation data, and the portfolio is in
+launch-readiness mode while RunSmart and Resumely wait for Apple review. The
+latest completed COO action produced the RunSmart A1 LinkedIn draft; it remains
+`status: draft` and `approved: no`.
 
 ## 2. Loop Needing Attention
 
-`resumely-submission` remains active.
+`resumely-submission` remains the active loop.
 
-- Evidence: Resumely iOS `tasks/progress.md` records Submitted for Review on
-  2026-06-05.
-- Next milestone: wait for Apple review; create a response packet only if Apple
-  requests changes. After approval, create a launch-analytics verification
-  packet.
+- Evidence: `dashboard/status.json` records Resumely iOS in App Store Review
+  with founder-confirmed App Store Connect submission on 2026-06-05.
+- Next milestone: wait for Apple review. If Apple requests changes, create one
+  response packet from the exact review message. After approval, create a
+  launch-analytics verification packet before monetization decisions.
 
 ## 3. Plans Needing Packets
 
-- `executive-os/BUSINESS-GTM-PLAN-V0.md`: next useful milestone is launch-window
-  preparation while both apps wait on Apple.
-- `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md`: start Track A
-  with A1, the RunSmart founder LinkedIn launch draft.
+- `executive-os/BUSINESS-GTM-PLAN-V0.md`: the old submission packet is complete;
+  the next useful milestone is launch-readiness while both apps wait on Apple.
+- `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md`: A1 has been
+  drafted and is now blocked on founder review before the next launch asset.
 - RunSmart `.agent-os/distribution/gtm-plan.md`: launch assets and ASO remain the
-  next distribution milestone.
-- ResumeBuilder Web `.agent-os/distribution/weekly-plan.md`: placeholder only;
-  do not packetize until it contains a real weekly objective.
+  next distribution milestones, but publishing and App Store metadata changes
+  require founder approval.
+- ResumeBuilder Web `.agent-os/distribution/weekly-plan.md`: scaffold only; do
+  not packetize until a real weekly objective exists.
 
 ## 4. Current Bottleneck
 
-Apple review is the product bottleneck. Apple owns the unblock.
+Apple review is the product bottleneck, owned by Apple. The immediate operating
+bottleneck is founder review of A1 before more launch-window assets are staged.
 
 ## 5. Next Execution Sequence
 
-1. **manual-founder:** Check App Store Connect for both apps. If there is no new
-   response, make no product-release changes.
-2. **global-OS:** Draft RunSmart launch asset A1 from the approved pre-launch
-   sprint. Keep it local and unapproved; do not publish.
-3. **global-OS:** After A1 review, continue the RunSmart launch-window assets or
-   run the Weekly CEO Review if another priority should replace launch prep.
+1. **manual-founder:** Check App Store Connect for RunSmart and Resumely. If
+   either app has a review response, handle only that exact outcome.
+2. **manual-founder:** If there is no Apple response, review
+   `distribution-os/projects/runsmart/scaffold/drafts/2026-06-05-rs-linkedin-launch/launch-post-v1.md`
+   and either approve it for the post-approval queue or request revisions.
+3. **global-OS:** After A1 is approved or revised, stage the next smallest
+   RunSmart launch-window asset from the pre-launch sprint. Nothing publishes.
 
 ## 6. Escalation Needed
 
@@ -62,15 +59,21 @@ Apple review is the product bottleneck. Apple owns the unblock.
 - Analysis: No
 - Risk: No
 
+No layer escalation is needed. The blocker is not strategy, pricing, research,
+or a risky irreversible action; it is an external Apple wait plus a founder
+review gate.
+
 ## 7. Work Packet
 
-No packet. The product repos are externally blocked, and the selected next step
-is global Agentic OS / Distribution OS drafting.
+No packet - the next actions are manual-founder and global-OS sequencing, not
+local product-repo implementation. Creating a product packet now would either
+reopen submitted release scope or skip the A1 founder review gate.
 
 ## 8. What Not To Touch
 
-- Submitted iOS builds or release scope.
-- Monetization implementation or pricing.
-- ResumeBuilder Web rollout.
-- Publishing, emailing, paid channels, or App Store metadata without explicit
-  founder approval.
+- Submitted iOS builds, release scope, or App Store metadata.
+- RunSmart 1.0.1 implementation work.
+- Resumely post-launch product scope.
+- Monetization implementation, pricing, paid acquisition, or revenue modeling.
+- Publishing, emailing, external posting, Notion writes, Drive writes, or App
+  Store actions without explicit founder approval.
