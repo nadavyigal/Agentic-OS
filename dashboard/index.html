@@ -574,10 +574,11 @@
   "generated": "2026-06-07",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
-      "bestNextAction": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
+      "overallStatus": "RunSmart iOS \u2014 App Store Review Response: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+      "bestNextAction": "RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes",
       "mainBlockers": [
-        "RunSmart iOS: Apple review outcome is external",
+        "RunSmart iOS: Founder-controlled archive/export/upload",
+        "RunSmart iOS: App Store Connect resubmission",
         "Resumely iOS: Apple review outcome is external",
         "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
         "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
@@ -594,7 +595,7 @@
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
+        "RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes",
         "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope"
       ],
       "next": [
@@ -612,12 +613,12 @@
         "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
       ],
       "blocked": [
-        "RunSmart iOS: Apple review outcome is external",
+        "RunSmart iOS: Founder-controlled archive/export/upload",
         "Resumely iOS: Apple review outcome is external"
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-07 08:43",
+      "lastRefresh": "2026-06-07 09:11",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -688,11 +689,12 @@
       {
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
-        "state": "App Store Review",
-        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
-        "blockerCount": 1,
+        "state": "App Store Review Response",
+        "nextAction": "Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes",
+        "blockerCount": 2,
         "blockers": [
-          "Apple review outcome is external"
+          "Founder-controlled archive/export/upload",
+          "App Store Connect resubmission"
         ],
         "gtm": {
           "exists": true,
@@ -823,17 +825,17 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 2,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-06-05 4a230e5 record RunSmart build 9 App Store submission",
+        "branch": "main...origin/main [ahead 2]",
+        "lastCommit": "2026-06-07 62823e2 Fix HealthKit disclosure for App Review",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-05",
+        "freshestDate": "2026-06-07",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-05",
+        "evidenceDate": "2026-06-07",
         "evidenceTests": [],
-        "buildStatus": null,
+        "buildStatus": "succeeded",
         "qaDocs": [],
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -861,9 +863,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
-        "parsedLastUpdated": "2026-06-05",
-        "parsedActiveStory": "Monitor Apple review for RunSmart 1.0.1 build 9"
+        "parsedLastValidation": "Static checks confirmed HealthKit entitlement and permission strings are present, CareKit is not used, and HealthKit disclosure/analytics call sites exist. Signing-disabled simulator build passed for the build 10 fix on 2026-06-07",
+        "parsedLastUpdated": "2026-06-07",
+        "parsedActiveStory": "Fix Guideline 2.5.1 HealthKit UI disclosure and prepare RunSmart 1.0.1 build 10"
       },
       {
         "id": "resumebuilder-ios",
@@ -1128,10 +1130,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 2,
-        "extraWorktrees": 0,
+        "dirtyCount": 1,
+        "extraWorktrees": 1,
         "branch": "main",
-        "lastCommit": "2026-06-07 313f8dc Refresh Agentic OS morning dashboard",
+        "lastCommit": "2026-06-07 3a0c428 Record COO next-packet review",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-07",
@@ -1191,8 +1193,8 @@
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
-        "nextAction": "Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope",
+        "branch": "main...origin/main [ahead 2]",
+        "nextAction": "Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -1219,7 +1221,7 @@
           "docs/specs/e7-garmin-wearable-depth.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope. Known blockers: Apple review outcome is external. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review Response. Next action: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes. Known blockers: Founder-controlled archive/export/upload; App Store Connect resubmission. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
@@ -1303,15 +1305,16 @@
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
-      "portfolioState": "RunSmart iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+      "headline": "RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes",
+      "portfolioState": "RunSmart iOS \u2014 App Store Review Response: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes \u00b7 Resumely iOS \u2014 App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
         "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
       ],
       "risks": [
-        "RunSmart iOS: Apple review outcome is external",
+        "RunSmart iOS: Founder-controlled archive/export/upload",
+        "RunSmart iOS: App Store Connect resubmission",
         "Resumely iOS: Apple review outcome is external",
         "Resumely iOS: `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled",
         "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
@@ -1960,11 +1963,12 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 2,
-      "extraWorktrees": 0,
+      "uncommitted": 1,
+      "extraWorktrees": 1,
       "synced": false,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
     "portfolioTrust": {
@@ -1972,7 +1976,8 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,

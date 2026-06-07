@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope · Resumely iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — App Store Review Response: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes · Resumely iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
-Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope
+Best next action: RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes
 
 ## Run Center
 
-- Last refresh: 2026-06-07 08:43
+- Last refresh: 2026-06-07 09:11
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,7 +20,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope | Yes | Fresh | High |
+| RunSmart iOS | App Store Review Response | Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes | Yes | Fresh | High |
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Needs Review | Medium |

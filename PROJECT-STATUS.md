@@ -10,17 +10,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope | 1 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-05 4a230e5 record RunSmart build 9 App Store submission |
+| RunSmart iOS | App Store Review Response | Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-07 62823e2 Fix HealthKit disclosure for App Review |
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | 2 | Yes (16) | Fresh | High | tasks/progress.md | 2026-06-05 524bc9a record Resumely App Store submission |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Needs Review | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-07 313f8dc Refresh Agentic OS morning dashboard |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-07 3a0c428 Record COO next-packet review |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-05, last commit 2026-06-07 313f8dc Refresh Agentic OS morning dashboard
+- Agentic OS: validated 2026-06-05, last commit 2026-06-07 3a0c428 Record COO next-packet review
 
 ## Drift Warnings
 
@@ -35,17 +35,17 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 ## Morning Brief
 
-RunSmart iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope · Resumely iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — App Store Review Response: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes · Resumely iOS — App Store Review: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope · RunSmart Web — Sprint 11 backend support / reference · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
 ## What To Do Next
 
-Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope
+RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes
 
 ## Action Board
 
 ### Now
 
-- RunSmart iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting new release scope
+- RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes
 - Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope
 
 ### Next
@@ -66,7 +66,7 @@ Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the revi
 
 ### Blocked
 
-- RunSmart iOS: Apple review outcome is external
+- RunSmart iOS: Founder-controlled archive/export/upload
 - Resumely iOS: Apple review outcome is external
 
 ## Agent Queue
