@@ -4,6 +4,33 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
+## 2026-06-07 — Resumely growth + pricing spec, 4 implementation plans, Obsidian wiring
+
+Worked on: Obsidian vault orientation + content generation; Resumely growth + pricing brainstorm; spec approval; 4 implementation plans; subagent execution prompt.
+
+Completed:
+- Obsidian vault (`Nadav Builder OS`) oriented — established three-layer mental model: product repos (code) → Agentic OS (agent orchestration) → Obsidian (human reading). Confirmed Claude Code can write directly to the vault filesystem.
+- Generated real content for stub vault files: `Lessons Learned.md` (9 lessons), `Decision Log.md` (9 decisions), `RunSmart.md`, `ResumeBuilder.md`, `Current Priorities.md`, `Weekly Plan 2026-06-07.md`.
+- Corrected stale status: RunSmart was already resubmitted (not just archived), Resumely still in review but backend changed.
+- Full brainstorm on Resumely growth + pricing. Spec approved by founder: `docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md` (commit `96107df` in ResumeBuilder repo).
+- 4 implementation plans written, committed `6efed6e` in ResumeBuilder repo:
+  - Plan 1: ASO + Launch Assets (start now, no gate)
+  - Plan 2: Web ATS Dedicated SEO Page (post-approval)
+  - Plan 3: StoreKit Paywall skeleton (gated: CFO + D7 data)
+  - Plan 4: Ambassador "Got hired?" flow skeleton (gated: paywall live)
+- Subagent execution prompt created: `docs/superpowers/prompts/2026-06-07-execute-plan-1-aso.md` (commit `792bf7a`).
+- Obsidian updated: `Growth-Pricing-Design.md`, `Current Priorities.md`, `2026-06-07-weekly-plan.md`.
+
+In progress: None — Plan 1 ready to execute.
+
+Decisions:
+- Obsidian is read-only human layer. It is not source of truth and is not a production dependency. Claude Code writes to it directly; no manual Obsidian typing needed.
+- Pricing model confirmed: freemium + credit packs ($3.99 / $12.99 / $19.99) + unlimited subscription ($9.99/mo or $49.99/yr). All prices directional until CFO validates OpenAI cost per optimization.
+- EXD-009 gate respected: no StoreKit price hardcoded until D7 activation data is readable.
+- FreeATSChecker already exists on homepage + he locale already wired — Plan 2 (web ATS page) is a single new page file, not a new component build.
+
+Next session: Execute Plan 1 using the subagent prompt at `docs/superpowers/prompts/2026-06-07-execute-plan-1-aso.md` in the ResumeBuilder web repo. Then verify Resumely upload flow (pdf-parse + mammoth refactor, per weekly plan Priority 1).
+
 ## 2026-06-05 - Advanced OS patterns lean pilot
 Worked on: Added optional workflow routing, durable founder-context extraction, one Resumely submission outcome loop, and automatic registry/dashboard visibility.
 Completed: Consolidated all work onto `main`; added `normal | parallel-research | independent-review | evaluator-loop`, separate input-trust controls, context checkpoint workflow/template/prompt, one outcome-loop pilot linked to WP-1, parser fields, Command Center cards/badges, and data-flow counts. Preserved a concurrent Clarity Funnel update in its own commit.
