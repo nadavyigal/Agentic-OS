@@ -13,14 +13,14 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | RunSmart iOS | App Store Review Response | Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-07 62823e2 Fix HealthKit disclosure for App Review |
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | 2 | Yes (16) | Fresh | High | tasks/progress.md | 2026-06-05 524bc9a record Resumely App Store submission |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | 1 | Yes (36) | Needs Review | Medium | derived | 2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue — TTS coaching cue endpoint with VOICE_COACH_ENABLED flag |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Needs Review | Medium | derived | 2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-07 3a0c428 Record COO next-packet review |
+| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (2) | Fresh | Medium | derived | 2026-06-07 b935eb0 docs: add MarkItDown service go-live deployment prompt |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-07 d976f25 Refresh RunSmart rejection status |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Agentic OS: validated 2026-06-05, last commit 2026-06-07 3a0c428 Record COO next-packet review
+- Agentic OS: validated 2026-06-05, last commit 2026-06-07 d976f25 Refresh RunSmart rejection status
 
 ## Drift Warnings
 
@@ -61,7 +61,7 @@ RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog 
 - Resumely iOS: 3 saved plan(s) — latest "Feature Spec — App Store Screenshot Generator" (2026-06-05). See Saved Plans.
 - RunSmart Web: 6 saved plan(s) — latest "RunSmart iOS App — Implementation Plan v2" (2026-03-17). See Saved Plans.
 - ResumeBuilder AI (Web): 2 saved plan(s) — latest "GTM Plan — ResumeBuilder iOS" (2026-05-28). See Saved Plans.
-- Agentic OS: 4 saved plan(s) — latest "Design: Pre-Launch Sprint — Two-Track GTM Prep" (2026-06-04). See Saved Plans.
+- Agentic OS: 5 saved plan(s) — latest "2026-06-07 Obsidian Integration Plan" (2026-06-07). See Saved Plans.
 - Portfolio: 4 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
 
 ### Blocked
@@ -79,6 +79,7 @@ RunSmart iOS: Archive build 10, verify HealthKit disclosure screens and PostHog 
 ## Sources Read
 
 - Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md
+- Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md
 - Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md
 - Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md
 - Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md

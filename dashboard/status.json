@@ -95,7 +95,7 @@
         "branch": "main...origin/main [ahead 2]",
         "dirty": true,
         "dirtyCount": 1,
-        "extraWorktrees": 2,
+        "extraWorktrees": 3,
         "lastCommit": "2026-06-07 62823e2 Fix HealthKit disclosure for App Review",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -409,7 +409,7 @@
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Needs Review",
+      "freshness": "Fresh",
       "statusTone": "reference",
       "status": "Backend/reference project for Resumely. PDF parse/render-preview fix exists on fix/pdf-parse-xref-error, but rollout shadow enablement remains unchecked and the branch is dirty.",
       "currentPhase": "PDF parse/render-preview rollout",
@@ -442,11 +442,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       },
       "localEvidence": {
-        "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
+        "branch": "docs/markitdown-go-live",
         "dirty": true,
         "dirtyCount": 2,
         "extraWorktrees": 1,
-        "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
+        "lastCommit": "2026-06-07 b935eb0 docs: add MarkItDown service go-live deployment prompt",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "docs/agent-os/project-context.md",
@@ -455,8 +455,8 @@
         ],
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
-        "freshness": "Needs Review",
-        "freshestDate": "2026-06-03",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-07",
         "evidenceGap": false,
         "evidenceDate": null
       },
@@ -576,12 +576,13 @@
       "localEvidence": {
         "branch": "main",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 4,
         "extraWorktrees": 1,
-        "lastCommit": "2026-06-07 3a0c428 Record COO next-packet review",
+        "lastCommit": "2026-06-07 d976f25 Refresh RunSmart rejection status",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
+          "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
           "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
           "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -663,7 +664,7 @@
       "Resumely iOS: 3 saved plan(s) \u2014 latest \"Feature Spec \u2014 App Store Screenshot Generator\" (2026-06-05). See Saved Plans.",
       "RunSmart Web: 6 saved plan(s) \u2014 latest \"RunSmart iOS App \u2014 Implementation Plan v2\" (2026-03-17). See Saved Plans.",
       "ResumeBuilder AI (Web): 2 saved plan(s) \u2014 latest \"GTM Plan \u2014 ResumeBuilder iOS\" (2026-05-28). See Saved Plans.",
-      "Agentic OS: 4 saved plan(s) \u2014 latest \"Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep\" (2026-06-04). See Saved Plans.",
+      "Agentic OS: 5 saved plan(s) \u2014 latest \"2026-06-07 Obsidian Integration Plan\" (2026-06-07). See Saved Plans.",
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
@@ -785,11 +786,12 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-07 09:11",
+    "lastRefresh": "2026-06-07 10:51",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
+      "Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
       "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
       "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -993,7 +995,7 @@
       ],
       "dirty": true,
       "dirtyCount": 1,
-      "extraWorktrees": 2,
+      "extraWorktrees": 3,
       "branch": "main...origin/main [ahead 2]",
       "lastCommit": "2026-06-07 62823e2 Fix HealthKit disclosure for App Review",
       "stale": false,
@@ -1230,11 +1232,11 @@
       "dirty": true,
       "dirtyCount": 2,
       "extraWorktrees": 1,
-      "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
-      "lastCommit": "2026-06-03 5d00355 fix: coerce invalid suggested_placement to skills instead of failing run",
+      "branch": "docs/markitdown-go-live",
+      "lastCommit": "2026-06-07 b935eb0 docs: add MarkItDown service go-live deployment prompt",
       "stale": false,
-      "freshness": "Needs Review",
-      "freshestDate": "2026-06-03",
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-07",
       "evidenceGap": false,
       "evidenceDate": null,
       "evidenceTests": [],
@@ -1268,6 +1270,13 @@
       },
       "plans": [
         {
+          "title": "2026-06-07 Obsidian Integration Plan",
+          "path": "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "date": "2026-06-07",
+          "status": null,
+          "kind": "plan"
+        },
+        {
           "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
           "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
           "date": "2026-06-04",
@@ -1297,10 +1306,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 4,
       "extraWorktrees": 1,
       "branch": "main",
-      "lastCommit": "2026-06-07 3a0c428 Record COO next-packet review",
+      "lastCommit": "2026-06-07 d976f25 Refresh RunSmart rejection status",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-07",
@@ -1312,6 +1321,7 @@
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
         "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
         "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
@@ -1439,7 +1449,7 @@
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
       "repoState": "Dirty",
-      "branch": "fix/pdf-parse-xref-error...origin/fix/pdf-parse-xref-error [ahead 1]",
+      "branch": "docs/markitdown-go-live",
       "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1463,12 +1473,13 @@
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
         "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
         "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md, docs/superpowers/specs/2026-05-24-morning-brief-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -1547,7 +1558,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-07 09:11",
+    "lastRunAt": "2026-06-07 10:51",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -1742,9 +1753,16 @@
     {
       "project": "Agentic OS",
       "projectId": "agentic-os",
-      "total": 4,
-      "shown": 4,
+      "total": 5,
+      "shown": 5,
       "plans": [
+        {
+          "title": "2026-06-07 Obsidian Integration Plan",
+          "path": "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "date": "2026-06-07",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
           "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -2171,11 +2189,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 4,
     "extraWorktrees": 1,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
@@ -2255,14 +2273,14 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (7)."
+      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (7)."
     ]
   },
   "latestCooReview": {

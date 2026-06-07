@@ -12,7 +12,7 @@ Best next action: RunSmart iOS: Archive build 10, verify HealthKit disclosure sc
 
 ## Run Center
 
-- Last refresh: 2026-06-07 09:11
+- Last refresh: 2026-06-07 10:51
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -23,7 +23,7 @@ Best next action: RunSmart iOS: Archive build 10, verify HealthKit disclosure sc
 | RunSmart iOS | App Store Review Response | Archive build 10, verify HealthKit disclosure screens and PostHog analytics events, then resubmit with a response explaining the UI changes | Yes | Fresh | High |
 | Resumely iOS | App Store Review | Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope | Yes | Fresh | High |
 | RunSmart Web | Sprint 11 backend support / reference | Triage modified/untracked files before more web work. | Yes | Needs Review | Medium |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Needs Review | Medium |
+| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
 | Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
