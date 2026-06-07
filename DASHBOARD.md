@@ -1,6 +1,6 @@
 # Portfolio Dashboard
 
-Last updated: 2026-06-06 IDT
+Last updated: 2026-06-07 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Monitor App Store Connect; if Apple responds, ha
 
 ## Run Center
 
-- Last refresh: 2026-06-06 15:31
+- Last refresh: 2026-06-07 08:37
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 

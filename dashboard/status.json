@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-06 IDT",
+    "lastUpdated": "2026-06-07 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -49,7 +49,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "Founder confirmed App Store Connect submission of RunSmart 1.0.1 build 9 on 2026-06-05. Local release archive validation and git diff checks passed before the founder-controlled upload; Apple review result is pending",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-06",
+      "lastUpdated": "2026-06-07",
       "blockers": [
         "Apple review outcome is external"
       ],
@@ -188,7 +188,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "Founder confirmed App Store Connect submission of Resumely 1.0 build 1 on 2026-06-05. The submitted screenshot set had already passed count, dimension, uniqueness, opacity, and targeted visual checks; Apple review result is pending",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-06",
+      "lastUpdated": "2026-06-07",
       "blockers": [
         "Apple review outcome is external",
         "`/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled"
@@ -316,7 +316,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No latest B1 validation was rerun during this status refresh.",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-06",
+      "lastUpdated": "2026-06-07",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -418,7 +418,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-06",
+      "lastUpdated": "2026-06-07",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -556,7 +556,7 @@
       "progressLabel": "Active",
       "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-06",
+      "lastUpdated": "2026-06-07",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -571,11 +571,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+        "branch": "main",
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
+        "lastCommit": "2026-06-06 1d02aa6 Add RunSmart A2 launch asset packet",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -782,8 +782,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-06 15:31",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-06-07 08:37",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1295,8 +1295,8 @@
       "dirty": true,
       "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
-      "lastCommit": "2026-06-06 05ad6d6 Refine Agentic OS workflows and trust",
+      "branch": "main",
+      "lastCommit": "2026-06-06 1d02aa6 Add RunSmart A2 launch asset packet",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-06",
@@ -1452,7 +1452,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "codex/agentic-os-followup-refinements...origin/codex/agentic-os-followup-refinements",
+      "branch": "main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1541,17 +1541,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-06 15:31",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-06-07 08:37",
+    "checksStatus": "Passed",
+    "checksCompletedAt": "2026-06-07 08:37",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review. Next action: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope. Known blockers: Apple review outcome is external; `/api/v1/resumes` still returns production Next.js 404 HTML, so Resume Library remains disabled. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main [ahead 1, behind 4]",
-    "readyForNextSession": false,
+    "readyForNextSession": true,
     "summary": "Resumely iOS: Monitor App Store Connect; if Apple responds, handle only the review outcome before starting post-launch scope",
     "nextActions": [
       {
@@ -2165,12 +2165,11 @@
     "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
-    "branch": "codex/agentic-os-followup-refinements",
+    "branch": "main",
     "uncommitted": 1,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
       "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
@@ -2250,7 +2249,6 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "On branch 'codex/agentic-os-followup-refinements', not main. Merge to main so all tools see it.",
       "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
