@@ -2,47 +2,56 @@
 
 ## Purpose
 
-Create a human-readable weekly review note that summarizes what changed, what matters, what is blocked, and what should happen next.
+Capture a high-level founder reflection each week — reflective, strategic, and broad. This is not a status report and does not require Agentic OS data. For operational task review, use the Weekly Plan Creation Workflow instead.
+
+> [!tip] Two different jobs
+> Weekly Plan = operational (tasks, status, priorities, data-sourced). Run Monday.
+> Weekly Review = reflective (narrative, patterns, strategy, written freely). Run Friday.
 
 ## When To Run It
 
-- At the end of a week.
-- Before or after a Weekly CEO Review.
-- When the dashboard has been refreshed and the founder wants a readable summary in Obsidian.
+- End of each week, after completing the weekly plan note.
+- Also after a significant event: Apple rejection, product launch, major decision, hard week.
+- Monthly and quarterly: run at greater depth as a deeper narrative review.
 
 ## Inputs
 
-- `DASHBOARD.md`
-- `PROJECT-STATUS.md`
-- `executive-os/WEEKLY-CEO-LATEST.md`, if present and current.
-- Relevant project task files only when fresh source evidence is needed.
+No Agentic OS data required. The weekly plan already handled that.
+
+- Your own experience of the week.
+- Observations, ideas, or surprises that surfaced.
+- This week's plan note as context.
 - `docs/obsidian/templates/weekly-review-template.md`
 
 ## Steps
 
-1. Read current Agentic OS status sources.
-2. Create `exports/obsidian/weekly-reviews/YYYY-MM-DD-weekly-review.md`.
-3. Summarize movement, blockers, decisions, lessons, next priorities, and risks.
-4. Link major projects using wiki links such as `[[RunSmart]]` and `[[ResumeBuilder]]`.
-5. Keep status evidence clear, especially when a project status is inferred.
-6. Copy the finished note into `07-Weekly-Reviews/` in the Obsidian vault.
+1. Open the template. Write freely — do not pull status files.
+2. Write **Week in a Paragraph** first to set the tone.
+3. Work through each section. One idea per bullet.
+4. For **What Surprised Me**, **Strategic Observations**, **Ideas Worth Exploring**, and **One Thing to Carry Forward**: tag each item with a destination:
+   - `→ [[RunSmart]]`
+   - `→ [[ResumeBuilder]]`
+   - `→ [[Agentic OS]]`
+   - `→ New / Ideation`
+   - `→ General`
+5. Fill the **Routing Summary** by copying tagged items under their destination.
+6. Save as `exports/obsidian/weekly-reviews/YYYY-MM-DD-weekly-review.md` → copy to vault `07-Weekly-Reviews/`.
+7. Promote routed items: add to product notes, `NEXT-MOVES.md`, `08-Lessons-Learned/`, or an ideation note.
 
 ## Output File Location
 
-`exports/obsidian/weekly-reviews/`
+`exports/obsidian/weekly-reviews/YYYY-MM-DD-weekly-review.md`
 
 ## Quality Checklist
 
-- It is clear what actually changed this week.
-- It separates facts from recommendations.
-- It includes next-week priorities.
-- It does not invent product status from memory.
-- It is short enough to reread quickly.
+- [ ] Written freely — not a reformatted status report.
+- [ ] Every item in routing sections has a destination tag.
+- [ ] Routing Summary filled and matches tagged items above.
+- [ ] At least one item promoted out of the review.
 
 ## What Not To Include
 
-- Raw build logs.
-- Full task logs.
+- Raw Agentic OS data — that belongs in the plan note.
 - Secrets, credentials, or customer data.
 - Long pasted transcripts.
-- Status that was not verified from current files.
+- Unverified product status claims.

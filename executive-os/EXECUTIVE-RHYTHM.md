@@ -8,7 +8,9 @@ and which existing artifact it reuses.
 |---|---|---|---|
 | Daily | Check-in | `DAILY.md` Tier 0: `./agentic-os morning` + Command Center (trust, packets, plan index) | One execution move; executive docs only if needed |
 | On-demand | COO Operating Review | `PROMPTS/coo-operating-review.md` → `workflows/coo-operating-review.md` | Next execution sequence + one work packet |
-| Weekly | CEO Review | `PROMPTS/executive-weekly-review.md` → `workflows/weekly-ceo-review.md` | Top 3, decisions, stop-doing, delegation, dashboard update |
+| Weekly (Monday) | Weekly Plan | `docs/obsidian/workflows/weekly-plan-creation.md` → vault `07-Weekly-Reviews/` | Operational plan: completed, missed, active projects, priorities, decisions, parking lot |
+| Weekly (Friday) | CEO Review | `PROMPTS/executive-weekly-review.md` → `workflows/weekly-ceo-review.md` | Top 3, decisions, stop-doing, delegation, dashboard update |
+| Weekly (Friday) | Weekly Review | `docs/obsidian/workflows/weekly-obsidian-review.md` → vault `07-Weekly-Reviews/` | Reflective review: narrative, patterns, strategic observations, routed ideas |
 | Weekly | Product review | `./agentic-os morning` + `PROMPTS/morning-brief.md` (optional depth) | Cross-project execution status + **plan progress** (`planExecution` index, `needs_next_packet`) |
 | Weekly | Distribution review | `../distribution-os/weekly-growth-review.md` (existing) | Channel status feeding the CEO Review |
 | Monthly | CFO Review | `PROMPTS/cfo-monthly-review.md` → `workflows/monthly-finance-review.md` | Financial snapshot, runway, risks, recommended financial actions |
