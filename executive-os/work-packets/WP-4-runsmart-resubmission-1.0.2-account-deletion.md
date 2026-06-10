@@ -33,8 +33,7 @@ Guideline 5.1.1(v): app supports account creation (Sign in with Apple) but offer
 - Simulator build passes with 0 errors; unit test suite passes.
 
 ## Remaining Task
-1. Deploy the edge function (needs founder yes — production change):
-   `supabase functions deploy delete_account` from the repo root (project dxqglotcyirxzyqaxqln), or via MCP deploy_edge_function.
+1. ~~Deploy the edge function~~ DONE 2026-06-10: `delete_account` v1 ACTIVE on project dxqglotcyirxzyqaxqln (founder approved). Smoke-tested: 401 without auth, 401 JSON for non-user tokens.
 2. Merge `codex/app-review-rejection-recovery` to `main` (it also carries the HealthKit-disclosure and sign-in-flow fixes from the prior rejection).
 3. Device QA on a physical iPhone: sign in with Apple → Profile → Account → Delete Account → confirm → app returns to sign-in. Verify in Supabase that the auth user and profile rows are gone.
 4. Record the flow on a physical device: sign in (or create account) → navigate to deletion → complete deletion. Upload the recording link in App Store Connect → App Review Information → Notes.
