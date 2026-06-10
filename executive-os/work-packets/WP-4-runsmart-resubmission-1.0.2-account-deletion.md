@@ -37,7 +37,7 @@ Guideline 5.1.1(v): app supports account creation (Sign in with Apple) but offer
 2. Merge `codex/app-review-rejection-recovery` to `main` (it also carries the HealthKit-disclosure and sign-in-flow fixes from the prior rejection).
 3. Device QA on a physical iPhone: sign in with Apple → Profile → Account → Delete Account → confirm → app returns to sign-in. Verify in Supabase that the auth user and profile rows are gone.
 4. Record the flow on a physical device: sign in (or create account) → navigate to deletion → complete deletion. Upload the recording link in App Store Connect → App Review Information → Notes.
-5. Archive and upload build 1.0.2 (13) (fastlane lane or Xcode Organizer, per `docs/qa/2026-06-08-build12-submission-readiness-runbook.md`).
+5. Archive and upload build 1.0.2 (14 — after WP-6 aha moments land; was 13) per `docs/qa/2026-06-08-build12-submission-readiness-runbook.md`.
 6. Reply to the rejection message in App Store Connect noting account deletion is now in-app, and resubmit.
 
 ## Constraints
