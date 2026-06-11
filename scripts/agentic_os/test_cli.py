@@ -743,5 +743,23 @@ class TestStrandedWork(unittest.TestCase):
         self.assertEqual(cli.summarize_stranded_work("Atlas", {}, 0), [])
 
 
+class TestCleanupPolicy(unittest.TestCase):
+    def test_founder_branches_are_never_touched(self):
+        self.assertEqual(cli.decide_cleanup_action("main", False, True), "skip")
+        self.assertEqual(cli.decide_cleanup_action("monetization", False, False), "skip")
+        self.assertEqual(cli.decide_cleanup_action("feature/paywall", True, False), "skip")
+        self.assertEqual(cli.decide_cleanup_action("docs/launch", False, True), "skip")
+
+    def test_merged_clean_agent_branch_is_deleted(self):
+        self.assertEqual(cli.decide_cleanup_action("claude/old-session", False, True), "delete")
+        self.assertEqual(cli.decide_cleanup_action("codex/done-task", False, True), "delete")
+
+    def test_unmerged_agent_branch_is_backed_up_not_deleted(self):
+        self.assertEqual(cli.decide_cleanup_action("claude/wip-session", False, False), "backup")
+
+    def test_dirty_agent_worktree_is_backed_up_even_if_merged(self):
+        self.assertEqual(cli.decide_cleanup_action("claude/messy", True, True), "backup")
+
+
 if __name__ == "__main__":
     unittest.main()

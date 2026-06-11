@@ -10,19 +10,19 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-11 2ac772b docs: add AGENTS.md and CLAUDE.md with Session End Rule |
-| Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-11 a77d394 docs: add Session End Rule - nothing stays local |
-| RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (5) | Fresh | Medium | derived | 2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (10) | Fresh | High | tasks/progress.md | 2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth |
+| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files |
+| Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | 3 | No | Fresh | High | tasks/progress.md | 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys) |
+| RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91) |
+| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | No | Fresh | Medium | derived | 2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (10) | Fresh | High | tasks/progress.md | 2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Resumely iOS: validated 2026-06-04, last commit 2026-06-11 a77d394 docs: add Session End Rule - nothing stays local
-- RunSmart Web: validated 2026-05-12, last commit 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record
-- Agentic OS: validated 2026-06-05, last commit 2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth
+- Resumely iOS: validated 2026-06-10, last commit 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)
+- RunSmart Web: validated 2026-05-12, last commit 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)
+- Agentic OS: validated 2026-06-05, last commit 2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh
 
 ## Drift Warnings
 
@@ -32,45 +32,7 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
-- [RunSmart iOS] codex/testflight-readiness-audit: unmerged commits, remote branch deleted, last commit 2026-05-24 -> Push codex/testflight-readiness-audit and open a PR, or consciously discard it.
-- [RunSmart iOS] worktree on claude/stoic-albattani-3c749f at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/stoic-albattani-3c749f -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] worktree on claude/upbeat-shirley-82e6d0 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/upbeat-shirley-82e6d0 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] worktree on codex/1.0.1-today-v2-a1, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS-RunSmart-1.0.1-today-v2-a1 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 18 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Resumely iOS] claude/epic-sammet-146689: 2 unpushed commit(s), last commit 2026-06-05 -> Push claude/epic-sammet-146689 and open a PR, or explicitly hand it off.
-- [Resumely iOS] claude/ecstatic-chaum-4466b2: unmerged commits, never pushed, last commit 2026-06-05 -> Push claude/ecstatic-chaum-4466b2 and open a PR, or consciously discard it.
-- [Resumely iOS] claude/heuristic-chaum-cd216b: unmerged commits, never pushed, last commit 2026-06-05 -> Push claude/heuristic-chaum-cd216b and open a PR, or consciously discard it.
-- [Resumely iOS] claude/musing-zhukovsky-2fc500: unmerged commits, remote branch deleted, last commit 2026-05-26 -> Push claude/musing-zhukovsky-2fc500 and open a PR, or consciously discard it.
-- [Resumely iOS] codex/rb-aso-002-app-store-screenshots: unmerged commits, remote branch deleted, last commit 2026-05-31 -> Push codex/rb-aso-002-app-store-screenshots and open a PR, or consciously discard it.
-- [Resumely iOS] worktree on claude/epic-sammet-146689-update-main at /private/tmp/resumebuilder-pr51-update -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/ecstatic-chaum-4466b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/ecstatic-chaum-4466b2 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/epic-austin-f3fc62, 5 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-austin-f3fc62 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/epic-sammet-146689 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-sammet-146689 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/flamboyant-wiles-4f0bde, 22 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/flamboyant-wiles-4f0bde -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/heuristic-chaum-cd216b at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/heuristic-chaum-cd216b -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on detached, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/main-latest-test -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/musing-zhukovsky-2fc500, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/musing-zhukovsky-2fc500 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/mystifying-poitras-ef2a2e, 3 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/mystifying-poitras-ef2a2e -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/tender-banach-89238f, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/tender-banach-89238f -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Resumely iOS] 28 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [RunSmart Web] claude/wonderful-lamport-36b97c: unmerged commits, never pushed, last commit 2026-06-10 -> Push claude/wonderful-lamport-36b97c and open a PR, or consciously discard it.
-- [RunSmart Web] ios: unmerged commits, remote branch deleted, last commit 2026-05-11 -> Push ios and open a PR, or consciously discard it.
-- [RunSmart Web] worktree on claude/happy-rosalind, 11 uncommitted file(s) at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/happy-rosalind -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart Web] worktree on claude/wonderful-lamport-36b97c at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/wonderful-lamport-36b97c -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart Web] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [ResumeBuilder AI (Web)] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [ResumeBuilder AI (Web)] main is 9 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
-- [ResumeBuilder AI (Web)] feature/markitdown-docx-integration: 1 unpushed commit(s), last commit 2026-06-07 -> Push feature/markitdown-docx-integration and open a PR, or explicitly hand it off.
-- [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: 1 unpushed commit(s), last commit 2026-06-03 -> Push fix/pdf-parse-xref-error and open a PR, or explicitly hand it off.
-- [ResumeBuilder AI (Web)] docs/markitdown-go-live: unmerged commits, never pushed, last commit 2026-06-07 -> Push docs/markitdown-go-live and open a PR, or consciously discard it.
-- [ResumeBuilder AI (Web)] worktree on codex/expert-output-quality at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder-Expert-Output-Quality -> Land or discard this worktree, then `git worktree remove` it.
-- [ResumeBuilder AI (Web)] 5 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [ResumeBuilder AI (Web)] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] worktree on claude/distracted-sanderson-771778 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/distracted-sanderson-771778 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] worktree on claude/modest-snyder-f48146 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/modest-snyder-f48146 -> Land or discard this worktree, then `git worktree remove` it.
 - [Agentic OS] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Open Questions & Decisions (from repos)
 

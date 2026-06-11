@@ -126,6 +126,8 @@ If no plan files exist for a project, note it and use todo.md instead.
 
 From `dashboard/status.json` `strandedWork.items` (rebuilt every refresh from git). These are commits, branches, and worktrees at risk of being lost between Claude Code, Codex, and Cursor sessions. Lead with default-branch issues and unpushed commits, then local-only branches, then worktrees. Summarize cleanup-only items (merged branches safe to delete) in one line. If empty, say "Nothing stranded."
 
+When items are agent worktrees or branches (claude/*, codex/*, cursor/*), recommend `./agentic-os clean --apply`: a backup-first janitor that pushes unmerged agent work to origin before removing it locally and never touches founder branches. Dry run without --apply.
+
 ---
 
 ### Blockers & Decisions Needed

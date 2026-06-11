@@ -192,11 +192,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
+        "branch": "main...origin/main",
         "dirty": false,
         "dirtyCount": 0,
-        "extraWorktrees": 3,
-        "lastCommit": "2026-06-11 2ac772b docs: add AGENTS.md and CLAUDE.md with Session End Rule",
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -282,15 +282,15 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: App Store submission readiness. Active: WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action. Last completed: WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04). Source: tasks/progress.md, updated 2026-06-04. Newer commits exist after this status (last commit: 2026-06-11 a77d394 docs: add Session End Rule - nothing stays local); trust git for the latest state.",
+      "status": "Phase: App Store submission readiness. Active: PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test. Last completed: PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10). Source: tasks/progress.md, updated 2026-06-10. Newer commits exist after this status (last commit: 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)); trust git for the latest state.",
       "currentPhase": "App Store submission readiness",
-      "activeStory": "WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action",
-      "lastCompletedStory": "WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04)",
+      "activeStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test",
+      "lastCompletedStory": "PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10)",
       "nextRecommendedStory": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "WP-1 session (2026-06-04): Clean build succeeded \u2014 Info.plist contains API_BASE_URL=https://www.resumelybuilderai.com, POSTHOG_API_KEY=phc_***, POSTHOG_HOST=https://us.i.posthog.com. 72 XCTest tests passed (0 failures) on iPhone 17 simulator. Simulator Home screenshot confirmed at /var/tmp/resumebuilder-smoke-wt/wp1-home.png. Device binary (Debug-iphoneos) built and signed at /var/tmp/resumebuilder-device-wt/Build/Products/Debug-iphoneos/ \u2014 all three Info.plist keys verified. ASC path: Fastlane NOT installed, no .p8 key \u2192 manual Xcode Organizer upload",
+      "lastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
       "lastUpdated": "2026-06-11",
       "blockers": [
@@ -329,10 +329,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 1,
-        "extraWorktrees": 10,
-        "lastCommit": "2026-06-11 a77d394 docs: add Session End Rule - nothing stays local",
+        "dirty": false,
+        "dirtyCount": 0,
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -350,13 +350,13 @@
         "freshness": "Fresh",
         "freshestDate": "2026-06-11",
         "evidenceGap": true,
-        "evidenceDate": "2026-06-04"
+        "evidenceDate": "2026-06-10"
       },
       "taskParse": {
         "status": "In Progress",
         "currentPhase": "App Store submission readiness",
-        "activeStory": "WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action",
-        "lastCompletedStory": "WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04)",
+        "activeStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test",
+        "lastCompletedStory": "PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10)",
         "nextRecommendedStory": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
         "blockers": [
           "Device smoke and PostHog live-event verification require founder to run on real authenticated device",
@@ -370,19 +370,20 @@
           "live backend endpoint gaps now surface real user-visible errors",
           "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
         ],
-        "lastValidation": "WP-1 session (2026-06-04): Clean build succeeded \u2014 Info.plist contains API_BASE_URL=https://www.resumelybuilderai.com, POSTHOG_API_KEY=phc_***, POSTHOG_HOST=https://us.i.posthog.com. 72 XCTest tests passed (0 failures) on iPhone 17 simulator. Simulator Home screenshot confirmed at /var/tmp/resumebuilder-smoke-wt/wp1-home.png. Device binary (Debug-iphoneos) built and signed at /var/tmp/resumebuilder-device-wt/Build/Products/Debug-iphoneos/ \u2014 all three Info.plist keys verified. ASC path: Fastlane NOT installed, no .p8 key \u2192 manual Xcode Organizer upload",
-        "lastUpdated": "2026-06-04",
+        "lastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
+        "lastUpdated": "2026-06-10",
         "qaNeeded": null,
         "estimatedCompletion": "90%",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [
-            "72 XCTest"
+            "72 XCTest",
+            "5 Swift Testing"
           ],
-          "buildStatus": "succeeded",
+          "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-04"
+          "evidenceDate": "2026-06-10"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -414,7 +415,7 @@
       "role": "Main AI running coach product and source of product logic.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Implement Story 1 for the RunSmart Web Today page improvement. Active: Implement Story 1 for the RunSmart Web Today page improvement. Source: derived, updated 2026-05-12. Newer commits exist after this status (last commit: 2026-06-10 f0c0cc0 chore: commit stranded session artifacts \u2014 Agent OS docs, AHA_MOMENTS plan, migration 015 record); trust git for the latest state.",
+      "status": "Phase: Implement Story 1 for the RunSmart Web Today page improvement. Active: Implement Story 1 for the RunSmart Web Today page improvement. Source: derived, updated 2026-05-12. Newer commits exist after this status (last commit: 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)); trust git for the latest state.",
       "currentPhase": "Implement Story 1 for the RunSmart Web Today page improvement",
       "activeStory": "Implement Story 1 for the RunSmart Web Today page improvement",
       "lastCompletedStory": "feat(B1): /api/coach/voice-cue - TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
@@ -447,8 +448,8 @@
         "branch": "main...origin/main",
         "dirty": false,
         "dirtyCount": 0,
-        "extraWorktrees": 2,
-        "lastCommit": "2026-06-10 f0c0cc0 chore: commit stranded session artifacts \u2014 Agent OS docs, AHA_MOMENTS plan, migration 015 record",
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -469,7 +470,7 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-10",
+        "freshestDate": "2026-06-11",
         "evidenceGap": true,
         "evidenceDate": "2026-05-12"
       },
@@ -556,11 +557,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       },
       "localEvidence": {
-        "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
-        "dirty": true,
-        "dirtyCount": 5,
-        "extraWorktrees": 1,
-        "lastCommit": "2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate",
+        "branch": "main...origin/main",
+        "dirty": false,
+        "dirtyCount": 0,
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "docs/agent-os/project-context.md",
@@ -575,7 +576,7 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-09",
+        "freshestDate": "2026-06-11",
         "evidenceGap": false,
         "evidenceDate": null
       },
@@ -668,7 +669,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -696,8 +697,8 @@
         "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 10,
-        "extraWorktrees": 2,
-        "lastCommit": "2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth",
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -906,7 +907,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 10:59",
+    "lastRefresh": "2026-06-11 11:23",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1142,9 +1143,9 @@
       ],
       "dirty": false,
       "dirtyCount": 0,
-      "extraWorktrees": 3,
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
-      "lastCommit": "2026-06-11 2ac772b docs: add AGENTS.md and CLAUDE.md with Session End Rule",
+      "extraWorktrees": 0,
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1226,20 +1227,21 @@
           "kind": "spec"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 1,
-      "extraWorktrees": 10,
+      "dirty": false,
+      "dirtyCount": 0,
+      "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 a77d394 docs: add Session End Rule - nothing stays local",
+      "lastCommit": "2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
       "evidenceGap": true,
-      "evidenceDate": "2026-06-04",
+      "evidenceDate": "2026-06-10",
       "evidenceTests": [
-        "72 XCTest"
+        "72 XCTest",
+        "5 Swift Testing"
       ],
-      "buildStatus": "succeeded",
+      "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
@@ -1255,9 +1257,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "WP-1 session (2026-06-04): Clean build succeeded \u2014 Info.plist contains API_BASE_URL=https://www.resumelybuilderai.com, POSTHOG_API_KEY=phc_***, POSTHOG_HOST=https://us.i.posthog.com. 72 XCTest tests passed (0 failures) on iPhone 17 simulator. Simulator Home screenshot confirmed at /var/tmp/resumebuilder-smoke-wt/wp1-home.png. Device binary (Debug-iphoneos) built and signed at /var/tmp/resumebuilder-device-wt/Build/Products/Debug-iphoneos/ \u2014 all three Info.plist keys verified. ASC path: Fastlane NOT installed, no .p8 key \u2192 manual Xcode Organizer upload",
-      "parsedLastUpdated": "2026-06-04",
-      "parsedActiveStory": "WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action"
+      "parsedLastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
+      "parsedLastUpdated": "2026-06-10",
+      "parsedActiveStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test"
     },
     {
       "id": "runsmart-web",
@@ -1335,12 +1337,12 @@
       ],
       "dirty": false,
       "dirtyCount": 0,
-      "extraWorktrees": 2,
+      "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-10 f0c0cc0 chore: commit stranded session artifacts \u2014 Agent OS docs, AHA_MOMENTS plan, migration 015 record",
+      "lastCommit": "2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-10",
+      "freshestDate": "2026-06-11",
       "evidenceGap": true,
       "evidenceDate": "2026-05-12",
       "evidenceTests": [],
@@ -1437,14 +1439,14 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 5,
-      "extraWorktrees": 1,
-      "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
-      "lastCommit": "2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate",
+      "dirty": false,
+      "dirtyCount": 0,
+      "extraWorktrees": 0,
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-09",
+      "freshestDate": "2026-06-11",
       "evidenceGap": false,
       "evidenceDate": null,
       "evidenceTests": [],
@@ -1520,9 +1522,9 @@
       ],
       "dirty": true,
       "dirtyCount": 10,
-      "extraWorktrees": 2,
+      "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth",
+      "lastCommit": "2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1583,7 +1585,7 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Clean",
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
+      "branch": "main...origin/main",
       "nextAction": "Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1619,7 +1621,7 @@
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
       "sourceConfidence": "High",
@@ -1670,8 +1672,8 @@
       "projectId": "resumebuilder-ai",
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
-      "repoState": "Dirty",
-      "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
+      "repoState": "Clean",
+      "branch": "main...origin/main",
       "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1728,10 +1730,8 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 3,
+    "dirtyProjectCount": 1,
     "dirtyProjects": [
-      "Resumely iOS",
-      "ResumeBuilder AI (Web)",
       "Agentic OS"
     ],
     "blockedProjects": [
@@ -1785,14 +1785,14 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-11 10:59",
+    "lastRunAt": "2026-06-11 11:23",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-    "targetRepoState": "Dirty",
+    "targetRepoState": "Clean",
     "targetBranch": "main...origin/main",
     "readyForNextSession": false,
     "summary": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
@@ -2639,11 +2639,10 @@
   "repoIntegrity": {
     "branch": "main",
     "uncommitted": 3,
-    "extraWorktrees": 2,
+    "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2722,15 +2721,11 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
-    "hygieneWarnings": [
-      "Uncommitted files in product repos: Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (10)."
-    ]
+    "hygieneWarnings": []
   },
   "latestCooReview": {
     "reviewed": "2026-06-09",
@@ -2744,241 +2739,13 @@
     "generatedOn": "2026-06-11",
     "items": [
       {
-        "project": "RunSmart iOS",
-        "type": "local-only",
-        "detail": "codex/testflight-readiness-audit: unmerged commits, remote branch deleted, last commit 2026-05-24",
-        "action": "Push codex/testflight-readiness-audit and open a PR, or consciously discard it."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/stoic-albattani-3c749f at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/stoic-albattani-3c749f",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/upbeat-shirley-82e6d0 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/upbeat-shirley-82e6d0",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "worktree",
-        "detail": "worktree on codex/1.0.1-today-v2-a1, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS-RunSmart-1.0.1-today-v2-a1",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "cleanup",
-        "detail": "18 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "unpushed",
-        "detail": "claude/epic-sammet-146689: 2 unpushed commit(s), last commit 2026-06-05",
-        "action": "Push claude/epic-sammet-146689 and open a PR, or explicitly hand it off."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "local-only",
-        "detail": "claude/ecstatic-chaum-4466b2: unmerged commits, never pushed, last commit 2026-06-05",
-        "action": "Push claude/ecstatic-chaum-4466b2 and open a PR, or consciously discard it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "local-only",
-        "detail": "claude/heuristic-chaum-cd216b: unmerged commits, never pushed, last commit 2026-06-05",
-        "action": "Push claude/heuristic-chaum-cd216b and open a PR, or consciously discard it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "local-only",
-        "detail": "claude/musing-zhukovsky-2fc500: unmerged commits, remote branch deleted, last commit 2026-05-26",
-        "action": "Push claude/musing-zhukovsky-2fc500 and open a PR, or consciously discard it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "local-only",
-        "detail": "codex/rb-aso-002-app-store-screenshots: unmerged commits, remote branch deleted, last commit 2026-05-31",
-        "action": "Push codex/rb-aso-002-app-store-screenshots and open a PR, or consciously discard it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/epic-sammet-146689-update-main at /private/tmp/resumebuilder-pr51-update",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/ecstatic-chaum-4466b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/ecstatic-chaum-4466b2",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/epic-austin-f3fc62, 5 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-austin-f3fc62",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/epic-sammet-146689 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-sammet-146689",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/flamboyant-wiles-4f0bde, 22 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/flamboyant-wiles-4f0bde",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/heuristic-chaum-cd216b at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/heuristic-chaum-cd216b",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on detached, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/main-latest-test",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/musing-zhukovsky-2fc500, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/musing-zhukovsky-2fc500",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/mystifying-poitras-ef2a2e, 3 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/mystifying-poitras-ef2a2e",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/tender-banach-89238f, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/tender-banach-89238f",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "cleanup",
-        "detail": "28 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
-      },
-      {
-        "project": "RunSmart Web",
-        "type": "local-only",
-        "detail": "claude/wonderful-lamport-36b97c: unmerged commits, never pushed, last commit 2026-06-10",
-        "action": "Push claude/wonderful-lamport-36b97c and open a PR, or consciously discard it."
-      },
-      {
-        "project": "RunSmart Web",
-        "type": "local-only",
-        "detail": "ios: unmerged commits, remote branch deleted, last commit 2026-05-11",
-        "action": "Push ios and open a PR, or consciously discard it."
-      },
-      {
-        "project": "RunSmart Web",
-        "type": "worktree",
-        "detail": "worktree on claude/happy-rosalind, 11 uncommitted file(s) at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/happy-rosalind",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart Web",
-        "type": "worktree",
-        "detail": "worktree on claude/wonderful-lamport-36b97c at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/wonderful-lamport-36b97c",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart Web",
-        "type": "cleanup",
-        "detail": "1 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "default-branch",
-        "detail": "main has 1 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "default-branch",
-        "detail": "main is 9 commit(s) behind origin (pull needed)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "unpushed",
-        "detail": "feature/markitdown-docx-integration: 1 unpushed commit(s), last commit 2026-06-07",
-        "action": "Push feature/markitdown-docx-integration and open a PR, or explicitly hand it off."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "unpushed",
-        "detail": "fix/pdf-parse-xref-error: 1 unpushed commit(s), last commit 2026-06-03",
-        "action": "Push fix/pdf-parse-xref-error and open a PR, or explicitly hand it off."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "local-only",
-        "detail": "docs/markitdown-go-live: unmerged commits, never pushed, last commit 2026-06-07",
-        "action": "Push docs/markitdown-go-live and open a PR, or consciously discard it."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "worktree",
-        "detail": "worktree on codex/expert-output-quality at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder-Expert-Output-Quality",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "dirty",
-        "detail": "5 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "ResumeBuilder AI (Web)",
-        "type": "cleanup",
-        "detail": "2 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "worktree",
-        "detail": "worktree on claude/distracted-sanderson-771778 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/distracted-sanderson-771778",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "worktree",
-        "detail": "worktree on claude/modest-snyder-f48146 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/modest-snyder-f48146",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
         "project": "Agentic OS",
         "type": "dirty",
         "detail": "10 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "cleanup",
-        "detail": "1 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 34,
+    "actionableCount": 1,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   }
 }

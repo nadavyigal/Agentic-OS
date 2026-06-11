@@ -1562,6 +1562,165 @@ def summarize_stranded_work(
     return items
 
 
+AGENT_BRANCH_PREFIXES = ("claude/", "codex/", "cursor/")
+
+
+def decide_cleanup_action(branch: str, dirty: bool, merged: bool) -> str:
+    """Cleanup policy for one branch/worktree (pure, testable).
+
+    Only agent-created branches (claude/*, codex/*) are ever cleaned; the founder's
+    intentional branches (main, monetization, feature work) are reported, never touched.
+
+    Returns:
+      'skip'   - not an agent branch: report only
+      'delete' - agent branch merged into origin's default branch: remove outright
+      'backup' - agent branch with unmerged commits or dirty files: push to origin
+                 first (work preserved, recoverable), then remove locally
+    """
+    if not branch.startswith(AGENT_BRANCH_PREFIXES):
+        return "skip"
+    if dirty:
+        return "backup"
+    return "delete" if merged else "backup"
+
+
+def clean_repos(apply: bool) -> int:
+    """Remove agent-created worktrees and branches across all project repos.
+
+    Dry run by default; --apply executes. Backup-first: anything unmerged or dirty is
+    committed on its own branch and pushed to origin with an explicit refspec (never to
+    the default branch) before local removal. Nothing unrecoverable is ever deleted.
+    """
+    mode = "APPLY" if apply else "DRY RUN (use --apply to execute)"
+    print(f"Agent worktree/branch cleanup - {mode}")
+    failures = 0
+    for source_name, path in parse_project_paths():
+        _, display_name = PROJECT_ALIASES[source_name]
+        if not path.exists():
+            continue
+        refs = run(
+            ["git", "for-each-ref", "refs/heads", "--format=%(refname:short)|%(upstream:track)"],
+            cwd=path,
+        )
+        if refs.returncode != 0:
+            continue
+        print(f"\n== {display_name} ({path})")
+        run(["git", "fetch", "origin", "--prune"], cwd=path, timeout=60)
+
+        heads = {ln.split("|", 1)[0] for ln in refs.stdout.splitlines() if ln.strip()}
+        default_branch = "main" if "main" in heads or "master" not in heads else "master"
+        merged_out = run(
+            ["git", "branch", "--format=%(refname:short)", "--merged", f"origin/{default_branch}"],
+            cwd=path,
+        )
+        merged = (
+            {b.strip() for b in merged_out.stdout.splitlines() if b.strip()}
+            if merged_out.returncode == 0
+            else set()
+        )
+        primary_branch = run(["git", "branch", "--show-current"], cwd=path).stdout.strip()
+
+        # Worktrees first (a branch checked out in a worktree cannot be deleted until
+        # the worktree is removed).
+        wt = run(["git", "worktree", "list", "--porcelain"], cwd=path)
+        worktree_branches: set[str] = set()
+        entries: list[dict[str, str]] = []
+        current: dict[str, str] = {}
+        for line in wt.stdout.splitlines():
+            if line.startswith("worktree "):
+                if current:
+                    entries.append(current)
+                current = {"path": line[len("worktree ") :].strip()}
+            elif line.startswith("branch "):
+                current["branch"] = line[len("branch ") :].replace("refs/heads/", "").strip()
+            elif line.strip() == "detached":
+                current["branch"] = ""
+        if current:
+            entries.append(current)
+        for entry in entries[1:]:
+            wt_path = Path(entry.get("path", ""))
+            branch = entry.get("branch", "")
+            if not branch:
+                print(f"  REPORT detached worktree at {wt_path} - resolve manually")
+                continue
+            worktree_branches.add(branch)
+            dirty_count = 0
+            if wt_path.exists():
+                st = run(["git", "status", "--short"], cwd=wt_path)
+                dirty_count = len([ln for ln in st.stdout.splitlines() if ln.strip()])
+            action = decide_cleanup_action(branch, dirty_count > 0, branch in merged)
+            if action == "skip":
+                print(f"  REPORT non-agent worktree on {branch} at {wt_path} - left untouched")
+                continue
+            label = f"worktree {wt_path} (branch {branch}, {dirty_count} dirty)"
+            if not apply:
+                print(f"  PLAN {action}: {label}")
+                continue
+            ok = True
+            if action == "backup":
+                if dirty_count and wt_path.exists():
+                    run(["git", "add", "-A"], cwd=wt_path)
+                    run(
+                        ["git", "commit", "-m", "wip: preserve agent worktree state before cleanup"],
+                        cwd=wt_path,
+                    )
+                push = run(
+                    ["git", "push", "origin", f"{branch}:refs/heads/{branch}"], cwd=path, timeout=120
+                )
+                ok = push.returncode == 0
+                if not ok:
+                    print(f"  FAIL push {branch}; worktree kept: {push.stderr.strip()[:200]}")
+                    failures += 1
+            if ok:
+                try:
+                    # Web worktrees can hold node_modules; deletion can take minutes.
+                    removed = run(
+                        ["git", "worktree", "remove", "--force", str(wt_path)],
+                        cwd=path,
+                        timeout=600,
+                    )
+                except subprocess.TimeoutExpired:
+                    print(f"  FAIL remove {wt_path}: timed out")
+                    failures += 1
+                    continue
+                if removed.returncode == 0:
+                    run(["git", "branch", "-D", branch], cwd=path)
+                    print(f"  DONE {action}: {label}")
+                else:
+                    print(f"  FAIL remove {wt_path}: {removed.stderr.strip()[:200]}")
+                    failures += 1
+
+        run(["git", "worktree", "prune"], cwd=path)
+
+        # Then agent branches without worktrees.
+        refs = run(
+            ["git", "for-each-ref", "refs/heads", "--format=%(refname:short)"], cwd=path
+        )
+        for branch in [b.strip() for b in refs.stdout.splitlines() if b.strip()]:
+            if branch in (default_branch, primary_branch) or branch in worktree_branches:
+                continue
+            action = decide_cleanup_action(branch, False, branch in merged)
+            if action == "skip":
+                continue
+            if not apply:
+                print(f"  PLAN {action}: branch {branch}")
+                continue
+            ok = True
+            if action == "backup":
+                push = run(
+                    ["git", "push", "origin", f"{branch}:refs/heads/{branch}"], cwd=path, timeout=120
+                )
+                ok = push.returncode == 0
+                if not ok:
+                    print(f"  FAIL push {branch}; branch kept: {push.stderr.strip()[:200]}")
+                    failures += 1
+            if ok:
+                run(["git", "branch", "-D", branch], cwd=path)
+                print(f"  DONE {action}: branch {branch}")
+    print(f"\nCleanup {'complete' if apply else 'planned'}; failures: {failures}")
+    return 1 if failures else 0
+
+
 def collect_evidence() -> list[ProjectEvidence]:
     evidence: list[ProjectEvidence] = []
     for source_name, path in parse_project_paths():
@@ -2809,6 +2968,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("verify", help="verify dashboard JSON, fallback sync, links, and whitespace")
     sub.add_parser("test", help="run the parser unit tests")
+
+    clean_cmd = sub.add_parser(
+        "clean",
+        help="remove agent worktrees/branches (claude/*, codex/*); backup-first, dry run by default",
+    )
+    clean_cmd.add_argument("--apply", action="store_true", help="execute (default is dry run)")
     return parser
 
 
@@ -2823,6 +2988,8 @@ def main(argv: list[str] | None = None) -> int:
         return verify()
     if args.command == "serve":
         return serve(args.port, open_browser=not args.no_open)
+    if args.command == "clean":
+        return clean_repos(apply=args.apply)
     if args.command == "morning":
         rc = refresh(args)
         if rc != 0:
