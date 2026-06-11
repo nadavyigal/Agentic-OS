@@ -195,7 +195,7 @@
         "branch": "main...origin/main",
         "dirty": false,
         "dirtyCount": 0,
-        "extraWorktrees": 0,
+        "extraWorktrees": 1,
         "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -669,7 +669,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 1a87abf Refresh dashboard after janitor commit); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -698,7 +698,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches",
+        "lastCommit": "2026-06-11 1a87abf Refresh dashboard after janitor commit",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -907,8 +907,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 11:23",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-06-11 11:31",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1143,7 +1143,7 @@
       ],
       "dirty": false,
       "dirtyCount": 0,
-      "extraWorktrees": 0,
+      "extraWorktrees": 1,
       "branch": "main...origin/main",
       "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
       "stale": false,
@@ -1524,7 +1524,7 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches",
+      "lastCommit": "2026-06-11 1a87abf Refresh dashboard after janitor commit",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1782,17 +1782,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-11 11:23",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-06-11 11:31",
+    "checksStatus": "Passed",
+    "checksCompletedAt": "2026-06-11 11:31",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Clean",
     "targetBranch": "main...origin/main",
-    "readyForNextSession": false,
+    "readyForNextSession": true,
     "summary": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
     "nextActions": [
       {
@@ -2723,7 +2723,9 @@
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
-    "hygieneWarnings": []
+    "hygieneWarnings": [
+      "Extra product worktrees retained for review: RunSmart iOS (1)."
+    ]
   },
   "latestCooReview": {
     "reviewed": "2026-06-09",
@@ -2735,8 +2737,15 @@
   },
   "strandedWork": {
     "generatedOn": "2026-06-11",
-    "items": [],
-    "actionableCount": 0,
+    "items": [
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/thirsty-varahamihira-312d1d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/thirsty-varahamihira-312d1d",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      }
+    ],
+    "actionableCount": 1,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   }
 }

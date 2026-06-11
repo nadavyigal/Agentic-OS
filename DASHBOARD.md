@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 ## Run Center
 
-- Last refresh: 2026-06-11 11:23
+- Last refresh: 2026-06-11 11:31
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,7 +28,9 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 ## Stranded Work
 
-None. Every branch is pushed and every worktree is accounted for.
+1 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+
+- [RunSmart iOS] worktree on claude/thirsty-varahamihira-312d1d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/thirsty-varahamihira-312d1d
 
 ## Decision Board
 
