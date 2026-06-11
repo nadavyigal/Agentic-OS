@@ -619,7 +619,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-11 11:45",
+      "lastRefresh": "2026-06-11 11:46",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1232,11 +1232,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 14,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-06-11 563dcd6 Refresh morning brief",
+        "branch": "main...origin/main [ahead 2]",
+        "lastCommit": "2026-06-11 d927797 Fix dashboard work packet hygiene",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-11",
@@ -1406,8 +1406,8 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
+        "repoState": "Clean",
+        "branch": "main...origin/main [ahead 2]",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1442,10 +1442,8 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 1,
-      "dirtyProjects": [
-        "Agentic OS"
-      ],
+      "dirtyProjectCount": 0,
+      "dirtyProjects": [],
       "blockedProjects": [
         "RunSmart iOS",
         "Resumely iOS",
@@ -2305,19 +2303,19 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 7,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "7 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "7 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Evidence gap after latest commit: Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,

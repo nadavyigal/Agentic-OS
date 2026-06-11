@@ -669,7 +669,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 563dcd6 Refresh morning brief); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 d927797 Fix dashboard work packet hygiene); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -694,11 +694,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 1]",
-        "dirty": true,
-        "dirtyCount": 14,
+        "branch": "main...origin/main [ahead 2]",
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 563dcd6 Refresh morning brief",
+        "lastCommit": "2026-06-11 d927797 Fix dashboard work packet hygiene",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -907,7 +907,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 11:45",
+    "lastRefresh": "2026-06-11 11:46",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1520,11 +1520,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 14,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 1]",
-      "lastCommit": "2026-06-11 563dcd6 Refresh morning brief",
+      "branch": "main...origin/main [ahead 2]",
+      "lastCommit": "2026-06-11 d927797 Fix dashboard work packet hygiene",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1694,8 +1694,8 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 1]",
+      "repoState": "Clean",
+      "branch": "main...origin/main [ahead 2]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1730,10 +1730,8 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 1,
-    "dirtyProjects": [
-      "Agentic OS"
-    ],
+    "dirtyProjectCount": 0,
+    "dirtyProjects": [],
     "blockedProjects": [
       "RunSmart iOS",
       "Resumely iOS",
@@ -1785,7 +1783,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-11 11:45",
+    "lastRunAt": "2026-06-11 11:46",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -2638,11 +2636,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 7,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "7 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -2717,11 +2715,11 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Refresh required",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "7 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Evidence gap after latest commit: Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -2749,17 +2747,11 @@
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 1 unpushed commit(s)",
+        "detail": "main has 2 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "14 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 3,
+    "actionableCount": 2,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": []

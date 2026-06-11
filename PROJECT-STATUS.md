@@ -14,7 +14,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | 3 | No | Fresh | High | tasks/progress.md | 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys) |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91) |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | No | Fresh | Medium | derived | 2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (14) | Fresh | High | tasks/progress.md | 2026-06-11 563dcd6 Refresh morning brief |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-11 d927797 Fix dashboard work packet hygiene |
 
 ## Evidence Gaps
 
@@ -22,7 +22,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - Resumely iOS: validated 2026-06-10, last commit 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)
 - RunSmart Web: validated 2026-05-12, last commit 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)
-- Agentic OS: validated 2026-06-05, last commit 2026-06-11 563dcd6 Refresh morning brief
+- Agentic OS: validated 2026-06-05, last commit 2026-06-11 d927797 Fix dashboard work packet hygiene
 
 ## Drift Warnings
 
@@ -33,8 +33,7 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
 - [RunSmart iOS] worktree on claude/thirsty-varahamihira-312d1d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/thirsty-varahamihira-312d1d -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 14 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 2 unpushed commit(s) -> Sync the default branch first: pull, then push.
 
 ## Work Packet Hygiene
 
