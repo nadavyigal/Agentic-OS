@@ -10,20 +10,19 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review Response | Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error |
+| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | Yes (2) | Fresh | Medium | tasks/progress.md | 2026-06-11 a8e2774 feat(ios): auto-generate training plan at end of onboarding |
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings) |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (5) | Fresh | Medium | derived | 2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-11 fbaeb19 Refresh morning dashboard |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-11 100fc77 Align morning brief protocol with live-evidence rules + dashboard refresh |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-06-09, last commit 2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error
 - Resumely iOS: validated 2026-06-04, last commit 2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)
 - RunSmart Web: validated 2026-05-12, last commit 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record
-- Agentic OS: validated 2026-06-05, last commit 2026-06-11 fbaeb19 Refresh morning dashboard
+- Agentic OS: validated 2026-06-05, last commit 2026-06-11 100fc77 Align morning brief protocol with live-evidence rules + dashboard refresh
 
 ## Drift Warnings
 
@@ -39,7 +38,7 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 ## Morning Brief
 
-RunSmart iOS — App Store Review Response: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response · Resumely iOS — App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
 ## What To Do Next
 
@@ -49,7 +48,7 @@ Resumely iOS: Founder installs device binary on real device, signs in, smokes op
 
 ### Now
 
-- RunSmart iOS: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response
+- RunSmart iOS: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response
 - Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload
 
 ### Next
@@ -70,7 +69,7 @@ Resumely iOS: Founder installs device binary on real device, signs in, smokes op
 
 ### Blocked
 
-- RunSmart iOS: App Store Connect upload/processing/resubmission require founder authorization or portal action
+- RunSmart iOS: App Store Connect upload/processing/resubmission require founder portal action
 - Resumely iOS: Device smoke and PostHog live-event verification require founder to run on real authenticated device
 - Resumely iOS: ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)
 

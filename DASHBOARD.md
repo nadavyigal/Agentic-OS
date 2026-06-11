@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — App Store Review Response: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response · Resumely iOS — App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
 
 Best next action: Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload
 
 ## Run Center
 
-- Last refresh: 2026-06-11 10:13
+- Last refresh: 2026-06-11 10:41
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,11 +20,11 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review Response | Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response | Yes | Fresh | High |
+| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | Yes | Fresh | Medium |
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | Yes | Fresh | High |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | No | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | Yes | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Decision Board
 
@@ -44,7 +44,6 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 ## Evidence Gaps
 
-- RunSmart iOS: validated 2026-06-09, latest commit is newer.
 - Resumely iOS: validated 2026-06-04, latest commit is newer.
 - RunSmart Web: validated 2026-05-12, latest commit is newer.
 - Agentic OS: validated 2026-06-05, latest commit is newer.

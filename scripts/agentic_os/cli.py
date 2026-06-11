@@ -1656,6 +1656,40 @@ DRIFT_FIELDS = [
 ]
 
 
+def compose_status_narrative(parse: dict[str, Any], health: dict[str, Any]) -> str:
+    """Rebuild the long-form project status from parsed repo truth.
+
+    The status field previously carried over from the prior status.json run, so old
+    narrative accreted forever. Every sentence here traces to a parsed field, ends with
+    provenance, and warns when commits postdate the parsed status (git is then fresher).
+    """
+
+    def sentence(text: str) -> str:
+        text = text.strip()
+        return text if text.endswith(".") else text + "."
+
+    parts: list[str] = []
+    if parse.get("currentPhase"):
+        parts.append(sentence(f"Phase: {parse['currentPhase']}"))
+    if parse.get("activeStory"):
+        parts.append(sentence(f"Active: {parse['activeStory']}"))
+    if parse.get("lastCompletedStory"):
+        parts.append(sentence(f"Last completed: {parse['lastCompletedStory']}"))
+    source = parse.get("preferredSource") or "local task files"
+    updated = parse.get("lastUpdated") or "unknown date"
+    parts.append(f"Source: {source}, updated {updated}.")
+    parsed_date = parse_date(parse.get("lastUpdated"))
+    commit_date = parse_date(health.get("lastCommit"))
+    if parsed_date and commit_date and commit_date > parsed_date:
+        parts.append(
+            sentence(
+                f"Newer commits exist after this status (last commit: "
+                f"{clean_cell(health['lastCommit'])}); trust git for the latest state"
+            )
+        )
+    return " ".join(parts)
+
+
 def compute_drift_warnings(status: dict[str, Any]) -> list[dict[str, Any]]:
     """Flag High-confidence projects whose curated narrative diverges from the parsed source.
 
@@ -1945,10 +1979,16 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         project["lastUpdated"] = generated
         project["gtm"] = health.get("gtm") or {"exists": False}
 
-        # Auto-drive the displayed per-project narrative from parsed repo truth when the
-        # parse is High confidence (tasks/progress.md with validation evidence). This is the
-        # core trust fix: a project card can no longer show prose the repo contradicts.
-        if health["sourceConfidence"] == "High" and parse:
+        # Auto-drive the displayed per-project narrative from parsed repo truth whenever a
+        # parse exists (High: tasks/progress.md with validation evidence; Medium: derived
+        # from todo/session-log). This is the core trust fix: a project card can no longer
+        # show prose the repo contradicts, and the long-form status field is rebuilt every
+        # run so stale narrative cannot accrete across refreshes.
+        if (
+            health["sourceConfidence"] in ("High", "Medium")
+            and parse
+            and any(parse.get(k) for k in ("currentPhase", "activeStory", "lastCompletedStory"))
+        ):
             for display_key, parsed_key in [
                 ("currentPhase", "currentPhase"),
                 ("activeStory", "activeStory"),
@@ -1960,6 +2000,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
                 if value:
                     project[display_key] = value
             project["blockers"] = health.get("blockers") or []
+            project["status"] = compose_status_narrative(parse, health)
 
         project["localEvidence"] = {
             "branch": health["branch"],
