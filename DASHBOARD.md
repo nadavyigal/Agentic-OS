@@ -24,13 +24,11 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | No | Fresh | High |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | No | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | No | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
 
 ## Stranded Work
 
-1 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
-
-- [Agentic OS] 10 uncommitted file(s) in the primary working tree
+None. Every branch is pushed and every worktree is accounted for.
 
 ## Decision Board
 

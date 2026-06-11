@@ -669,7 +669,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -695,10 +695,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 10,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh",
+        "lastCommit": "2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -1520,11 +1520,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 10,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh",
+      "lastCommit": "2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1694,7 +1694,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1730,10 +1730,8 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 1,
-    "dirtyProjects": [
-      "Agentic OS"
-    ],
+    "dirtyProjectCount": 0,
+    "dirtyProjects": [],
     "blockedProjects": [
       "RunSmart iOS",
       "Resumely iOS",
@@ -2638,11 +2636,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 3,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -2717,11 +2715,11 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Refresh required",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Evidence gap after latest commit: Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -2737,15 +2735,8 @@
   },
   "strandedWork": {
     "generatedOn": "2026-06-11",
-    "items": [
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "10 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      }
-    ],
-    "actionableCount": 1,
+    "items": [],
+    "actionableCount": 0,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   }
 }

@@ -1232,11 +1232,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 10,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-11 1a9dff0 Add Stranded Work board: cross-tool lost-work detection on every refresh",
+        "lastCommit": "2026-06-11 56dc327 Add ./agentic-os clean: backup-first janitor for agent worktrees and branches",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-11",
@@ -1406,7 +1406,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main...origin/main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1442,10 +1442,8 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 1,
-      "dirtyProjects": [
-        "Agentic OS"
-      ],
+      "dirtyProjectCount": 0,
+      "dirtyProjects": [],
       "blockedProjects": [
         "RunSmart iOS",
         "Resumely iOS",
@@ -2305,19 +2303,19 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 3,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Evidence gap after latest commit: Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
