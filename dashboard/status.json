@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-09 IDT",
+    "lastUpdated": "2026-06-11 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -12,12 +12,11 @@
     }
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 App Store Review Response: Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "overallStatus": "RunSmart iOS \u2014 App Store Review Response: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
     "bestNextAction": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
     "mainBlockers": [
-      "RunSmart iOS: Founder-controlled distribution archive/export/upload",
-      "RunSmart iOS: App Store Connect resubmission",
-      "RunSmart iOS: manual SIWA fresh-account visual QA",
+      "RunSmart iOS: App Store Connect upload/processing/resubmission require founder authorization or portal action",
+      "RunSmart iOS: manual SIWA fresh-account authentication was not completed in this session",
       "Resumely iOS: Device smoke and PostHog live-event verification require founder to run on real authenticated device",
       "Resumely iOS: ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)",
       "Resumely iOS: `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled)",
@@ -30,7 +29,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-08",
+    "evidenceFreshDate": "2026-06-10",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -46,17 +45,16 @@
       "currentPhase": "App Store Review Response",
       "activeStory": "Fix June 08 rejection for Sign in with Apple and HealthKit UI disclosure, then prepare RunSmart 1.0.1 build 12",
       "lastCompletedStory": "RunSmart 1.0.1 build 11 rejected by Apple on 2026-06-08 for requiring name/email after Sign in with Apple and for unclear HealthKit/CareKit UI identification",
-      "nextRecommendedStory": "Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response",
+      "nextRecommendedStory": "Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "Static scans found no app-code CareKit references and no `TextField(\"Your name\"` call site. HealthKit UI strings are present on sign-in, onboarding, Profile, and HealthKit detail surfaces. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-app-review-recovery-derived` on 2026-06-08. Local Release archive `build/RunSmart-build12-local-validation.xcarchive` passed and inspected as `1.0.1 (12)`, but it is development-signed with `get-task-allow=true`, so distribution export/upload remains open",
+      "lastValidation": "On 2026-06-09, current branch `codex/app-review-rejection-recovery` at `064e66a` had one pre-existing dirty path (`Resources/Localizable.xcstrings`, no content diff). Static scans found no app-code CareKit references and no name/email onboarding text fields. HealthKit UI strings are present on sign-in, onboarding Privacy, Profile Connected, and HealthKit detail source surfaces. `git diff --check` passed. No active untracked Swift source was found under `IOS RunSmart app/` or `IOS RunSmart appTests/`. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-build12-resubmission-derived`. Release archive `build/RunSmart-build12-AppStore.xcarchive` succeeded and inspected as display name `RunSmart`, bundle id `com.runsmart.lite`, version `1.0.1`, build `12`, iPhone-only `UIDeviceFamily = (1)`, `ITSAppUsesNonExemptEncryption=false`, and dSYM present; the archive app itself is development-signed with `get-task-allow=true`. Non-upload App Store export `build/RunSmart-build12-AppStoreExport/RunSmart.ipa` succeeded and the IPA app is distribution-signed by Apple Distribution with HealthKit, Sign in with Apple, associated domains, and `get-task-allow=false`. Simulator screenshots were captured at `/tmp/runsmart-build12-reviewer-evidence-20260609/` for iPhone 17 Pro Max and iPad Air 11-inch (M3) sign-in HealthKit disclosure plus Profile HealthKit visibility. Upload/submission were not performed",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-09",
+      "lastUpdated": "2026-06-11",
       "blockers": [
-        "Founder-controlled distribution archive/export/upload",
-        "App Store Connect resubmission",
-        "manual SIWA fresh-account visual QA"
+        "App Store Connect upload/processing/resubmission require founder authorization or portal action",
+        "manual SIWA fresh-account authentication was not completed in this session"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -95,11 +93,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "codex/app-review-rejection-recovery",
+        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 3,
-        "lastCommit": "2026-06-08 064e66a Fix App Review rejection flow",
+        "lastCommit": "2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -129,33 +127,32 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-08",
-        "evidenceGap": false,
-        "evidenceDate": "2026-06-08"
+        "freshestDate": "2026-06-10",
+        "evidenceGap": true,
+        "evidenceDate": "2026-06-09"
       },
       "taskParse": {
-        "status": "Rejected - fix implemented locally",
+        "status": "Rejected - build 12 export validated locally",
         "currentPhase": "App Store Review Response",
         "activeStory": "Fix June 08 rejection for Sign in with Apple and HealthKit UI disclosure, then prepare RunSmart 1.0.1 build 12",
         "lastCompletedStory": "RunSmart 1.0.1 build 11 rejected by Apple on 2026-06-08 for requiring name/email after Sign in with Apple and for unclear HealthKit/CareKit UI identification",
-        "nextRecommendedStory": "Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response",
+        "nextRecommendedStory": "Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
         "blockers": [
-          "Founder-controlled distribution archive/export/upload",
-          "App Store Connect resubmission",
-          "manual SIWA fresh-account visual QA"
+          "App Store Connect upload/processing/resubmission require founder authorization or portal action",
+          "manual SIWA fresh-account authentication was not completed in this session"
         ],
         "risks": [],
-        "lastValidation": "Static scans found no app-code CareKit references and no `TextField(\"Your name\"` call site. HealthKit UI strings are present on sign-in, onboarding, Profile, and HealthKit detail surfaces. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-app-review-recovery-derived` on 2026-06-08. Local Release archive `build/RunSmart-build12-local-validation.xcarchive` passed and inspected as `1.0.1 (12)`, but it is development-signed with `get-task-allow=true`, so distribution export/upload remains open",
-        "lastUpdated": "2026-06-08",
+        "lastValidation": "On 2026-06-09, current branch `codex/app-review-rejection-recovery` at `064e66a` had one pre-existing dirty path (`Resources/Localizable.xcstrings`, no content diff). Static scans found no app-code CareKit references and no name/email onboarding text fields. HealthKit UI strings are present on sign-in, onboarding Privacy, Profile Connected, and HealthKit detail source surfaces. `git diff --check` passed. No active untracked Swift source was found under `IOS RunSmart app/` or `IOS RunSmart appTests/`. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-build12-resubmission-derived`. Release archive `build/RunSmart-build12-AppStore.xcarchive` succeeded and inspected as display name `RunSmart`, bundle id `com.runsmart.lite`, version `1.0.1`, build `12`, iPhone-only `UIDeviceFamily = (1)`, `ITSAppUsesNonExemptEncryption=false`, and dSYM present; the archive app itself is development-signed with `get-task-allow=true`. Non-upload App Store export `build/RunSmart-build12-AppStoreExport/RunSmart.ipa` succeeded and the IPA app is distribution-signed by Apple Distribution with HealthKit, Sign in with Apple, associated domains, and `get-task-allow=false`. Simulator screenshots were captured at `/tmp/runsmart-build12-reviewer-evidence-20260609/` for iPhone 17 Pro Max and iPad Air 11-inch (M3) sign-in HealthKit disclosure plus Profile HealthKit visibility. Upload/submission were not performed",
+        "lastUpdated": "2026-06-09",
         "qaNeeded": null,
-        "estimatedCompletion": "Ready after build 12 archive/export/upload, reviewer-device screenshots, and App Store Connect build selection",
+        "estimatedCompletion": "Ready after upload, App Store Connect build processing/selection, and final fresh-account SIWA confirmation",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [],
           "buildStatus": "succeeded",
           "qaDocs": [],
-          "evidenceDate": "2026-06-08"
+          "evidenceDate": "2026-06-09"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -185,7 +182,7 @@
       "name": "Resumely iOS",
       "type": "Native SwiftUI iOS app",
       "role": "Native iOS app for Resumely resume optimization product.",
-      "freshness": "Needs Review",
+      "freshness": "Fresh",
       "statusTone": "pre-submission",
       "status": "Pre-submission. Latest: pre-archive production audit done 2026-06-03 (bare print() calls wrapped). Phase 2 submit package complete. PostHog WP-1 key fix done (Run Script + PlistBuddy). Strong optimization mode, ATS uplift, manual section edit, and Me package hub all shipped. ASC upload path resolved: manual Xcode Organizer (no Fastlane, no .p8). Device smoke blocked on founder unlocking iPhone 13.",
       "currentPhase": "App Store submission readiness",
@@ -197,7 +194,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "WP-1 session (2026-06-04): Clean build succeeded \u2014 Info.plist contains API_BASE_URL=https://www.resumelybuilderai.com, POSTHOG_API_KEY=phc_***, POSTHOG_HOST=https://us.i.posthog.com. 72 XCTest tests passed (0 failures) on iPhone 17 simulator. Simulator Home screenshot confirmed at /var/tmp/resumebuilder-smoke-wt/wp1-home.png. Device binary (Debug-iphoneos) built and signed at /var/tmp/resumebuilder-device-wt/Build/Products/Debug-iphoneos/ \u2014 all three Info.plist keys verified. ASC path: Fastlane NOT installed, no .p8 key \u2192 manual Xcode Organizer upload",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-09",
+      "lastUpdated": "2026-06-11",
       "blockers": [
         "Device smoke and PostHog live-event verification require founder to run on real authenticated device",
         "ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)",
@@ -235,9 +232,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 9,
-        "extraWorktrees": 9,
-        "lastCommit": "2026-06-04 dfe96f7 Merge pull request #50 from nadavyigal/claude/wonderful-mayer-0856d4",
+        "dirtyCount": 1,
+        "extraWorktrees": 10,
+        "lastCommit": "2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -252,9 +249,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Needs Review",
-        "freshestDate": "2026-06-04",
-        "evidenceGap": false,
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-10",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-04"
       },
       "taskParse": {
@@ -317,7 +314,7 @@
       "name": "RunSmart Web",
       "type": "Web app",
       "role": "Main AI running coach product and source of product logic.",
-      "freshness": "Stale",
+      "freshness": "Fresh",
       "statusTone": "reference",
       "status": "Support/backend repo for RunSmart. Commit f677ad7 added the feature-flagged /api/coach/voice-cue endpoint for Sprint 11 voice work. The local checkout is dirty and needs triage before more implementation.",
       "currentPhase": "Sprint 11 backend support / reference",
@@ -329,7 +326,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No latest B1 validation was rerun during this status refresh.",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-09",
+      "lastUpdated": "2026-06-11",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -349,14 +346,21 @@
         "repo": "file:///Users/nadavyigal/Documents/RunSmart"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 2]",
-        "dirty": true,
-        "dirtyCount": 36,
-        "extraWorktrees": 1,
-        "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
+        "branch": "main...origin/main",
+        "dirty": false,
+        "dirtyCount": 0,
+        "extraWorktrees": 2,
+        "lastCommit": "2026-06-10 f0c0cc0 chore: commit stranded session artifacts \u2014 Agent OS docs, AHA_MOMENTS plan, migration 015 record",
         "sourceFiles": [
           "tasks/MEMORY.md",
+          "tasks/todo.md",
+          "tasks/session-log.md",
           "docs/agent-os/project-context.md",
+          "docs/specs/README.md",
+          "docs/product/product-vision.md",
+          "docs/product/current-product-state.md",
+          "docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+          "docs/specs/2026-05-12-today-command-center.md",
           "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
           "docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md",
           "docs/plans/2026-02-24-runsmart-execution-prompts-pack.md",
@@ -364,48 +368,50 @@
           "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
           "docs/plans/2026-02-12-runsmart-execution-plan.md"
         ],
-        "sourceConfidence": "Low",
+        "sourceConfidence": "Medium",
         "preferredSource": "derived",
-        "freshness": "Stale",
-        "freshestDate": "2026-06-01",
-        "evidenceGap": false,
-        "evidenceDate": null
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-10",
+        "evidenceGap": true,
+        "evidenceDate": "2026-05-12"
       },
       "taskParse": {
         "status": null,
-        "currentPhase": null,
-        "activeStory": null,
+        "currentPhase": "Implement Story 1 for the RunSmart Web Today page improvement",
+        "activeStory": "Implement Story 1 for the RunSmart Web Today page improvement",
         "lastCompletedStory": null,
-        "nextRecommendedStory": null,
+        "nextRecommendedStory": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
         "blockers": [],
         "risks": [],
-        "lastValidation": null,
-        "lastUpdated": null,
+        "lastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
+        "lastUpdated": "2026-05-12",
         "qaNeeded": null,
         "estimatedCompletion": null,
         "decisionsNeeded": [],
-        "openQuestions": [],
+        "openQuestions": [
+          "The approved spec was not found as a saved `docs/specs/` file, so the prior planning package is being treated as the approved spec for this story"
+        ],
         "evidence": {
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": null
+          "evidenceDate": "2026-05-12"
         },
         "preferredSource": "derived",
         "sourcesUsed": [
+          "tasks/todo.md",
+          "tasks/session-log.md",
           "tasks/MEMORY.md",
           "tasks/ERRORS.md",
           "tasks/lessons.md"
         ],
         "missing": [
-          "tasks/progress.md",
-          "tasks/todo.md",
-          "tasks/session-log.md"
+          "tasks/progress.md"
         ],
         "sourceConfidence": "Medium",
         "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
       },
-      "sourceConfidence": "Low",
+      "sourceConfidence": "Medium",
       "gtm": {
         "exists": false,
         "path": null,
@@ -431,7 +437,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-09",
+      "lastUpdated": "2026-06-11",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -452,11 +458,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       },
       "localEvidence": {
-        "branch": "monitization...origin/monitization",
+        "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
         "dirty": true,
         "dirtyCount": 5,
         "extraWorktrees": 1,
-        "lastCommit": "2026-06-08 84a5c5a fix: exclude supabase edge functions from Next.js tsc check",
+        "lastCommit": "2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "docs/agent-os/project-context.md",
@@ -471,7 +477,7 @@
         "sourceConfidence": "Medium",
         "preferredSource": "derived",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-08",
+        "freshestDate": "2026-06-09",
         "evidenceGap": false,
         "evidenceDate": null
       },
@@ -574,7 +580,7 @@
       "progressLabel": "Active",
       "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-09",
+      "lastUpdated": "2026-06-11",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -590,10 +596,10 @@
       },
       "localEvidence": {
         "branch": "main",
-        "dirty": true,
-        "dirtyCount": 14,
-        "extraWorktrees": 2,
-        "lastCommit": "2026-06-08 074b10b Run weekly plan and review workflows for week of 2026-06-08",
+        "dirty": false,
+        "dirtyCount": 0,
+        "extraWorktrees": 1,
+        "lastCommit": "2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -606,7 +612,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-08",
+        "freshestDate": "2026-06-10",
         "evidenceGap": true,
         "evidenceDate": "2026-06-05"
       },
@@ -665,11 +671,11 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response",
+      "RunSmart iOS: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
       "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload"
     ],
     "next": [
-      "RunSmart Web: Triage modified/untracked files before more web work.",
+      "RunSmart Web: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
       "ResumeBuilder AI (Web): Leave parked unless Resumely smoke exposes backend parse/render issues."
     ],
     "later": [
@@ -677,13 +683,13 @@
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: 19 saved plan(s) \u2014 latest \"RunSmart 1.0.1 Build 12 - App Review Rejection Recovery\" (2026-06-08). See Saved Plans.",
       "Resumely iOS: 3 saved plan(s) \u2014 latest \"Feature Spec \u2014 App Store Screenshot Generator\" (2026-06-05). See Saved Plans.",
-      "RunSmart Web: 6 saved plan(s) \u2014 latest \"RunSmart iOS App \u2014 Implementation Plan v2\" (2026-03-17). See Saved Plans.",
+      "RunSmart Web: 8 saved plan(s) \u2014 latest \"RunSmart Aha Moments Phase 1 \u2014 Implementation Prompt\" (2026-06-10). See Saved Plans.",
       "ResumeBuilder AI (Web): 7 saved plan(s) \u2014 latest \"Resumely \u2014 Growth + Pricing Design Spec\" (2026-06-07). See Saved Plans.",
       "Agentic OS: 5 saved plan(s) \u2014 latest \"2026-06-07 Obsidian Integration Plan\" (2026-06-07). See Saved Plans.",
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "RunSmart iOS: Founder-controlled distribution archive/export/upload",
+      "RunSmart iOS: App Store Connect upload/processing/resubmission require founder authorization or portal action",
       "Resumely iOS: Device smoke and PostHog live-event verification require founder to run on real authenticated device",
       "Resumely iOS: ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)"
     ]
@@ -802,7 +808,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-09 11:18",
+    "lastRefresh": "2026-06-11 09:11",
     "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -839,7 +845,14 @@
       "RunSmart Web: docs/plans/2026-02-24-runsmart-execution-prompts-pack.md",
       "RunSmart Web: docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md",
       "RunSmart Web: docs/plans/2026-03-17-runsmart-ios-app-plan.md",
+      "RunSmart Web: docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+      "RunSmart Web: docs/product/current-product-state.md",
+      "RunSmart Web: docs/product/product-vision.md",
+      "RunSmart Web: docs/specs/2026-05-12-today-command-center.md",
+      "RunSmart Web: docs/specs/README.md",
       "RunSmart Web: tasks/MEMORY.md",
+      "RunSmart Web: tasks/session-log.md",
+      "RunSmart Web: tasks/todo.md",
       "RunSmart iOS: .agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: .agent-os/distribution/weekly-plan.md",
       "RunSmart iOS: docs/specs/README.md",
@@ -882,12 +895,11 @@
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
       "state": "App Store Review Response",
-      "nextAction": "Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response",
-      "blockerCount": 3,
+      "nextAction": "Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
+      "blockerCount": 2,
       "blockers": [
-        "Founder-controlled distribution archive/export/upload",
-        "App Store Connect resubmission",
-        "manual SIWA fresh-account visual QA"
+        "App Store Connect upload/processing/resubmission require founder authorization or portal action",
+        "manual SIWA fresh-account authentication was not completed in this session"
       ],
       "gtm": {
         "exists": true,
@@ -1034,13 +1046,13 @@
       "dirty": true,
       "dirtyCount": 1,
       "extraWorktrees": 3,
-      "branch": "codex/app-review-rejection-recovery",
-      "lastCommit": "2026-06-08 064e66a Fix App Review rejection flow",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
+      "lastCommit": "2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-08",
-      "evidenceGap": false,
-      "evidenceDate": "2026-06-08",
+      "freshestDate": "2026-06-10",
+      "evidenceGap": true,
+      "evidenceDate": "2026-06-09",
       "evidenceTests": [],
       "buildStatus": "succeeded",
       "qaDocs": [],
@@ -1072,8 +1084,8 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "Static scans found no app-code CareKit references and no `TextField(\"Your name\"` call site. HealthKit UI strings are present on sign-in, onboarding, Profile, and HealthKit detail surfaces. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-app-review-recovery-derived` on 2026-06-08. Local Release archive `build/RunSmart-build12-local-validation.xcarchive` passed and inspected as `1.0.1 (12)`, but it is development-signed with `get-task-allow=true`, so distribution export/upload remains open",
-      "parsedLastUpdated": "2026-06-08",
+      "parsedLastValidation": "On 2026-06-09, current branch `codex/app-review-rejection-recovery` at `064e66a` had one pre-existing dirty path (`Resources/Localizable.xcstrings`, no content diff). Static scans found no app-code CareKit references and no name/email onboarding text fields. HealthKit UI strings are present on sign-in, onboarding Privacy, Profile Connected, and HealthKit detail source surfaces. `git diff --check` passed. No active untracked Swift source was found under `IOS RunSmart app/` or `IOS RunSmart appTests/`. Signing-disabled simulator build passed on iPhone 17 Pro Max with DerivedData `/tmp/runsmart-build12-resubmission-derived`. Release archive `build/RunSmart-build12-AppStore.xcarchive` succeeded and inspected as display name `RunSmart`, bundle id `com.runsmart.lite`, version `1.0.1`, build `12`, iPhone-only `UIDeviceFamily = (1)`, `ITSAppUsesNonExemptEncryption=false`, and dSYM present; the archive app itself is development-signed with `get-task-allow=true`. Non-upload App Store export `build/RunSmart-build12-AppStoreExport/RunSmart.ipa` succeeded and the IPA app is distribution-signed by Apple Distribution with HealthKit, Sign in with Apple, associated domains, and `get-task-allow=false`. Simulator screenshots were captured at `/tmp/runsmart-build12-reviewer-evidence-20260609/` for iPhone 17 Pro Max and iPad Air 11-inch (M3) sign-in HealthKit disclosure plus Profile HealthKit visibility. Upload/submission were not performed",
+      "parsedLastUpdated": "2026-06-09",
       "parsedActiveStory": "Fix June 08 rejection for Sign in with Apple and HealthKit UI disclosure, then prepare RunSmart 1.0.1 build 12"
     },
     {
@@ -1118,14 +1130,14 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 9,
-      "extraWorktrees": 9,
+      "dirtyCount": 1,
+      "extraWorktrees": 10,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-04 dfe96f7 Merge pull request #50 from nadavyigal/claude/wonderful-mayer-0856d4",
+      "lastCommit": "2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)",
       "stale": false,
-      "freshness": "Needs Review",
-      "freshestDate": "2026-06-04",
-      "evidenceGap": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-10",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-04",
       "evidenceTests": [
         "72 XCTest"
@@ -1153,8 +1165,8 @@
     {
       "id": "runsmart-web",
       "name": "RunSmart Web",
-      "state": "Sprint 11 backend support / reference",
-      "nextAction": "Triage modified/untracked files before more web work.",
+      "state": "Implement Story 1 for the RunSmart Web Today page improvement",
+      "nextAction": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
       "blockerCount": 1,
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
@@ -1167,6 +1179,20 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "RunSmart Aha Moments Phase 1 \u2014 Implementation Prompt",
+          "path": "docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+          "date": "2026-06-10",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Feature Spec: Today Command Center Refresh",
+          "path": "docs/specs/2026-05-12-today-command-center.md",
+          "date": "2026-05-12",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "RunSmart iOS App \u2014 Implementation Plan v2",
           "path": "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
@@ -1210,22 +1236,29 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 36,
-      "extraWorktrees": 1,
-      "branch": "main...origin/main [ahead 2]",
-      "lastCommit": "2026-06-01 f677ad7 feat(B1): /api/coach/voice-cue \u2014 TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
-      "stale": true,
-      "freshness": "Stale",
-      "freshestDate": "2026-06-01",
-      "evidenceGap": false,
-      "evidenceDate": null,
+      "dirty": false,
+      "dirtyCount": 0,
+      "extraWorktrees": 2,
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-10 f0c0cc0 chore: commit stranded session artifacts \u2014 Agent OS docs, AHA_MOMENTS plan, migration 015 record",
+      "stale": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-10",
+      "evidenceGap": true,
+      "evidenceDate": "2026-05-12",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
+        "tasks/todo.md",
+        "tasks/session-log.md",
         "docs/agent-os/project-context.md",
+        "docs/specs/README.md",
+        "docs/product/product-vision.md",
+        "docs/product/current-product-state.md",
+        "docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+        "docs/specs/2026-05-12-today-command-center.md",
         "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
         "docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md",
         "docs/plans/2026-02-24-runsmart-execution-prompts-pack.md",
@@ -1233,11 +1266,11 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "sourceConfidence": "Low",
+      "sourceConfidence": "Medium",
       "preferredSource": "derived",
-      "parsedLastValidation": null,
-      "parsedLastUpdated": null,
-      "parsedActiveStory": null
+      "parsedLastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
+      "parsedLastUpdated": "2026-05-12",
+      "parsedActiveStory": "Implement Story 1 for the RunSmart Web Today page improvement"
     },
     {
       "id": "resumebuilder-ai",
@@ -1310,11 +1343,11 @@
       "dirty": true,
       "dirtyCount": 5,
       "extraWorktrees": 1,
-      "branch": "monitization...origin/monitization",
-      "lastCommit": "2026-06-08 84a5c5a fix: exclude supabase edge functions from Next.js tsc check",
+      "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
+      "lastCommit": "2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-08",
+      "freshestDate": "2026-06-09",
       "evidenceGap": false,
       "evidenceDate": null,
       "evidenceTests": [],
@@ -1388,14 +1421,14 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 14,
-      "extraWorktrees": 2,
+      "dirty": false,
+      "dirtyCount": 0,
+      "extraWorktrees": 1,
       "branch": "main",
-      "lastCommit": "2026-06-08 074b10b Run weekly plan and review workflows for week of 2026-06-08",
+      "lastCommit": "2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-08",
+      "freshestDate": "2026-06-10",
       "evidenceGap": true,
       "evidenceDate": "2026-06-05",
       "evidenceTests": [],
@@ -1453,10 +1486,10 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "codex/app-review-rejection-recovery",
-      "nextAction": "Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
+      "nextAction": "Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1483,7 +1516,7 @@
         "docs/specs/e7-garmin-wearable-depth.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review Response. Next action: Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response. Known blockers: Founder-controlled distribution archive/export/upload; App Store Connect resubmission; manual SIWA fresh-account visual QA. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store Review Response. Next action: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response. Known blockers: App Store Connect upload/processing/resubmission require founder authorization or portal action; manual SIWA fresh-account authentication was not completed in this session. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -1493,7 +1526,7 @@
       "branch": "main...origin/main",
       "nextAction": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1506,20 +1539,27 @@
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
       "project": "RunSmart Web",
       "role": "Backend Support Engineer",
-      "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 2]",
-      "nextAction": "Triage modified/untracked files before more web work.",
-      "sourceConfidence": "Low",
-      "trustDirective": "Source confidence is Low: the status is narrative-only, with no local task files parsed. You MUST re-read the local repo to establish the real current state before doing anything.",
+      "repoState": "Clean",
+      "branch": "main...origin/main",
+      "nextAction": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
+      "sourceConfidence": "Medium",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
+        "tasks/todo.md",
+        "tasks/session-log.md",
         "docs/agent-os/project-context.md",
+        "docs/specs/README.md",
+        "docs/product/product-vision.md",
+        "docs/product/current-product-state.md",
+        "docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+        "docs/specs/2026-05-12-today-command-center.md",
         "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
         "docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md",
         "docs/plans/2026-02-24-runsmart-execution-prompts-pack.md",
@@ -1527,14 +1567,14 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Low: the status is narrative-only, with no local task files parsed. You MUST re-read the local repo to establish the real current state before doing anything. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md, docs/plans/2026-03-17-runsmart-ios-app-plan.md, docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md. Current state: Sprint 11 backend support / reference. Next action: Triage modified/untracked files before more web work.. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/agent-os/project-context.md. Current state: Implement Story 1 for the RunSmart Web Today page improvement. Next action: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ai",
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
       "repoState": "Dirty",
-      "branch": "monitization...origin/monitization",
+      "branch": "fix/ios-submit-package-and-ats-rescan...origin/fix/ios-submit-package-and-ats-rescan",
       "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1555,7 +1595,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1574,16 +1614,15 @@
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
-    "portfolioState": "RunSmart iOS \u2014 App Store Review Response: Run visual QA on reviewer device classes, archive/export build 12 with distribution signing, inspect archive provenance, upload to App Store Connect, and resubmit with the updated reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Sprint 11 backend support / reference \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "portfolioState": "RunSmart iOS \u2014 App Store Review Response: Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
       "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
     ],
     "risks": [
-      "RunSmart iOS: Founder-controlled distribution archive/export/upload",
-      "RunSmart iOS: App Store Connect resubmission",
-      "RunSmart iOS: manual SIWA fresh-account visual QA",
+      "RunSmart iOS: App Store Connect upload/processing/resubmission require founder authorization or portal action",
+      "RunSmart iOS: manual SIWA fresh-account authentication was not completed in this session",
       "Resumely iOS: Device smoke and PostHog live-event verification require founder to run on real authenticated device",
       "Resumely iOS: ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)",
       "Resumely iOS: `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled)",
@@ -1593,13 +1632,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
-      "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1607,22 +1644,21 @@
       "RunSmart Web",
       "ResumeBuilder AI (Web)"
     ],
-    "staleProjectCount": 1,
-    "staleProjects": [
-      "RunSmart Web"
-    ],
-    "evidenceGapCount": 1,
+    "staleProjectCount": 0,
+    "staleProjects": [],
+    "evidenceGapCount": 4,
     "evidenceGapProjects": [
+      "RunSmart iOS",
+      "Resumely iOS",
+      "RunSmart Web",
       "Agentic OS"
     ],
-    "lowTrustProjects": [
-      "RunSmart Web"
-    ],
+    "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
     "metricStatus": "Most revenue, retention, and cost metrics are still Needs Data until live sources are wired.",
     "driftWarningCount": 0,
     "driftProjects": [],
-    "openQuestionCount": 2,
+    "openQuestionCount": 3,
     "repoDecisionCount": 2
   },
   "dataFlow": [
@@ -1654,13 +1690,13 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-09 11:18",
+    "lastRunAt": "2026-06-11 09:11",
     "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-09 11:18",
+    "checksCompletedAt": "2026-06-11 09:11",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
     "readyForNextSession": true,
@@ -1675,6 +1711,10 @@
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
+    {
+      "project": "RunSmart Web",
+      "question": "The approved spec was not found as a saved `docs/specs/` file, so the prior planning package is being treated as the approved spec for this story"
+    },
     {
       "project": "Agentic OS",
       "question": "Is the demand-side `INTENT-LOG.md` worth keeping past the 2026-06-16 audit?"
@@ -1777,9 +1817,23 @@
     {
       "project": "RunSmart Web",
       "projectId": "runsmart-web",
-      "total": 6,
+      "total": 8,
       "shown": 6,
       "plans": [
+        {
+          "title": "RunSmart Aha Moments Phase 1 \u2014 Implementation Prompt",
+          "path": "docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md",
+          "date": "2026-06-10",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Feature Spec: Today Command Center Refresh",
+          "path": "docs/specs/2026-05-12-today-command-center.md",
+          "date": "2026-05-12",
+          "status": null,
+          "kind": "spec"
+        },
         {
           "title": "RunSmart iOS App \u2014 Implementation Plan v2",
           "path": "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
@@ -1805,20 +1859,6 @@
           "title": "RunSmart App Refinement Backlog",
           "path": "docs/plans/2026-02-15-app-refinement-plan.md",
           "date": "2026-02-15",
-          "status": null,
-          "kind": "plan"
-        },
-        {
-          "title": "RunSmart Product Strategy Design",
-          "path": "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
-          "date": "2026-02-12",
-          "status": "Validated in brainstorming session",
-          "kind": "plan"
-        },
-        {
-          "title": "RunSmart Execution Plan (Codex-Ready)",
-          "path": "docs/plans/2026-02-12-runsmart-execution-plan.md",
-          "date": "2026-02-12",
           "status": null,
           "kind": "plan"
         }
@@ -2032,6 +2072,25 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-2 (Recovered)",
+        "status": "Needs review",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Make small, reviewable progress on the 1.0.1 next version (voice cues + UX/UI redesign) on an isolated branch, without touching the v1.0 build that is in Apple review and without resubmitting",
+        "source": "Founder directive (work RunSmart iOS next version now), runs in parallel with WP-1",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-2-runsmart-ios-1.0.1.md",
+        "copyPrompt": null,
+        "decision": "EXD-008"
+      },
+      {
         "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
         "status": "Active",
         "project": "RunSmart iOS",
@@ -2048,6 +2107,63 @@
         "successSignal": "Build 12 is distribution-archived/exported, provenance inspected as `1.0.1 (12)`, reviewer-device SIWA/HealthKit evidence is captured, and App Store Connect resubmission status is recorded",
         "path": "executive-os/work-packets/WP-3-runsmart-build12-resubmission.md",
         "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n# Work Packet WP-3 - RunSmart Build 12 Resubmission\n\n- Status: Active\n- Created: 2026-06-09\n- Source: RunSmart iOS `tasks/progress.md`; `PROJECT-STATUS.md`; `dashboard/status.json`; COO Operating Review 2026-06-09\n- Workflow pattern: normal\n- Input trust: trusted\n- Outcome loop: none\n- Loop: RunSmart App Review recovery\n- Signal: RunSmart 1.0.1 build 11 was rejected on 2026-06-08 for Sign in with Apple name/email collection and unclear HealthKit/CareKit UI identification.\n- Memory update: RunSmart iOS `tasks/progress.md` and `tasks/session-log.md`\n- Success signal: Build 12 is distribution-archived/exported, provenance inspected as `1.0.1 (12)`, reviewer-device SIWA/HealthKit evidence is captured, and App Store Connect resubmission status is recorded.\n\n## Owner Role\n\nRelease Manager / QA for RunSmart iOS.\n\n## Project\n\nRunSmart iOS\n\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n\n## Goal\n\nPrepare and complete the RunSmart iOS build 12 App Review response without expanding release scope beyond the June 08 rejection reasons.\n\n## Context\n\nRunSmart is the primary product. Build 11 was rejected for requiring name/email after Sign in with Apple and for unclear HealthKit/CareKit UI identification. Local fixes exist and a local Release archive was inspected as `1.0.1 (12)`, but the archive was development-signed with `get-task-allow=true`. Distribution archive/export/upload and reviewer-facing evidence remain open.\n\n## Read First\n\n- `AGENTS.md`\n- `CLAUDE.md` or repo-local agent router if present\n- `tasks/MEMORY.md`\n- `tasks/ERRORS.md`\n- `tasks/progress.md`\n- `tasks/session-log.md`\n- `tasks/todo.md`\n- `docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md`\n- `docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md`\n\n## Task\n\n1. Confirm the current branch and dirty tree before editing or archiving.\n2. Re-read the June 08 rejection recovery plan and current `tasks/progress.md`.\n3. Verify the reviewer-visible Sign in with Apple flow no longer asks for name/email after SIWA.\n4. Verify HealthKit disclosure is visible on sign-in, onboarding, Profile, and HealthKit detail surfaces, and that no app-code CareKit claim remains.\n5. Produce or validate a distribution-signed archive/export for build 12.\n6. Inspect archive provenance and entitlement state, including bundle version `1.0.1 (12)` and no development-only signing on the upload artifact.\n7. Prepare the App Review response text using only the implemented rejection fixes.\n8. Record exact validation evidence in `tasks/progress.md` and `tasks/session-log.md`.\n\n## Constraints\n\n- Do not touch unrelated files.\n- Do not add features, redesign flows, or expand beyond the App Review rejection reasons.\n- Do not implement monetization, paywall, pricing, StoreKit, RevenueCat, or paid acquisition.\n- Do not submit to App Store Connect unless the founder explicitly performs or authorizes the submission in the current session.\n- Do not invent validation results. If a device, account, keychain, or signing step is blocked, report the blocker exactly.\n\n## Validation\n\n- Static scan for removed name/email prompt after Sign in with Apple.\n- Static scan for HealthKit disclosure text and no app-code CareKit references.\n- Simulator visual QA for the reviewer device classes named in the recovery plan, where available.\n- Xcode archive/export evidence for distribution signing.\n- Archive inspection showing `1.0.1 (12)` and upload-safe entitlements.\n- App Review response text prepared and reviewed against the actual rejection reasons.\n\n## Completion Gate\n\nBefore final response, update or report:\n\n- `tasks/todo.md`\n- `tasks/progress.md`\n- `tasks/session-log.md`\n- `tasks/lessons.md` only if a reusable lesson was learned\n\n## Final Output\n\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- App Store Connect status\n- Remaining risks\n- Next recommended action\n",
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-4",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Resubmit RunSmart iOS with in-app account deletion so it passes Guideline 5.1.1(v)",
+        "source": "Apple App Review rejection 2026-06-10, submission 63f48069-3f6c-4279-8f7f-447d9d082a10, version 1.0.1 (12)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "New build 1.0.2 (13) uploaded with working in-app account deletion, screen recording attached in App Review notes, submission accepted",
+        "path": "executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-5",
+        "status": "Open",
+        "project": "Resumely iOS (ResumeBuilder IOS APP)",
+        "repoId": "resumebuilder-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
+        "goal": "Resubmit Resumely iOS so it passes both rejection points: Guideline 2.1(a) (Sign in with Apple error) and Guideline 5.1.1(v) (account deletion)",
+        "source": "Apple App Review rejection 2026-06-10, submission e157ff28-671e-4f54-9b19-c9d6bddab25f, version 1.0 (2)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "New build 1.0 (3) uploaded with working Sign in with Apple and in-app account deletion, screen recording attached, submission accepted",
+        "path": "executive-os/work-packets/WP-5-resumely-resubmission-build3-apple-signin-deletion.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-6",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Port the four AHA_MOMENTS to the native iOS app: rebuild the moment components, the insight/context detection services, and `user_aha_moments` persistence in Swift, composed into the existing UI/UX",
+        "source": "AHA_MOMENTS.md (RunSmart web repo, implemented there in PR #90); founder decision to couple the iOS port to the 1.0.2 resubmission",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "All four aha moments work in the native iOS app using existing design components, simulator build + tests pass, build bumped to 14, included in the resubmission archive",
+        "path": "executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md",
+        "copyPrompt": null,
         "decision": null
       }
     ],
@@ -2260,7 +2376,7 @@
       },
       {
         "name": "Work packets",
-        "what": "1 active, 4 total. Copy only Active packets; closed packets are history."
+        "what": "1 active, 8 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -2327,6 +2443,25 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-2 (Recovered)",
+        "status": "Needs review",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Make small, reviewable progress on the 1.0.1 next version (voice cues + UX/UI redesign) on an isolated branch, without touching the v1.0 build that is in Apple review and without resubmitting",
+        "source": "Founder directive (work RunSmart iOS next version now), runs in parallel with WP-1",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-2-runsmart-ios-1.0.1.md",
+        "copyPrompt": null,
+        "decision": "EXD-008"
+      },
+      {
         "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
         "status": "Active",
         "project": "RunSmart iOS",
@@ -2344,6 +2479,63 @@
         "path": "executive-os/work-packets/WP-3-runsmart-build12-resubmission.md",
         "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n# Work Packet WP-3 - RunSmart Build 12 Resubmission\n\n- Status: Active\n- Created: 2026-06-09\n- Source: RunSmart iOS `tasks/progress.md`; `PROJECT-STATUS.md`; `dashboard/status.json`; COO Operating Review 2026-06-09\n- Workflow pattern: normal\n- Input trust: trusted\n- Outcome loop: none\n- Loop: RunSmart App Review recovery\n- Signal: RunSmart 1.0.1 build 11 was rejected on 2026-06-08 for Sign in with Apple name/email collection and unclear HealthKit/CareKit UI identification.\n- Memory update: RunSmart iOS `tasks/progress.md` and `tasks/session-log.md`\n- Success signal: Build 12 is distribution-archived/exported, provenance inspected as `1.0.1 (12)`, reviewer-device SIWA/HealthKit evidence is captured, and App Store Connect resubmission status is recorded.\n\n## Owner Role\n\nRelease Manager / QA for RunSmart iOS.\n\n## Project\n\nRunSmart iOS\n\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n\n## Goal\n\nPrepare and complete the RunSmart iOS build 12 App Review response without expanding release scope beyond the June 08 rejection reasons.\n\n## Context\n\nRunSmart is the primary product. Build 11 was rejected for requiring name/email after Sign in with Apple and for unclear HealthKit/CareKit UI identification. Local fixes exist and a local Release archive was inspected as `1.0.1 (12)`, but the archive was development-signed with `get-task-allow=true`. Distribution archive/export/upload and reviewer-facing evidence remain open.\n\n## Read First\n\n- `AGENTS.md`\n- `CLAUDE.md` or repo-local agent router if present\n- `tasks/MEMORY.md`\n- `tasks/ERRORS.md`\n- `tasks/progress.md`\n- `tasks/session-log.md`\n- `tasks/todo.md`\n- `docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md`\n- `docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md`\n\n## Task\n\n1. Confirm the current branch and dirty tree before editing or archiving.\n2. Re-read the June 08 rejection recovery plan and current `tasks/progress.md`.\n3. Verify the reviewer-visible Sign in with Apple flow no longer asks for name/email after SIWA.\n4. Verify HealthKit disclosure is visible on sign-in, onboarding, Profile, and HealthKit detail surfaces, and that no app-code CareKit claim remains.\n5. Produce or validate a distribution-signed archive/export for build 12.\n6. Inspect archive provenance and entitlement state, including bundle version `1.0.1 (12)` and no development-only signing on the upload artifact.\n7. Prepare the App Review response text using only the implemented rejection fixes.\n8. Record exact validation evidence in `tasks/progress.md` and `tasks/session-log.md`.\n\n## Constraints\n\n- Do not touch unrelated files.\n- Do not add features, redesign flows, or expand beyond the App Review rejection reasons.\n- Do not implement monetization, paywall, pricing, StoreKit, RevenueCat, or paid acquisition.\n- Do not submit to App Store Connect unless the founder explicitly performs or authorizes the submission in the current session.\n- Do not invent validation results. If a device, account, keychain, or signing step is blocked, report the blocker exactly.\n\n## Validation\n\n- Static scan for removed name/email prompt after Sign in with Apple.\n- Static scan for HealthKit disclosure text and no app-code CareKit references.\n- Simulator visual QA for the reviewer device classes named in the recovery plan, where available.\n- Xcode archive/export evidence for distribution signing.\n- Archive inspection showing `1.0.1 (12)` and upload-safe entitlements.\n- App Review response text prepared and reviewed against the actual rejection reasons.\n\n## Completion Gate\n\nBefore final response, update or report:\n\n- `tasks/todo.md`\n- `tasks/progress.md`\n- `tasks/session-log.md`\n- `tasks/lessons.md` only if a reusable lesson was learned\n\n## Final Output\n\n- What changed\n- Files changed\n- Commands run\n- Validation evidence\n- App Store Connect status\n- Remaining risks\n- Next recommended action\n",
         "decision": null
+      },
+      {
+        "title": "Work Packet WP-4",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Resubmit RunSmart iOS with in-app account deletion so it passes Guideline 5.1.1(v)",
+        "source": "Apple App Review rejection 2026-06-10, submission 63f48069-3f6c-4279-8f7f-447d9d082a10, version 1.0.1 (12)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "New build 1.0.2 (13) uploaded with working in-app account deletion, screen recording attached in App Review notes, submission accepted",
+        "path": "executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-5",
+        "status": "Open",
+        "project": "Resumely iOS (ResumeBuilder IOS APP)",
+        "repoId": "resumebuilder-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
+        "goal": "Resubmit Resumely iOS so it passes both rejection points: Guideline 2.1(a) (Sign in with Apple error) and Guideline 5.1.1(v) (account deletion)",
+        "source": "Apple App Review rejection 2026-06-10, submission e157ff28-671e-4f54-9b19-c9d6bddab25f, version 1.0 (2)",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "New build 1.0 (3) uploaded with working Sign in with Apple and in-app account deletion, screen recording attached, submission accepted",
+        "path": "executive-os/work-packets/WP-5-resumely-resubmission-build3-apple-signin-deletion.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-6",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Port the four AHA_MOMENTS to the native iOS app: rebuild the moment components, the insight/context detection services, and `user_aha_moments` persistence in Swift, composed into the existing UI/UX",
+        "source": "AHA_MOMENTS.md (RunSmart web repo, implemented there in PR #90); founder decision to couple the iOS port to the 1.0.2 resubmission",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-submission",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "All four aha moments work in the native iOS app using existing design components, simulator build + tests pass, build bumped to 14, included in the resubmission archive",
+        "path": "executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md",
+        "copyPrompt": null,
+        "decision": null
       }
     ],
     "brainstormExists": true,
@@ -2351,12 +2543,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 7,
-    "extraWorktrees": 2,
+    "uncommitted": 0,
+    "extraWorktrees": 1,
     "synced": false,
     "notes": [
-      "7 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
   "planExecution": {
@@ -2435,14 +2626,13 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "7 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (9)."
+      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (10)."
     ]
   },
   "latestCooReview": {
