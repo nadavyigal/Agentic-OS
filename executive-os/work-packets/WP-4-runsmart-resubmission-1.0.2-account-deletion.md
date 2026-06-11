@@ -6,7 +6,7 @@
 - Workflow pattern: normal
 - Input trust: trusted
 - Outcome loop: runsmart-submission
-- Success signal: New build 1.0.2 (13) uploaded with working in-app account deletion, screen recording attached in App Review notes, submission accepted.
+- Success signal: New build 1.0.2 (14) uploaded with working in-app account deletion and WP-6 aha moments, screen recording attached in App Review notes, submission accepted.
 - Escalation: none
 
 # Work Packet
@@ -49,4 +49,4 @@ Guideline 5.1.1(v): app supports account creation (Sign in with Apple) but offer
 - Edge function returns 200 and the auth user disappears from Supabase Auth users list.
 - Deleting a test account leaves zero rows for that user in: profiles, runs, plans, workouts, conversations, garmin_*, user_streaks, wellness_checkins, run_debriefs.
 - Screen recording captured on a physical device and linked in ASC notes.
-- Build 13 processed in ASC with no missing-compliance warnings.
+- Build 14 processed in ASC with no missing-compliance warnings.

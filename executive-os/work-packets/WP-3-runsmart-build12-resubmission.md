@@ -1,6 +1,6 @@
 # Work Packet WP-3 - RunSmart Build 12 Resubmission
 
-- Status: Active
+- Status: Superseded - build 12 was not the final resubmission path; current RunSmart release work is 1.0.2 build 14 via WP-4/WP-6.
 - Created: 2026-06-09
 - Source: RunSmart iOS `tasks/progress.md`; `PROJECT-STATUS.md`; `dashboard/status.json`; COO Operating Review 2026-06-09
 - Workflow pattern: normal
@@ -9,7 +9,7 @@
 - Loop: RunSmart App Review recovery
 - Signal: RunSmart 1.0.1 build 11 was rejected on 2026-06-08 for Sign in with Apple name/email collection and unclear HealthKit/CareKit UI identification.
 - Memory update: RunSmart iOS `tasks/progress.md` and `tasks/session-log.md`
-- Success signal: Build 12 is distribution-archived/exported, provenance inspected as `1.0.1 (12)`, reviewer-device SIWA/HealthKit evidence is captured, and App Store Connect resubmission status is recorded.
+- Success signal: Superseded before upload/resubmission. Preserve this packet as historical evidence for the June 08 SIWA/HealthKit rejection response only.
 
 ## Owner Role
 
@@ -23,7 +23,7 @@ Path: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart ap
 
 ## Goal
 
-Prepare and complete the RunSmart iOS build 12 App Review response without expanding release scope beyond the June 08 rejection reasons.
+Historical packet: prepare and complete the RunSmart iOS build 12 App Review response without expanding release scope beyond the June 08 rejection reasons. Superseded by the later 1.0.2 build 14 resubmission path.
 
 ## Context
 

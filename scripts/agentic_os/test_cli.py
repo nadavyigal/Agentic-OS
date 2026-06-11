@@ -273,6 +273,35 @@ class TestOSRegistry(unittest.TestCase):
             self.assertIsNone(packet["outcomeLoop"])
             self.assertIsNone(packet["successSignal"])
 
+    def test_packet_hygiene_flags_active_older_runsmart_build(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            packets = root / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-3.md").write_text(
+                "# Work Packet WP-3 - RunSmart Build 12 Resubmission\n"
+                "- Status: Active\n\n"
+                "## Project\nRunSmart iOS\n"
+                "Path: `/Users/example/IOS RunSmart app`\n\n"
+                "## Goal\nPrepare build 12.\n",
+                encoding="utf-8",
+            )
+            status = {
+                "projectHealth": [
+                    {
+                        "name": "RunSmart iOS",
+                        "state": "1.0.2 build 14 resubmission prep",
+                        "nextAction": "Archive build 14",
+                    }
+                ],
+                "executiveLoop": {"workPackets": cli.build_os_registry(root)["workPackets"]},
+            }
+
+            issues = cli.build_packet_hygiene(status, root)
+
+            self.assertEqual(issues[0]["severity"], "error")
+            self.assertIn("current RunSmart status is build 14", issues[0]["message"])
+
     def test_packet_metadata_and_operating_artifacts_are_discovered(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

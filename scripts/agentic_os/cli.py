@@ -1055,6 +1055,109 @@ def _packet_is_active(packet: dict[str, Any]) -> bool:
     return status.startswith("active")
 
 
+def _build_numbers(text: str) -> list[int]:
+    return [int(match) for match in re.findall(r"\bbuild\s+(\d+)\b", text, flags=re.IGNORECASE)]
+
+
+def build_packet_hygiene(status: dict[str, Any], root: Path) -> list[dict[str, str]]:
+    """Find packet registry states that contradict the current dashboard."""
+    issues: list[dict[str, str]] = []
+    packets = status.get("executiveLoop", {}).get("workPackets", [])
+    runsmart = next((p for p in status.get("projectHealth", []) if p.get("name") == "RunSmart iOS"), {})
+    runsmart_current = " ".join(
+        str(runsmart.get(key) or "")
+        for key in ("state", "nextAction", "parsedActiveStory", "parsedLastValidation")
+    )
+    current_runsmart_builds = _build_numbers(runsmart_current)
+    current_runsmart_build = max(current_runsmart_builds) if current_runsmart_builds else None
+    active_by_repo: dict[str, list[str]] = {}
+
+    for packet in packets:
+        packet_path = root / (packet.get("path") or "")
+        packet_text = packet_path.read_text(encoding="utf-8", errors="replace") if packet_path.exists() else ""
+        packet_label = f"{packet.get('title', 'Untitled')} ({packet.get('path', 'unknown path')})"
+        status_text = packet.get("status") or ""
+
+        if _packet_is_active(packet):
+            active_by_repo.setdefault(packet.get("repoId") or "unknown", []).append(packet_label)
+            if "superseded" in packet_text.lower() or "historical packet" in packet_text.lower():
+                issues.append(
+                    {
+                        "severity": "error",
+                        "path": packet.get("path") or "",
+                        "message": f"{packet_label} is marked Active but its text says it is superseded/historical.",
+                    }
+                )
+            packet_builds = _build_numbers(
+                " ".join(
+                    str(packet.get(key) or "")
+                    for key in ("title", "goal", "source", "successSignal", "path")
+                )
+            )
+            if (
+                packet.get("repoId") == "runsmart-ios"
+                and current_runsmart_build
+                and packet_builds
+                and max(packet_builds) < current_runsmart_build
+            ):
+                issues.append(
+                    {
+                        "severity": "error",
+                        "path": packet.get("path") or "",
+                        "message": (
+                            f"{packet_label} is Active for build {max(packet_builds)}, "
+                            f"but current RunSmart status is build {current_runsmart_build}."
+                        ),
+                    }
+                )
+
+        packet_builds = _build_numbers(packet_text)
+        if (
+            packet.get("repoId") == "runsmart-ios"
+            and current_runsmart_build
+            and status_text.lower().startswith(("open", "active"))
+            and packet_builds
+            and max(packet_builds) < current_runsmart_build
+        ):
+            issues.append(
+                {
+                    "severity": "warning",
+                    "path": packet.get("path") or "",
+                    "message": (
+                        f"{packet_label} is {status_text} but references older build "
+                        f"{max(packet_builds)} while current RunSmart status is build {current_runsmart_build}."
+                    ),
+                }
+            )
+
+    for repo_id, labels in active_by_repo.items():
+        if len(labels) > 1:
+            issues.append(
+                {
+                    "severity": "error",
+                    "path": "executive-os/work-packets",
+                    "message": f"{repo_id} has multiple Active packets: {', '.join(labels)}",
+                }
+            )
+
+    coo_latest = root / "executive-os" / "COO-LATEST-REVIEW.md"
+    if coo_latest.exists() and current_runsmart_build:
+        coo_builds = _build_numbers(coo_latest.read_text(encoding="utf-8", errors="replace"))
+        if coo_builds and max(coo_builds) < current_runsmart_build:
+            issues.append(
+                {
+                    "severity": "error",
+                    "path": str(coo_latest.relative_to(root)),
+                    "message": (
+                        f"COO latest review references build {max(coo_builds)}, "
+                        f"but current RunSmart status is build {current_runsmart_build}."
+                    ),
+                }
+            )
+
+    return issues
+
+
 def build_plan_execution_status(
     saved_plans: list[dict[str, Any]],
     work_packets: list[dict[str, Any]],
@@ -2270,6 +2373,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["planExecution"] = build_plan_execution_status(
         saved_plans, registry.get("workPackets", []), ROOT
     )
+    status["packetHygiene"] = build_packet_hygiene(status, ROOT)
     stranded_items: list[dict[str, str]] = []
     for item in evidence:
         stranded_items.extend(summarize_stranded_work(item.name, item.stranded, item.dirty_count))
@@ -2450,6 +2554,7 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "repoIntegrity": status.get("repoIntegrity", {}),
             "portfolioTrust": status.get("portfolioTrust", {}),
             "planExecution": status.get("planExecution", {}),
+            "packetHygiene": status.get("packetHygiene", []),
             "openQuestionsBoard": status.get("openQuestionsBoard", []),
             "repoDecisions": status.get("repoDecisions", []),
         }
@@ -2540,6 +2645,19 @@ def write_project_status(status: dict[str, Any]) -> None:
     else:
         lines.append("None. Every branch is pushed, every worktree is clean and accounted for.")
 
+    packet_hygiene = status.get("packetHygiene", [])
+    lines += ["", "## Work Packet Hygiene", ""]
+    if packet_hygiene:
+        lines.append("Packet states that may make the dashboard misleading:")
+        lines.append("")
+        for item in packet_hygiene:
+            lines.append(
+                f"- {item.get('severity', 'warning').upper()} [{clean_cell(item.get('path', ''))}]: "
+                f"{clean_cell(item.get('message', ''))}"
+            )
+    else:
+        lines.append("None. Active/open packet states match the current project status.")
+
     questions = status.get("openQuestionsBoard", [])
     repo_decisions = status.get("repoDecisions", [])
     lines += ["", "## Open Questions & Decisions (from repos)", ""]
@@ -2628,6 +2746,17 @@ def write_dashboard(status: dict[str, Any]) -> None:
             lines.append(f"- [{item['project']}] {clean_cell(item['detail'])}")
     else:
         lines.append("None. Every branch is pushed and every worktree is accounted for.")
+
+    packet_hygiene = status.get("packetHygiene", [])
+    lines += ["", "## Work Packet Hygiene", ""]
+    if packet_hygiene:
+        for item in packet_hygiene:
+            lines.append(
+                f"- {item.get('severity', 'warning').upper()} [{clean_cell(item.get('path', ''))}]: "
+                f"{clean_cell(item.get('message', ''))}"
+            )
+    else:
+        lines.append("- None. Active/open packet states match the current project status.")
 
     lines += [
         "",
@@ -2836,6 +2965,15 @@ def verify() -> int:
         errors.append("openQuestionsBoard missing or not a list")
     if not isinstance(status.get("repoDecisions"), list):
         errors.append("repoDecisions missing or not a list")
+    packet_hygiene = status.get("packetHygiene")
+    if not isinstance(packet_hygiene, list):
+        errors.append("packetHygiene missing or not a list")
+    else:
+        for item in packet_hygiene:
+            if not all(key in item for key in ("severity", "path", "message")):
+                errors.append(f"packetHygiene entry missing required keys: {item!r}")
+            if item.get("severity") == "error":
+                errors.append(f"work packet hygiene error: {item.get('message')} ({item.get('path')})")
     for prompt in status.get("projectPrompts", []):
         if prompt.get("sourceConfidence") not in allowed_confidence:
             errors.append(
@@ -2867,6 +3005,7 @@ def verify() -> int:
     print("- project-status.html fallback is synced")
     print("- source confidence and freshness values valid")
     print("- drift warnings well-formed")
+    print("- work packet hygiene checked")
     print("- dashboard links resolve")
     print("- git diff --check passed")
     return 0

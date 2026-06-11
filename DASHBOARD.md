@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 ## Run Center
 
-- Last refresh: 2026-06-11 11:31
+- Last refresh: 2026-06-11 11:45
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,13 +24,19 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | No | Fresh | High |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | No | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | No | Fresh | Medium |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Stranded Work
 
-1 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+3 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] worktree on claude/thirsty-varahamihira-312d1d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/thirsty-varahamihira-312d1d
+- [Agentic OS] main has 1 unpushed commit(s)
+- [Agentic OS] 14 uncommitted file(s) in the primary working tree
+
+## Work Packet Hygiene
+
+- None. Active/open packet states match the current project status.
 
 ## Decision Board
 

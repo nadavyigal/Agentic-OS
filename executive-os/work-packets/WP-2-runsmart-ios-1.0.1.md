@@ -1,10 +1,10 @@
 # Work Packet WP-2 (Recovered)
 
-- Status: Needs review - recovered 2026-06-10 from unmerged branch claude/clever-shannon-04b041; was "Active" as of 2026-06-03. Verify against WP-3 (build 12 resubmission) before acting.
+- Status: Superseded - recovered historical packet; current RunSmart 1.0.2 build 14 path is WP-4/WP-6.
 - Created: 2026-06-03
 - Source: Founder directive (work RunSmart iOS next version now), runs in parallel with WP-1
 - Routed by: COO OS (COO Operating Review, 2026-06-03)
-- Escalation: CEO Yes - this overrides CEO-OS focus rule 2 ("unblock approval before new feature work") and EXD-008 timing ("wait for v1.0 review outcome"). Founder-directed override; proceed under guardrails.
+- Escalation: none current. Historical note: this originally overrode CEO-OS focus rule 2 and EXD-008 timing, but that path has been superseded by the build 14 resubmission line.
 - Related decision: EXD-008 (RunSmart 1.0.1 scope)
 - Cross-project dependency: RunSmart Web `/api/coach/voice-cue` TTS endpoint behind `VOICE_COACH_ENABLED` (PROJECT-STATUS.md, commit f677ad7, 2026-06-01)
 
