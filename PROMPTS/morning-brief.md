@@ -24,6 +24,12 @@ Do not use the long protocol for normal daily work.
 
 Fallback only: read all of the following in parallel before generating output. If a file does not exist, note it and skip, do not error.
 
+For every project below, also collect live git state (run with `git -C "<path>"`):
+- `status --short --branch` (current branch + uncommitted work)
+- `log --oneline @{u}.. 2>/dev/null` (unpushed commits; ignore errors if no upstream)
+
+And check the modification date of every task file read (`stat -f '%Sm' -t '%Y-%m-%d'`). A task file older than the latest commit is background context only, cited with its date, never current status.
+
 ### RunSmart Web
 Path: `/Users/nadavyigal/Documents/RunSmart`
 - `git log --oneline --since="96 hours ago"` (run from this path)
@@ -147,6 +153,9 @@ The text-only reading protocol below is for when you need a spoken brief without
 
 ## Brief Rules
 
+- Evidence priority, highest first: live git > session-log/todo/progress (date-checked) > refreshed dashboard files > tasks/MEMORY.md (background only).
+- Drift rule: dashboard prose fields (`status`, `activeStory` in status.json) can carry stale narrative across refreshes. If dashboard text contradicts live git evidence (e.g. names an older build or version than the commits show), trust git and report the contradiction in a "Drift detected" section.
+- End the brief with a "Data freshness" line per project: newest evidence source + its date.
 - Never paste file contents verbatim. Synthesize.
 - If a file doesn't exist: say so in one word and skip.
 - If git shows no commits in 96 hours: "No recent commits."

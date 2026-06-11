@@ -10,20 +10,20 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | App Store Review Response | Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog |
+| RunSmart iOS | App Store Review Response | Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error |
 | Resumely iOS | App Store submission readiness | Founder installs device binary on real device, signs in, smokes optimize→design→expert→export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings) |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | Yes (5) | Fresh | Medium | derived | 2026-06-09 ca1c577 fix: accept iOS snake_case in /api/v1/applications and remove ats/rescan credit gate |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-11 fbaeb19 Refresh morning dashboard |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-06-09, last commit 2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog
+- RunSmart iOS: validated 2026-06-09, last commit 2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error
 - Resumely iOS: validated 2026-06-04, last commit 2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)
 - RunSmart Web: validated 2026-05-12, last commit 2026-06-10 f0c0cc0 chore: commit stranded session artifacts — Agent OS docs, AHA_MOMENTS plan, migration 015 record
-- Agentic OS: validated 2026-06-05, last commit 2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session
+- Agentic OS: validated 2026-06-05, last commit 2026-06-11 fbaeb19 Refresh morning dashboard
 
 ## Drift Warnings
 

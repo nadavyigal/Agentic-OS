@@ -130,7 +130,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-10",
+    "evidenceFreshDate": "2026-06-11",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -194,11 +194,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
+        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 2]",
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 3,
-        "lastCommit": "2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog",
+        "lastCommit": "2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -228,7 +228,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-10",
+        "freshestDate": "2026-06-11",
         "evidenceGap": true,
         "evidenceDate": "2026-06-09"
       },
@@ -700,7 +700,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 1,
-        "lastCommit": "2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session",
+        "lastCommit": "2026-06-11 fbaeb19 Refresh morning dashboard",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -713,7 +713,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-10",
+        "freshestDate": "2026-06-11",
         "evidenceGap": true,
         "evidenceDate": "2026-06-05"
       },
@@ -909,8 +909,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 09:11",
-    "command": "./agentic-os morning",
+    "lastRefresh": "2026-06-11 10:13",
+    "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1147,11 +1147,11 @@
       "dirty": true,
       "dirtyCount": 1,
       "extraWorktrees": 3,
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
-      "lastCommit": "2026-06-10 ceced10 chore(l10n): add missing account deletion strings to xcstrings catalog",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 2]",
+      "lastCommit": "2026-06-11 d2e2b40 fix(delete-account): edge function returns 500 on schema-drift; iOS shows false error",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-10",
+      "freshestDate": "2026-06-11",
       "evidenceGap": true,
       "evidenceDate": "2026-06-09",
       "evidenceTests": [],
@@ -1526,10 +1526,10 @@
       "dirtyCount": 0,
       "extraWorktrees": 1,
       "branch": "main",
-      "lastCommit": "2026-06-10 279a8d5 Add Obsidian exports for 2026-06-10 App Store rejection fix session",
+      "lastCommit": "2026-06-11 fbaeb19 Refresh morning dashboard",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-10",
+      "freshestDate": "2026-06-11",
       "evidenceGap": true,
       "evidenceDate": "2026-06-05",
       "evidenceTests": [],
@@ -1587,7 +1587,7 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 1]",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 2]",
       "nextAction": "Upload the inspected build 12 IPA to App Store Connect, wait for processing, select build 12, and resubmit with the updated reviewer response",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1790,17 +1790,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-11 09:11",
-    "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-11 09:11",
+    "lastCommand": "./agentic-os refresh",
+    "lastRunAt": "2026-06-11 10:13",
+    "checksStatus": "Pending verify",
+    "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
-    "readyForNextSession": true,
+    "readyForNextSession": false,
     "summary": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
     "nextActions": [
       {

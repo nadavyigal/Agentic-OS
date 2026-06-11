@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder installs device binary on real device, s
 
 ## Run Center
 
-- Last refresh: 2026-06-11 09:11
+- Last refresh: 2026-06-11 10:13
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
