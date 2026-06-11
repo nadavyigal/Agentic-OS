@@ -91,11 +91,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 3]",
-        "dirty": true,
-        "dirtyCount": 2,
+        "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 3,
-        "lastCommit": "2026-06-11 a8e2774 feat(ios): auto-generate training plan at end of onboarding",
+        "lastCommit": "2026-06-11 2ac772b docs: add AGENTS.md and CLAUDE.md with Session End Rule",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -181,7 +181,7 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: App Store submission readiness. Active: WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action. Last completed: WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04). Source: tasks/progress.md, updated 2026-06-04. Newer commits exist after this status (last commit: 2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)); trust git for the latest state.",
+      "status": "Phase: App Store submission readiness. Active: WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action. Last completed: WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04). Source: tasks/progress.md, updated 2026-06-04. Newer commits exist after this status (last commit: 2026-06-11 a77d394 docs: add Session End Rule - nothing stays local); trust git for the latest state.",
       "currentPhase": "App Store submission readiness",
       "activeStory": "WP-1 \u2014 Release-readiness changes committed; device smoke requires founder action",
       "lastCompletedStory": "WP-1 release-readiness pass: Inject Runtime Config build script (API_BASE_URL + POSTHOG_API_KEY + POSTHOG_HOST), BackendConfig preconditionFailure, TailorView/ImproveViewModel warning fixes, Secrets.swift.example excluded from bundle. 72 tests pass, simulator Home renders, device binary confirmed ready (2026-06-04)",
@@ -231,7 +231,7 @@
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 10,
-        "lastCommit": "2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)",
+        "lastCommit": "2026-06-11 a77d394 docs: add Session End Rule - nothing stays local",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -247,7 +247,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-10",
+        "freshestDate": "2026-06-11",
         "evidenceGap": true,
         "evidenceDate": "2026-06-04"
       },
@@ -567,7 +567,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 100fc77 Align morning brief protocol with live-evidence rules + dashboard refresh); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -594,9 +594,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 10,
         "extraWorktrees": 2,
-        "lastCommit": "2026-06-11 100fc77 Align morning brief protocol with live-evidence rules + dashboard refresh",
+        "lastCommit": "2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -805,7 +805,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 10:41",
+    "lastRefresh": "2026-06-11 10:59",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1039,11 +1039,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 2,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 3,
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 3]",
-      "lastCommit": "2026-06-11 a8e2774 feat(ios): auto-generate training plan at end of onboarding",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
+      "lastCommit": "2026-06-11 2ac772b docs: add AGENTS.md and CLAUDE.md with Session End Rule",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1129,10 +1129,10 @@
       "dirtyCount": 1,
       "extraWorktrees": 10,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-10 9661853 chore: sync Localizable.xcstrings (new account deletion strings)",
+      "lastCommit": "2026-06-11 a77d394 docs: add Session End Rule - nothing stays local",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-10",
+      "freshestDate": "2026-06-11",
       "evidenceGap": true,
       "evidenceDate": "2026-06-04",
       "evidenceTests": [
@@ -1418,10 +1418,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 10,
       "extraWorktrees": 2,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 100fc77 Align morning brief protocol with live-evidence rules + dashboard refresh",
+      "lastCommit": "2026-06-11 c1bf9d7 Fix status accretion: rebuild long-form project status from parsed truth",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-11",
@@ -1481,8 +1481,8 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Dirty",
-      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios [ahead 3]",
+      "repoState": "Clean",
+      "branch": "feat/wp6-aha-moments-ios...origin/feat/wp6-aha-moments-ios",
       "nextAction": "Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1627,9 +1627,8 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
-      "RunSmart iOS",
       "Resumely iOS",
       "ResumeBuilder AI (Web)",
       "Agentic OS"
@@ -1685,7 +1684,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-11 10:41",
+    "lastRunAt": "2026-06-11 10:59",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -2538,11 +2537,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 3,
     "extraWorktrees": 2,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
@@ -2622,13 +2621,13 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+      "Uncommitted files in product repos: Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (10)."
     ]
   },
@@ -2639,5 +2638,246 @@
     "source": "DASHBOARD.md, PROJECT-STATUS.md, dashboard/status.json, RunSmart iOS tasks/progress.md, Resumely iOS tasks/progress.md, executive-os/loops/resumely-submission.md, executive-os/COO-OS.md",
     "revisitWhen": "RunSmart build 12 is uploaded/submitted, Apple responds again, Resumely device smoke becomes the next available founder task, or the next morning review still shows needs_next_packet rows",
     "path": "executive-os/COO-LATEST-REVIEW.md"
+  },
+  "strandedWork": {
+    "generatedOn": "2026-06-11",
+    "items": [
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "codex/testflight-readiness-audit: unmerged commits, remote branch deleted, last commit 2026-05-24",
+        "action": "Push codex/testflight-readiness-audit and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/stoic-albattani-3c749f at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/stoic-albattani-3c749f",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/upbeat-shirley-82e6d0 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/upbeat-shirley-82e6d0",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on codex/1.0.1-today-v2-a1, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS-RunSmart-1.0.1-today-v2-a1",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "cleanup",
+        "detail": "18 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "unpushed",
+        "detail": "claude/epic-sammet-146689: 2 unpushed commit(s), last commit 2026-06-05",
+        "action": "Push claude/epic-sammet-146689 and open a PR, or explicitly hand it off."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/ecstatic-chaum-4466b2: unmerged commits, never pushed, last commit 2026-06-05",
+        "action": "Push claude/ecstatic-chaum-4466b2 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/heuristic-chaum-cd216b: unmerged commits, never pushed, last commit 2026-06-05",
+        "action": "Push claude/heuristic-chaum-cd216b and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/musing-zhukovsky-2fc500: unmerged commits, remote branch deleted, last commit 2026-05-26",
+        "action": "Push claude/musing-zhukovsky-2fc500 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "codex/rb-aso-002-app-store-screenshots: unmerged commits, remote branch deleted, last commit 2026-05-31",
+        "action": "Push codex/rb-aso-002-app-store-screenshots and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/epic-sammet-146689-update-main at /private/tmp/resumebuilder-pr51-update",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/ecstatic-chaum-4466b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/ecstatic-chaum-4466b2",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/epic-austin-f3fc62, 5 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-austin-f3fc62",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/epic-sammet-146689 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/epic-sammet-146689",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/flamboyant-wiles-4f0bde, 22 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/flamboyant-wiles-4f0bde",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/heuristic-chaum-cd216b at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/heuristic-chaum-cd216b",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on detached, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/main-latest-test",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/musing-zhukovsky-2fc500, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/musing-zhukovsky-2fc500",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/mystifying-poitras-ef2a2e, 3 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/mystifying-poitras-ef2a2e",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/tender-banach-89238f, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/tender-banach-89238f",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "cleanup",
+        "detail": "28 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "local-only",
+        "detail": "claude/wonderful-lamport-36b97c: unmerged commits, never pushed, last commit 2026-06-10",
+        "action": "Push claude/wonderful-lamport-36b97c and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "local-only",
+        "detail": "ios: unmerged commits, remote branch deleted, last commit 2026-05-11",
+        "action": "Push ios and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "worktree",
+        "detail": "worktree on claude/happy-rosalind, 11 uncommitted file(s) at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/happy-rosalind",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "worktree",
+        "detail": "worktree on claude/wonderful-lamport-36b97c at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/wonderful-lamport-36b97c",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "cleanup",
+        "detail": "1 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "default-branch",
+        "detail": "main has 1 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "default-branch",
+        "detail": "main is 9 commit(s) behind origin (pull needed)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "unpushed",
+        "detail": "feature/markitdown-docx-integration: 1 unpushed commit(s), last commit 2026-06-07",
+        "action": "Push feature/markitdown-docx-integration and open a PR, or explicitly hand it off."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "unpushed",
+        "detail": "fix/pdf-parse-xref-error: 1 unpushed commit(s), last commit 2026-06-03",
+        "action": "Push fix/pdf-parse-xref-error and open a PR, or explicitly hand it off."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "local-only",
+        "detail": "docs/markitdown-go-live: unmerged commits, never pushed, last commit 2026-06-07",
+        "action": "Push docs/markitdown-go-live and open a PR, or consciously discard it."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "worktree",
+        "detail": "worktree on codex/expert-output-quality at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder-Expert-Output-Quality",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "dirty",
+        "detail": "5 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "cleanup",
+        "detail": "2 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "worktree",
+        "detail": "worktree on claude/distracted-sanderson-771778 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/distracted-sanderson-771778",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "worktree",
+        "detail": "worktree on claude/modest-snyder-f48146 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/modest-snyder-f48146",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "10 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "cleanup",
+        "detail": "1 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      }
+    ],
+    "actionableCount": 34,
+    "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   }
 }

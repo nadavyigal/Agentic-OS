@@ -677,5 +677,71 @@ class TestPlanExecutionStatus(unittest.TestCase):
         self.assertGreaterEqual(pe["needsNextPacket"], 1)
 
 
+class TestStrandedWork(unittest.TestCase):
+    def test_unpushed_branch_becomes_actionable_item(self):
+        stranded = {
+            "unpushedBranches": [
+                {"branch": "fix/login", "ahead": 2, "lastCommitDate": "2026-06-10"}
+            ],
+            "unmergedLocalBranches": [],
+            "staleMergedBranchCount": 0,
+            "extraWorktrees": [],
+            "defaultBranchIssues": [],
+        }
+        items = cli.summarize_stranded_work("RunSmart Web", stranded, dirty_count=0)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["type"], "unpushed")
+        self.assertIn("fix/login", items[0]["detail"])
+        self.assertIn("2 unpushed commit(s)", items[0]["detail"])
+        self.assertIn("open a PR", items[0]["action"])
+
+    def test_default_branch_issue_listed_first(self):
+        stranded = {
+            "unpushedBranches": [
+                {"branch": "feat/x", "ahead": 1, "lastCommitDate": "2026-06-09"}
+            ],
+            "unmergedLocalBranches": [],
+            "staleMergedBranchCount": 0,
+            "extraWorktrees": [],
+            "defaultBranchIssues": ["main has 1 unpushed commit(s)"],
+        }
+        items = cli.summarize_stranded_work("ResumeBuilder AI (Web)", stranded, dirty_count=0)
+        self.assertEqual(items[0]["type"], "default-branch")
+        self.assertIn("main has 1 unpushed commit(s)", items[0]["detail"])
+
+    def test_local_only_worktree_dirty_and_cleanup_items(self):
+        stranded = {
+            "unpushedBranches": [],
+            "unmergedLocalBranches": [
+                {"branch": "claude/lost-work", "reason": "never pushed", "lastCommitDate": "2026-06-05"}
+            ],
+            "staleMergedBranchCount": 3,
+            "extraWorktrees": [
+                {"path": "/tmp/wt", "branch": "claude/wt-branch", "dirtyCount": 2}
+            ],
+            "defaultBranchIssues": [],
+        }
+        items = cli.summarize_stranded_work("ResumeBuilder iOS", stranded, dirty_count=1)
+        types = [i["type"] for i in items]
+        self.assertEqual(types, ["local-only", "worktree", "dirty", "cleanup"])
+        worktree_item = items[1]
+        self.assertIn("2 uncommitted file(s)", worktree_item["detail"])
+        cleanup_item = items[3]
+        self.assertIn("3 merged branch(es)", cleanup_item["detail"])
+
+    def test_clean_repo_yields_no_items(self):
+        stranded = {
+            "unpushedBranches": [],
+            "unmergedLocalBranches": [],
+            "staleMergedBranchCount": 0,
+            "extraWorktrees": [],
+            "defaultBranchIssues": [],
+        }
+        self.assertEqual(cli.summarize_stranded_work("RunSmart iOS", stranded, 0), [])
+
+    def test_missing_keys_are_tolerated(self):
+        self.assertEqual(cli.summarize_stranded_work("Atlas", {}, 0), [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -173,6 +173,7 @@ class ProjectEvidence:
     task_parse: dict[str, Any] = field(default_factory=dict)
     gtm: dict[str, Any] = field(default_factory=dict)
     plans: list[dict[str, Any]] = field(default_factory=list)
+    stranded: dict[str, Any] = field(default_factory=dict)
 
 
 def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
@@ -1384,6 +1385,183 @@ def build_derived_summary(
     }
 
 
+def collect_stranded_work(path: Path) -> dict[str, Any]:
+    """Scan a repo for work that can silently get lost across tools and sessions.
+
+    Claude Code, Codex, and Cursor sessions leave behind: commits on branches that were
+    never pushed, local-only branches with no upstream, branches whose remote was deleted
+    ([gone]) while unmerged commits remain, extra worktrees (sometimes dirty), and a
+    default branch that is itself ahead or behind origin. Each one is a place finished
+    work goes to die. This collects all of them so the dashboard and morning brief can
+    show one consolidated board.
+    """
+    result: dict[str, Any] = {
+        "unpushedBranches": [],
+        "unmergedLocalBranches": [],
+        "staleMergedBranchCount": 0,
+        "extraWorktrees": [],
+        "defaultBranchIssues": [],
+    }
+    refs = run(
+        [
+            "git",
+            "for-each-ref",
+            "refs/heads",
+            "--format=%(refname:short)|%(upstream:short)|%(upstream:track)|%(committerdate:short)",
+        ],
+        cwd=path,
+    )
+    if refs.returncode != 0:
+        return result
+
+    default_branch = "main"
+    heads = {line.split("|", 1)[0] for line in refs.stdout.splitlines() if line.strip()}
+    if "main" not in heads and "master" in heads:
+        default_branch = "master"
+
+    # Merged-ness is judged against origin's default branch when available, so branches
+    # merged from another machine or the web UI are not misreported as lost work.
+    merge_base = f"origin/{default_branch}"
+    merged = run(["git", "branch", "--format=%(refname:short)", "--merged", merge_base], cwd=path)
+    if merged.returncode != 0:
+        merged = run(
+            ["git", "branch", "--format=%(refname:short)", "--merged", default_branch], cwd=path
+        )
+    merged_branches = (
+        {b.strip() for b in merged.stdout.splitlines() if b.strip()}
+        if merged.returncode == 0
+        else set()
+    )
+
+    for line in refs.stdout.splitlines():
+        parts = (line.split("|") + ["", "", "", ""])[:4]
+        branch, upstream, track, commit_date = parts
+        if not branch:
+            continue
+        ahead_match = re.search(r"ahead (\d+)", track)
+        behind_match = re.search(r"behind (\d+)", track)
+        ahead = int(ahead_match.group(1)) if ahead_match else 0
+        behind = int(behind_match.group(1)) if behind_match else 0
+        gone = "[gone]" in track
+        if branch == default_branch:
+            if ahead:
+                result["defaultBranchIssues"].append(
+                    f"{branch} has {ahead} unpushed commit(s)"
+                )
+            if behind:
+                result["defaultBranchIssues"].append(
+                    f"{branch} is {behind} commit(s) behind origin (pull needed)"
+                )
+            continue
+        if ahead:
+            result["unpushedBranches"].append(
+                {"branch": branch, "ahead": ahead, "lastCommitDate": commit_date}
+            )
+        elif (not upstream or gone) and branch not in merged_branches:
+            reason = "remote branch deleted" if gone else "never pushed"
+            result["unmergedLocalBranches"].append(
+                {"branch": branch, "reason": reason, "lastCommitDate": commit_date}
+            )
+        elif (not upstream or gone) and branch in merged_branches:
+            result["staleMergedBranchCount"] += 1
+
+    wt = run(["git", "worktree", "list", "--porcelain"], cwd=path)
+    if wt.returncode == 0:
+        entries: list[dict[str, str]] = []
+        current: dict[str, str] = {}
+        for line in wt.stdout.splitlines():
+            if line.startswith("worktree "):
+                if current:
+                    entries.append(current)
+                current = {"path": line[len("worktree ") :].strip()}
+            elif line.startswith("branch "):
+                current["branch"] = line[len("branch ") :].replace("refs/heads/", "").strip()
+        if current:
+            entries.append(current)
+        for entry in entries[1:]:  # the first entry is the primary checkout
+            wt_path = Path(entry.get("path", ""))
+            dirty_count = 0
+            if wt_path.exists():
+                st = run(["git", "status", "--short"], cwd=wt_path)
+                if st.returncode == 0:
+                    dirty_count = len([ln for ln in st.stdout.splitlines() if ln.strip()])
+            result["extraWorktrees"].append(
+                {
+                    "path": str(wt_path),
+                    "branch": entry.get("branch", "detached"),
+                    "dirtyCount": dirty_count,
+                }
+            )
+    return result
+
+
+def summarize_stranded_work(
+    name: str, stranded: dict[str, Any], dirty_count: int
+) -> list[dict[str, str]]:
+    """Turn one repo's stranded-work scan into actionable board items (pure, testable)."""
+    items: list[dict[str, str]] = []
+    for issue in stranded.get("defaultBranchIssues", []):
+        items.append(
+            {
+                "project": name,
+                "type": "default-branch",
+                "detail": issue,
+                "action": "Sync the default branch first: pull, then push.",
+            }
+        )
+    for b in stranded.get("unpushedBranches", []):
+        items.append(
+            {
+                "project": name,
+                "type": "unpushed",
+                "detail": f"{b['branch']}: {b['ahead']} unpushed commit(s), last commit {b['lastCommitDate']}",
+                "action": f"Push {b['branch']} and open a PR, or explicitly hand it off.",
+            }
+        )
+    for b in stranded.get("unmergedLocalBranches", []):
+        items.append(
+            {
+                "project": name,
+                "type": "local-only",
+                "detail": (
+                    f"{b['branch']}: unmerged commits, {b['reason']}, "
+                    f"last commit {b['lastCommitDate']}"
+                ),
+                "action": f"Push {b['branch']} and open a PR, or consciously discard it.",
+            }
+        )
+    for w in stranded.get("extraWorktrees", []):
+        dirty = f", {w['dirtyCount']} uncommitted file(s)" if w.get("dirtyCount") else ""
+        items.append(
+            {
+                "project": name,
+                "type": "worktree",
+                "detail": f"worktree on {w.get('branch', 'detached')}{dirty} at {w['path']}",
+                "action": "Land or discard this worktree, then `git worktree remove` it.",
+            }
+        )
+    if dirty_count:
+        items.append(
+            {
+                "project": name,
+                "type": "dirty",
+                "detail": f"{dirty_count} uncommitted file(s) in the primary working tree",
+                "action": "Commit or discard before the next session ends.",
+            }
+        )
+    stale = stranded.get("staleMergedBranchCount", 0)
+    if stale:
+        items.append(
+            {
+                "project": name,
+                "type": "cleanup",
+                "detail": f"{stale} merged branch(es) safe to delete",
+                "action": "Delete merged local branches to cut noise.",
+            }
+        )
+    return items
+
+
 def collect_evidence() -> list[ProjectEvidence]:
     evidence: list[ProjectEvidence] = []
     for source_name, path in parse_project_paths():
@@ -1451,6 +1629,7 @@ def collect_evidence() -> list[ProjectEvidence]:
                 task_parse=parse_task_files(path),
                 gtm=gtm,
                 plans=plans,
+                stranded=collect_stranded_work(path) if exists else {},
             )
         )
     return evidence
@@ -1932,6 +2111,20 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["planExecution"] = build_plan_execution_status(
         saved_plans, registry.get("workPackets", []), ROOT
     )
+    stranded_items: list[dict[str, str]] = []
+    for item in evidence:
+        stranded_items.extend(summarize_stranded_work(item.name, item.stranded, item.dirty_count))
+    actionable = [i for i in stranded_items if i["type"] != "cleanup"]
+    status["strandedWork"] = {
+        "generatedOn": generated,
+        "items": stranded_items,
+        "actionableCount": len(actionable),
+        "note": (
+            "Work that exists only on this machine or only on a side branch/worktree. "
+            "Anything listed here is at risk of being forgotten. Rebuilt every refresh "
+            "from git; never hand-edit."
+        ),
+    }
     status["latestCooReview"] = parse_latest_coo_review(ROOT)
     status["portfolioTrust"] = build_portfolio_trust(
         project_health, status["repoIntegrity"], status["runCenter"], status["planExecution"]
@@ -2172,6 +2365,22 @@ def write_project_status(status: dict[str, Any]) -> None:
     else:
         lines.append("None. Curated narrative matches the parsed source for all High-confidence projects.")
 
+    stranded = status.get("strandedWork", {}).get("items", [])
+    lines += ["", "## Stranded Work", ""]
+    if stranded:
+        lines.append(
+            "Commits, branches, and worktrees that exist only locally or only on a side "
+            "branch. Every item here is at risk of being lost. Push + PR, hand off "
+            "explicitly, or consciously discard:"
+        )
+        lines.append("")
+        for item in stranded:
+            lines.append(
+                f"- [{item['project']}] {clean_cell(item['detail'])} -> {clean_cell(item['action'])}"
+            )
+    else:
+        lines.append("None. Every branch is pushed, every worktree is clean and accounted for.")
+
     questions = status.get("openQuestionsBoard", [])
     repo_decisions = status.get("repoDecisions", [])
     lines += ["", "## Open Questions & Decisions (from repos)", ""]
@@ -2246,6 +2455,20 @@ def write_dashboard(status: dict[str, Any]) -> None:
             f"{'Yes' if p['dirty'] else 'No'} | {clean_cell(p.get('freshness', 'Unknown'))} | "
             f"{clean_cell(p.get('sourceConfidence', 'Unknown'))} |"
         )
+
+    stranded = status.get("strandedWork", {}).get("items", [])
+    actionable = [i for i in stranded if i.get("type") != "cleanup"]
+    lines += ["", "## Stranded Work", ""]
+    if actionable:
+        lines.append(
+            f"{len(actionable)} item(s) at risk of being lost (full list with actions "
+            "in PROJECT-STATUS.md):"
+        )
+        lines.append("")
+        for item in actionable:
+            lines.append(f"- [{item['project']}] {clean_cell(item['detail'])}")
+    else:
+        lines.append("None. Every branch is pushed and every worktree is accounted for.")
 
     lines += [
         "",
