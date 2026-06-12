@@ -1,3 +1,4 @@
+<!-- Last Audit: 2026-06-16 — kept; 4 entries -->
 # Intent Log
 
 > **Experimental. Not wired into anything.** This file is a standalone, demand-side log of
