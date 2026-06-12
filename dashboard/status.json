@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-11 IDT",
+    "lastUpdated": "2026-06-12 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -12,8 +12,8 @@
     }
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
-    "bestNextAction": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+    "overallStatus": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "bestNextAction": "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
     "mainBlockers": [
       "RunSmart iOS: App Store Connect upload/processing/resubmission require founder portal action",
       "Resumely iOS: Device smoke and PostHog live-event verification require founder to run on real authenticated device",
@@ -28,7 +28,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-11",
+    "evidenceFreshDate": "2026-06-12",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -39,7 +39,7 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: 1.0.2 (build 14) development and App Store resubmission prep. Active: WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11). Last completed: Ported aha moments to native SwiftUI for 1.0.2 build 14 (commit 1ded0e0, 2026-06-10); fixed delete-account edge function schema-drift 500 and false iOS error (commit d2e2b40, 2026-06-11). Source: tasks/progress.md, updated 2026-06-11.",
+      "status": "Phase: 1.0.2 (build 14) development and App Store resubmission prep. Active: WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11). Last completed: Ported aha moments to native SwiftUI for 1.0.2 build 14 (commit 1ded0e0, 2026-06-10); fixed delete-account edge function schema-drift 500 and false iOS error (commit d2e2b40, 2026-06-11). Source: tasks/progress.md, updated 2026-06-11. Newer commits exist after this status (last commit: 2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.); trust git for the latest state.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "1.0.2 (build 14) development and App Store resubmission prep",
       "activeStory": "WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11)",
@@ -50,7 +50,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "Derived from git evidence on 2026-06-11: branch feat/wp6-aha-moments-ios at d2e2b40, 2 commits ahead of origin, one dirty path (Resources/Localizable.xcstrings). No build or test run was recorded for this status update. The build 12 archive/export validation record from 2026-06-09 is preserved in git history of this file",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-11",
+      "lastUpdated": "2026-06-12",
       "blockers": [
         "App Store Connect upload/processing/resubmission require founder portal action"
       ],
@@ -91,11 +91,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
-        "extraWorktrees": 1,
-        "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
+        "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
+        "dirty": true,
+        "dirtyCount": 8,
+        "extraWorktrees": 0,
+        "lastCommit": "2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -103,6 +103,8 @@
           "tasks/session-log.md",
           "docs/specs/README.md",
           ".agent-os/distribution/gtm-plan.md",
+          "docs/plans/2026-06-11-code-review-fix-plan.md",
+          "docs/plans/2026-06-11-code-review-baseline-audit.md",
           "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
           "docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
           "docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
@@ -125,8 +127,8 @@
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-11",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-12",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-11"
       },
       "taskParse": {
@@ -181,17 +183,17 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: App Store submission readiness. Active: PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test. Last completed: PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10). Source: tasks/progress.md, updated 2026-06-10. Newer commits exist after this status (last commit: 2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)); trust git for the latest state.",
+      "status": "Phase: App Store submission readiness. Active: Submit Package save-to-Me package confirmation. Last completed: Fixed Submit Package so Create Package does not immediately create/mark an application. The generated draft includes the optimized resume PDF, job link from optimization detail, Expert cover letter, and screening answers. The sheet now asks the user to save the package to Me; saving creates a saved application, attaches the optimized resume, saves Expert reports, refreshes Me, and exposes share/copy/submit-at-link actions. Source: tasks/progress.md, updated 2026-06-12.",
       "currentPhase": "App Store submission readiness",
-      "activeStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test",
-      "lastCompletedStory": "PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10)",
-      "nextRecommendedStory": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+      "activeStory": "Submit Package save-to-Me package confirmation",
+      "lastCompletedStory": "Fixed Submit Package so Create Package does not immediately create/mark an application. The generated draft includes the optimized resume PDF, job link from optimization detail, Expert cover letter, and screening answers. The sheet now asks the user to save the package to Me; saving creates a saved application, attaches the optimized resume, saves Expert reports, refreshes Me, and exposes share/copy/submit-at-link actions",
+      "nextRecommendedStory": "Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
+      "lastValidation": "Submit Package save-to-Me fix (2026-06-12): `git diff --check` passed. Focused iPhone 17 run `xcodebuild test -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -destination 'platform=iOS Simulator,name=iPhone 17' -only-testing:\"ResumeBuilder IOS APPTests/OptimizedResumeViewModelTests\" -derivedDataPath /tmp/resumebuilder-submit-package-derived` succeeded: 21 tests passed. Simulator launch smoke on iPhone 17 succeeded and screenshot saved to `/tmp/resumebuilder-submit-package-smoke.png`",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-11",
+      "lastUpdated": "2026-06-12",
       "blockers": [
         "Device smoke and PostHog live-event verification require founder to run on real authenticated device",
         "ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)",
@@ -227,11 +229,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "codex/fix-submit-package-save-package...origin/codex/fix-submit-package-save-package",
+        "dirty": true,
+        "dirtyCount": 4,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)",
+        "lastCommit": "2026-06-12 596cb5a Fix submit package save-to-me flow",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -240,6 +242,11 @@
           "docs/specs/README.md",
           "docs/product/product-vision.md",
           "docs/product/current-product-state.md",
+          "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+          "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+          "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
           "docs/specs/app-store-screenshot-generator.md",
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
@@ -247,16 +254,16 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-11",
-        "evidenceGap": true,
-        "evidenceDate": "2026-06-10"
+        "freshestDate": "2026-06-12",
+        "evidenceGap": false,
+        "evidenceDate": "2026-06-12"
       },
       "taskParse": {
         "status": "In Progress",
         "currentPhase": "App Store submission readiness",
-        "activeStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test",
-        "lastCompletedStory": "PR #51 update: merged `origin/main` into `claude/epic-sammet-146689`, confirmed the code fix is already on main and the remaining PR delta is project memory/lesson documentation. Debug simulator build succeeded and 72 XCTest + 5 Swift Testing tests passed on iPhone 17 simulator (2026-06-10)",
-        "nextRecommendedStory": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+        "activeStory": "Submit Package save-to-Me package confirmation",
+        "lastCompletedStory": "Fixed Submit Package so Create Package does not immediately create/mark an application. The generated draft includes the optimized resume PDF, job link from optimization detail, Expert cover letter, and screening answers. The sheet now asks the user to save the package to Me; saving creates a saved application, attaches the optimized resume, saves Expert reports, refreshes Me, and exposes share/copy/submit-at-link actions",
+        "nextRecommendedStory": "Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
         "blockers": [
           "Device smoke and PostHog live-event verification require founder to run on real authenticated device",
           "ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50)",
@@ -269,20 +276,19 @@
           "live backend endpoint gaps now surface real user-visible errors",
           "ExpertSavedReportDetailView's run-id mapping depends on backend returning run IDs in /expert-reports (not yet verified against live backend)"
         ],
-        "lastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
-        "lastUpdated": "2026-06-10",
+        "lastValidation": "Submit Package save-to-Me fix (2026-06-12): `git diff --check` passed. Focused iPhone 17 run `xcodebuild test -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -destination 'platform=iOS Simulator,name=iPhone 17' -only-testing:\"ResumeBuilder IOS APPTests/OptimizedResumeViewModelTests\" -derivedDataPath /tmp/resumebuilder-submit-package-derived` succeeded: 21 tests passed. Simulator launch smoke on iPhone 17 succeeded and screenshot saved to `/tmp/resumebuilder-submit-package-smoke.png`",
+        "lastUpdated": "2026-06-12",
         "qaNeeded": null,
         "estimatedCompletion": "90%",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [
-            "72 XCTest",
-            "5 Swift Testing"
+            "21 tests"
           ],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-10"
+          "evidenceDate": "2026-06-12"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -324,7 +330,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-11",
+      "lastUpdated": "2026-06-12",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -435,7 +441,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-11",
+      "lastUpdated": "2026-06-12",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -568,7 +574,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-05. Newer commits exist after this status (last commit: 2026-06-11 d927797 Fix dashboard work packet hygiene); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -576,9 +582,9 @@
       "estimatedCompletion": "Ongoing",
       "progressPercent": null,
       "progressLabel": "Active",
-      "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
+      "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-11",
+      "lastUpdated": "2026-06-12",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -593,11 +599,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 2]",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "main...origin/main [ahead 3]",
+        "dirty": true,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 d927797 Fix dashboard work packet hygiene",
+        "lastCommit": "2026-06-11 98924af Refresh dashboard after packet hygiene fix",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -610,9 +616,9 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-11",
-        "evidenceGap": true,
-        "evidenceDate": "2026-06-05"
+        "freshestDate": "2026-06-12",
+        "evidenceGap": false,
+        "evidenceDate": "2026-06-12"
       },
       "taskParse": {
         "status": "Active",
@@ -625,8 +631,8 @@
           "Outcome loops could duplicate project status if expanded before the pilot is reviewed",
           "untrusted input still requires least-privilege tools and founder approval for consequential actions"
         ],
-        "lastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
-        "lastUpdated": "2026-06-05",
+        "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
+        "lastUpdated": "2026-06-12",
         "qaNeeded": null,
         "estimatedCompletion": "Pilot implementation complete; operating validation remains",
         "decisionsNeeded": [
@@ -641,7 +647,7 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-05"
+          "evidenceDate": "2026-06-12"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -670,7 +676,7 @@
   "priorityBoard": {
     "now": [
       "RunSmart iOS: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
-      "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload"
+      "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link"
     ],
     "next": [
       "RunSmart Web: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
@@ -679,8 +685,8 @@
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-      "RunSmart iOS: 19 saved plan(s) \u2014 latest \"RunSmart 1.0.1 Build 12 - App Review Rejection Recovery\" (2026-06-08). See Saved Plans.",
-      "Resumely iOS: 3 saved plan(s) \u2014 latest \"Feature Spec \u2014 App Store Screenshot Generator\" (2026-06-05). See Saved Plans.",
+      "RunSmart iOS: 21 saved plan(s) \u2014 latest \"Code Review Fix Plan \u2014 2026-06-11\" (2026-06-11). See Saved Plans.",
+      "Resumely iOS: 8 saved plan(s) \u2014 latest \"2026-06-11 Smoke Test Follow-Up Plan\" (2026-06-11). See Saved Plans.",
       "RunSmart Web: 8 saved plan(s) \u2014 latest \"RunSmart Aha Moments Phase 1 \u2014 Implementation Prompt\" (2026-06-10). See Saved Plans.",
       "ResumeBuilder AI (Web): 7 saved plan(s) \u2014 latest \"Resumely \u2014 Growth + Pricing Design Spec\" (2026-06-07). See Saved Plans.",
       "Agentic OS: 5 saved plan(s) \u2014 latest \"2026-06-07 Obsidian Integration Plan\" (2026-06-07). See Saved Plans.",
@@ -806,7 +812,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-11 11:46",
+    "lastRefresh": "2026-06-12 09:37",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -832,6 +838,11 @@
       "Resumely iOS: docs/specs/app-store-screenshot-generator.md",
       "Resumely iOS: docs/specs/resumely-pre-submission-ux-ui-transformation.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-03-app-store-submission.md",
+      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+      "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+      "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
       "Resumely iOS: tasks/MEMORY.md",
       "Resumely iOS: tasks/progress.md",
       "Resumely iOS: tasks/session-log.md",
@@ -853,6 +864,8 @@
       "RunSmart Web: tasks/todo.md",
       "RunSmart iOS: .agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: .agent-os/distribution/weekly-plan.md",
+      "RunSmart iOS: docs/plans/2026-06-11-code-review-baseline-audit.md",
+      "RunSmart iOS: docs/plans/2026-06-11-code-review-fix-plan.md",
       "RunSmart iOS: docs/specs/README.md",
       "RunSmart iOS: docs/specs/e5-adaptive-flex-week.md",
       "RunSmart iOS: docs/specs/e7-garmin-wearable-depth.md",
@@ -906,6 +919,20 @@
         "lastUpdated": "2026-06-01"
       },
       "plans": [
+        {
+          "title": "Code Review Fix Plan \u2014 2026-06-11",
+          "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Baseline Audit \u2014 2026-06-11",
+          "path": "docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "RunSmart 1.0.1 Build 12 - App Review Rejection Recovery",
           "path": "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
@@ -1040,15 +1067,15 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
-      "extraWorktrees": 1,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 a9ae0ec Merge pull request #43 from nadavyigal/chore/add-agent-instruction-files",
+      "dirty": true,
+      "dirtyCount": 8,
+      "extraWorktrees": 0,
+      "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
+      "lastCommit": "2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-11",
-      "evidenceGap": false,
+      "freshestDate": "2026-06-12",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-11",
       "evidenceTests": [],
       "buildStatus": null,
@@ -1060,6 +1087,8 @@
         "tasks/session-log.md",
         "docs/specs/README.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/plans/2026-06-11-code-review-fix-plan.md",
+        "docs/plans/2026-06-11-code-review-baseline-audit.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
         "docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
@@ -1089,7 +1118,7 @@
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
       "state": "App Store submission readiness",
-      "nextAction": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+      "nextAction": "Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
       "blockerCount": 3,
       "blockers": [
         "Device smoke and PostHog live-event verification require founder to run on real authenticated device",
@@ -1104,6 +1133,41 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "2026-06-11 Smoke Test Follow-Up Plan",
+          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "2026-06-11 Smoke Test Follow-Up Plan",
+          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Remediation Plan \u2014 2026-06-11",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Remediation Plan \u2014 2026-06-11",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Implementation Prompt \u2014 Code Review Remediation",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Feature Spec \u2014 App Store Screenshot Generator",
           "path": "docs/specs/app-store-screenshot-generator.md",
@@ -1126,19 +1190,18 @@
           "kind": "spec"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 4,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 462e0b9 chore: sync Localizable.xcstrings (account deletion string keys)",
+      "branch": "codex/fix-submit-package-save-package...origin/codex/fix-submit-package-save-package",
+      "lastCommit": "2026-06-12 596cb5a Fix submit package save-to-me flow",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-11",
-      "evidenceGap": true,
-      "evidenceDate": "2026-06-10",
+      "freshestDate": "2026-06-12",
+      "evidenceGap": false,
+      "evidenceDate": "2026-06-12",
       "evidenceTests": [
-        "72 XCTest",
-        "5 Swift Testing"
+        "21 tests"
       ],
       "buildStatus": null,
       "qaDocs": [],
@@ -1150,15 +1213,20 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+        "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
         "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "PR #51 update (2026-06-10): `git diff --check` passed for the PR worktree. `xcodebuild -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath /tmp/resumebuilder-pr51-derived build` succeeded. `xcodebuild test` on the same simulator/derived data succeeded: 72 XCTest tests + 5 Swift Testing tests passed. Local setup required gitignored `Secrets.xcconfig` copied from `Secrets.xcconfig.template`",
-      "parsedLastUpdated": "2026-06-10",
-      "parsedActiveStory": "PR #51 \u2014 Updated mock PDF lesson PR with latest main for founder Xcode rebuild/smoke test"
+      "parsedLastValidation": "Submit Package save-to-Me fix (2026-06-12): `git diff --check` passed. Focused iPhone 17 run `xcodebuild test -project \"ResumeBuilder IOS APP.xcodeproj\" -scheme \"ResumeBuilder IOS APP\" -destination 'platform=iOS Simulator,name=iPhone 17' -only-testing:\"ResumeBuilder IOS APPTests/OptimizedResumeViewModelTests\" -derivedDataPath /tmp/resumebuilder-submit-package-derived` succeeded: 21 tests passed. Simulator launch smoke on iPhone 17 succeeded and screenshot saved to `/tmp/resumebuilder-submit-package-smoke.png`",
+      "parsedLastUpdated": "2026-06-12",
+      "parsedActiveStory": "Submit Package save-to-Me package confirmation"
     },
     {
       "id": "runsmart-web",
@@ -1419,16 +1487,16 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 8,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 2]",
-      "lastCommit": "2026-06-11 d927797 Fix dashboard work packet hygiene",
+      "branch": "main...origin/main [ahead 3]",
+      "lastCommit": "2026-06-11 98924af Refresh dashboard after packet hygiene fix",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-11",
-      "evidenceGap": true,
-      "evidenceDate": "2026-06-05",
+      "freshestDate": "2026-06-12",
+      "evidenceGap": false,
+      "evidenceDate": "2026-06-12",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -1443,8 +1511,8 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "35 parser unit tests passed; ./agentic-os verify passed with JSON, fallback sync, confidence, links, and git diff checks on 2026-06-05",
-      "parsedLastUpdated": "2026-06-05",
+      "parsedLastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
+      "parsedLastUpdated": "2026-06-12",
       "parsedActiveStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops"
     }
   ],
@@ -1483,11 +1551,11 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
+      "repoState": "Dirty",
+      "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
       "nextAction": "Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
       "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1495,6 +1563,8 @@
         "tasks/session-log.md",
         "docs/specs/README.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/plans/2026-06-11-code-review-fix-plan.md",
+        "docs/plans/2026-06-11-code-review-baseline-audit.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
         "docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
@@ -1514,17 +1584,17 @@
         "docs/specs/e7-garmin-wearable-depth.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.0.2 (build 14) development and App Store resubmission prep. Next action: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response. Known blockers: App Store Connect upload/processing/resubmission require founder portal action. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.0.2 (build 14) development and App Store resubmission prep. Next action: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response. Known blockers: App Store Connect upload/processing/resubmission require founder portal action. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
-      "nextAction": "Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+      "repoState": "Dirty",
+      "branch": "codex/fix-submit-package-save-package...origin/codex/fix-submit-package-save-package",
+      "nextAction": "Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1533,11 +1603,16 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+        "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
         "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1593,11 +1668,11 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
-      "branch": "main...origin/main [ahead 2]",
+      "repoState": "Dirty",
+      "branch": "main...origin/main [ahead 3]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
@@ -1607,12 +1682,12 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
-    "portfolioState": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "headline": "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
+    "portfolioState": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1629,8 +1704,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 0,
-    "dirtyProjects": [],
+    "dirtyProjectCount": 3,
+    "dirtyProjects": [
+      "RunSmart iOS",
+      "Resumely iOS",
+      "Agentic OS"
+    ],
     "blockedProjects": [
       "RunSmart iOS",
       "Resumely iOS",
@@ -1639,11 +1718,10 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 3,
+    "evidenceGapCount": 2,
     "evidenceGapProjects": [
-      "Resumely iOS",
-      "RunSmart Web",
-      "Agentic OS"
+      "RunSmart iOS",
+      "RunSmart Web"
     ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -1682,17 +1760,17 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-11 11:46",
+    "lastRunAt": "2026-06-12 09:37",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-    "targetRepoState": "Clean",
-    "targetBranch": "main...origin/main",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store submission readiness. Next action: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link. Known blockers: Device smoke and PostHog live-event verification require founder to run on real authenticated device; ASC export requires local Keychain unlock for Apple Distribution key (71915959D76E14CED4D4153118972F034D338A50); `/api/v1/resumes` returns Next.js 404 HTML (Resume Library stays disabled). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "targetRepoState": "Dirty",
+    "targetBranch": "codex/fix-submit-package-save-package...origin/codex/fix-submit-package-save-package",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: Founder installs device binary on real device, signs in, smokes optimize\u2192design\u2192expert\u2192export, screenshots PostHog Live Events (app_launched + optimization_completed + export_success), then archives via Xcode Organizer for ASC upload",
+    "summary": "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
     "nextActions": [
       {
         "title": "Restore dashboard trust",
@@ -1730,9 +1808,23 @@
     {
       "project": "RunSmart iOS",
       "projectId": "runsmart-ios",
-      "total": 19,
-      "shown": 6,
+      "total": 21,
+      "shown": 7,
       "plans": [
+        {
+          "title": "Code Review Fix Plan \u2014 2026-06-11",
+          "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Baseline Audit \u2014 2026-06-11",
+          "path": "docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "RunSmart 1.0.1 Build 12 - App Review Rejection Recovery",
           "path": "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
@@ -1762,13 +1854,6 @@
           "kind": "plan"
         },
         {
-          "title": "Sprint 11 \u2014 UX Redesign + Voice Coach Implementation Plan",
-          "path": "docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-          "date": "2026-06-01",
-          "status": null,
-          "kind": "plan"
-        },
-        {
           "title": "GTM Plan \u2014 RunSmart iOS",
           "path": ".agent-os/distribution/gtm-plan.md",
           "date": "2026-06-01",
@@ -1780,27 +1865,48 @@
     {
       "project": "Resumely iOS",
       "projectId": "resumebuilder-ios",
-      "total": 3,
-      "shown": 3,
+      "total": 8,
+      "shown": 6,
       "plans": [
+        {
+          "title": "2026-06-11 Smoke Test Follow-Up Plan",
+          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "2026-06-11 Smoke Test Follow-Up Plan",
+          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Remediation Plan \u2014 2026-06-11",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Code Review Remediation Plan \u2014 2026-06-11",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Implementation Prompt \u2014 Code Review Remediation",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "date": "2026-06-11",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Feature Spec \u2014 App Store Screenshot Generator",
           "path": "docs/specs/app-store-screenshot-generator.md",
           "date": "2026-06-05",
-          "status": null,
-          "kind": "spec"
-        },
-        {
-          "title": "App Store Submission \u2014 WP3 Implementation Plan",
-          "path": "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "date": "2026-06-03",
-          "status": "Submitted for Review",
-          "kind": "plan"
-        },
-        {
-          "title": "Feature Spec \u2014 Resumely Pre-Submission UX/UI Transformation",
-          "path": "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-          "date": "2026-05-31",
           "status": null,
           "kind": "spec"
         }
@@ -2535,11 +2641,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 0,
+    "uncommitted": 1,
     "extraWorktrees": 0,
-    "synced": true,
+    "synced": false,
     "notes": [
-      "Clean: on main, fully committed, no stray worktrees."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2614,16 +2720,16 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "caution",
-    "label": "Use caution",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Evidence gap after latest commit: Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
-      "Extra product worktrees retained for review: RunSmart iOS (1)."
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS."
     ]
   },
   "latestCooReview": {
@@ -2635,22 +2741,46 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-06-11",
+    "generatedOn": "2026-06-12",
     "items": [
       {
         "project": "RunSmart iOS",
-        "type": "worktree",
-        "detail": "worktree on claude/thirsty-varahamihira-312d1d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/thirsty-varahamihira-312d1d",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
+        "type": "default-branch",
+        "detail": "main is 2 commit(s) behind origin (pull needed)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "fix/code-review-p0-identity: unmerged commits, never pushed, last commit 2026-06-11",
+        "action": "Push fix/code-review-p0-identity and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "dirty",
+        "detail": "8 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "dirty",
+        "detail": "4 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 2 unpushed commit(s)",
+        "detail": "main has 3 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "8 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 2,
+    "actionableCount": 6,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": []
