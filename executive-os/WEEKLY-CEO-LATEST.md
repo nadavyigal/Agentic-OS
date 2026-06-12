@@ -1,94 +1,72 @@
-# Weekly Executive Summary - 2026-06-05
+# Weekly Executive Summary - 2026-06-12
 
 - Status: current
-- Reviewed: 2026-06-05
+- Reviewed: 2026-06-12
 - Portfolio trust: Actionable
-- Open executive decisions: 0
-- Source: dashboard/status.json, PROJECT-STATUS.md, distribution-os/weekly-growth-review.md, executive-os/COO-LATEST-REVIEW.md
+- Open executive decisions: 1 (EXD-010 below)
+- Source: dashboard/status.json, PROJECT-STATUS.md, DASHBOARD.md (refreshed 2026-06-12), executive-os/COO-LATEST-REVIEW.md (2026-06-11), executive-os/EXECUTIVE-METRICS.md
 
 ## Plan Progress
 
 | Plan | Current milestone | Executive direction |
 |---|---|---|
-| `executive-os/BUSINESS-GTM-PLAN-V0.md` | Both iOS apps are submitted; launch preparation is now the useful milestone. | COO sequences launch readiness. Do not reopen submission work. |
-| `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md` | A1 RunSmart founder LinkedIn draft exists and awaits founder review. | Review A1, then stage the next smallest RunSmart launch asset. Nothing publishes before approval. |
-| RunSmart `.agent-os/distribution/gtm-plan.md` | GTM positioning exists; launch assets and post-approval activation verification remain. | COO extracts one launch-readiness milestone at a time. |
-| ResumeBuilder Web `.agent-os/distribution/weekly-plan.md` | File is still a blank weekly-plan scaffold. | Do not create a packet. Keep parked until a real weekly objective exists. |
-| Research-only plans | Competitor pricing and World Cup opportunity research are preserved. | No execution this week unless the founder changes portfolio focus. |
+| `executive-os/BUSINESS-GTM-PLAN-V0.md` | Build 14 resubmission is the launch gate. | RunSmart first. Archive, upload, submit. |
+| `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md` | A1 LinkedIn draft still awaits founder review. | Not this week. Unblock submissions first. |
+| RunSmart `.agent-os/distribution/gtm-plan.md` | App Store listing/ASO hardening after resubmission. | Post-submission packet only. |
+| ResumeBuilder Web weekly plan | Parked unless Resumely smoke exposes backend issues. | Stay parked. |
+| Research plans | Preserved. | No execution this week. |
 
-## Top 3 Priorities
+## Top 3 Priorities (week of 2026-06-14)
 
-1. **Protect both App Store submissions.** Check App Store Connect daily. If
-   Apple responds, handle only the exact review outcome before any other
-   release or feature work. Sources: RunSmart and Resumely `tasks/progress.md`;
-   `dashboard/status.json`.
-2. **Prepare a minimal RunSmart launch window.** Founder reviews the completed
-   A1 LinkedIn draft; after approval or revision, stage the next smallest
-   launch asset without publishing. Sources:
-   `executive-os/COO-LATEST-REVIEW.md`;
-   `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md`.
-3. **Prepare post-approval measurement, not monetization.** On approval, verify
-   launch events in PostHog before making pricing, paid-acquisition, or feature
-   expansion decisions. Current activation and retention remain
-   `unknown - need: PostHog`. Sources: `EXECUTIVE-METRICS.md`; EXD-002,
-   EXD-004, EXD-009.
+1. **RunSmart iOS build 14: close the stranded items and submit.** Pull main, resolve `fix/code-review-p0-identity` (review and merge to main or discard), commit the 5 dirty migration files in a proper PR, archive build 14, upload to App Store Connect, submit with the prepared reviewer response. Every piece is ready — this is execution only. OKR-1 deadline is 18 days out.
+2. **Resumely iOS: real-device smoke and archive.** Sign in on device, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → share PDF / copy cover letter → tap Submit at Job Link. Screenshot PostHog Live Events (`app_launched`, `optimization_completed`, `export_success`). Archive via Xcode Organizer, upload to App Store Connect.
+3. **Close the stale decision board.** The decision board still shows "build 8 rejection" framing. We are on build 14. Flag old items as Superseded; log EXD-010.
 
 ## Key Decisions
 
-There are no open decisions in `EXECUTIVE-DECISIONS.md`.
+### EXD-010 (new) — RunSmart iOS 1.0.2 build 14 resubmission scope
+- **Recommendation:** Minimal: WP-4 (account deletion) + WP-6 (aha moments). Nothing else in build 14.
+- **Voice coach flag:** Flip VOICE_COACH_ENABLED only after approval + physical-device voice QA. Not for build 14.
+- **Status:** Open — needs founder approval to log as Decided.
 
-Current calls remain:
-
-- Keep submitted builds frozen until Apple responds.
-- Keep monetization implementation deferred until first-cohort activation is
-  readable.
-- Keep RunSmart and Resumely as separate brands.
-- Keep paid acquisition at $0.
+### Standing calls (unchanged)
+- Submitted builds frozen until Apple responds.
+- Monetization deferred until first-cohort activation is readable (EXD-009).
+- Brands remain separate (EXD-007).
+- Paid acquisition at $0.
 
 ## Stop-Doing List
 
-- Do not reopen WP-1 or any pre-submission checklist.
-- Do not start new iOS feature scope while Apple review is unresolved.
-- Do not implement the ready-to-build monetization spec yet.
-- Do not advance ResumeBuilder Web rollout unless a real mobile/backend blocker
-  requires it.
-- Do not execute Clarity Funnel or World Cup side-project work this week unless
-  the founder explicitly changes the portfolio priority.
-- Do not publish launch assets before founder approval and a verified public App
-  Store URL.
+- Do not open new iOS feature work while submissions are pending.
+- Do not flip VOICE_COACH_ENABLED before approval + device QA.
+- Do not start GTM/ASO content work before at least one app is approved.
+- Do not implement the monetization spec yet.
+- Do not advance ResumeBuilder Web rollout without a real mobile/backend blocker.
+- Do not expand executive-os with new OS ceremony while the submission sprint is the OKR.
 
-## Delegation
+## OKR-1 Check (Q2: both apps approved before end of June)
 
-| Priority | Owner / workflow | Output |
+| App | Status | Remaining founder tasks |
 |---|---|---|
-| Apple review monitoring | Founder + Release Manager only after Apple responds | One response packet based on the exact Apple message, or no action. |
-| RunSmart launch preparation | Distribution OS LinkedIn / launch workflow | Founder-reviewed A1, then one next draft asset. No publishing. |
-| Post-approval analytics | COO creates a new local repo packet after approval | Verify launch events and record evidence before monetization decisions. |
-| Plan hygiene | COO Operating Review | Resolve the four `needs_next_packet` rows one milestone at a time; do not packetize blank scaffolds. |
+| RunSmart iOS | Build 14 ready; stranded items blocking archive | Resolve git, archive, upload, submit |
+| Resumely iOS | Fixes applied; device smoke not done | Device smoke + PostHog evidence + archive + upload |
+
+Both executable this week. No external blockers before submission.
 
 ## Top Risks
 
-1. **External review delay or rejection:** both apps depend on Apple. Mitigation:
-   freeze scope and respond only to concrete feedback.
-2. **Launch without measurable activation:** PostHog event receipt from live
-   builds is not yet proven. Mitigation: post-approval analytics verification
-   before interpreting growth.
-3. **Repo hygiene obscures product work:** both iOS repos retain dirty files and
-   extra worktrees. Mitigation: preserve them, but perform a separate,
-   evidence-led consolidation session before future implementation.
-4. **Premature distraction:** four plans show `needs_next_packet`, while side
-   research remains visible. Mitigation: one COO-selected milestone at a time.
+1. **June deadline:** 18 days left. Neither app is submitted as of 2026-06-12. Apple review alone takes 1-3 days. Every day of delay narrows the window.
+2. **Resumely device smoke still undone:** Submit Package / PDF flow was broken as recently as 2026-06-11. Fixes applied, but no successful end-to-end device smoke captured. This is the last gate before archive.
+3. **RunSmart stranded items:** `fix/code-review-p0-identity` has unreviewed migration changes. Resolve explicitly — do not archive over unreviewed schema changes.
+4. **Metrics Needs Data:** No live PostHog receipt from any production user. Post-approval decisions will be blind until verified.
 
 ## Recommended Next Actions
 
-1. Founder checks App Store Connect for RunSmart and Resumely.
-2. Founder reviews
-   `distribution-os/projects/runsmart/scaffold/drafts/2026-06-05-rs-linkedin-launch/launch-post-v1.md`.
-3. If A1 is approved or revised and Apple has not responded, run the COO review
-   for the next smallest RunSmart launch-window asset.
+1. RunSmart iOS session Monday → pull main → `fix/code-review-p0-identity` decision → archive build 14 → upload ASC.
+2. Resumely iOS session → device smoke → PostHog screenshot → archive + upload.
+3. After one submission is in, COO review for first GTM/ASO milestone.
+4. Log EXD-010 as Decided.
 
 ## Decision Of The Week
 
-**Stay in launch-readiness mode until Apple responds.** Do not trade the current
-submission window for new feature scope, monetization implementation, web
-rollout, or side-project execution.
+**The submission sprint is not over. Close the repos before anything else.** OKR-1 deadline is 18 days out. The OS is in good shape. Submit first.
