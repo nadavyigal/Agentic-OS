@@ -10,17 +10,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | Yes (8) | Fresh | Medium | tasks/progress.md | 2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion. |
+| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-12 270ba24 Finalize code review backend readiness |
 | Resumely iOS | App Store submission readiness | Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link | 3 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-12 596cb5a Fix submit package save-to-me flow |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91) |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | No | Fresh | Medium | derived | 2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-11 98924af Refresh dashboard after packet hygiene fix |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12) |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-06-11, last commit 2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.
+- RunSmart iOS: validated 2026-06-11, last commit 2026-06-12 270ba24 Finalize code review backend readiness
 - RunSmart Web: validated 2026-05-12, last commit 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)
 
 ## Drift Warnings
@@ -33,10 +33,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 
 - [RunSmart iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
 - [RunSmart iOS] fix/code-review-p0-identity: unmerged commits, never pushed, last commit 2026-06-11 -> Push fix/code-review-p0-identity and open a PR, or consciously discard it.
-- [RunSmart iOS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 3 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 

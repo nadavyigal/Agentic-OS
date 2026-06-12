@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 
 ## Run Center
 
-- Last refresh: 2026-06-12 09:37
+- Last refresh: 2026-06-12 10:13
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,7 +20,7 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | Yes | Fresh | Medium |
+| RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | No | Fresh | Medium |
 | Resumely iOS | App Store submission readiness | Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link | Yes | Fresh | High |
 | RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | No | Fresh | Medium |
 | ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | No | Fresh | Medium |
@@ -28,14 +28,12 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 
 ## Stranded Work
 
-6 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+4 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] main is 2 commit(s) behind origin (pull needed)
 - [RunSmart iOS] fix/code-review-p0-identity: unmerged commits, never pushed, last commit 2026-06-11
-- [RunSmart iOS] 8 uncommitted file(s) in the primary working tree
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 3 unpushed commit(s)
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree
+- [Agentic OS] 2 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

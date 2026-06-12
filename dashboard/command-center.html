@@ -619,7 +619,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-12 09:37",
+      "lastRefresh": "2026-06-12 10:13",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -874,11 +874,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 8,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
-        "lastCommit": "2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.",
+        "lastCommit": "2026-06-12 270ba24 Finalize code review backend readiness",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-12",
@@ -1295,10 +1295,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 2,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 3]",
-        "lastCommit": "2026-06-11 98924af Refresh dashboard after packet hygiene fix",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-12",
@@ -1358,7 +1358,7 @@
         "projectId": "runsmart-ios",
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
         "nextAction": "Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
         "sourceConfidence": "Medium",
@@ -1476,7 +1476,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 3]",
+        "branch": "main...origin/main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1511,9 +1511,8 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 3,
+      "dirtyProjectCount": 2,
       "dirtyProjects": [
-        "RunSmart iOS",
         "Resumely iOS",
         "Agentic OS"
       ],
@@ -2403,11 +2402,11 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 1,
+      "uncommitted": 2,
       "extraWorktrees": 0,
       "synced": false,
       "notes": [
-        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
@@ -2415,12 +2414,12 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
       "hygieneWarnings": [
-        "Uncommitted files in product repos: RunSmart iOS, Resumely iOS."
+        "Uncommitted files in product repos: Resumely iOS."
       ]
     },
     "planExecution": {

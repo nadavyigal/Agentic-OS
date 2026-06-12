@@ -39,7 +39,7 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: 1.0.2 (build 14) development and App Store resubmission prep. Active: WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11). Last completed: Ported aha moments to native SwiftUI for 1.0.2 build 14 (commit 1ded0e0, 2026-06-10); fixed delete-account edge function schema-drift 500 and false iOS error (commit d2e2b40, 2026-06-11). Source: tasks/progress.md, updated 2026-06-11. Newer commits exist after this status (last commit: 2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.); trust git for the latest state.",
+      "status": "Phase: 1.0.2 (build 14) development and App Store resubmission prep. Active: WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11). Last completed: Ported aha moments to native SwiftUI for 1.0.2 build 14 (commit 1ded0e0, 2026-06-10); fixed delete-account edge function schema-drift 500 and false iOS error (commit d2e2b40, 2026-06-11). Source: tasks/progress.md, updated 2026-06-11. Newer commits exist after this status (last commit: 2026-06-12 270ba24 Finalize code review backend readiness); trust git for the latest state.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "1.0.2 (build 14) development and App Store resubmission prep",
       "activeStory": "WP-6 aha moments native SwiftUI port plus account deletion hardening on feat/wp6-aha-moments-ios (2 commits unpushed as of 2026-06-11)",
@@ -92,10 +92,10 @@
       },
       "localEvidence": {
         "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
-        "dirty": true,
-        "dirtyCount": 8,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.",
+        "lastCommit": "2026-06-12 270ba24 Finalize code review backend readiness",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -599,11 +599,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 3]",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 2,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 98924af Refresh dashboard after packet hygiene fix",
+        "lastCommit": "2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -812,7 +812,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-12 09:37",
+    "lastRefresh": "2026-06-12 10:13",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1067,11 +1067,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 8,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
-      "lastCommit": "2026-06-12 2e461e2 Fix code review blockers: auth_user_id identity, Garmin security, and account deletion.",
+      "lastCommit": "2026-06-12 270ba24 Finalize code review backend readiness",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-12",
@@ -1488,10 +1488,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 8,
+      "dirtyCount": 2,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 3]",
-      "lastCommit": "2026-06-11 98924af Refresh dashboard after packet hygiene fix",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-12",
@@ -1551,7 +1551,7 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "cursor/e7-wearable-depth-trends...origin/cursor/e7-wearable-depth-trends",
       "nextAction": "Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response",
       "sourceConfidence": "Medium",
@@ -1669,7 +1669,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 3]",
+      "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1704,9 +1704,8 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 3,
+    "dirtyProjectCount": 2,
     "dirtyProjects": [
-      "RunSmart iOS",
       "Resumely iOS",
       "Agentic OS"
     ],
@@ -1760,7 +1759,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-12 09:37",
+    "lastRunAt": "2026-06-12 10:13",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -2641,11 +2640,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 2,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2724,12 +2723,12 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS."
+      "Uncommitted files in product repos: Resumely iOS."
     ]
   },
   "latestCooReview": {
@@ -2756,12 +2755,6 @@
         "action": "Push fix/code-review-p0-identity and open a PR, or consciously discard it."
       },
       {
-        "project": "RunSmart iOS",
-        "type": "dirty",
-        "detail": "8 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
         "project": "Resumely iOS",
         "type": "dirty",
         "detail": "4 uncommitted file(s) in the primary working tree",
@@ -2769,18 +2762,12 @@
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 3 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "8 uncommitted file(s) in the primary working tree",
+        "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 6,
+    "actionableCount": 4,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": []
