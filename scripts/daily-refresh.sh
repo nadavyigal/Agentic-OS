@@ -28,5 +28,19 @@ mkdir -p "$REPO/logs"
     git push origin main && echo "pushed" || echo "push FAILED (will retry tomorrow)"
   fi
 
+  # Notify on stranded work so items don't silently accumulate.
+  STRANDED=$(python3 -c "
+import json, sys
+try:
+    d = json.load(open('dashboard/status.json'))
+    print(len(d.get('strandedWork', {}).get('items', [])))
+except Exception:
+    print(0)
+" 2>/dev/null)
+  if [ "${STRANDED:-0}" -gt 0 ]; then
+    osascript -e "display notification \"$STRANDED item(s) at risk — open DASHBOARD.md\" with title \"Agentic OS\" subtitle \"Stranded Work\" sound name \"Glass\"" 2>/dev/null || true
+    echo "stranded-work notification sent ($STRANDED items)"
+  fi
+
   echo "done"
 } >> "$LOG" 2>&1
