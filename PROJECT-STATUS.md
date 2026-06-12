@@ -12,16 +12,15 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-12 270ba24 Finalize code review backend readiness |
 | Resumely iOS | App Store submission readiness | Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link | 3 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-12 596cb5a Fix submit package save-to-me flow |
-| RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | 1 | No | Fresh | Medium | derived | 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91) |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | 2 | No | Fresh | Medium | derived | 2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12) |
+| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | No | Fresh | High | tasks/progress.md | 2026-06-12 0ece16f docs: seed tasks/progress.md for Agentic OS High confidence |
+| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx | 2 | No | Fresh | High | tasks/progress.md | 2026-06-12 0fb03aa docs: seed tasks/progress.md for Agentic OS High confidence |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-12 6bb5f14 Auto-refresh dashboard (2026-06-12) |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart iOS: validated 2026-06-11, last commit 2026-06-12 270ba24 Finalize code review backend readiness
-- RunSmart Web: validated 2026-05-12, last commit 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)
 
 ## Drift Warnings
 
@@ -42,6 +41,8 @@ None. Active/open packet states match the current project status.
 
 ## Open Questions & Decisions (from repos)
 
+- Decision needed [RunSmart Web]: (open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)
+- Decision needed [ResumeBuilder AI (Web)]: (open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)
 - Decision needed [Agentic OS]: Should drift detection stay detect-only, or gain a `refresh --reconcile` that auto-heals curated narrative for High projects?
 - Decision needed [Agentic OS]: Should web-repo (RunSmart Web, ResumeBuilder Web) `tasks/progress.md` seeding proceed now or stay on hold?
 - Open question [RunSmart Web]: The approved spec was not found as a saved `docs/specs/` file, so the prior planning package is being treated as the approved spec for this story
@@ -50,7 +51,7 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
 
 ## What To Do Next
 
@@ -65,8 +66,8 @@ Resumely iOS: Rebuild on real device, sign in, smoke optimize → Improve ATS �
 
 ### Next
 
-- RunSmart Web: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories
-- ResumeBuilder AI (Web): Leave parked unless Resumely smoke exposes backend parse/render issues.
+- RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work
+- ResumeBuilder AI (Web): PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx
 
 ### Later
 
@@ -110,6 +111,7 @@ Resumely iOS: Rebuild on real device, sign in, smoke optimize → Improve ATS �
 - ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md
 - ResumeBuilder AI (Web): docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md
 - ResumeBuilder AI (Web): tasks/MEMORY.md
+- ResumeBuilder AI (Web): tasks/progress.md
 - Resumely iOS: docs/product/current-product-state.md
 - Resumely iOS: docs/product/product-vision.md
 - Resumely iOS: docs/specs/README.md
@@ -138,6 +140,7 @@ Resumely iOS: Rebuild on real device, sign in, smoke optimize → Improve ATS �
 - RunSmart Web: docs/specs/2026-05-12-today-command-center.md
 - RunSmart Web: docs/specs/README.md
 - RunSmart Web: tasks/MEMORY.md
+- RunSmart Web: tasks/progress.md
 - RunSmart Web: tasks/session-log.md
 - RunSmart Web: tasks/todo.md
 - RunSmart iOS: .agent-os/distribution/gtm-plan.md

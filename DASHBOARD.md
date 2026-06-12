@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link · RunSmart Web — Implement Story 1 for the RunSmart Web Today page improvement · ResumeBuilder AI (Web) — PDF parse/render-preview rollout
+RunSmart iOS — 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response · Resumely iOS — App Store submission readiness: Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
 
 Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link
 
 ## Run Center
 
-- Last refresh: 2026-06-12 10:13
+- Last refresh: 2026-06-12 10:23
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -22,8 +22,8 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | 1.0.2 (build 14) development and App Store resubmission prep | Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response | No | Fresh | Medium |
 | Resumely iOS | App Store submission readiness | Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link | Yes | Fresh | High |
-| RunSmart Web | Implement Story 1 for the RunSmart Web Today page improvement | Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories | No | Fresh | Medium |
-| ResumeBuilder AI (Web) | PDF parse/render-preview rollout | Leave parked unless Resumely smoke exposes backend parse/render issues. | No | Fresh | Medium |
+| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | No | Fresh | High |
+| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx | No | Fresh | High |
 | Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Stranded Work
@@ -58,7 +58,6 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 ## Evidence Gaps
 
 - RunSmart iOS: validated 2026-06-11, latest commit is newer.
-- RunSmart Web: validated 2026-05-12, latest commit is newer.
 
 ## Drift Warnings
 

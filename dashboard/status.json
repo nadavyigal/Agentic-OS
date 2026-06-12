@@ -12,7 +12,7 @@
     }
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "overallStatus": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
     "bestNextAction": "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
     "mainBlockers": [
       "RunSmart iOS: App Store Connect upload/processing/resubmission require founder portal action",
@@ -320,15 +320,15 @@
       "role": "Main AI running coach product and source of product logic.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Implement Story 1 for the RunSmart Web Today page improvement. Active: Implement Story 1 for the RunSmart Web Today page improvement. Source: derived, updated 2026-05-12. Newer commits exist after this status (last commit: 2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)); trust git for the latest state.",
-      "currentPhase": "Implement Story 1 for the RunSmart Web Today page improvement",
-      "activeStory": "Implement Story 1 for the RunSmart Web Today page improvement",
-      "lastCompletedStory": "feat(B1): /api/coach/voice-cue - TTS coaching cue endpoint with VOICE_COACH_ENABLED flag",
-      "nextRecommendedStory": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
+      "status": "Phase: Today page improvement planning, post Aha Moments merge. Active: Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md). Last completed: Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11). Source: tasks/progress.md, updated 2026-06-12.",
+      "currentPhase": "Today page improvement planning, post Aha Moments merge",
+      "activeStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)",
+      "lastCompletedStory": "Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11)",
+      "nextRecommendedStory": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
+      "lastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
       "lastUpdated": "2026-06-12",
       "blockers": [
@@ -354,10 +354,11 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)",
+        "lastCommit": "2026-06-12 0ece16f docs: seed tasks/progress.md for Agentic OS High confidence",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
+          "tasks/progress.md",
           "tasks/session-log.md",
           "docs/agent-os/project-context.md",
           "docs/specs/README.md",
@@ -372,26 +373,31 @@
           "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
           "docs/plans/2026-02-12-runsmart-execution-plan.md"
         ],
-        "sourceConfidence": "Medium",
-        "preferredSource": "derived",
+        "sourceConfidence": "High",
+        "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-11",
-        "evidenceGap": true,
-        "evidenceDate": "2026-05-12"
+        "freshestDate": "2026-06-12",
+        "evidenceGap": false,
+        "evidenceDate": "2026-06-12"
       },
       "taskParse": {
-        "status": null,
-        "currentPhase": "Implement Story 1 for the RunSmart Web Today page improvement",
-        "activeStory": "Implement Story 1 for the RunSmart Web Today page improvement",
-        "lastCompletedStory": null,
-        "nextRecommendedStory": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
+        "status": "Active",
+        "currentPhase": "Today page improvement planning, post Aha Moments merge",
+        "activeStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)",
+        "lastCompletedStory": "Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11)",
+        "nextRecommendedStory": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
         "blockers": [],
-        "risks": [],
-        "lastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
-        "lastUpdated": "2026-05-12",
+        "risks": [
+          "Missing a current Today item because the page is composed through nested components",
+          "scope creep from inventory into redesign implementation"
+        ],
+        "lastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
+        "lastUpdated": "2026-06-12",
         "qaNeeded": null,
-        "estimatedCompletion": null,
-        "decisionsNeeded": [],
+        "estimatedCompletion": "Today redesign not started; Story 1 is the entry point",
+        "decisionsNeeded": [
+          "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
+        ],
         "openQuestions": [
           "The approved spec was not found as a saved `docs/specs/` file, so the prior planning package is being treated as the approved spec for this story"
         ],
@@ -399,23 +405,22 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-05-12"
+          "evidenceDate": "2026-06-12"
         },
-        "preferredSource": "derived",
+        "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
+          "tasks/progress.md",
           "tasks/todo.md",
           "tasks/session-log.md",
           "tasks/MEMORY.md",
           "tasks/ERRORS.md",
           "tasks/lessons.md"
         ],
-        "missing": [
-          "tasks/progress.md"
-        ],
-        "sourceConfidence": "Medium",
-        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+        "missing": [],
+        "sourceConfidence": "High",
+        "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": false,
         "path": null,
@@ -431,15 +436,15 @@
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Backend/reference project for Resumely. PDF parse/render-preview fix exists on fix/pdf-parse-xref-error, but rollout shadow enablement remains unchecked and the branch is dirty.",
-      "currentPhase": "PDF parse/render-preview rollout",
-      "activeStory": "Controlled rollout plan in docs/plan.rollout.md",
-      "lastCompletedStory": "fix(pdf-parse): fix xref error in PDF parse and render-preview pipeline",
-      "nextRecommendedStory": "Defer unless Resumely smoke exposes backend blockers; otherwise complete rollout shadow enablement.",
+      "status": "Phase: Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked. Active: Parked unless the Resumely iOS device smoke test exposes backend parse/render issues. Last completed: Stranded session artifacts committed and pushed (2026-06-11); monetization skeletons PR #67/#68 merged to monitization branch, gated behind Gate A (EXD-009). Source: tasks/progress.md, updated 2026-06-12.",
+      "currentPhase": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+      "activeStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues",
+      "lastCompletedStory": "Stranded session artifacts committed and pushed (2026-06-11); monetization skeletons PR #67/#68 merged to monitization branch, gated behind Gate A (EXD-009)",
+      "nextRecommendedStory": "PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "No contracts or rollout checks rerun during this status refresh.",
+      "lastValidation": "npm run lint (eslint) passed with 0 errors, 13 warnings on 2026-06-12",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
       "lastUpdated": "2026-06-12",
       "blockers": [
@@ -466,9 +471,10 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc",
+        "lastCommit": "2026-06-12 0fb03aa docs: seed tasks/progress.md for Agentic OS High confidence",
         "sourceFiles": [
           "tasks/MEMORY.md",
+          "tasks/progress.md",
           "docs/agent-os/project-context.md",
           ".agent-os/distribution/gtm-plan.md",
           "docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
@@ -478,48 +484,54 @@
           "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "sourceConfidence": "Medium",
-        "preferredSource": "derived",
+        "sourceConfidence": "High",
+        "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-11",
+        "freshestDate": "2026-06-12",
         "evidenceGap": false,
-        "evidenceDate": null
+        "evidenceDate": "2026-06-12"
       },
       "taskParse": {
-        "status": null,
-        "currentPhase": null,
-        "activeStory": null,
-        "lastCompletedStory": null,
-        "nextRecommendedStory": null,
+        "status": "Active",
+        "currentPhase": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+        "activeStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues",
+        "lastCompletedStory": "Stranded session artifacts committed and pushed (2026-06-11); monetization skeletons PR #67/#68 merged to monitization branch, gated behind Gate A (EXD-009)",
+        "nextRecommendedStory": "PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx",
         "blockers": [],
-        "risks": [],
-        "lastValidation": null,
-        "lastUpdated": null,
-        "qaNeeded": null,
-        "estimatedCompletion": null,
-        "decisionsNeeded": [],
+        "risks": [
+          "PDF/DOCX upload smoke test still not run (#1 pre-approval risk per tasks/MEMORY.md 2026-06-08)",
+          "user_credits table vs profiles.credit_balance reconciliation must be resolved at Gate A",
+          "ATS checker still links to placeholder App Store URL"
+        ],
+        "lastValidation": "npm run lint (eslint) passed with 0 errors, 13 warnings on 2026-06-12",
+        "lastUpdated": "2026-06-12",
+        "qaNeeded": "tasks/2026-06-08-smoke-test-upload-backend.md (plan; execution pending)",
+        "estimatedCompletion": "Web is live; launch-support items above remain",
+        "decisionsNeeded": [
+          "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
+        ],
         "openQuestions": [],
         "evidence": {
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": null
+          "evidenceDate": "2026-06-12"
         },
-        "preferredSource": "derived",
+        "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
+          "tasks/progress.md",
           "tasks/MEMORY.md",
           "tasks/ERRORS.md",
           "tasks/lessons.md"
         ],
         "missing": [
-          "tasks/progress.md",
           "tasks/todo.md",
           "tasks/session-log.md"
         ],
-        "sourceConfidence": "Medium",
-        "notes": "Derived from tasks/todo.md, latest tasks/session-log.md, and tasks/MEMORY.md because tasks/progress.md is absent."
+        "sourceConfidence": "High",
+        "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": true,
         "path": ".agent-os/distribution/gtm-plan.md",
@@ -603,7 +615,7 @@
         "dirty": true,
         "dirtyCount": 2,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12)",
+        "lastCommit": "2026-06-12 6bb5f14 Auto-refresh dashboard (2026-06-12)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -679,8 +691,8 @@
       "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link"
     ],
     "next": [
-      "RunSmart Web: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
-      "ResumeBuilder AI (Web): Leave parked unless Resumely smoke exposes backend parse/render issues."
+      "RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
+      "ResumeBuilder AI (Web): PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx"
     ],
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
@@ -812,7 +824,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-12 10:13",
+    "lastRefresh": "2026-06-12 10:23",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -832,6 +844,7 @@
       "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
       "ResumeBuilder AI (Web): docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
       "ResumeBuilder AI (Web): tasks/MEMORY.md",
+      "ResumeBuilder AI (Web): tasks/progress.md",
       "Resumely iOS: docs/product/current-product-state.md",
       "Resumely iOS: docs/product/product-vision.md",
       "Resumely iOS: docs/specs/README.md",
@@ -860,6 +873,7 @@
       "RunSmart Web: docs/specs/2026-05-12-today-command-center.md",
       "RunSmart Web: docs/specs/README.md",
       "RunSmart Web: tasks/MEMORY.md",
+      "RunSmart Web: tasks/progress.md",
       "RunSmart Web: tasks/session-log.md",
       "RunSmart Web: tasks/todo.md",
       "RunSmart iOS: .agent-os/distribution/gtm-plan.md",
@@ -1231,8 +1245,8 @@
     {
       "id": "runsmart-web",
       "name": "RunSmart Web",
-      "state": "Implement Story 1 for the RunSmart Web Today page improvement",
-      "nextAction": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
+      "state": "Today page improvement planning, post Aha Moments merge",
+      "nextAction": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
       "blockerCount": 1,
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
@@ -1306,18 +1320,19 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 59529b9 docs: add Session End Rule - nothing stays local (#91)",
+      "lastCommit": "2026-06-12 0ece16f docs: seed tasks/progress.md for Agentic OS High confidence",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-11",
-      "evidenceGap": true,
-      "evidenceDate": "2026-05-12",
+      "freshestDate": "2026-06-12",
+      "evidenceGap": false,
+      "evidenceDate": "2026-06-12",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
+        "tasks/progress.md",
         "tasks/session-log.md",
         "docs/agent-os/project-context.md",
         "docs/specs/README.md",
@@ -1332,17 +1347,17 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "sourceConfidence": "Medium",
-      "preferredSource": "derived",
-      "parsedLastValidation": "Confirmed all requested Agent OS files exist.; Confirmed root router files are short: `AGENTS.md` 34 lines, `CLAUDE.md` 11 lines, `CODEX.md` 11 lines.; Did not run app build/lint/test because this was documentation/workflow-only installation",
-      "parsedLastUpdated": "2026-05-12",
-      "parsedActiveStory": "Implement Story 1 for the RunSmart Web Today page improvement"
+      "sourceConfidence": "High",
+      "preferredSource": "tasks/progress.md",
+      "parsedLastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
+      "parsedLastUpdated": "2026-06-12",
+      "parsedActiveStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)"
     },
     {
       "id": "resumebuilder-ai",
       "name": "ResumeBuilder AI (Web)",
-      "state": "PDF parse/render-preview rollout",
-      "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
+      "state": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+      "nextAction": "PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx",
       "blockerCount": 2,
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
@@ -1410,17 +1425,18 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-11 6d89fbb chore: commit stranded session artifacts - MEMORY update, Cursor rules, smoke-test doc",
+      "lastCommit": "2026-06-12 0fb03aa docs: seed tasks/progress.md for Agentic OS High confidence",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-11",
+      "freshestDate": "2026-06-12",
       "evidenceGap": false,
-      "evidenceDate": null,
+      "evidenceDate": "2026-06-12",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
+        "tasks/progress.md",
         "docs/agent-os/project-context.md",
         ".agent-os/distribution/gtm-plan.md",
         "docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
@@ -1430,11 +1446,11 @@
         "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "sourceConfidence": "Medium",
-      "preferredSource": "derived",
-      "parsedLastValidation": null,
-      "parsedLastUpdated": null,
-      "parsedActiveStory": null
+      "sourceConfidence": "High",
+      "preferredSource": "tasks/progress.md",
+      "parsedLastValidation": "npm run lint (eslint) passed with 0 errors, 13 warnings on 2026-06-12",
+      "parsedLastUpdated": "2026-06-12",
+      "parsedActiveStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues"
     },
     {
       "id": "agentic-os",
@@ -1491,7 +1507,7 @@
       "dirtyCount": 2,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-12 0fc02b2 Refresh dashboard + clear Agentic OS evidence gap (verify passed 2026-06-12)",
+      "lastCommit": "2026-06-12 6bb5f14 Auto-refresh dashboard (2026-06-12)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-12",
@@ -1620,12 +1636,13 @@
       "role": "Backend Support Engineer",
       "repoState": "Clean",
       "branch": "main...origin/main",
-      "nextAction": "Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+      "nextAction": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
+        "tasks/progress.md",
         "tasks/session-log.md",
         "docs/agent-os/project-context.md",
         "docs/specs/README.md",
@@ -1640,7 +1657,7 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/session-log.md, docs/agent-os/project-context.md. Current state: Implement Story 1 for the RunSmart Web Today page improvement. Next action: Run the first planning prompt from the final installation report to convert the next product idea into a brief, spec, and small implementation stories. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Today page improvement planning, post Aha Moments merge. Next action: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ai",
@@ -1648,11 +1665,12 @@
       "role": "Backend Rollout Engineer",
       "repoState": "Clean",
       "branch": "main...origin/main",
-      "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "nextAction": "PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
+        "tasks/progress.md",
         "docs/agent-os/project-context.md",
         ".agent-os/distribution/gtm-plan.md",
         "docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
@@ -1662,7 +1680,7 @@
         "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, docs/agent-os/project-context.md, .agent-os/distribution/gtm-plan.md, docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md. Current state: PDF parse/render-preview rollout. Next action: Leave parked unless Resumely smoke exposes backend parse/render issues.. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, .agent-os/distribution/gtm-plan.md. Current state: Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked. Next action: PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "agentic-os",
@@ -1687,7 +1705,7 @@
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link",
-    "portfolioState": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Implement Story 1 for the RunSmart Web Today page improvement \u00b7 ResumeBuilder AI (Web) \u2014 PDF parse/render-preview rollout",
+    "portfolioState": "RunSmart iOS \u2014 1.0.2 (build 14) development and App Store resubmission prep: Push feat/wp6-aha-moments-ios, merge to main, then archive and upload 1.0.2 build 14 to App Store Connect and resubmit with the reviewer response \u00b7 Resumely iOS \u2014 App Store submission readiness: Rebuild on real device, sign in, smoke optimize \u2192 Improve ATS \u2192 Preview & Export PDF \u2192 Submit Package \u2192 Save Package to Me \u2192 open package in Me \u2192 share resume PDF/copy cover letter/tap Submit at Job Link \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1717,10 +1735,9 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 2,
+    "evidenceGapCount": 1,
     "evidenceGapProjects": [
-      "RunSmart iOS",
-      "RunSmart Web"
+      "RunSmart iOS"
     ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -1728,7 +1745,7 @@
     "driftWarningCount": 0,
     "driftProjects": [],
     "openQuestionCount": 3,
-    "repoDecisionCount": 2
+    "repoDecisionCount": 4
   },
   "dataFlow": [
     {
@@ -1759,7 +1776,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-12 10:13",
+    "lastRunAt": "2026-06-12 10:23",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -1794,6 +1811,14 @@
     }
   ],
   "repoDecisions": [
+    {
+      "project": "RunSmart Web",
+      "decision": "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
+    },
+    {
+      "project": "ResumeBuilder AI (Web)",
+      "decision": "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
+    },
     {
       "project": "Agentic OS",
       "decision": "Should drift detection stay detect-only, or gain a `refresh --reconcile` that auto-heals curated narrative for High projects?"
