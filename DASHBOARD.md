@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 
 ## Run Center
 
-- Last refresh: 2026-06-12 10:23
+- Last refresh: 2026-06-12 10:38
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -33,7 +33,7 @@ Best next action: Resumely iOS: Rebuild on real device, sign in, smoke optimize 
 - [RunSmart iOS] main is 2 commit(s) behind origin (pull needed)
 - [RunSmart iOS] fix/code-review-p0-identity: unmerged commits, never pushed, last commit 2026-06-11
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree
+- [Agentic OS] 7 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

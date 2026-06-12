@@ -14,7 +14,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | App Store submission readiness | Rebuild on real device, sign in, smoke optimize → Improve ATS → Preview & Export PDF → Submit Package → Save Package to Me → open package in Me → share resume PDF/copy cover letter/tap Submit at Job Link | 3 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-12 596cb5a Fix submit package save-to-me flow |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | No | Fresh | High | tasks/progress.md | 2026-06-12 0ece16f docs: seed tasks/progress.md for Agentic OS High confidence |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx | 2 | No | Fresh | High | tasks/progress.md | 2026-06-12 0fb03aa docs: seed tasks/progress.md for Agentic OS High confidence |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-12 6bb5f14 Auto-refresh dashboard (2026-06-12) |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (7) | Fresh | High | tasks/progress.md | 2026-06-12 42f0dbf CEO Review + Executive Dashboard update 2026-06-12 |
 
 ## Evidence Gaps
 
@@ -33,7 +33,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
 - [RunSmart iOS] fix/code-review-p0-identity: unmerged commits, never pushed, last commit 2026-06-11 -> Push fix/code-review-p0-identity and open a PR, or consciously discard it.
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 7 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 

@@ -619,7 +619,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-12 10:23",
+      "lastRefresh": "2026-06-12 10:38",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1299,10 +1299,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 2,
+        "dirtyCount": 7,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-12 6bb5f14 Auto-refresh dashboard (2026-06-12)",
+        "lastCommit": "2026-06-12 42f0dbf CEO Review + Executive Dashboard update 2026-06-12",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-12",
@@ -2407,19 +2407,20 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 2,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Dirty shippable app repo: Resumely iOS.",
+        "Evidence gap after latest commit: RunSmart iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
