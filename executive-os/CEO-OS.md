@@ -1,3 +1,4 @@
+<!-- Last reviewed: 2026-06-12 — kept per mid-July trim rule -->
 # CEO OS
 
 > **Not daily** — route here for weekly CEO review, portfolio tradeoffs, and OKRs. Daily path: `DAILY.md` → `./agentic-os morning`.

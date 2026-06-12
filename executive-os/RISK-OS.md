@@ -1,3 +1,4 @@
+<!-- Last reviewed: 2026-06-12 — kept per mid-July trim rule -->
 # Risk OS
 
 > **Not daily** — route here before risky or irreversible ship decisions. Daily path: trust banner on the Command Center.

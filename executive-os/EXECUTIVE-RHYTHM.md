@@ -15,6 +15,7 @@ and which existing artifact it reuses.
 | Weekly | Distribution review | `../distribution-os/weekly-growth-review.md` (existing) | Channel status feeding the CEO Review |
 | Monthly | CFO Review | `PROMPTS/cfo-monthly-review.md` → `workflows/monthly-finance-review.md` | Financial snapshot, runway, risks, recommended financial actions |
 | Monthly | Strategy review | `workflows/weekly-ceo-review.md` run at portfolio depth | Portfolio tradeoffs, focus rules check |
+| Monthly (mid-month) | Executive-OS trim | Review last-touched dates on CEO/CFO/COO/RISK/ANALYSIS-OS.md files; archive any with no real review in the prior 6 weeks | Lean executive-os surface area |
 | Quarterly | OKR review | `templates/okr-template.md` (Phase 2 workflow) | Set / score quarterly OKRs |
 
 ## Recommended Order Within The Weekly CEO Review

@@ -1,3 +1,4 @@
+<!-- Last reviewed: 2026-06-12 — kept per mid-July trim rule -->
 # Analysis OS
 
 > **Not daily** — route here for research sprints and opportunity scans. Daily path: Command Center; research artifacts show as `research_only` in the plan index.

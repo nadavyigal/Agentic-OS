@@ -1,3 +1,4 @@
+<!-- Last reviewed: 2026-06-12 — kept per mid-July trim rule -->
 # CFO / Monetization OS
 
 > **Not daily** — route here for monthly finance review, pricing, runway, and monetization shape. Daily path: `DAILY.md` Tier 0.

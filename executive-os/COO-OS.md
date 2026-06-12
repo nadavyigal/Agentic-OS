@@ -1,3 +1,4 @@
+<!-- Last reviewed: 2026-06-12 — kept per mid-July trim rule -->
 # COO OS
 
 > **Not daily** — route here when sequencing is unclear or the Command Center shows **Needs next packet** for a strategic plan. Daily path: active work packets on the Command Center.
