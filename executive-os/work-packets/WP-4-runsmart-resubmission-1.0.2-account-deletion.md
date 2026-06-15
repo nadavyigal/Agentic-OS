@@ -6,7 +6,7 @@
 - Workflow pattern: normal
 - Input trust: trusted
 - Outcome loop: runsmart-submission
-- Success signal: New build 1.0.2 (14) uploaded with working in-app account deletion and WP-6 aha moments, screen recording attached in App Review notes, submission accepted.
+- Success signal: New build 1.0.2 (15) uploaded with working in-app account deletion and WP-6 aha moments, screen recording attached in App Review notes, submission accepted.
 - Escalation: none
 
 # Work Packet
@@ -37,7 +37,7 @@ Guideline 5.1.1(v): app supports account creation (Sign in with Apple) but offer
 2. Merge `codex/app-review-rejection-recovery` to `main` (it also carries the HealthKit-disclosure and sign-in-flow fixes from the prior rejection).
 3. Device QA on a physical iPhone: sign in with Apple → Profile → Account → Delete Account → confirm → app returns to sign-in. Verify in Supabase that the auth user and profile rows are gone.
 4. Record the flow on a physical device: sign in (or create account) → navigate to deletion → complete deletion. Upload the recording link in App Store Connect → App Review Information → Notes.
-5. Archive and upload build 1.0.2 (14 — after WP-6 aha moments land; was 13) per `docs/qa/2026-06-08-build12-submission-readiness-runbook.md`.
+5. Archive and upload build 1.0.2 (15 — uploaded 2026-06-15; wait for processing, then select in App Store Connect) per `docs/qa/2026-06-08-build12-submission-readiness-runbook.md`.
 6. Reply to the rejection message in App Store Connect noting account deletion is now in-app, and resubmit.
 
 ## Constraints
@@ -49,4 +49,4 @@ Guideline 5.1.1(v): app supports account creation (Sign in with Apple) but offer
 - Edge function returns 200 and the auth user disappears from Supabase Auth users list.
 - Deleting a test account leaves zero rows for that user in: profiles, runs, plans, workouts, conversations, garmin_*, user_streaks, wellness_checkins, run_debriefs.
 - Screen recording captured on a physical device and linked in ASC notes.
-- Build 14 processed in ASC with no missing-compliance warnings.
+- Build 15 processed in ASC with no missing-compliance warnings.

@@ -6,7 +6,7 @@
 - Workflow pattern: normal
 - Input trust: trusted
 - Outcome loop: runsmart-submission
-- Success signal: All four aha moments work in the native iOS app using existing design components, simulator build + tests pass, build bumped to 14, included in the resubmission archive.
+- Success signal: All four aha moments work in the native iOS app using existing design components, simulator build + tests pass, build bumped to 15, included in the resubmission archive.
 - Depends on: WP-4 (resubmission flow). The account-deletion work in build 13 is already done; this packet adds the aha moments on top and the archive then ships both.
 
 # Work Packet
@@ -17,7 +17,7 @@ iOS Engineer (Codex / Cursor / Claude Code — founder will paste the activation
 ## Project
 RunSmart iOS
 Path: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`
-Branch: `main` (currently 1.0.2 build 13)
+Branch: `main` (current release line is 1.0.2 build 15)
 
 ## Goal
 Port the four AHA_MOMENTS to the native iOS app: rebuild the moment components, the insight/context detection services, and `user_aha_moments` persistence in Swift, composed into the existing UI/UX.
@@ -49,7 +49,7 @@ lib/contextDetector.ts, components/*-moment.tsx). Port the logic, not the code.
 
 GOAL
 Bring the four aha moments to the native SwiftUI app, composed into the existing screens and
-design system. Success = all four moments fire per the spec, build + tests pass, build = 14.
+design system. Success = all four moments fire per the spec, build + tests pass, build = 15.
 
 BACKEND (already live — do not create)
 Supabase project dxqglotcyirxzyqaxqln (the app's existing SupabaseManager.client):
@@ -116,7 +116,7 @@ TASK — one story at a time, in this order
 6. Analytics: add to Services/Analytics/AnalyticsEvents.swift following its existing
    static-func style: trackAhaMomentFired(momentId:context:), trackAhaMomentCTAClicked(momentId:),
    trackAhaMomentDismissed(momentId:). Fire them from the views.
-7. Bump CURRENT_PROJECT_VERSION to 14 in IOS RunSmart app.xcodeproj/project.pbxproj
+7. Bump CURRENT_PROJECT_VERSION to 15 in IOS RunSmart app.xcodeproj/project.pbxproj
    (all 4 occurrences). Leave MARKETING_VERSION at 1.0.2.
 
 UI/UX CONSTRAINTS — compose into the existing system, do not restyle the app
@@ -159,5 +159,5 @@ VALIDATION (run all before claiming done)
 
 ## After Implementation (founder, part of WP-4 flow)
 1. Device smoke including the four moments.
-2. Archive 1.0.2 (14) — this build carries BOTH the account deletion fix and the aha moments.
-3. Continue WP-4 steps 4-6 (recording, upload, ASC reply) using build 14 instead of 13.
+2. Archive 1.0.2 (15) — this build carries BOTH the account deletion fix and the aha moments.
+3. Continue WP-4 steps 4-6 (recording, upload, ASC reply) using build 15.

@@ -1,15 +1,15 @@
-# COO Operating Review - 2026-06-11
+# COO Operating Review - 2026-06-15
 
 - Status: current sequencing note
-- Reviewed: 2026-06-11
-- Selected next action: RunSmart iOS 1.0.2 build 14 resubmission prep, after resolving the stranded RunSmart iOS worktree.
+- Reviewed: 2026-06-15
+- Selected next action: RunSmart iOS 1.0.2 build 15 App Store Connect processing and resubmission prep.
 - Action type: local-repo status hygiene + manual-founder release QA
 - Source: DASHBOARD.md, PROJECT-STATUS.md, dashboard/status.json, RunSmart iOS tasks/progress.md, Resumely iOS tasks/progress.md, executive-os/loops/resumely-submission.md, executive-os/COO-OS.md
-- Revisit when: RunSmart build 14 is uploaded/submitted, Apple responds again, Resumely device smoke becomes the next available founder task, or the next morning review still shows needs_next_packet rows.
+- Revisit when: RunSmart build 15 is selected/resubmitted, Apple responds again, Resumely device smoke becomes the next available founder task, or the next morning review still shows needs_next_packet rows.
 
 ## 1. Operating Summary
 
-Execution is in App Review response mode, not passive waiting. RunSmart iOS is the primary product and the current path is 1.0.2 build 14, combining the account deletion response from WP-4 and the WP-6 aha moments work. Resumely iOS is also actionable, but its next move requires founder device smoke, PostHog Live Events screenshots, and local Keychain access before archive/upload. Monetization remains ready-to-build but parked until first-cohort activation is readable.
+Execution is in App Review response mode, not passive waiting. RunSmart iOS is the primary product and the current path is 1.0.2 build 15. Build 15 archive/export/upload succeeded and now needs App Store Connect processing, App Privacy/App Review notes, physical-device or TestFlight smoke, build selection, and resubmission. Resumely iOS is also actionable, but its next move requires founder device smoke, export/share proof, and local Keychain access before archive/upload. Monetization remains ready-to-build but parked until first-cohort activation is readable.
 
 Evidence: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, RunSmart iOS `tasks/progress.md`, Resumely iOS `tasks/progress.md`, `executive-os/EXECUTIVE-DECISIONS.md` EXD-005 and EXD-009.
 
@@ -19,7 +19,7 @@ Evidence: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, RunSmart
 
 - Evidence: `executive-os/loops/resumely-submission.md` still says "submitted, wait for Apple review outcome"; refreshed `dashboard/status.json`, `PROJECT-STATUS.md`, and Resumely iOS `tasks/progress.md` say "App Store submission readiness" with device smoke, PostHog live-event verification, and archive/export still open.
 - Next milestone: restore the Resumely submission loop to the pre-submit milestone: founder real-device smoke, PostHog evidence, then Xcode Organizer archive/upload. Do not reuse closed WP-1 as-is.
-- Loop action this review: note the drift and keep Resumely second in sequence while RunSmart build 14 resubmission is open.
+- Loop action this review: keep Resumely second in sequence while RunSmart build 15 resubmission is open.
 
 ## 3. Plans Needing Packets
 
@@ -29,7 +29,7 @@ Evidence: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, RunSmart
 
 - Design: Pre-Launch Sprint - Two-Track GTM Prep
   - Source: `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md`
-  - Next milestone to packetize: RunSmart launch-window assets, after build 14 is back with Apple or approval is near enough that release work is no longer blocking.
+  - Next milestone to packetize: RunSmart launch-window assets, after build 15 is back with Apple or approval is near enough that release work is no longer blocking.
 
 - Resumely Plan 1: ASO + Launch Assets
   - Source: `docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md` in the ResumeBuilder AI web repo.
@@ -37,15 +37,15 @@ Evidence: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, RunSmart
 
 - GTM Plan - RunSmart iOS
   - Source: RunSmart iOS `.agent-os/distribution/gtm-plan.md`
-  - Next milestone to packetize: App Store listing/ASO hardening after build 14 resubmission is complete.
+  - Next milestone to packetize: App Store listing/ASO hardening after build 15 resubmission is complete.
 
 ## 4. Current Bottleneck
 
-The current bottleneck is RunSmart iOS build 14 resubmission readiness, owned by founder + local RunSmart iOS release QA. The unblock is not a strategy decision. It is: resolve the stranded RunSmart iOS worktree, push/merge the current release branch, archive/export with distribution signing, inspect archive provenance, upload to App Store Connect, and submit the reviewer response.
+The current bottleneck is RunSmart iOS build 15 App Store Connect resubmission readiness, owned by founder + local RunSmart iOS release QA. The unblock is not a strategy decision. It is: wait for build 15 processing, update App Privacy and App Review notes with the delete-account recording, run the live smoke on an Apple-auth-capable physical device or TestFlight build, select build 15, and submit the reviewer response.
 
 ## 5. Next Execution Sequence
 
-1. **local-repo + manual-founder release QA:** RunSmart iOS build 14 App Review response path. Resolve stranded worktree, verify reviewer-device UI, distribution archive/export, App Store Connect upload readiness, and reviewer response text. Founder triggers upload/submission.
+1. **manual-founder + release QA:** RunSmart iOS build 15 App Review response path. Wait for processing, update App Privacy/App Review notes, run physical-device/TestFlight smoke, select build 15, and resubmit. Founder triggers final submission.
 2. **manual-founder + QA:** If RunSmart signing/upload is blocked by account or device access, run the Resumely real-device smoke instead: sign in, optimize, design, expert, export, and capture PostHog Live Events.
 3. **global-OS:** After one App Store gate moves, run the next COO review to packetize one GTM/ASO milestone from the four `needs_next_packet` plans.
 
@@ -71,7 +71,7 @@ Reason: no external research is needed for the next step. The rejection response
 
 Yes.
 
-Exact question: Is the RunSmart build 14 resubmission artifact and reviewer response sufficient to address the current App Review rejection, without accidentally shipping stale worktree state or expanding scope beyond the intended release?
+Exact question: Is the RunSmart build 15 resubmission artifact, privacy metadata, delete-account screen recording, and reviewer response sufficient to address the current App Review rejection without expanding scope beyond the intended release?
 
 Owner: Risk/QA layer inside the RunSmart iOS release packet. No separate executive risk memo is needed before starting.
 
