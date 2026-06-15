@@ -586,9 +586,9 @@
       "name": "Agentic OS",
       "type": "Cross-project operating system",
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
-      "freshness": "Needs Review",
+      "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-15 28a0ac6 Refresh morning brief for build 15); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -613,11 +613,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "dirty": true,
-        "dirtyCount": 11,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-12 534763e chore: executive-os trim pass + add monthly trim cadence to EXECUTIVE-RHYTHM.md",
+        "lastCommit": "2026-06-15 28a0ac6 Refresh morning brief for build 15",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -629,9 +629,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Needs Review",
-        "freshestDate": "2026-06-12",
-        "evidenceGap": false,
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-15",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
       "taskParse": {
@@ -824,8 +824,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-15 16:04",
-    "command": "./agentic-os morning",
+    "lastRefresh": "2026-06-15 16:06",
+    "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1533,14 +1533,14 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 11,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-12 534763e chore: executive-os trim pass + add monthly trim cadence to EXECUTIVE-RHYTHM.md",
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-06-15 28a0ac6 Refresh morning brief for build 15",
       "stale": false,
-      "freshness": "Needs Review",
-      "freshestDate": "2026-06-12",
-      "evidenceGap": false,
+      "freshness": "Fresh",
+      "freshestDate": "2026-06-15",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
       "buildStatus": null,
@@ -1719,10 +1719,10 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "main...origin/main [ahead 1]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
@@ -1732,7 +1732,7 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -1766,9 +1766,10 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 1,
+    "evidenceGapCount": 2,
     "evidenceGapProjects": [
-      "RunSmart Web"
+      "RunSmart Web",
+      "Agentic OS"
     ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -1806,17 +1807,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-15 16:04",
-    "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-15 16:04",
+    "lastCommand": "./agentic-os refresh",
+    "lastRunAt": "2026-06-15 16:06",
+    "checksStatus": "Pending verify",
+    "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Product experience polish. Next action: Complete an authenticated real-device smoke with delete-account/re-register, upload a real resume/job, optimize through diagnosis, export/share PDF, then validate/upload the archive from Xcode Organizer with App Store distribution signing. Known blockers: CoreSimulator is currently hanging on app install/screenshot/container commands, so interactive simulator smoke and live delete-account/re-register verification could not be completed in this session. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "codex/resume-aha-moments...origin/codex/resume-aha-moments [gone]",
-    "readyForNextSession": true,
+    "readyForNextSession": false,
     "summary": "Resumely iOS: Complete an authenticated real-device smoke with delete-account/re-register, upload a real resume/job, optimize through diagnosis, export/share PDF, then validate/upload the archive from Xcode Organizer with App Store distribution signing",
     "nextActions": [
       {
@@ -2706,11 +2707,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 4,
+    "uncommitted": 1,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2789,7 +2790,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -2877,12 +2878,18 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 1 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "11 uncommitted file(s) in the primary working tree",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 10,
+    "actionableCount": 11,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": []
