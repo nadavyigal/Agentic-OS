@@ -14,14 +14,14 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Product experience polish | Complete an authenticated real-device smoke with delete-account/re-register, upload a real resume/job, optimize through diagnosis, export/share PDF, then validate/upload the archive from Xcode Organizer with App Store distribution signing | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-14 49d0b59 fix(ios): harden resume diagnosis review issues |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (3) | Fresh | High | tasks/progress.md | 2026-06-14 15f6dc5 fix(ci): increase to 5 shards to prevent OOM in shard 3, fix stale test assertions |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx | 2 | No | Needs Review | High | tasks/progress.md | 2026-06-12 0fb03aa docs: seed tasks/progress.md for Agentic OS High confidence |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-15 28a0ac6 Refresh morning brief for build 15 |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-15 d4ac27c Refresh dashboard sync after morning brief |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-06-12, last commit 2026-06-14 15f6dc5 fix(ci): increase to 5 shards to prevent OOM in shard 3, fix stale test assertions
-- Agentic OS: validated 2026-06-12, last commit 2026-06-15 28a0ac6 Refresh morning brief for build 15
+- Agentic OS: validated 2026-06-12, last commit 2026-06-15 d4ac27c Refresh dashboard sync after morning brief
 
 ## Drift Warnings
 
@@ -42,8 +42,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Resumely iOS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [RunSmart Web] 3 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 2 unpushed commit(s) -> Sync the default branch first: pull, then push.
 
 ## Work Packet Hygiene
 

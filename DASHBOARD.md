@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Complete an authenticated real-device smoke with
 
 ## Run Center
 
-- Last refresh: 2026-06-15 16:06
+- Last refresh: 2026-06-15 16:16
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,11 +24,11 @@ Best next action: Resumely iOS: Complete an authenticated real-device smoke with
 | Resumely iOS | Product experience polish | Complete an authenticated real-device smoke with delete-account/re-register, upload a real resume/job, optimize through diagnosis, export/share PDF, then validate/upload the archive from Xcode Organizer with App Store distribution signing | Yes | Fresh | High |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | Yes | Fresh | High |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | PDF + DOCX upload end-to-end smoke test (top risk before App Store approval), then replace the APP_STORE_URL placeholder (id000000000) in src/app/[locale]/ats-checker/page.tsx | No | Needs Review | High |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
 
 ## Stranded Work
 
-11 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+10 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370
 - [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7
@@ -39,8 +39,7 @@ Best next action: Resumely iOS: Complete an authenticated real-device smoke with
 - [Resumely iOS] worktree on claude/sweet-agnesi-7d2c70 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/sweet-agnesi-7d2c70
 - [Resumely iOS] 4 uncommitted file(s) in the primary working tree
 - [RunSmart Web] 3 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 1 unpushed commit(s)
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 2 unpushed commit(s)
 
 ## Work Packet Hygiene
 
