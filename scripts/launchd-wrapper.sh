@@ -15,7 +15,7 @@ notify_fail() {
 {
   echo "=== $(date '+%Y-%m-%d %H:%M:%S') wrapper start ==="
   cd "$REPO"
-  "$REPO/scripts/daily-refresh.sh"
+  /bin/bash "$REPO/scripts/daily-refresh.sh"
 } >> "$LOG" 2>&1 || {
   code=$?
   notify_fail "$code"

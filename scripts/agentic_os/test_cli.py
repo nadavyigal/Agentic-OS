@@ -638,21 +638,24 @@ class TestPortfolioTrust(unittest.TestCase):
 
 
 class TestGroundTruthContradictions(unittest.TestCase):
-    def test_posthog_live_users_contradict_in_review_and_force_refresh_required(self):
+    def test_posthog_live_users_contradict_in_review_for_both_apps_and_force_refresh_required(self):
         old = os.environ.get(cli.GROUND_TRUTH_OVERRIDES_ENV)
         os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = (
-            '{"posthog":{"runsmart-ios":{"liveUsers7d":48}},"appStore":{}}'
+            '{"posthog":{"runsmart-ios":{"liveUsers7d":6},'
+            '"resumebuilder-ios":{"liveUsers7d":12}},"appStore":{}}'
         )
         try:
             with tempfile.TemporaryDirectory() as d:
                 root = Path(d)
-                app_dir = root / "app"
-                app_dir.mkdir()
+                runsmart_dir = root / "runsmart"
+                resumely_dir = root / "resumely"
+                runsmart_dir.mkdir()
+                resumely_dir.mkdir()
                 evidence = [
                     cli.ProjectEvidence(
                         project_id="runsmart-ios",
                         name="RunSmart iOS",
-                        path=app_dir,
+                        path=runsmart_dir,
                         exists=True,
                         branch="main",
                         dirty=False,
@@ -661,7 +664,20 @@ class TestGroundTruthContradictions(unittest.TestCase):
                         last_commit="2026-06-15 deadbeef test",
                         source_files=[],
                         task_parse=cli.empty_task_parse(),
-                    )
+                    ),
+                    cli.ProjectEvidence(
+                        project_id="resumebuilder-ios",
+                        name="Resumely iOS",
+                        path=resumely_dir,
+                        exists=True,
+                        branch="main",
+                        dirty=False,
+                        dirty_count=0,
+                        extra_worktrees=0,
+                        last_commit="2026-06-15 feedface test",
+                        source_files=[],
+                        task_parse=cli.empty_task_parse(),
+                    ),
                 ]
                 health = [
                     {
@@ -674,11 +690,26 @@ class TestGroundTruthContradictions(unittest.TestCase):
                         "dirty": False,
                         "sourceConfidence": "High",
                         "evidenceGap": False,
-                    }
+                    },
+                    {
+                        "id": "resumebuilder-ios",
+                        "name": "Resumely iOS",
+                        "state": "In App Store review (build 4)",
+                        "parsedLastUpdated": "2026-06-16",
+                        "freshestDate": "2026-06-16",
+                        "freshness": "Fresh",
+                        "dirty": False,
+                        "sourceConfidence": "High",
+                        "evidenceGap": False,
+                    },
                 ]
                 truth = cli.build_ground_truth(evidence, health)
-                self.assertTrue(truth["contradictions"])
-                self.assertIn("PostHog shows 48 live users", truth["contradictions"][0]["message"])
+                hard = [item for item in truth["contradictions"] if item["severity"] == "hard"]
+                self.assertEqual(2, len(hard))
+                self.assertTrue(any("RunSmart" in item["message"] for item in hard))
+                self.assertTrue(any("Resumely" in item["message"] for item in hard))
+                self.assertTrue(any("PostHog shows 6 live users" in item["message"] for item in hard))
+                self.assertTrue(any("PostHog shows 12 live users" in item["message"] for item in hard))
                 trust = cli.build_portfolio_trust(
                     health,
                     {"synced": True, "notes": []},
@@ -692,6 +723,79 @@ class TestGroundTruthContradictions(unittest.TestCase):
                 os.environ.pop(cli.GROUND_TRUTH_OVERRIDES_ENV, None)
             else:
                 os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = old
+
+    def test_app_store_states_accept_raw_env_strings(self):
+        old_key = os.environ.get(cli.POSTHOG_KEY_ENV)
+        old_state = os.environ.get(cli.APP_STORE_STATE_ENV)
+        old_override = os.environ.get(cli.GROUND_TRUTH_OVERRIDES_ENV)
+        os.environ.pop(cli.POSTHOG_KEY_ENV, None)
+        os.environ.pop(cli.GROUND_TRUTH_OVERRIDES_ENV, None)
+        os.environ[cli.APP_STORE_STATE_ENV] = '{"runsmart-ios":"live","resumebuilder-ios":"live"}'
+        try:
+            with tempfile.TemporaryDirectory() as d:
+                root = Path(d)
+                runsmart_dir = root / "runsmart"
+                resumely_dir = root / "resumely"
+                runsmart_dir.mkdir()
+                resumely_dir.mkdir()
+                evidence = [
+                    cli.ProjectEvidence(
+                        project_id="runsmart-ios",
+                        name="RunSmart iOS",
+                        path=runsmart_dir,
+                        exists=True,
+                        branch="main",
+                        dirty=False,
+                        dirty_count=0,
+                        extra_worktrees=0,
+                        last_commit="2026-06-15 deadbeef test",
+                        source_files=[],
+                        task_parse=cli.empty_task_parse(),
+                    ),
+                    cli.ProjectEvidence(
+                        project_id="resumebuilder-ios",
+                        name="Resumely iOS",
+                        path=resumely_dir,
+                        exists=True,
+                        branch="main",
+                        dirty=False,
+                        dirty_count=0,
+                        extra_worktrees=0,
+                        last_commit="2026-06-15 feedface test",
+                        source_files=[],
+                        task_parse=cli.empty_task_parse(),
+                    ),
+                ]
+                health = [
+                    {"id": "runsmart-ios", "name": "RunSmart iOS", "state": "Live on the App Store"},
+                    {"id": "resumebuilder-ios", "name": "Resumely iOS", "state": "Live on the App Store"},
+                ]
+
+                truth = cli.build_ground_truth(evidence, health)
+
+                self.assertEqual([], truth["contradictions"])
+                self.assertEqual(["live", "live"], [item["state"] for item in truth["appStore"]])
+                self.assertNotIn(
+                    "App Store state missing for RunSmart (set AGENTIC_OS_APPSTORE_STATES)",
+                    truth["unavailable"],
+                )
+                self.assertNotIn(
+                    "App Store state missing for Resumely (set AGENTIC_OS_APPSTORE_STATES)",
+                    truth["unavailable"],
+                )
+        finally:
+            if old_key is None:
+                os.environ.pop(cli.POSTHOG_KEY_ENV, None)
+            else:
+                os.environ[cli.POSTHOG_KEY_ENV] = old_key
+            if old_state is None:
+                os.environ.pop(cli.APP_STORE_STATE_ENV, None)
+            else:
+                os.environ[cli.APP_STORE_STATE_ENV] = old_state
+            if old_override is None:
+                os.environ.pop(cli.GROUND_TRUTH_OVERRIDES_ENV, None)
+            else:
+                os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = old_override
 
 
 class TestFounderNextActions(unittest.TestCase):

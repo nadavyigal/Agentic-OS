@@ -2110,6 +2110,7 @@ def declared_prelaunch(state: str) -> bool:
         token in low
         for token in (
             "in review",
+            "app store review",
             "review pending",
             "not launched",
             "not submitted",
@@ -2142,6 +2143,14 @@ def normalize_app_store_state(value: str | None) -> str:
     if low in {"not submitted", "not_submitted", "draft"}:
         return "not_submitted"
     return "unknown"
+
+
+def normalize_app_store_entry(value: Any) -> dict[str, Any]:
+    if isinstance(value, dict):
+        return value
+    if isinstance(value, str):
+        return {"state": value, "source": "env"}
+    return {}
 
 
 def build_ground_truth(evidence: list[ProjectEvidence], project_health: list[dict[str, Any]]) -> dict[str, Any]:
@@ -2224,7 +2233,9 @@ def build_ground_truth(evidence: list[ProjectEvidence], project_health: list[dic
                 }
             )
 
-        app_state_override = (overrides.get("appStore") or {}).get(app_id) or app_store_raw.get(app_id) or {}
+        app_state_override = normalize_app_store_entry(
+            (overrides.get("appStore") or {}).get(app_id) or app_store_raw.get(app_id)
+        )
         app_store_state = normalize_app_store_state(app_state_override.get("state"))
         app_store_entry = {
             "appId": app_id,

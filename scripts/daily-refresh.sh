@@ -10,7 +10,13 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 REPO="/Users/nadavyigal/Documents/Projects /Agentic OS"
 LOG="$REPO/logs/daily-refresh.log"
+ENV_FILE="$HOME/.config/agentic-os.env"
 GENERATED=(dashboard PROJECT-STATUS.md DASHBOARD.md executive-os/EXECUTIVE-DASHBOARD.md)
+
+if [ -f "$ENV_FILE" ]; then
+  # shellcheck disable=SC1090
+  source "$ENV_FILE"
+fi
 
 mkdir -p "$REPO/logs"
 notify() {
