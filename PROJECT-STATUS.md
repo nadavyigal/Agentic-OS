@@ -10,11 +10,11 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | 1.0.2 build 15 - App Store Connect processing and resubmission prep | Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit | 1 | Yes (15) | Fresh | High | tasks/progress.md | 2026-06-15 7775899 docs(ios): record build 15 App Store upload |
+| RunSmart iOS | 1.0.2 build 15 - App Store Connect processing and resubmission prep | Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit | 1 | Yes (21) | Fresh | High | tasks/progress.md | 2026-06-15 7775899 docs(ios): record build 15 App Store upload |
 | Resumely iOS | App Store review pending + Gate A analytics (deadline 2026-06-21) | Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled | 1 | Yes (40) | Fresh | High | tasks/progress.md | 2026-06-16 92a645c feat(ios): enable Resume Library — /api/v1/resumes confirmed live on production |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | 2 | No | Fresh | High | tasks/progress.md | 2026-06-17 497a6f8 fix(ats): switch PDF parsing to unpdf — fixes the Vercel 500 for real |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-15 de302dc Restore dashboard trust state |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-17 ff9ea02 docs: close Resumely submission loop |
 
 ## Evidence Gaps
 
@@ -22,7 +22,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-06-12, last commit 2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack
 - ResumeBuilder AI (Web): validated 2026-06-16, last commit 2026-06-17 497a6f8 fix(ats): switch PDF parsing to unpdf — fixes the Vercel 500 for real
-- Agentic OS: validated 2026-06-12, last commit 2026-06-15 de302dc Restore dashboard trust state
+- Agentic OS: validated 2026-06-12, last commit 2026-06-17 ff9ea02 docs: close Resumely submission loop
 
 ## Drift Warnings
 
@@ -34,14 +34,19 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 15 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart iOS] 21 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Resumely iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
+- [Resumely iOS] claude/relaxed-northcutt-cb6240: unmerged commits, remote branch deleted, last commit 2026-06-16 -> Push claude/relaxed-northcutt-cb6240 and open a PR, or consciously discard it.
 - [Resumely iOS] feat/localization-updates: unmerged commits, remote branch deleted, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] monitization: unmerged commits, never pushed, last commit 2026-06-16 -> Push monitization and open a PR, or consciously discard it.
+- [Resumely iOS] worktree on codex/post-live-d7-readout at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-d7-readout -> Land or discard this worktree, then `git worktree remove` it.
+- [Resumely iOS] worktree on codex/resumely-release-qa at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-resumely-release-qa -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on version-2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] 40 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [RunSmart Web] fix/garmin-ios-branch-fixes: 1 unpushed commit(s), last commit 2026-06-16 -> Push fix/garmin-ios-branch-fixes and open a PR, or explicitly hand it off.
 - [RunSmart Web] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 

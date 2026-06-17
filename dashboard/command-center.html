@@ -615,8 +615,8 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-17 09:35",
-      "command": "./agentic-os morning",
+      "lastRefresh": "2026-06-17 12:57",
+      "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -888,7 +888,7 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 15,
+        "dirtyCount": 21,
         "extraWorktrees": 2,
         "branch": "main...origin/main",
         "lastCommit": "2026-06-15 7775899 docs(ios): record build 15 App Store upload",
@@ -1039,8 +1039,8 @@
         ],
         "dirty": true,
         "dirtyCount": 40,
-        "extraWorktrees": 3,
-        "branch": "main...origin/main",
+        "extraWorktrees": 5,
+        "branch": "main...origin/main [behind 2]",
         "lastCommit": "2026-06-16 92a645c feat(ios): enable Resume Library \u2014 /api/v1/resumes confirmed live on production",
         "stale": false,
         "freshness": "Fresh",
@@ -1368,10 +1368,10 @@
         "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-15 de302dc Restore dashboard trust state",
+        "lastCommit": "2026-06-17 ff9ea02 docs: close Resumely submission loop",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-15",
+        "freshestDate": "2026-06-17",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12",
         "evidenceTests": [],
@@ -1469,7 +1469,7 @@
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [behind 2]",
         "nextAction": "Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -2109,17 +2109,17 @@
       "outcomeLoops": [
         {
           "title": "Outcome Loop: Resumely Submission",
-          "status": "active",
+          "status": "closed",
           "owner": "COO OS",
           "outcome": "Resumely is approved and live with launch analytics verified",
           "source": "executive-os/BUSINESS-GTM-PLAN-V0.md",
-          "linkedPacket": "WP-5-resumely-resubmission-build3-apple-signin-deletion.md if App Store Connect confirms the June 10 rejection remains current; otherwise confirm ASC state before acting",
-          "leadingSignal": "Dashboard currently reports Resumely submission readiness with real-device smoke, PostHog proof, and archive/upload still open; older build-1 submission evidence is stale until ASC is reconfirmed",
+          "linkedPacket": "Work Packet - Resumely Analytics + Release/QA, COO Review 2026-06-17 + live PostHog QA project 270848",
+          "leadingSignal": "Founder reported Resumely iOS is App Store live; live PostHog QA on 2026-06-17 verified iOS launch events are present",
           "resultMetric": "App Store status is Ready for Sale and launch events are visible in PostHog",
-          "currentMilestone": "Confirm current App Store Connect state, then either execute WP-5 rejection response or complete founder real-device smoke, PostHog live-event evidence, and Xcode Organizer archive/upload if submission is not actually complete",
-          "constraint": "Apple review timing and outcome are external",
-          "lastReviewed": "2026-06-11",
-          "evidenceSource": "Resumely iOS tasks/progress.md and tasks/session-log.md",
+          "currentMilestone": "Closed. Next milestone belongs to post-live D7 activation readout and dashboard hygiene",
+          "constraint": "App Store downloads, revenue, conversion, and retention remain unknown until App Store Connect, RevenueCat, or PostHog cohort dashboards are reviewed",
+          "lastReviewed": "2026-06-17",
+          "evidenceSource": "Resumely iOS tasks/progress.md and tasks/session-log.md; trusted 2026-06-17 live PostHog QA packet; Vercel production env read-only check for web analytics",
           "memoryDestination": "Resumely iOS tasks/progress.md and tasks/session-log.md",
           "closeCondition": "App Store status is Ready for Sale and launch analytics are verified",
           "path": "executive-os/loops/resumely-submission.md"
@@ -2510,7 +2510,7 @@
       "needsNextPacketCount": 4,
       "hygieneWarnings": [
         "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-        "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (3)."
+        "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5)."
       ]
     },
     "planExecution": {

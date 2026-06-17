@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Ship build with PR #60 events to App Store; fix 
 
 ## Run Center
 
-- Last refresh: 2026-06-17 09:35
+- Last refresh: 2026-06-17 12:57
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,13 +28,17 @@ Best next action: Resumely iOS: Ship build with PR #60 events to App Store; fix 
 
 ## Stranded Work
 
-11 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+15 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370
 - [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7
-- [RunSmart iOS] 15 uncommitted file(s) in the primary working tree
+- [RunSmart iOS] 21 uncommitted file(s) in the primary working tree
+- [Resumely iOS] main is 2 commit(s) behind origin (pull needed)
+- [Resumely iOS] claude/relaxed-northcutt-cb6240: unmerged commits, remote branch deleted, last commit 2026-06-16
 - [Resumely iOS] feat/localization-updates: unmerged commits, remote branch deleted, last commit 2026-06-16
 - [Resumely iOS] monitization: unmerged commits, never pushed, last commit 2026-06-16
+- [Resumely iOS] worktree on codex/post-live-d7-readout at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-d7-readout
+- [Resumely iOS] worktree on codex/resumely-release-qa at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-resumely-release-qa
 - [Resumely iOS] worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50
 - [Resumely iOS] worktree on version-2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240
 - [Resumely iOS] worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2
