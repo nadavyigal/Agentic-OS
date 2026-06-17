@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Ship build with PR #60 events to App Store; fix 
 
 ## Run Center
 
-- Last refresh: 2026-06-17 12:57
+- Last refresh: 2026-06-17 15:08
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,11 +24,11 @@ Best next action: Resumely iOS: Ship build with PR #60 events to App Store; fix 
 | Resumely iOS | App Store review pending + Gate A analytics (deadline 2026-06-21) | Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled | Yes | Fresh | High |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | Yes | Fresh | High |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | No | Fresh | High |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Stranded Work
 
-15 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+16 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370
 - [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7
@@ -45,6 +45,7 @@ Best next action: Resumely iOS: Ship build with PR #60 events to App Store; fix 
 - [Resumely iOS] 40 uncommitted file(s) in the primary working tree
 - [RunSmart Web] fix/garmin-ios-branch-fixes: 1 unpushed commit(s), last commit 2026-06-16
 - [RunSmart Web] 4 uncommitted file(s) in the primary working tree
+- [Agentic OS] 12 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

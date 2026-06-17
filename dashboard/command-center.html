@@ -401,6 +401,20 @@
         gap: 8px;
         margin-top: 14px;
       }
+      .contradiction-banner {
+        margin-bottom: 12px;
+        padding: 14px 16px;
+        border: 1px solid rgba(248, 113, 113, 0.65);
+        border-radius: var(--radius);
+        background: rgba(248, 113, 113, 0.08);
+      }
+      .contradiction-banner.hidden { display: none; }
+      .contradiction-banner ul { margin: 8px 0 0; padding-left: 18px; color: var(--text); font-size: 0.9rem; }
+      .contradiction-banner .confirm-note {
+        margin-top: 10px;
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
       .trust-banner {
         margin-bottom: 16px;
         padding: 14px 16px;
@@ -441,6 +455,7 @@
     </header>
 
     <main class="shell">
+      <div id="contradiction-banner" class="contradiction-banner hidden" role="alert" aria-live="assertive"></div>
       <div id="trust-banner" class="trust-banner actionable" role="status" aria-live="polite"></div>
 
       <section class="hero" id="hero-section" aria-label="Status">
@@ -615,7 +630,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-17 12:57",
+      "lastRefresh": "2026-06-17 15:08",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1364,11 +1379,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-17 ff9ea02 docs: close Resumely submission loop",
+        "lastCommit": "2026-06-17 33c833d Auto-refresh dashboard (2026-06-17)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-17",
@@ -1555,7 +1570,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main...origin/main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1589,11 +1604,12 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 3,
+      "dirtyProjectCount": 4,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
-        "RunSmart Web"
+        "RunSmart Web",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -2492,19 +2508,19 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 5,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "caution",
-      "label": "Use caution",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-        "Dirty shippable app repo: RunSmart iOS, Resumely iOS."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
@@ -2512,6 +2528,97 @@
         "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
         "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5)."
       ]
+    },
+    "groundTruth": {
+      "generatedAt": "2026-06-17 15:08",
+      "apps": [
+        {
+          "projectId": 171597,
+          "appId": "runsmart-ios",
+          "app": "RunSmart",
+          "declaredState": "1.0.2 build 15 - App Store Connect processing and resubmission prep",
+          "git": {
+            "available": true,
+            "tag": "pre-consolidation-r2",
+            "date": "2026-05-10"
+          }
+        },
+        {
+          "projectId": 270848,
+          "appId": "resumebuilder-ios",
+          "app": "Resumely",
+          "declaredState": "App Store review pending + Gate A analytics (deadline 2026-06-21)",
+          "git": {
+            "available": true,
+            "tag": "consolidated-2026-05-11",
+            "date": "2026-05-10"
+          }
+        }
+      ],
+      "posthog": [
+        {
+          "appId": "runsmart-ios",
+          "available": false,
+          "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
+          "source": "missing_key"
+        },
+        {
+          "appId": "resumebuilder-ios",
+          "available": false,
+          "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
+          "source": "missing_key"
+        }
+      ],
+      "appStore": [
+        {
+          "appId": "runsmart-ios",
+          "state": "unknown",
+          "date": null,
+          "source": "missing",
+          "available": false
+        },
+        {
+          "appId": "resumebuilder-ios",
+          "state": "unknown",
+          "date": null,
+          "source": "missing",
+          "available": false
+        }
+      ],
+      "contradictions": [],
+      "unavailable": [
+        "PostHog key not configured for RunSmart",
+        "App Store state missing for RunSmart (set AGENTIC_OS_APPSTORE_STATES)",
+        "PostHog key not configured for Resumely",
+        "App Store state missing for Resumely (set AGENTIC_OS_APPSTORE_STATES)"
+      ],
+      "needsConfirmation": false,
+      "proposedFix": null
+    },
+    "contradictions": [],
+    "dailyRunResult": {
+      "lastCommand": "./agentic-os refresh",
+      "lastRunAt": "2026-06-17 15:08",
+      "checksStatus": "Pending verify",
+      "checksCompletedAt": "",
+      "localhostUrl": "http://127.0.0.1:8787/index.html",
+      "recommendedPromptProject": "Resumely iOS",
+      "recommendedPromptRole": "iOS Release Manager",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: App Store review pending + Gate A analytics (deadline 2026-06-21). Next action: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled. Known blockers: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "targetRepoState": "Dirty",
+      "targetBranch": "main...origin/main [behind 2]",
+      "readyForNextSession": false,
+      "summary": "Resumely iOS: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+      "nextActions": [
+        {
+          "title": "Restore dashboard trust",
+          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+          "type": "system"
+        }
+      ],
+      "topBanner": null,
+      "contradictionCount": 0,
+      "confirmProposedFix": null
     },
     "planExecution": {
       "plans": [
@@ -2716,6 +2823,7 @@
         $("#localhost-url").textContent = runCenter.localhostUrl || "Not running";
         const safe = $("#safe-mode");
         if (safe) safe.textContent = runCenter.safeMode || "";
+        renderContradictionBanner();
         renderTrustBanner();
         renderStatusRow();
         renderFounderNextActions();
@@ -2729,6 +2837,29 @@
         const trust = status.portfolioTrust || {};
         if (hero) {
           hero.classList.toggle("hero-muted", trust.level && trust.level !== "actionable");
+        }
+      }
+
+      function renderContradictionBanner() {
+        const root = $("#contradiction-banner");
+        if (!root) return;
+        const items = status.contradictions || [];
+        if (!items.length) {
+          root.className = "contradiction-banner hidden";
+          root.textContent = "";
+          return;
+        }
+        root.className = "contradiction-banner";
+        root.textContent = "";
+        const title = (status.dailyRunResult && status.dailyRunResult.topBanner) || "⚠️ Status contradicts reality";
+        root.append(make("p", "eyebrow", title));
+        root.append(make("p", "", "Declared status is fresh but disagrees with ground truth. Staleness is secondary until reconciled."));
+        const ul = make("ul");
+        items.forEach((item) => ul.append(make("li", "", item.message || "Unspecified contradiction")));
+        root.append(ul);
+        const confirm = status.dailyRunResult && status.dailyRunResult.confirmProposedFix;
+        if (confirm) {
+          root.append(make("p", "confirm-note", confirm));
         }
       }
 

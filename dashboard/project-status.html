@@ -110,7 +110,8 @@
       "needsReview": "Updated in the last 3-7 days.",
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
-    }
+    },
+    "lastSuccessfulRefresh": "2026-06-17 15:08"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 1.0.2 build 15 - App Store Connect processing and resubmission prep: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 App Store review pending + Gate A analytics (deadline 2026-06-21): Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
@@ -687,7 +688,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-17 ff9ea02 docs: close Resumely submission loop); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-17 33c833d Auto-refresh dashboard (2026-06-17)); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -713,10 +714,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-17 ff9ea02 docs: close Resumely submission loop",
+        "lastCommit": "2026-06-17 33c833d Auto-refresh dashboard (2026-06-17)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -923,7 +924,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-17 12:57",
+    "lastRefresh": "2026-06-17 15:08",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1672,11 +1673,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 12,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-17 ff9ea02 docs: close Resumely submission loop",
+      "lastCommit": "2026-06-17 33c833d Auto-refresh dashboard (2026-06-17)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-17",
@@ -1863,7 +1864,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
@@ -1897,11 +1898,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 3,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
-      "RunSmart Web"
+      "RunSmart Web",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1954,7 +1956,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-17 12:57",
+    "lastRunAt": "2026-06-17 15:08",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -1971,7 +1973,10 @@
         "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
         "type": "system"
       }
-    ]
+    ],
+    "topBanner": null,
+    "contradictionCount": 0,
+    "confirmProposedFix": null
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
@@ -2853,11 +2858,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 0,
+    "uncommitted": 5,
     "extraWorktrees": 0,
-    "synced": true,
+    "synced": false,
     "notes": [
-      "Clean: on main, fully committed, no stray worktrees."
+      "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2932,11 +2937,11 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "caution",
-    "label": "Use caution",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: RunSmart iOS, Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -3057,12 +3062,85 @@
         "type": "dirty",
         "detail": "4 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "12 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 15,
+    "actionableCount": 16,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
-  "packetHygiene": []
+  "packetHygiene": [],
+  "groundTruth": {
+    "generatedAt": "2026-06-17 15:08",
+    "apps": [
+      {
+        "projectId": 171597,
+        "appId": "runsmart-ios",
+        "app": "RunSmart",
+        "declaredState": "1.0.2 build 15 - App Store Connect processing and resubmission prep",
+        "git": {
+          "available": true,
+          "tag": "pre-consolidation-r2",
+          "date": "2026-05-10"
+        }
+      },
+      {
+        "projectId": 270848,
+        "appId": "resumebuilder-ios",
+        "app": "Resumely",
+        "declaredState": "App Store review pending + Gate A analytics (deadline 2026-06-21)",
+        "git": {
+          "available": true,
+          "tag": "consolidated-2026-05-11",
+          "date": "2026-05-10"
+        }
+      }
+    ],
+    "posthog": [
+      {
+        "appId": "runsmart-ios",
+        "available": false,
+        "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
+        "source": "missing_key"
+      },
+      {
+        "appId": "resumebuilder-ios",
+        "available": false,
+        "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
+        "source": "missing_key"
+      }
+    ],
+    "appStore": [
+      {
+        "appId": "runsmart-ios",
+        "state": "unknown",
+        "date": null,
+        "source": "missing",
+        "available": false
+      },
+      {
+        "appId": "resumebuilder-ios",
+        "state": "unknown",
+        "date": null,
+        "source": "missing",
+        "available": false
+      }
+    ],
+    "contradictions": [],
+    "unavailable": [
+      "PostHog key not configured for RunSmart",
+      "App Store state missing for RunSmart (set AGENTIC_OS_APPSTORE_STATES)",
+      "PostHog key not configured for Resumely",
+      "App Store state missing for Resumely (set AGENTIC_OS_APPSTORE_STATES)"
+    ],
+    "needsConfirmation": false,
+    "proposedFix": null
+  },
+  "contradictions": []
 }
     </script>
     <script>

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -622,6 +623,75 @@ class TestPortfolioTrust(unittest.TestCase):
             {"lastRefresh": today_refresh},
         )
         self.assertEqual(trust["level"], "caution")
+
+    def test_contradiction_forces_refresh_required(self):
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+            {},
+            [{"severity": "hard", "message": "Reality mismatch"}],
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        self.assertTrue(any("contradicts reality" in reason.lower() for reason in trust["reasons"]))
+
+
+class TestGroundTruthContradictions(unittest.TestCase):
+    def test_posthog_live_users_contradict_in_review_and_force_refresh_required(self):
+        old = os.environ.get(cli.GROUND_TRUTH_OVERRIDES_ENV)
+        os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = (
+            '{"posthog":{"runsmart-ios":{"liveUsers7d":48}},"appStore":{}}'
+        )
+        try:
+            with tempfile.TemporaryDirectory() as d:
+                root = Path(d)
+                app_dir = root / "app"
+                app_dir.mkdir()
+                evidence = [
+                    cli.ProjectEvidence(
+                        project_id="runsmart-ios",
+                        name="RunSmart iOS",
+                        path=app_dir,
+                        exists=True,
+                        branch="main",
+                        dirty=False,
+                        dirty_count=0,
+                        extra_worktrees=0,
+                        last_commit="2026-06-15 deadbeef test",
+                        source_files=[],
+                        task_parse=cli.empty_task_parse(),
+                    )
+                ]
+                health = [
+                    {
+                        "id": "runsmart-ios",
+                        "name": "RunSmart iOS",
+                        "state": "1.0.2 build 15 in review",
+                        "parsedLastUpdated": "2026-06-15",
+                        "freshestDate": "2026-06-15",
+                        "freshness": "Fresh",
+                        "dirty": False,
+                        "sourceConfidence": "High",
+                        "evidenceGap": False,
+                    }
+                ]
+                truth = cli.build_ground_truth(evidence, health)
+                self.assertTrue(truth["contradictions"])
+                self.assertIn("PostHog shows 48 live users", truth["contradictions"][0]["message"])
+                trust = cli.build_portfolio_trust(
+                    health,
+                    {"synced": True, "notes": []},
+                    {"lastRefresh": datetime.now().strftime("%Y-%m-%d 09:00 IDT")},
+                    {},
+                    truth["contradictions"],
+                )
+                self.assertEqual(trust["level"], "refresh_required")
+        finally:
+            if old is None:
+                os.environ.pop(cli.GROUND_TRUTH_OVERRIDES_ENV, None)
+            else:
+                os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = old
 
 
 class TestFounderNextActions(unittest.TestCase):

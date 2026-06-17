@@ -7,10 +7,13 @@ import http.server
 import json
 import os
 import re
+import shutil
 import socket
 import socketserver
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 import webbrowser
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -112,6 +115,17 @@ POSITIONING_HEADINGS = [
 APP_IDS = ["resumebuilder-ios", "runsmart-ios"]
 # All real product repos (apps + their web/back-end support repos).
 PRODUCT_IDS = {"runsmart-ios", "resumebuilder-ios", "runsmart-web", "resumebuilder-ai"}
+LAUNCHD_LABEL = "com.nadav.agentic-os-refresh"
+LAUNCHD_PLIST = Path.home() / "Library/LaunchAgents/com.nadav.agentic-os-refresh.plist"
+POSTHOG_BASE_URL = "https://us.posthog.com"
+POSTHOG_KEY_ENV = "AGENTIC_OS_POSTHOG_API_KEY"
+POSTHOG_TIMEOUT_SEC = 10
+GROUND_TRUTH_OVERRIDES_ENV = "AGENTIC_OS_GROUND_TRUTH_OVERRIDES"
+APP_STORE_STATE_ENV = "AGENTIC_OS_APPSTORE_STATES"
+POSTHOG_PROJECTS = {
+    "runsmart-ios": {"projectId": 171597, "name": "RunSmart"},
+    "resumebuilder-ios": {"projectId": 270848, "name": "Resumely"},
+}
 
 # Directories where the founder's saved plans / specs / GTM live. Every saved plan must
 # surface on the dashboard (the founder's rule: "any plan I asked to save must surface").
@@ -185,6 +199,110 @@ def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.Compl
         timeout=timeout,
         check=False,
     )
+
+
+def command_available(name: str) -> bool:
+    return shutil.which(name) is not None
+
+
+def parse_launchctl_job(text: str) -> dict[str, Any]:
+    parsed: dict[str, Any] = {
+        "loaded": bool(text.strip()),
+        "state": None,
+        "lastExitCode": None,
+        "runs": None,
+    }
+    state = re.search(r"state = ([^\n]+)", text)
+    if state:
+        parsed["state"] = state.group(1).strip()
+    exit_code = re.search(r"last exit code = (-?\d+)", text)
+    if exit_code:
+        parsed["lastExitCode"] = int(exit_code.group(1))
+    runs = re.search(r"runs = (\d+)", text)
+    if runs:
+        parsed["runs"] = int(runs.group(1))
+    return parsed
+
+
+def launchd_job_status(label: str = LAUNCHD_LABEL) -> dict[str, Any]:
+    domain = f"gui/{os.getuid()}/{label}"
+    proc = run(["launchctl", "print", domain], timeout=10)
+    if proc.returncode != 0:
+        return {
+            "loaded": False,
+            "state": "missing",
+            "lastExitCode": None,
+            "runs": 0,
+            "raw": proc.stderr.strip() or proc.stdout.strip(),
+        }
+    status = parse_launchctl_job(proc.stdout)
+    status["raw"] = proc.stdout
+    return status
+
+
+def parse_time_label(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    match = re.search(r"(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2})", value)
+    if not match:
+        return None
+    try:
+        return datetime.strptime(f"{match.group(1)} {match.group(2)}", "%Y-%m-%d %H:%M")
+    except ValueError:
+        return None
+
+
+def parse_json_env(name: str) -> dict[str, Any]:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return {}
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return {}
+
+
+def fetch_posthog_live_users(project_id: int, api_key: str) -> dict[str, Any]:
+    payload = {
+        "query": {
+            "kind": "HogQLQuery",
+            "query": (
+                "SELECT uniq(person_id) AS live_users_7d "
+                "FROM events WHERE timestamp >= now() - INTERVAL 7 DAY"
+            ),
+        }
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        f"{POSTHOG_BASE_URL}/api/projects/{project_id}/query/",
+        data=data,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=POSTHOG_TIMEOUT_SEC) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+        return {"available": False, "error": str(exc)}
+
+    users = None
+    results = body.get("results")
+    if isinstance(results, list) and results:
+        first = results[0]
+        if isinstance(first, dict):
+            users = first.get("live_users_7d")
+        elif isinstance(first, list) and first:
+            users = first[0]
+    if users is None and isinstance(body.get("result"), list) and body["result"]:
+        users = body["result"][0]
+    try:
+        users_int = int(users) if users is not None else 0
+    except (TypeError, ValueError):
+        users_int = 0
+    return {"available": True, "liveUsers7d": users_int}
 
 
 def today_idt() -> str:
@@ -1274,6 +1392,7 @@ def build_portfolio_trust(
     repo_integrity: dict[str, Any],
     run_center: dict[str, Any],
     plan_execution: dict[str, Any] | None = None,
+    contradictions: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Whether the founder can trust today's dashboard for App Store / ship claims."""
     today = datetime.now().date()
@@ -1302,7 +1421,12 @@ def build_portfolio_trust(
 
     level = "actionable"
     reasons: list[str] = []
-    if not repo_integrity.get("synced"):
+    hard_contradictions = [c for c in (contradictions or []) if c.get("severity") == "hard"]
+    if hard_contradictions:
+        level = "refresh_required"
+        reasons.append("Status contradicts reality. Confirm and reconcile status before acting.")
+        reasons.extend(c.get("message", "Unspecified contradiction.") for c in hard_contradictions[:3])
+    elif not repo_integrity.get("synced"):
         level = "refresh_required"
         reasons.append(
             "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
@@ -1980,6 +2104,175 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
     return health
 
 
+def declared_prelaunch(state: str) -> bool:
+    low = (state or "").lower()
+    return any(
+        token in low
+        for token in (
+            "in review",
+            "review pending",
+            "not launched",
+            "not submitted",
+            "pre-release",
+            "resubmission",
+            "processing",
+        )
+    )
+
+
+def latest_tag_info(repo_path: Path) -> dict[str, Any]:
+    tag = run(["git", "describe", "--tags", "--abbrev=0"], cwd=repo_path, timeout=8)
+    if tag.returncode != 0 or not tag.stdout.strip():
+        return {"available": False}
+    tag_name = tag.stdout.strip()
+    date = run(["git", "log", "-1", "--format=%cs", tag_name], cwd=repo_path, timeout=8)
+    return {
+        "available": True,
+        "tag": tag_name,
+        "date": date.stdout.strip() if date.returncode == 0 else None,
+    }
+
+
+def normalize_app_store_state(value: str | None) -> str:
+    low = (value or "").strip().lower()
+    if low in {"live", "ready for sale", "ready_for_sale"}:
+        return "live"
+    if low in {"in review", "in_review", "waiting for review"}:
+        return "in_review"
+    if low in {"not submitted", "not_submitted", "draft"}:
+        return "not_submitted"
+    return "unknown"
+
+
+def build_ground_truth(evidence: list[ProjectEvidence], project_health: list[dict[str, Any]]) -> dict[str, Any]:
+    overrides = parse_json_env(GROUND_TRUTH_OVERRIDES_ENV)
+    app_store_raw = parse_json_env(APP_STORE_STATE_ENV)
+    posthog_key = os.environ.get(POSTHOG_KEY_ENV, "").strip()
+    by_id = {item.project_id: item for item in evidence}
+    health_by_id = {item["id"]: item for item in project_health}
+
+    contradictions: list[dict[str, Any]] = []
+    app_rows: list[dict[str, Any]] = []
+    posthog_rows: list[dict[str, Any]] = []
+    app_store_rows: list[dict[str, Any]] = []
+    unavailable: list[str] = []
+
+    for app_id, cfg in POSTHOG_PROJECTS.items():
+        row: dict[str, Any] = {"projectId": cfg["projectId"], "appId": app_id, "app": cfg["name"]}
+        item = by_id.get(app_id)
+        health = health_by_id.get(app_id, {})
+        declared_state = health.get("state", "Unknown")
+        row["declaredState"] = declared_state
+
+        if item and item.exists:
+            tag_info = latest_tag_info(item.path)
+        else:
+            tag_info = {"available": False}
+        row["git"] = tag_info
+        app_rows.append(row)
+
+        # Git contradiction: declared "in review"/"resubmission" but repo has a newer release tag date.
+        if tag_info.get("available") and declared_prelaunch(declared_state):
+            tag_date = parse_date(tag_info.get("date"))
+            declared_date = parse_date(health.get("parsedLastUpdated") or health.get("freshestDate"))
+            if tag_date and declared_date and tag_date.date() > declared_date.date():
+                contradictions.append(
+                    {
+                        "severity": "warning",
+                        "appId": app_id,
+                        "source": "git",
+                        "kind": "tag-newer-than-declared-review",
+                        "message": (
+                            f"{cfg['name']} latest tag {tag_info.get('tag')} ({tag_info.get('date')}) "
+                            f"is newer than declared review state updated {health.get('parsedLastUpdated') or health.get('freshestDate')}."
+                        ),
+                    }
+                )
+
+        posthog_override = (overrides.get("posthog") or {}).get(app_id)
+        if isinstance(posthog_override, dict):
+            posthog_info = {
+                "available": True,
+                "liveUsers7d": int(posthog_override.get("liveUsers7d", 0)),
+                "source": "override",
+            }
+        elif posthog_key:
+            posthog_info = fetch_posthog_live_users(cfg["projectId"], posthog_key)
+            posthog_info["source"] = "api" if posthog_info.get("available") else "api_error"
+        else:
+            posthog_info = {"available": False, "error": f"Missing {POSTHOG_KEY_ENV}", "source": "missing_key"}
+            unavailable.append(f"PostHog key not configured for {cfg['name']}")
+        posthog_rows.append({"appId": app_id, **posthog_info})
+
+        live_users = int(posthog_info.get("liveUsers7d", 0) or 0) if posthog_info.get("available") else 0
+        if live_users > 0 and declared_prelaunch(declared_state):
+            proposed = (
+                f"Confirm update for {cfg['name']}: set Current Phase to LIVE in tasks/progress.md "
+                f"(PostHog shows {live_users} users/7d). No auto-write."
+            )
+            contradictions.append(
+                {
+                    "severity": "hard",
+                    "appId": app_id,
+                    "source": "posthog",
+                    "kind": "live-users-vs-prelaunch",
+                    "message": (
+                        f"{cfg['name']} is declared '{declared_state}' but PostHog shows {live_users} live users in 7d."
+                    ),
+                    "proposedFix": proposed,
+                    "confirmPrompt": proposed,
+                }
+            )
+
+        app_state_override = (overrides.get("appStore") or {}).get(app_id) or app_store_raw.get(app_id) or {}
+        app_store_state = normalize_app_store_state(app_state_override.get("state"))
+        app_store_entry = {
+            "appId": app_id,
+            "state": app_store_state,
+            "date": app_state_override.get("date"),
+            "source": app_state_override.get("source", "missing"),
+            "available": bool(app_state_override),
+        }
+        app_store_rows.append(app_store_entry)
+        if not app_store_entry["available"]:
+            unavailable.append(f"App Store state missing for {cfg['name']} (set {APP_STORE_STATE_ENV})")
+        if app_store_state == "live" and declared_prelaunch(declared_state):
+            proposed = (
+                f"Confirm update for {cfg['name']}: set Current Phase to LIVE in tasks/progress.md "
+                f"(App Store state live as of {app_store_entry.get('date') or 'undated'}). No auto-write."
+            )
+            contradictions.append(
+                {
+                    "severity": "hard",
+                    "appId": app_id,
+                    "source": "appstore",
+                    "kind": "live-vs-prelaunch",
+                    "message": (
+                        f"{cfg['name']} App Store state is LIVE ({app_store_entry.get('date') or 'undated'}) "
+                        f"but declared state is '{declared_state}'."
+                    ),
+                    "proposedFix": proposed,
+                    "confirmPrompt": proposed,
+                }
+            )
+
+    return {
+        "generatedAt": now_label(),
+        "apps": app_rows,
+        "posthog": posthog_rows,
+        "appStore": app_store_rows,
+        "contradictions": contradictions,
+        "unavailable": unavailable,
+        "needsConfirmation": bool(contradictions),
+        "proposedFix": (
+            "Ground truth contradicts declared status. Proposed next step: confirm and update the relevant "
+            "tasks/progress.md status lines. No files were auto-edited."
+            if contradictions
+            else None
+        ),
+    }
+
+
 CONFIDENCE_DIRECTIVE = {
     "High": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
     "Medium": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -2196,6 +2489,15 @@ def build_daily_run_result(
 ) -> dict[str, Any]:
     recommended = select_recommended_prompt(status, project_prompts)
     next_actions = build_founder_next_actions(status)
+    contradictions = status.get("contradictions") or []
+    top_banner = None
+    confirm_prompt = None
+    if contradictions:
+        top_banner = "⚠️ Status contradicts reality"
+        confirm_prompt = (
+            "Ground truth disagrees with declared status. Confirm to update the affected "
+            "tasks/progress.md entries. No auto-write was performed."
+        )
     return {
         "lastCommand": command,
         "lastRunAt": now_label(),
@@ -2210,6 +2512,9 @@ def build_daily_run_result(
         "readyForNextSession": checks_status == "Passed",
         "summary": status.get("summary", {}).get("bestNextAction", "Run the morning loop and choose the next project prompt."),
         "nextActions": next_actions,
+        "topBanner": top_banner,
+        "contradictionCount": len(contradictions),
+        "confirmProposedFix": confirm_prompt,
     }
 
 
@@ -2229,6 +2534,17 @@ def parse_latest_coo_review(root: Path) -> dict[str, Any] | None:
 
 
 def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
+    contradictions = status.get("contradictions") or []
+    if contradictions:
+        first = contradictions[0].get("message", "Ground truth contradiction detected.")
+        return [{
+            "title": "Resolve contradiction before execution",
+            "detail": first,
+            "type": "system",
+            "where": "Agentic OS repo",
+            "copyPrompt": "Confirm the contradiction fix to update status docs manually (one-tap confirm, no auto-write).",
+        }]
+
     trust = status.get("portfolioTrust", {})
     if trust.get("level") != "actionable":
         return [{
@@ -2335,6 +2651,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
 
     status.setdefault("metadata", {})
     status["metadata"]["lastUpdated"] = f"{generated} IDT"
+    status["metadata"]["lastSuccessfulRefresh"] = now_label()
     status["metadata"]["sourcePolicy"] = (
         "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, "
         "task memory/todo/session files, and existing dashboard status. No external dashboards queried."
@@ -2388,9 +2705,15 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "from git; never hand-edit."
         ),
     }
+    status["groundTruth"] = build_ground_truth(evidence, project_health)
+    status["contradictions"] = status["groundTruth"].get("contradictions", [])
     status["latestCooReview"] = parse_latest_coo_review(ROOT)
     status["portfolioTrust"] = build_portfolio_trust(
-        project_health, status["repoIntegrity"], status["runCenter"], status["planExecution"]
+        project_health,
+        status["repoIntegrity"],
+        status["runCenter"],
+        status["planExecution"],
+        status.get("contradictions"),
     )
     derived = build_derived_summary(project_health, saved_plans, status["planExecution"])
     freshest_dates = [parse_date(p.get("freshestDate")) for p in project_health]
@@ -2553,6 +2876,9 @@ def update_command_center_generated(generated: str, status: dict[str, Any]) -> N
             "executiveLoop": status.get("executiveLoop", {}),
             "repoIntegrity": status.get("repoIntegrity", {}),
             "portfolioTrust": status.get("portfolioTrust", {}),
+            "groundTruth": status.get("groundTruth", {}),
+            "contradictions": status.get("contradictions", []),
+            "dailyRunResult": status.get("dailyRunResult", {}),
             "planExecution": status.get("planExecution", {}),
             "packetHygiene": status.get("packetHygiene", []),
             "openQuestionsBoard": status.get("openQuestionsBoard", []),
@@ -2574,12 +2900,29 @@ def update_orchestration_generated(status: dict[str, Any]) -> None:
 
 
 def write_project_status(status: dict[str, Any]) -> None:
+    contradictions = status.get("contradictions") or []
     lines = [
         "# Project Status",
         "",
         f"Last updated: {status['metadata']['lastUpdated']}",
         "",
         "Source policy: local folder mode. Generated by `./agentic-os refresh` from local project paths, git state, task files, and `dashboard/status.json`. No external production dashboards were queried.",
+        "",
+        "## Contradictions vs Ground Truth",
+        "",
+    ]
+    if contradictions:
+        lines.append("⚠️ Status contradicts reality. Treat freshness as secondary until these are reconciled:")
+        lines.append("")
+        for item in contradictions:
+            lines.append(f"- [{item.get('severity', 'warning').upper()}] {clean_cell(item.get('message', ''))}")
+        proposal = status.get("groundTruth", {}).get("proposedFix")
+        if proposal:
+            lines += ["", f"- Proposed fix (confirm first): {proposal}"]
+    else:
+        lines.append("None. No contradictions were detected between declared state and ground truth checks.")
+
+    lines += [
         "",
         "## Status Table",
         "",
@@ -2702,6 +3045,7 @@ def write_project_status(status: dict[str, Any]) -> None:
 
 
 def write_dashboard(status: dict[str, Any]) -> None:
+    contradictions = status.get("contradictions") or []
     lines = [
         "# Portfolio Dashboard",
         "",
@@ -2709,6 +3053,20 @@ def write_dashboard(status: dict[str, Any]) -> None:
         "",
         status["metadata"]["sourcePolicy"],
         "",
+    ]
+    if contradictions:
+        lines += [
+            "## ⚠️ Status Contradicts Reality",
+            "",
+        ]
+        for item in contradictions:
+            lines.append(f"- [{item.get('severity', 'warning').upper()}] {clean_cell(item.get('message', ''))}")
+        proposal = status.get("groundTruth", {}).get("proposedFix")
+        if proposal:
+            lines += ["", f"- Proposed fix (confirm before write): {proposal}"]
+        lines.append("")
+
+    lines += [
         "## Executive Summary",
         "",
         status.get("summary", {}).get("overallStatus", "No summary available."),
@@ -2965,6 +3323,13 @@ def verify() -> int:
         errors.append("openQuestionsBoard missing or not a list")
     if not isinstance(status.get("repoDecisions"), list):
         errors.append("repoDecisions missing or not a list")
+    contradictions = status.get("contradictions")
+    if not isinstance(contradictions, list):
+        errors.append("contradictions missing or not a list")
+    elif contradictions and status.get("portfolioTrust", {}).get("level") != "refresh_required":
+        errors.append("portfolioTrust must be refresh_required when contradictions exist")
+    if not isinstance(status.get("groundTruth"), dict):
+        errors.append("groundTruth missing or not an object")
     packet_hygiene = status.get("packetHygiene")
     if not isinstance(packet_hygiene, list):
         errors.append("packetHygiene missing or not a list")
@@ -3047,6 +3412,13 @@ def serve(port: int, open_browser: bool = True) -> int:
 
 def refresh(args: argparse.Namespace) -> int:
     status = update_status_json(port=args.port, command=f"./agentic-os {args.command}")
+    contradictions = status.get("contradictions") or []
+    if contradictions:
+        print("⚠️ Status contradicts reality")
+        for item in contradictions[:3]:
+            print(f"  - {item.get('message')}")
+        if status.get("groundTruth", {}).get("proposedFix"):
+            print(f"  - proposed fix: {status['groundTruth']['proposedFix']}")
     print("refreshed Agentic OS")
     print(f"- last refresh: {status['runCenter']['lastRefresh']}")
     print("- brief: rebuilt from parsed repo truth (one process, always current).")
@@ -3086,7 +3458,87 @@ def refresh(args: argparse.Namespace) -> int:
             print(f"  - {warning['project']} ({warning['field']})")
     else:
         print("- drift warnings: none")
-    print("- no external dashboards or production services were queried")
+    stale_apps = [p["name"] for p in status.get("projectHealth", []) if p.get("freshness") == "Stale"]
+    if stale_apps:
+        print(f"- stale evidence: {', '.join(stale_apps)}")
+    else:
+        print("- stale evidence: none")
+    ground = status.get("groundTruth") or {}
+    queried = [row.get("appId") for row in ground.get("posthog", []) if row.get("source") == "api"]
+    if queried:
+        print(f"- ground truth: PostHog queried for {', '.join(queried)}")
+    elif ground.get("unavailable"):
+        print(f"- ground truth: unavailable ({'; '.join(ground.get('unavailable', [])[:2])})")
+    else:
+        print("- ground truth: local git + optional overrides only (no PostHog key)")
+    return 0
+
+
+def doctor() -> int:
+    issues: list[str] = []
+    status = read_json(STATUS_JSON)
+    metadata = status.get("metadata", {})
+    last_success = parse_time_label(metadata.get("lastSuccessfulRefresh"))
+    now = datetime.now()
+
+    print("agentic-os doctor")
+    print(f"- launchd label: {LAUNCHD_LABEL}")
+    launchd = launchd_job_status(LAUNCHD_LABEL)
+    if not launchd.get("loaded"):
+        issues.append("launchd job is not loaded")
+        print("- launchd: MISSING")
+    else:
+        print(
+            f"- launchd: loaded, state={launchd.get('state')}, runs={launchd.get('runs')}, "
+            f"lastExit={launchd.get('lastExitCode')}"
+        )
+        if launchd.get("lastExitCode") not in (0, None):
+            issues.append(f"launchd last exit is {launchd.get('lastExitCode')} (expected 0)")
+            if launchd.get("lastExitCode") == 126:
+                print(
+                    "- hint: exit 126 often means launchd cannot execute the repo script "
+                    "(TCC/Full Disk Access). Use scripts/launchd-wrapper.sh via ~/.local/bin."
+                )
+
+    if not LAUNCHD_PLIST.exists():
+        issues.append(f"missing plist at {LAUNCHD_PLIST}")
+        print(f"- plist: missing {LAUNCHD_PLIST}")
+    else:
+        plist_text = LAUNCHD_PLIST.read_text(encoding="utf-8", errors="replace")
+        run_at_load = "<key>RunAtLoad</key>" in plist_text and "<true/>" in plist_text.split("<key>RunAtLoad</key>", 1)[1][:80]
+        print(f"- plist: found ({LAUNCHD_PLIST}) | RunAtLoad={'true' if run_at_load else 'false'}")
+        if not run_at_load:
+            issues.append("RunAtLoad is false (missed schedules will not catch up)")
+
+    for tool in ("python3", "git"):
+        ok = command_available(tool)
+        print(f"- tool {tool}: {'OK' if ok else 'MISSING'}")
+        if not ok:
+            issues.append(f"{tool} not found in PATH")
+
+    if last_success is None:
+        issues.append("metadata.lastSuccessfulRefresh missing or invalid")
+        print("- lastSuccessfulRefresh: missing")
+    else:
+        age_hours = (now - last_success).total_seconds() / 3600.0
+        print(f"- lastSuccessfulRefresh: {metadata.get('lastSuccessfulRefresh')} ({age_hours:.1f}h ago)")
+        if age_hours > 24:
+            issues.append("lastSuccessfulRefresh is older than 24h")
+
+    contradictions = status.get("contradictions") or []
+    if contradictions:
+        print(f"- contradictions: {len(contradictions)} (semantic — reconcile via morning brief; not an automation failure)")
+        for item in contradictions[:2]:
+            print(f"  - {item.get('message')}")
+    else:
+        print("- contradictions: none")
+
+    if issues:
+        print("doctor: FAIL")
+        for issue in issues:
+            print(f"  - {issue}")
+        return 1
+    print("doctor: PASS")
     return 0
 
 
@@ -3107,6 +3559,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("verify", help="verify dashboard JSON, fallback sync, links, and whitespace")
     sub.add_parser("test", help="run the parser unit tests")
+    sub.add_parser("doctor", help="verify launchd health, refresh recency, and local toolchain")
 
     clean_cmd = sub.add_parser(
         "clean",
@@ -3125,6 +3578,8 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if run_tests(verbosity=2) else 1
     if args.command == "verify":
         return verify()
+    if args.command == "doctor":
+        return doctor()
     if args.command == "serve":
         return serve(args.port, open_browser=not args.no_open)
     if args.command == "clean":
