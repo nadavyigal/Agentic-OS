@@ -14,21 +14,20 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up | Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-18 c74c707 feat(analytics): wire PostHog analytics events + add DemoMode for simulator recording |
-| Resumely iOS | Post-live QA + D7 activation readout pending complete D7 window | Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived | 1 | No | Fresh | High | tasks/progress.md | 2026-06-18 59a104f qa: record PostHog Gate A baseline 2026-06-18 |
-| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (5) | Fresh | High | tasks/progress.md | 2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack |
-| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-17 fe99630 Merge pull request #74 from nadavyigal/fix/pdf-parser-unpdf |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-18 36bc91b chore: post-push refresh + add sync-cleanup work pack |
+| RunSmart iOS | Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up | Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-18 4f17dcb docs: record branch PR merge sweep |
+| Resumely iOS | D7 Gate A closeout complete except App Store Connect review-state confirmation | Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived | 1 | No | Fresh | High | tasks/progress.md | 2026-06-18 5612c78 docs: record PR merge closeout |
+| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-18 f3fe700 docs: stub Story 1 today-content-inventory next action |
+| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-18 953f4fd docs: record ATS PDF fix merge and smoke result 2026-06-18 |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-06-18 7389a4d chore: refresh dashboard after sync-cleanup verify |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-06-15, last commit 2026-06-18 c74c707 feat(analytics): wire PostHog analytics events + add DemoMode for simulator recording
-- Resumely iOS: validated 2026-06-17, last commit 2026-06-18 59a104f qa: record PostHog Gate A baseline 2026-06-18
-- RunSmart Web: validated 2026-06-12, last commit 2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack
-- ResumeBuilder AI (Web): validated 2026-06-16, last commit 2026-06-17 fe99630 Merge pull request #74 from nadavyigal/fix/pdf-parser-unpdf
-- Agentic OS: validated 2026-06-12, last commit 2026-06-18 36bc91b chore: post-push refresh + add sync-cleanup work pack
+- RunSmart iOS: validated 2026-06-15, last commit 2026-06-18 4f17dcb docs: record branch PR merge sweep
+- RunSmart Web: validated 2026-06-12, last commit 2026-06-18 f3fe700 docs: stub Story 1 today-content-inventory next action
+- ResumeBuilder AI (Web): validated 2026-06-16, last commit 2026-06-18 953f4fd docs: record ATS PDF fix merge and smoke result 2026-06-18
+- Agentic OS: validated 2026-06-12, last commit 2026-06-18 7389a4d chore: refresh dashboard after sync-cleanup verify
 
 ## Drift Warnings
 
@@ -38,22 +37,12 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
-- [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Resumely iOS] feat/localization-updates: unmerged commits, remote branch deleted, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
-- [Resumely iOS] monitization: unmerged commits, never pushed, last commit 2026-06-16 -> Push monitization and open a PR, or consciously discard it.
-- [Resumely iOS] worktree on codex/post-live-d7-readout at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-d7-readout -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on codex/resumely-release-qa at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-resumely-release-qa -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on version-2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on codex/posthog-device-qa at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder-IOS-APP-posthog-device-qa -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [RunSmart Web] fix/garmin-ios-branch-fixes: unmerged commits, remote branch deleted, last commit 2026-06-16 -> Push fix/garmin-ios-branch-fixes and open a PR, or consciously discard it.
-- [RunSmart Web] worktree on claude/busy-bassi-804997 at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/busy-bassi-804997 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart Web] 5 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] worktree on claude/loving-mccarthy-51f063 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/loving-mccarthy-51f063 -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart Web] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [ResumeBuilder AI (Web)] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
 
 ## Work Packet Hygiene
 
@@ -71,7 +60,7 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit · Resumely iOS — Post-live QA + D7 activation readout pending complete D7 window: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
+RunSmart iOS — Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit · Resumely iOS — D7 Gate A closeout complete except App Store Connect review-state confirmation: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
 
 ## What To Do Next
 
