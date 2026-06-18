@@ -3,7 +3,7 @@ title: "Work Packet: Hygiene + Stranded-Work Sweep"
 date: 2026-06-17
 type: work-packet
 project: RunSmart iOS, Resumely iOS (+ Agentic OS stranded board)
-status: active
+status: closed
 priority: 2
 tags: [hygiene, stranded-work, worktrees, git, trust]
 ---

@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit · Resumely iOS — D7 Gate A closeout complete except App Store Connect review-state confirmation: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
+RunSmart iOS — Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting · Resumely iOS — D7 Gate A closeout complete except App Store Connect review-state confirmation: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
 
 Best next action: Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived
 
 ## Run Center
 
-- Last refresh: 2026-06-18 10:58
+- Last refresh: 2026-06-18 12:24
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,25 +20,23 @@ Best next action: Resumely iOS: Re-run D7 readout through the connected PostHog 
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up | Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit | Yes | Fresh | High |
-| Resumely iOS | D7 Gate A closeout complete except App Store Connect review-state confirmation | Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived | No | Fresh | High |
-| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | Yes | Fresh | High |
-| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | Yes | Fresh | High |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | No | Fresh | High |
+| RunSmart iOS | Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending) | Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting | No | Fresh | Medium |
+| Resumely iOS | D7 Gate A closeout complete except App Store Connect review-state confirmation | Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived | Yes | Fresh | High |
+| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | No | Fresh | High |
+| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | No | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Stranded Work
 
-5 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+2 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
-- [RunSmart iOS] 1 uncommitted file(s) in the primary working tree
-- [Resumely iOS] worktree on claude/loving-mccarthy-51f063 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/loving-mccarthy-51f063
-- [RunSmart Web] 1 uncommitted file(s) in the primary working tree
-- [ResumeBuilder AI (Web)] 1 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 1 unpushed commit(s)
+- [Resumely iOS] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] 8 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
-- None. Active/open packet states match the current project status.
+- WARNING [executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md]: Work Packet WP-4 (executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md) is Open but references older build 15 while current RunSmart status is build 16.
+- WARNING [executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md]: Work Packet WP-6 (executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md) is Open but references older build 15 while current RunSmart status is build 16.
 
 ## Decision Board
 
@@ -58,7 +56,6 @@ Best next action: Resumely iOS: Re-run D7 readout through the connected PostHog 
 
 ## Evidence Gaps
 
-- RunSmart iOS: validated 2026-06-15, latest commit is newer.
 - RunSmart Web: validated 2026-06-12, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-06-16, latest commit is newer.
 - Agentic OS: validated 2026-06-12, latest commit is newer.
