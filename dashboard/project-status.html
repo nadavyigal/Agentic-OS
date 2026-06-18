@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-17 IDT",
+    "lastUpdated": "2026-06-18 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -111,14 +111,14 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-17 19:18"
+    "lastSuccessfulRefresh": "2026-06-18 09:31"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21): Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
-    "bestNextAction": "Resumely iOS: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+    "overallStatus": "RunSmart iOS \u2014 Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 Post-live QA + D7 activation readout pending complete D7 window: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+    "bestNextAction": "Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
     "mainBlockers": [
       "RunSmart iOS: Local simulator SIWA still returns `ASAuthorizationError 1000`, so this machine cannot complete authenticated Garmin/delete/re-register flow. Vercel runtime logs remain permission-limited here",
-      "Resumely iOS: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21",
+      "Resumely iOS: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
       "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
@@ -128,7 +128,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-17",
+    "evidenceFreshDate": "2026-06-18",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -139,7 +139,7 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Active: Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register. Last completed: 2026-06-15 App Review privacy/account-deletion fix from `main` commit `9f47ad2`: Delete Account confirmation dialog updated, privacy manifest expanded, Release generic iOS build passed, and the built app bundle contains the updated privacy manifest. Source: tasks/progress.md, updated 2026-06-15.",
+      "status": "Phase: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Active: Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register. Last completed: 2026-06-15 App Review privacy/account-deletion fix from `main` commit `9f47ad2`: Delete Account confirmation dialog updated, privacy manifest expanded, Release generic iOS build passed, and the built app bundle contains the updated privacy manifest. Source: tasks/progress.md, updated 2026-06-15. Newer commits exist after this status (last commit: 2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store); trust git for the latest state.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up",
       "activeStory": "Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register",
@@ -150,7 +150,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "2026-06-15 build 15 Release generic iOS build passed; archive/export passed; exported IPA inspection confirmed version `1.0.2`, build `15`, bundle id `com.runsmart.lite`, `ITSAppUsesNonExemptEncryption=false`, `get-task-allow=false`, HealthKit, Sign in with Apple, associated domains, and expanded `PrivacyInfo.xcprivacy`; upload to App Store Connect succeeded and package began processing",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-17",
+      "lastUpdated": "2026-06-18",
       "blockers": [
         "Local simulator SIWA still returns `ASAuthorizationError 1000`, so this machine cannot complete authenticated Garmin/delete/re-register flow. Vercel runtime logs remain permission-limited here"
       ],
@@ -193,9 +193,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 22,
+        "dirtyCount": 21,
         "extraWorktrees": 2,
-        "lastCommit": "2026-06-15 7775899 docs(ios): record build 15 App Store upload",
+        "lastCommit": "2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -228,8 +228,8 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-15",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-18",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-15"
       },
       "taskParse": {
@@ -284,19 +284,19 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21). Active: Resume Library backend route; optional full-device PostHog smoke before next TestFlight. Last completed: PostHog full coverage \u2014 MCP audit, D7 dashboard, identity/platform fixes, AnalyticsServiceTests 8/8 pass. Source: tasks/progress.md, updated 2026-06-16.",
-      "currentPhase": "Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21)",
-      "activeStory": "Resume Library backend route; optional full-device PostHog smoke before next TestFlight",
-      "lastCompletedStory": "PostHog full coverage \u2014 MCP audit, D7 dashboard, identity/platform fixes, AnalyticsServiceTests 8/8 pass",
-      "nextRecommendedStory": "Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+      "status": "Phase: Post-live QA + D7 activation readout pending complete D7 window. Active: PostHog real-device QA and analytics coverage. Last completed: Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified. Source: tasks/progress.md, updated 2026-06-17.",
+      "currentPhase": "Post-live QA + D7 activation readout pending complete D7 window",
+      "activeStory": "PostHog real-device QA and analytics coverage",
+      "lastCompletedStory": "Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified",
+      "nextRecommendedStory": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "PostHog coverage (2026-06-16): Release BUILD SUCCEEDED; AnalyticsServiceTests 8/8; capture API HTTP 200; dashboard https://us.posthog.com/project/270848/dashboard/1720819",
+      "lastValidation": "PostHog real-device QA (2026-06-17): physical iPhone 13 build/install/launch passed; focused `AnalyticsServiceTests` passed 8/8 on device; live PostHog query after the QA window showed fresh iOS events for `app_launched`, `resume_uploaded`, `job_added`, and `optimization_started`",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-17",
+      "lastUpdated": "2026-06-18",
       "blockers": [
-        "/api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21"
+        "No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed"
       ],
       "risks": [
         "WKWebView PDF/export fragility on real device",
@@ -328,11 +328,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main [behind 7]",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 40,
+        "dirtyCount": 39,
         "extraWorktrees": 6,
-        "lastCommit": "2026-06-16 92a645c feat(ios): enable Resume Library \u2014 /api/v1/resumes confirmed live on production",
+        "lastCommit": "2026-06-17 40f39ca Merge pull request #67 from nadavyigal/codex/posthog-device-qa",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -357,18 +357,18 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-16",
+        "freshestDate": "2026-06-17",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-16"
+        "evidenceDate": "2026-06-17"
       },
       "taskParse": {
-        "status": "Live on the App Store as of 2026-06-17; PostHog project 270848 live verification shows 12 users in the last 2 days, latest activity 2026-06-17T16:03:47Z",
-        "currentPhase": "Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21)",
-        "activeStory": "Resume Library backend route; optional full-device PostHog smoke before next TestFlight",
-        "lastCompletedStory": "PostHog full coverage \u2014 MCP audit, D7 dashboard, identity/platform fixes, AnalyticsServiceTests 8/8 pass",
-        "nextRecommendedStory": "Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+        "status": "App Store live; launch analytics verified in PostHog",
+        "currentPhase": "Post-live QA + D7 activation readout pending complete D7 window",
+        "activeStory": "PostHog real-device QA and analytics coverage",
+        "lastCompletedStory": "Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified",
+        "nextRecommendedStory": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
         "blockers": [
-          "/api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21"
+          "No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed"
         ],
         "risks": [
           "Swift 6 concurrency strictness",
@@ -376,19 +376,19 @@
           "no Hebrew/RTL support",
           "live backend endpoint gaps now surface real user-visible errors"
         ],
-        "lastValidation": "PostHog coverage (2026-06-16): Release BUILD SUCCEEDED; AnalyticsServiceTests 8/8; capture API HTTP 200; dashboard https://us.posthog.com/project/270848/dashboard/1720819",
-        "lastUpdated": "2026-06-16",
-        "qaNeeded": "docs/qa/reports/ios-qa-pr58-2026-06-14.md",
-        "estimatedCompletion": "95%",
+        "lastValidation": "PostHog real-device QA (2026-06-17): physical iPhone 13 build/install/launch passed; focused `AnalyticsServiceTests` passed 8/8 on device; live PostHog query after the QA window showed fresh iOS events for `app_launched`, `resume_uploaded`, `job_added`, and `optimization_started`",
+        "lastUpdated": "2026-06-17",
+        "qaNeeded": "docs/qa/reports/posthog-real-device-qa-2026-06-17.md",
+        "estimatedCompletion": "100% for launch gate; post-live optimization continues",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [],
-          "buildStatus": "succeeded",
+          "buildStatus": null,
           "qaDocs": [
-            "docs/qa/reports/ios-qa-pr58-2026-06-14.md"
+            "docs/qa/reports/posthog-real-device-qa-2026-06-17.md"
           ],
-          "evidenceDate": "2026-06-16"
+          "evidenceDate": "2026-06-17"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -430,7 +430,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-17",
+      "lastUpdated": "2026-06-18",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -549,7 +549,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "APP_STORE_URL fix deployed (2026-06-16). ATS checker now links to id6776752349. Lint passed 0 errors",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-17",
+      "lastUpdated": "2026-06-18",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -688,7 +688,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-17 f68c671 Make morning brief flag status contradictions and harden daily refresh.); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-17 f607058 Arm status guard with live-state env); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -698,7 +698,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-17",
+      "lastUpdated": "2026-06-18",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -713,11 +713,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "dirty": true,
-        "dirtyCount": 13,
+        "dirtyCount": 11,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-17 f68c671 Make morning brief flag status contradictions and harden daily refresh.",
+        "lastCommit": "2026-06-17 f607058 Arm status guard with live-state env",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -790,7 +790,7 @@
   "priorityBoard": {
     "now": [
       "RunSmart iOS: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit",
-      "Resumely iOS: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled"
+      "Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived"
     ],
     "next": [
       "RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
@@ -807,7 +807,7 @@
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "Resumely iOS: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21"
+      "None parsed."
     ]
   },
   "qaBoard": [
@@ -924,7 +924,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-17 19:18",
+    "lastRefresh": "2026-06-18 09:31",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1197,14 +1197,14 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 22,
+      "dirtyCount": 21,
       "extraWorktrees": 2,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-15 7775899 docs(ios): record build 15 App Store upload",
+      "lastCommit": "2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-15",
-      "evidenceGap": false,
+      "freshestDate": "2026-06-18",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-15",
       "evidenceTests": [],
       "buildStatus": "succeeded",
@@ -1247,11 +1247,11 @@
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21)",
-      "nextAction": "Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+      "state": "Post-live QA + D7 activation readout pending complete D7 window",
+      "nextAction": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
       "blockerCount": 1,
       "blockers": [
-        "/api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21"
+        "No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed"
       ],
       "gtm": {
         "exists": false,
@@ -1347,19 +1347,19 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 40,
+      "dirtyCount": 39,
       "extraWorktrees": 6,
-      "branch": "main...origin/main [behind 7]",
-      "lastCommit": "2026-06-16 92a645c feat(ios): enable Resume Library \u2014 /api/v1/resumes confirmed live on production",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-17 40f39ca Merge pull request #67 from nadavyigal/codex/posthog-device-qa",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-16",
+      "freshestDate": "2026-06-17",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-16",
+      "evidenceDate": "2026-06-17",
       "evidenceTests": [],
-      "buildStatus": "succeeded",
+      "buildStatus": null,
       "qaDocs": [
-        "docs/qa/reports/ios-qa-pr58-2026-06-14.md"
+        "docs/qa/reports/posthog-real-device-qa-2026-06-17.md"
       ],
       "sourceFiles": [
         "tasks/MEMORY.md",
@@ -1384,9 +1384,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "PostHog coverage (2026-06-16): Release BUILD SUCCEEDED; AnalyticsServiceTests 8/8; capture API HTTP 200; dashboard https://us.posthog.com/project/270848/dashboard/1720819",
-      "parsedLastUpdated": "2026-06-16",
-      "parsedActiveStory": "Resume Library backend route; optional full-device PostHog smoke before next TestFlight"
+      "parsedLastValidation": "PostHog real-device QA (2026-06-17): physical iPhone 13 build/install/launch passed; focused `AnalyticsServiceTests` passed 8/8 on device; live PostHog query after the QA window showed fresh iOS events for `app_launched`, `resume_uploaded`, `job_added`, and `optimization_started`",
+      "parsedLastUpdated": "2026-06-17",
+      "parsedActiveStory": "PostHog real-device QA and analytics coverage"
     },
     {
       "id": "runsmart-web",
@@ -1674,10 +1674,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 13,
+      "dirtyCount": 11,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-17 f68c671 Make morning brief flag status contradictions and harden daily refresh.",
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-06-17 f607058 Arm status guard with live-state env",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-17",
@@ -1741,7 +1741,7 @@
       "branch": "main...origin/main",
       "nextAction": "Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1771,15 +1771,15 @@
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Next action: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit. Known blockers: Local simulator SIWA still returns `ASAuthorizationError 1000`, so this machine cannot complete authenticated Garmin/delete/re-register flow. Vercel runtime logs remain permission-limited here. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Next action: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit. Known blockers: Local simulator SIWA still returns `ASAuthorizationError 1000`, so this machine cannot complete authenticated Garmin/delete/re-register flow. Vercel runtime logs remain permission-limited here. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "main...origin/main [behind 7]",
-      "nextAction": "Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+      "branch": "main...origin/main",
+      "nextAction": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1803,7 +1803,7 @@
         "docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21). Next action: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled. Known blockers: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1865,7 +1865,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "main...origin/main [ahead 1]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1882,8 +1882,8 @@
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
-    "portfolioState": "RunSmart iOS \u2014 Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21): Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+    "headline": "Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
+    "portfolioState": "RunSmart iOS \u2014 Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 Post-live QA + D7 activation readout pending complete D7 window: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1891,7 +1891,7 @@
     ],
     "risks": [
       "RunSmart iOS: Local simulator SIWA still returns `ASAuthorizationError 1000`, so this machine cannot complete authenticated Garmin/delete/re-register flow. Vercel runtime logs remain permission-limited here",
-      "Resumely iOS: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21",
+      "Resumely iOS: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
       "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
@@ -1913,8 +1913,9 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 3,
+    "evidenceGapCount": 4,
     "evidenceGapProjects": [
+      "RunSmart iOS",
       "RunSmart Web",
       "ResumeBuilder AI (Web)",
       "Agentic OS"
@@ -1956,17 +1957,17 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-17 19:18",
+    "lastRunAt": "2026-06-18 09:31",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21). Next action: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled. Known blockers: /api/v1/resumes backend route returns 404 (Resume Library disabled in iOS). Gate A paywall requires D7 data \u2014 deadline 2026-06-21. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "main...origin/main [behind 7]",
+    "targetBranch": "main...origin/main",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: Ship build with PR #60 events to App Store; fix /api/v1/resumes 404 in web repo and re-enable isResumeLibraryEnabled",
+    "summary": "Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
     "nextActions": [
       {
         "title": "Restore dashboard trust",
@@ -2934,11 +2935,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 6,
+    "uncommitted": 4,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "6 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -3017,7 +3018,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "6 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -3035,7 +3036,7 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-06-17",
+    "generatedOn": "2026-06-18",
     "items": [
       {
         "project": "RunSmart iOS",
@@ -3052,7 +3053,7 @@
       {
         "project": "RunSmart iOS",
         "type": "dirty",
-        "detail": "22 uncommitted file(s) in the primary working tree",
+        "detail": "21 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -3060,12 +3061,6 @@
         "type": "cleanup",
         "detail": "1 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
-      },
-      {
-        "project": "Resumely iOS",
-        "type": "default-branch",
-        "detail": "main is 7 commit(s) behind origin (pull needed)",
-        "action": "Sync the default branch first: pull, then push."
       },
       {
         "project": "Resumely iOS",
@@ -3124,7 +3119,7 @@
       {
         "project": "Resumely iOS",
         "type": "dirty",
-        "detail": "40 uncommitted file(s) in the primary working tree",
+        "detail": "39 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -3147,8 +3142,14 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 1 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "13 uncommitted file(s) in the primary working tree",
+        "detail": "11 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3157,7 +3158,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-17 19:18",
+    "generatedAt": "2026-06-18 09:31",
     "apps": [
       {
         "projectId": 171597,
@@ -3174,7 +3175,7 @@
         "projectId": 270848,
         "appId": "resumebuilder-ios",
         "app": "Resumely",
-        "declaredState": "Live on App Store; monitor Gate A analytics through the D7 dashboard (deadline 2026-06-21)",
+        "declaredState": "Post-live QA + D7 activation readout pending complete D7 window",
         "git": {
           "available": true,
           "tag": "consolidated-2026-05-11",
@@ -3185,15 +3186,15 @@
     "posthog": [
       {
         "appId": "runsmart-ios",
-        "available": false,
-        "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
-        "source": "missing_key"
+        "available": true,
+        "liveUsers7d": 14,
+        "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
-        "available": false,
-        "error": "Missing AGENTIC_OS_POSTHOG_API_KEY",
-        "source": "missing_key"
+        "available": true,
+        "liveUsers7d": 21,
+        "source": "api"
       }
     ],
     "appStore": [
@@ -3213,10 +3214,7 @@
       }
     ],
     "contradictions": [],
-    "unavailable": [
-      "PostHog key not configured for RunSmart",
-      "PostHog key not configured for Resumely"
-    ],
+    "unavailable": [],
     "needsConfirmation": false,
     "proposedFix": null
   },

@@ -23,6 +23,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT_DIR = Path(__file__).resolve().parent
+LOCAL_ENV_FILE = Path.home() / ".config" / "agentic-os.env"
 DASHBOARD = ROOT / "dashboard"
 STATUS_JSON = DASHBOARD / "status.json"
 INDEX_HTML = DASHBOARD / "index.html"
@@ -188,6 +189,29 @@ class ProjectEvidence:
     gtm: dict[str, Any] = field(default_factory=dict)
     plans: list[dict[str, Any]] = field(default_factory=list)
     stranded: dict[str, Any] = field(default_factory=dict)
+
+
+def load_local_env() -> None:
+    """Load ~/.config/agentic-os.env for manual CLI runs (launchd uses daily-refresh.sh)."""
+    if not LOCAL_ENV_FILE.is_file():
+        return
+    for raw_line in LOCAL_ENV_FILE.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        if "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        value = value.strip()
+        if (value.startswith('"') and value.endswith('"')) or (
+            value.startswith("'") and value.endswith("'")
+        ):
+            value = value[1:-1]
+        if key and key not in os.environ:
+            os.environ[key] = value
 
 
 def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
@@ -3583,6 +3607,8 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {"refresh", "verify", "doctor", "morning"}:
+        load_local_env()
     if args.command == "refresh":
         return refresh(args)
     if args.command == "test":

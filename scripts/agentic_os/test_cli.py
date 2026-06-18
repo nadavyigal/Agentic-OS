@@ -640,6 +640,8 @@ class TestPortfolioTrust(unittest.TestCase):
 class TestGroundTruthContradictions(unittest.TestCase):
     def test_posthog_live_users_contradict_in_review_for_both_apps_and_force_refresh_required(self):
         old = os.environ.get(cli.GROUND_TRUTH_OVERRIDES_ENV)
+        old_state = os.environ.get(cli.APP_STORE_STATE_ENV)
+        os.environ.pop(cli.APP_STORE_STATE_ENV, None)
         os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = (
             '{"posthog":{"runsmart-ios":{"liveUsers7d":6},'
             '"resumebuilder-ios":{"liveUsers7d":12}},"appStore":{}}'
@@ -723,6 +725,10 @@ class TestGroundTruthContradictions(unittest.TestCase):
                 os.environ.pop(cli.GROUND_TRUTH_OVERRIDES_ENV, None)
             else:
                 os.environ[cli.GROUND_TRUTH_OVERRIDES_ENV] = old
+            if old_state is None:
+                os.environ.pop(cli.APP_STORE_STATE_ENV, None)
+            else:
+                os.environ[cli.APP_STORE_STATE_ENV] = old_state
 
     def test_app_store_states_accept_raw_env_strings(self):
         old_key = os.environ.get(cli.POSTHOG_KEY_ENV)
