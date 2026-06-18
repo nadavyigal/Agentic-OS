@@ -630,7 +630,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-18 09:44",
+      "lastRefresh": "2026-06-18 09:53",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1022,11 +1022,11 @@
             "kind": "spec"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 6,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-18 674966b docs: add audit screenshots, PostHog audit, plan docs, and D7 work pack",
+        "lastCommit": "2026-06-18 59a104f qa: record PostHog Gate A baseline 2026-06-18",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-18",
@@ -1163,7 +1163,7 @@
         ],
         "dirty": true,
         "dirtyCount": 5,
-        "extraWorktrees": 0,
+        "extraWorktrees": 1,
         "branch": "main...origin/main",
         "lastCommit": "2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack",
         "stale": false,
@@ -1273,8 +1273,8 @@
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 0,
-        "branch": "fix/pdf-parser-unpdf...origin/fix/pdf-parser-unpdf",
-        "lastCommit": "2026-06-17 497a6f8 fix(ats): switch PDF parsing to unpdf \u2014 fixes the Vercel 500 for real",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-06-17 fe99630 Merge pull request #74 from nadavyigal/fix/pdf-parser-unpdf",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-17",
@@ -1352,11 +1352,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-06-18 83dbecc docs: add WP-7 (arm status guard reconcile) and WP-8 (hygiene stranded work sweep)",
+        "lastCommit": "2026-06-18 36bc91b chore: post-push refresh + add sync-cleanup work pack",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-18",
@@ -1457,7 +1457,7 @@
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main...origin/main",
         "nextAction": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
         "sourceConfidence": "High",
@@ -1518,7 +1518,7 @@
         "project": "ResumeBuilder AI (Web)",
         "role": "Backend Rollout Engineer",
         "repoState": "Dirty",
-        "branch": "fix/pdf-parser-unpdf...origin/fix/pdf-parser-unpdf",
+        "branch": "main...origin/main",
         "nextAction": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1540,7 +1540,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main...origin/main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
         "sourceConfidence": "High",
@@ -1574,13 +1574,11 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 5,
+      "dirtyProjectCount": 3,
       "dirtyProjects": [
         "RunSmart iOS",
-        "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)",
-        "Agentic OS"
+        "ResumeBuilder AI (Web)"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -2557,29 +2555,30 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 1,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Dirty shippable app repo: RunSmart iOS.",
+        "Evidence gap after latest commit: RunSmart iOS, Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
       "hygieneWarnings": [
-        "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+        "Uncommitted files in product repos: RunSmart iOS.",
         "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (6)."
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-06-18 09:44",
+      "generatedAt": "2026-06-18 09:53",
       "apps": [
         {
           "projectId": 171597,
@@ -2607,15 +2606,15 @@
       "posthog": [
         {
           "appId": "runsmart-ios",
-          "available": false,
-          "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
-          "source": "api_error"
+          "available": true,
+          "liveUsers7d": 14,
+          "source": "api"
         },
         {
           "appId": "resumebuilder-ios",
-          "available": false,
-          "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
-          "source": "api_error"
+          "available": true,
+          "liveUsers7d": 21,
+          "source": "api"
         }
       ],
       "appStore": [
@@ -2642,14 +2641,14 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-06-18 09:44",
+      "lastRunAt": "2026-06-18 09:53",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-      "targetRepoState": "Dirty",
+      "targetRepoState": "Clean",
       "targetBranch": "main...origin/main",
       "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
