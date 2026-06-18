@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-18 09:31"
+    "lastSuccessfulRefresh": "2026-06-18 09:44"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up: Wait for build 15 processing, update App Store Connect App Privacy and App Review notes with the delete-account screen recording, run the live smoke on an Apple-auth-capable physical device/TestFlight build, then select build 15 and resubmit \u00b7 Resumely iOS \u2014 Post-live QA + D7 activation readout pending complete D7 window: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
@@ -38,7 +38,7 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Active: Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register. Last completed: 2026-06-15 App Review privacy/account-deletion fix from `main` commit `9f47ad2`: Delete Account confirmation dialog updated, privacy manifest expanded, Release generic iOS build passed, and the built app bundle contains the updated privacy manifest. Source: tasks/progress.md, updated 2026-06-15. Newer commits exist after this status (last commit: 2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store); trust git for the latest state.",
+      "status": "Phase: Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up. Active: Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register. Last completed: 2026-06-15 App Review privacy/account-deletion fix from `main` commit `9f47ad2`: Delete Account confirmation dialog updated, privacy manifest expanded, Release generic iOS build passed, and the built app bundle contains the updated privacy manifest. Source: tasks/progress.md, updated 2026-06-15. Newer commits exist after this status (last commit: 2026-06-18 c74c707 feat(analytics): wire PostHog analytics events + add DemoMode for simulator recording); trust git for the latest state.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "Live on App Store; monitor launch analytics and complete the real-device/TestFlight authenticated smoke follow-up",
       "activeStory": "Perform live smoke on a physical device or TestFlight: SIWA sign-in, Garmin connect, delete account, SIWA re-register",
@@ -92,9 +92,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 21,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
-        "lastCommit": "2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store",
+        "lastCommit": "2026-06-18 c74c707 feat(analytics): wire PostHog analytics events + add DemoMode for simulator recording",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -102,6 +102,7 @@
           "tasks/session-log.md",
           "docs/specs/README.md",
           ".agent-os/distribution/gtm-plan.md",
+          "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
           "docs/plans/2026-06-11-code-review-fix-plan.md",
           "docs/plans/2026-06-11-code-review-baseline-audit.md",
           "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
@@ -183,7 +184,7 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: Post-live QA + D7 activation readout pending complete D7 window. Active: PostHog real-device QA and analytics coverage. Last completed: Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified. Source: tasks/progress.md, updated 2026-06-17.",
+      "status": "Phase: Post-live QA + D7 activation readout pending complete D7 window. Active: PostHog real-device QA and analytics coverage. Last completed: Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified. Source: tasks/progress.md, updated 2026-06-17. Newer commits exist after this status (last commit: 2026-06-18 674966b docs: add audit screenshots, PostHog audit, plan docs, and D7 work pack); trust git for the latest state.",
       "currentPhase": "Post-live QA + D7 activation readout pending complete D7 window",
       "activeStory": "PostHog real-device QA and analytics coverage",
       "lastCompletedStory": "Resume Library enabled on `main` after `/api/v1/resumes` was confirmed live; PostHog iOS launch events verified",
@@ -229,9 +230,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 39,
+        "dirtyCount": 1,
         "extraWorktrees": 6,
-        "lastCommit": "2026-06-17 40f39ca Merge pull request #67 from nadavyigal/codex/posthog-device-qa",
+        "lastCommit": "2026-06-18 674966b docs: add audit screenshots, PostHog audit, plan docs, and D7 work pack",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -242,22 +243,17 @@
           "docs/product/current-product-state.md",
           "docs/specs/resume-aha-moments.md",
           "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-          "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
-          "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
           "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
-          "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
           "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
           "docs/specs/app-store-screenshot-generator.md",
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-17",
-        "evidenceGap": false,
+        "freshestDate": "2026-06-18",
+        "evidenceGap": true,
         "evidenceDate": "2026-06-17"
       },
       "taskParse": {
@@ -351,7 +347,7 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 4,
+        "dirtyCount": 5,
         "extraWorktrees": 0,
         "lastCommit": "2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack",
         "sourceFiles": [
@@ -363,6 +359,7 @@
           "docs/specs/README.md",
           "docs/product/product-vision.md",
           "docs/product/current-product-state.md",
+          "docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
           "docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
           "docs/superpowers/plans/2026-06-15-garmin-production-enablement.md",
           "docs/superpowers/plans/2026-06-15-garmin-evaluation-fixes.md",
@@ -470,8 +467,8 @@
       },
       "localEvidence": {
         "branch": "fix/pdf-parser-unpdf...origin/fix/pdf-parser-unpdf",
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
         "lastCommit": "2026-06-17 497a6f8 fix(ats): switch PDF parsing to unpdf \u2014 fixes the Vercel 500 for real",
         "sourceFiles": [
@@ -587,7 +584,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-17 f607058 Arm status guard with live-state env); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-18 83dbecc docs: add WP-7 (arm status guard reconcile) and WP-8 (hygiene stranded work sweep)); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -612,11 +609,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 1]",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 11,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-17 f607058 Arm status guard with live-state env",
+        "lastCommit": "2026-06-18 83dbecc docs: add WP-7 (arm status guard reconcile) and WP-8 (hygiene stranded work sweep)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -629,7 +626,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-17",
+        "freshestDate": "2026-06-18",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -698,9 +695,9 @@
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-      "RunSmart iOS: 22 saved plan(s) \u2014 latest \"Code Review Fix Plan \u2014 2026-06-11\" (2026-06-11). See Saved Plans.",
-      "Resumely iOS: 12 saved plan(s) \u2014 latest \"Feature Spec \u2014 Resume Aha Moments\" (2026-06-12). See Saved Plans.",
-      "RunSmart Web: 11 saved plan(s) \u2014 latest \"Garmin Production Roadmap\" (2026-06-15). See Saved Plans.",
+      "RunSmart iOS: 23 saved plan(s) \u2014 latest \"Build 15 Resubmit + Repo Cleanup \u2014 2026-06-18\" (2026-06-18). See Saved Plans.",
+      "Resumely iOS: 7 saved plan(s) \u2014 latest \"Feature Spec \u2014 Resume Aha Moments\" (2026-06-12). See Saved Plans.",
+      "RunSmart Web: 12 saved plan(s) \u2014 latest \"Garmin Branch Push + Repo Cleanup \u2014 2026-06-18\" (2026-06-18). See Saved Plans.",
       "ResumeBuilder AI (Web): 7 saved plan(s) \u2014 latest \"Resumely \u2014 Growth + Pricing Design Spec\" (2026-06-07). See Saved Plans.",
       "Agentic OS: 5 saved plan(s) \u2014 latest \"2026-06-07 Obsidian Integration Plan\" (2026-06-07). See Saved Plans.",
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
@@ -823,7 +820,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-18 09:31",
+    "lastRefresh": "2026-06-18 09:44",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -850,14 +847,9 @@
       "Resumely iOS: docs/specs/app-store-screenshot-generator.md",
       "Resumely iOS: docs/specs/resume-aha-moments.md",
       "Resumely iOS: docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-03-app-store-submission.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
       "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
       "Resumely iOS: tasks/MEMORY.md",
       "Resumely iOS: tasks/progress.md",
@@ -878,6 +870,7 @@
       "RunSmart Web: docs/superpowers/plans/2026-06-15-garmin-evaluation-fixes.md",
       "RunSmart Web: docs/superpowers/plans/2026-06-15-garmin-production-enablement.md",
       "RunSmart Web: docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
+      "RunSmart Web: docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
       "RunSmart Web: tasks/MEMORY.md",
       "RunSmart Web: tasks/progress.md",
       "RunSmart Web: tasks/session-log.md",
@@ -902,6 +895,7 @@
       "RunSmart iOS: docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
       "RunSmart iOS: docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
       "RunSmart iOS: docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+      "RunSmart iOS: docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
       "RunSmart iOS: docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
       "RunSmart iOS: docs/superpowers/specs/2026-05-24-e2-e6-design.md",
       "RunSmart iOS: docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
@@ -940,6 +934,13 @@
         "lastUpdated": "2026-06-01"
       },
       "plans": [
+        {
+          "title": "Build 15 Resubmit + Repo Cleanup \u2014 2026-06-18",
+          "path": "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "date": "2026-06-18",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Code Review Fix Plan \u2014 2026-06-11",
           "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
@@ -1096,10 +1097,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 21,
+      "dirtyCount": 1,
       "extraWorktrees": 2,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 1d855ae docs(ios): reconcile progress.md to live on App Store",
+      "lastCommit": "2026-06-18 c74c707 feat(analytics): wire PostHog analytics events + add DemoMode for simulator recording",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-18",
@@ -1115,6 +1116,7 @@
         "tasks/session-log.md",
         "docs/specs/README.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
         "docs/plans/2026-06-11-code-review-fix-plan.md",
         "docs/plans/2026-06-11-code-review-baseline-audit.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
@@ -1175,36 +1177,8 @@
           "kind": "plan"
         },
         {
-          "title": "2026-06-11 Smoke Test Follow-Up Plan",
-          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
-          "title": "2026-06-11 Smoke Test Follow-Up Plan",
-          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
           "title": "Code Review Remediation Plan \u2014 2026-06-11",
           "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
-          "title": "Code Review Remediation Plan \u2014 2026-06-11",
-          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
-          "title": "Code Review Remediation Plan \u2014 2026-06-11",
-          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
           "date": "2026-06-11",
           "status": null,
           "kind": "plan"
@@ -1231,13 +1205,6 @@
           "kind": "plan"
         },
         {
-          "title": "App Store Submission \u2014 WP3 Implementation Plan",
-          "path": "docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
-          "date": "2026-06-03",
-          "status": "Submitted for Review",
-          "kind": "plan"
-        },
-        {
           "title": "Feature Spec \u2014 Resumely Pre-Submission UX/UI Transformation",
           "path": "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "date": "2026-05-31",
@@ -1246,14 +1213,14 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 39,
+      "dirtyCount": 1,
       "extraWorktrees": 6,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-17 40f39ca Merge pull request #67 from nadavyigal/codex/posthog-device-qa",
+      "lastCommit": "2026-06-18 674966b docs: add audit screenshots, PostHog audit, plan docs, and D7 work pack",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-17",
-      "evidenceGap": false,
+      "freshestDate": "2026-06-18",
+      "evidenceGap": true,
       "evidenceDate": "2026-06-17",
       "evidenceTests": [],
       "buildStatus": null,
@@ -1270,15 +1237,10 @@
         "docs/product/current-product-state.md",
         "docs/specs/resume-aha-moments.md",
         "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
         "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
         "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
         "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
       "sourceConfidence": "High",
@@ -1304,6 +1266,13 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "Garmin Branch Push + Repo Cleanup \u2014 2026-06-18",
+          "path": "docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
+          "date": "2026-06-18",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Garmin Production Roadmap",
           "path": "docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
@@ -1383,7 +1352,7 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 4,
+      "dirtyCount": 5,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
       "lastCommit": "2026-06-16 1ec51b4 docs: add Garmin Gate 1-4 evidence package work pack",
@@ -1404,6 +1373,7 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
         "docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
         "docs/superpowers/plans/2026-06-15-garmin-production-enablement.md",
         "docs/superpowers/plans/2026-06-15-garmin-evaluation-fixes.md",
@@ -1490,8 +1460,8 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
       "branch": "fix/pdf-parser-unpdf...origin/fix/pdf-parser-unpdf",
       "lastCommit": "2026-06-17 497a6f8 fix(ats): switch PDF parsing to unpdf \u2014 fixes the Vercel 500 for real",
@@ -1573,13 +1543,13 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 11,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 1]",
-      "lastCommit": "2026-06-17 f607058 Arm status guard with live-state env",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-18 83dbecc docs: add WP-7 (arm status guard reconcile) and WP-8 (hygiene stranded work sweep)",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-17",
+      "freshestDate": "2026-06-18",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1648,6 +1618,7 @@
         "tasks/session-log.md",
         "docs/specs/README.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
         "docs/plans/2026-06-11-code-review-fix-plan.md",
         "docs/plans/2026-06-11-code-review-baseline-audit.md",
         "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
@@ -1680,7 +1651,7 @@
       "branch": "main...origin/main",
       "nextAction": "Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1691,18 +1662,13 @@
         "docs/product/current-product-state.md",
         "docs/specs/resume-aha-moments.md",
         "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
         "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 2.md",
         "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
         "docs/specs/app-store-screenshot-generator.md",
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "docs/superpowers/plans/2026-06-03-app-store-submission 2.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -1722,6 +1688,7 @@
         "docs/specs/README.md",
         "docs/product/product-vision.md",
         "docs/product/current-product-state.md",
+        "docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
         "docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
         "docs/superpowers/plans/2026-06-15-garmin-production-enablement.md",
         "docs/superpowers/plans/2026-06-15-garmin-evaluation-fixes.md",
@@ -1740,7 +1707,7 @@
       "projectId": "resumebuilder-ai",
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "fix/pdf-parser-unpdf...origin/fix/pdf-parser-unpdf",
       "nextAction": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
       "sourceConfidence": "High",
@@ -1764,7 +1731,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 1]",
+      "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1797,11 +1764,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 5,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
+      "ResumeBuilder AI (Web)",
       "Agentic OS"
     ],
     "blockedProjects": [
@@ -1812,9 +1780,10 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 4,
+    "evidenceGapCount": 5,
     "evidenceGapProjects": [
       "RunSmart iOS",
+      "Resumely iOS",
       "RunSmart Web",
       "ResumeBuilder AI (Web)",
       "Agentic OS"
@@ -1856,13 +1825,13 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-18 09:31",
+    "lastRunAt": "2026-06-18 09:44",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-live QA + D7 activation readout pending complete D7 window. Next action: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived. Known blockers: No launch-gate blocker. App Store metrics/revenue are unknown until App Store Connect or RevenueCat is reviewed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "main...origin/main",
     "readyForNextSession": false,
@@ -1915,9 +1884,16 @@
     {
       "project": "RunSmart iOS",
       "projectId": "runsmart-ios",
-      "total": 22,
+      "total": 23,
       "shown": 7,
       "plans": [
+        {
+          "title": "Build 15 Resubmit + Repo Cleanup \u2014 2026-06-18",
+          "path": "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "date": "2026-06-18",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Code Review Fix Plan \u2014 2026-06-11",
           "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
@@ -1954,13 +1930,6 @@
           "kind": "spec"
         },
         {
-          "title": "Build 8 Resubmission Implementation Plan",
-          "path": "docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-          "date": "2026-06-03",
-          "status": "Submitted for Review",
-          "kind": "plan"
-        },
-        {
           "title": "GTM Plan \u2014 RunSmart iOS",
           "path": ".agent-os/distribution/gtm-plan.md",
           "date": "2026-06-01",
@@ -1972,7 +1941,7 @@
     {
       "project": "Resumely iOS",
       "projectId": "resumebuilder-ios",
-      "total": 12,
+      "total": 7,
       "shown": 6,
       "plans": [
         {
@@ -1990,20 +1959,6 @@
           "kind": "plan"
         },
         {
-          "title": "2026-06-11 Smoke Test Follow-Up Plan",
-          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 3.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
-          "title": "2026-06-11 Smoke Test Follow-Up Plan",
-          "path": "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan 2.md",
-          "date": "2026-06-11",
-          "status": null,
-          "kind": "plan"
-        },
-        {
           "title": "Code Review Remediation Plan \u2014 2026-06-11",
           "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
           "date": "2026-06-11",
@@ -2011,10 +1966,24 @@
           "kind": "plan"
         },
         {
-          "title": "Code Review Remediation Plan \u2014 2026-06-11",
-          "path": "docs/superpowers/plans/2026-06-11-code-review-remediation-plan 3.md",
+          "title": "Implementation Prompt \u2014 Code Review Remediation",
+          "path": "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
           "date": "2026-06-11",
           "status": null,
+          "kind": "plan"
+        },
+        {
+          "title": "Feature Spec \u2014 App Store Screenshot Generator",
+          "path": "docs/specs/app-store-screenshot-generator.md",
+          "date": "2026-06-05",
+          "status": null,
+          "kind": "spec"
+        },
+        {
+          "title": "App Store Submission \u2014 WP3 Implementation Plan",
+          "path": "docs/superpowers/plans/2026-06-03-app-store-submission.md",
+          "date": "2026-06-03",
+          "status": "Submitted for Review",
           "kind": "plan"
         }
       ]
@@ -2022,9 +1991,16 @@
     {
       "project": "RunSmart Web",
       "projectId": "runsmart-web",
-      "total": 11,
+      "total": 12,
       "shown": 6,
       "plans": [
+        {
+          "title": "Garmin Branch Push + Repo Cleanup \u2014 2026-06-18",
+          "path": "docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md",
+          "date": "2026-06-18",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "Garmin Production Roadmap",
           "path": "docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md",
@@ -2059,13 +2035,6 @@
           "date": "2026-05-12",
           "status": null,
           "kind": "spec"
-        },
-        {
-          "title": "RunSmart iOS App \u2014 Implementation Plan v2",
-          "path": "docs/plans/2026-03-17-runsmart-ios-app-plan.md",
-          "date": "2026-03-17",
-          "status": "Draft",
-          "kind": "plan"
         }
       ]
     },
@@ -2834,11 +2803,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 4,
+    "uncommitted": 1,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -2917,7 +2886,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -2952,14 +2921,8 @@
       {
         "project": "RunSmart iOS",
         "type": "dirty",
-        "detail": "21 uncommitted file(s) in the primary working tree",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "cleanup",
-        "detail": "1 merged branch(es) safe to delete",
-        "action": "Delete merged local branches to cut noise."
       },
       {
         "project": "Resumely iOS",
@@ -3018,7 +2981,7 @@
       {
         "project": "Resumely iOS",
         "type": "dirty",
-        "detail": "39 uncommitted file(s) in the primary working tree",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -3036,19 +2999,19 @@
       {
         "project": "RunSmart Web",
         "type": "dirty",
-        "detail": "4 uncommitted file(s) in the primary working tree",
+        "detail": "5 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 1 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "11 uncommitted file(s) in the primary working tree",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3057,7 +3020,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-18 09:31",
+    "generatedAt": "2026-06-18 09:44",
     "apps": [
       {
         "projectId": 171597,
@@ -3085,15 +3048,15 @@
     "posthog": [
       {
         "appId": "runsmart-ios",
-        "available": true,
-        "liveUsers7d": 14,
-        "source": "api"
+        "available": false,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+        "source": "api_error"
       },
       {
         "appId": "resumebuilder-ios",
-        "available": true,
-        "liveUsers7d": 21,
-        "source": "api"
+        "available": false,
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+        "source": "api_error"
       }
     ],
     "appStore": [
