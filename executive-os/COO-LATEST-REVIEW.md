@@ -9,7 +9,7 @@
 
 ## 1. Operating Summary
 
-RunSmart iOS v1.0.2 build 15 is live on the App Store. Execution has moved to post-launch iteration: build 16 prep (analytics + DemoMode wired) with physical device smoke as the gate before archive/upload to TestFlight. Resumely iOS D7 Gate A closeout is complete except App Store Connect review-state confirmation; next analytics move is the D7 readout on or after 2026-06-24. Monetization remains ready-to-build but parked until first-cohort activation is readable.
+RunSmart iOS v1.0.2 build 15 is live on the App Store. Execution has moved to post-launch iteration: build 16 prep (analytics + DemoMode wired) with physical device smoke as the gate before archive/upload to TestFlight. Resumely iOS v1.1 (5) was submitted for App Store review on 2026-06-18 (EXD-011 freeze active). Next analytics move is the D7 readout on or after 2026-06-24. WP-7 (PostHog status guard) is closed. Monetization remains ready-to-build but parked until first-cohort activation is readable.
 
 Evidence: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, RunSmart iOS `tasks/progress.md`, Resumely iOS `tasks/progress.md`, `executive-os/EXECUTIVE-DECISIONS.md` EXD-005 and EXD-009.
 

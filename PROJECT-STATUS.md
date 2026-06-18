@@ -15,10 +15,10 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending) | Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-18 6baef79 docs: update progress.md to reflect v1.0.2 build 15 live + build 16 next action |
-| Resumely iOS | D7 Gate A closeout complete except App Store Connect review-state confirmation | Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-18 ccd01d2 chore: bump marketing version to 1.1 for App Store update submission |
+| Resumely iOS | D7 Gate A — awaiting Apple approval | (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge | 1 | No | Fresh | Medium | tasks/progress.md | 2026-06-18 5800865 docs: record v5 1.1(5) App Store submission and session log |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | No | Fresh | High | tasks/progress.md | 2026-06-18 c6dd273 docs: add 2026-06-18 garmin cleanup work pack |
 | ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | 2 | No | Fresh | High | tasks/progress.md | 2026-06-18 73c5dde docs: add 2026-06-18 pdf fix merge work pack |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-18 6380538 chore: refresh dashboard post work-pack sweep |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (12) | Fresh | High | tasks/progress.md | 2026-06-18 cbea759 chore: close WP-7 — PostHog guard armed, 0 contradictions, 60/60 tests pass |
 
 ## Evidence Gaps
 
@@ -26,7 +26,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-06-12, last commit 2026-06-18 c6dd273 docs: add 2026-06-18 garmin cleanup work pack
 - ResumeBuilder AI (Web): validated 2026-06-16, last commit 2026-06-18 73c5dde docs: add 2026-06-18 pdf fix merge work pack
-- Agentic OS: validated 2026-06-12, last commit 2026-06-18 6380538 chore: refresh dashboard post work-pack sweep
+- Agentic OS: validated 2026-06-12, last commit 2026-06-18 cbea759 chore: close WP-7 — PostHog guard armed, 0 contradictions, 60/60 tests pass
 
 ## Drift Warnings
 
@@ -36,9 +36,8 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
-- [Resumely iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Resumely iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 12 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 
@@ -59,18 +58,18 @@ Packet states that may make the dashboard misleading:
 
 ## Morning Brief
 
-RunSmart iOS — Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting · Resumely iOS — D7 Gate A closeout complete except App Store Connect review-state confirmation: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
+RunSmart iOS — Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting · Resumely iOS — D7 Gate A — awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
 
 ## What To Do Next
 
-Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived
+Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge
 
 ## Action Board
 
 ### Now
 
 - RunSmart iOS: Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting
-- Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after 2026-06-24; then decide whether Week 1 Launch Metrics (1285341), Activation Funnel (1345375), and My App Dashboard (932305) should be archived
+- Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge
 
 ### Next
 
@@ -91,6 +90,7 @@ Resumely iOS: Re-run D7 readout through the connected PostHog plugin on or after
 ### Blocked
 
 - RunSmart iOS: Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials
+- Resumely iOS: None. Waiting on Apple review
 
 ## Agent Queue
 

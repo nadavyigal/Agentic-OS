@@ -1,6 +1,8 @@
 # Work Packet WP-6
 
-- Status: Open
+- Status: closed
+- Closed: 2026-06-18
+- Closed note: Aha moments shipped in build 15, approved and live. Success signal met.
 - Created: 2026-06-10
 - Source: AHA_MOMENTS.md (RunSmart web repo, implemented there in PR #90); founder decision to couple the iOS port to the 1.0.2 resubmission
 - Workflow pattern: normal

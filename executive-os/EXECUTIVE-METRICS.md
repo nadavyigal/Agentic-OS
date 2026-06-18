@@ -57,7 +57,7 @@ Data-source policy is reused from `../distribution-os/data/source-of-truth-polic
 | Metric | Current | Source | Status |
 |---|---|---|---|
 | Open high-severity risks | see `EXECUTIVE-DASHBOARD.md` Risk Board | manual | Tracked |
-| Apps blocked on approval | 1 in review context; 1 pre-submit | App Store Connect / local status | Tracked |
+| Apps blocked on approval | Resumely v1.1 (5) in review; RunSmart live | App Store Connect / Resumely iOS tasks/progress.md | Tracked |
 
 ## Current Manual Data Sources
 
