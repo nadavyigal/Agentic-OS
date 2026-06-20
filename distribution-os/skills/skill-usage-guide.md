@@ -2,6 +2,8 @@
 
 How agents invoke marketing skills from inside a distribution workflow.
 
+> **Path resolution (2026-06-20):** Active skills load from `.agents/skills/marketing/<name>/SKILL.md`. Examples below referencing skills outside the active 12 (e.g. `cro`, `customer-research`) are illustrative — those skills live in `archive/marketingskills/skills/` and must be copied into `.agents/skills/marketing/` before loading. See `installed-skills.md`.
+
 ## When To Invoke A Skill
 
 Skills are loaded by the agent (Claude Code, Codex, Cursor) when a workflow says to. The agent then follows the skill's instructions. A skill is content, not code. Loading means: read the file, apply its rules to this specific task.
@@ -11,7 +13,7 @@ Skills are loaded by the agent (Claude Code, Codex, Cursor) when a workflow says
 From a workflow:
 
 ```
-Load: marketingskills/skills/cro/SKILL.md
+Load: .agents/skills/marketing/cro/SKILL.md
 ```
 
 The agent reads the file, identifies the relevant section for the current task, and uses it as the working method. It does not paste the skill back to the user.
@@ -29,12 +31,12 @@ Many skills (cro, aso, programmatic-seo, free-tools, onboarding) look for a prod
 
 A workflow can chain skills. Example for a ResumeBuilder programmatic SEO push:
 
-1. `marketingskills/skills/customer-research/SKILL.md` — confirm the role pages match real user search intent
-2. `marketingskills/skills/programmatic-seo/SKILL.md` — design the templated page system
-3. `marketingskills/skills/site-architecture/SKILL.md` — confirm URL structure and internal linking
-4. `marketingskills/skills/schema/SKILL.md` — pick the right structured data
-5. `marketingskills/skills/copywriting/SKILL.md` — write the page module copy
-6. `marketingskills/skills/cro/SKILL.md` — verify the CTA logic
+1. `.agents/skills/marketing/customer-research/SKILL.md` — confirm the role pages match real user search intent
+2. `.agents/skills/marketing/programmatic-seo/SKILL.md` — design the templated page system
+3. `.agents/skills/marketing/site-architecture/SKILL.md` — confirm URL structure and internal linking
+4. `.agents/skills/marketing/schema/SKILL.md` — pick the right structured data
+5. `.agents/skills/marketing/copywriting/SKILL.md` — write the page module copy
+6. `.agents/skills/marketing/cro/SKILL.md` — verify the CTA logic
 
 Each step produces one artifact. The workflow names them.
 

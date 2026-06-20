@@ -1,10 +1,12 @@
 # Skills Index
 
-Map from distribution intent to the skill (or skills) in `marketingskills/skills/` to load. This is the agent's lookup table.
+Map from distribution intent to the skill (or skills) to load. This is the agent's lookup table.
+
+> **Path resolution (2026-06-20):** The 12 **active** marketing skills load from `.agents/skills/marketing/<name>/SKILL.md` (see `installed-skills.md`). Any skill named below that is **not** among the active 12 (e.g. `cro`, `copywriting`, `launch`, `social`, `churn-prevention`, `content-strategy`, `marketing-psychology`) lives in `archive/marketingskills/skills/<name>/` for reference and must be copied into `.agents/skills/marketing/` before use. This index is the "what to reach for" map regardless of install state.
 
 Companion files:
 
-- `installed-skills.md` — what is present in the cloned `marketingskills/` repo
+- `installed-skills.md` — master inventory of installed skills (all domains)
 - `recommended-skills.md` — which subset to install per product, with rationale
 - `skill-usage-guide.md` — how to invoke a skill from inside a workflow
 
@@ -21,10 +23,10 @@ Every workflow loads at most one foundation skill first.
 
 | Intent | Primary Skill | When |
 |---|---|---|
-| Establish or read product positioning | `marketingskills/skills/product-marketing` | First time per product, or when positioning is stale |
-| Plan content broadly | `marketingskills/skills/content-strategy` | Before any SEO or social push |
-| Apply persuasion / framing | `marketingskills/skills/marketing-psychology` | When refining copy |
-| Brainstorm | `marketingskills/skills/marketing-ideas` | Stuck or starting a new channel |
+| Establish or read product positioning | `.agents/skills/marketing/product-marketing` | First time per product, or when positioning is stale |
+| Plan content broadly | `.agents/skills/marketing/content-strategy` | Before any SEO or social push |
+| Apply persuasion / framing | `.agents/skills/marketing/marketing-psychology` | When refining copy |
+| Brainstorm | `.agents/skills/marketing/marketing-ideas` | Stuck or starting a new channel |
 
 ## RunSmart-Heavy Intents
 

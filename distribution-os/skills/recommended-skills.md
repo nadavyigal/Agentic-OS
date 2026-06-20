@@ -1,6 +1,6 @@
 # Recommended Skills Per Product
 
-Curated subset to install into each project repo under `.agents/skills/` or to symlink from `marketingskills/skills/`. Keep installation small to avoid context bloat — each project pulls only what its weekly cycle needs.
+Curated subset to install into each project repo under `.agents/skills/` or to symlink from `.agents/skills/marketing/`. Keep installation small to avoid context bloat — each project pulls only what its weekly cycle needs.
 
 ## RunSmart Recommended Set
 
@@ -83,7 +83,7 @@ Skip for ResumeBuilder: `aso` (until iOS app), `community-marketing` (job seeker
 
 The marketingskills repo is already cloned at `marketingskills/`. Two reasonable patterns:
 
-1. **Reference-only (current default)**: workflows load skills by path from `../../marketingskills/skills/{name}/SKILL.md`. Nothing is copied.
+1. **Reference-only (current default)**: workflows load skills by path from `../../.agents/skills/marketing/{name}/SKILL.md`. Nothing is copied.
 2. **Project-local install**: in each project repo, copy or symlink the recommended set into `.agents/skills/`. This is useful when running agents directly inside the project repo without access to this folder.
 
 Either works. Pick one per repo. Document the choice in the project's `.agent-os/distribution/README.md`.
