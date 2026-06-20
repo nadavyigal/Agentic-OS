@@ -1,2 +1,4 @@
 .claude/worktrees/
 logs/
+# Local-only security scanner (SkillSpector); run via Docker, not vendored. See docs/research/external-skills-and-tools-adoption-plan.md
+tools/
