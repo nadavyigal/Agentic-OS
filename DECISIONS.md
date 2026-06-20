@@ -60,3 +60,16 @@ Impact:
   before durable promotion.
 - Additional outcome-loop cards require two successful COO reviews of the pilot
   without status duplication.
+
+## 2026-06-20: Resumely ATS Claims — Branded "Match Score", Process Claims Only
+
+Decision: Resumely's score is a self-defined "Resumely Match Score", not a representation of any external ATS vendor's score. All ATS-related copy (App Store metadata, paywall, /ats-checker, public share posts) must be process-descriptive, never outcome-guaranteeing.
+
+Reason: The product computes a numeric "ATS score" (free score -> paid export, the core monetization frame) and substitutes it into public LinkedIn posts via LinkedInShareComposer.swift. Real ATS systems (Workday/Greenhouse/Taleo) are proprietary and do not expose scoring, so "your ATS score" is unverifiable and exposes the app to Apple 2.3.1 (misleading) review risk and FTC unsubstantiated-claims risk.
+
+Impact:
+
+- Allowed: "ATS-friendly formatting", "checks against common ATS parsing rules", "match score vs the job you paste", a branded "Resumely Match Score".
+- Forbidden: "your ATS score" as an external number, "guaranteed to pass ATS"/"beat the bots", interview/hire outcome stats, named ATS vendors.
+- Pending product work (iOS + web repos): rename in-product "ATS score" label to "Resumely Match Score"; update LinkedInShareComposer.swift share copy; audit App Store metadata (en+he); add "not affiliated with any ATS vendor" microcopy.
+- Human-readable record: Nadav Builder OS vault 05-Decisions/2026-06-20-resumely-ats-claim-defensibility.md.
