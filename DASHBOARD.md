@@ -1,18 +1,18 @@
 # Portfolio Dashboard
 
-Last updated: 2026-06-18 IDT
+Last updated: 2026-06-21 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS — Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting · Resumely iOS — D7 Gate A — awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked
+RunSmart iOS — Post-launch iteration — v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode → Product → Archive → upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store · Resumely iOS — D7 Gate A — awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview
 
 Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge
 
 ## Run Center
 
-- Last refresh: 2026-06-18 14:44
+- Last refresh: 2026-06-21 07:37
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,22 +20,32 @@ Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejecti
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Post-launch iteration — build 16 prep (analytics + DemoMode wired, physical device smoke pending) | Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting | No | Fresh | Medium |
-| Resumely iOS | D7 Gate A — awaiting Apple approval | (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge | No | Fresh | Medium |
-| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | No | Fresh | High |
-| ResumeBuilder AI (Web) | Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked | Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test | No | Fresh | High |
+| RunSmart iOS | Post-launch iteration — v1.0.3 build 16 archive + TestFlight upload pending | Open Xcode → Product → Archive → upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store | Yes | Fresh | High |
+| Resumely iOS | D7 Gate A — awaiting Apple approval | (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge | Yes | Fresh | Medium |
+| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | Yes | Fresh | High |
+| ResumeBuilder AI (Web) | ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview | After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready) | No | Fresh | High |
 | Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | Yes | Fresh | High |
 
 ## Stranded Work
 
-1 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+12 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
-- [Agentic OS] 12 uncommitted file(s) in the primary working tree
+- [RunSmart iOS] cursor/e7-wearable-depth-trends: unmerged commits, never pushed, last commit 2026-06-12
+- [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370
+- [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7
+- [RunSmart iOS] 8 uncommitted file(s) in the primary working tree
+- [Resumely iOS] worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50
+- [Resumely iOS] worktree on claude/relaxed-northcutt-cb6240 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240
+- [Resumely iOS] worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2
+- [Resumely iOS] worktree on chore/progress-ats-fix-pending-release, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/upbeat-matsumoto-a92be3
+- [Resumely iOS] 10 uncommitted file(s) in the primary working tree
+- [RunSmart Web] fix/garmin-ios-branch-fixes: unmerged commits, never pushed, last commit 2026-06-16
+- [RunSmart Web] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] 2 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
-- WARNING [executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md]: Work Packet WP-4 (executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md) is Open but references older build 15 while current RunSmart status is build 16.
-- WARNING [executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md]: Work Packet WP-6 (executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md) is Open but references older build 15 while current RunSmart status is build 16.
+- None. Active/open packet states match the current project status.
 
 ## Decision Board
 
@@ -56,7 +66,6 @@ Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejecti
 ## Evidence Gaps
 
 - RunSmart Web: validated 2026-06-12, latest commit is newer.
-- ResumeBuilder AI (Web): validated 2026-06-16, latest commit is newer.
 - Agentic OS: validated 2026-06-12, latest commit is newer.
 
 ## Drift Warnings

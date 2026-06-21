@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-18 IDT",
+    "lastUpdated": "2026-06-21 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -111,13 +111,13 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-18 14:44"
+    "lastSuccessfulRefresh": "2026-06-21 07:37"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+    "overallStatus": "RunSmart iOS \u2014 Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
     "bestNextAction": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
     "mainBlockers": [
-      "RunSmart iOS: Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials",
+      "RunSmart iOS: None. Archive ready to run",
       "Resumely iOS: None. Waiting on Apple review",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
@@ -128,7 +128,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-18",
+    "evidenceFreshDate": "2026-06-20",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -139,20 +139,20 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending). Active: Run physical device smoke (SIWA sign-in, Garmin connect, delete account, SIWA re-register) on a real iPhone with Garmin credentials. Then archive v1.0.2 build 16 from current main. Last completed: 2026-06-18 PostHog analytics events wired + DemoMode added for simulator recording (commit `c74c707`); dead GoalFocusEditor extension removed (`0bbacda`); all post-launch branches merged and worktrees cleared. Source: tasks/progress.md, updated 2026-06-18.",
+      "status": "Phase: Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending. Active: Archive v1.0.2 build 16 from current main in Xcode Organizer, upload to TestFlight, then submit to App Store. Last completed: 2026-06-18 physical device smoke PASSED (SIWA sign-in, delete account, onboarding \u2014 all confirmed on real iPhone). Build number bumped 15 \u2192 16 in xcodeproj. Source: tasks/progress.md, updated 2026-06-20.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
-      "currentPhase": "Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending)",
-      "activeStory": "Run physical device smoke (SIWA sign-in, Garmin connect, delete account, SIWA re-register) on a real iPhone with Garmin credentials. Then archive v1.0.2 build 16 from current main",
-      "lastCompletedStory": "2026-06-18 PostHog analytics events wired + DemoMode added for simulator recording (commit `c74c707`); dead GoalFocusEditor extension removed (`0bbacda`); all post-launch branches merged and worktrees cleared",
-      "nextRecommendedStory": "Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting",
+      "currentPhase": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
+      "activeStory": "Archive v1.0.2 build 16 from current main in Xcode Organizer, upload to TestFlight, then submit to App Store",
+      "lastCompletedStory": "2026-06-18 physical device smoke PASSED (SIWA sign-in, delete account, onboarding \u2014 all confirmed on real iPhone). Build number bumped 15 \u2192 16 in xcodeproj",
+      "nextRecommendedStory": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "2026-06-18 analytics + DemoMode committed and pushed to main. All repos clean. Worktrees cleared",
+      "lastValidation": "2026-06-18 physical device smoke passed on real iPhone. SIWA, delete account, onboard all confirmed working",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-18",
+      "lastUpdated": "2026-06-21",
       "blockers": [
-        "Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials"
+        "None. Archive ready to run"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -192,10 +192,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
-        "extraWorktrees": 0,
-        "lastCommit": "2026-06-18 6baef79 docs: update progress.md to reflect v1.0.2 build 15 live + build 16 next action",
+        "dirty": true,
+        "dirtyCount": 8,
+        "extraWorktrees": 2,
+        "lastCommit": "2026-06-18 9605c55 chore(ios): bump version 1.0.2 \u2192 1.0.3 (Apple locked 1.0.2 train); build 16 ready",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -226,27 +226,27 @@
           "docs/specs/demo-mode-simulator-recording.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-18",
+        "freshestDate": "2026-06-20",
         "evidenceGap": false,
         "evidenceDate": "2026-06-18"
       },
       "taskParse": {
-        "status": "Live on the App Store (v1.0.2 build 15 approved and live). PostHog project 171597 live: 6 users in last 2 days, latest activity 2026-06-17",
-        "currentPhase": "Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending)",
-        "activeStory": "Run physical device smoke (SIWA sign-in, Garmin connect, delete account, SIWA re-register) on a real iPhone with Garmin credentials. Then archive v1.0.2 build 16 from current main",
-        "lastCompletedStory": "2026-06-18 PostHog analytics events wired + DemoMode added for simulator recording (commit `c74c707`); dead GoalFocusEditor extension removed (`0bbacda`); all post-launch branches merged and worktrees cleared",
-        "nextRecommendedStory": "Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting",
+        "status": "Live on the App Store (v1.0.2 build 15 approved and live). Build 16 ready to archive as v1.0.3 \u2014 Apple locked 1.0.2 train, bumped to 1.0.3 2026-06-18",
+        "currentPhase": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
+        "activeStory": "Archive v1.0.2 build 16 from current main in Xcode Organizer, upload to TestFlight, then submit to App Store",
+        "lastCompletedStory": "2026-06-18 physical device smoke PASSED (SIWA sign-in, delete account, onboarding \u2014 all confirmed on real iPhone). Build number bumped 15 \u2192 16 in xcodeproj",
+        "nextRecommendedStory": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
         "blockers": [
-          "Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials"
+          "None. Archive ready to run"
         ],
         "risks": [],
-        "lastValidation": "2026-06-18 analytics + DemoMode committed and pushed to main. All repos clean. Worktrees cleared",
-        "lastUpdated": "2026-06-18",
+        "lastValidation": "2026-06-18 physical device smoke passed on real iPhone. SIWA, delete account, onboard all confirmed working",
+        "lastUpdated": "2026-06-20",
         "qaNeeded": null,
-        "estimatedCompletion": "Physical device smoke ~30 min on real device. Archive + upload ~20 min. Submit same day",
+        "estimatedCompletion": "Archive + upload ~20 min. App Store review ~24-48h",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
@@ -266,10 +266,10 @@
         "missing": [
           "tasks/ERRORS.md"
         ],
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": true,
         "path": ".agent-os/distribution/gtm-plan.md",
@@ -285,7 +285,7 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: D7 Gate A \u2014 awaiting Apple approval. Last completed: v5 build-and-ship \u2014 submitted 2026-06-18. Source: tasks/progress.md, updated 2026-06-18.",
+      "status": "Phase: D7 Gate A \u2014 awaiting Apple approval. Last completed: v5 build-and-ship \u2014 submitted 2026-06-18. Source: tasks/progress.md, updated 2026-06-19.",
       "currentPhase": "D7 Gate A \u2014 awaiting Apple approval",
       "activeStory": "D7 Gate A deadline closeout",
       "lastCompletedStory": "v5 build-and-ship \u2014 submitted 2026-06-18",
@@ -295,7 +295,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "PostHog live events confirmed firing on real device during session; build 1.1 (5) uploaded successfully",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-18",
+      "lastUpdated": "2026-06-21",
       "blockers": [
         "None. Waiting on Apple review"
       ],
@@ -329,11 +329,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
-        "extraWorktrees": 0,
-        "lastCommit": "2026-06-18 5800865 docs: record v5 1.1(5) App Store submission and session log",
+        "branch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
+        "dirty": true,
+        "dirtyCount": 10,
+        "extraWorktrees": 4,
+        "lastCommit": "2026-06-19 f4f2882 fix: surface preview and export failures",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -355,9 +355,9 @@
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-18",
+        "freshestDate": "2026-06-19",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-18"
+        "evidenceDate": "2026-06-19"
       },
       "taskParse": {
         "status": "v1.1 (5) in Apple review",
@@ -369,15 +369,12 @@
           "None. Waiting on Apple review"
         ],
         "risks": [
-          "Swift 6 concurrency strictness",
-          "PDF render via WKWebView (fragile on real device)",
-          "Hebrew/RTL still needs real-device resume/PDF QA",
-          "live backend endpoint gaps now surface real user-visible errors"
+          "Apple rejection resets D7 metrics window. Hebrew/RTL real-device PDF QA still pending"
         ],
         "lastValidation": "PostHog live events confirmed firing on real device during session; build 1.1 (5) uploaded successfully",
-        "lastUpdated": "2026-06-18",
+        "lastUpdated": "2026-06-19",
         "qaNeeded": "docs/qa/posthog-gate-a-baseline-2026-06-18.md",
-        "estimatedCompletion": "100% for launch gate; post-live optimization continues",
+        "estimatedCompletion": "Awaiting Apple approval (~48h from 2026-06-18)",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
@@ -386,7 +383,7 @@
           "qaDocs": [
             "docs/qa/posthog-gate-a-baseline-2026-06-18.md"
           ],
-          "evidenceDate": "2026-06-18"
+          "evidenceDate": "2026-06-19"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -418,7 +415,7 @@
       "role": "Main AI running coach product and source of product logic.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Today page improvement planning, post Aha Moments merge. Active: Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md). Last completed: Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11). Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-18 c6dd273 docs: add 2026-06-18 garmin cleanup work pack); trust git for the latest state.",
+      "status": "Phase: Today page improvement planning, post Aha Moments merge. Active: Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md). Last completed: Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11). Source: tasks/progress.md, updated 2026-06-20.",
       "currentPhase": "Today page improvement planning, post Aha Moments merge",
       "activeStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)",
       "lastCompletedStory": "Aha Moments merged via PR #90 (2026-06-10); Session End Rule docs via PR #91 (2026-06-11)",
@@ -428,7 +425,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-18",
+      "lastUpdated": "2026-06-21",
       "blockers": [
         "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
       ],
@@ -448,11 +445,11 @@
         "repo": "file:///Users/nadavyigal/Documents/RunSmart"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "claude/dedup-imported-skill-packs...origin/claude/dedup-imported-skill-packs",
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-18 c6dd273 docs: add 2026-06-18 garmin cleanup work pack",
+        "lastCommit": "2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -478,7 +475,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-18",
+        "freshestDate": "2026-06-20",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -494,7 +491,7 @@
           "scope creep from inventory into redesign implementation"
         ],
         "lastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
-        "lastUpdated": "2026-06-12",
+        "lastUpdated": "2026-06-20",
         "qaNeeded": null,
         "estimatedCompletion": "Today redesign not started; Story 1 is the entry point",
         "decisionsNeeded": [
@@ -538,17 +535,17 @@
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked. Active: Parked unless the Resumely iOS device smoke test exposes backend parse/render issues. Last completed: /api/v1/resumes Resume Library CRUD live (2026-06-16). Source: tasks/progress.md, updated 2026-06-16. Newer commits exist after this status (last commit: 2026-06-18 73c5dde docs: add 2026-06-18 pdf fix merge work pack); trust git for the latest state.",
-      "currentPhase": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
-      "activeStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues",
-      "lastCompletedStory": "/api/v1/resumes Resume Library CRUD live (2026-06-16)",
-      "nextRecommendedStory": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
+      "status": "Phase: ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview. Active: Verify the LinkedIn guest-endpoint fix from a real Vercel datacenter IP (branch fix/linkedin-guest-scrape) \u2014 set SCRAPE_CHECK_TOKEN on the preview, hit /api/debug/scrape-check, confirm aboutLen>1000 & isThin:false; then re-optimize a fresh LinkedIn job on iOS and confirm the score lifts above ~21. Last completed: Implemented LinkedIn guest-API scrape fix + thinness gate (branch fix/linkedin-guest-scrape, pushed 2026-06-20) \u2014 root-cause fix for the score-capping bug. Source: tasks/progress.md, updated 2026-06-20.",
+      "currentPhase": "ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+      "activeStory": "Verify the LinkedIn guest-endpoint fix from a real Vercel datacenter IP (branch fix/linkedin-guest-scrape) \u2014 set SCRAPE_CHECK_TOKEN on the preview, hit /api/debug/scrape-check, confirm aboutLen>1000 & isThin:false; then re-optimize a fresh LinkedIn job on iOS and confirm the score lifts above ~21",
+      "lastCompletedStory": "Implemented LinkedIn guest-API scrape fix + thinness gate (branch fix/linkedin-guest-scrape, pushed 2026-06-20) \u2014 root-cause fix for the score-capping bug",
+      "nextRecommendedStory": "After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "APP_STORE_URL fix deployed (2026-06-16). ATS checker now links to id6776752349. Lint passed 0 errors",
+      "lastValidation": "fix/linkedin-guest-scrape \u2014 8 new unit tests pass, relevant suites 24/24, lint 0 errors (2026-06-20). The 16 other failing jest suites are pre-existing (Playwright e2e under jest + server-dependent contract tests), confirmed by stash-and-rerun on baseline",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-18",
+      "lastUpdated": "2026-06-21",
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
         "docs/plan.rollout.md tasks are unchecked."
@@ -569,11 +566,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "fix/ats-layer-b-jd-ingestion...origin/fix/ats-layer-b-jd-ingestion",
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-18 73c5dde docs: add 2026-06-18 pdf fix merge work pack",
+        "lastCommit": "2026-06-20 50aed01 fix(ats): complete Layer B JD ingestion and jd_text persistence",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -589,23 +586,24 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-18",
-        "evidenceGap": true,
-        "evidenceDate": "2026-06-16"
+        "freshestDate": "2026-06-20",
+        "evidenceGap": false,
+        "evidenceDate": "2026-06-20"
       },
       "taskParse": {
         "status": "Active",
-        "currentPhase": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
-        "activeStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues",
-        "lastCompletedStory": "/api/v1/resumes Resume Library CRUD live (2026-06-16)",
-        "nextRecommendedStory": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
+        "currentPhase": "ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+        "activeStory": "Verify the LinkedIn guest-endpoint fix from a real Vercel datacenter IP (branch fix/linkedin-guest-scrape) \u2014 set SCRAPE_CHECK_TOKEN on the preview, hit /api/debug/scrape-check, confirm aboutLen>1000 & isThin:false; then re-optimize a fresh LinkedIn job on iOS and confirm the score lifts above ~21",
+        "lastCompletedStory": "Implemented LinkedIn guest-API scrape fix + thinness gate (branch fix/linkedin-guest-scrape, pushed 2026-06-20) \u2014 root-cause fix for the score-capping bug",
+        "nextRecommendedStory": "After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)",
         "blockers": [],
         "risks": [
+          "Guest-endpoint behavior on Vercel's IP is verified-by-design but not yet confirmed from a real datacenter IP (only reproducible post-deploy)",
           "PDF/DOCX upload smoke test still not run (#1 pre-approval risk per tasks/MEMORY.md 2026-06-08)",
           "user_credits table vs profiles.credit_balance reconciliation must be resolved at Gate A"
         ],
-        "lastValidation": "APP_STORE_URL fix deployed (2026-06-16). ATS checker now links to id6776752349. Lint passed 0 errors",
-        "lastUpdated": "2026-06-16",
+        "lastValidation": "fix/linkedin-guest-scrape \u2014 8 new unit tests pass, relevant suites 24/24, lint 0 errors (2026-06-20). The 16 other failing jest suites are pre-existing (Playwright e2e under jest + server-dependent contract tests), confirmed by stash-and-rerun on baseline",
+        "lastUpdated": "2026-06-20",
         "qaNeeded": "tasks/2026-06-08-smoke-test-upload-backend.md (plan; execution pending)",
         "estimatedCompletion": "Web is live; launch-support items above remain",
         "decisionsNeeded": [
@@ -616,7 +614,7 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-16"
+          "evidenceDate": "2026-06-20"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -687,7 +685,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-12. Newer commits exist after this status (last commit: 2026-06-18 cbea759 chore: close WP-7 \u2014 PostHog guard armed, 0 contradictions, 60/60 tests pass); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility. Source: tasks/progress.md, updated 2026-06-20.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility",
@@ -697,7 +695,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-18",
+      "lastUpdated": "2026-06-21",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -714,9 +712,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 12,
+        "dirtyCount": 2,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-18 cbea759 chore: close WP-7 \u2014 PostHog guard armed, 0 contradictions, 60/60 tests pass",
+        "lastCommit": "2026-06-20 80fb2c9 decisions: Resumely ATS claims = branded Match Score, process claims only",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -729,7 +727,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-18",
+        "freshestDate": "2026-06-20",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -745,7 +743,7 @@
           "untrusted input still requires least-privilege tools and founder approval for consequential actions"
         ],
         "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
-        "lastUpdated": "2026-06-12",
+        "lastUpdated": "2026-06-20",
         "qaNeeded": null,
         "estimatedCompletion": "Pilot implementation complete; operating validation remains",
         "decisionsNeeded": [
@@ -788,12 +786,12 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting",
+      "RunSmart iOS: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
       "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge"
     ],
     "next": [
       "RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
-      "ResumeBuilder AI (Web): Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test"
+      "ResumeBuilder AI (Web): After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)"
     ],
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
@@ -806,7 +804,6 @@
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "RunSmart iOS: Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials",
       "Resumely iOS: None. Waiting on Apple review"
     ]
   },
@@ -924,8 +921,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-18 14:44",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-06-21 07:37",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1026,11 +1023,11 @@
     {
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
-      "state": "Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending)",
-      "nextAction": "Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting",
+      "state": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
+      "nextAction": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
       "blockerCount": 1,
       "blockers": [
-        "Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials"
+        "None. Archive ready to run"
       ],
       "gtm": {
         "exists": true,
@@ -1202,14 +1199,14 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
-      "extraWorktrees": 0,
+      "dirty": true,
+      "dirtyCount": 8,
+      "extraWorktrees": 2,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 6baef79 docs: update progress.md to reflect v1.0.2 build 15 live + build 16 next action",
+      "lastCommit": "2026-06-18 9605c55 chore(ios): bump version 1.0.2 \u2192 1.0.3 (Apple locked 1.0.2 train); build 16 ready",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-18",
+      "freshestDate": "2026-06-20",
       "evidenceGap": false,
       "evidenceDate": "2026-06-18",
       "evidenceTests": [],
@@ -1245,11 +1242,11 @@
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-06-18 analytics + DemoMode committed and pushed to main. All repos clean. Worktrees cleared",
-      "parsedLastUpdated": "2026-06-18",
-      "parsedActiveStory": "Run physical device smoke (SIWA sign-in, Garmin connect, delete account, SIWA re-register) on a real iPhone with Garmin credentials. Then archive v1.0.2 build 16 from current main"
+      "parsedLastValidation": "2026-06-18 physical device smoke passed on real iPhone. SIWA, delete account, onboard all confirmed working",
+      "parsedLastUpdated": "2026-06-20",
+      "parsedActiveStory": "Archive v1.0.2 build 16 from current main in Xcode Organizer, upload to TestFlight, then submit to App Store"
     },
     {
       "id": "resumebuilder-ios",
@@ -1332,16 +1329,16 @@
           "kind": "spec"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
-      "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 5800865 docs: record v5 1.1(5) App Store submission and session log",
+      "dirty": true,
+      "dirtyCount": 10,
+      "extraWorktrees": 4,
+      "branch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
+      "lastCommit": "2026-06-19 f4f2882 fix: surface preview and export failures",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-18",
+      "freshestDate": "2026-06-19",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-18",
+      "evidenceDate": "2026-06-19",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [
@@ -1368,7 +1365,7 @@
       "sourceConfidence": "Medium",
       "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "PostHog live events confirmed firing on real device during session; build 1.1 (5) uploaded successfully",
-      "parsedLastUpdated": "2026-06-18",
+      "parsedLastUpdated": "2026-06-19",
       "parsedActiveStory": null
     },
     {
@@ -1473,14 +1470,14 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 c6dd273 docs: add 2026-06-18 garmin cleanup work pack",
+      "branch": "claude/dedup-imported-skill-packs...origin/claude/dedup-imported-skill-packs",
+      "lastCommit": "2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-18",
+      "freshestDate": "2026-06-20",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1511,14 +1508,14 @@
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
-      "parsedLastUpdated": "2026-06-12",
+      "parsedLastUpdated": "2026-06-20",
       "parsedActiveStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)"
     },
     {
       "id": "resumebuilder-ai",
       "name": "ResumeBuilder AI (Web)",
-      "state": "Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
-      "nextAction": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
+      "state": "ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+      "nextAction": "After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)",
       "blockerCount": 2,
       "blockers": [
         "Dirty fix/pdf-parse-xref-error branch.",
@@ -1585,13 +1582,13 @@
       "dirty": false,
       "dirtyCount": 0,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 73c5dde docs: add 2026-06-18 pdf fix merge work pack",
+      "branch": "fix/ats-layer-b-jd-ingestion...origin/fix/ats-layer-b-jd-ingestion",
+      "lastCommit": "2026-06-20 50aed01 fix(ats): complete Layer B JD ingestion and jd_text persistence",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-18",
-      "evidenceGap": true,
-      "evidenceDate": "2026-06-16",
+      "freshestDate": "2026-06-20",
+      "evidenceGap": false,
+      "evidenceDate": "2026-06-20",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -1609,9 +1606,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "APP_STORE_URL fix deployed (2026-06-16). ATS checker now links to id6776752349. Lint passed 0 errors",
-      "parsedLastUpdated": "2026-06-16",
-      "parsedActiveStory": "Parked unless the Resumely iOS device smoke test exposes backend parse/render issues"
+      "parsedLastValidation": "fix/linkedin-guest-scrape \u2014 8 new unit tests pass, relevant suites 24/24, lint 0 errors (2026-06-20). The 16 other failing jest suites are pre-existing (Playwright e2e under jest + server-dependent contract tests), confirmed by stash-and-rerun on baseline",
+      "parsedLastUpdated": "2026-06-20",
+      "parsedActiveStory": "Verify the LinkedIn guest-endpoint fix from a real Vercel datacenter IP (branch fix/linkedin-guest-scrape) \u2014 set SCRAPE_CHECK_TOKEN on the preview, hit /api/debug/scrape-check, confirm aboutLen>1000 & isThin:false; then re-optimize a fresh LinkedIn job on iOS and confirm the score lifts above ~21"
     },
     {
       "id": "agentic-os",
@@ -1665,13 +1662,13 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 12,
+      "dirtyCount": 2,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-18 cbea759 chore: close WP-7 \u2014 PostHog guard armed, 0 contradictions, 60/60 tests pass",
+      "lastCommit": "2026-06-20 80fb2c9 decisions: Resumely ATS claims = branded Match Score, process claims only",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-18",
+      "freshestDate": "2026-06-20",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1689,7 +1686,7 @@
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
-      "parsedLastUpdated": "2026-06-12",
+      "parsedLastUpdated": "2026-06-20",
       "parsedActiveStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops"
     }
   ],
@@ -1728,11 +1725,11 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "nextAction": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -1763,14 +1760,14 @@
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending). Next action: Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting. Known blockers: Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending. Next action: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store. Known blockers: None. Archive ready to run. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
+      "repoState": "Dirty",
+      "branch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
       "nextAction": "(1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1798,8 +1795,8 @@
       "projectId": "runsmart-web",
       "project": "RunSmart Web",
       "role": "Backend Support Engineer",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
+      "repoState": "Dirty",
+      "branch": "claude/dedup-imported-skill-packs...origin/claude/dedup-imported-skill-packs",
       "nextAction": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1832,10 +1829,10 @@
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
       "repoState": "Clean",
-      "branch": "main...origin/main",
-      "nextAction": "Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test",
+      "branch": "fix/ats-layer-b-jd-ingestion...origin/fix/ats-layer-b-jd-ingestion",
+      "nextAction": "After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)",
       "sourceConfidence": "High",
-      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
@@ -1848,7 +1845,7 @@
         "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, .agent-os/distribution/gtm-plan.md. Current state: Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked. Next action: Enable Resume Library in iOS (flip RuntimeFeatures.isResumeLibraryEnabled = true); PDF + DOCX upload smoke test. Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, .agent-os/distribution/gtm-plan.md. Current state: ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview. Next action: After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready). Known blockers: Dirty fix/pdf-parse-xref-error branch.; docs/plan.rollout.md tasks are unchecked.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "agentic-os",
@@ -1873,14 +1870,14 @@
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
-    "portfolioState": "RunSmart iOS \u2014 Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending): Physical device smoke on iPhone (SIWA + Garmin + delete account). If passes, archive from current main as v1.0.2 build 16 and upload to TestFlight before submitting \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 Pre-launch support for Resumely iOS submission; PDF parse/render-preview rollout parked",
+    "portfolioState": "RunSmart iOS \u2014 Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
       "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
     ],
     "risks": [
-      "RunSmart iOS: Physical device required for SIWA smoke (simulator returns ASAuthorizationError 1000). Must be done by founder on real iPhone with Apple ID and Garmin credentials",
+      "RunSmart iOS: None. Archive ready to run",
       "Resumely iOS: None. Waiting on Apple review",
       "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
       "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
@@ -1888,8 +1885,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 1,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
+      "RunSmart iOS",
+      "Resumely iOS",
+      "RunSmart Web",
       "Agentic OS"
     ],
     "blockedProjects": [
@@ -1900,10 +1900,9 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 3,
+    "evidenceGapCount": 2,
     "evidenceGapProjects": [
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
       "Agentic OS"
     ],
     "lowTrustProjects": [],
@@ -1942,17 +1941,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-18 14:44",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-06-21 07:37",
+    "checksStatus": "Passed",
+    "checksCompletedAt": "2026-06-21 07:37",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: D7 Gate A \u2014 awaiting Apple approval. Next action: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge. Known blockers: None. Waiting on Apple review. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-    "targetRepoState": "Clean",
-    "targetBranch": "main...origin/main",
-    "readyForNextSession": false,
+    "targetRepoState": "Dirty",
+    "targetBranch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
+    "readyForNextSession": true,
     "summary": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
     "nextActions": [
       {
@@ -2403,7 +2402,7 @@
       },
       {
         "title": "Work Packet WP-4",
-        "status": "Open",
+        "status": "closed",
         "project": "RunSmart iOS",
         "repoId": "runsmart-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -2441,7 +2440,7 @@
       },
       {
         "title": "Work Packet WP-6",
-        "status": "Open",
+        "status": "closed",
         "project": "RunSmart iOS",
         "repoId": "runsmart-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -2494,6 +2493,25 @@
         "successSignal": "portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed)",
         "path": "executive-os/work-packets/WP-8-hygiene-stranded-work-sweep.md",
         "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Hygiene + Stranded-Work Sweep\"\ndate: 2026-06-17\ntype: work-packet\nproject: RunSmart iOS, Resumely iOS (+ Agentic OS stranded board)\nstatus: closed\npriority: 2\ntags: [hygiene, stranded-work, worktrees, git, trust]\n---\n\n# Work Packet \u2014 Hygiene + Stranded-Work Sweep\n\n> Run in each affected product repo (RunSmart iOS, Resumely iOS), then re-check the\n> Agentic OS dashboard. Goal: clear the hygiene warnings that are holding portfolioTrust\n> at \"refresh_required\" so the dashboard reads trustworthy/clean.\n\n- Status: Active\n- Source: dashboard/status.json portfolioTrust + strandedWork on 2026-06-17\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed).\n\n## Owner Role\nRelease Manager / QA\n\n## Verified Evidence (do not re-litigate)\n- portfolioTrust.level = \"refresh_required\"; reasons include \"5 uncommitted change(s)\".\n- hygieneWarnings: \"Uncommitted files in product repos: RunSmart iOS, Resumely iOS.\" and \"Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5).\"\n- daily-refresh notification: \"stranded-work notification sent (17 items)\".\n- Both repos are actively used (live apps + recent Codex work), so dirty state is real, not noise.\n\n## Repos to Sweep\n\n### RunSmart iOS\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n- 21 uncommitted files in primary working tree\n- 2 extra worktrees:\n  - `claude/tender-thompson-60f370`\n  - `claude/youthful-moore-9d85c7`\n\n### Resumely iOS\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n- 40 uncommitted files in primary working tree\n- 5 extra worktrees:\n  - `codex/post-live-d7-readout`\n  - `codex/resumely-release-qa`\n  - `claude/focused-raman-18ce50`\n  - `version-2` (mapped at relaxed-northcutt-cb6240)\n  - `claude/reverent-buck-a366b2`\n- 3 unmerged branches: `claude/relaxed-northcutt-cb6240`, `feat/localization-updates`, `monitization`\n- main is 2 commits behind origin (pull needed first)\n\n## Tasks (in order)\n1. List stranded items: read dashboard/status.json strandedWork.items (17). For each, classify: (a) commit & push, (b) discard, (c) keep with a one-line reason. Do not bulk-delete.\n2. RunSmart iOS repo: `git status --short --branch` per worktree. Commit + push real work; discard throwaway; for the 2 extra worktrees decide merge/PR or `git worktree remove`. No force-delete of unmerged work.\n3. Resumely iOS repo: same for its 5 extra worktrees. This is the bigger source of drift -- be deliberate; PR anything with real commits before removing.\n4. Re-run `./agentic-os refresh` (or morning) and confirm hygieneWarnings cleared and portfolioTrust improved.\n\n## Constraints\n- Never delete a worktree/branch with unmerged commits without PR'ing or explicitly confirming it's throwaway.\n- Do not merge `version-2` or `monitization` branches (founder rule).\n- No product source changes in this packet -- hygiene only.\n- Scope gate: if a \"dirty file\" turns out to be real unfinished feature work, stop and surface it as its own packet rather than committing blindly.\n\n## Validation\n- Each repo: `git status --short --branch` clean (or remaining items justified) + pushed.\n- `./agentic-os doctor` PASS and portfolioTrust no longer lists uncommitted/worktree warnings.\n\n## Final Output\n- Stranded items: resolved / kept (with reasons)\n- Worktrees: per-repo disposition (merged, PR'd, removed)\n- Commits pushed per repo (branch, count)\n- Final portfolioTrust level\n- Remaining risks\n",
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-9",
+        "status": "open",
+        "project": "RunSmart iOS",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Address the three highest-value findings from the ASO audit: lift store conversion and break the zero-ratings ceiling that is currently capping installs (and therefore the D7 gate)",
+        "source": "RunSmart ASO audit rs-aso-003 (`distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md`) + onboarding review rs-onboarding-001",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-growth",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "subtitle + keyword field updated in App Store Connect; first-review prompt live in a build; screenshot caption headlines designed and uploaded. First non-zero App Store rating recorded",
+        "path": "executive-os/work-packets/WP-9-runsmart-aso-conversion-fixes.md",
+        "copyPrompt": null,
         "decision": null
       }
     ],
@@ -2726,7 +2744,7 @@
       },
       {
         "name": "Work packets",
-        "what": "2 active, 10 total. Copy only Active packets; closed packets are history."
+        "what": "2 active, 11 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -2832,7 +2850,7 @@
       },
       {
         "title": "Work Packet WP-4",
-        "status": "Open",
+        "status": "closed",
         "project": "RunSmart iOS",
         "repoId": "runsmart-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -2870,7 +2888,7 @@
       },
       {
         "title": "Work Packet WP-6",
-        "status": "Open",
+        "status": "closed",
         "project": "RunSmart iOS",
         "repoId": "runsmart-ios",
         "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -2924,6 +2942,25 @@
         "path": "executive-os/work-packets/WP-8-hygiene-stranded-work-sweep.md",
         "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Hygiene + Stranded-Work Sweep\"\ndate: 2026-06-17\ntype: work-packet\nproject: RunSmart iOS, Resumely iOS (+ Agentic OS stranded board)\nstatus: closed\npriority: 2\ntags: [hygiene, stranded-work, worktrees, git, trust]\n---\n\n# Work Packet \u2014 Hygiene + Stranded-Work Sweep\n\n> Run in each affected product repo (RunSmart iOS, Resumely iOS), then re-check the\n> Agentic OS dashboard. Goal: clear the hygiene warnings that are holding portfolioTrust\n> at \"refresh_required\" so the dashboard reads trustworthy/clean.\n\n- Status: Active\n- Source: dashboard/status.json portfolioTrust + strandedWork on 2026-06-17\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed).\n\n## Owner Role\nRelease Manager / QA\n\n## Verified Evidence (do not re-litigate)\n- portfolioTrust.level = \"refresh_required\"; reasons include \"5 uncommitted change(s)\".\n- hygieneWarnings: \"Uncommitted files in product repos: RunSmart iOS, Resumely iOS.\" and \"Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5).\"\n- daily-refresh notification: \"stranded-work notification sent (17 items)\".\n- Both repos are actively used (live apps + recent Codex work), so dirty state is real, not noise.\n\n## Repos to Sweep\n\n### RunSmart iOS\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n- 21 uncommitted files in primary working tree\n- 2 extra worktrees:\n  - `claude/tender-thompson-60f370`\n  - `claude/youthful-moore-9d85c7`\n\n### Resumely iOS\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n- 40 uncommitted files in primary working tree\n- 5 extra worktrees:\n  - `codex/post-live-d7-readout`\n  - `codex/resumely-release-qa`\n  - `claude/focused-raman-18ce50`\n  - `version-2` (mapped at relaxed-northcutt-cb6240)\n  - `claude/reverent-buck-a366b2`\n- 3 unmerged branches: `claude/relaxed-northcutt-cb6240`, `feat/localization-updates`, `monitization`\n- main is 2 commits behind origin (pull needed first)\n\n## Tasks (in order)\n1. List stranded items: read dashboard/status.json strandedWork.items (17). For each, classify: (a) commit & push, (b) discard, (c) keep with a one-line reason. Do not bulk-delete.\n2. RunSmart iOS repo: `git status --short --branch` per worktree. Commit + push real work; discard throwaway; for the 2 extra worktrees decide merge/PR or `git worktree remove`. No force-delete of unmerged work.\n3. Resumely iOS repo: same for its 5 extra worktrees. This is the bigger source of drift -- be deliberate; PR anything with real commits before removing.\n4. Re-run `./agentic-os refresh` (or morning) and confirm hygieneWarnings cleared and portfolioTrust improved.\n\n## Constraints\n- Never delete a worktree/branch with unmerged commits without PR'ing or explicitly confirming it's throwaway.\n- Do not merge `version-2` or `monitization` branches (founder rule).\n- No product source changes in this packet -- hygiene only.\n- Scope gate: if a \"dirty file\" turns out to be real unfinished feature work, stop and surface it as its own packet rather than committing blindly.\n\n## Validation\n- Each repo: `git status --short --branch` clean (or remaining items justified) + pushed.\n- `./agentic-os doctor` PASS and portfolioTrust no longer lists uncommitted/worktree warnings.\n\n## Final Output\n- Stranded items: resolved / kept (with reasons)\n- Worktrees: per-repo disposition (merged, PR'd, removed)\n- Commits pushed per repo (branch, count)\n- Final portfolioTrust level\n- Remaining risks\n",
         "decision": null
+      },
+      {
+        "title": "Work Packet WP-9",
+        "status": "open",
+        "project": "RunSmart iOS",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Address the three highest-value findings from the ASO audit: lift store conversion and break the zero-ratings ceiling that is currently capping installs (and therefore the D7 gate)",
+        "source": "RunSmart ASO audit rs-aso-003 (`distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md`) + onboarding review rs-onboarding-001",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": "runsmart-growth",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "subtitle + keyword field updated in App Store Connect; first-review prompt live in a build; screenshot caption headlines designed and uploaded. First non-zero App Store rating recorded",
+        "path": "executive-os/work-packets/WP-9-runsmart-aso-conversion-fixes.md",
+        "copyPrompt": null,
+        "decision": null
       }
     ],
     "brainstormExists": true,
@@ -2931,11 +2968,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 4,
+    "uncommitted": 2,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -3014,11 +3051,14 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
-    "hygieneWarnings": []
+    "hygieneWarnings": [
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+      "Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (4)."
+    ]
   },
   "latestCooReview": {
     "reviewed": "2026-06-18",
@@ -3029,8 +3069,62 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-06-18",
+    "generatedOn": "2026-06-21",
     "items": [
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "cursor/e7-wearable-depth-trends: unmerged commits, never pushed, last commit 2026-06-12",
+        "action": "Push cursor/e7-wearable-depth-trends and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "dirty",
+        "detail": "8 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/relaxed-northcutt-cb6240 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on chore/progress-ats-fix-pending-release, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/upbeat-matsumoto-a92be3",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "dirty",
+        "detail": "10 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
       {
         "project": "Resumely iOS",
         "type": "cleanup",
@@ -3038,35 +3132,42 @@
         "action": "Delete merged local branches to cut noise."
       },
       {
+        "project": "RunSmart Web",
+        "type": "local-only",
+        "detail": "fix/garmin-ios-branch-fixes: unmerged commits, never pushed, last commit 2026-06-16",
+        "action": "Push fix/garmin-ios-branch-fixes and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "cleanup",
+        "detail": "1 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
+      },
+      {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "12 uncommitted file(s) in the primary working tree",
+        "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 1,
+    "actionableCount": 12,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
-  "packetHygiene": [
-    {
-      "severity": "warning",
-      "path": "executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md",
-      "message": "Work Packet WP-4 (executive-os/work-packets/WP-4-runsmart-resubmission-1.0.2-account-deletion.md) is Open but references older build 15 while current RunSmart status is build 16."
-    },
-    {
-      "severity": "warning",
-      "path": "executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md",
-      "message": "Work Packet WP-6 (executive-os/work-packets/WP-6-runsmart-ios-aha-moments-port.md) is Open but references older build 15 while current RunSmart status is build 16."
-    }
-  ],
+  "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-18 14:44",
+    "generatedAt": "2026-06-21 07:37",
     "apps": [
       {
         "projectId": 171597,
         "appId": "runsmart-ios",
         "app": "RunSmart",
-        "declaredState": "Post-launch iteration \u2014 build 16 prep (analytics + DemoMode wired, physical device smoke pending)",
+        "declaredState": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
         "git": {
           "available": true,
           "tag": "pre-consolidation-r2",
@@ -3089,13 +3190,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 15,
+        "liveUsers7d": 16,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 23,
+        "liveUsers7d": 26,
         "source": "api"
       }
     ],

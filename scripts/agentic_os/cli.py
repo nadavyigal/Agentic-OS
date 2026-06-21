@@ -215,14 +215,22 @@ def load_local_env() -> None:
 
 
 def run(cmd: list[str], cwd: Path = ROOT, timeout: int = 12) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
-        cmd,
-        cwd=str(cwd),
-        text=True,
-        capture_output=True,
-        timeout=timeout,
-        check=False,
-    )
+    try:
+        return subprocess.run(
+            cmd,
+            cwd=str(cwd),
+            text=True,
+            capture_output=True,
+            timeout=timeout,
+            check=False,
+        )
+    except subprocess.TimeoutExpired as exc:
+        return subprocess.CompletedProcess(
+            cmd,
+            124,
+            stdout=exc.stdout or "",
+            stderr=f"Timed out after {timeout} seconds",
+        )
 
 
 def command_available(name: str) -> bool:
