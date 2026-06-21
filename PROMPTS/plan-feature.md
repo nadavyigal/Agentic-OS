@@ -4,6 +4,9 @@ Use inside a project repo after reading the local OS files.
 
 ```txt
 You are planning a feature for this repo.
+Operate under PROMPTS/plan-mode-contract.md: stay in plan mode, explore before
+asking, and do not stop until the plan is decision-complete (an implementer
+needs to make zero further decisions).
 
 First read:
 1. AGENTS.md

@@ -4,8 +4,8 @@ Project: Global Agentic OS
 Status: Active
 Current Phase: Advanced OS patterns lean pilot
 Active Story: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops
-Last Completed Story: Optional workflow routing, context extraction, Resumely outcome loop, and registry visibility
-Next Recommended Story: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative.
+Last Completed Story: Prompt-architecture study (asgeirtj/system_prompts_leaks) — added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map
+Next Recommended Story: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative.
 Estimated Completion: Pilot implementation complete; operating validation remains
 Blockers: —
 Risks: Outcome loops could duplicate project status if expanded before the pilot is reviewed; untrusted input still requires least-privilege tools and founder approval for consequential actions

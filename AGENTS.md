@@ -177,6 +177,8 @@ All durable architectural decisions are logged in `DECISIONS.md`. Read it before
 | `GLOBAL-TASTE.md` | Taste & craft layer: pass/revise/reject judgment that protects products from generic AI output, overbuild, and weak UX. Read before Taste Check or Taste Review |
 | `GLOBAL-QA-RULES.md` | Completion evidence, visual QA, and risky-change checklist |
 | `GLOBAL-WORKFLOWS.md` | Universal idea-to-shipping and planning workflows |
+| `GLOBAL-TOOL-USAGE.md` | Tool efficiency: parallel reads, ripgrep, shell hygiene, read-before-write |
+| `PROMPTS/plan-mode-contract.md` | Hardened plan-mode wrapper: mode lock, explore-before-ask, decision-complete bar |
 | `PROJECT-STATUS.md` | Current status per project |
 | `PROJECT-PATHS.md` | Canonical paths and source of truth for project locations |
 | `CURSOR.md` | Cursor-native router; Cursor reads `AGENTS.md` via this file + `.cursor/rules/` |
