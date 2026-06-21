@@ -18,14 +18,14 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | D7 Gate A — awaiting Apple approval | (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge | 1 | Yes (10) | Fresh | Medium | tasks/progress.md | 2026-06-19 f4f2882 fix: surface preview and export failures |
 | RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor |
 | ResumeBuilder AI (Web) | ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview | After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready) | 2 | No | Fresh | High | tasks/progress.md | 2026-06-20 50aed01 fix(ats): complete Layer B JD ingestion and jd_text persistence |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-06-20 80fb2c9 decisions: Resumely ATS claims = branded Match Score, process claims only |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-21 84fb5da Run morning refresh |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-06-12, last commit 2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor
-- Agentic OS: validated 2026-06-12, last commit 2026-06-20 80fb2c9 decisions: Resumely ATS claims = branded Match Score, process claims only
+- Agentic OS: validated 2026-06-12, last commit 2026-06-21 84fb5da Run morning refresh
 
 ## Drift Warnings
 
@@ -48,7 +48,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart Web] fix/garmin-ios-branch-fixes: unmerged commits, never pushed, last commit 2026-06-16 -> Push fix/garmin-ios-branch-fixes and open a PR, or consciously discard it.
 - [RunSmart Web] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 

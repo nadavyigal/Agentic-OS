@@ -12,7 +12,7 @@ Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejecti
 
 ## Run Center
 
-- Last refresh: 2026-06-21 07:37
+- Last refresh: 2026-06-21 07:39
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,7 +28,7 @@ Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejecti
 
 ## Stranded Work
 
-12 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+13 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] cursor/e7-wearable-depth-trends: unmerged commits, never pushed, last commit 2026-06-12
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370
@@ -41,7 +41,8 @@ Best next action: Resumely iOS: (1) Confirm Apple approval + monitor for rejecti
 - [Resumely iOS] 10 uncommitted file(s) in the primary working tree
 - [RunSmart Web] fix/garmin-ios-branch-fixes: unmerged commits, never pushed, last commit 2026-06-16
 - [RunSmart Web] 1 uncommitted file(s) in the primary working tree
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 1 unpushed commit(s)
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
