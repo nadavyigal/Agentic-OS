@@ -14,18 +14,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Post-launch iteration — v1.0.3 build 16 archive + TestFlight upload pending | Open Xcode → Product → Archive → upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store | 1 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-18 9605c55 chore(ios): bump version 1.0.2 → 1.0.3 (Apple locked 1.0.2 train); build 16 ready |
-| Resumely iOS | D7 Gate A — awaiting Apple approval | (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge | 1 | Yes (10) | Fresh | Medium | tasks/progress.md | 2026-06-19 f4f2882 fix: surface preview and export failures |
-| RunSmart Web | Today page improvement planning, post Aha Moments merge | Implement Story 1 (Today content inventory and preservation map) before any Today redesign work | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor |
+| RunSmart iOS | LIVE on App Store since 2026-06-19 — post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission | Garmin readiness Story 1 — physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live | 1 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-18 9605c55 chore(ios): bump version 1.0.2 → 1.0.3 (Apple locked 1.0.2 train); build 16 ready |
+| Resumely iOS | Post-launch — D7 Gate A monitoring. App is live; no approval pending | (1) D7 readout ~7 days after the confirmed go-live date — pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events | 1 | Yes (11) | Fresh | Medium | tasks/progress.md | 2026-06-19 f4f2882 fix: surface preview and export failures |
+| RunSmart Web | Garmin production enablement (web/backend audit + hardening) | Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md) | 1 | No | Fresh | High | tasks/progress.md | 2026-06-21 a5ec103 feat(garmin): lock down worker import-job RPCs to service_role (#97) |
 | ResumeBuilder AI (Web) | ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview | After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready) | 2 | No | Fresh | High | tasks/progress.md | 2026-06-20 50aed01 fix(ats): complete Layer B JD ingestion and jd_text persistence |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-06-21 84fb5da Run morning refresh |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (8) | Fresh | High | tasks/progress.md | 2026-06-21 1a9859d os: add tool-usage + plan-mode contract from prompt-architecture study |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart Web: validated 2026-06-12, last commit 2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor
-- Agentic OS: validated 2026-06-12, last commit 2026-06-21 84fb5da Run morning refresh
+- Agentic OS: validated 2026-06-12, last commit 2026-06-21 1a9859d os: add tool-usage + plan-mode contract from prompt-architecture study
 
 ## Drift Warnings
 
@@ -39,17 +38,18 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on claude/tender-thompson-60f370 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/tender-thompson-60f370 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/youthful-moore-9d85c7 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/youthful-moore-9d85c7 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
 - [Resumely iOS] worktree on claude/focused-raman-18ce50 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/focused-raman-18ce50 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/relaxed-northcutt-cb6240 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/relaxed-northcutt-cb6240 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/reverent-buck-a366b2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/reverent-buck-a366b2 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on chore/progress-ats-fix-pending-release, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/upbeat-matsumoto-a92be3 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] 11 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Resumely iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [RunSmart Web] fix/garmin-ios-branch-fixes: unmerged commits, never pushed, last commit 2026-06-16 -> Push fix/garmin-ios-branch-fixes and open a PR, or consciously discard it.
-- [RunSmart Web] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [ResumeBuilder AI (Web)] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart Web] claude/dedup-imported-skill-packs: unmerged commits, remote branch deleted, last commit 2026-06-20 -> Push claude/dedup-imported-skill-packs and open a PR, or consciously discard it.
+- [RunSmart Web] worktree on claude/pensive-dewdney-b2a0a4, 1 uncommitted file(s) at /Users/nadavyigal/Documents/RunSmart/.claude/worktrees/pensive-dewdney-b2a0a4 -> Land or discard this worktree, then `git worktree remove` it.
+- [ResumeBuilder AI (Web)] main is 4 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
+- [ResumeBuilder AI (Web)] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Agentic OS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 
@@ -67,22 +67,22 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — Post-launch iteration — v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode → Product → Archive → upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store · Resumely iOS — D7 Gate A — awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge · RunSmart Web — Today page improvement planning, post Aha Moments merge · ResumeBuilder AI (Web) — ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview
+RunSmart iOS — LIVE on App Store since 2026-06-19 — post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 — physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live · Resumely iOS — Post-launch — D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date — pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events · RunSmart Web — Garmin production enablement (web/backend audit + hardening) · ResumeBuilder AI (Web) — ATS scoring pipeline error sweep — LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview
 
 ## What To Do Next
 
-Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge
+Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date — pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events
 
 ## Action Board
 
 ### Now
 
-- RunSmart iOS: Open Xcode → Product → Archive → upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store
-- Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin — pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge
+- RunSmart iOS: Garmin readiness Story 1 — physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live
+- Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date — pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events
 
 ### Next
 
-- RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work
+- RunSmart Web: Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md)
 - ResumeBuilder AI (Web): After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)
 
 ### Later
@@ -98,7 +98,7 @@ Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 r
 
 ### Blocked
 
-- Resumely iOS: None. Waiting on Apple review
+- RunSmart Web: Migration apply needs founder "yes" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission)
 
 ## Agent Queue
 

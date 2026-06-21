@@ -34,3 +34,12 @@ Re-run the gate on any future pull: `docker run --rm -v "$PWD:/scan" skillspecto
 ## Invocation
 
 Skills self-trigger on their `description` phrases, or invoke by intent: "write a PRD", "run a pre-mortem", "prioritize these feature requests". Pair with the existing planning-protocol and one-story-at-a-time rule.
+
+## Operating Rules
+
+- These skills run before code, ahead of the planning protocol. A PRD or user-stories artifact is the input to implementation, not a substitute for it.
+- Honor the global rules: one story at a time, plan before code, no scope creep.
+- Every PM artifact is a dated draft file under the relevant repo, for example `tasks/prd-<feature>-YYYY-MM-DD.md`.
+- Every PM artifact starts with a header block that includes product, status (`draft`, `reviewed`, or `approved`), and `founder-review-needed`.
+- A pre-mortem is mandatory before any high-stakes, hard-to-reverse release, for example RunSmart Garmin production.
+- For incoming user feedback now that both apps are live, start with `analyze-feature-requests`, then `prioritize-assumptions`, before committing to build.

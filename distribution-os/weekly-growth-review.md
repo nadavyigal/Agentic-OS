@@ -13,6 +13,49 @@ Append-only. One entry per week per product focus. Use the template at `template
 
 <!-- newest first -->
 
+### Week of 2026-06-21 — Portfolio — Post-Launch Growth (Both Apps Live)
+
+**Status:** First distribution cycle with both iOS apps live on the App Store. Pre-launch positioning retired.
+
+#### Metrics This Week
+
+| Metric | This Week | Prior Week | Notes |
+|---|---|---|---|
+| RunSmart App Store live | v1.0.3 build 16 since 2026-06-19 | In review / pre-live | Founder-confirmed go-live |
+| Resumely App Store live | v1.1 build 5 since 2026-06-21 | Submitted 2026-06-18 | Founder-confirmed go-live |
+| RunSmart PostHog users (7d) | ~16 | unknown | Early post-launch, low volume — expected |
+| Resumely PostHog D7 readout | scheduled ~2026-06-28 | n/a | 7 days after 2026-06-21 go-live |
+| App Store impressions / conversion | unknown | unknown | need: App Store Connect |
+| Directory referrals | 0 | 0 | rb-dir-001 still blocked on founder submit |
+
+#### What Happened
+
+- RunSmart iOS v1.0.3 build 16 confirmed live 2026-06-19; status guard false positive cleared (phase text contained "resubmission").
+- Resumely iOS v1.1 build 5 confirmed live 2026-06-21.
+- RunSmart Web: Garmin worker-RPC lockdown merged (#97); migration await founder apply.
+- ResumeBuilder Web: LinkedIn ATS scrape fix on branch; awaiting Vercel preview verification.
+- Experiment log still shows pre-launch statuses (rs-aso-001/002 "awaiting review") — needs refresh to post-launch framing.
+
+#### Top 3 Experiments (post-launch reframed)
+
+1. **rs-aso-002** (score 18) — Screenshot caption overlays for RunSmart live listing; measure conversion pre/post in ASC.
+2. **rb-aso-001** (score 21) — Resumely listing already filed; iterate subtitle/keywords after D7 readout.
+3. **rb-dir-001** (score 15) — Directory submissions now unblocked (App Store URL exists); founder submit to 5 directories.
+
+#### Blockers
+
+- RunSmart Garmin production: migration apply + manual portal gates (founder).
+- ResumeBuilder ATS: preview verification before merge.
+- All conversion metrics: need ASC + PostHog D7.
+
+#### Next Week Focus
+
+- Post-launch ASO for RunSmart (first ratings, screenshot captions).
+- Resumely D7 readout ~2026-06-28.
+- Directory pack submit (rb-dir-001) once founder reviews.
+
+---
+
 ### Week of 2026-05-27 — RunSmart — ASO Finalization (Pre-Launch)
 
 **Status:** Cycle complete. Assets ready for founder action. App not yet submitted for review.

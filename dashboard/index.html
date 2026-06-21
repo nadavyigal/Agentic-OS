@@ -589,12 +589,12 @@
   "generated": "2026-06-21",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
-      "bestNextAction": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
+      "overallStatus": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+      "bestNextAction": "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
       "mainBlockers": [
         "RunSmart iOS: None. Archive ready to run",
-        "Resumely iOS: None. Waiting on Apple review",
-        "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
+        "Resumely iOS: None. App is live",
+        "RunSmart Web: Migration apply needs founder \"yes\" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission)",
         "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
         "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
       ],
@@ -608,11 +608,11 @@
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
-        "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge"
+        "RunSmart iOS: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+        "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events"
       ],
       "next": [
-        "RunSmart Web: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
+        "RunSmart Web: Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md)",
         "ResumeBuilder AI (Web): After preview verification passes, merge fix/linkedin-guest-scrape and remove (or keep 404-gated) the debug route; only revisit a residential proxy if LinkedIn 429s the Vercel IP at scale (fetchHtml() seam is ready)"
       ],
       "later": [
@@ -626,11 +626,11 @@
         "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
       ],
       "blocked": [
-        "Resumely iOS: None. Waiting on Apple review"
+        "RunSmart Web: Migration apply needs founder \"yes\" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission)"
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-21 07:39",
+      "lastRefresh": "2026-06-21 13:48",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -732,8 +732,8 @@
       {
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
-        "state": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
-        "nextAction": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
+        "state": "LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission",
+        "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
         "blockerCount": 1,
         "blockers": [
           "None. Archive ready to run"
@@ -915,9 +915,9 @@
         "lastCommit": "2026-06-18 9605c55 chore(ios): bump version 1.0.2 \u2192 1.0.3 (Apple locked 1.0.2 train); build 16 ready",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-20",
+        "freshestDate": "2026-06-21",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-18",
+        "evidenceDate": "2026-06-19",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -953,18 +953,18 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-06-18 physical device smoke passed on real iPhone. SIWA, delete account, onboard all confirmed working",
-        "parsedLastUpdated": "2026-06-20",
-        "parsedActiveStory": "Archive v1.0.2 build 16 from current main in Xcode Organizer, upload to TestFlight, then submit to App Store"
+        "parsedLastValidation": "2026-06-19 v1.0.3 build 16 confirmed live on the App Store by founder. (2026-06-18 physical device smoke passed on real iPhone: SIWA, delete account, onboard all confirmed working.)",
+        "parsedLastUpdated": "2026-06-21",
+        "parsedActiveStory": "Garmin readiness PRD execution (see PM Artifacts). No archive/upload pending \u2014 build 16 already shipped"
       },
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "D7 Gate A \u2014 awaiting Apple approval",
-        "nextAction": "(1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
+        "state": "Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending",
+        "nextAction": "(1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
         "blockerCount": 1,
         "blockers": [
-          "None. Waiting on Apple review"
+          "None. App is live"
         ],
         "gtm": {
           "exists": false,
@@ -1039,15 +1039,15 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 10,
+        "dirtyCount": 11,
         "extraWorktrees": 4,
         "branch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
         "lastCommit": "2026-06-19 f4f2882 fix: surface preview and export failures",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-19",
+        "freshestDate": "2026-06-21",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-19",
+        "evidenceDate": "2026-06-21",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [
@@ -1073,18 +1073,18 @@
         ],
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "PostHog live events confirmed firing on real device during session; build 1.1 (5) uploaded successfully",
-        "parsedLastUpdated": "2026-06-19",
-        "parsedActiveStory": null
+        "parsedLastValidation": "2026-06-21 founder confirmed v1.1 (5) live on the App Store. (PostHog live events confirmed firing on real device during 2026-06-18 smoke; build 1.1 (5) uploaded successfully.)",
+        "parsedLastUpdated": "2026-06-21",
+        "parsedActiveStory": "D7 activation readout once 7 days of live data exist. (PR #68 already merged 2026-06-18 \u2014 not an open task.)"
       },
       {
         "id": "runsmart-web",
         "name": "RunSmart Web",
-        "state": "Today page improvement planning, post Aha Moments merge",
-        "nextAction": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
+        "state": "Garmin production enablement (web/backend audit + hardening)",
+        "nextAction": "Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md)",
         "blockerCount": 1,
         "blockers": [
-          "Dirty local tree with many modified/untracked files, including duplicate ` 2` files."
+          "Migration apply needs founder \"yes\" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission)"
         ],
         "gtm": {
           "exists": false,
@@ -1179,16 +1179,16 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 1,
-        "extraWorktrees": 0,
-        "branch": "claude/dedup-imported-skill-packs...origin/claude/dedup-imported-skill-packs",
-        "lastCommit": "2026-06-20 d918c27 chore: also remove marketing/creative/product from .codex and .cursor",
+        "dirty": false,
+        "dirtyCount": 0,
+        "extraWorktrees": 1,
+        "branch": "main...origin/main",
+        "lastCommit": "2026-06-21 a5ec103 feat(garmin): lock down worker import-job RPCs to service_role (#97)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-06-20",
-        "evidenceGap": true,
-        "evidenceDate": "2026-06-12",
+        "freshestDate": "2026-06-21",
+        "evidenceGap": false,
+        "evidenceDate": "2026-06-21",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -1216,9 +1216,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "npm run lint passed (0 errors, 1648 warnings) and npm run type-check (tsc --noEmit) passed in v0/ on 2026-06-12, after npm ci restored node_modules to the lockfile",
-        "parsedLastUpdated": "2026-06-20",
-        "parsedActiveStory": "Story 1: Today Content Inventory and Preservation Map (see tasks/todo.md)"
+        "parsedLastValidation": "15/15 Garmin route tests pass (webhook, activities, sleep) via npx vitest in v0/ on 2026-06-21. Migration not yet applied",
+        "parsedLastUpdated": null,
+        "parsedActiveStory": "Garmin worker-RPC grant lockdown migration (written, awaiting founder approval to apply)"
       },
       {
         "id": "resumebuilder-ai",
@@ -1323,7 +1323,7 @@
         "id": "agentic-os",
         "name": "Agentic OS",
         "state": "Advanced OS patterns lean pilot",
-        "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
+        "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "blockerCount": 0,
         "blockers": [],
         "gtm": {
@@ -1371,10 +1371,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-06-21 84fb5da Run morning refresh",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-06-21 1a9859d os: add tool-usage + plan-mode contract from prompt-architecture study",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-21",
@@ -1436,7 +1436,7 @@
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
         "branch": "main...origin/main",
-        "nextAction": "Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store",
+        "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -1469,7 +1469,7 @@
           "docs/specs/demo-mode-simulator-recording.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending. Next action: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store. Known blockers: None. Archive ready to run. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission. Next action: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live. Known blockers: None. Archive ready to run. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
@@ -1477,7 +1477,7 @@
         "role": "iOS Release Manager",
         "repoState": "Dirty",
         "branch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
-        "nextAction": "(1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
+        "nextAction": "(1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
         "evidence": [
@@ -1498,17 +1498,17 @@
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: D7 Gate A \u2014 awaiting Apple approval. Next action: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge. Known blockers: None. Waiting on Apple review. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending. Next action: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events. Known blockers: None. App is live. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
         "project": "RunSmart Web",
         "role": "Backend Support Engineer",
-        "repoState": "Dirty",
-        "branch": "claude/dedup-imported-skill-packs...origin/claude/dedup-imported-skill-packs",
-        "nextAction": "Implement Story 1 (Today content inventory and preservation map) before any Today redesign work",
+        "repoState": "Clean",
+        "branch": "main...origin/main",
+        "nextAction": "Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md)",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -1531,7 +1531,7 @@
           "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
           "docs/plans/2026-02-12-runsmart-execution-plan.md"
         ],
-        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Today page improvement planning, post Aha Moments merge. Next action: Implement Story 1 (Today content inventory and preservation map) before any Today redesign work. Known blockers: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin production enablement (web/backend audit + hardening). Next action: Founder approval to apply migration 20260621000000_restrict_garmin_worker_rpc_grants.sql; then manual Gate 2/3/4 portal+email tasks (see tasks/work-pack-garmin-gate-1-4.md). Known blockers: Migration apply needs founder \"yes\" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ai",
@@ -1561,8 +1561,8 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
-        "nextAction": "Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative",
+        "branch": "main...origin/main",
+        "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
@@ -1574,12 +1574,12 @@
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
-        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; add no further loop cards unless it remains current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md, docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
-      "portfolioState": "RunSmart iOS \u2014 Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending: Open Xcode \u2192 Product \u2192 Archive \u2192 upload to TestFlight. Once TestFlight processing done (~10-20 min), submit to App Store \u00b7 Resumely iOS \u2014 D7 Gate A \u2014 awaiting Apple approval: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge \u00b7 RunSmart Web \u2014 Today page improvement planning, post Aha Moments merge \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+      "headline": "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
+      "portfolioState": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1587,18 +1587,17 @@
       ],
       "risks": [
         "RunSmart iOS: None. Archive ready to run",
-        "Resumely iOS: None. Waiting on Apple review",
-        "RunSmart Web: Dirty local tree with many modified/untracked files, including duplicate ` 2` files.",
+        "Resumely iOS: None. App is live",
+        "RunSmart Web: Migration apply needs founder \"yes\" (no DB push without approval). Garmin Production approval is external (~2-4 weeks after submission)",
         "ResumeBuilder AI (Web): Dirty fix/pdf-parse-xref-error branch.",
         "ResumeBuilder AI (Web): docs/plan.rollout.md tasks are unchecked."
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 3,
       "dirtyProjects": [
         "RunSmart iOS",
         "Resumely iOS",
-        "RunSmart Web",
         "Agentic OS"
       ],
       "blockedProjects": [
@@ -1609,9 +1608,8 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 2,
+      "evidenceGapCount": 1,
       "evidenceGapProjects": [
-        "RunSmart Web",
         "Agentic OS"
       ],
       "lowTrustProjects": [],
@@ -2643,13 +2641,13 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-06-21 07:39",
+      "generatedAt": "2026-06-21 13:48",
       "apps": [
         {
           "projectId": 171597,
           "appId": "runsmart-ios",
           "app": "RunSmart",
-          "declaredState": "Post-launch iteration \u2014 v1.0.3 build 16 archive + TestFlight upload pending",
+          "declaredState": "LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission",
           "git": {
             "available": true,
             "tag": "pre-consolidation-r2",
@@ -2660,7 +2658,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "D7 Gate A \u2014 awaiting Apple approval",
+          "declaredState": "Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -2671,15 +2669,15 @@
       "posthog": [
         {
           "appId": "runsmart-ios",
-          "available": true,
-          "liveUsers7d": 16,
-          "source": "api"
+          "available": false,
+          "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+          "source": "api_error"
         },
         {
           "appId": "resumebuilder-ios",
-          "available": true,
-          "liveUsers7d": 26,
-          "source": "api"
+          "available": false,
+          "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+          "source": "api_error"
         }
       ],
       "appStore": [
@@ -2706,17 +2704,17 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-06-21 07:39",
-      "checksStatus": "Pending verify",
-      "checksCompletedAt": "",
+      "lastRunAt": "2026-06-21 13:48",
+      "checksStatus": "Failed",
+      "checksCompletedAt": "2026-06-21 13:48",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: D7 Gate A \u2014 awaiting Apple approval. Next action: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge. Known blockers: None. Waiting on Apple review. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending. Next action: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events. Known blockers: None. App is live. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
       "targetBranch": "codex/posthog-preview-export-observability...origin/codex/posthog-preview-export-observability",
       "readyForNextSession": false,
-      "summary": "Resumely iOS: (1) Confirm Apple approval + monitor for rejection notes. (2) D7 readout on or after 2026-06-24 via connected PostHog plugin \u2014 pull 7-day activation funnel from dashboard 1720819. (3) Close PR #68 after merge",
+      "summary": "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
       "nextActions": [
         {
           "title": "Restore dashboard trust",
