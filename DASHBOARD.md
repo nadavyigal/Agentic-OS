@@ -54,7 +54,7 @@ Best next action: Resumely iOS: (1) D7 readout ~7 days after the confirmed go-li
 | Decision | Project | Recommendation | Urgency |
 | --- | --- | --- | --- |
 | RunSmart iOS: build 8 rejection response scope | RunSmart iOS | Minimal fix targeting only the rejection reason. Ship as build 9. Save v2 feature scope for after approval. | Conditional — only if build 8 is rejected |
-| RunSmart iOS: when to flip VOICE_COACH_ENABLED in Vercel | RunSmart iOS | Flip after approval + physical-device voice QA passes. Do not flip before the app is live. | Post-approval |
+| RunSmart iOS: when to flip VOICE_COACH_ENABLED in Vercel | RunSmart iOS | **PARKED** — keep flag false until Garmin Story 1 + activation readout; then physical voice QA before flip. See `executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`. | Parked |
 | Resumely iOS: App Store upload path | Resumely iOS | Manual Xcode Organizer path. EXD-006 resolved: no Fastlane, no .p8 key found. Xcode Organizer is the path. | High — next action after device smoke |
 | ResumeBuilder Web rollout timing | ResumeBuilder AI Web | Defer unless Resumely smoke finds backend blockers. | Low |
 

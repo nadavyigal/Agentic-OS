@@ -13,7 +13,7 @@
     "lastSuccessfulRefresh": "2026-06-21 13:48"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+    "overallStatus": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
     "bestNextAction": "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
     "mainBlockers": [
       "RunSmart iOS: None. Archive ready to run",
@@ -43,7 +43,7 @@
       "currentPhase": "LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission",
       "activeStory": "Garmin readiness PRD execution (see PM Artifacts). No archive/upload pending \u2014 build 16 already shipped",
       "lastCompletedStory": "2026-06-19 v1.0.3 build 16 confirmed live on the App Store by founder. (2026-06-18 physical device smoke had PASSED: SIWA sign-in, delete account, onboarding confirmed on real iPhone; build 15 \u2192 16 bumped in xcodeproj.)",
-      "nextRecommendedStory": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+      "nextRecommendedStory": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
@@ -55,7 +55,7 @@
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
-        "Voice coach untested on physical device; VOICE_COACH_ENABLED still false in prod",
+        "Voice coach PARKED (founder 2026-06-22); VOICE_COACH_ENABLED stays false until Garmin Story 1 + activation readout",
         "Garmin webhook subscription health not yet audited"
       ],
       "analyticsStatus": {
@@ -83,7 +83,7 @@
         "Monitor Apple review of build 8 (submitted 2026-06-03); check App Store Connect for outcome.",
         "If approved: merge version-2 artifacts, publish launch post, activate GTM plan (.agent-os/distribution/gtm-plan.md).",
         "If rejected: triage Apple feedback, implement minimal fix, resubmit as build 9.",
-        "When live: flip VOICE_COACH_ENABLED=true in Vercel and audit Garmin webhook."
+        "When unparked: physical voice QA then flip VOICE_COACH_ENABLED in Vercel (see tasks/MEMORY.md)"
       ],
       "links": {
         "bridge": "../PROJECT-BRIDGES/runsmart-ios.md",
@@ -137,7 +137,7 @@
         "currentPhase": "LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission",
         "activeStory": "Garmin readiness PRD execution (see PM Artifacts). No archive/upload pending \u2014 build 16 already shipped",
         "lastCompletedStory": "2026-06-19 v1.0.3 build 16 confirmed live on the App Store by founder. (2026-06-18 physical device smoke had PASSED: SIWA sign-in, delete account, onboarding confirmed on real iPhone; build 15 \u2192 16 bumped in xcodeproj.)",
-        "nextRecommendedStory": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+        "nextRecommendedStory": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow",
         "blockers": [],
         "risks": [],
         "lastValidation": "2026-06-19 v1.0.3 build 16 confirmed live on the App Store by founder. (2026-06-18 physical device smoke passed on real iPhone: SIWA, delete account, onboard all confirmed working.)",
@@ -685,7 +685,7 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+      "RunSmart iOS: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow",
       "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events"
     ],
     "next": [
@@ -753,7 +753,7 @@
     ],
     "openDecisions": [
       "RunSmart iOS: if build 8 rejected again, decide minimal fix scope vs. expanding v2 feature set before resubmit.",
-      "RunSmart iOS: when to flip VOICE_COACH_ENABLED=true in Vercel (voice coach is in build 8 but feature flag is off).",
+      "RunSmart iOS: voice coach PARKED \u2014 see tasks/MEMORY.md and executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -772,9 +772,9 @@
       "decision": "RunSmart iOS: when to flip VOICE_COACH_ENABLED in Vercel",
       "project": "RunSmart iOS",
       "whyItMatters": "Voice coach is shipped in build 8 but the Vercel flag is still false. Users cannot use it until flipped.",
-      "options": "Flip immediately after approval / wait for physical-device QA first / keep off for v1 launch",
-      "recommendedOption": "Flip after approval + physical-device voice QA passes. Do not flip before the app is live.",
-      "urgency": "Post-approval"
+      "options": "Flip immediately after approval / wait for physical-device QA first / keep off for v1 launch / park to later stage",
+      "recommendedOption": "PARKED (founder 2026-06-22). Keep flag false. Re-open after Garmin Story 1 + activation readout; physical voice QA before flip. See executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md.",
+      "urgency": "Parked"
     },
     {
       "decision": "Resumely iOS: App Store upload path",
@@ -923,7 +923,7 @@
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
       "state": "LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission",
-      "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+      "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow",
       "blockerCount": 1,
       "blockers": [
         "None. Archive ready to run"
@@ -1626,7 +1626,7 @@
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live",
+      "nextAction": "Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1659,7 +1659,7 @@
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission. Next action: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live. Known blockers: None. Archive ready to run. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission. Next action: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Voice coach is PARKED (see tasks/MEMORY.md). Known blockers: None. Archive ready to run. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -1769,7 +1769,7 @@
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events",
-    "portfolioState": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow. Separately, decide whether to flip VOICE_COACH_ENABLED now that the app is live \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
+    "portfolioState": "RunSmart iOS \u2014 LIVE on App Store since 2026-06-19 \u2014 post-launch iteration on v1.0.3 build 16. Next train is Garmin readiness work, not another App Store submission: Garmin readiness Story 1 \u2014 physical TestFlight smoke evidence for the readiness flow \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending: (1) D7 readout ~7 days after the confirmed go-live date \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. Exact readout date depends on the App Store live date (confirm with founder). (2) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin production enablement (web/backend audit + hardening) \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring pipeline error sweep \u2014 LinkedIn scrape-blocking fix implemented, awaiting production verification on Vercel preview",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",

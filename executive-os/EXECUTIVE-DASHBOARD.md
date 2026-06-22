@@ -34,7 +34,7 @@ Open executive decisions: **0** in `EXECUTIVE-DECISIONS.md`.
 Operational decisions (not EXD-logged):
 - RunSmart Web: apply Garmin migration? → **Recommend yes** after quick rollback review (COO Risk: Yes).
 - ResumeBuilder Web: merge ATS fix after preview pass? → **Recommend yes only after preview verification**.
-- RunSmart iOS: flip VOICE_COACH_ENABLED? → **Defer until physical voice QA passes** (grounded 2026-06-22: cost capped ~$30/mo; no latency SLO; iOS Pro gating unverified — see `executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`).
+- RunSmart iOS: flip VOICE_COACH_ENABLED? → **PARKED** (founder 2026-06-22). Keep flag false. Re-open after Garmin Story 1 + activation readout; physical voice QA required before flip. Brief: `executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`.
 
 Standing:
 - Monetization deferred until D7 readout (EXD-009).
@@ -70,6 +70,7 @@ Standing:
 - No RunSmart App Store resubmission work — build 16 shipped.
 - No monetization until D7 readout (EXD-009).
 - No Garmin production portal submission until migration applied + Gates 2–4 done.
+- No RunSmart voice coach work or `VOICE_COACH_ENABLED` flip while parked (founder 2026-06-22).
 - No discarding git work without explicit founder confirmation.
 
 ## Next Actions

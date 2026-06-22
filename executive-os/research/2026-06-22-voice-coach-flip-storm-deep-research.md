@@ -2,6 +2,7 @@
 
 - Date: 2026-06-22
 - Researcher: Analysis OS (Cursor cloud agent)
+- **Status: PARKED** (founder 2026-06-22) — do not flip or schedule voice work on the active train. Re-open triggers in `tasks/MEMORY.md`.
 - Question: Flip `VOICE_COACH_ENABLED=true` in Vercel now that RunSmart iOS is live, or defer?
 - Tools available: web fetch (GitHub public repo `nadavyigal/Running-coach-`), Agentic OS status files. PostHog MCP unavailable. iOS repo private — not readable.
 - Workflow: STORM (`PROMPTS/storm-multi-perspective-research.md`) → fan-out deep research (`PROMPTS/analysis-research-sprint.md`)
