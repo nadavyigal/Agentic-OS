@@ -11,6 +11,7 @@ Use this for cross-project or global OS work only. Product-specific tasks belong
 
 ## Later
 
+- **RunSmart voice coach (PARKED):** `VOICE_COACH_ENABLED` stays false. Re-open after Garmin readiness Story 1 + activation readout; run physical voice QA before any Vercel flip. Source: `executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`, `tasks/MEMORY.md` (2026-06-22).
 - Audit `INTENT-LOG.md` on or after 2026-06-16: decide keep / promote into the memory system / delete.
 - Define Atlas v0 orchestration scope.
 - Create shared release checklist across web and iOS.

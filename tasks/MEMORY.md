@@ -4,7 +4,21 @@ Repo-local decisions and session history for `/Users/nadavyigal/Documents/Projec
 
 Use this file for durable Agentic OS learnings that are likely to matter again. Keep entries concise and auditable. Do not store secrets, credentials, customer data, or one-off preferences.
 
-## 2026-06-07 — Resumely growth + pricing spec, 4 implementation plans, Obsidian wiring
+## 2026-06-22 — RunSmart voice coach parked (founder decision)
+
+Worked on: STORM + deep research on `VOICE_COACH_ENABLED` flip now vs defer (`executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`).
+
+Completed: Research brief + recommendation to defer until physical voice QA. Founder confirmed: **park voice coach to a later stage** — do not flip flag or schedule voice work on the active train.
+
+In progress: None on voice coach.
+
+Decisions:
+- **Parked:** RunSmart voice coach / `VOICE_COACH_ENABLED` flip. Keep flag **false** in Vercel prod. No voice QA, no flip, no voice scope on current sprint.
+- **Re-open when (any):** (1) Garmin readiness Story 1 done, (2) post-launch activation volume readable (PostHog), (3) paywall/Pro gating ready or founder accepts temporary free voice, (4) founder explicitly says "unpark voice coach."
+- **Unpark packet:** 30-min physical voice QA on build 16 → flip only if pass. Full criteria in research brief.
+
+Next session: Do **not** surface voice coach unless a re-open trigger fires or founder asks. Current RunSmart train = Garmin readiness only.
+
 
 Worked on: Obsidian vault orientation + content generation; Resumely growth + pricing brainstorm; spec approval; 4 implementation plans; subagent execution prompt.
 
