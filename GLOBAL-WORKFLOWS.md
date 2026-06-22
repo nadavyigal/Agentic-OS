@@ -112,6 +112,10 @@ re-collect it. See `executive-os/EXECUTIVE-RHYTHM.md` for the full cadence.
 - **Analysis Research Sprint** — `executive-os/workflows/research-brief.md` (run via
   `PROMPTS/analysis-research-sprint.md`). Evidence table → scored opportunities →
   recommended next step.
+- **STORM Multi-Perspective Scan** — `PROMPTS/storm-multi-perspective-research.md`.
+  Fast, offline, ungrounded pass: 5 expert lenses → contradiction map → synthesis →
+  self peer-review. The lightweight cousin of `fan-out-research`; escalate sub-7
+  claims to a grounded research packet before acting.
 
 ## Advanced Workflow Modes
 
