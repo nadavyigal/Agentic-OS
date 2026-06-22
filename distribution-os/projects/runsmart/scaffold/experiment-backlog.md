@@ -6,6 +6,15 @@ Project-level mirror of the rows in `distribution-os/experiment-log.md` that bel
 
 (none yet)
 
+## Proposed (Hebrew-First Playbook - Created 2026-06-22)
+
+| ID | Channel | Hypothesis | Score | Created At |
+|---|---|---|---|---|
+| rs-he-aso-001 | Hebrew market / ASO | Authored Hebrew metadata and screenshot captions improve Israeli storefront install rate within 21 days | 20 | 2026-06-22 |
+| rs-he-web-001 | Hebrew market / Web landing | A Hebrew App Store CTA landing page converts local intent better than the generic English web funnel | 18 | 2026-06-22 |
+| rs-he-part-001 | Hebrew market / Partnerships | Ten personal Israeli coach, club, or run crew notes create two qualified conversations and one approved share | 16 | 2026-06-22 |
+| rs-he-comm-001 | Hebrew market / Community research | Founder-approved posts in owned or permissioned local communities produce qualified install traffic without spam | 14 | 2026-06-22 |
+
 ## Queued (Awaiting Founder Review — Week of 2026-05-27)
 
 | ID | Channel | Hypothesis | Score | Decided At |
@@ -28,4 +37,4 @@ Project-level mirror of the rows in `distribution-os/experiment-log.md` that bel
 
 ## ID Convention
 
-`rs-{channel}-{nnn}` where channel is one of: `aso`, `seo`, `pseo` (not used here), `li`, `dir`, `tool`, `email`, `part`, `cro`, `comm`.
+`rs-{channel}-{nnn}` where channel is one of: `aso`, `seo`, `pseo` (not used here), `he`, `li`, `dir`, `tool`, `email`, `part`, `cro`, `comm`.
