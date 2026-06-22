@@ -34,7 +34,7 @@ Open executive decisions: **0** in `EXECUTIVE-DECISIONS.md`.
 Operational decisions (not EXD-logged):
 - RunSmart Web: apply Garmin migration? → **Recommend yes** after quick rollback review (COO Risk: Yes).
 - ResumeBuilder Web: merge ATS fix after preview pass? → **Recommend yes only after preview verification**.
-- RunSmart iOS: flip VOICE_COACH_ENABLED? → **Defer until physical voice QA passes**.
+- RunSmart iOS: flip VOICE_COACH_ENABLED? → **Defer until physical voice QA passes** (grounded 2026-06-22: cost capped ~$30/mo; no latency SLO; iOS Pro gating unverified — see `executive-os/research/2026-06-22-voice-coach-flip-storm-deep-research.md`).
 
 Standing:
 - Monetization deferred until D7 readout (EXD-009).
