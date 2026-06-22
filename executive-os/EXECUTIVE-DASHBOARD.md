@@ -3,7 +3,7 @@
 Manual executive snapshot. Product status remains sourced from
 `dashboard/status.json` and project `tasks/progress.md`.
 
-Last updated: 2026-06-21 IDT
+Last updated: 2026-06-22 IDT
 
 ## Weekly Review
 
@@ -79,6 +79,15 @@ Standing:
 3. RunSmart iOS: Garmin readiness Story 1 physical TestFlight smoke.
 4. ~2026-06-28: Resumely D7 readout (PostHog 1720819).
 5. Hygiene: stranded-work sweep (pull Resumely main first; clean empty worktrees).
+
+## Research / Opportunity Board
+
+Source: `executive-os/research/2026-06-22-resumely-ats-match-score-positioning.md` · Decision: **EXD-012** (Decided 2026-06-22)
+
+| ID | Opportunity | Impact | Confidence | Effort | Status | Next step |
+|---|---|---|---|---|---|---|
+| O1 | Reposition score (keep mechanic, change frame + disclosure + target band) | 4 | 4 | 1 | In progress | iOS core rename done 2026-06-20; run WP-10 gap audit (HomeView/OptimizedResumeView "ATS Match", ASC live metadata, optional ~80 target band) |
+| O2 | Anti-myth positioning as marketing wedge ("ATS bots don't auto-reject you") | 3 | 3 | 2 | Backlog | Defer until O1 audit closes; candidate for post-D7 ASO / onboarding copy refresh |
 
 ## COO Reconciliation Note (2026-06-21)
 
