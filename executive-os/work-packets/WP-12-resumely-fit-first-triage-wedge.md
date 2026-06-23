@@ -1,11 +1,15 @@
 # Work Packet WP-12 — Resumely ATS Next Priority: Land the Fit-First Triage Wedge
 
-- Status: In progress (Story 1 merged; Story 0 in review)
+- Status: **Stories 0–4 complete + E2E gate closed — PR #75 blocked on a merge conflict (rebase needed)**
 
 ## Progress (2026-06-23)
-- **Story 1 (iOS) — DONE, merged (#74, squash `08:59Z`).** `FitVerdict` + `FitBand` (locked 75/50 thresholds) + flexible additive decoder (safe candidates-into-locals per 2026-06-12 lesson) + `FitCheckService` (live via existing `APIClient.runPublicATSCheck` + `x-session-id`; injectable `MockFitCheckService`) + `FitCheckServiceTests` (wired into target). Code-reviewed; symbols resolve; CI (CodeRabbit/GitGuardian) green. NOTE: no local xcodebuild was captured this session — confirm the build/tests on the next iOS-repo session.
-- **Story 0 (web) — DONE, merged (#87, `cf7bdf5` `09:05Z`).** Additive `fit` block in `src/lib/ats/public-ats-check-response.ts`; `FreeATSChecker`/`ATSScoreDisplay` render the verdict band; en/he i18n; response test. Merge to main → Vercel prod deploy, so `/api/public/ats-check` now serves `fit` in prod.
-- **NEXT (critical path):** iOS session — (a) close the end-to-end gate: flip `FitCheckService` to the live endpoint and confirm `FitVerdict` decodes a real prod `fit` payload; (b) Stories 2–4 (verdict screens behind `isFitCheckEnabled`, wire entry+optimize handoff, analytics+localization).
+- **E2E Gate — CLOSED.** Live call to `https://www.resumelybuilderai.com/api/public/ats-check` returned `fit` block; `FitVerdict` decoded as: band=`.stretch`, score=62, topGaps=["redis","terraform","kubernetes"], missingKeywords=["AWS","CI/CD","Docker"]. Band matches server verdict. `FitVerdict.swift` now has `decodeGapsOrStrings`/`decodeKeywordsOrStrings` helpers handling both object-array and string-array API responses.
+- **Story 1 (iOS) — DONE, merged (#74, squash `08:59Z`).**
+- **Story 0 (web) — DONE, merged (#87, `cf7bdf5` `09:05Z`).** `/api/public/ats-check` serves `fit` in prod.
+- **Stories 2-4 (iOS) — built on `feat/wp-12-fit-first-stories-2-4`, PR #75 open.** BUILD SUCCEEDED. 20 analytics events (contract test updated). `isFitCheckEnabled=false`. Flag gating reviewed correct (flag-off = original path unchanged).
+- **HE localization — VERIFIED (structural).** All 21 new `.xcstrings` keys carry real Hebrew values (e.g. "Strong Fit" → "התאמה חזקה"); EXD-012 disclaimer localized. Run the xliff export as final confirmation, but coverage is real.
+- **⚠ MERGE BLOCKER — PR #75 is CONFLICTING (rebase required).** The branch was cut from `2cb55a9`, *before* #72/#73/#74 merged, so it re-implements Story 1 and is missing #72's `DomainModels` additions (`KeywordSuggestionPreviewDTO`, `JSONValue.displayString`). A naive "take branch" merge would DELETE #72's feature. Resolution = rebase onto `origin/main`, UNION `DomainModels.swift` (keep #72's additions AND the branch's `ATSScoreResult.fit`), keep the branch's evolved `FitVerdict.swift` (+213, E2E decoder fix supersedes #74's +176), then rebuild + smoke + merge.
+- **Remaining to land #75:** rebase/resolve (above) → rebuild + full tests → simulator smoke (iPhone 17 + SE, flag temporarily on) → merge. Then mark WP-11 Prompt 3 DONE.
 - Created: 2026-06-23
 - Source: ResumeBuilder iOS PR #73 (strategy + Fit-First Triage feature plan); web ATS pipeline complete through PR #85 (`5879b6b`)
 - Workflow pattern: feature (multi-repo, build-ordered)
