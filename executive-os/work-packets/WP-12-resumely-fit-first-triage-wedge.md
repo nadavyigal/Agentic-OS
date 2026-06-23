@@ -1,6 +1,11 @@
 # Work Packet WP-12 — Resumely ATS Next Priority: Land the Fit-First Triage Wedge
 
-- Status: Open (decisions resolved 2026-06-23 — ready to build)
+- Status: In progress (Story 1 merged; Story 0 in review)
+
+## Progress (2026-06-23)
+- **Story 1 (iOS) — DONE, merged (#74, squash `08:59Z`).** `FitVerdict` + `FitBand` (locked 75/50 thresholds) + flexible additive decoder (safe candidates-into-locals per 2026-06-12 lesson) + `FitCheckService` (live via existing `APIClient.runPublicATSCheck` + `x-session-id`; injectable `MockFitCheckService`) + `FitCheckServiceTests` (wired into target). Code-reviewed; symbols resolve; CI (CodeRabbit/GitGuardian) green. NOTE: no local xcodebuild was captured this session — confirm the build/tests on the next iOS-repo session.
+- **Story 0 (web) — in review (#87).** `route.ts` additive `fit` block + `FreeATSChecker`/`ATSScoreDisplay` render the verdict band + en/he i18n + response test. `build-test` + Vercel preview green; one unrelated Cloudflare "Workers Builds" check failing — triage before merge. Vercel preview URL already serves the `fit` block.
+- **NEXT (critical path):** triage+merge #87 → point iOS `FitCheckService` at the live/preview endpoint and run the end-to-end verify (Story 1's final gate) → then iOS Stories 2–4.
 - Created: 2026-06-23
 - Source: ResumeBuilder iOS PR #73 (strategy + Fit-First Triage feature plan); web ATS pipeline complete through PR #85 (`5879b6b`)
 - Workflow pattern: feature (multi-repo, build-ordered)
