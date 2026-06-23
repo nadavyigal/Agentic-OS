@@ -61,18 +61,19 @@ Validation: Decision written to DECISIONS.md with date + rationale; either a Run
 
 **Repo:** Resumely iOS `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP` + ResumeBuilder Web `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`
 
+**Next priority is now decided → execute `executive-os/work-packets/WP-12-resumely-fit-first-triage-wedge.md`.**
+
 ```
-Goal: Close out today's ATS work and pick the next ATS priority.
+Goal: Land the Fit-First Triage wedge (PR #73) as the next ATS priority. Full plan: WP-12.
 
 Task:
-1. Confirm the Resumely iOS per-keyword preview approval UI (commit 35f0c18) is pushed and has a PR — it had no open PR on 2026-06-22. Open one if missing.
-2. Merge ResumeBuilder Web PR #84 (ATS plan docs) if green.
-3. Read tasks/progress.md (Resumely iOS) — it says "awaiting next priority" after both ATS web PRs merged. Cross-check against WP-10 (match-score positioning gaps) for unfinished items.
-4. Choose ONE next ATS story (e.g. remaining WP-10 label/target-band gaps, or a new feature) and write it up as the next packet.
+1. Resolve the two decisions in WP-12's DECISION GATE (verdict thresholds; resume-input contract). Log them in DECISIONS.md.
+2. Pre-flight: merge PR #73 (iOS docs/plan), disposition PR #72 (iOS per-keyword preview approval UI — merge or close), merge web PR #84 if green.
+3. Execute WP-12 build sequence: Story 0 (web /api/public/ats-check fit block) first, then iOS Stories 1–4 behind isFitCheckEnabled.
 
-Constraints: One story at a time. Do not start new ATS feature code before WP-10 known gaps are confirmed closed. No score label may imply an external/vendor ATS score (EXD-012).
+Constraints: One story at a time. Additive API change only — do not rename score/preview/quickWins/checksRemaining. No copy implies an external/vendor ATS score (EXD-012). Ship iOS dark behind the flag.
 
-Validation: iOS UI commit has a PR; PR #84 merged or reason noted; next ATS story named and scoped in a packet; progress.md updated.
+Validation: two decisions logged; #73/#72/#84 dispositioned; fit block returns from the endpoint with existing fields unchanged; iOS verdict flow builds + smokes behind the flag; progress.md updated.
 ```
 
 ---
