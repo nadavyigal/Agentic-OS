@@ -57,11 +57,11 @@ Validation: Decision written to DECISIONS.md with date + rationale; either a Run
 
 ---
 
-## Prompt 3 — ResumeBuilder ATS next priority
+## Prompt 3 — ResumeBuilder ATS next priority — **DONE 2026-06-23**
 
 **Repo:** Resumely iOS `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP` + ResumeBuilder Web `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`
 
-**Next priority is now decided → execute `executive-os/work-packets/WP-12-resumely-fit-first-triage-wedge.md`.**
+**COMPLETED → WP-12 Stories 0–4 all merged to main. E2E gate closed. iOS PR #75 merged (`17d2122`, 11:25Z), rebased clean (union preserved #72), 27 tests pass, HE xliff verified, ships dark (`isFitCheckEnabled=false`). See WP-12.**
 
 ```
 Goal: Land the Fit-First Triage wedge (PR #73) as the next ATS priority. Full plan: WP-12.
