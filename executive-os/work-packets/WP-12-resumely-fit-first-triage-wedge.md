@@ -31,11 +31,11 @@ PR #73 resolved the strategy and the build plan. This packet consolidates it int
 
 > Gate cleared. Story 0 and the iOS sequence are fully unblocked.
 
-## Pre-flight (housekeeping, before building)
+## Pre-flight (housekeeping) — DONE 2026-06-23
 
-- [ ] **Merge PR #73** (iOS, docs-only) so the strategy memo + spec + stories land on `main` as the source of record.
-- [ ] **Disposition PR #72** (iOS per-keyword preview approval UI): merge if green and still wanted, or close if superseded by the Fit-First direction. Note the call in the PR.
-- [ ] **Merge PR #84** (web ATS plan docs) if green.
+- [x] **PR #73 merged** (iOS) — strategy memo + Fit-First spec/stories now on iOS `main` as source of record.
+- [x] **PR #72 merged** (iOS per-keyword preview approval UI) — kept; it lives in the existing Improve flow that Fit-First routes *into*, not superseded.
+- [x] **Web ATS plan docs merged** — #84 closed (diverged branch / phantom conflict), re-cut clean as #86 and merged to web `main`.
 
 ## Build sequence (each story ends on a green build, independently testable)
 
