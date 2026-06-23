@@ -73,3 +73,15 @@ Impact:
 - Forbidden: "your ATS score" as an external number, "guaranteed to pass ATS"/"beat the bots", interview/hire outcome stats, named ATS vendors.
 - Pending product work (iOS + web repos): rename in-product "ATS score" label to "Resumely Match Score"; update LinkedInShareComposer.swift share copy; audit App Store metadata (en+he); add "not affiliated with any ATS vendor" microcopy.
 - Human-readable record: Nadav Builder OS vault 05-Decisions/2026-06-20-resumely-ats-claim-defensibility.md.
+
+## 2026-06-23: Fit-First Triage — Verdict Thresholds + Resume-Input Contract
+
+Decision: For the Fit-First Triage wedge (WP-12), the verdict band is `≥75 = Strong / 50–74 = Stretch / <50 = Skip`, derived server-side from `score.overall` and kept tunable post-ship. iOS sends the resume to `POST /api/public/ats-check` via the existing **PDF re-upload** contract (no `resume_id` change in Story 0).
+
+Reason: Both are the spec's recommended defaults (PR #73). The 75/50 bands are balanced and server-owned so they retune without a client release once real score distributions are visible. PDF re-upload is the smallest change — zero new server work in Story 0 and no contract break for the live public ATS path; a stored `resume_id` is a later optimization, not a launch blocker.
+
+Impact:
+
+- Story 0 (web `/api/public/ats-check`) implements the additive `fit` block with these exact bands; existing `score`/`preview`/`quickWins`/`checksRemaining` unchanged.
+- iOS `FitCheckService` builds against the PDF-upload contract; `resume_id` swap is a flagged follow-up, not in scope for WP-12.
+- WP-12 DECISION GATE is now resolved; the build sequence is unblocked.

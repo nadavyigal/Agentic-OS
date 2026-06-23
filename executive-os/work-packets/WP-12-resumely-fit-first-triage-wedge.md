@@ -1,6 +1,6 @@
 # Work Packet WP-12 — Resumely ATS Next Priority: Land the Fit-First Triage Wedge
 
-- Status: Open (decision-gated)
+- Status: Open (decisions resolved 2026-06-23 — ready to build)
 - Created: 2026-06-23
 - Source: ResumeBuilder iOS PR #73 (strategy + Fit-First Triage feature plan); web ATS pipeline complete through PR #85 (`5879b6b`)
 - Workflow pattern: feature (multi-repo, build-ordered)
@@ -24,12 +24,12 @@ PR #73 resolved the strategy and the build plan. This packet consolidates it int
 - Web ATS keyword quality: #82, #83, #85 merged.
 - iOS per-keyword preview approval UI: PR #72 (open) — see Pre-flight.
 
-## DECISION GATE — resolve before Story 0 (founder calls)
+## DECISION GATE — RESOLVED 2026-06-23 (founder, see DECISIONS.md)
 
-1. **Verdict thresholds.** Recommended default: `≥75 = Strong`, `50–74 = Stretch`, `<50 = Skip`. Server-owned so they stay tunable post-ship. Confirm or override.
-2. **Resume-input contract.** Does iOS pass a stored `resume_id`/session, or re-upload the PDF to `/api/public/ats-check`? Recommended default: keep the existing PDF-upload contract (smallest change), flag a `resume_id` swap as a follow-up. Confirm or override.
+1. **Verdict thresholds — LOCKED:** `≥75 = Strong`, `50–74 = Stretch`, `<50 = Skip`. Server-owned, tunable post-ship.
+2. **Resume-input contract — LOCKED:** keep the existing **PDF re-upload** contract to `/api/public/ats-check`. A stored `resume_id` is a flagged follow-up, not in scope for WP-12.
 
-> If both default-confirmed, the sequence below is fully unblocked. If undecided, Story 0 still proceeds on the PDF-upload default and iOS Stories 1–3 build against a mock.
+> Gate cleared. Story 0 and the iOS sequence are fully unblocked.
 
 ## Pre-flight (housekeeping, before building)
 
