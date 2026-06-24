@@ -1,7 +1,8 @@
 # Work Packet WP-18 - Resumely Upload / Import Friction Diagnostic
 
-- Status: Open
+- Status: In Review (diagnosis complete; instrumentation shipped to branch, PR open)
 - Created: 2026-06-24
+- Execution (2026-06-24): Root cause = upload journey was a measurement black box (only the terminal `resume_uploaded` fired; in Home it fires on local file-pick, so ~21/26 guests never completed a pick). Prime friction = `.fileImporter` was `.pdf`-only while preflight/backend already accept `.docx`. Shipped 9 PII-safe upload-journey events via shared `TailorViewModel` + HomeTabView/TailorView, widened both pickers to PDF+DOCX+DOC. `AnalyticsServiceTests` 9/9 pass; app compiles. Scan flow deferred. Resumely iOS PR: https://github.com/nadavyigal/ResumeBuilder-IOS-APP/pull/80
 - Source: WP-16; EXD-013; `docs/qa/reports/wp-16-activation-attribution-funnel-2026-06-24.md`
 - Workflow pattern: feature-diagnostic
 - Input trust: trusted WP-16 PostHog readout; continue excluding founder, QA, and automation traffic before quoting activation numbers
