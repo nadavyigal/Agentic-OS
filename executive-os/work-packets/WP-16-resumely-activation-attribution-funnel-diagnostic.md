@@ -1,6 +1,6 @@
 # Work Packet WP-16 - Resumely Activation Attribution + Funnel Diagnostic
 
-- Status: Open
+- Status: Completed 2026-06-24
 - Created: 2026-06-24
 - Source: EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`
 - Workflow pattern: metric-diagnostic
@@ -8,6 +8,26 @@
 - Outcome loop: Resumely D7 activation / Gate A
 - Related decision: EXD-013
 - Success signal: Resumely real-organic D7 activation is either confirmed at 0/35 or corrected with person `067544b5` classified, and the main funnel drop-off is named with a next action
+
+## Completion Summary - 2026-06-24
+
+Result: **0 confirmed real-organic D7 activation**.
+
+PostHog project 270848 classified person `067544b5-dbb4-589f-988b-a146f794f184` as Automation / bot-like traffic across its backend completion and later iOS sign-in events, so the unresolved raw completer is excluded from organic activation.
+
+Current diagnostic evidence:
+
+- Prior executive readout: 3/35 raw completers, now all excluded from real-organic activation.
+- Current all-product live re-query, 2026-06-10 through 2026-06-24: 37 first-seen product users, 12 resume uploaders, 10 job-added users, 4 optimization starters, 4 raw completers, 0 confirmed organic completers.
+- Saved iOS funnel `VH410GF1`, 2026-06-10 through 2026-06-24: 30 `app_launched` -> 26 `guest_mode_started` -> 5 `resume_uploaded` -> 4 `job_added` -> 1 `optimization_completed` -> 1 `export_success`.
+
+Largest measurable drop-off: guest/app-open to resume upload. Recommended next packet: upload/import friction and preflight/error instrumentation, before monetization, paid acquisition, score-copy nudges, or more GTM volume.
+
+Outputs:
+
+- Resumely iOS report: `docs/qa/reports/wp-16-activation-attribution-funnel-2026-06-24.md`
+- Resumely iOS updates: `tasks/progress.md`, `tasks/session-log.md`
+- Agentic OS metric update: `executive-os/EXECUTIVE-METRICS.md`
 
 ## Owner Role
 
@@ -80,4 +100,3 @@ Report:
 - Recommended next packet.
 - Files changed and checks run.
 - What was NOT done.
-

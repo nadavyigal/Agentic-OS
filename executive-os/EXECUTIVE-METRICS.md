@@ -20,11 +20,11 @@ Data-source policy is reused from `../distribution-os/data/source-of-truth-polic
 | Metric | Current | Target | Source | Status |
 |---|---|---|---|---|
 | RunSmart iOS D7 activation (install → run_completed) | 0% (0/10 real users) | ≥30% | PostHog 171597, readout 2026-06-24 | Tracked (beta cohort) |
-| Resumely D7 activation (first-seen → optimization_completed) | ≈0% real organic (3/35 raw = 8.6%, all founder-attributed) | ≥40% | PostHog 270848, readout 2026-06-24 | Tracked |
+| Resumely D7 activation (first-seen → optimization_completed) | 0% confirmed real organic (3/35 prior raw all excluded; `067544b5` automation/bot-like) | ≥40% | PostHog 270848, WP-16 live read 2026-06-24 | Tracked |
 | RunSmart onboarding→plan funnel (D7) | onboarding 50%, plan_generated 30% (n=10) | — | PostHog 171597, 2026-06-24 | Tracked (beta cohort) |
 | Retention (D7 / D30) | unknown | TBD | PostHog | Needs Data |
 
-> Readout caveats (2026-06-24): RunSmart cohort (installs ≤2026-06-17) predates the first live App Store build (1.0.3, live 2026-06-19) — it is a TestFlight/dogfood signal, not a market rate. Both readouts exclude the founder's own account and QA/bot bursts per the founder-exclusion rule; raw RunSmart cohort 42 → 10 real users, Resumely founder excluded by email. First true organic RunSmart D7 lands ~2026-06-26. Full readouts: vault `02-Products/*/Metrics/2026-06-24-*-d7-activation-readout.md`.
+> Readout caveats (2026-06-24): RunSmart cohort (installs ≤2026-06-17) predates the first live App Store build (1.0.3, live 2026-06-19) — it is a TestFlight/dogfood signal, not a market rate. Both readouts exclude the founder's own account and QA/bot bursts per the founder-exclusion rule; raw RunSmart cohort 42 → 10 real users. Resumely WP-16 resolved person `067544b5` as automation/bot-like backend traffic, so no raw Resumely completer is confirmed organic. First true organic RunSmart D7 lands ~2026-06-26. Full readouts: vault `02-Products/*/Metrics/2026-06-24-*-d7-activation-readout.md`; Resumely WP-16 product report: `ResumeBuilder IOS APP/docs/qa/reports/wp-16-activation-attribution-funnel-2026-06-24.md`.
 
 ## Financial Metrics
 
