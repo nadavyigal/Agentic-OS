@@ -19,7 +19,7 @@ Best next action: Resumely iOS: (1) D7 readout ~7 days after go-live (~2026-06-2
 
 ## Run Center
 
-- Last refresh: 2026-06-24 14:31
+- Last refresh: 2026-06-24 15:34
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -35,7 +35,7 @@ Best next action: Resumely iOS: (1) D7 readout ~7 days after go-live (~2026-06-2
 
 ## Stranded Work
 
-9 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+10 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
 - [RunSmart iOS] 3 uncommitted file(s) in the primary working tree
@@ -45,7 +45,8 @@ Best next action: Resumely iOS: (1) D7 readout ~7 days after go-live (~2026-06-2
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 4 uncommitted file(s) in the primary working tree
-- [Agentic OS] 3 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 1 unpushed commit(s)
+- [Agentic OS] 4 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

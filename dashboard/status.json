@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-24 14:31"
+    "lastSuccessfulRefresh": "2026-06-24 15:34"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 Garmin Gate-4 brand resubmission readiness \u2014 all code-side work complete and merged to `main`; blocked only on Apple App Review (external, async) before the Garmin reply can go out, per founder's sequencing rule (live build must not contradict submitted Garmin screenshots): Once Apple approves and the build goes live, reply to Garmin's ticket (213145/213165) with the corrected Gate-4 evidence package. Separately, two non-blocking follow-ups were opened during today's device checklist and are tracked but not started: (a) `garmin_connections.scopes` is an empty array in production despite an active, healthy connection \u2014 Permissions UI cosmetically shows everything \"Off\"; (b) some `garmin_activities` rows carry `sport: \"wheelchair_push_walk\"` or `\"unknown\"` and are excluded from the running feed \u2014 unclear yet whether this is a genuine Garmin API classification or a mapping gap \u00b7 Resumely iOS \u2014 Post-launch \u2014 D7 Gate A monitoring. App is live; no approval pending. Next build (1.1 (6)) pending to carry ATS copy fix: (1) D7 readout ~7 days after go-live (~2026-06-28) \u2014 pull 7-day activation funnel from PostHog dashboard 1720819. (2) Bump to 1.1 (6), archive, and submit to carry PR #70 ATS copy fix. (3) Regenerate App Store screenshots before next submission. (4) Monitor reviews + crash/error events \u00b7 RunSmart Web \u2014 Garmin Gate-4 brand resubmission \u2014 web/backend side complete; blocked on iOS 1.0.4(17) Apple App Review before replying to Garmin again \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
@@ -594,7 +594,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-24 e370ed3 fix(cli): packet_status falls back to Unknown on empty-token Status values); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-24 f2aaaa7 docs(executive): save portfolio exec CEO plan); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -619,11 +619,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "dirty": true,
-        "dirtyCount": 3,
+        "dirtyCount": 4,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-24 e370ed3 fix(cli): packet_status falls back to Unknown on empty-token Status values",
+        "lastCommit": "2026-06-24 f2aaaa7 docs(executive): save portfolio exec CEO plan",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -833,7 +833,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-24 14:31",
+    "lastRefresh": "2026-06-24 15:34",
     "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1621,10 +1621,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 3,
+      "dirtyCount": 4,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-06-24 e370ed3 fix(cli): packet_status falls back to Unknown on empty-token Status values",
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-06-24 f2aaaa7 docs(executive): save portfolio exec CEO plan",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-24",
@@ -1816,7 +1816,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "main...origin/main [ahead 1]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1907,9 +1907,9 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-24 14:31",
+    "lastRunAt": "2026-06-24 15:34",
     "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-24 14:31",
+    "checksCompletedAt": "2026-06-24 15:34",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
@@ -2386,6 +2386,82 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-14 - RunSmart Status + Garmin Reply Reconciliation",
+        "status": "Open",
+        "project": "RunSmart iOS and RunSmart Web",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Reconcile the RunSmart App Store/live-build status before any Garmin external reply, so the live app cannot contradict the Gate-4 evidence package",
+        "source": "EXD-014; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted local status, but product status is contradictory and must be verified before external action",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "`./agentic-os morning` no longer reports a RunSmart live-vs-blocked contradiction, and the Garmin reply is either clearly approved to send or explicitly held with the reason logged",
+        "path": "executive-os/work-packets/WP-14-runsmart-status-garmin-reconcile.md",
+        "copyPrompt": null,
+        "decision": "EXD-014"
+      },
+      {
+        "title": "Work Packet WP-15 - RunSmart Plan-to-Run Activation Diagnostic",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Explain why 0/10 real users completed a run within 7 days even though 30% reached `plan_generated`, then prepare the smallest activation intervention that can move plan-to-run conversion above zero",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "feature-diagnostic",
+        "inputTrust": "trusted D7 readout from `PROMPTS/portfolio-exec-ceo-plan.md`, `CEO-OS.md`, and `EXECUTIVE-METRICS.md`",
+        "outcomeLoop": "RunSmart D7 activation",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "the plan_generated -> run_completed drop-off has a named root cause, an instrumented fix plan, and either one shipped intervention or a clear plan-feature ready to execute",
+        "path": "executive-os/work-packets/WP-15-runsmart-plan-to-run-activation-diagnostic.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
+      },
+      {
+        "title": "Work Packet WP-16 - Resumely Activation Attribution + Funnel Diagnostic",
+        "status": "Open",
+        "project": "Resumely iOS and ResumeBuilder Web",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Confirm whether Resumely has any real organic D7 activation, classify person `067544b5`, and diagnose the first-seen -> optimization_completed funnel before new feature, paywall, or GTM work continues",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "metric-diagnostic",
+        "inputTrust": "trusted D7 readout from `PROMPTS/portfolio-exec-ceo-plan.md`, `CEO-OS.md`, and `EXECUTIVE-METRICS.md`",
+        "outcomeLoop": "Resumely D7 activation / Gate A",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "Resumely real-organic D7 activation is either confirmed at 0/35 or corrected with person `067544b5` classified, and the main funnel drop-off is named with a next action",
+        "path": "executive-os/work-packets/WP-16-resumely-activation-attribution-funnel-diagnostic.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
+      },
+      {
+        "title": "Work Packet WP-17 - Portfolio Activation Metrics Reread",
+        "status": "Open",
+        "project": "Agentic OS, with PostHog/App Store evidence from RunSmart and Resumely",
+        "repoId": "agentic-os",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /Agentic OS",
+        "goal": "Run the next portfolio activation reread after the first true RunSmart organic cohort becomes available, update the executive metrics, and decide whether OKR 2 targets still hold",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "metric-diagnostic",
+        "inputTrust": "trusted prior readout; new readout must exclude founder and QA/bot bursts",
+        "outcomeLoop": "Portfolio activation and OKR 2",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "`EXECUTIVE-METRICS.md`, `CEO-OS.md`, and the saved readout reflect the first true organic RunSmart D7 reread and the cleaned Resumely D7 number",
+        "path": "executive-os/work-packets/WP-17-portfolio-activation-metrics-reread.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
+      },
+      {
         "title": "Work Packet WP-2 (Research Complete)",
         "status": "Research",
         "project": null,
@@ -2680,6 +2756,26 @@
   },
   "decisions": [
     {
+      "id": "EXD-014",
+      "date": "2026-06-24",
+      "area": "Release",
+      "decision": "RunSmart live-vs-blocked status contradiction before Garmin reply",
+      "recommendation": "Reconcile source status first, then reply to Garmin only if the live build and evidence package match",
+      "owner": "Nadav",
+      "review": "2026-06-26",
+      "status": "Decided"
+    },
+    {
+      "id": "EXD-013",
+      "date": "2026-06-24",
+      "area": "Growth",
+      "decision": "Response to first D7 activation readout",
+      "recommendation": "Investigate activation now; do not unlock monetization, paywall work, paid acquisition, or GTM volume",
+      "owner": "Nadav",
+      "review": "2026-07-01",
+      "status": "Decided"
+    },
+    {
       "id": "EXD-012",
       "date": "2026-06-22",
       "area": "Product",
@@ -2816,11 +2912,11 @@
       },
       {
         "name": "Decisions",
-        "what": "0 open of 12 logged in EXECUTIVE-DECISIONS.md."
+        "what": "0 open of 14 logged in EXECUTIVE-DECISIONS.md."
       },
       {
         "name": "Work packets",
-        "what": "2 active, 15 total. Copy only Active packets; closed packets are history."
+        "what": "2 active, 19 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -2923,6 +3019,82 @@
         "path": "executive-os/work-packets/WP-13-fit-first-release-and-flip.md",
         "copyPrompt": null,
         "decision": null
+      },
+      {
+        "title": "Work Packet WP-14 - RunSmart Status + Garmin Reply Reconciliation",
+        "status": "Open",
+        "project": "RunSmart iOS and RunSmart Web",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Reconcile the RunSmart App Store/live-build status before any Garmin external reply, so the live app cannot contradict the Gate-4 evidence package",
+        "source": "EXD-014; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted local status, but product status is contradictory and must be verified before external action",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "`./agentic-os morning` no longer reports a RunSmart live-vs-blocked contradiction, and the Garmin reply is either clearly approved to send or explicitly held with the reason logged",
+        "path": "executive-os/work-packets/WP-14-runsmart-status-garmin-reconcile.md",
+        "copyPrompt": null,
+        "decision": "EXD-014"
+      },
+      {
+        "title": "Work Packet WP-15 - RunSmart Plan-to-Run Activation Diagnostic",
+        "status": "Open",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Explain why 0/10 real users completed a run within 7 days even though 30% reached `plan_generated`, then prepare the smallest activation intervention that can move plan-to-run conversion above zero",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "feature-diagnostic",
+        "inputTrust": "trusted D7 readout from `PROMPTS/portfolio-exec-ceo-plan.md`, `CEO-OS.md`, and `EXECUTIVE-METRICS.md`",
+        "outcomeLoop": "RunSmart D7 activation",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "the plan_generated -> run_completed drop-off has a named root cause, an instrumented fix plan, and either one shipped intervention or a clear plan-feature ready to execute",
+        "path": "executive-os/work-packets/WP-15-runsmart-plan-to-run-activation-diagnostic.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
+      },
+      {
+        "title": "Work Packet WP-16 - Resumely Activation Attribution + Funnel Diagnostic",
+        "status": "Open",
+        "project": "Resumely iOS and ResumeBuilder Web",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Confirm whether Resumely has any real organic D7 activation, classify person `067544b5`, and diagnose the first-seen -> optimization_completed funnel before new feature, paywall, or GTM work continues",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "metric-diagnostic",
+        "inputTrust": "trusted D7 readout from `PROMPTS/portfolio-exec-ceo-plan.md`, `CEO-OS.md`, and `EXECUTIVE-METRICS.md`",
+        "outcomeLoop": "Resumely D7 activation / Gate A",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "Resumely real-organic D7 activation is either confirmed at 0/35 or corrected with person `067544b5` classified, and the main funnel drop-off is named with a next action",
+        "path": "executive-os/work-packets/WP-16-resumely-activation-attribution-funnel-diagnostic.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
+      },
+      {
+        "title": "Work Packet WP-17 - Portfolio Activation Metrics Reread",
+        "status": "Open",
+        "project": "Agentic OS, with PostHog/App Store evidence from RunSmart and Resumely",
+        "repoId": "agentic-os",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /Agentic OS",
+        "goal": "Run the next portfolio activation reread after the first true RunSmart organic cohort becomes available, update the executive metrics, and decide whether OKR 2 targets still hold",
+        "source": "EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`",
+        "workflowPattern": "metric-diagnostic",
+        "inputTrust": "trusted prior readout; new readout must exclude founder and QA/bot bursts",
+        "outcomeLoop": "Portfolio activation and OKR 2",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "`EXECUTIVE-METRICS.md`, `CEO-OS.md`, and the saved readout reflect the first true organic RunSmart D7 reread and the cleaned Resumely D7 number",
+        "path": "executive-os/work-packets/WP-17-portfolio-activation-metrics-reread.md",
+        "copyPrompt": null,
+        "decision": "EXD-013"
       },
       {
         "title": "Work Packet WP-2 (Research Complete)",
@@ -3120,11 +3292,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 3,
+    "uncommitted": 4,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -3300,17 +3472,23 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 1 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "3 uncommitted file(s) in the primary working tree",
+        "detail": "4 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 9,
+    "actionableCount": 10,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-24 14:31",
+    "generatedAt": "2026-06-24 15:34",
     "apps": [
       {
         "projectId": 171597,

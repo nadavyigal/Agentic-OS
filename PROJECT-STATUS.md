@@ -23,7 +23,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Post-launch — D7 Gate A monitoring. App is live; no approval pending. Next build (1.1 (6)) pending to carry ATS copy fix | (1) D7 readout ~7 days after go-live (~2026-06-28) — pull 7-day activation funnel from PostHog dashboard 1720819. (2) Bump to 1.1 (6), archive, and submit to carry PR #70 ATS copy fix. (3) Regenerate App Store screenshots before next submission. (4) Monitor reviews + crash/error events | 1 | No | Fresh | High | tasks/progress.md | 2026-06-24 96853a4 docs(progress): record Fit-First flipped ON for v1.1 (6) + smoke results (#79) |
 | RunSmart Web | Garmin Gate-4 brand resubmission — web/backend side complete; blocked on iOS 1.0.4(17) Apple App Review before replying to Garmin again | Once iOS 1.0.4(17) is live on the App Store, reply to Garmin's ticket (213145/213165) with the corrected Gate-4 evidence (brand fixes to shots 01/04/05, new shot 06 Garmin Wellness, now with a real in-app entry point per iOS WP-15/PR #61). Separately tracked, not blocking: Gate 2's `GC_ACTIVITY_UPDATE`/`USER_DEREG` Partner Verification coverage gap remains open (needs a real webhook receipt for each, then a portal re-run); `garmin_connections.scopes` is an empty array in production despite healthy active connections (cosmetic Permissions-UI bug); some `garmin_activities` rows are tagged `sport: "wheelchair_push_walk"`/`"unknown"` and excluded from the running feed (unclear yet if genuine Garmin classification or a mapping gap — investigation prompt not yet written for this one) | 1 | Yes (15) | Fresh | Medium | tasks/progress.md | 2026-06-24 6c9c654 docs(progress): record 2026-06-24 session — Body Battery fix (PR #101), blocked on iOS 1.0.4(17) review |
 | ResumeBuilder AI (Web) | ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building) | Story 2 was investigated, not implemented — traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only "15+ years" in the summary). The AI optimizer correctly preserved this truthfully per its "never fabricate metrics" rule — `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-24 ddb0dd3 fix(expert-workflows): regenerate on schema-validation failure instead of 500 (#88) |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (3) | Fresh | High | tasks/progress.md | 2026-06-24 e370ed3 fix(cli): packet_status falls back to Unknown on empty-token Status values |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (4) | Fresh | High | tasks/progress.md | 2026-06-24 f2aaaa7 docs(executive): save portfolio exec CEO plan |
 
 ## Evidence Gaps
 
@@ -31,7 +31,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - Resumely iOS: validated 2026-06-21, last commit 2026-06-24 96853a4 docs(progress): record Fit-First flipped ON for v1.1 (6) + smoke results (#79)
 - ResumeBuilder AI (Web): validated 2026-06-22, last commit 2026-06-24 ddb0dd3 fix(expert-workflows): regenerate on schema-validation failure instead of 500 (#88)
-- Agentic OS: validated 2026-06-12, last commit 2026-06-24 e370ed3 fix(cli): packet_status falls back to Unknown on empty-token Status values
+- Agentic OS: validated 2026-06-12, last commit 2026-06-24 f2aaaa7 docs(executive): save portfolio exec CEO plan
 
 ## Drift Warnings
 
@@ -52,7 +52,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] 6 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] 3 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
+- [Agentic OS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 
