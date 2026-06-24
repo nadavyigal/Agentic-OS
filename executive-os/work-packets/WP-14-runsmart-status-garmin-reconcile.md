@@ -1,6 +1,8 @@
 # Work Packet WP-14 - RunSmart Status + Garmin Reply Reconciliation
 
-- Status: Open
+- Status: Closed
+- Closed: 2026-06-24
+- Closed note: Reconciled — app LIVE v1.0.3 (16) since 2026-06-19; v1.0.4 (17) submitted 2026-06-24 awaiting Apple approval. Garmin reply still blocked until 1.0.4 live. Contradiction cleared via progress.md Current Phase update.
 - Created: 2026-06-24
 - Source: EXD-014; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`
 - Workflow pattern: normal

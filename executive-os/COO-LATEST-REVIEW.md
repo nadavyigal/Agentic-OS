@@ -9,7 +9,7 @@
 
 ## 1. Operating Summary
 
-Both iOS apps are live on the App Store. RunSmart iOS v1.0.3 build 16 went live **2026-06-19** (founder-confirmed); early PostHog volume (~16 users/7d) is expected, not a traction signal. Active work shifted to **Garmin readiness** (Story 1: physical TestFlight smoke), not another App Store submission. Resumely iOS v1.1 build 5 is live (founder-confirmed **2026-06-21**); D7 Gate A readout is calendar-bound ~7 days after go-live (~**2026-06-28**). RunSmart Web is in **Garmin production enablement** — worker-RPC migration written, awaiting founder "yes" to apply; Gates 2–4 are manual portal/email tasks. ResumeBuilder Web has the LinkedIn scrape-blocking fix on `fix/linkedin-guest-scrape` (merged locally) but **awaiting production verification on a real Vercel preview IP** before treating as resolved. Status guard contradiction cleared after RunSmart iOS `tasks/progress.md` update (root cause: false positive on "resubmission" token in phase text).
+Both iOS apps are live on the App Store. RunSmart iOS is in a Gate-4 follow-up state: v1.0.3 is live, and v1.0.4 (17) was submitted to App Store Connect on **2026-06-24** and is awaiting Apple approval before the Garmin reply can go out. Resumely iOS v1.1 is live (founder-confirmed **2026-06-21**); the Resumely attribution review later confirmed **0 real-organic D7 activations** and named upload/import as the largest measurable drop-off. RunSmart Web remains in **Garmin production enablement**; Gates 2–4 are manual portal/email tasks once the iOS Gate-4 build is live. ResumeBuilder Web has the LinkedIn scrape-blocking fix on `fix/linkedin-guest-scrape` (merged locally) but **awaiting production verification on a real Vercel preview IP** before treating as resolved. Status guard contradiction was reconciled on 2026-06-24 via WP-14.
 
 Evidence: `PROJECT-STATUS.md` (contradictions: none), `dashboard/status.json` (lastSuccessfulRefresh 2026-06-21 13:48), product `tasks/progress.md` files.
 
@@ -85,7 +85,7 @@ If migration approval is not given today, fallback packet: **ResumeBuilder Web �
 
 ## 11. What Not To Touch
 
-- RunSmart iOS App Store submission artifacts — v1.0.3 build 16 is live; no resubmission train.
+- RunSmart iOS App Store submission artifacts — v1.0.4 (17) is already submitted; do not start another resubmission train while Apple review is pending.
 - Resumely iOS product scope — monitor only until D7 readout (~2026-06-28).
 - Monetization, paywalls, RevenueCat, StoreKit, paid acquisition (EXD-009).
 - RunSmart Web feature scope beyond Garmin production enablement.
