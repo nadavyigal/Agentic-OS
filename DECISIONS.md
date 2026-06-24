@@ -85,3 +85,17 @@ Impact:
 - Story 0 (web `/api/public/ats-check`) implements the additive `fit` block with these exact bands; existing `score`/`preview`/`quickWins`/`checksRemaining` unchanged.
 - iOS `FitCheckService` builds against the PDF-upload contract; `resume_id` swap is a flagged follow-up, not in scope for WP-12.
 - WP-12 DECISION GATE is now resolved; the build sequence is unblocked.
+
+## 2026-06-23: Fit-First Triage — Flag Flip Deferred to D7 Readout (2026-06-24)
+
+Decision: **Defer** flipping `isFitCheckEnabled` to production until after the D7 Gate A readout on **2026-06-24**. Build **1.1 (6)** ships with the Fit-First code path **dark** (`isFitCheckEnabled=false`). Internal validation used branch `feat/wp-13-fit-check-internal` with the flag ON against the live `/api/public/ats-check` endpoint.
+
+Reason: WP-13 Step 2 internal validation passed cleanly — live endpoint HTTP 200, verdict decode + optimize handoff, all four `fit_check_*` analytics events, Hebrew RTL strings resolved, EXD-012 score note remains process-descriptive. However, `RuntimeFeatures` has no percentage/cohort rollout gate; the practical options are 100% day-one exposure or a timed defer. The D7 activation readout (dashboard 1720819) is already scheduled for 2026-06-24 and is the right gate before turning on a brand-new Tailor front door.
+
+Impact:
+
+- **Public submission:** v1.1 build 6, flag OFF — Fit-First unreachable until a follow-up flip PR merges after D7.
+- **Internal soak:** `feat/wp-13-fit-check-internal` (flag ON + live smoke tests) is the internal-only TestFlight candidate; distribute to internal testers only, not App Store review.
+- **Flip trigger (2026-06-24):** If D7 Gate A baseline is stable, open a PR flipping `isFitCheckEnabled=true` on `main` for the next build (1.1 build 7 or post-approval build 6 re-release). If D7 shows activation regression or open issues, extend defer and re-evaluate.
+- **Not chosen:** Full 100% flip on day one (too much exposure before D7 baseline). Staged percentage rollout (no server-side/client percentage gate exists today).
+- Evidence: `docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md` in the iOS repo.

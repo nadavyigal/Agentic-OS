@@ -952,7 +952,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "  Codex       → paste as task context\n\n"
                         "--- WORK PACKET ---\n"
                     )
-                packet_status = clean_value(status_match.group(1)) if status_match else "Unknown"
+                packet_status = (clean_value(status_match.group(1)) if status_match else None) or "Unknown"
                 registry["workPackets"].append(
                     {
                         "title": title,

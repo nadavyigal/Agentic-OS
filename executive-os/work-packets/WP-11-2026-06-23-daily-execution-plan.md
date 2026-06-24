@@ -78,7 +78,10 @@ Validation: two decisions logged; #73/#72/#84 dispositioned; fit block returns f
 
 ---
 
-## Prompt 4 — Quick hygiene (low effort, high signal)
+## Prompt 4 — Quick hygiene (low effort, high signal) — **DONE 2026-06-23**
+
+**COMPLETED → wiki-index.md broken links fixed (3 archived packets re-pointed under new `## Archive (10-Archive)` section); wiki-log.md entry appended; RunSmart PR #92 closed (superseded by #90, `cf61d4b` — same Aha Moments commits already on main; CI also red).**
+
 
 **Repo:** Vault `/Users/nadavyigal/Documents/Projects /Nadav Builder OS` + RunSmart Web `/Users/nadavyigal/Documents/RunSmart`
 
