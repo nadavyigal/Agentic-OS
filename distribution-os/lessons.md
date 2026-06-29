@@ -21,6 +21,7 @@ Capture rule: a lesson goes here only if it has happened twice, costs real time 
 | Date | Pattern | Where it applies | Evidence |
 |---|---|---|---|
 | | | | |
+| 2026-06-29 | Dashboard "ATS support/impact" copy is allowed under the canonical doc's process-descriptive carve-out; only public-marketing "pass ATS" claims needed reconciliation, not in-app labels | ResumeBuilder web dashboard | Verified via dashboard.* namespace scan, zero violations found |
 
 ## How To Add A Lesson
 
