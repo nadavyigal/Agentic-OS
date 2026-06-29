@@ -274,6 +274,28 @@ class TestOSRegistry(unittest.TestCase):
             self.assertIsNone(packet["outcomeLoop"])
             self.assertIsNone(packet["successSignal"])
 
+    def test_packet_frontmatter_status_overrides_stale_body_status(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-7.md").write_text(
+                "---\n"
+                "title: Work Packet: Closed But Old Body\n"
+                "status: closed\n"
+                "---\n\n"
+                "# Work Packet — Closed But Old Body\n\n"
+                "- Status: Active\n"
+                "- Source: old dashboard\n\n"
+                "## Goal\nDo not resurface this as active.\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            self.assertEqual(packet["status"], "closed")
+            self.assertFalse(cli._packet_is_active(packet))
+            self.assertIsNone(packet["copyPrompt"])
+
     def test_packet_hygiene_flags_active_older_runsmart_build(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

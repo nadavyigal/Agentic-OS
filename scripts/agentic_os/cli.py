@@ -875,6 +875,20 @@ def _metadata_value(text: str, label: str) -> str | None:
     return clean_value(match.group(1)) if match else None
 
 
+def _frontmatter_value(text: str, label: str) -> str | None:
+    """Read a simple YAML frontmatter scalar, preserving body metadata as fallback."""
+    if not text.startswith("---"):
+        return None
+    match = re.match(r"^---\s*\n(.*?)\n---\s*(?:\n|$)", text, re.DOTALL)
+    if not match:
+        return None
+    for line in match.group(1).splitlines():
+        key, sep, value = line.partition(":")
+        if sep and key.strip().lower() == label.lower():
+            return clean_value(value.strip().strip("\"'"))
+    return None
+
+
 def build_os_registry(root: Path) -> dict[str, Any]:
     """Auto-discover the Agentic OS from the repo itself, in two plain groups.
 
@@ -952,7 +966,11 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "  Codex       → paste as task context\n\n"
                         "--- WORK PACKET ---\n"
                     )
-                packet_status = (clean_value(status_match.group(1)) if status_match else None) or "Unknown"
+                packet_status = (
+                    _frontmatter_value(text, "status")
+                    or (clean_value(status_match.group(1)) if status_match else None)
+                    or "Unknown"
+                )
                 registry["workPackets"].append(
                     {
                         "title": title,
