@@ -303,6 +303,45 @@ class TestOSRegistry(unittest.TestCase):
             self.assertEqual(issues[0]["severity"], "error")
             self.assertIn("current RunSmart status is build 14", issues[0]["message"])
 
+    def test_frontmatter_status_overrides_stale_body_status_line(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-7.md").write_text(
+                "---\n"
+                "title: \"Work Packet: Example\"\n"
+                "status: closed\n"
+                "---\n\n"
+                "# Work Packet WP-7\n"
+                "- Status: Active\n\n"
+                "## Project\nExample\n\n"
+                "## Goal\nShip the change.\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            # Closing a packet by editing frontmatter must take effect even if the
+            # body's old "- Status: Active" line is never hand-edited to match.
+            self.assertEqual(packet["status"], "closed")
+
+    def test_body_status_used_when_no_frontmatter_present(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-9.md").write_text(
+                "# Work Packet WP-9\n"
+                "- Status: Open\n\n"
+                "## Project\nExample\n\n"
+                "## Goal\nShip the change.\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            # Most packets predate frontmatter entirely; the body line must still work.
+            self.assertEqual(packet["status"], "Open")
+
     def test_packet_metadata_and_operating_artifacts_are_discovered(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

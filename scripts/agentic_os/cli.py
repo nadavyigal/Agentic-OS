@@ -875,6 +875,24 @@ def _metadata_value(text: str, label: str) -> str | None:
     return clean_value(match.group(1)) if match else None
 
 
+def _frontmatter_field(text: str, key: str) -> str | None:
+    """Read a YAML frontmatter field (e.g. `status: closed`) from a doc that opens with `---`.
+
+    Frontmatter is authoritative when present: a packet can be closed by editing
+    just this field without also hunting down every body `Status:` line. Returns
+    None for docs without frontmatter or without the field, so callers can fall
+    back to body-text parsing (most work packets predate frontmatter entirely).
+    """
+    if not text.startswith("---"):
+        return None
+    end = text.find("\n---", 3)
+    if end == -1:
+        return None
+    block = text[3:end]
+    match = re.search(rf"^\s*{re.escape(key)}:\s*(.+?)\s*$", block, re.IGNORECASE | re.MULTILINE)
+    return clean_value(match.group(1)) if match else None
+
+
 def build_os_registry(root: Path) -> dict[str, Any]:
     """Auto-discover the Agentic OS from the repo itself, in two plain groups.
 
@@ -905,6 +923,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
             for packet in sorted(packets_dir.glob("*.md")):
                 text = packet.read_text(encoding="utf-8", errors="replace")
                 title, _ = _doc_summary(packet)
+                frontmatter_status = _frontmatter_field(text, "status")
                 status_match = re.search(r"Status:\s*([A-Za-z ]+)", text)
                 project_match = re.search(r"##\s*Project\s*\n+\s*(.+)", text)
                 path_match = re.search(r"Path:\s*`?([^`\n]+)`?", text)
@@ -952,7 +971,13 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         "  Codex       → paste as task context\n\n"
                         "--- WORK PACKET ---\n"
                     )
-                packet_status = (clean_value(status_match.group(1)) if status_match else None) or "Unknown"
+                # Frontmatter wins when present: a packet can be closed by editing one
+                # field instead of also hunting down a stale body "Status:" line.
+                packet_status = (
+                    frontmatter_status
+                    or (clean_value(status_match.group(1)) if status_match else None)
+                    or "Unknown"
+                )
                 registry["workPackets"].append(
                     {
                         "title": title,

@@ -17,7 +17,7 @@ tags: [agentic-os, status, trust, posthog, ground-truth, reconcile]
 > This FINISHES the status-truth job: the guard exists but is switched off, and the
 > dashboard still shows both live apps as "in review".
 
-- Status: Active
+- Status: Closed (see frontmatter `closed_date`/`closed_note`)
 - Source: Live verification 2026-06-17 (doctor PASS, status.json groundTruth, PostHog QA)
 - Workflow pattern: normal
 - Input trust: trusted

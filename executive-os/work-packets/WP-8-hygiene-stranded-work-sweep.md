@@ -14,7 +14,7 @@ tags: [hygiene, stranded-work, worktrees, git, trust]
 > Agentic OS dashboard. Goal: clear the hygiene warnings that are holding portfolioTrust
 > at "refresh_required" so the dashboard reads trustworthy/clean.
 
-- Status: Active
+- Status: Closed (see frontmatter `status`)
 - Source: dashboard/status.json portfolioTrust + strandedWork on 2026-06-17
 - Workflow pattern: normal
 - Input trust: trusted
