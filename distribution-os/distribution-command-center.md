@@ -12,14 +12,19 @@ The single page that answers: what is this week about, what is shipping, what is
   1. Reconciled all reusable Resumely outreach templates (email, LinkedIn personal post, Reddit, Slack/Discord, ASO metadata, screenshot briefs, launch-day posts, content calendar) to Fit/Match language and the real App Store link — **done 2026-06-29**
   2. Hebrew DM + FB (vibecoding israel) + LinkedIn (job-seeker groups) outreach copy drafted for founder to send personally — **ready, no paid spend**
   3. Distribution-os restart: command center and project bridge were frozen at pre-launch state (last touched 2026-05-28); refreshed to reflect both apps live — **done 2026-06-29**
+  4. rb-dir-001 directory pack rewritten from stale "ATS score" framing to Fit/Match copy; real App Store URL (id6776752349) substituted for the placeholder; score rescored 15 -> 17 to match `channel-backlog.md` — **done 2026-06-29, awaiting founder review**
 - **Assets in flight**:
   - `new-ResumeBuilder-ai-/launch-assets/*` — rewritten, Fit/Match positioning, real App Store link substituted for placeholders and the old web-tool link
   - `ResumeBuilder IOS APP/launch-assets/aso/screenshot-briefs.md` — synced to drop "ATS score" framing, matches `.agents/product-marketing.md`
   - Hebrew outreach messages (DM/FB/LinkedIn) — drafted in chat this session, not yet filed as a Drive asset
+  - `projects/resumebuilder/scaffold/drafts/2026-05-28-rb-dir-001/directory-pack-v1.md` — rewritten to Fit/Match copy, real App Store URL inserted, ready for founder review before submission
 - **Awaiting founder action**:
   - Send the personal DM, FB post (vibecoding israel group), and LinkedIn posts (job-seeker groups) manually — founder publishes, not the OS
   - Confirm exact FB/LinkedIn group names (could not verify current real group names/membership by search; founder has access)
+  - Review and approve the rewritten rb-dir-001 directory pack, then submit to the 5 directories one at a time
+  - Decide whether to reconcile the web repo's free ATS-checker tool (`/api/ats/score`, `/api/public/ats-check`, `resumelybuilderai.com` framing) to Fit/Match language, or keep it as an intentionally distinct "ATS score" free-tool funnel feeding the iOS app — still open, not decided by this OS
 - **Awaiting external response**: first 0-10 organic Resumely users from this outreach wave
+- **PostHog read (2026-06-29, project 270848)**: app_launched 55 -> 117, resume_uploaded 12 -> 76, optimization_completed 29 -> 48 (current 14-day window vs prior 14-day window) — directional only, low sample size (single digits to low teens per day). The zero-budget outreach wave itself only started today; only 1 partial day of post-outreach data exists (1 app_launched, 0 of everything else on 6/29) — too early for any signal.
 - **Blocked**:
   - `docs/gtm/week-1-*` and `canonical-90-day-plan.md` in the web repo are dated, pre-launch (2026-02-14/16) historical execution logs — intentionally NOT rewritten; they document what was actually sent at the time. Per `operating-principles.md` Principle 6, `.agents/product-marketing.md` wins for product facts going forward; these are left as historical record, not a competing source of truth.
   - RunSmart distribution work — paused this week per Principle 4 (one product in focus)
@@ -50,6 +55,7 @@ Status values: `not started` · `planned` · `in progress` · `awaiting review` 
 
 ## Last Cycle's Decisions
 
+- 2026-06-29 (mid-cycle): rb-dir-001 rescored 15 -> 17 and rewritten to Fit/Match copy now that the App Store URL exists; PostHog checked for early outreach signal (none yet, outreach started same day).
 - 2026-06-29: Resumely v1.2 (7) confirmed live by founder — Fit-First visible, Resumely Match Score rebrand, Hebrew/RTL, WP-18 upload-funnel instrumentation now in production.
 - 2026-06-29: Canonical Resumely positioning (`.agents/product-marketing.md`) is the single source of truth when web-repo and iOS-repo marketing copy disagree.
 - 2026-06-29: Zero-budget, founder-time-limited (2-3 hrs/week) outreach approach chosen over paid acquisition, consistent with the no-paid-acquisition gate until post-1.2 funnel data is readable.
