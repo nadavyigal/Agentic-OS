@@ -1,18 +1,25 @@
 # Portfolio Dashboard
 
-Last updated: 2026-06-24 IDT
+Last updated: 2026-06-29 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
+## ⚠️ Status Contradicts Reality
+
+- [HARD] Resumely is declared 'Post-launch — v1.2 (7) in App Store review; waiting for Apple outcome and then post-live funnel read' but PostHog shows 37 live users in 7d.
+- [HARD] Resumely App Store state is LIVE (undated) but declared state is 'Post-launch — v1.2 (7) in App Store review; waiting for Apple outcome and then post-live funnel read'.
+
+- Proposed fix (confirm before write): Ground truth contradicts declared status. Proposed next step: confirm and update the relevant tasks/progress.md status lines. No files were auto-edited.
+
 ## Executive Summary
 
-RunSmart iOS — LIVE on App Store - v1.0.3 (build 16) since 2026-06-19. Gate-4 follow-up build v1.0.4 (build 17) submitted to ASC 2026-06-24 awaiting Apple approval. Garmin external reply gated until 1.0.4 is live per founder sequencing rule. WP-15 plan-to-run activation diagnostic implemented locally and awaiting review: Review and merge the WP-15 activation patch, then watch the next usable cohort for `plan_generated -> plan_run_cta_tapped -> run_started -> run_completed`. Activation threshold for this fix is at least 20% plan-to-run conversion in the next cohort where generated plans are usable. Keep the Garmin Gate-4 reply gated until v1.0.4 (17) is approved and live · Resumely iOS — Post-launch — D7 Gate A monitoring. App is live; no approval pending. Next build (1.1 (6)) pending to carry ATS copy fix: (1) Scope upload/import friction: file-picker start, file selected, preflight rejection, upload success, parser fallback, and upload error instrumentation. (2) Founder: archive/upload/submit build 6 when signing is available. (3) Re-run cleaned activation after the upload/import fix ships or after a larger organic cohort exists · RunSmart Web — LIVE on App Store — RunSmart iOS v1.0.3 (build 16) since 2026-06-19. Web/backend Gate-4 work complete; Garmin external reply gated until iOS v1.0.4 (build 17) is approved and live (submitted ASC 2026-06-24) · ResumeBuilder AI (Web) — ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)
+RunSmart iOS — LIVE on App Store as marketing version `1.0.4`; build 18 upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until build 18 is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build: Founder uploads/submits build 18 to App Store Connect, waits for approval, confirms build 18 live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships · Resumely iOS — Post-launch — v1.2 (7) in App Store review; waiting for Apple outcome and then post-live funnel read: (1) Monitor Apple review for 1.2 (7). (2) After approval/live availability, verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next · RunSmart Web — Web/backend Gate-4 work complete; iOS build 18 locally archive/export validated but not confirmed live. Garmin reply remains blocked until founder uploads/submits build 18, Apple approves it, build 18 is genuinely live, and all 6 screenshots are recaptured against that live build · ResumeBuilder AI (Web) — ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)
 
-Best next action: Resumely iOS: (1) Scope upload/import friction: file-picker start, file selected, preflight rejection, upload success, parser fallback, and upload error instrumentation. (2) Founder: archive/upload/submit build 6 when signing is available. (3) Re-run cleaned activation after the upload/import fix ships or after a larger organic cohort exists
+Best next action: Resumely iOS: (1) Monitor Apple review for 1.2 (7). (2) After approval/live availability, verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next
 
 ## Run Center
 
-- Last refresh: 2026-06-24 16:25
+- Last refresh: 2026-06-29 07:35
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,27 +27,30 @@ Best next action: Resumely iOS: (1) Scope upload/import friction: file-picker st
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | LIVE on App Store - v1.0.3 (build 16) since 2026-06-19. Gate-4 follow-up build v1.0.4 (build 17) submitted to ASC 2026-06-24 awaiting Apple approval. Garmin external reply gated until 1.0.4 is live per founder sequencing rule. WP-15 plan-to-run activation diagnostic implemented locally and awaiting review | Review and merge the WP-15 activation patch, then watch the next usable cohort for `plan_generated -> plan_run_cta_tapped -> run_started -> run_completed`. Activation threshold for this fix is at least 20% plan-to-run conversion in the next cohort where generated plans are usable. Keep the Garmin Gate-4 reply gated until v1.0.4 (17) is approved and live | Yes | Fresh | High |
-| Resumely iOS | Post-launch — D7 Gate A monitoring. App is live; no approval pending. Next build (1.1 (6)) pending to carry ATS copy fix | (1) Scope upload/import friction: file-picker start, file selected, preflight rejection, upload success, parser fallback, and upload error instrumentation. (2) Founder: archive/upload/submit build 6 when signing is available. (3) Re-run cleaned activation after the upload/import fix ships or after a larger organic cohort exists | No | Fresh | High |
-| RunSmart Web | LIVE on App Store — RunSmart iOS v1.0.3 (build 16) since 2026-06-19. Web/backend Gate-4 work complete; Garmin external reply gated until iOS v1.0.4 (build 17) is approved and live (submitted ASC 2026-06-24) | Once iOS 1.0.4(17) is live on the App Store, reply to Garmin's ticket (213145/213165) with the corrected Gate-4 evidence (brand fixes to shots 01/04/05, new shot 06 Garmin Wellness, now with a real in-app entry point per iOS WP-15/PR #61). Separately tracked, not blocking: Gate 2's `GC_ACTIVITY_UPDATE`/`USER_DEREG` Partner Verification coverage gap remains open (needs a real webhook receipt for each, then a portal re-run); `garmin_connections.scopes` is an empty array in production despite healthy active connections (cosmetic Permissions-UI bug); some `garmin_activities` rows are tagged `sport: "wheelchair_push_walk"`/`"unknown"` and excluded from the running feed (unclear yet if genuine Garmin classification or a mapping gap — investigation prompt not yet written for this one) | Yes | Fresh | Medium |
+| RunSmart iOS | LIVE on App Store as marketing version `1.0.4`; build 18 upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until build 18 is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build | Founder uploads/submits build 18 to App Store Connect, waits for approval, confirms build 18 live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships | Yes | Needs Review | High |
+| Resumely iOS | Post-launch — v1.2 (7) in App Store review; waiting for Apple outcome and then post-live funnel read | (1) Monitor Apple review for 1.2 (7). (2) After approval/live availability, verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next | Yes | Fresh | High |
+| RunSmart Web | Web/backend Gate-4 work complete; iOS build 18 locally archive/export validated but not confirmed live. Garmin reply remains blocked until founder uploads/submits build 18, Apple approves it, build 18 is genuinely live, and all 6 screenshots are recaptured against that live build | Founder uploads/submits build 18 to App Store Connect, waits for approval, confirms build 18 live, recaptures all 6 Gate-4 screenshots, re-zips them, fills `20-GARMIN-REPLY-DRAFT-2026-06-26.md` placeholders, and sends the reply to ticket 213145/213165 from `nadav.yigal@runsmart-ai.com`. Do not use the stale 2026-06-25 screenshot zip for the next reply | Yes | Needs Review | High |
 | ResumeBuilder AI (Web) | ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building) | Story 2 was investigated, not implemented — traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only "15+ years" in the summary). The AI optimizer correctly preserved this truthfully per its "never fabricate metrics" rule — `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input | Yes | Fresh | High |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | Yes | Fresh | High |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | Yes | Needs Review | High |
 
 ## Stranded Work
 
-11 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+14 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
-- [RunSmart iOS] 9 uncommitted file(s) in the primary working tree
+- [RunSmart iOS] 5 uncommitted file(s) in the primary working tree
 - [Resumely iOS] main has 1 unpushed commit(s)
+- [Resumely iOS] codex/fitcheck-service: unmerged commits, remote branch deleted, last commit 2026-06-23
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
-- [RunSmart Web] 17 uncommitted file(s) in the primary working tree
+- [Resumely iOS] worktree on claude/wizardly-ardinghelli-a6cdd5, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/wizardly-ardinghelli-a6cdd5
+- [Resumely iOS] 10 uncommitted file(s) in the primary working tree
+- [RunSmart Web] 5 uncommitted file(s) in the primary working tree
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 4 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 3 unpushed commit(s)
-- [Agentic OS] 11 uncommitted file(s) in the primary working tree
+- [Agentic OS] main is 4 commit(s) behind origin (pull needed)
+- [Agentic OS] 9 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -64,6 +74,7 @@ Best next action: Resumely iOS: (1) Scope upload/import friction: file-picker st
 
 ## Evidence Gaps
 
+- Resumely iOS: validated 2026-06-26, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-06-22, latest commit is newer.
 - Agentic OS: validated 2026-06-12, latest commit is newer.
 

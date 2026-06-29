@@ -2,3 +2,5 @@
 logs/
 # Local-only security scanner (SkillSpector); run via Docker, not vendored. See docs/research/external-skills-and-tools-adoption-plan.md
 tools/
+# Raw per-session token usage log; ever-growing, no committed-data convention. See scripts/usage/collect_usage.py for the actual cost-tracking pipeline.
+dashboard/usage-log.jsonl
