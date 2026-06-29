@@ -113,7 +113,7 @@ Inside ResumeBuilder's iOS repo `.agent-os/distribution/` (scaffold under `scaff
 
 ## Open Questions
 
-- Is the iOS app in TestFlight, soft-launch, or App Store live? This shifts which ASO tasks are urgent.
+- ~~Is the iOS app in TestFlight, soft-launch, or App Store live?~~ **Answered 2026-06-29: LIVE on the App Store, v1.2 (7).** Real link: `https://apps.apple.com/app/resume-ai-cv-builder/id6776752349`. Canonical positioning (Fit/Match, Resumely Match Score, no paid acquisition until funnel readable) locked in `.agents/product-marketing.md` in the iOS repo, 2026-06-28. All ASO/outreach work should be live now, not pre-launch.
 - What is the current paid tier on iOS (in-app purchase, subscription, credit system)? This shapes paywall + pricing copy.
 - Hebrew App Store: same Apple ID account or separate region listing? Same metadata language flag?
 - Web → App Store install attribution: are we tagging with `at=` and `ct=` parameters? Required to measure web feeder channels.

@@ -13,6 +13,47 @@ Append-only. One entry per week per product focus. Use the template at `template
 
 <!-- newest first -->
 
+### Week of 2026-06-29 — Resumely — Distribution OS Restart + Zero-Budget Outreach
+
+**Status:** Distribution OS had gone stale since 2026-05-28 (a month before either app actually launched). Restarted with current live state and reconciled drifted copy.
+
+#### Metrics This Week
+
+| Metric | This Week | Prior Week | Notes |
+|---|---|---|---|
+| Resumely App Store live | v1.2 (7) since 2026-06-29 | v1.1 (5) since 2026-06-21 | Approved in <24h; Fit-First + Match Score rebrand now live in-app |
+| RunSmart App Store live | v1.0.3 (16), unchanged | same | Maintenance only this week |
+| Marketing files reconciled | 9 (web repo launch-assets x8 + iOS repo screenshot-briefs) | n/a | ATS-score framing replaced with Fit/Match per `.agents/product-marketing.md` |
+| Outreach assets drafted | 3 (Hebrew DM, FB vibecoding israel post, LinkedIn job-seeker post) | 0 | Zero-budget, founder sends manually, 2-3 hrs/week budget |
+| Distribution OS staleness | 0 days (just refreshed) | 32 days | Command center + resumebuilder.md open questions were answered |
+
+#### What Happened
+
+- Founder confirmed Resumely v1.2 (7) approved and live (submitted 2026-06-28, live 2026-06-29 — under 24h Apple review turnaround).
+- Found the canonical positioning doc (`.agents/product-marketing.md` in the iOS repo, locked 2026-06-28) was never propagated to the web repo's reusable outreach templates, which still used pre-rebrand "ATS score/ATS checker" language and, in two ASO files, an exact stale duplicate of pre-fix iOS copy.
+- Rewrote 8 reusable templates in the web repo (`launch-assets/`) and 1 duplicate file in the iOS repo to match Fit/Match positioning; left dated pre-launch execution logs (`docs/gtm/week-1-*`, `canonical-90-day-plan.md`, 2026-02-14/16) untouched as historical record per Principle 6 (project repo's current canonical doc wins for product facts, but historical logs are not retroactively rewritten).
+- Drafted zero-budget Hebrew outreach copy (personal DM, FB vibecoding israel group post, 1-2 LinkedIn job-seeker group posts) for the founder's 0-10 user goal — no paid acquisition, consistent with the locked no-paid-acquisition-until-funnel-readable rule.
+- Answered the open question in `distribution-os/projects/resumebuilder.md` ("is the iOS app live?") at the source.
+
+#### Top 3 Experiments
+
+1. Personal/community outreach wave (zero budget) — founder sends this week, measure installs via App Store Connect + PostHog.
+2. Directory submissions (rb-dir-001) — was blocked on App Store URL pre-launch; URL now exists, re-score next cycle.
+3. Web → iOS funnel reconciliation — the web free ATS-checker tool still uses old "ATS score" framing; not touched this cycle, flagged as next open item.
+
+#### Blockers
+
+- FB/LinkedIn group names could not be verified by web search (groups change too often to trust a snapshot); founder to confirm directly since they already have access.
+- Web repo's free ATS tool positioning vs. iOS Fit/Match rebrand still unreconciled — separate, larger scope than this cycle.
+
+#### Next Week Focus
+
+- Founder sends the outreach wave; read results in PostHog (project 270848) before deciding next ASO iteration.
+- Re-score rb-dir-001 directory submissions now that the App Store URL exists.
+- Decide whether to reconcile the web ATS-checker tool's positioning or leave it as a distinct, intentionally separate free-tool funnel.
+
+---
+
 ### Week of 2026-06-21 — Portfolio — Post-Launch Growth (Both Apps Live)
 
 **Status:** First distribution cycle with both iOS apps live on the App Store. Pre-launch positioning retired.
