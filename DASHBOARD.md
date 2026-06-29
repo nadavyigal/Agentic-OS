@@ -41,8 +41,8 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 1 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 8 unpushed commit(s)
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 9 unpushed commit(s)
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
