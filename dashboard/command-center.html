@@ -631,7 +631,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-29 14:42",
+      "lastRefresh": "2026-06-29 14:46",
       "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1429,13 +1429,13 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 10,
+        "dirtyCount": 7,
         "extraWorktrees": 0,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-06-26 21a16f0 Merge pull request #19 from nadavyigal/claude/model-routing-policy",
+        "branch": "main...origin/main [ahead 2]",
+        "lastCommit": "2026-06-29 08e9fbd fix(morning): honor work-packet frontmatter status",
         "stale": false,
-        "freshness": "Needs Review",
-        "freshestDate": "2026-06-26",
+        "freshness": "Fresh",
+        "freshestDate": "2026-06-29",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12",
         "evidenceTests": [],
@@ -1625,7 +1625,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 2]",
         "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2362,7 +2362,7 @@
         },
         {
           "title": "Work Packet \u2014 Arm the Status Guard + Reconcile to Live",
-          "status": "Active",
+          "status": "closed",
           "project": null,
           "repoId": "research",
           "repoPath": null,
@@ -2376,12 +2376,12 @@
           "memoryUpdate": null,
           "successSignal": "With the key armed, `./agentic-os refresh` first FLAGS both apps as hard contradictions (proving the guard works); after reconciling the two status lines, contradictions clear for the right reason and portfolioTrust returns to trustworthy. A future \"live vs in-review\" drift would be caught automatically",
           "path": "executive-os/work-packets/WP-7-arm-status-guard-reconcile.md",
-          "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Arm the Status Guard + Reconcile to Live\"\ndate: 2026-06-17\ntype: work-packet\nproject: Agentic OS (+ RunSmart iOS, Resumely iOS progress.md)\nstatus: closed\npriority: 1\nclosed_date: 2026-06-18\nclosed_note: PostHog guard armed and verified \u2014 0 contradictions, 60/60 tests pass. launchd exit 126 (TCC/Full Disk Access) tracked separately.\ntags: [agentic-os, status, trust, posthog, ground-truth, reconcile]\n---\n\n# Work Packet \u2014 Arm the Status Guard + Reconcile to Live\n\n> Run in: `/Users/nadavyigal/Documents/Projects /Agentic OS` (config + verification);\n> two one-line edits in RunSmart iOS and Resumely iOS `tasks/progress.md`.\n> This FINISHES the status-truth job: the guard exists but is switched off, and the\n> dashboard still shows both live apps as \"in review\".\n\n- Status: Active\n- Source: Live verification 2026-06-17 (doctor PASS, status.json groundTruth, PostHog QA)\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: With the key armed, `./agentic-os refresh` first FLAGS both apps as hard contradictions (proving the guard works); after reconciling the two status lines, contradictions clear for the right reason and portfolioTrust returns to trustworthy. A future \"live vs in-review\" drift would be caught automatically.\n\n## Owner Role\nDirector / Orchestrator (OS engineering)\n\n## Verified Evidence (do not re-litigate)\n- doctor PASS; launchd lastExit=0, RunAtLoad=true; mechanical refresh is fixed.\n- groundTruth.posthog rows = available:false, source:\"missing_key\" for BOTH apps. unavailable[] lists \"PostHog key not configured\" + \"App Store state missing\". So contradictions:[] is a FALSE all-clear.\n- PostHog live (2d): RunSmart (171597) 6 users, last 2026-06-17 12:16; Resumely (270848) 11 users, last 12:31. Both LIVE.\n- Declared status still pre-launch: RunSmart iOS progress.md \"build 15 ... resubmission prep\"; Resumely iOS \"In App Store review (build 4)\".\n- Code: contradiction fires when `declared_prelaunch(state) AND live_users > 0` (hard severity, forces trust down). Env names: AGENTIC_OS_POSTHOG_API_KEY, AGENTIC_OS_APPSTORE_STATES (JSON), AGENTIC_OS_GROUND_TRUTH_OVERRIDES (JSON, for offline tests). Project ids: runsmart-ios=171597, resumebuilder-ios=270848.\n\n## Tasks (in order)\n1. Create a READ-ONLY PostHog personal API key (scopes: query/insight read; access to projects 171597 + 270848). Do NOT reuse a write key.\n2. Store it so the launchd refresh can see it WITHOUT committing it:\n   - Add `EnvironmentVariables` to the plist OR source a gitignored env file (e.g. `~/.config/agentic-os.env`) at the top of `scripts/daily-refresh.sh`. Confirm the path is gitignored. NEVER commit the key.\n   - Also set `AGENTIC_OS_APPSTORE_STATES='{\"runsmart-ios\":\"live\",\"resumebuilder-ios\":\"live\"}'` the same way.\n3. PROVE the guard fires (before reconciling): run `./agentic-os refresh`, then inspect dashboard/status.json groundTruth.contradictions. EXPECT 2 hard contradictions (\"declared in-review but PostHog shows N live users/7d\") and portfolioTrust dropping. If it does not fire, debug fetch_posthog_live_users (auth, project id, 7d window) before continuing.\n4. Reconcile the status lines (the fix that never happened):\n   - RunSmart iOS `tasks/progress.md`: set `Status:` and `Current Phase:` to live on the App Store (cite live PostHog users + date). Commit + push.\n   - Resumely iOS `tasks/progress.md`: same. Commit + push.\n5. Re-run `./agentic-os refresh`. EXPECT contradictions[] now empty for the RIGHT reason (declared live matches PostHog live) and portfolioTrust no longer flags a status contradiction.\n6. Regression-protect: add a `test_cli.py` case using AGENTIC_OS_GROUND_TRUTH_OVERRIDES (live users + declared \"in review\") asserting a hard contradiction is emitted and trust is forced down. So the guard is provable offline, in CI, forever.\n\n## Constraints\n- No secrets in code or git. Key lives only in a gitignored env / plist EnvironmentVariables.\n- Read-only key only. No write scopes.\n- No new dependencies (stdlib urllib already used).\n- Reconcile only the two status lines; do not rewrite the rest of progress.md or touch product source.\n- Scope gate: config + 2 status-line edits + 1 test. If it grows beyond that, stop and surface.\n\n## Validation\n- Step 3: status.json shows 2 hard contradictions BEFORE reconcile (screenshot/paste the contradictions[] block).\n- Step 5: status.json contradictions[] empty AFTER reconcile; doctor still PASS.\n- Step 6: new test passes with override fixture (no network needed).\n- git status --short --branch + git log @{u}.. in each repo touched before done.\n\n## Final Output\n- Where the key is stored (path, confirmed gitignored) -- value NOT included\n- Before/after contradictions[] blocks (proof the guard fires then clears)\n- progress.md reconciled in both iOS repos (commits pushed)\n- New offline contradiction test passing\n- Remaining risks + next packet (App Store Connect API for fully automated release-state)\n",
+          "copyPrompt": null,
           "decision": null
         },
         {
           "title": "Work Packet \u2014 Hygiene + Stranded-Work Sweep",
-          "status": "Active",
+          "status": "closed",
           "project": null,
           "repoId": "runsmart-ios",
           "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -2395,7 +2395,7 @@
           "memoryUpdate": null,
           "successSignal": "portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed)",
           "path": "executive-os/work-packets/WP-8-hygiene-stranded-work-sweep.md",
-          "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Hygiene + Stranded-Work Sweep\"\ndate: 2026-06-17\ntype: work-packet\nproject: RunSmart iOS, Resumely iOS (+ Agentic OS stranded board)\nstatus: closed\npriority: 2\ntags: [hygiene, stranded-work, worktrees, git, trust]\n---\n\n# Work Packet \u2014 Hygiene + Stranded-Work Sweep\n\n> Run in each affected product repo (RunSmart iOS, Resumely iOS), then re-check the\n> Agentic OS dashboard. Goal: clear the hygiene warnings that are holding portfolioTrust\n> at \"refresh_required\" so the dashboard reads trustworthy/clean.\n\n- Status: Active\n- Source: dashboard/status.json portfolioTrust + strandedWork on 2026-06-17\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed).\n\n## Owner Role\nRelease Manager / QA\n\n## Verified Evidence (do not re-litigate)\n- portfolioTrust.level = \"refresh_required\"; reasons include \"5 uncommitted change(s)\".\n- hygieneWarnings: \"Uncommitted files in product repos: RunSmart iOS, Resumely iOS.\" and \"Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5).\"\n- daily-refresh notification: \"stranded-work notification sent (17 items)\".\n- Both repos are actively used (live apps + recent Codex work), so dirty state is real, not noise.\n\n## Repos to Sweep\n\n### RunSmart iOS\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n- 21 uncommitted files in primary working tree\n- 2 extra worktrees:\n  - `claude/tender-thompson-60f370`\n  - `claude/youthful-moore-9d85c7`\n\n### Resumely iOS\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n- 40 uncommitted files in primary working tree\n- 5 extra worktrees:\n  - `codex/post-live-d7-readout`\n  - `codex/resumely-release-qa`\n  - `claude/focused-raman-18ce50`\n  - `version-2` (mapped at relaxed-northcutt-cb6240)\n  - `claude/reverent-buck-a366b2`\n- 3 unmerged branches: `claude/relaxed-northcutt-cb6240`, `feat/localization-updates`, `monitization`\n- main is 2 commits behind origin (pull needed first)\n\n## Tasks (in order)\n1. List stranded items: read dashboard/status.json strandedWork.items (17). For each, classify: (a) commit & push, (b) discard, (c) keep with a one-line reason. Do not bulk-delete.\n2. RunSmart iOS repo: `git status --short --branch` per worktree. Commit + push real work; discard throwaway; for the 2 extra worktrees decide merge/PR or `git worktree remove`. No force-delete of unmerged work.\n3. Resumely iOS repo: same for its 5 extra worktrees. This is the bigger source of drift -- be deliberate; PR anything with real commits before removing.\n4. Re-run `./agentic-os refresh` (or morning) and confirm hygieneWarnings cleared and portfolioTrust improved.\n\n## Constraints\n- Never delete a worktree/branch with unmerged commits without PR'ing or explicitly confirming it's throwaway.\n- Do not merge `version-2` or `monitization` branches (founder rule).\n- No product source changes in this packet -- hygiene only.\n- Scope gate: if a \"dirty file\" turns out to be real unfinished feature work, stop and surface it as its own packet rather than committing blindly.\n\n## Validation\n- Each repo: `git status --short --branch` clean (or remaining items justified) + pushed.\n- `./agentic-os doctor` PASS and portfolioTrust no longer lists uncommitted/worktree warnings.\n\n## Final Output\n- Stranded items: resolved / kept (with reasons)\n- Worktrees: per-repo disposition (merged, PR'd, removed)\n- Commits pushed per repo (branch, count)\n- Final portfolioTrust level\n- Remaining risks\n",
+          "copyPrompt": null,
           "decision": null
         },
         {
@@ -2682,7 +2682,7 @@
         },
         {
           "name": "Work packets",
-          "what": "2 active, 20 total. Copy only Active packets; closed packets are history."
+          "what": "0 active, 20 total. Copy only Active packets; closed packets are history."
         },
         {
           "name": "Brainstorm / next moves",
@@ -3016,7 +3016,7 @@
         },
         {
           "title": "Work Packet \u2014 Arm the Status Guard + Reconcile to Live",
-          "status": "Active",
+          "status": "closed",
           "project": null,
           "repoId": "research",
           "repoPath": null,
@@ -3030,12 +3030,12 @@
           "memoryUpdate": null,
           "successSignal": "With the key armed, `./agentic-os refresh` first FLAGS both apps as hard contradictions (proving the guard works); after reconciling the two status lines, contradictions clear for the right reason and portfolioTrust returns to trustworthy. A future \"live vs in-review\" drift would be caught automatically",
           "path": "executive-os/work-packets/WP-7-arm-status-guard-reconcile.md",
-          "copyPrompt": "No specific repo \u2014 run this in the Agentic OS directory.\n  Claude Code \u2192 cd \"Agentic OS\" && claude\n  Cursor      \u2192 open Agentic OS folder, paste in AI panel\n  Codex       \u2192 paste as task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Arm the Status Guard + Reconcile to Live\"\ndate: 2026-06-17\ntype: work-packet\nproject: Agentic OS (+ RunSmart iOS, Resumely iOS progress.md)\nstatus: closed\npriority: 1\nclosed_date: 2026-06-18\nclosed_note: PostHog guard armed and verified \u2014 0 contradictions, 60/60 tests pass. launchd exit 126 (TCC/Full Disk Access) tracked separately.\ntags: [agentic-os, status, trust, posthog, ground-truth, reconcile]\n---\n\n# Work Packet \u2014 Arm the Status Guard + Reconcile to Live\n\n> Run in: `/Users/nadavyigal/Documents/Projects /Agentic OS` (config + verification);\n> two one-line edits in RunSmart iOS and Resumely iOS `tasks/progress.md`.\n> This FINISHES the status-truth job: the guard exists but is switched off, and the\n> dashboard still shows both live apps as \"in review\".\n\n- Status: Active\n- Source: Live verification 2026-06-17 (doctor PASS, status.json groundTruth, PostHog QA)\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: With the key armed, `./agentic-os refresh` first FLAGS both apps as hard contradictions (proving the guard works); after reconciling the two status lines, contradictions clear for the right reason and portfolioTrust returns to trustworthy. A future \"live vs in-review\" drift would be caught automatically.\n\n## Owner Role\nDirector / Orchestrator (OS engineering)\n\n## Verified Evidence (do not re-litigate)\n- doctor PASS; launchd lastExit=0, RunAtLoad=true; mechanical refresh is fixed.\n- groundTruth.posthog rows = available:false, source:\"missing_key\" for BOTH apps. unavailable[] lists \"PostHog key not configured\" + \"App Store state missing\". So contradictions:[] is a FALSE all-clear.\n- PostHog live (2d): RunSmart (171597) 6 users, last 2026-06-17 12:16; Resumely (270848) 11 users, last 12:31. Both LIVE.\n- Declared status still pre-launch: RunSmart iOS progress.md \"build 15 ... resubmission prep\"; Resumely iOS \"In App Store review (build 4)\".\n- Code: contradiction fires when `declared_prelaunch(state) AND live_users > 0` (hard severity, forces trust down). Env names: AGENTIC_OS_POSTHOG_API_KEY, AGENTIC_OS_APPSTORE_STATES (JSON), AGENTIC_OS_GROUND_TRUTH_OVERRIDES (JSON, for offline tests). Project ids: runsmart-ios=171597, resumebuilder-ios=270848.\n\n## Tasks (in order)\n1. Create a READ-ONLY PostHog personal API key (scopes: query/insight read; access to projects 171597 + 270848). Do NOT reuse a write key.\n2. Store it so the launchd refresh can see it WITHOUT committing it:\n   - Add `EnvironmentVariables` to the plist OR source a gitignored env file (e.g. `~/.config/agentic-os.env`) at the top of `scripts/daily-refresh.sh`. Confirm the path is gitignored. NEVER commit the key.\n   - Also set `AGENTIC_OS_APPSTORE_STATES='{\"runsmart-ios\":\"live\",\"resumebuilder-ios\":\"live\"}'` the same way.\n3. PROVE the guard fires (before reconciling): run `./agentic-os refresh`, then inspect dashboard/status.json groundTruth.contradictions. EXPECT 2 hard contradictions (\"declared in-review but PostHog shows N live users/7d\") and portfolioTrust dropping. If it does not fire, debug fetch_posthog_live_users (auth, project id, 7d window) before continuing.\n4. Reconcile the status lines (the fix that never happened):\n   - RunSmart iOS `tasks/progress.md`: set `Status:` and `Current Phase:` to live on the App Store (cite live PostHog users + date). Commit + push.\n   - Resumely iOS `tasks/progress.md`: same. Commit + push.\n5. Re-run `./agentic-os refresh`. EXPECT contradictions[] now empty for the RIGHT reason (declared live matches PostHog live) and portfolioTrust no longer flags a status contradiction.\n6. Regression-protect: add a `test_cli.py` case using AGENTIC_OS_GROUND_TRUTH_OVERRIDES (live users + declared \"in review\") asserting a hard contradiction is emitted and trust is forced down. So the guard is provable offline, in CI, forever.\n\n## Constraints\n- No secrets in code or git. Key lives only in a gitignored env / plist EnvironmentVariables.\n- Read-only key only. No write scopes.\n- No new dependencies (stdlib urllib already used).\n- Reconcile only the two status lines; do not rewrite the rest of progress.md or touch product source.\n- Scope gate: config + 2 status-line edits + 1 test. If it grows beyond that, stop and surface.\n\n## Validation\n- Step 3: status.json shows 2 hard contradictions BEFORE reconcile (screenshot/paste the contradictions[] block).\n- Step 5: status.json contradictions[] empty AFTER reconcile; doctor still PASS.\n- Step 6: new test passes with override fixture (no network needed).\n- git status --short --branch + git log @{u}.. in each repo touched before done.\n\n## Final Output\n- Where the key is stored (path, confirmed gitignored) -- value NOT included\n- Before/after contradictions[] blocks (proof the guard fires then clears)\n- progress.md reconciled in both iOS repos (commits pushed)\n- New offline contradiction test passing\n- Remaining risks + next packet (App Store Connect API for fully automated release-state)\n",
+          "copyPrompt": null,
           "decision": null
         },
         {
           "title": "Work Packet \u2014 Hygiene + Stranded-Work Sweep",
-          "status": "Active",
+          "status": "closed",
           "project": null,
           "repoId": "runsmart-ios",
           "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
@@ -3049,7 +3049,7 @@
           "memoryUpdate": null,
           "successSignal": "portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed)",
           "path": "executive-os/work-packets/WP-8-hygiene-stranded-work-sweep.md",
-          "copyPrompt": "Repo: /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\n\nHow to start:\n  Claude Code \u2192 cd \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" && claude\n  Cursor      \u2192 open \"/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app\" in Cursor, paste this in the AI panel\n  Codex       \u2192 create a task, paste this as the full task context\n\n--- WORK PACKET ---\n---\ntitle: \"Work Packet: Hygiene + Stranded-Work Sweep\"\ndate: 2026-06-17\ntype: work-packet\nproject: RunSmart iOS, Resumely iOS (+ Agentic OS stranded board)\nstatus: closed\npriority: 2\ntags: [hygiene, stranded-work, worktrees, git, trust]\n---\n\n# Work Packet \u2014 Hygiene + Stranded-Work Sweep\n\n> Run in each affected product repo (RunSmart iOS, Resumely iOS), then re-check the\n> Agentic OS dashboard. Goal: clear the hygiene warnings that are holding portfolioTrust\n> at \"refresh_required\" so the dashboard reads trustworthy/clean.\n\n- Status: Active\n- Source: dashboard/status.json portfolioTrust + strandedWork on 2026-06-17\n- Workflow pattern: normal\n- Input trust: trusted\n- Success signal: portfolioTrust level returns to trustworthy (no hygiene warnings); stranded-work count -> 0 or each remaining item explicitly justified; extra worktrees resolved (merged/PR'd or removed).\n\n## Owner Role\nRelease Manager / QA\n\n## Verified Evidence (do not re-litigate)\n- portfolioTrust.level = \"refresh_required\"; reasons include \"5 uncommitted change(s)\".\n- hygieneWarnings: \"Uncommitted files in product repos: RunSmart iOS, Resumely iOS.\" and \"Extra product worktrees retained for review: RunSmart iOS (2), Resumely iOS (5).\"\n- daily-refresh notification: \"stranded-work notification sent (17 items)\".\n- Both repos are actively used (live apps + recent Codex work), so dirty state is real, not noise.\n\n## Repos to Sweep\n\n### RunSmart iOS\nPath: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`\n- 21 uncommitted files in primary working tree\n- 2 extra worktrees:\n  - `claude/tender-thompson-60f370`\n  - `claude/youthful-moore-9d85c7`\n\n### Resumely iOS\nPath: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`\n- 40 uncommitted files in primary working tree\n- 5 extra worktrees:\n  - `codex/post-live-d7-readout`\n  - `codex/resumely-release-qa`\n  - `claude/focused-raman-18ce50`\n  - `version-2` (mapped at relaxed-northcutt-cb6240)\n  - `claude/reverent-buck-a366b2`\n- 3 unmerged branches: `claude/relaxed-northcutt-cb6240`, `feat/localization-updates`, `monitization`\n- main is 2 commits behind origin (pull needed first)\n\n## Tasks (in order)\n1. List stranded items: read dashboard/status.json strandedWork.items (17). For each, classify: (a) commit & push, (b) discard, (c) keep with a one-line reason. Do not bulk-delete.\n2. RunSmart iOS repo: `git status --short --branch` per worktree. Commit + push real work; discard throwaway; for the 2 extra worktrees decide merge/PR or `git worktree remove`. No force-delete of unmerged work.\n3. Resumely iOS repo: same for its 5 extra worktrees. This is the bigger source of drift -- be deliberate; PR anything with real commits before removing.\n4. Re-run `./agentic-os refresh` (or morning) and confirm hygieneWarnings cleared and portfolioTrust improved.\n\n## Constraints\n- Never delete a worktree/branch with unmerged commits without PR'ing or explicitly confirming it's throwaway.\n- Do not merge `version-2` or `monitization` branches (founder rule).\n- No product source changes in this packet -- hygiene only.\n- Scope gate: if a \"dirty file\" turns out to be real unfinished feature work, stop and surface it as its own packet rather than committing blindly.\n\n## Validation\n- Each repo: `git status --short --branch` clean (or remaining items justified) + pushed.\n- `./agentic-os doctor` PASS and portfolioTrust no longer lists uncommitted/worktree warnings.\n\n## Final Output\n- Stranded items: resolved / kept (with reasons)\n- Worktrees: per-repo disposition (merged, PR'd, removed)\n- Commits pushed per repo (branch, count)\n- Final portfolioTrust level\n- Remaining risks\n",
+          "copyPrompt": null,
           "decision": null
         },
         {
@@ -3077,19 +3077,20 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 2,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Dirty shippable app repo: RunSmart iOS.",
+        "Evidence gap after latest commit: Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
@@ -3099,7 +3100,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-06-29 14:42",
+      "generatedAt": "2026-06-29 14:46",
       "apps": [
         {
           "projectId": 171597,
@@ -3162,9 +3163,9 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-06-29 14:42",
+      "lastRunAt": "2026-06-29 14:46",
       "checksStatus": "Passed",
-      "checksCompletedAt": "2026-06-29 14:42",
+      "checksCompletedAt": "2026-06-29 14:46",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
@@ -3175,9 +3176,25 @@
       "summary": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
       "nextActions": [
         {
-          "title": "Restore dashboard trust",
-          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-          "type": "system"
+          "title": "Run a COO operating review",
+          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+          "type": "global-OS",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
+        },
+        {
+          "title": "Use the Weekly CEO Review only for a priority choice",
+          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+          "type": "executive",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+        },
+        {
+          "title": "Validate caution items before risky moves",
+          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+          "type": "system",
+          "where": "Affected product repo(s)",
+          "copyPrompt": null
         }
       ],
       "topBanner": null,
