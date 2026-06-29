@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-29 14:59"
+    "lastSuccessfulRefresh": "2026-06-29 15:01"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 LIVE on App Store as marketing version `1.0.4`; build 18 upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until build 18 is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build: Founder uploads/submits build 18 to App Store Connect, waits for approval, confirms build 18 live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 Web/backend Gate-4 work complete; iOS build 18 locally archive/export validated but not confirmed live. Garmin reply remains blocked until founder uploads/submits build 18, Apple approves it, build 18 is genuinely live, and all 6 screenshots are recaptured against that live build \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
@@ -596,7 +596,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-29 ef2acd2 chore(dashboard): surface COO packet 19); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-29 3241d4f chore(dashboard): close ResumeBuilder PR 97 packet); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -621,11 +621,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 5]",
+        "branch": "main...origin/main [ahead 6]",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-29 ef2acd2 chore(dashboard): surface COO packet 19",
+        "lastCommit": "2026-06-29 3241d4f chore(dashboard): close ResumeBuilder PR 97 packet",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -835,8 +835,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-29 14:59",
-    "command": "./agentic-os morning",
+    "lastRefresh": "2026-06-29 15:01",
+    "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1633,10 +1633,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 8,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 5]",
-      "lastCommit": "2026-06-29 ef2acd2 chore(dashboard): surface COO packet 19",
+      "branch": "main...origin/main [ahead 6]",
+      "lastCommit": "2026-06-29 3241d4f chore(dashboard): close ResumeBuilder PR 97 packet",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-29",
@@ -1829,7 +1829,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 5]",
+      "branch": "main...origin/main [ahead 6]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1919,17 +1919,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-29 14:59",
-    "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-29 14:59",
+    "lastCommand": "./agentic-os refresh",
+    "lastRunAt": "2026-06-29 15:01",
+    "checksStatus": "Pending verify",
+    "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration. Next action: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next. Known blockers: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Clean",
     "targetBranch": "main...origin/main",
-    "readyForNextSession": true,
+    "readyForNextSession": false,
     "summary": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
     "nextActions": [
       {
@@ -3482,10 +3482,10 @@
   },
   "latestCooReview": {
     "reviewed": "2026-06-29",
-    "selectedNextAction": "ResumeBuilder AI (Web) - finish PR #97 by diagnosing the failed Cloudflare Workers build, keeping the PR draft until all checks pass",
-    "actionType": "local-repo",
-    "source": "`DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, `PROMPTS/coo-operating-review.md`, `executive-os/COO-OS.md`, `executive-os/workflows/coo-operating-review.md`, `executive-os/templates/work-packet-template.md`, GitHub PR #97 check state",
-    "revisitWhen": "PR #97 checks pass and the PR is ready for review/merge, or the Cloudflare Workers failure turns out to require external credentials/service access",
+    "selectedNextAction": "Completed - ResumeBuilder AI (Web) PR #97 merged to `main`; route next priority through the Weekly CEO Review",
+    "actionType": "global-OS",
+    "source": "`DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, `PROMPTS/coo-operating-review.md`, `executive-os/COO-OS.md`, `executive-os/workflows/coo-operating-review.md`, `executive-os/templates/work-packet-template.md`, GitHub PR #97 merge state",
+    "revisitWhen": "Weekly CEO Review selects the next portfolio priority or a new plan needs a packet",
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
@@ -3578,13 +3578,13 @@
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 5 unpushed commit(s)",
+        "detail": "main has 6 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
       },
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
+        "detail": "8 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3593,7 +3593,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-29 14:59",
+    "generatedAt": "2026-06-29 15:01",
     "apps": [
       {
         "projectId": 171597,
