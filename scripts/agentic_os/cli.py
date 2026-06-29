@@ -932,6 +932,8 @@ def build_os_registry(root: Path) -> dict[str, Any]:
                         repo_id = "runsmart-ios"
                     elif "runsmart" in lower:
                         repo_id = "runsmart-web"
+                    elif "new-resumebuilder-ai" in lower or "resumebuilder-ai" in lower:
+                        repo_id = "resumebuilder-ai"
                     elif "resumebuilder" in lower or "resumely" in lower:
                         repo_id = "resumebuilder-ios"
                     elif "agentic" in lower:

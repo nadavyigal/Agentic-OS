@@ -1,92 +1,87 @@
-# COO Operating Review - 2026-06-21
+# COO Operating Review - 2026-06-29
 
 - Status: current sequencing note
-- Reviewed: 2026-06-21
-- Selected next action: RunSmart Web — founder approval to apply migration `20260621000000_restrict_garmin_worker_rpc_grants.sql`; parallel track: ResumeBuilder Web ATS fix verification on Vercel preview before merge.
-- Action type: manual-founder (DB migration + portal gates) + QA verification (LinkedIn scrape fix)
-- Source: PROJECT-STATUS.md (refreshed 2026-06-21 13:48), DASHBOARD.md, dashboard/status.json, RunSmart iOS tasks/progress.md, Resumely iOS tasks/progress.md, RunSmart Web tasks/progress.md, ResumeBuilder AI (Web) tasks/progress.md, executive-os/COO-OS.md
-- Revisit when: Garmin migration applied, LinkedIn ATS preview verification passes, Resumely D7 readout window opens (~2026-06-28), or portfolio trust hygiene warnings persist.
+- Reviewed: 2026-06-29
+- Selected next action: ResumeBuilder AI (Web) - finish PR #97 by diagnosing the failed Cloudflare Workers build, keeping the PR draft until all checks pass.
+- Action type: local-repo
+- Source: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json`, `PROMPTS/coo-operating-review.md`, `executive-os/COO-OS.md`, `executive-os/workflows/coo-operating-review.md`, `executive-os/templates/work-packet-template.md`, GitHub PR #97 check state.
+- Revisit when: PR #97 checks pass and the PR is ready for review/merge, or the Cloudflare Workers failure turns out to require external credentials/service access.
 
 ## 1. Operating Summary
 
-Both iOS apps are live on the App Store. RunSmart iOS is in a Gate-4 follow-up state: v1.0.3 is live, and v1.0.4 (17) was submitted to App Store Connect on **2026-06-24** and is awaiting Apple approval before the Garmin reply can go out. Resumely iOS v1.1 is live (founder-confirmed **2026-06-21**); the Resumely attribution review later confirmed **0 real-organic D7 activations** and named upload/import as the largest measurable drop-off. RunSmart Web remains in **Garmin production enablement**; Gates 2–4 are manual portal/email tasks once the iOS Gate-4 build is live. ResumeBuilder Web has the LinkedIn scrape-blocking fix on `fix/linkedin-guest-scrape` (merged locally) but **awaiting production verification on a real Vercel preview IP** before treating as resolved. Status guard contradiction was reconciled on 2026-06-24 via WP-14.
+The morning system is now coherent enough to act from: Agentic OS sync is clean on `main`, there are no active work packets, portfolio trust is `Use caution`, and the remaining caution items are product-repo hygiene/evidence issues rather than hard contradictions. The clearest in-flight execution item is ResumeBuilder AI (Web) PR #97, `[codex] Reconcile Fit/Match web copy`: it is open, draft, and unstable because the Cloudflare Workers build for `match1resume1to1job` is failing while Vercel, build-test, GitGuardian, and CodeRabbit pass. The dashboard also surfaces the matching saved plan, `docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md`, as the newest ResumeBuilder AI plan.
 
-Evidence: `PROJECT-STATUS.md` (contradictions: none), `dashboard/status.json` (lastSuccessfulRefresh 2026-06-21 13:48), product `tasks/progress.md` files.
+Evidence: `dashboard/status.json` (`repoIntegrity`, `portfolioTrust`, `savedPlans`, no active packets), `PROJECT-STATUS.md` (ResumeBuilder AI dirty with evidence gap), GitHub PR #97 (`state: OPEN`, `isDraft: true`, `mergeStateStatus: UNSTABLE`), `gh pr checks 97`.
 
 ## 2. Loop Needing Attention
 
-`resumely-submission` outcome loop — transition from submission to post-launch monitoring.
+No active outcome loop needs attention.
 
-- Evidence: Resumely iOS live v1.1 (5) as of 2026-06-21; PostHog dashboard 1720819 is the D7 activation funnel source.
-- Next milestone: D7 readout on/after ~2026-06-28; then decide whether to archive legacy launch dashboards.
-- Loop action this review: keep Resumely second in sequence while Garmin migration approval is the primary unblock.
+The only registered loop is `resumely-submission`, and it is closed. Evidence: `dashboard/status.json` `osRegistry.outcomeLoops`, `executive-os/loops/resumely-submission.md`. Its next milestone is post-live D7 activation readout/dashboard hygiene, but that is not an active loop packet today.
 
 ## 3. Plans Needing Packets
 
 | Plan | Source | Next milestone to packetize |
 |---|---|---|
-| Business + GTM Plan v0 | `executive-os/BUSINESS-GTM-PLAN-V0.md` | Post-launch ASO/conversion for both live apps — not pre-launch gates |
-| GTM Plan — RunSmart iOS | RunSmart iOS `.agent-os/distribution/gtm-plan.md` | Post-launch ASO (rs-aso-001/002): subtitle, screenshot captions, first ratings |
-| Resumely Plan 1: ASO + Launch Assets | ResumeBuilder Web `docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md` | Post-launch listing iteration after D7 readout |
-| Pre-Launch Sprint design | `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md` | Reframe as post-launch growth sprint — both apps live |
+| Business + GTM Plan v0 | `executive-os/BUSINESS-GTM-PLAN-V0.md` | Convert the old pre-launch plan into post-live measurement: verify live funnels first, then choose one launch/GTM action from observed activation. |
+| Design: Pre-Launch Sprint - Two-Track GTM Prep | `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md` | Reframe as post-launch asset hardening: ASO/listing copy and draft assets only, no publishing without founder approval. |
+| RunSmart Hebrew-First Distribution Playbook | `docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md`; canonical `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` | Start `rs-he-aso-001`: Hebrew ASO audit and metadata draft, with founder approval gate before any ASC change. |
+| GTM Plan - RunSmart iOS | RunSmart iOS `.agent-os/distribution/gtm-plan.md` | Wait for founder-confirmed build 18 live state before any Garmin reply or measurement packet; then packetize the first measurable GTM/ASO action. |
+
+Related saved plan not currently in `planExecution`: ResumeBuilder AI (Web) `docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md`. This is already in flight as PR #97, so the COO packet should close the PR/checks gap before creating broader GTM packets.
 
 ## 4. Current Bottleneck
 
-**RunSmart Web Garmin migration apply** — owned by founder. The SQL migration `20260621000000_restrict_garmin_worker_rpc_grants.sql` is written and code-merged (#97); DB push requires explicit founder approval. Until applied, Garmin production submission remains blocked on Gate 1 infrastructure hardening.
+Current bottleneck: PR #97 is open/draft/unstable because the Cloudflare Workers build `match1resume1to1job` is failing.
 
-Secondary bottleneck: **ResumeBuilder Web LinkedIn ATS fix** — owned by QA/founder on Vercel preview. Fix is implemented; production verification on preview IP is the merge gate.
+Owner of unblock: ResumeBuilder AI (Web) repo execution. Founder is not needed unless the failure requires Cloudflare credentials, project settings, or production-service changes.
 
 ## 5. Next Execution Sequence
 
-1. **manual-founder:** Approve and apply RunSmart Web Garmin worker-RPC migration; then execute manual Gates 2–4 (portal + email). Source: `tasks/work-pack-garmin-gate-1-4.md`.
-2. **QA + manual-founder:** Run LinkedIn guest-scrape verification on Vercel preview for ResumeBuilder Web; if pass, merge remaining ATS work and remove/gate debug route.
-3. **manual-founder + local-repo:** RunSmart iOS Garmin readiness Story 1 — physical TestFlight smoke evidence on real iPhone.
-4. **manual-founder + analytics:** On/after ~2026-06-28, Resumely D7 readout via PostHog dashboard 1720819.
-5. **global-OS:** Stranded-work hygiene sweep (14 items in PROJECT-STATUS.md) — pull Resumely main, clean empty worktrees, commit or discard dirty trees.
+1. **local-repo:** Execute WP-19 in ResumeBuilder AI (Web): diagnose and fix the failed Cloudflare Workers build for PR #97, keep the PR draft until all checks pass.
+2. **QA:** Re-run or verify PR #97 checks: Cloudflare Workers build, Vercel, `build-test`, GitGuardian, and any repo-local lint/test commands relevant to touched files.
+3. **global-OS:** After PR #97 is clean or explicitly blocked, rerun `./agentic-os morning` so the Command Center reflects the PR state and decide whether the next packet should be RunSmart Hebrew ASO (`rs-he-aso-001`) or RunSmart build-18/Garmin evidence, depending on founder-confirmed build state.
 
 ## 6. CEO Escalation Needed
 
 No.
 
-Portfolio priority is clear: Garmin production path is the strategic unlock for RunSmart; both apps are live; no priority conflict requiring CEO re-ranking.
+No portfolio priority conflict is blocking the next move. This is a routine execution/checks cleanup on an already-open draft PR.
 
 ## 7. CFO Escalation Needed
 
 No.
 
-Monetization remains deferred per EXD-009 until D7 activation readout. No pricing decision blocks today's sequence.
+No spend, pricing, monetization, billing, or revenue decision is needed.
 
 ## 8. Analysis Needed
 
 No.
 
-No external research required for migration apply or ATS preview verification.
+No new market/competitor research is needed to fix a failing PR check.
 
 ## 9. Risk Review Needed
 
-Yes.
+No.
 
-Exact question: Is applying the Garmin worker-RPC migration on production safe without a staged rollback plan, given webhook async-200 and deregistration handling were verified in code but not yet in production?
+The packet is allowed to inspect CI/build logs and edit repo files, but it explicitly forbids deploys, production-service changes, Cloudflare setting changes, billing/auth/data changes, or merging without explicit approval.
 
-Owner: Risk/QA — confirm migration is idempotent and service_role-only before founder applies. No separate executive risk memo needed.
+## 10. Escalation Question
 
-## 10. Work Packet
+None.
 
-**RunSmart Web — Garmin Gate 1 migration apply**
+If the packet discovers the Cloudflare failure requires credentials or changing Cloudflare project/service configuration, stop and ask the founder for approval/access instead of continuing.
 
-- Repo: `/Users/nadavyigal/Documents/RunSmart`
-- Objective: Apply `20260621000000_restrict_garmin_worker_rpc_grants.sql` after founder approval; verify worker RPCs reject non-service_role callers.
-- Acceptance: Migration applied; smoke test of import-job RPC from non-service role returns permission denied; no regression on existing Garmin webhook flow.
-- Outcome loop: Garmin production enablement
-- Success signal: Gate 1 complete; Gates 2–4 unblocked for manual portal work
-- Do not: submit Garmin production application until Gates 2–4 complete; do not push migration without founder "yes"
+## 11. Work Packet
 
-If migration approval is not given today, fallback packet: **ResumeBuilder Web — Vercel preview LinkedIn scrape verification** (QA-only, no merge until pass).
+Created: `executive-os/work-packets/WP-19-resumebuilder-pr97-fit-match-checks.md`
 
-## 11. What Not To Touch
+The copy-ready packet is active and targets `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`.
 
-- RunSmart iOS App Store submission artifacts — v1.0.4 (17) is already submitted; do not start another resubmission train while Apple review is pending.
-- Resumely iOS product scope — monitor only until D7 readout (~2026-06-28).
-- Monetization, paywalls, RevenueCat, StoreKit, paid acquisition (EXD-009).
-- RunSmart Web feature scope beyond Garmin production enablement.
-- Discarding uncommitted work or deleting branches/worktrees without explicit founder confirmation.
+## 12. What Not To Touch
+
+- Do not merge PR #97 or mark it ready for review until all required checks pass.
+- Do not deploy, change Cloudflare settings, change production services, migrate data, touch auth/billing, or publish externally.
+- Do not reopen Resumely iOS launch-scope work while its post-live evidence gap is only a caution item.
+- Do not send the Garmin reply or recapture Gate-4 screenshots until RunSmart build 18 is founder-confirmed live.
+- Do not discard product-repo dirty files or delete worktrees/branches as part of this packet.

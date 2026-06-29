@@ -296,6 +296,22 @@ class TestOSRegistry(unittest.TestCase):
             self.assertFalse(cli._packet_is_active(packet))
             self.assertIsNone(packet["copyPrompt"])
 
+    def test_resumebuilder_web_packet_routes_to_web_repo_id(self):
+        with tempfile.TemporaryDirectory() as d:
+            packets = Path(d) / "executive-os" / "work-packets"
+            packets.mkdir(parents=True)
+            (packets / "WP-19.md").write_text(
+                "# Work Packet WP-19\n"
+                "- Status: Active\n\n"
+                "## Project\nResumeBuilder AI (Web)\n"
+                "Path: `/Users/example/ResumeBuilder/new-ResumeBuilder-ai-`\n",
+                encoding="utf-8",
+            )
+
+            packet = cli.build_os_registry(Path(d))["workPackets"][0]
+
+            self.assertEqual(packet["repoId"], "resumebuilder-ai")
+
     def test_packet_hygiene_flags_active_older_runsmart_build(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
