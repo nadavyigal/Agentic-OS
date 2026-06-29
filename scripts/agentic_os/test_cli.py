@@ -805,6 +805,51 @@ class TestGroundTruthContradictions(unittest.TestCase):
 
 
 class TestFounderNextActions(unittest.TestCase):
+    def test_refresh_required_blocks_next_actions(self):
+        status = {
+            "portfolioTrust": {"level": "refresh_required"},
+            "projectHealth": [],
+            "executiveLoop": {
+                "workPackets": [
+                    {"title": "Real packet", "status": "Active", "repoId": "agentic-os"}
+                ]
+            },
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions, [{
+            "title": "Restore dashboard trust",
+            "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+            "type": "system",
+        }])
+
+    def test_caution_allows_real_next_actions(self):
+        status = {
+            "portfolioTrust": {
+                "level": "caution",
+                "reasons": ["Dirty shippable app repo: RunSmart iOS."],
+            },
+            "projectHealth": [],
+            "executiveLoop": {
+                "workPackets": [
+                    {
+                        "title": "Work Packet — Reconcile Fit/Match",
+                        "status": "Active",
+                        "repoId": "resumebuilder-ai",
+                        "repoPath": "/tmp/resumebuilder-ai",
+                        "copyPrompt": "Do the work.",
+                    }
+                ]
+            },
+            "planExecution": {},
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Run active packet: Work Packet — Reconcile Fit/Match")
+        self.assertEqual(actions[-1]["title"], "Validate caution items before risky moves")
+
     def test_fresh_coo_review_replaces_repeat_review_suggestion(self):
         status = {
             "portfolioTrust": {"level": "actionable"},

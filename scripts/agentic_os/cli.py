@@ -2589,7 +2589,7 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
         }]
 
     trust = status.get("portfolioTrust", {})
-    if trust.get("level") != "actionable":
+    if trust.get("level") == "refresh_required":
         return [{
             "title": "Restore dashboard trust",
             "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
@@ -2657,6 +2657,15 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
             "type": "executive",
             "where": "Agentic OS repo, in this Codex thread",
             "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md.",
+        })
+    if trust.get("level") == "caution" and len(actions) < 3:
+        reason = (trust.get("reasons") or ["Validate risky claims before acting."])[0]
+        actions.append({
+            "title": "Validate caution items before risky moves",
+            "detail": reason,
+            "type": "system",
+            "where": "Affected product repo(s)",
+            "copyPrompt": None,
         })
     return actions[:3]
 
