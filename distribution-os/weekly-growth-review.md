@@ -52,6 +52,12 @@ Append-only. One entry per week per product focus. Use the template at `template
 - Re-score rb-dir-001 directory submissions now that the App Store URL exists.
 - Decide whether to reconcile the web ATS-checker tool's positioning or leave it as a distinct, intentionally separate free-tool funnel.
 
+#### Mid-Cycle Update (2026-06-29, same day)
+
+- rb-dir-001 rescored 15 -> 17 (matches `channel-backlog.md`'s Directory submissions score) and the draft pack rewritten from stale "ATS score" copy to Fit/Match language, with the real App Store URL (id6776752349) substituted in. Awaiting founder review before any directory submission.
+- PostHog (project 270848) checked for early outreach signal: app_launched 55 -> 117, resume_uploaded 12 -> 76, optimization_completed 29 -> 48 (trailing 14 days vs prior 14 days) — directional only, low daily volume. The outreach wave itself started today (2026-06-29); only one partial day of post-outreach data exists, so no real signal yet.
+- Web ATS-checker reconciliation question (free tool at `resumelybuilderai.com` still uses "ATS score" framing vs. the iOS Fit/Match rebrand) remains an open founder decision, not resolved this cycle.
+
 ---
 
 ### Week of 2026-06-21 — Portfolio — Post-Launch Growth (Both Apps Live)
