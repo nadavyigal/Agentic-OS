@@ -12,7 +12,7 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 
 ## Run Center
 
-- Last refresh: 2026-06-29 14:46
+- Last refresh: 2026-06-29 14:54
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -41,7 +41,7 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 1 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 2 unpushed commit(s)
+- [Agentic OS] main has 4 unpushed commit(s)
 - [Agentic OS] 7 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
