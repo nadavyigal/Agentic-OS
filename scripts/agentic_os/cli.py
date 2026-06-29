@@ -2648,10 +2648,11 @@ def build_founder_next_actions(status: dict[str, Any]) -> list[dict[str, str]]:
         review = status.get("latestCooReview") or {}
         reviewed = parse_date(review.get("reviewed"))
         fresh_review = bool(reviewed and reviewed.date() == datetime.now().date())
-        if fresh_review and review.get("selectedNextAction"):
+        selected_action = review.get("selectedNextAction") or ""
+        if fresh_review and selected_action and not selected_action.lower().startswith("completed"):
             actions.append({
                 "title": "Continue the COO-selected action",
-                "detail": review["selectedNextAction"],
+                "detail": selected_action,
                 "type": review.get("actionType") or "global-OS",
                 "where": "Agentic OS repo, in this Codex thread",
                 "copyPrompt": (

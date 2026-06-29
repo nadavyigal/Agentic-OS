@@ -912,6 +912,24 @@ class TestFounderNextActions(unittest.TestCase):
         self.assertTrue(actions[1]["copyPrompt"])
         self.assertFalse(any(action["title"] == "Run a COO operating review" for action in actions))
 
+    def test_completed_coo_review_does_not_become_next_action(self):
+        status = {
+            "portfolioTrust": {"level": "actionable"},
+            "projectHealth": [],
+            "executiveLoop": {"workPackets": []},
+            "planExecution": {"needsNextPacket": 1},
+            "latestCooReview": {
+                "reviewed": datetime.now().strftime("%Y-%m-%d"),
+                "selectedNextAction": "Completed - PR #97 merged to main.",
+                "actionType": "global-OS",
+            },
+        }
+
+        actions = cli.build_founder_next_actions(status)
+
+        self.assertEqual(actions[0]["title"], "Run a COO operating review")
+        self.assertFalse(any(action["title"] == "Continue the COO-selected action" for action in actions))
+
     def test_missing_coo_review_suggests_review_when_plans_need_packets(self):
         status = {
             "portfolioTrust": {"level": "actionable"},

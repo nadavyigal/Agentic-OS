@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-29 15:05"
+    "lastSuccessfulRefresh": "2026-06-29 15:08"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 LIVE on App Store as marketing version `1.0.4`; build 18 upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until build 18 is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build: Founder uploads/submits build 18 to App Store Connect, waits for approval, confirms build 18 live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 Web/backend Gate-4 work complete; iOS build 18 locally archive/export validated but not confirmed live. Garmin reply remains blocked until founder uploads/submits build 18, Apple approves it, build 18 is genuinely live, and all 6 screenshots are recaptured against that live build \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
@@ -596,7 +596,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-29 bec741e coo: record PR 97 merge completion); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-29 3e2b94b exec: run weekly CEO review 2026-06-29); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -621,11 +621,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 7]",
+        "branch": "main...origin/main [ahead 8]",
         "dirty": true,
-        "dirtyCount": 10,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-29 bec741e coo: record PR 97 merge completion",
+        "lastCommit": "2026-06-29 3e2b94b exec: run weekly CEO review 2026-06-29",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -835,7 +835,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-29 15:05",
+    "lastRefresh": "2026-06-29 15:08",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1633,10 +1633,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 10,
+      "dirtyCount": 8,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 7]",
-      "lastCommit": "2026-06-29 bec741e coo: record PR 97 merge completion",
+      "branch": "main...origin/main [ahead 8]",
+      "lastCommit": "2026-06-29 3e2b94b exec: run weekly CEO review 2026-06-29",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-06-29",
@@ -1829,7 +1829,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 7]",
+      "branch": "main...origin/main [ahead 8]",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1920,7 +1920,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-06-29 15:05",
+    "lastRunAt": "2026-06-29 15:08",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -3578,13 +3578,13 @@
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 7 unpushed commit(s)",
+        "detail": "main has 8 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
       },
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "10 uncommitted file(s) in the primary working tree",
+        "detail": "8 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3593,7 +3593,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-29 15:05",
+    "generatedAt": "2026-06-29 15:08",
     "apps": [
       {
         "projectId": 171597,
