@@ -4,13 +4,17 @@ experiment: rb-dir-001
 product: Resumely (ResumeBuilder iOS)
 type: Directory submission pack — batch 1 (5 directories)
 created: 2026-05-28
+updated: 2026-06-29
 author: distribution-os agent
-awaiting: founder review + App Store URL
+awaiting: founder review
 notes: |
-  App Store URL is a placeholder — replace with live URL once listing is approved.
+  Rewritten 2026-06-29 to match the canonical Fit/Match positioning locked in
+  ResumeBuilder IOS APP/.agents/product-marketing.md (2026-06-28). Previous draft
+  used "ATS score / ATS-safe" framing that the canonical doc now lists under
+  "Words to avoid" (pass ATS, official ATS score, beat the bots).
+  App Store URL is now live — substituted below.
   Founder presses submit on each directory individually.
-  Do not submit until App Store listing is live and URL is confirmed.
-  One submission per directory — do not repeat-submit.
+  Do not repeat-submit a directory once it is live.
   Futurepedia and TAAFT are highest priority (highest traffic, free, career tool fit).
 ---
 
@@ -18,9 +22,10 @@ notes: |
 
 ## Status
 
-App Store URL: `<REPLACE WITH LIVE URL — https://apps.apple.com/app/resumely/id...>`
+App Store URL: `https://apps.apple.com/app/resume-ai-cv-builder/id6776752349`
 Web URL: `https://resumelybuilderai.com`
-Submit after: App Store listing is live and URL is confirmed
+App Store status: live, v1.2 (7), since 2026-06-29
+Submit after: founder review of this rewritten copy
 
 ---
 
@@ -35,33 +40,35 @@ Resumely
 
 ### Tagline (one line, ~10 words)
 ```
-AI resume tailor that catches ATS blockers before you apply.
+Check fit, tailor your resume, export on iPhone.
 ```
 
 ### Short Description (150 chars)
 ```
-Paste a job posting. Resumely scores your resume, shows the blockers, and applies AI edits section by section. Export a tailored PDF in minutes.
+See your Resumely Match Score, fix missing keywords, tailor your resume to the job, and export a polished PDF — all from your iPhone.
 ```
-Character count: 143 ✓
+Character count: 134 ✓
 
 ### Long Description (300–500 words)
 ```
-Resumely is a mobile-first AI resume workspace for active job seekers. Upload your resume, paste any job description, and get a section-by-section ATS compatibility score — then apply AI-powered edits to fix the specific blockers for that role.
+Resumely is a mobile-first resume workspace for active job seekers. Upload your resume, add a job description or link, and see a Resumely Match Score with Strong / Stretch / Skip guidance before you invest time applying.
 
-Most resume rejections happen before a recruiter sees your work. Applicant tracking systems filter out resumes with parse-breaking formatting, weak keyword match, and unclear targeting. Resumely knows how these systems work and surfaces exactly what to change for the job in front of you.
+Most job seekers send the same resume to every posting and find out too late that it was a poor fit, or that key keywords were missing. Resumely's Fit-First flow shows what's missing and where the gaps are for the specific role in front of you, before you spend time tailoring.
 
 Key capabilities:
-• ATS compatibility score by resume section
-• AI-generated suggestions for summary, bullets, and skills — tied to the specific job description you provide
-• ATS-safe design templates with professional formatting
+• Resumely Match Score — see job fit before you apply
+• Fit-First guidance: Strong, Stretch, or Skip, with top gaps listed
+• AI-powered edits tied to the specific job description you provide
+• ATS-friendly templates and formatting
+• Cover letter and application package assembly
 • One-tap PDF export directly from your iPhone
-• Expert analysis mode for targeted, hiring-manager-level rewrites
+• English and authored Hebrew / RTL support
 
-Free to use. No subscription required.
+Free to use at launch. No subscription required.
 
-Resumely is not a generic resume builder — it's a focused workspace for job seekers who are actively applying and need a targeted, tailored version of their resume for each specific role.
+Resumely is not a generic resume builder — it's a focused workspace for job seekers who want to know if a role is worth pursuing, then tailor and export a stronger application fast.
 
-Built for mobile-first job seekers: commuters, career switchers, and anyone who needs to send a strong application fast, without a laptop.
+Built for mobile-first job seekers: commuters, career switchers, and anyone who needs to send a strong, targeted application without a laptop.
 ```
 
 ### Categories (tag suggestions — pick what each directory supports)
@@ -71,12 +78,14 @@ AI Tools, Career, Productivity, Resume, Job Search, iOS App, Mobile App
 
 ### Key Features (bullet list)
 ```
-- ATS resume scoring by section
+- Resumely Match Score — job fit before you apply
+- Fit-First: Strong / Stretch / Skip with top gaps
 - AI edits tied to the specific job description
-- ATS-safe resume design templates
+- ATS-friendly resume templates
+- Cover letter and application package assembly
 - PDF export from iPhone
-- Expert analysis mode
-- Free at launch
+- English + Hebrew/RTL support
+- Free to use
 ```
 
 ### Pricing
@@ -96,7 +105,7 @@ https://resumelybuilderai.com
 
 ### App Store URL
 ```
-<REPLACE — live after App Store submission approval>
+https://apps.apple.com/app/resume-ai-cv-builder/id6776752349
 ```
 
 ### Logo / Icon
@@ -107,7 +116,7 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 
 ### Screenshots
 ```
-Use App Store screenshots (from rb-aso-002 brief) once rendered.
+Use the live App Store screenshots (v1.2 build 7).
 Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 ```
 
@@ -121,20 +130,21 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 - **Effort**: low (web form)
 - **Cost**: free
 - **Backlink quality**: high
-- **Status**: not started — submit after App Store live
+- **Status**: not started — ready once founder approves this copy
 
 **Fields to fill:**
 
 | Field | Value |
 |---|---|
 | Tool name | Resumely |
-| Short description | Paste a job posting. Resumely scores your resume, shows the blockers, and applies AI edits section by section. Export a tailored PDF in minutes. |
+| Short description | See your Resumely Match Score, fix missing keywords, tailor your resume to the job, and export a polished PDF — all from your iPhone. |
 | Long description | Use long description block above |
 | Website | https://resumelybuilderai.com |
 | Pricing | Free |
 | Categories | Career, Productivity, AI Writing |
 | Logo | 1024×1024 PNG from App Store |
-| Screenshot(s) | Slot 1 + Slot 3 from screenshot brief |
+| Screenshot(s) | Slot 1 + Slot 3 from live App Store listing |
+| App Store link | https://apps.apple.com/app/resume-ai-cv-builder/id6776752349 |
 
 ---
 
@@ -151,10 +161,10 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 | Field | Value |
 |---|---|
 | Name | Resumely |
-| Description | Paste a job posting. Resumely scores your resume against ATS filters, shows the exact blockers, and applies AI edits section by section. Export a tailored PDF directly from your iPhone. Free to use. |
+| Description | See your Resumely Match Score, fix missing keywords, and tailor your resume to a specific job posting. Export a polished PDF directly from your iPhone. Free to use. |
 | Website | https://resumelybuilderai.com |
-| App Store link | `<REPLACE>` |
-| Tags | resume, ATS, job search, career, AI writing, iOS |
+| App Store link | https://apps.apple.com/app/resume-ai-cv-builder/id6776752349 |
+| Tags | resume, job fit, job search, career, AI writing, iOS |
 | Pricing | Free |
 | Logo | 1024×1024 PNG |
 
@@ -173,9 +183,10 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 | Field | Value |
 |---|---|
 | Tool name | Resumely |
-| One-liner | AI resume tailor that catches ATS blockers before you apply |
+| One-liner | Check fit, tailor your resume, export on iPhone |
 | Description | Use short description block |
 | Website | https://resumelybuilderai.com |
+| App Store link | https://apps.apple.com/app/resume-ai-cv-builder/id6776752349 |
 | Platform | iOS |
 | Pricing | Free |
 | Category | Career & Jobs, AI Writing Tools |
@@ -197,6 +208,7 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 | Name | Resumely |
 | Description | Use short description block |
 | Website | https://resumelybuilderai.com |
+| App Store link | https://apps.apple.com/app/resume-ai-cv-builder/id6776752349 |
 | Category | Career, Resume, Productivity |
 | Pricing model | Free |
 | Logo | 1024×1024 PNG |
@@ -210,18 +222,18 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 - **Cost**: free
 - **Backlink quality**: medium
 - **Status**: not started
-- **Note**: Good for launch-week momentum — submit on or just after App Store approval
+- **Note**: Frame as "now live" momentum. Resumely v1.2 went live 2026-06-29.
 
 **Fields to fill:**
 
 | Field | Value |
 |---|---|
 | Product name | Resumely |
-| Tagline | AI resume tailor that catches ATS blockers before you apply |
+| Tagline | Check fit, tailor your resume, export on iPhone |
 | Description | Use long description block (trimmed to 250 words) |
 | Website | https://resumelybuilderai.com |
-| App Store URL | `<REPLACE>` |
-| Launch date | `<date of App Store approval>` |
+| App Store URL | https://apps.apple.com/app/resume-ai-cv-builder/id6776752349 |
+| Launch date | 2026-06-29 (v1.2 build 7 live) |
 | Maker | Nadav Yigal |
 | Tags | AI, Resume, Career, iOS, Job Search |
 
@@ -230,14 +242,13 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 ## Submission Rules
 
 - Submit in the order listed (highest priority first)
-- Do not submit until App Store URL is confirmed live
 - Do not submit to pay-to-feature or reciprocal-link services
-- Keep a record of submission date and confirmation email in Drive `04 Content Assets/Directory Submissions/ResumeBuilder/submissions/2026-05-28/`
+- Keep a record of submission date and confirmation email in Drive `04 Content Assets/Directory Submissions/ResumeBuilder/submissions/{date}/`
 - Verify each listing is live within 7 days; follow up once if not
 
 ## Batch 2 Candidates (after batch 1 is live)
 
-- BetaList (betalist.com) — for post-launch momentum; submit 1-2 weeks after App Store live
+- BetaList (betalist.com) — for post-launch momentum
 - Product Hunt — plan as a standalone launch event; needs a dedicated launch-day strategy
 - G2 / Capterra — B2B-leaning; add after the app has reviews
 - Israeli AI tool directories (for Hebrew market) — research in hebrew-program.md
@@ -246,7 +257,7 @@ Upload to Drive: 04 Content Assets/ASO Assets/ when ready.
 
 ## Open Questions for Founder
 
-1. Confirm App Store URL when listing is approved
+1. Approve this rewritten Fit/Match copy (replaces the old ATS-score framing)
 2. Logo / icon file ready to export from App Store Connect?
-3. Screenshots from rb-aso-002 rendered before filing these directories?
+3. Screenshots from the live v1.2 listing ready to attach?
 4. Any personal bio or founder story to add to Launching Next submission?
