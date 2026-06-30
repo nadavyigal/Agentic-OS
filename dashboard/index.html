@@ -632,7 +632,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-30 14:11",
+      "lastRefresh": "2026-06-30 14:13",
       "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1430,11 +1430,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 5,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-06-30 8ff2d86 docs(distribution): update Resumely directory pack",
+        "branch": "main...origin/main [ahead 2]",
+        "lastCommit": "2026-06-30 5ef1ae4 Refresh RunSmart distribution focus",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-30",
@@ -1626,8 +1626,8 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
+        "repoState": "Clean",
+        "branch": "main...origin/main [ahead 2]",
         "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1661,11 +1661,10 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 3,
+      "dirtyProjectCount": 2,
       "dirtyProjects": [
         "RunSmart Web",
-        "ResumeBuilder AI (Web)",
-        "Agentic OS"
+        "ResumeBuilder AI (Web)"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -3117,26 +3116,26 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 5,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Evidence gap after latest commit: Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
       "hygieneWarnings": []
     },
     "groundTruth": {
-      "generatedAt": "2026-06-30 14:12",
+      "generatedAt": "2026-06-30 14:13",
       "apps": [
         {
           "projectId": 171597,
@@ -3199,9 +3198,9 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-06-30 14:12",
+      "lastRunAt": "2026-06-30 14:13",
       "checksStatus": "Passed",
-      "checksCompletedAt": "2026-06-30 14:12",
+      "checksCompletedAt": "2026-06-30 14:13",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
@@ -3212,9 +3211,25 @@
       "summary": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
       "nextActions": [
         {
-          "title": "Restore dashboard trust",
-          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-          "type": "system"
+          "title": "Run a COO operating review",
+          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+          "type": "global-OS",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
+        },
+        {
+          "title": "Use the Weekly CEO Review only for a priority choice",
+          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+          "type": "executive",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+        },
+        {
+          "title": "Validate caution items before risky moves",
+          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+          "type": "system",
+          "where": "Affected product repo(s)",
+          "copyPrompt": null
         }
       ],
       "topBanner": null,
