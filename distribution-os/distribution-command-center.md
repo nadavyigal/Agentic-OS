@@ -16,7 +16,7 @@ The single page that answers: what is this week about, what is shipping, what is
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md` — reviewed, needs founder approval before product work
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md` — reviewed, needs founder approval before ASC / app changes
 - **Awaiting founder action**:
-  - Choose whether `rs-onboarding-001` becomes the next RunSmart iOS work packet.
+  - `rs-onboarding-001` is now `executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md`; execute it in RunSmart iOS if it can stay inside the current small build.
   - Export App Store Connect baseline for RunSmart product page views, conversion, keyword impressions, and ratings count.
   - Approve or reject ASC metadata edits, screenshot caption work, and first-review prompt timing.
 - **Awaiting external response**:
@@ -33,7 +33,7 @@ The single page that answers: what is this week about, what is shipping, what is
 | Channel | Status | Owner Of Next Step | Notes |
 |---|---|---|---|
 | ASO | reviewed | Founder — approve metadata/screenshot/review-prompt next steps | rs-aso-003 audit found stale repo metadata vs live ASC, zero ratings, and missing screenshot captions |
-| Onboarding / activation | reviewed | Founder — approve iOS work packet | rs-onboarding-001 found onboarding completion healthy, but app launch → onboarding start and plan → run are the leaks |
+| Onboarding / activation | queued | RunSmart iOS — execute WP-20 | rs-onboarding-001 found onboarding completion healthy, but app launch → onboarding start and plan → run are the leaks |
 | Landing pages (PLG) | paused | Agent — later focus week | Resume after ASO baseline and first-run activation path are clearer |
 | LinkedIn founder updates | draft | Founder — review existing launch post when useful | Not the binding constraint this week |
 | Running SEO | not started | Agent — next focus week | |

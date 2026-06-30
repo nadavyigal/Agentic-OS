@@ -632,7 +632,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-06-30 14:13",
+      "lastRefresh": "2026-06-30 14:40",
       "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -923,8 +923,8 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 5,
         "extraWorktrees": 0,
         "branch": "main...origin/main [ahead 1]",
         "lastCommit": "2026-06-29 dc57e9f Tighten RunSmart analytics contract metadata",
@@ -1430,11 +1430,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 5,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 2]",
-        "lastCommit": "2026-06-30 5ef1ae4 Refresh RunSmart distribution focus",
+        "branch": "main...origin/main [ahead 3]",
+        "lastCommit": "2026-06-30 831b4db Refresh dashboard sync state",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-06-30",
@@ -1495,7 +1495,7 @@
         "projectId": "runsmart-ios",
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main...origin/main [ahead 1]",
         "nextAction": "Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
         "sourceConfidence": "High",
@@ -1626,8 +1626,8 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
-        "branch": "main...origin/main [ahead 2]",
+        "repoState": "Dirty",
+        "branch": "main...origin/main [ahead 3]",
         "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1661,10 +1661,12 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 2,
+      "dirtyProjectCount": 4,
       "dirtyProjects": [
+        "RunSmart iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -2305,6 +2307,25 @@
           "decision": "EXD-008"
         },
         {
+          "title": "Work Packet WP-20 - RunSmart First-Run Activation Build",
+          "status": "Open",
+          "project": "RunSmart iOS",
+          "repoId": "runsmart-ios",
+          "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+          "goal": "Ship one small, App Store-submittable RunSmart iOS/backend build that covers the current Report/Activity `device_name` fallback fix and the smallest `rs-onboarding-001` first-run activation intervention",
+          "source": "`rs-onboarding-001`; RunSmart onboarding review `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md`; current founder note that a Report/Activity `device_name` fallback fix is already in progress",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": "RunSmart D7 activation",
+          "loop": null,
+          "signal": "RunSmart's current acquisition/activation data shows onboarding completion is healthy once started, but `plan_generated -> run_completed` is the immediate activation gap; a small iOS/backend build is already open, so the first-run intervention can be folded into the same ASC train if it stays small",
+          "memoryUpdate": "RunSmart iOS `tasks/progress.md`, `tasks/session-log.md`, and `tasks/MEMORY.md`",
+          "successSignal": "Report/Activity consistently displays a device name via activity row value or connection fallback, and a newly onboarded user gets a concrete first-run commitment/reminder path after plan generation",
+          "path": "executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md",
+          "copyPrompt": null,
+          "decision": "EXD-013"
+        },
+        {
           "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
           "status": "Superseded",
           "project": "RunSmart iOS",
@@ -2702,7 +2723,7 @@
         },
         {
           "name": "Work packets",
-          "what": "0 active, 21 total. Copy only Active packets; closed packets are history."
+          "what": "0 active, 22 total. Copy only Active packets; closed packets are history."
         },
         {
           "name": "Brainstorm / next moves",
@@ -2978,6 +2999,25 @@
           "decision": "EXD-008"
         },
         {
+          "title": "Work Packet WP-20 - RunSmart First-Run Activation Build",
+          "status": "Open",
+          "project": "RunSmart iOS",
+          "repoId": "runsmart-ios",
+          "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+          "goal": "Ship one small, App Store-submittable RunSmart iOS/backend build that covers the current Report/Activity `device_name` fallback fix and the smallest `rs-onboarding-001` first-run activation intervention",
+          "source": "`rs-onboarding-001`; RunSmart onboarding review `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md`; current founder note that a Report/Activity `device_name` fallback fix is already in progress",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": "RunSmart D7 activation",
+          "loop": null,
+          "signal": "RunSmart's current acquisition/activation data shows onboarding completion is healthy once started, but `plan_generated -> run_completed` is the immediate activation gap; a small iOS/backend build is already open, so the first-run intervention can be folded into the same ASC train if it stays small",
+          "memoryUpdate": "RunSmart iOS `tasks/progress.md`, `tasks/session-log.md`, and `tasks/MEMORY.md`",
+          "successSignal": "Report/Activity consistently displays a device name via activity row value or connection fallback, and a newly onboarded user gets a concrete first-run commitment/reminder path after plan generation",
+          "path": "executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md",
+          "copyPrompt": null,
+          "decision": "EXD-013"
+        },
+        {
           "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
           "status": "Superseded",
           "project": "RunSmart iOS",
@@ -3116,26 +3156,28 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 5,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "caution",
-      "label": "Use caution",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-        "Evidence gap after latest commit: Resumely iOS."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
-      "hygieneWarnings": []
+      "hygieneWarnings": [
+        "Uncommitted files in product repos: RunSmart iOS."
+      ]
     },
     "groundTruth": {
-      "generatedAt": "2026-06-30 14:13",
+      "generatedAt": "2026-06-30 14:40",
       "apps": [
         {
           "projectId": 171597,
@@ -3198,9 +3240,9 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-06-30 14:13",
+      "lastRunAt": "2026-06-30 14:40",
       "checksStatus": "Passed",
-      "checksCompletedAt": "2026-06-30 14:13",
+      "checksCompletedAt": "2026-06-30 14:40",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
@@ -3211,25 +3253,9 @@
       "summary": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
       "nextActions": [
         {
-          "title": "Run a COO operating review",
-          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
-          "type": "global-OS",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
-        },
-        {
-          "title": "Use the Weekly CEO Review only for a priority choice",
-          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-          "type": "executive",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
-        },
-        {
-          "title": "Validate caution items before risky moves",
-          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-          "type": "system",
-          "where": "Affected product repo(s)",
-          "copyPrompt": null
+          "title": "Restore dashboard trust",
+          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+          "type": "system"
         }
       ],
       "topBanner": null,
