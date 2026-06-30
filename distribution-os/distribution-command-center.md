@@ -4,28 +4,27 @@ The single page that answers: what is this week about, what is shipping, what is
 
 ## This Week
 
-- **Week of**: 2026-05-28
-- **Focused product**: ResumeBuilder iOS (first distribution cycle — ASO v1)
-- **Other product status**: RunSmart — rs-aso-001, rs-aso-002, rs-analytics-001 awaiting founder action; App Store submission target 2026-06-01
-- **Theme**: ASO listing v1 (English) — write and file Resumely App Store listing copy before submission
+- **Week of**: 2026-06-30
+- **Focused product**: RunSmart iOS (post-launch ASO + first-run activation)
+- **Other product status**: ResumeBuilder iOS — maintenance / D7 readout follow-up; directory submissions remain founder-action work
+- **Theme**: Turn the 2026-06-20 RunSmart distribution-cycle findings into founder-reviewable next actions.
 - **Top 3 experiments** (link to rows in `experiment-log.md`):
-  1. rb-aso-001 (score 21) — App Store listing copy v1 (subtitle, keywords, description)
-  2. rb-aso-002 (score 20) — Screenshot brief (5-slot sequence + copy overlays)
-  3. rb-dir-001 (score 15) — Directory submission pack v1 (5 directories; pending App Store URL)
+  1. rs-onboarding-001 (score 21) — first-run commitment + local reminder after plan generation
+  2. rs-aso-003 (score 20) — post-launch ASO cleanup: first-review prompt, subtitle/keyword review, screenshot captions, metadata sync
+  3. rs-aso-002 (score 18) — screenshot caption overlays for the live listing
 - **Assets in flight**:
-  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-aso-001/listing-copy-v1.md` — **APPROVED, ready to file in App Store Connect**
-  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-aso-002/screenshot-brief-v1.md` — **APPROVED; screenshots rendered + exported; PR #34 ready to merge; upload to ASC is next**
-  - `distribution-os/projects/resumebuilder/scaffold/drafts/2026-05-28-rb-dir-001/directory-pack-v1.md` — draft, awaiting App Store URL + founder review
+  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md` — reviewed, needs founder approval before product work
+  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md` — reviewed, needs founder approval before ASC / app changes
 - **Awaiting founder action**:
-  - rb-aso-001 + rb-aso-002: **merge PR #34 → upload screenshots to App Store Connect → file listing copy → submit for review**
-  - rb-dir-001: confirm App Store URL when live; founder presses submit on each directory
+  - Choose whether `rs-onboarding-001` becomes the next RunSmart iOS work packet.
+  - Export App Store Connect baseline for RunSmart product page views, conversion, keyword impressions, and ratings count.
+  - Approve or reject ASC metadata edits, screenshot caption work, and first-review prompt timing.
 - **Awaiting external response**:
-  - Resumely App Store submission — listing copy approved + screenshots ready; pending founder upload + submit action
-  - RunSmart App Store review — target submit 2026-06-01
+  - App Store Connect metrics export for the live RunSmart listing.
+  - PostHog volume increase before D7 retention can be evaluated.
 - **Blocked**:
-  - rb-dir-001 submissions blocked on App Store URL (pre-submission)
-  - All Resumely acquisition metrics blocked until App Store listing is live
-  - ATS tool result page iOS CTA — confirmed missing; web repo fix needed before web feeder channel contributes installs
+  - D7 retention gate is not statistically useful at current RunSmart volume.
+  - No App Store metadata, screenshot, notification, or review-prompt change should publish without explicit founder approval.
 
 ## Current Channel Status
 
@@ -33,15 +32,16 @@ The single page that answers: what is this week about, what is shipping, what is
 
 | Channel | Status | Owner Of Next Step | Notes |
 |---|---|---|---|
-| ASO | in progress | Founder — copy description.txt, render overlays, submit | Build uploaded 2026-05-19; rs-aso-001 + rs-aso-002 assets ready |
-| Landing pages (PLG) | not started | Agent — next focus week | Blocked on App Store submission first |
-| LinkedIn founder updates | not started | Founder — write + post | Deferred to launch week |
+| ASO | reviewed | Founder — approve metadata/screenshot/review-prompt next steps | rs-aso-003 audit found stale repo metadata vs live ASC, zero ratings, and missing screenshot captions |
+| Onboarding / activation | reviewed | Founder — approve iOS work packet | rs-onboarding-001 found onboarding completion healthy, but app launch → onboarding start and plan → run are the leaks |
+| Landing pages (PLG) | paused | Agent — later focus week | Resume after ASO baseline and first-run activation path are clearer |
+| LinkedIn founder updates | draft | Founder — review existing launch post when useful | Not the binding constraint this week |
 | Running SEO | not started | Agent — next focus week | |
 | Runna comparison | not started | Agent — plan next | |
 | Garmin / Strava content | not started | Agent — plan next | |
 | Beginner challenges | paused | — | Conditional on challenge feature ship |
-| Partnerships | not started | Agent — next focus week | |
-| Lifecycle email | planned | Product session | 3 email drafts ready; Resend + Supabase spec ready |
+| Partnerships | paused | Agent — next focus week | Wait for conversion baseline before outreach |
+| Lifecycle email | planned | Product session | Revisit after first-run reminder path is approved |
 | Community research | not started | — | Observation only |
 
 ### ResumeBuilder

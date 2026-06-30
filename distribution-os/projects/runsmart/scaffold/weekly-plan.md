@@ -2,34 +2,37 @@
 
 The current week's plan for RunSmart. Overwritten each week. Last week's plan is preserved in `weekly-growth-review.md` at the global level.
 
-## Week Of 2026-06-06
+## Week Of 2026-06-30
 
-- Theme: Launch-window readiness while App Store review is external.
+- Theme: Post-launch ASO and first-run activation. The app is live, but the current bottleneck is still volume and the first-run activation path, not a broad content push.
 - Top 3 experiments:
-  1. RunSmart A1 founder LinkedIn launch post
-  2. RunSmart A2 Facebook page launch post
-  3. App Store approval-triggered launch checklist
+  1. `rs-onboarding-001` - first-run commitment + local reminder after plan generation.
+  2. `rs-aso-003` - post-launch ASO cleanup: first-review prompt, subtitle/keyword review, screenshot captions, and metadata sync.
+  3. `rs-aso-002` - screenshot caption overlays for the live listing, reused inside the ASO cleanup.
 - Assets in flight:
-  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-05-rs-linkedin-launch/launch-post-v1.md`
-  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-06-rs-facebook-page-launch/page-launch-post-v1.md`
+  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md`
+  - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md`
 - Awaiting founder review:
-  - A1 LinkedIn launch post
-  - A2 Facebook page launch post
+  - Approve whether `rs-onboarding-001` becomes the next RunSmart iOS product work packet.
+  - Confirm ASC metadata changes before any subtitle, keyword, screenshot, or Hebrew-locale updates.
+  - Confirm whether first-review prompt timing should be first run completed or first plan week completed.
 - Awaiting external response:
-  - RunSmart App Store review outcome
+  - App Store Connect export for product page views, conversion rate, keyword impressions, and ratings count.
 - Blocked:
-  - Publishing any launch asset until App Store approval, founder approval, and verified public App Store URL
+  - D7 retention gate is not evaluable until acquisition and first-run volume increase.
+  - No App Store metadata or screenshot change should publish without explicit founder approval.
 
 ## Channel Statuses This Week
 
 | Channel | Status | Next step |
 |---|---|---|
-| ASO | waiting on App Store review | Re-read listing claims after approval or Apple feedback |
-| Landing pages | paused | Resume only after launch URL is available |
-| LinkedIn | draft | Founder reviews A1 |
-| Facebook page | draft | Founder reviews A2 |
-| Running SEO | paused | Keep for post-launch focus week |
-| Runna comparison | paused | Keep for Distribution OS Week 2 |
+| ASO | reviewed | Founder reviews `rs-aso-003`; export ASC baseline before edits |
+| Onboarding | reviewed | Convert `rs-onboarding-001` into an iOS work packet if approved |
+| Landing pages | paused | Resume after ASO baseline and first-run activation path are clearer |
+| LinkedIn | draft | Existing launch post can be reviewed, but not the main bottleneck this week |
+| Facebook page | draft | Existing launch post can be reviewed, but not the main bottleneck this week |
+| Running SEO | paused | Keep for later post-launch focus week |
+| Runna comparison | paused | Keep for later post-launch focus week |
 | Garmin / Strava content | paused | Use only claims supported by the approved build |
-| Partnerships | paused | Do not start outreach until launch URL exists |
-| Lifecycle email | planned | Draft after social launch assets or after approval |
+| Partnerships | paused | Do not start outreach until App Store conversion baseline exists |
+| Lifecycle email | planned | Revisit after first-run reminder path is approved |
