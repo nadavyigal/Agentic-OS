@@ -103,9 +103,9 @@ This is the structural fix for the root cause, independent of the Garmin portal 
 
 ## Acceptance criteria
 
-- [ ] Current live-user impact checked and reported (are the 7 previously-connected users already failing?)
+- [x] Current live-user impact checked and reported (are the 7 previously-connected users already failing?) — checked 2026-07-01T16:12:29Z via Supabase aggregate read: 9 rows, 7 `connected`, 2 `reauth_required`, 0 connected rows with `last_sync_error`, 7 connected rows with successful sync inside the prior 24h. No aggregate evidence yet that the 7 connected users had already failed, but old-app deactivation risk remains active.
 - [ ] Internal Testing / Verification application created (Evaluation tier), credentials stored in a non-production environment only
-- [ ] Code guard merged: production can never authenticate using test/internal credentials
+- [ ] Code guard merged: production can never authenticate using test/internal credentials — implemented and committed locally in RunSmart web on branch `codex/wp24-garmin-credential-guard` (`baa19aa`), but not pushed or merged because this environment blocked `git push`. Production uses commercial `GARMIN_CLIENT_ID`/`GARMIN_CLIENT_SECRET`, non-production can use `GARMIN_TEST_CLIENT_ID`/`GARMIN_TEST_CLIENT_SECRET`, and production fails closed if test/evaluation credentials are selected or aliased.
 - [ ] On-device Gate-4 screenshots recaptured against `1.0.7 (20)` live build, re-verified against the brand PDF
 - [ ] `garmin-connect-tile.jpg` confirmed pristine or replaced
 - [ ] Commercial application created and submitted for Production review with current evidence, no Training API scope

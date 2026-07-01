@@ -14,11 +14,11 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention | Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply | 1 | Yes (6) | Fresh | High | tasks/progress.md | 2026-06-30 36b6a84 Merge pull request #68 from nadavyigal/codex/archive-v1.0.6-build19 |
+| RunSmart iOS | PHASE 2 — Garmin Production Gate 4 remediation, 3rd rejection cycle | Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what "start all over" means | 1 | No | Fresh | High | tasks/progress.md | 2026-07-01 a1aca4f Merge pull request #70 from nadavyigal/chore/bump-1.0.7-build20 |
 | Resumely iOS | Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration | (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next | 1 | No | Fresh | High | tasks/progress.md | 2026-06-29 c3e6645 Tighten Resumely analytics contract metadata |
-| RunSmart Web | `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND — all 6 screenshots recaptured, verified, and re-zipped | Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections | 2 | Yes (5) | Fresh | Medium | tasks/progress.md | 2026-07-01 8fa8794 docs(garmin): recapture Gate-4 screenshots against live 1.0.6 (19), ready to send |
+| RunSmart Web | Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved | Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-01 baa19aa Guard Garmin production credentials |
 | ResumeBuilder AI (Web) | ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building) | Story 2 was investigated, not implemented — traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only "15+ years" in the summary). The AI optimizer correctly preserved this truthfully per its "never fabricate metrics" rule — `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99) |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-01 f8adbb6 Log 2026-07-01 mode-system + OS-improvement-plan-completion session |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-01 03b3d76 Update WP-24: Marc confirmed two-app requirement, escalated to deactivation |
 
 ## Evidence Gaps
 
@@ -26,7 +26,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - Resumely iOS: validated 2026-06-26, last commit 2026-06-29 c3e6645 Tighten Resumely analytics contract metadata
 - ResumeBuilder AI (Web): validated 2026-06-22, last commit 2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)
-- Agentic OS: validated 2026-06-12, last commit 2026-07-01 f8adbb6 Log 2026-07-01 mode-system + OS-improvement-plan-completion session
+- Agentic OS: validated 2026-06-12, last commit 2026-07-01 03b3d76 Update WP-24: Marc confirmed two-app requirement, escalated to deactivation
 
 ## Drift Warnings
 
@@ -37,21 +37,21 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
-- [RunSmart iOS] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
 - [Resumely iOS] codex/fitcheck-service: unmerged commits, remote branch deleted, last commit 2026-06-23 -> Push codex/fitcheck-service and open a PR, or consciously discard it.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
 - [Resumely iOS] 5 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [RunSmart Web] codex/wp24-garmin-credential-guard: unmerged commits, never pushed, last commit 2026-07-01 -> Push codex/wp24-garmin-credential-guard and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
-- [RunSmart Web] 5 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart Web] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] codex/resumebuilder-posthog-llm-observability: 1 unpushed commit(s), last commit 2026-06-30 -> Push codex/resumebuilder-posthog-llm-observability and open a PR, or explicitly hand it off.
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03 -> Push fix/pdf-parse-xref-error and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] 6 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 
@@ -64,13 +64,14 @@ None. Active/open packet states match the current project status.
 - Decision needed [ResumeBuilder AI (Web)]: (open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)
 - Decision needed [Agentic OS]: Should drift detection stay detect-only, or gain a `refresh --reconcile` that auto-heals curated narrative for High projects?
 - Decision needed [Agentic OS]: Should web-repo (RunSmart Web, ResumeBuilder Web) `tasks/progress.md` seeding proceed now or stay on hold?
-- Open question [RunSmart Web]: Missing plan file means implementation is based on code evidence, not a saved plan document
+- Open question [RunSmart Web]: Founder still needs to decide user-facing outage messaging for connected Garmin users
+- Open question [RunSmart Web]: Founder still needs to create the Internal Test and Commercial apps in the Garmin Developer Portal
 - Open question [Agentic OS]: Is the demand-side `INTENT-LOG.md` worth keeping past the 2026-06-16 audit?
 - Open question [Agentic OS]: Should `verify` gain a `--strict` mode that fails on drift warnings and evidence gaps?
 
 ## Morning Brief
 
-RunSmart iOS — Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply · Resumely iOS — Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next · RunSmart Web — `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND — all 6 screenshots recaptured, verified, and re-zipped · ResumeBuilder AI (Web) — ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)
+RunSmart iOS — PHASE 2 — Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what "start all over" means · Resumely iOS — Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next · RunSmart Web — Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved · ResumeBuilder AI (Web) — ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)
 
 ## What To Do Next
 
@@ -80,12 +81,12 @@ Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funne
 
 ### Now
 
-- RunSmart iOS: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply
+- RunSmart iOS: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what "start all over" means
 - Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next
 
 ### Next
 
-- RunSmart Web: Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections
+- RunSmart Web: Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review
 - ResumeBuilder AI (Web): Story 2 was investigated, not implemented — traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only "15+ years" in the summary). The AI optimizer correctly preserved this truthfully per its "never fabricate metrics" rule — `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input
 
 ### Later
@@ -94,15 +95,17 @@ Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funne
 - ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional — without sounding like a robot — see .agent-os/distribution/gtm-plan.md
 - RunSmart iOS: 24 saved plan(s) — latest "Build 18 ASC Submission + Garmin Brand Compliance Resend — 2026-06-26" (2026-06-26). See Saved Plans.
 - Resumely iOS: 10 saved plan(s) — latest "v1.1 Build 7 ASC Submission Readiness — 2026-06-26" (2026-06-26). See Saved Plans.
-- RunSmart Web: 12 saved plan(s) — latest "Garmin Branch Push + Repo Cleanup — 2026-06-18" (2026-06-18). See Saved Plans.
+- RunSmart Web: 13 saved plan(s) — latest "Garmin First Aha First Build Plan" (2026-07-01). See Saved Plans.
 - ResumeBuilder AI (Web): 10 saved plan(s) — latest "Fit/Match Web Copy Reconciliation Implementation Plan" (2026-06-29). See Saved Plans.
 - Agentic OS: 7 saved plan(s) — latest "OS Improvement Plan Completion Implementation Plan" (2026-07-01). See Saved Plans.
 - Portfolio: 4 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
 
 ### Blocked
 
+- RunSmart iOS: (1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified — worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) "Generate a production app to start all over" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin
 - Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)
-- RunSmart Web: screenshots are done. Only remaining step is founder sending the email
+- RunSmart Web: Garmin Developer Portal actions require founder-authenticated browser access
+- RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed
 - ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting — requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug
 
 ## Agent Queue
@@ -169,6 +172,7 @@ Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funne
 - RunSmart Web: docs/superpowers/plans/2026-06-15-garmin-production-enablement.md
 - RunSmart Web: docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md
 - RunSmart Web: docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md
+- RunSmart Web: docs/superpowers/plans/2026-07-01-garmin-first-aha.md
 - RunSmart Web: tasks/MEMORY.md
 - RunSmart Web: tasks/progress.md
 - RunSmart Web: tasks/session-log.md
