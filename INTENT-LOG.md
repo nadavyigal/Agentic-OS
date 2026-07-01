@@ -200,7 +200,7 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ---
 
-## Implementation Plan — Auto-capture (2026-06-30)
+## Implementation Plan — Auto-capture (2026-06-30, executed 2026-07-01)
 
 Manual logging failed completely (0 entries in 28 days). The fix is automation via the Stop hook.
 

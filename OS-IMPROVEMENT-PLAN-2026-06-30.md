@@ -151,15 +151,17 @@ Most of the above is agent-side. One founder-side change that would have prevent
 
 ## Immediate action queue (execute in order)
 
-| # | Action | File | Session |
-|---|---|---|---|
-| 1 | Add "never state status from memory" to LESSONS.md | `LESSONS.md` | Now |
-| 2 | Add "instruction vs question" rule to global CLAUDE.md | `~/.claude/CLAUDE.md` | Now |
-| 3 | Add "asking instead of acting" to ERRORS.md | `~/.claude/ERRORS.md` | Now |
-| 4 | Add automation gate to GLOBAL-SELF-IMPROVEMENT.md | `GLOBAL-SELF-IMPROVEMENT.md` | Now |
-| 5 | Build Stop hook INTENT-LOG auto-capture | `~/.claude/settings.json` + script | WP-22 (next session) |
-| 6 | Add hook health check to morning brief | `PROMPTS/morning-brief.md` | WP-22 |
-| 7 | Implement PostHog LLM observability in ResumeBuilder | ResumeBuilder repo | WP-21 (Codex session) |
+| # | Action | File | Session | Status |
+|---|---|---|---|---|
+| 1 | Add "never state status from memory" to LESSONS.md | `LESSONS.md` | Now | Done 2026-06-30 |
+| 2 | Add "instruction vs question" rule to global CLAUDE.md | `~/.claude/CLAUDE.md` | Now | Done 2026-06-30 |
+| 3 | Add "asking instead of acting" to ERRORS.md | `~/.claude/ERRORS.md` | Now | Done 2026-06-30 |
+| 4 | Add automation gate to GLOBAL-SELF-IMPROVEMENT.md | `GLOBAL-SELF-IMPROVEMENT.md` | Now | Done 2026-06-30 |
+| 5 | Build Stop hook INTENT-LOG auto-capture | `~/.claude/settings.json` + script | WP-22 (next session) | Done 2026-07-01 |
+| 6 | Add hook health check to morning brief | `PROMPTS/morning-brief.md` | WP-22 | Done 2026-07-01 |
+| 7 | Implement PostHog LLM observability in ResumeBuilder | ResumeBuilder repo | WP-21 (Codex session) | Done 2026-07-01 (PR #98) |
+
+Problem 3 (evidence-before-done) and Problem 5's `GLOBAL-WORKFLOWS.md` addition were closed 2026-07-01: see `LESSONS.md`, `GLOBAL-QA-RULES.md`, and `GLOBAL-WORKFLOWS.md`'s new Post-Session Checklist section.
 
 ---
 
