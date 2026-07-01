@@ -99,6 +99,23 @@ If a packet declares `Workflow pattern`, follow the escalation table in
 not replace or rename Execution mode. If `Input trust: untrusted`, apply the
 structured-extraction and approval controls in that same workflow file.
 
+### Mode Contracts
+
+Every work packet declares a `Mode`. Mode answers "what kind of work is this,"
+separate from `Owner Role` (who) and `Workflow pattern` (how). It tightens or
+loosens the Global Work Rules above for this one packet — it never overrides
+Stop And Ask Before.
+
+| Mode | Changes to the default rules for this packet |
+|---|---|
+| **Prototyper** | Throwaway is fine. Skip exhaustive test coverage and production polish; optimize for validating the idea fast. Still no secrets, still no unrelated files. |
+| **Builder** | The Global Work Rules above, unchanged: lint + tests before done, one story at a time, no unsolicited refactoring. |
+| **Sweeper** | Deletion bias. Zero new functionality even if related — simplify, unship, or clean up only. If the diff adds a feature, it is not a Sweeper packet. |
+| **Grower** | Every change must cite a named metric or funnel step it is meant to move (PostHog event, activation number, channel score from `distribution-os/channel-backlog.md`). No change without a stated "how we'll know it worked." |
+| **Maintainer** | Highest caution. No aesthetic or refactor changes bundled in. Reversibility check required before touching auth, billing, data, or migrations — this tightens Stop And Ask Before, it does not loosen it. |
+
+If a packet has no `Mode` field, treat it as **Builder** (the existing default) and flag the missing field in the Final Output.
+
 Then execute. Go beyond the basics. Deliver like a real production build.
 
 ## Do NOT Introduce Unless Asked

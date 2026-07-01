@@ -30,6 +30,7 @@ Keep this lean. Do not make work packets heavy just to fill optional fields.
 # Work Packet
 
 - Status: Draft
+- Mode: [Prototyper | Builder | Sweeper | Grower | Maintainer] — see `AGENTS.md` Mode Contracts for what each permits
 - Source: [Plan, decision, or status source]
 - Workflow pattern: normal
 - Input trust: trusted

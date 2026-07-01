@@ -63,6 +63,7 @@ Items surfaced by the second Weekly CEO Review (2026-05-31).
 ### analytics-sprint-001 — RunSmart iOS: Verify PostHog event receipt
 
 **Status:** Ready to start  
+**Mode:** Maintainer — verifying existing instrumentation fires, not adding scope  
 **Effort:** ~2 hours  
 **Decision:** EXD-002  
 **Why:** RunSmart iOS has a comprehensive `Analytics` wrapper (`AnalyticsEvents.swift`) wiring
@@ -92,6 +93,7 @@ config).
 ### analytics-sprint-002 — Resumely iOS: Integrate PostHog SDK (minimal)
 
 **Status:** Ready to start  
+**Mode:** Builder — net-new instrumentation, capped scope (≤5 events)  
 **Effort:** 1–2 days  
 **Decision:** EXD-002 + EXD-004  
 **Why:** Resumely iOS has zero analytics. No PostHog SDK is present. Shipping with zero
@@ -123,6 +125,7 @@ treat export_success as a post-submission follow-up.
 ### analytics-sprint-003 — Both apps: Define PostHog funnel in dashboard
 
 **Status:** Deferred — do after both apps are live  
+**Mode:** Grower — defines the activation funnel that informs acquisition decisions  
 **Effort:** 2 hours  
 **Why:** Once both apps have events firing, create a PostHog funnel showing
 install → app_launched → sign_in / optimize_started → run_completed / optimize_completed.

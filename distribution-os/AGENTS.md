@@ -16,6 +16,10 @@ Before producing anything:
 8. If product positioning is needed, read the project repo's `.agent-os/distribution/product-positioning.md` (or the scaffold under `distribution-os/projects/{product}/scaffold/`)
 9. State the objective in one sentence before producing anything
 
+## Promoting Work to the Daily Pipeline
+
+When a channel or experiment from this folder becomes a work packet (`executive-os/work-packets/`) or a `BACKLOG.md` line, tag it `Mode: Grower` — see `AGENTS.md` Mode Contracts. This folder stays the scoring source; the tag is only added at the point work leaves here and enters daily execution.
+
 ## What An Agent Can Do Without Asking
 
 - Draft any asset (SEO brief, LinkedIn post, email, landing page copy, directory submission, campaign brief)
