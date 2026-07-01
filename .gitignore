@@ -6,3 +6,4 @@ tools/
 # Token/cost observability generated artifacts
 dashboard/usage-log.jsonl
 dashboard/usage-manual.jsonl
+.DS_Store
