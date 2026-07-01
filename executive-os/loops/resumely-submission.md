@@ -7,9 +7,9 @@
 - Linked packet: Work Packet - Resumely Analytics + Release/QA, COO Review 2026-06-17 + live PostHog QA project 270848.
 - Leading signal: Founder reported Resumely iOS is App Store live; live PostHog QA on 2026-06-17 verified iOS launch events are present.
 - Result metric: App Store status is Ready for Sale and launch events are visible in PostHog.
-- Current milestone: Closed. Next milestone belongs to post-live D7 activation readout and dashboard hygiene.
+- Current milestone: Closed. Post-live dashboard hygiene is complete as of 2026-07-01; the remaining evidence gap is version/build attribution on custom funnel events.
 - Constraint: App Store downloads, revenue, conversion, and retention remain unknown until App Store Connect, RevenueCat, or PostHog cohort dashboards are reviewed.
-- Last reviewed: 2026-06-17
+- Last reviewed: 2026-07-01
 - Evidence source: Resumely iOS tasks/progress.md and tasks/session-log.md; trusted 2026-06-17 live PostHog QA packet; Vercel production env read-only check for web analytics.
 - Memory destination: Resumely iOS tasks/progress.md and tasks/session-log.md
 - Close condition: App Store status is Ready for Sale and launch analytics are verified.
@@ -27,12 +27,17 @@ closure. Those metrics remain unknown until their source systems are reviewed.
 
 ## Next Action
 
-Move to the post-live loop: read D7 Activation dashboard 1720819 after the first
-full 7-day live window, summarize activation and retention honestly, then decide
-whether the older dashboards should be archived. Week 1 Launch Metrics 1285341
-appears web/legacy-oriented from local config event names; My App Dashboard
-932305 was last refreshed 2026-02-18 per the QA packet. Review in PostHog before
-archiving; do not delete dashboards in this loop.
+Use PostHog dashboard 1775579 (`Resumely iOS - Operating Dashboard`) as the
+canonical founder operating dashboard. It already covers event health, DAU/auth
+mix, D7 activation, upload journey, fit-first, optimization-to-export, submit
+package saves, and failures.
+
+Run one founder real-device pass on the App Store v1.2 (7) build through upload
+-> fit check -> optimize, then confirm the custom funnel events carry
+`app_version = 1.2` and `build_number = 7`. Live production events are firing,
+but build attribution is incomplete beyond `app_launched`, so version-specific
+activation claims are not yet clean enough for lifecycle, monetization, or
+ASO-volume decisions.
 
 ## Result Log
 
@@ -43,6 +48,7 @@ archiving; do not delete dashboards in this loop.
 | 2026-06-09 | Refreshed dashboard contradicts loop card and says submission readiness | Mark drift for COO follow-up | Confirm ASC status before any further packet | COO latest review + this loop card |
 | 2026-06-11 | Refreshed dashboard still shows submission readiness while WP-5 exists for a later rejection | Keep loop active, point to ASC confirmation first | Avoid stale build-1 submission assumptions | This loop card |
 | 2026-06-17 | Founder/App Store-live statement + live PostHog QA project 270848 | Close launch loop and move to post-live D7 readout | App Store live + iOS analytics verified: `$lib=resumely-ios-urlsession`, 190 events / 18 users (7d), last event 2026-06-17; D7 dashboard 1720819 pinned | Resumely iOS progress/session log + this loop card |
+| 2026-07-01 | Live PostHog project 270848 + existing dashboard 1775579 | Verified post-live upload, fit-check, optimize, and dashboard coverage | Dashboard exists and should not be duplicated. Events are fresh on 2026-07-01 UTC; `fit_check_*` and upload-funnel events fire, but custom events mostly lack `app_version`/`build_number` attribution. | Research note + this loop card |
 
 ## Review Notes
 
@@ -55,3 +61,7 @@ archiving; do not delete dashboards in this loop.
 - Review 4: 2026-06-17 - loop closed from trusted COO review/live PostHog QA
   evidence. Closure is limited to Ready-for-Sale/live plus launch analytics
   visible; App Store metrics remain unknown.
+- Review 5: 2026-07-01 - post-live analytics loop checked in live PostHog.
+  Dashboard 1775579 is the canonical founder operating dashboard. Upload,
+  fit-check, and optimize events are live, but version/build attribution remains
+  incomplete on custom funnel events.

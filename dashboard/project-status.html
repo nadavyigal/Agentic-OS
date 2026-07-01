@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-06-30 IDT",
+    "lastUpdated": "2026-07-01 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -111,16 +111,16 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-06-30 14:40"
+    "lastSuccessfulRefresh": "2026-07-01 13:08"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build: Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 `1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
+    "overallStatus": "RunSmart iOS \u2014 Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
     "bestNextAction": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
     "mainBlockers": [
-      "RunSmart iOS: Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile",
+      "RunSmart iOS: Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows",
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
-      "RunSmart Web: None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
-      "RunSmart Web: this is a known risk called out in the reply body",
+      "RunSmart Web: None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19",
+      "RunSmart Web: screenshots are done. Only remaining step is founder sending the email",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ],
     "needsDecision": [
@@ -128,7 +128,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-06-30",
+    "evidenceFreshDate": "2026-07-01",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -139,20 +139,20 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build. Active: Build 18 ASC/Garmin pre-flight. PR #66 is merged into iOS `main`; web PR #103 is merged and recorded as deployed; local Release archive and non-upload App Store export passed for `1.0.5 (18)`. Last completed: 2026-06-29 - Build 18 train recovery: confirmed ASC closed `1.0.4`, bumped `MARKETING_VERSION` to `1.0.5` while keeping build `18`, produced a fresh archive and non-upload App Store export, and inspected exported IPA metadata/entitlements. Source: tasks/progress.md, updated 2026-06-29.",
+      "status": "Phase: Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention. Active: Ship one ASC-ready build covering Garmin attribution fallback and first-run activation (start now / remind me tomorrow, smart reminders default ON, first-run review prompt after first completed run). Last completed: 2026-06-30 - WP-20 activation: `FirstRunActivationSheet` after plan save, default smart reminders ON, first-run analytics events, App Store review prompt after `first_run_completed`, build bumped to `1.0.6 (19)`. Source: tasks/progress.md, updated 2026-06-30.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
-      "currentPhase": "LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build",
-      "activeStory": "Build 18 ASC/Garmin pre-flight. PR #66 is merged into iOS `main`; web PR #103 is merged and recorded as deployed; local Release archive and non-upload App Store export passed for `1.0.5 (18)`",
-      "lastCompletedStory": "2026-06-29 - Build 18 train recovery: confirmed ASC closed `1.0.4`, bumped `MARKETING_VERSION` to `1.0.5` while keeping build `18`, produced a fresh archive and non-upload App Store export, and inspected exported IPA metadata/entitlements",
-      "nextRecommendedStory": "Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
+      "currentPhase": "Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention",
+      "activeStory": "Ship one ASC-ready build covering Garmin attribution fallback and first-run activation (start now / remind me tomorrow, smart reminders default ON, first-run review prompt after first completed run)",
+      "lastCompletedStory": "2026-06-30 - WP-20 activation: `FirstRunActivationSheet` after plan save, default smart reminders ON, first-run analytics events, App Store review prompt after `first_run_completed`, build bumped to `1.0.6 (19)`",
+      "nextRecommendedStory": "Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "2026-06-29 - Release archive passed for `build/RunSmart-v1.0.5-build18-AppStore-20260629-codex.xcarchive`; non-upload App Store export passed to `build/RunSmart-v1.0.5-build18-AppStoreExport-20260629-codex/RunSmart.ipa`; exported IPA is `RunSmart`, `com.runsmart.lite`, `1.0.5 (18)`, encryption false, HealthKit/SIWA/associated-domains present, `get-task-allow=false`, with dSYM present. Known HealthKit deprecation warning remains. Apple public lookup still shows live `1.0.4` dated 2026-06-24",
+      "lastValidation": "2026-06-30 - `git diff --check` passed. Focused activation/reminder XCTests passed earlier on iPhone 17 simulator. After CodeRabbit fixes, focused Garmin attribution XCTests passed on iPhone 17 (`testGarminAttributionUsesActivityDeviceNameBeforeFallback`, `testGarminAttributionUsesConnectedDeviceFallbackWhenActivityLacksDeviceName`, `testGarminAttributionAddsBrandPrefixToBareModelNames`, `testGarminAttributionKeepsNonGarminSourcesUnchanged`). Generic simulator build hung in local Xcode build operations after existing HealthKit deprecation warnings and was interrupted",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-06-30",
+      "lastUpdated": "2026-07-01",
       "blockers": [
-        "Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile"
+        "Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -191,11 +191,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 1]",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 5,
+        "dirtyCount": 6,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-29 dc57e9f Tighten RunSmart analytics contract metadata",
+        "lastCommit": "2026-06-30 36b6a84 Merge pull request #68 from nadavyigal/codex/archive-v1.0.6-build19",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -230,31 +230,31 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-29",
+        "freshestDate": "2026-06-30",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-29"
+        "evidenceDate": "2026-06-30"
       },
       "taskParse": {
-        "status": "Build 18 has been moved to the next App Store train `1.0.5 (18)` after ASC rejected new uploads to closed train `1.0.4`. Fresh local archive/export validation passed and is ready for founder App Store Connect handling",
-        "currentPhase": "LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build",
-        "activeStory": "Build 18 ASC/Garmin pre-flight. PR #66 is merged into iOS `main`; web PR #103 is merged and recorded as deployed; local Release archive and non-upload App Store export passed for `1.0.5 (18)`",
-        "lastCompletedStory": "2026-06-29 - Build 18 train recovery: confirmed ASC closed `1.0.4`, bumped `MARKETING_VERSION` to `1.0.5` while keeping build `18`, produced a fresh archive and non-upload App Store export, and inspected exported IPA metadata/entitlements",
-        "nextRecommendedStory": "Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
+        "status": "WP-20 first-run activation is implemented on branch `codex/garmin-attribution-fallback` together with PR #67 Garmin Report/Activity `device_name` fallback. Ready for merge to `main` and founder ASC archive as `1.0.6 (19)`",
+        "currentPhase": "Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention",
+        "activeStory": "Ship one ASC-ready build covering Garmin attribution fallback and first-run activation (start now / remind me tomorrow, smart reminders default ON, first-run review prompt after first completed run)",
+        "lastCompletedStory": "2026-06-30 - WP-20 activation: `FirstRunActivationSheet` after plan save, default smart reminders ON, first-run analytics events, App Store review prompt after `first_run_completed`, build bumped to `1.0.6 (19)`",
+        "nextRecommendedStory": "Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply",
         "blockers": [
-          "Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile"
+          "Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows"
         ],
         "risks": [],
-        "lastValidation": "2026-06-29 - Release archive passed for `build/RunSmart-v1.0.5-build18-AppStore-20260629-codex.xcarchive`; non-upload App Store export passed to `build/RunSmart-v1.0.5-build18-AppStoreExport-20260629-codex/RunSmart.ipa`; exported IPA is `RunSmart`, `com.runsmart.lite`, `1.0.5 (18)`, encryption false, HealthKit/SIWA/associated-domains present, `get-task-allow=false`, with dSYM present. Known HealthKit deprecation warning remains. Apple public lookup still shows live `1.0.4` dated 2026-06-24",
-        "lastUpdated": "2026-06-29",
+        "lastValidation": "2026-06-30 - `git diff --check` passed. Focused activation/reminder XCTests passed earlier on iPhone 17 simulator. After CodeRabbit fixes, focused Garmin attribution XCTests passed on iPhone 17 (`testGarminAttributionUsesActivityDeviceNameBeforeFallback`, `testGarminAttributionUsesConnectedDeviceFallbackWhenActivityLacksDeviceName`, `testGarminAttributionAddsBrandPrefixToBareModelNames`, `testGarminAttributionKeepsNonGarminSourcesUnchanged`). Generic simulator build hung in local Xcode build operations after existing HealthKit deprecation warnings and was interrupted",
+        "lastUpdated": "2026-06-30",
         "qaNeeded": null,
-        "estimatedCompletion": "iOS code and local release artifact validation complete. Remaining steps are Apple ID-gated, external review, screenshot recapture, and founder send",
+        "estimatedCompletion": "Code complete on branch; remaining steps are merge, archive/upload, Apple review/live confirmation, screenshot recapture, and founder send",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-29"
+          "evidenceDate": "2026-06-30"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -296,7 +296,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "2026-06-26 \u2014 full test suite passed on iPhone 17 simulator (105 XCTest + 5 Swift Testing, 0 failures); iPhone SE 3rd gen simulator visual smoke passed for Home EN/HE, locked Optimized/Design/Expert teasers, and Me language/RTL after fixing visible Hebrew fallback strings",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-06-30",
+      "lastUpdated": "2026-07-01",
       "blockers": [
         "Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)"
       ],
@@ -421,20 +421,20 @@
       "role": "Main AI running coach product and source of product logic.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: `1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build. Active: Recapture all 6 Gate-4 screenshots on device running `1.0.5 (18)`, verify against Garmin brand PDF + reference examples, re-zip, then send `20-GARMIN-REPLY-DRAFT-2026-06-26.md` to ticket 213145/213165. Last completed: 2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store. Draft email updated (date filled, checklist updated). Source: tasks/progress.md, updated 2026-06-30.",
-      "currentPhase": "`1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build",
-      "activeStory": "Recapture all 6 Gate-4 screenshots on device running `1.0.5 (18)`, verify against Garmin brand PDF + reference examples, re-zip, then send `20-GARMIN-REPLY-DRAFT-2026-06-26.md` to ticket 213145/213165",
-      "lastCompletedStory": "2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store. Draft email updated (date filled, checklist updated)",
-      "nextRecommendedStory": "Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send",
+      "status": "Phase: `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped. Active: Founder sends `20-GARMIN-REPLY-DRAFT-2026-06-26.md` as a reply in ticket 213145/213165 from `nadav.yigal@runsmart-ai.com`, attaching `docs/garmin-application/runsmart-garmin-screenshots-ios-2026-07-01.zip`. Last completed: 2026-07-01 \u2014 recaptured, reviewed, and packaged all 6 Gate-4 screenshots against live `1.0.6 (19)`; updated `GARMIN-STATUS.md` and the reply draft to match. Discovered and confirmed root cause of a cosmetic, non-blocking bug (in-app Permissions list shows all-Off because `garmin_connections.scopes` is never written, despite the connection being healthy) \u2014 worked around it for the screenshot, didn't fix the underlying column (separate story). Source: tasks/progress.md, updated 2026-07-01.",
+      "currentPhase": "`1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped",
+      "activeStory": "Founder sends `20-GARMIN-REPLY-DRAFT-2026-06-26.md` as a reply in ticket 213145/213165 from `nadav.yigal@runsmart-ai.com`, attaching `docs/garmin-application/runsmart-garmin-screenshots-ios-2026-07-01.zip`",
+      "lastCompletedStory": "2026-07-01 \u2014 recaptured, reviewed, and packaged all 6 Gate-4 screenshots against live `1.0.6 (19)`; updated `GARMIN-STATUS.md` and the reply draft to match. Discovered and confirmed root cause of a cosmetic, non-blocking bug (in-app Permissions list shows all-Off because `garmin_connections.scopes` is never written, despite the connection being healthy) \u2014 worked around it for the screenshot, didn't fix the underlying column (separate story)",
+      "nextRecommendedStory": "Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store by founder",
+      "lastValidation": "2026-07-01 \u2014 `1.0.6 (19)` confirmed live on App Store by founder; device screenshot shows \"Last sync 1 Jul 2026 at 6:40\" confirming the live build was captured against",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-06-30",
+      "lastUpdated": "2026-07-01",
       "blockers": [
-        "None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
-        "this is a known risk called out in the reply body"
+        "None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19",
+        "screenshots are done. Only remaining step is founder sending the email"
       ],
       "risks": [
         "AI coaching correctness and user trust",
@@ -454,9 +454,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 5,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-26 69276d3 Merge pull request #107 from nadavyigal/claude/fix-dependency-vulns",
+        "lastCommit": "2026-07-01 8fa8794 docs(garmin): recapture Gate-4 screenshots against live 1.0.6 (19), ready to send",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -482,27 +482,27 @@
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-30",
+        "freshestDate": "2026-07-01",
         "evidenceGap": false,
-        "evidenceDate": "2026-06-30"
+        "evidenceDate": "2026-07-01"
       },
       "taskParse": {
         "status": "Active",
-        "currentPhase": "`1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build",
-        "activeStory": "Recapture all 6 Gate-4 screenshots on device running `1.0.5 (18)`, verify against Garmin brand PDF + reference examples, re-zip, then send `20-GARMIN-REPLY-DRAFT-2026-06-26.md` to ticket 213145/213165",
-        "lastCompletedStory": "2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store. Draft email updated (date filled, checklist updated)",
-        "nextRecommendedStory": "Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send",
+        "currentPhase": "`1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped",
+        "activeStory": "Founder sends `20-GARMIN-REPLY-DRAFT-2026-06-26.md` as a reply in ticket 213145/213165 from `nadav.yigal@runsmart-ai.com`, attaching `docs/garmin-application/runsmart-garmin-screenshots-ios-2026-07-01.zip`",
+        "lastCompletedStory": "2026-07-01 \u2014 recaptured, reviewed, and packaged all 6 Gate-4 screenshots against live `1.0.6 (19)`; updated `GARMIN-STATUS.md` and the reply draft to match. Discovered and confirmed root cause of a cosmetic, non-blocking bug (in-app Permissions list shows all-Off because `garmin_connections.scopes` is never written, despite the connection being healthy) \u2014 worked around it for the screenshot, didn't fix the underlying column (separate story)",
+        "nextRecommendedStory": "Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections",
         "blockers": [
-          "None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
-          "this is a known risk called out in the reply body"
+          "None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19",
+          "screenshots are done. Only remaining step is founder sending the email"
         ],
         "risks": [
-          "Migration drift \u2014 production has ~26 applied Supabase migrations with no matching file in v0/supabase/migrations/ (separate finding, not blocking Garmin work, needs a dedicated cleanup session)"
+          "Migration drift \u2014 production has ~26 applied Supabase migrations with no matching file in v0/supabase/migrations/ (separate finding, not blocking Garmin work, needs a dedicated cleanup session). `garmin_connections.scopes` never written (cosmetic Permissions-UI gap, not a real data-access issue)"
         ],
-        "lastValidation": "2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store by founder",
-        "lastUpdated": "2026-06-30",
+        "lastValidation": "2026-07-01 \u2014 `1.0.6 (19)` confirmed live on App Store by founder; device screenshot shows \"Last sync 1 Jul 2026 at 6:40\" confirming the live build was captured against",
+        "lastUpdated": "2026-07-01",
         "qaNeeded": "PR #101 \u2014 CodeRabbit found 2 real correctness issues + 1 doc-accuracy issue + 1 deferred nitpick (DB-level CHECK constraints, reasonable to skip since app-level clamping already enforces 0-100 and columns are already live); all addressed before merge",
-        "estimatedCompletion": "All code and backend work complete. Only remaining steps are manual: screenshot recapture + send email",
+        "estimatedCompletion": "All code, screenshot, and doc work complete. Only remaining step is manual: founder sends the email",
         "decisionsNeeded": [
           "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
         ],
@@ -513,7 +513,7 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-06-30"
+          "evidenceDate": "2026-07-01"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -544,7 +544,7 @@
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building). Active: None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work). Last completed: PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open. Source: tasks/progress.md, updated 2026-06-22. Newer commits exist after this status (last commit: 2026-06-29 89ba2a5 Merge pull request #97 from nadavyigal/codex/fit-match-web-reconciliation); trust git for the latest state.",
+      "status": "Phase: ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building). Active: None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work). Last completed: PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open. Source: tasks/progress.md, updated 2026-06-22. Newer commits exist after this status (last commit: 2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)); trust git for the latest state.",
       "currentPhase": "ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
       "activeStory": "None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work)",
       "lastCompletedStory": "PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open",
@@ -554,7 +554,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "fix/ats-jd-requirements-and-metrics (commit 3c0a4ee) \u2014 new regression test (`tests/unit/linkedin-job-extractor.test.ts` + fixture `guest-fragment-varied-headings.html`), 32/32 unit tests pass, lint clean, tsc 21 pre-existing errors only (none in touched files). Real-data repro against live Fresha LinkedIn guest fragment confirmed responsibilities/requirements/nice_to_have all populate where they were previously null",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-06-30",
+      "lastUpdated": "2026-07-01",
       "blockers": [
         "Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
       ],
@@ -578,7 +578,7 @@
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-29 89ba2a5 Merge pull request #97 from nadavyigal/codex/fit-match-web-reconciliation",
+        "lastCommit": "2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -597,7 +597,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-29",
+        "freshestDate": "2026-07-01",
         "evidenceGap": true,
         "evidenceDate": "2026-06-22"
       },
@@ -700,7 +700,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-06-30 831b4db Refresh dashboard sync state); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-01 f8adbb6 Log 2026-07-01 mode-system + OS-improvement-plan-completion session); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -710,7 +710,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-06-30",
+      "lastUpdated": "2026-07-01",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -725,14 +725,15 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 3]",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 5,
+        "dirtyCount": 2,
         "extraWorktrees": 0,
-        "lastCommit": "2026-06-30 831b4db Refresh dashboard sync state",
+        "lastCommit": "2026-07-01 f8adbb6 Log 2026-07-01 mode-system + OS-improvement-plan-completion session",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
+          "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
           "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
           "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
           "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -743,7 +744,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-06-30",
+        "freshestDate": "2026-07-01",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -802,11 +803,11 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
+      "RunSmart iOS: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply",
       "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next"
     ],
     "next": [
-      "RunSmart Web: Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send",
+      "RunSmart Web: Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections",
       "ResumeBuilder AI (Web): Story 2 was investigated, not implemented \u2014 traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only \"15+ years\" in the summary). The AI optimizer correctly preserved this truthfully per its \"never fabricate metrics\" rule \u2014 `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input"
     ],
     "later": [
@@ -816,12 +817,12 @@
       "Resumely iOS: 10 saved plan(s) \u2014 latest \"v1.1 Build 7 ASC Submission Readiness \u2014 2026-06-26\" (2026-06-26). See Saved Plans.",
       "RunSmart Web: 12 saved plan(s) \u2014 latest \"Garmin Branch Push + Repo Cleanup \u2014 2026-06-18\" (2026-06-18). See Saved Plans.",
       "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
-      "Agentic OS: 6 saved plan(s) \u2014 latest \"RunSmart Hebrew-First Distribution Playbook\" (2026-06-22). See Saved Plans.",
+      "Agentic OS: 7 saved plan(s) \u2014 latest \"OS Improvement Plan Completion Implementation Plan\" (2026-07-01). See Saved Plans.",
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
-      "RunSmart Web: None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
+      "RunSmart Web: screenshots are done. Only remaining step is founder sending the email",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ]
   },
@@ -939,13 +940,14 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-06-30 14:40",
-    "command": "./agentic-os morning",
+    "lastRefresh": "2026-07-01 13:08",
+    "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
       "Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md",
       "Agentic OS: docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+      "Agentic OS: docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
       "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
       "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -1047,11 +1049,11 @@
     {
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
-      "state": "LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build",
-      "nextAction": "Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
+      "state": "Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention",
+      "nextAction": "Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply",
       "blockerCount": 1,
       "blockers": [
-        "Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile"
+        "Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows"
       ],
       "gtm": {
         "exists": true,
@@ -1231,15 +1233,15 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 5,
+      "dirtyCount": 6,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 1]",
-      "lastCommit": "2026-06-29 dc57e9f Tighten RunSmart analytics contract metadata",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-06-30 36b6a84 Merge pull request #68 from nadavyigal/codex/archive-v1.0.6-build19",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-29",
+      "freshestDate": "2026-06-30",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-29",
+      "evidenceDate": "2026-06-30",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -1276,9 +1278,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-06-29 - Release archive passed for `build/RunSmart-v1.0.5-build18-AppStore-20260629-codex.xcarchive`; non-upload App Store export passed to `build/RunSmart-v1.0.5-build18-AppStoreExport-20260629-codex/RunSmart.ipa`; exported IPA is `RunSmart`, `com.runsmart.lite`, `1.0.5 (18)`, encryption false, HealthKit/SIWA/associated-domains present, `get-task-allow=false`, with dSYM present. Known HealthKit deprecation warning remains. Apple public lookup still shows live `1.0.4` dated 2026-06-24",
-      "parsedLastUpdated": "2026-06-29",
-      "parsedActiveStory": "Build 18 ASC/Garmin pre-flight. PR #66 is merged into iOS `main`; web PR #103 is merged and recorded as deployed; local Release archive and non-upload App Store export passed for `1.0.5 (18)`"
+      "parsedLastValidation": "2026-06-30 - `git diff --check` passed. Focused activation/reminder XCTests passed earlier on iPhone 17 simulator. After CodeRabbit fixes, focused Garmin attribution XCTests passed on iPhone 17 (`testGarminAttributionUsesActivityDeviceNameBeforeFallback`, `testGarminAttributionUsesConnectedDeviceFallbackWhenActivityLacksDeviceName`, `testGarminAttributionAddsBrandPrefixToBareModelNames`, `testGarminAttributionKeepsNonGarminSourcesUnchanged`). Generic simulator build hung in local Xcode build operations after existing HealthKit deprecation warnings and was interrupted",
+      "parsedLastUpdated": "2026-06-30",
+      "parsedActiveStory": "Ship one ASC-ready build covering Garmin attribution fallback and first-run activation (start now / remind me tomorrow, smart reminders default ON, first-run review prompt after first completed run)"
     },
     {
       "id": "resumebuilder-ios",
@@ -1414,12 +1416,12 @@
     {
       "id": "runsmart-web",
       "name": "RunSmart Web",
-      "state": "`1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build",
-      "nextAction": "Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send",
+      "state": "`1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped",
+      "nextAction": "Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections",
       "blockerCount": 2,
       "blockers": [
-        "None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
-        "this is a known risk called out in the reply body"
+        "None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19",
+        "screenshots are done. Only remaining step is founder sending the email"
       ],
       "gtm": {
         "exists": false,
@@ -1515,15 +1517,15 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 8,
+      "dirtyCount": 5,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-26 69276d3 Merge pull request #107 from nadavyigal/claude/fix-dependency-vulns",
+      "lastCommit": "2026-07-01 8fa8794 docs(garmin): recapture Gate-4 screenshots against live 1.0.6 (19), ready to send",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-30",
+      "freshestDate": "2026-07-01",
       "evidenceGap": false,
-      "evidenceDate": "2026-06-30",
+      "evidenceDate": "2026-07-01",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -1551,9 +1553,9 @@
       ],
       "sourceConfidence": "Medium",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-06-30 \u2014 `1.0.5 (18)` confirmed live on App Store by founder",
-      "parsedLastUpdated": "2026-06-30",
-      "parsedActiveStory": "Recapture all 6 Gate-4 screenshots on device running `1.0.5 (18)`, verify against Garmin brand PDF + reference examples, re-zip, then send `20-GARMIN-REPLY-DRAFT-2026-06-26.md` to ticket 213145/213165"
+      "parsedLastValidation": "2026-07-01 \u2014 `1.0.6 (19)` confirmed live on App Store by founder; device screenshot shows \"Last sync 1 Jul 2026 at 6:40\" confirming the live build was captured against",
+      "parsedLastUpdated": "2026-07-01",
+      "parsedActiveStory": "Founder sends `20-GARMIN-REPLY-DRAFT-2026-06-26.md` as a reply in ticket 213145/213165 from `nadav.yigal@runsmart-ai.com`, attaching `docs/garmin-application/runsmart-garmin-screenshots-ios-2026-07-01.zip`"
     },
     {
       "id": "resumebuilder-ai",
@@ -1647,10 +1649,10 @@
       "dirtyCount": 1,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-06-29 89ba2a5 Merge pull request #97 from nadavyigal/codex/fit-match-web-reconciliation",
+      "lastCommit": "2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-29",
+      "freshestDate": "2026-07-01",
       "evidenceGap": true,
       "evidenceDate": "2026-06-22",
       "evidenceTests": [
@@ -1695,6 +1697,13 @@
       },
       "plans": [
         {
+          "title": "OS Improvement Plan Completion Implementation Plan",
+          "path": "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "date": "2026-07-01",
+          "status": null,
+          "kind": "plan"
+        },
+        {
           "title": "RunSmart Hebrew-First Distribution Playbook",
           "path": "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
           "date": "2026-06-22",
@@ -1738,13 +1747,13 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 5,
+      "dirtyCount": 2,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 3]",
-      "lastCommit": "2026-06-30 831b4db Refresh dashboard sync state",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-01 f8adbb6 Log 2026-07-01 mode-system + OS-improvement-plan-completion session",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-06-30",
+      "freshestDate": "2026-07-01",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1753,6 +1762,7 @@
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
         "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
         "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
         "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -1803,8 +1813,8 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 1]",
-      "nextAction": "Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships",
+      "branch": "main...origin/main",
+      "nextAction": "Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1838,7 +1848,7 @@
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build. Next action: Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships. Known blockers: Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention. Next action: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply. Known blockers: Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -1876,7 +1886,7 @@
       "role": "Backend Support Engineer",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send",
+      "nextAction": "Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
       "evidence": [
@@ -1901,7 +1911,7 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: `1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build. Next action: Screenshot recapture on live `1.0.5 (18)` device \u2014 6 screens: 01-03 connection flow (verify Garmin wordmark logo shows), 04-06 activity/recovery/wellness (verify \"Garmin Forerunner 265\" or actual device name shows). Re-zip, fill `[SCREENSHOT_ZIP_FILENAME]` in draft, send. Known blockers: None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile); this is a known risk called out in the reply body. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped. Next action: Founder sends the reply email (only remaining step). Separately, non-blocking: populate `garmin_connections.scopes` on write so the Permissions UI stops showing all-Off for healthy Garmin connections. Known blockers: None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19; screenshots are done. Only remaining step is founder sending the email. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ai",
@@ -1934,13 +1944,14 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 3]",
+      "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
         "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
         "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
         "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
@@ -1948,22 +1959,22 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md, docs/superpowers/plans/2026-06-07-obsidian-integration.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md, docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
-    "portfolioState": "RunSmart iOS \u2014 LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build: Founder uploads/submits `1.0.5 (18)` to App Store Connect, waits for approval, confirms `1.0.5 (18)` live from App Store/ASC, then recaptures all 6 Gate-4 screenshots and sends the Garmin reply with the new zip. The `plan_run_cta_tapped` cohort cannot be measured until build 18 ships \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 `1.0.5 (18)` confirmed live on App Store (2026-06-30). Gate-4 Garmin reply is ALMOST READY \u2014 blocked only on screenshot recapture and re-zip against the live build \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
+    "portfolioState": "RunSmart iOS \u2014 Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention: Founder archives `1.0.6 (19)`, uploads to App Store Connect, confirms live, then recaptures all 6 Garmin Gate-4 screenshots against the fixed live build and sends Garmin reply \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 `1.0.6 (19)` confirmed live on App Store (2026-07-01, real Garmin Connect square tile now wired in). Gate-4 Garmin reply is READY TO SEND \u2014 all 6 screenshots recaptured, verified, and re-zipped \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
       "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
     ],
     "risks": [
-      "RunSmart iOS: Codex cannot upload/submit to App Store Connect or prove `1.0.5 (18)` live. Do not recapture or send Garmin evidence until `1.0.5 (18)` is confirmed live. The 01-03 logo remains a documented Garmin corporate wordmark fallback, not the Connect-specific tile",
+      "RunSmart iOS: Codex cannot upload/submit to App Store Connect or prove the next fixed build live. Do not send Garmin evidence from live `1.0.5 (18)` because Report/Run Report could still show bare `Garmin` on legacy rows",
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
-      "RunSmart Web: None blocking the send \u2014 screenshot recapture is a manual founder action on device. The 01-03 asset remains the Garmin corporate wordmark (not Connect-specific tile)",
-      "RunSmart Web: this is a known risk called out in the reply body",
+      "RunSmart Web: None \u2014 the 01-03 Connect-tile asset risk (previously the wordmark fallback) is resolved as of build 19",
+      "RunSmart Web: screenshots are done. Only remaining step is founder sending the email",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ],
     "openDecisionCount": 4,
@@ -2025,17 +2036,17 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-06-30 14:40",
-    "checksStatus": "Passed",
-    "checksCompletedAt": "2026-06-30 14:40",
+    "lastCommand": "./agentic-os refresh",
+    "lastRunAt": "2026-07-01 13:08",
+    "checksStatus": "Pending verify",
+    "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration. Next action: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next. Known blockers: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Clean",
     "targetBranch": "main...origin/main [ahead 1]",
-    "readyForNextSession": true,
+    "readyForNextSession": false,
     "summary": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
     "nextActions": [
       {
@@ -2303,9 +2314,16 @@
     {
       "project": "Agentic OS",
       "projectId": "agentic-os",
-      "total": 6,
+      "total": 7,
       "shown": 6,
       "plans": [
+        {
+          "title": "OS Improvement Plan Completion Implementation Plan",
+          "path": "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "date": "2026-07-01",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "RunSmart Hebrew-First Distribution Playbook",
           "path": "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
@@ -2340,13 +2358,6 @@
           "date": "2026-05-20",
           "status": null,
           "kind": "spec"
-        },
-        {
-          "title": "Claude Code Setup Overhaul \u2014 Implementation Plan",
-          "path": "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
-          "date": "2026-05-20",
-          "status": null,
-          "kind": "plan"
         }
       ]
     }
@@ -2693,6 +2704,44 @@
         "decision": "EXD-013"
       },
       {
+        "title": "WP-21 \u2014 ResumeBuilder PostHog LLM Observability",
+        "status": "Unknown",
+        "project": null,
+        "repoId": "research",
+        "repoPath": null,
+        "goal": null,
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-21-resumebuilder-posthog-llm-observability.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "WP-23 \u2014 RunSmart PostHog LLM Observability",
+        "status": "Unknown",
+        "project": null,
+        "repoId": "research",
+        "repoPath": null,
+        "goal": null,
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-23-runsmart-posthog-llm-observability.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
         "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
         "status": "Superseded",
         "project": "RunSmart iOS",
@@ -2836,9 +2885,9 @@
         "linkedPacket": "Work Packet - Resumely Analytics + Release/QA, COO Review 2026-06-17 + live PostHog QA project 270848",
         "leadingSignal": "Founder reported Resumely iOS is App Store live; live PostHog QA on 2026-06-17 verified iOS launch events are present",
         "resultMetric": "App Store status is Ready for Sale and launch events are visible in PostHog",
-        "currentMilestone": "Closed. Next milestone belongs to post-live D7 activation readout and dashboard hygiene",
+        "currentMilestone": "Closed. Post-live dashboard hygiene is complete as of 2026-07-01; the remaining evidence gap is version/build attribution on custom funnel events",
         "constraint": "App Store downloads, revenue, conversion, and retention remain unknown until App Store Connect, RevenueCat, or PostHog cohort dashboards are reviewed",
-        "lastReviewed": "2026-06-17",
+        "lastReviewed": "2026-07-01",
         "evidenceSource": "Resumely iOS tasks/progress.md and tasks/session-log.md; trusted 2026-06-17 live PostHog QA packet; Vercel production env read-only check for web analytics",
         "memoryDestination": "Resumely iOS tasks/progress.md and tasks/session-log.md",
         "closeCondition": "App Store status is Ready for Sale and launch analytics are verified",
@@ -2910,6 +2959,11 @@
         "name": "Analysis OS \u2014 Competitor Pricing Research Brief",
         "purpose": "1. **RunSmart paywall line is validated**: Adaptive week 2+ plans are gated by the closest direct competitor (Runna). This is the right cut.",
         "path": "executive-os/research/WP-2-competitor-pricing-research.md"
+      },
+      {
+        "name": "Resumely Post-Live Analytics Readout - 2026-07-01",
+        "purpose": "Resumely production analytics are live in PostHog, and the founder-facing operating dashboard already exists. Do not create a duplicate dashboard.",
+        "path": "executive-os/research/2026-07-01-resumely-post-live-analytics.md"
       },
       {
         "name": "Research Brief: Resumely \"ATS Match Score\" \u2014 Keep Self-Defined or Reposition",
@@ -3090,7 +3144,7 @@
       },
       {
         "name": "Work packets",
-        "what": "0 active, 22 total. Copy only Active packets; closed packets are history."
+        "what": "0 active, 24 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -3385,6 +3439,44 @@
         "decision": "EXD-013"
       },
       {
+        "title": "WP-21 \u2014 ResumeBuilder PostHog LLM Observability",
+        "status": "Unknown",
+        "project": null,
+        "repoId": "research",
+        "repoPath": null,
+        "goal": null,
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-21-resumebuilder-posthog-llm-observability.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "WP-23 \u2014 RunSmart PostHog LLM Observability",
+        "status": "Unknown",
+        "project": null,
+        "repoId": "research",
+        "repoPath": null,
+        "goal": null,
+        "source": null,
+        "workflowPattern": "normal",
+        "inputTrust": "trusted",
+        "outcomeLoop": null,
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": null,
+        "path": "executive-os/work-packets/WP-23-runsmart-posthog-llm-observability.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
         "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
         "status": "Superseded",
         "project": "RunSmart iOS",
@@ -3519,15 +3611,15 @@
       }
     ],
     "brainstormExists": true,
-    "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
+    "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- 2026-07-01: RunSmart Hebrew-first distribution playbook \u2014 full playbook already drafted at `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`, created 2026-06-22). Found un-surfaced during an OS review; was sitting only as a saved-plan pointer (`docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md`) with no path to a decision. Needs a founder go/no-go: approve and promote to an EXD decision + work packet, or park it explicitly below. Not started, not approved \u2014 no work has begun on this channel.\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 5,
+    "uncommitted": 2,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -3596,6 +3688,15 @@
         "note": "Research input \u2014 not daily execution."
       },
       {
+        "title": "2026 07 01 Resumely Post Live Analytics",
+        "path": "executive-os/research/2026-07-01-resumely-post-live-analytics.md",
+        "project": "Agentic OS",
+        "projectId": "agentic-os",
+        "executionStatus": "research_only",
+        "activePacket": null,
+        "note": "Research input \u2014 not daily execution."
+      },
+      {
         "title": "Wp 2 Competitor Pricing Research",
         "path": "executive-os/research/WP-2-competitor-pricing-research.md",
         "project": "Agentic OS",
@@ -3607,7 +3708,7 @@
     ],
     "activeCount": 0,
     "needsNextPacket": 4,
-    "researchOnlyCount": 4,
+    "researchOnlyCount": 5,
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
@@ -3615,7 +3716,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -3632,14 +3733,8 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-06-30",
+    "generatedOn": "2026-07-01",
     "items": [
-      {
-        "project": "RunSmart iOS",
-        "type": "default-branch",
-        "detail": "main has 1 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
       {
         "project": "RunSmart iOS",
         "type": "local-only",
@@ -3649,7 +3744,7 @@
       {
         "project": "RunSmart iOS",
         "type": "dirty",
-        "detail": "5 uncommitted file(s) in the primary working tree",
+        "detail": "6 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -3690,9 +3785,21 @@
       },
       {
         "project": "RunSmart Web",
+        "type": "local-only",
+        "detail": "pr-108-review: unmerged commits, never pushed, last commit 2026-06-30",
+        "action": "Push pr-108-review and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart Web",
         "type": "dirty",
-        "detail": "8 uncommitted file(s) in the primary working tree",
+        "detail": "5 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "ResumeBuilder AI (Web)",
+        "type": "unpushed",
+        "detail": "codex/resumebuilder-posthog-llm-observability: 1 unpushed commit(s), last commit 2026-06-30",
+        "action": "Push codex/resumebuilder-posthog-llm-observability and open a PR, or explicitly hand it off."
       },
       {
         "project": "ResumeBuilder AI (Web)",
@@ -3720,14 +3827,8 @@
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 3 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "5 uncommitted file(s) in the primary working tree",
+        "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3736,13 +3837,13 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-06-30 14:40",
+    "generatedAt": "2026-07-01 13:08",
     "apps": [
       {
         "projectId": 171597,
         "appId": "runsmart-ios",
         "app": "RunSmart",
-        "declaredState": "LIVE on App Store as marketing version `1.0.4`; `1.0.5 (18)` upload/submission/live confirmation remains founder-only. Garmin external reply remains gated until `1.0.5 (18)` is genuinely live and all 6 Gate-4 screenshots are recaptured against that live build",
+        "declaredState": "Combined Garmin evidence hardening + rs-onboarding-001 smallest activation intervention",
         "git": {
           "available": true,
           "tag": "pre-consolidation-r2",
@@ -3765,13 +3866,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 12,
+        "liveUsers7d": 14,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 32,
+        "liveUsers7d": 34,
         "source": "api"
       }
     ],
