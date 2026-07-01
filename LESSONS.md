@@ -15,6 +15,10 @@ Distilled 2026-06-12 from per-repo `tasks/lessons.md` files (full detail in `~/.
 - **node_modules repair** — "Cannot find module" inside node_modules means lockfile drift: `npm ci`, not `npm install`. (RunSmart Web, 2026-06-12.)
 - **Live git beats prose dashboards** — rebuild status from parsed truth each refresh; never trust narrative carried across refreshes. (status accretion bug, 2026-06-11.)
 - **Never depend on a ritual nobody triggers** — attach improvement-loop checks to rituals that demonstrably run daily, not to phrases or hooks that can silently vanish. (Dead learning loop found 2026-06-12.)
+- **Never state product status from memory** — always verify from a live source (git tag, PostHog, `./agentic-os refresh` output) and cite it inline. If no live source is available, say so. (8 sessions of drift found 2026-06-30.)
+- **Instructions are not questions** — "create X", "spec Y", "add Z" are instructions; execute them. Only ask when two different interpretations would produce meaningfully different outputs. (Recurring pattern found 2026-06-30.)
+- **Manual practices die in 30 days** — any recurring practice introduced without automation fails silently. Wire it into a hook, cron, or daily ritual on day 1. (INTENT-LOG: 0 entries in 28 days, 2026-06-30.)
+- **Compound, don't accrete** — before creating a new file, check if a living page for the subject exists. If yes, update it; use the new content as the dated evidence note. Hub pages stale by more than 7 days degrade trust in the whole OS. (Recurring wiki drift 2026-06-30.)
 
 ## Lesson Template
 

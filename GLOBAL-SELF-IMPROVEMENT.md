@@ -41,6 +41,15 @@ Keep each lesson short:
 - Applies to
 - Follow-up updates made
 
+## Automation Gate
+
+Before shipping any new recurring practice, ask: "Will this survive if nobody thinks about it for 30 days?"
+
+- If **yes** (it's wired into a hook, cron, or daily ritual): ship it.
+- If **no** (it requires human memory or discipline): add automation on day 1, or don't ship the practice at all.
+
+A practice that requires human memory is not a practice. Evidence: INTENT-LOG (0 entries in 28 days), Stop hook (silently vanished), launchd refresh (exited 126 with no alert), learning loop (dead for 3+ weeks). All failed for the same reason.
+
 ## Executive Lessons Loop (Layer 8)
 
 Executive-level lessons (CEO, CFO/Monetization, or Analysis) live in

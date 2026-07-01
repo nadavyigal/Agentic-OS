@@ -1,13 +1,13 @@
-<!-- Last Audit: 2026-06-16 — kept; 4 entries -->
+<!-- Last Audit: 2026-06-30 — backfilled 28 entries from wiki-log + memory (2026-06-08 through 2026-06-30) -->
 # Intent Log
 
-> **Experimental. Not wired into anything.** This file is a standalone, demand-side log of
-> requests and intent. Nothing reads it, no pipeline depends on it, and it changes no behavior.
-> It exists to test whether capturing *what is asked for and why* (not the fixes or
-> resolutions) adds a useful dimension of understanding.
+> **Status: Promoted.** The experiment worked — the 4 seed entries surface durable themes
+> (trust, verifiability, experiment-cheaply) that still describe how the OS is run today.
+> Manual logging failed (0 entries between June 2 and June 30). This file was backfilled
+> from the wiki-log and session memory on 2026-06-30.
 >
-> **Audit on or after 2026-06-16** (roughly two weeks in): re-read it and decide one of:
-> keep as-is, promote into the memory system / a real workflow, or delete it.
+> **Next step:** wire a lightweight auto-capture into the Stop hook so entries are written
+> at session end, not retroactively. See the implementation plan at the bottom of this file.
 
 ## Why this exists
 
@@ -36,6 +36,148 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ## Entries
 
+## 2026-06-30 - Analyse whether prompt intent capture has value in the OS
+**Request:** Look at whether prompts to Claude have been captured and if there's value in analysing intent behind them; check if any infrastructure exists.
+**Intent / why:** Wants to treat himself as a user of his own OS — understand his own AI usage patterns to improve how he works, not just what he builds.
+**Themes:** meta, self-improvement, intent-capture, demand-side-memory
+
+## 2026-06-27 - Close remaining Karpathy wiki gaps (living pages + cross-repo links)
+**Request:** Verify Dataview rendering from prior PR; close the cross-repo wikilink leak and query operation pattern; skip raw-sources layer as low-value.
+**Intent / why:** Quality of the knowledge layer matters for long-term reuse — broken links and stale hub pages silently degrade trust in everything the vault says.
+**Themes:** wiki-quality, compounding, anti-accretion, trust
+
+## 2026-06-27 - Evolve vault to Karpathy living-page pattern
+**Request:** Re-read the Karpathy wiki gist and evolve the vault: compounding living pages that update in place, and an auto-generated index that can't drift.
+**Intent / why:** The vault was accreting (adding dated notes) but not compounding (updating the canonical page). A living page stuck at a stale Current State is the same as not having one.
+**Themes:** compounding, living-pages, wiki-quality, anti-accretion
+
+## 2026-06-26 - Weekly plan + status correction
+**Request:** Morning brief, then weekly progress summary; founder corrected the plan mid-session when he found it missed already-completed Garmin work and a merged Resumely PR.
+**Intent / why:** Wants status derived from ground truth (git, PostHog), not from prose memory. Plan should reflect what is actually open, not what was open when the session started.
+**Themes:** status-truth, weekly-rhythm, verifiability, planning
+
+## 2026-06-24 - D7 activation readouts for both apps
+**Request:** Run and store the D7 activation readout for RunSmart and Resumely; update OKR baselines in the OS; create an exec→CEO→action plan prompt.
+**Intent / why:** Paywall and post-launch decisions must be data-grounded, not gut-feel. D7 is the first concrete signal of whether the product works for real users.
+**Themes:** metrics, activation, evidence-before-commit, product-decisions
+
+## 2026-06-24 - Garmin Gate-4 fixes + RunSmart iOS 1.0.4 submitted
+**Request:** File the day's implementation session (HRV/wellness fixes, Body Battery root cause, Garmin Wellness entry point), sync Agentic OS, and confirm submission.
+**Intent / why:** Garmin commercial partnership is the primary distribution moat for RunSmart. Every gate must be documented and closed cleanly, not just shipped and forgotten.
+**Themes:** garmin-partnership, distribution, ship-clean, documentation
+
+## 2026-06-26 - Secret-scan guardrails in both product repos
+**Request:** Add pre-commit secret-scan hooks to RunSmart and ResumeBuilder; create a global git-guard for main-branch commits.
+**Intent / why:** One leaked key destroys user trust and creates a legal liability. Automation is the only reliable prevention — a rule nobody reads is not a guardrail.
+**Themes:** security, automation, trust, guardrails
+
+## 2026-06-26 - Model routing policy across all products
+**Request:** Pin subagent model assignments in RunSmart and ResumeBuilder; write a global routing policy in GLOBAL-TOOL-USAGE.md.
+**Intent / why:** Uncontrolled model selection means unpredictable cost and quality. A written routing policy lets any session make consistent decisions without re-deriving them.
+**Themes:** cost-control, consistency, policy-formation, model-routing
+
+## 2026-06-26 - Token and cost observability
+**Request:** Build a usage collection script (collect_usage.py) and understand where the ~$8.6k/30d is coming from.
+**Intent / why:** Flying blind on AI cost is a founder risk. Cache-reads from long sessions are the dominant driver — need to see it to manage it.
+**Themes:** cost-visibility, observability, anti-bloat
+
+## 2026-06-26 - Trim global CLAUDE.md static context
+**Request:** Trim the global CLAUDE.md — it had grown too large and was wasting context on every session.
+**Intent / why:** Long context files eat tokens on every session and slow cold starts. The cost of a bloated instruction file is paid on every single prompt.
+**Themes:** anti-bloat, context-efficiency, static-context-diet
+
+## 2026-06-24 - Plan-generator eval harness for RunSmart
+**Request:** Build an eval harness for the RunSmart plan-generator; run it against a baseline; fix enforcement gaps surfaced by the eval.
+**Intent / why:** Shipping AI features without evals means you don't know if they regress. The eval harness is the only honest quality gate.
+**Themes:** eval, quality-gate, evidence-before-commit, ai-quality
+
+## 2026-06-24 - ResumeBuilder eval baseline
+**Request:** Ship an eval harness for the resume optimizer; establish a 100%/0 critical baseline.
+**Intent / why:** Same pattern as RunSmart — product has AI at its core but no quality measurement. An eval is the minimal honest step before any optimization claim.
+**Themes:** eval, quality-gate, evidence-before-commit, ai-quality
+
+## 2026-06-22 - Stanford STORM method adoption
+**Request:** Verify the STORM research method, adopt it into the OS (Agentic OS runbook + vault prompt + Claude.ai Project), and create a plan for the next day.
+**Intent / why:** Research currently takes hours because it's done ad-hoc. A reusable structured method with grounded citations compresses hours to minutes.
+**Themes:** research-methods, tool-adoption, efficiency, anti-hallucination
+
+## 2026-06-22 - Automate wiki maintenance (nightly sweep)
+**Request:** Close index gaps surfaced by a nightly sweep dry run; wire up overnight triage automation.
+**Intent / why:** Manual lint passes are always forgotten. Automation is the only thing that keeps the wiki from silently degrading between sessions.
+**Themes:** automation, self-maintenance, anti-drift, ops
+
+## 2026-06-21 - Study system prompt leaks for reusable agent-prompt patterns
+**Request:** Read the asgeirtj/system_prompts_leaks repo for structure only; extract what's missing from the Agentic OS; ship the useful gaps.
+**Intent / why:** Frontier AI labs have solved many agent-instruction problems already. Wants to learn from their structure without copying proprietary content.
+**Themes:** research, agent-design, meta, steal-like-an-artist
+
+## 2026-06-20 - Resolve ATS claim defensibility + skills security audit
+**Request:** Close the open ATS claim risk (defensibility of the numeric Resumely Match Score in public copy); scan all installed skills for prompt injection; audit wiki for contradictions.
+**Intent / why:** Two separate trust problems: product claims that could expose the business legally, and skills that could be hijacked if unvetted. Both need resolution before shipping.
+**Themes:** legal-risk, security, trust, anti-drift
+
+## 2026-06-20 - Positioning battlecards for RunSmart and Resumely
+**Request:** Consolidate locked positioning and do-not-claim guardrails into a single drift-check artifact per product.
+**Intent / why:** Positioning keeps drifting across notes, PRs, and copy — no canonical place to check before writing. A battlecard is the single source of truth for what can and cannot be claimed.
+**Themes:** brand-clarity, single-source-of-truth, anti-drift
+
+## 2026-06-19 - Both iOS apps shipped — update OS status
+**Request:** Update vault hub pages and Agentic OS after RunSmart v1.0.3 and Resumely v1.1 both cleared Apple review.
+**Intent / why:** Launch-and-ship phase is closed; the OS must reflect that before post-launch priorities are set. Stale "in review" status produces wrong decisions.
+**Themes:** status-truth, milestone, post-launch
+
+## 2026-06-18 - Smart connections + High Agency advisor check
+**Request:** Implement 4 smart connections from the weekly review; get a High Agency POV on whether any are rumination vs. action.
+**Intent / why:** Observations without actions are just noise. The HA advisor forces the "is this Level 0 or Level 1?" check before committing work to the backlog.
+**Themes:** high-agency, anti-rumination, connection-making, decision-quality
+
+## 2026-06-18 - Weekly Obsidian Review
+**Request:** Run weekly review after CEO review; update hub pages that say "in review" when both apps are live.
+**Intent / why:** Hub pages are what future sessions read first. If they're stale, every downstream decision starts from wrong information.
+**Themes:** status-truth, weekly-rhythm, hub-freshness, trust
+
+## 2026-06-17 - PostHog analytics QA + OS status-truth root cause
+**Request:** Full PostHog QA on both live apps; diagnose why the OS still shows "in review" when apps are live; fix the launchd refresh that silently died.
+**Intent / why:** Recurring pattern: OS claims diverge from reality within days of any manual update. Wants evidence-grounded status, not prose that nobody updates.
+**Themes:** trust, verifiability, status-truth, automation
+
+## 2026-06-16 - Resumely brand video after unexpected App Store approval
+**Request:** Pivot mid-session from CEO strategy to brand video when Resumely got Apple approval during the session.
+**Intent / why:** Launch window is short and arbitrary. The highest-ROI move in the first 48 hours post-approval is distribution, not strategy.
+**Themes:** distribution, launch-window, velocity, bias-to-action
+
+## 2026-06-15 - Garmin production roadmap ingested and tracked
+**Request:** Synthesize the full Garmin production plan, commercial terms, and four production gates into the OS after a 6-hour implementation session.
+**Intent / why:** Garmin is the primary distribution moat for RunSmart. Every gate and deadline must be documented in the OS — knowledge that lives only in session memory evaporates.
+**Themes:** garmin-partnership, distribution, documentation, long-horizon
+
+## 2026-06-12 - Full three-layer OS audit + broken learning loop fix
+**Request:** Audit all three OS layers for truth and operational health; find why the self-improvement loop was dead.
+**Intent / why:** The Stop hook was silently missing from settings.json, so lessons never got written. Wants the OS to actually learn from sessions, not just claim to.
+**Themes:** trust, verifiability, self-improvement, automation, ops
+
+## 2026-06-12 - CEO Review + weekly review
+**Request:** Run weekly and CEO review after the OS audit; surface queued decisions and what is actually open vs. deferred.
+**Intent / why:** Weekly review is the forcing function that prevents deferred decisions from silently becoming blockers. Without it, the backlog grows invisibly.
+**Themes:** weekly-rhythm, decision-quality, ceo-lens, planning
+
+## 2026-06-10 - Emergency App Store rejections (both apps, same day)
+**Request:** Fix both apps' App Store rejections same day — Apple sign-in disabled on review device.
+**Intent / why:** Review windows are short and arbitrary. Any day lost is potentially weeks. Bias toward same-day resolution over careful planning.
+**Themes:** velocity, bias-to-action, ship-clean, app-store
+
+## 2026-06-09 - High Agency framework + advisor infrastructure
+**Request:** Adopt George Mack's High Agency framework; wire it into Claude.ai Projects, the decision template, and the weekly review template.
+**Intent / why:** Recurring trap: studying and planning instead of doing. Wants a persistent advisor that asks "is this Level 0 or Level 1?" before any decision gets logged.
+**Themes:** high-agency, meta, anti-rumination, decision-quality, advisor
+
+## 2026-06-08 - Vault + wiki infrastructure bootstrap
+**Request:** Bootstrap the Obsidian vault with the Karpathy LLM Wiki pattern; build the RunSmart domain wiki; create the Daily Operations Map.
+**Intent / why:** The thinking layer was scattered across files with no index, no navigation, and no compounding. Wants a vault a Claude session can read cold and understand without context.
+**Themes:** infrastructure, wiki-quality, navigation, cold-start, compounding
+
+---
+
 ## 2026-06-02 - Make Agentic OS top-tier
 **Request:** Move the OS from "good" to "top tier" by making it more truthful, current, and operational, not by adding more files. Start by upgrading the dashboard refresh to parse local project task files.
 **Intent / why:** Distrust of curated narrative status; want state provably derived from source evidence with a confidence rating. Treat hand-written summaries as fallback, not proof.
@@ -55,3 +197,36 @@ not transcripts. The signal is the pattern across requests, not any single promp
 **Request:** Proceed to Phase 2; create INTENT-LOG.md without impacting anything; revisit in 1-2 weeks to audit whether it makes sense and decide what to do with it.
 **Intent / why:** Low-risk experimentation: add the surface, change nothing else, evaluate with real evidence before committing to or discarding it.
 **Themes:** experiment-cheaply, reversible, evidence-before-commit
+
+---
+
+## Implementation Plan — Auto-capture (2026-06-30)
+
+Manual logging failed completely (0 entries in 28 days). The fix is automation via the Stop hook.
+
+### What to build
+
+**Step 1 — Stop hook writes one intent entry per session.**
+The Stop hook already fires when a Claude session ends. Add a prompt to it:
+at session end, Claude writes a single INTENT-LOG entry (paraphrased request, intent/why, 2-3 theme tags) and prepends it to this file. No human action required.
+
+**Step 2 — Monthly theme cluster.**
+Once a month (can be part of the existing monthly lint pass), a script reads all entries, extracts theme tags, counts frequency, and appends a `## Theme Clusters — YYYY-MM` section to this file. This surfaces the pattern across requests without reading every entry.
+
+**Step 3 — Morning brief reads top themes.**
+The morning brief currently reads PROJECT-STATUS.md. Add a one-line pull from the most recent theme cluster: "Top themes this month: trust, verifiability, anti-bloat." This makes the demand-side pattern visible every day.
+
+### Files to touch
+
+| File | Change |
+|---|---|
+| `~/.claude/settings.json` | Add Stop hook that runs intent-capture prompt |
+| `scripts/agentic_os/intent_cluster.py` | New — reads entries, counts theme tags, appends cluster |
+| `PROMPTS/morning-brief.md` | Add one line: pull top themes from latest cluster |
+| This file | Auto-appended by the hook |
+
+### Sequence
+1. Write `intent_cluster.py` (standalone, no dependencies)
+2. Add Stop hook to settings.json (reuse the existing hook pattern)
+3. Test: end a session and verify the entry appears
+4. Add theme pull to morning-brief on next morning-brief session
