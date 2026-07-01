@@ -15,7 +15,7 @@ Do not use the long protocol for normal daily work.
 
 ## How to Invoke
 
-1. **Daily:** `./agentic-os morning` from the Agentic OS repo (see `DAILY.md`).
+1. **Daily:** `./agentic-os morning` from the Agentic OS repo (see `DAILY.md`). This now prints a "⚠️ Hook health check" block before anything else if a Stop hook is missing from `~/.claude/settings.json` or the launchd refresh job's last run failed — read it first if present.
 2. **Deep brief:** Use the reading protocol below only when one of the fallback conditions above is true.
 
 ---
@@ -71,6 +71,7 @@ Path: `/Users/nadavyigal/Documents/Projects /Agentic OS`
 - `DASHBOARD.md`
 - `dashboard/status.json`
 - `BACKLOG.md` (Now + Next sections only)
+- `INTENT-LOG.md` — most recent `## Theme Clusters - YYYY-MM` section only, if present. One line: "Top themes this month: X, Y, Z."
 
 ---
 

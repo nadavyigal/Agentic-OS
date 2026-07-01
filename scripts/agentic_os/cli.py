@@ -272,6 +272,41 @@ def launchd_job_status(label: str = LAUNCHD_LABEL) -> dict[str, Any]:
     return status
 
 
+def check_hook_health() -> list[str]:
+    """Non-blocking health check for global Stop hooks and the launchd refresh job.
+
+    Returns human-readable issue strings; empty list means healthy. Never raises -
+    a missing or malformed settings.json is itself a reportable issue, not a crash.
+    """
+    issues: list[str] = []
+    settings_path = Path.home() / ".claude" / "settings.json"
+    if not settings_path.exists():
+        issues.append("~/.claude/settings.json not found - Stop hooks are not configured")
+    else:
+        try:
+            settings = json.loads(settings_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            issues.append("~/.claude/settings.json is not valid JSON - hooks cannot be verified")
+        else:
+            stop_groups = settings.get("hooks", {}).get("Stop", [])
+            commands = [
+                h.get("command", "")
+                for group in stop_groups
+                for h in group.get("hooks", [])
+            ]
+            if not any("update-progress.sh" in c for c in commands):
+                issues.append("Stop hook update-progress.sh is missing from settings.json")
+            if not any("intent-log-check.sh" in c for c in commands):
+                issues.append("Stop hook intent-log-check.sh is missing from settings.json")
+
+    launchd = launchd_job_status(LAUNCHD_LABEL)
+    last_exit = launchd.get("lastExitCode")
+    if last_exit not in (None, 0):
+        issues.append(f"launchd job {LAUNCHD_LABEL} last exited with status {last_exit}")
+
+    return issues
+
+
 def parse_time_label(value: str | None) -> datetime | None:
     if not value:
         return None
@@ -3484,6 +3519,11 @@ def serve(port: int, open_browser: bool = True) -> int:
 
 
 def refresh(args: argparse.Namespace) -> int:
+    hook_issues = check_hook_health()
+    if hook_issues:
+        print("⚠️ Hook health check")
+        for issue in hook_issues:
+            print(f"  - {issue}")
     status = update_status_json(port=args.port, command=f"./agentic-os {args.command}")
     contradictions = status.get("contradictions") or []
     if contradictions:
