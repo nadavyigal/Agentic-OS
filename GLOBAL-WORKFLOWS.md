@@ -164,3 +164,13 @@ For untrusted input:
 
 Session separation can add review independence, but it is not a security boundary
 by itself.
+
+## Post-Session Checklist
+
+Run through this before ending any session that touched more than one file (skip for single-file typo fixes):
+
+- Did any living page's `Current State` block become stale because of this session's work? If yes, update it now — do not leave the update for a future session.
+- Did any decision get written to a dated note but not to `DECISIONS.md`? If yes, mirror it now.
+- Is there an uncommitted `INTENT-LOG.md` entry for today? If the Stop hook flagged one, write it before the session closes.
+
+This checklist exists because "compound, don't accrete" (`LESSONS.md`) and "manual practices die in 30 days" (`GLOBAL-SELF-IMPROVEMENT.md` Automation Gate) both showed the same failure mode: work that should update a durable source instead sat in a dated note nobody revisited.
