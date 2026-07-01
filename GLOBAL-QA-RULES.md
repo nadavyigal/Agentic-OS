@@ -11,6 +11,7 @@ Every completion claim must include evidence:
 - Visual QA for UI changes.
 - Manual flow checks for user-facing behavior.
 - Known gaps or skipped verification.
+- For any AI-facing feature: a PostHog event confirmed in the dashboard, or a test asserting it fires, before the story is closed. "The AI call works" without a captured event is not sufficient evidence.
 
 ## Visual QA
 

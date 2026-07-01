@@ -19,6 +19,7 @@ Distilled 2026-06-12 from per-repo `tasks/lessons.md` files (full detail in `~/.
 - **Instructions are not questions** — "create X", "spec Y", "add Z" are instructions; execute them. Only ask when two different interpretations would produce meaningfully different outputs. (Recurring pattern found 2026-06-30.)
 - **Manual practices die in 30 days** — any recurring practice introduced without automation fails silently. Wire it into a hook, cron, or daily ritual on day 1. (INTENT-LOG: 0 entries in 28 days, 2026-06-30.)
 - **Compound, don't accrete** — before creating a new file, check if a living page for the subject exists. If yes, update it; use the new content as the dated evidence note. Hub pages stale by more than 7 days degrade trust in the whole OS. (Recurring wiki drift 2026-06-30.)
+- **Done requires evidence, not completion** — "the feature works" is not evidence. Lint pass, test output, or a PostHog event confirmed in the dashboard is evidence. Log the evidence in the INTENT-LOG entry or the session summary. (Evidence-before-commit theme, 6 of 28 backfilled sessions, 2026-06-30.)
 
 ## Lesson Template
 
