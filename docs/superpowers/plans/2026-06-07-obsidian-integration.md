@@ -1,5 +1,7 @@
 # 2026-06-07 Obsidian Integration Plan
 
+> **Status: verified already implemented, 2026-07-01.** All 4 acceptance criteria confirmed: `docs/obsidian/obsidian-setup-guide.md` exists, `docs/obsidian/templates/` has 7 templates, `docs/obsidian/workflows/` has 6 workflows (1,111 lines total across all three). The `Nadav Builder OS` vault named in this plan's Acceptance Criteria was created and has since grown its own more elaborate workflow set (`01-Agentic-OS/Workflows/` inside the vault itself) — this repo's `docs/obsidian/` is the seed spec, the vault is the living result. No action needed; not superseded, not a duplicate.
+
 ## Summary
 
 Add Obsidian as the local-first human knowledge layer for Agentic OS. This is documentation and workflow setup only. Obsidian is not installed by agents, not synced automatically, and not used by product builds, CI, deployments, or runtime behavior.

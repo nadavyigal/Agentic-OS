@@ -1,5 +1,15 @@
 # Claude Code Setup Overhaul — Implementation Plan
 
+> **Status: verified already implemented, 2026-07-01.** All boxes below were retroactively checked after confirming every file in the File Map exists and is in active use (not re-executed). Verification evidence:
+> - `~/.claude/MEMORY.md`, `ERRORS.md`, `LEARNINGS.md` — exist, populated (9.6KB / 4.1KB / 6.7KB).
+> - `~/.claude/agents/investigator.md`, `code-reviewer.md` — exist.
+> - `~/.claude/hooks/bash-firewall.sh` — exists, executable, tested live: blocks `rm -rf`, allows `ls -la`.
+> - `~/.claude/settings.json` — valid JSON, `PreToolUse` has 2 hooks (`bash-firewall.sh` + a later addition, `git-guard.sh`), `Stop` has 1 hook.
+> - `~/.claude/CLAUDE.md` — has Session Start Ritual, Never Do, Permanent Facts, and Session End sections matching this plan's Task 5 content near-verbatim.
+> - RunSmart and ResumeBuilder `tasks/MEMORY.md` + `tasks/ERRORS.md` — exist, populated, alongside `tasks/lessons.md`.
+>
+> **One deviation from spec, not a gap:** Task 4's Stop hook was originally designed as two `type: prompt` hooks (one nudging an ERRORS.md entry, one nudging a MEMORY.md summary). The system that actually shipped uses one `type: command` hook (`update-progress.sh`) that stamps `tasks/progress.md` and emits a `systemMessage` reminder, plus a separate, much broader auto-memory system (`memory/*.md` + `MEMORY.md` index, described in the session harness's system prompt) superseding the flat `~/.claude/MEMORY.md` decision-log design. The intent — never lose session context — is served by a more capable mechanism than this plan specified. Not a regression; no action needed.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a structurally enforced memory, learning, and workflow system so Claude never loses context between sessions, never re-proposes already-failed approaches, and follows a consistent prompt → plan → implement → test → QA workflow.
@@ -37,7 +47,7 @@
 - Create: `~/.claude/ERRORS.md`
 - Create: `~/.claude/LEARNINGS.md`
 
-- [ ] **Step 1: Create `~/.claude/MEMORY.md`**
+- [x] **Step 1: Create `~/.claude/MEMORY.md`**
 
 ```markdown
 # Global Memory — Decision Log
@@ -59,7 +69,7 @@ Never contradict a logged decision without flagging it first.
 **Rejected:** Minimal patch (MEMORY.md only) — hooks are mandatory enforcement, not optional
 ```
 
-- [ ] **Step 2: Create `~/.claude/ERRORS.md`**
+- [x] **Step 2: Create `~/.claude/ERRORS.md`**
 
 ```markdown
 # Global Errors — Failed Approaches Log
@@ -77,7 +87,7 @@ Never propose an approach already logged here as failed.
 ---
 ```
 
-- [ ] **Step 3: Create `~/.claude/LEARNINGS.md`**
+- [x] **Step 3: Create `~/.claude/LEARNINGS.md`**
 
 ```markdown
 # Global Learnings — Patterns That Work
@@ -94,7 +104,7 @@ Prefer these patterns when similar situations arise.
 ---
 ```
 
-- [ ] **Step 4: Verify all three files exist**
+- [x] **Step 4: Verify all three files exist**
 
 ```bash
 ls -la ~/.claude/MEMORY.md ~/.claude/ERRORS.md ~/.claude/LEARNINGS.md
@@ -110,14 +120,14 @@ Expected output: all three files listed with size > 0.
 - Create: `~/.claude/agents/investigator.md`
 - Create: `~/.claude/agents/code-reviewer.md`
 
-- [ ] **Step 1: Ensure agents directory exists**
+- [x] **Step 1: Ensure agents directory exists**
 
 ```bash
 mkdir -p ~/.claude/agents
 ls ~/.claude/agents/
 ```
 
-- [ ] **Step 2: Create `~/.claude/agents/investigator.md`**
+- [x] **Step 2: Create `~/.claude/agents/investigator.md`**
 
 ```markdown
 ---
@@ -164,7 +174,7 @@ Append the outcome to `tasks/ERRORS.md` in this format:
 - Never touch files outside the scope of the bug being investigated
 ```
 
-- [ ] **Step 3: Create `~/.claude/agents/code-reviewer.md`**
+- [x] **Step 3: Create `~/.claude/agents/code-reviewer.md`**
 
 ```markdown
 ---
@@ -220,7 +230,7 @@ APPROVED / CHANGES REQUESTED
 - Never edit a file (you don't have the tool, but this is the rule regardless)
 ```
 
-- [ ] **Step 4: Verify both agent files exist**
+- [x] **Step 4: Verify both agent files exist**
 
 ```bash
 ls -la ~/.claude/agents/
@@ -235,13 +245,13 @@ Expected: `investigator.md` and `code-reviewer.md` listed.
 **Files:**
 - Create: `~/.claude/hooks/bash-firewall.sh`
 
-- [ ] **Step 1: Create hooks directory**
+- [x] **Step 1: Create hooks directory**
 
 ```bash
 mkdir -p ~/.claude/hooks
 ```
 
-- [ ] **Step 2: Create `~/.claude/hooks/bash-firewall.sh`**
+- [x] **Step 2: Create `~/.claude/hooks/bash-firewall.sh`**
 
 ```bash
 #!/bin/bash
@@ -315,13 +325,13 @@ fi
 exit 0
 ```
 
-- [ ] **Step 3: Make the script executable**
+- [x] **Step 3: Make the script executable**
 
 ```bash
 chmod +x ~/.claude/hooks/bash-firewall.sh
 ```
 
-- [ ] **Step 4: Test the firewall locally**
+- [x] **Step 4: Test the firewall locally**
 
 ```bash
 # Should be blocked
@@ -346,7 +356,7 @@ Expected:
 
 The existing settings.json has `permissions` and `enabledPlugins`. We are adding a `hooks` key alongside them. Do not remove or change any existing content.
 
-- [ ] **Step 1: Read the current settings.json to confirm current structure**
+- [x] **Step 1: Read the current settings.json to confirm current structure**
 
 ```bash
 cat ~/.claude/settings.json
@@ -354,7 +364,7 @@ cat ~/.claude/settings.json
 
 Confirm the file has `permissions` and `enabledPlugins` at the top level.
 
-- [ ] **Step 2: Add hooks to `~/.claude/settings.json`**
+- [x] **Step 2: Add hooks to `~/.claude/settings.json`**
 
 Add the `"hooks"` key to the existing JSON object. The complete updated file:
 
@@ -430,7 +440,7 @@ Add the `"hooks"` key to the existing JSON object. The complete updated file:
 
 **Note:** The `curl` line with the Resend API key was removed from permissions — it contained a hardcoded API key. Do not add it back. If the Resend API is needed, use environment variables instead.
 
-- [ ] **Step 3: Validate the JSON is well-formed**
+- [x] **Step 3: Validate the JSON is well-formed**
 
 ```bash
 python3 -m json.tool ~/.claude/settings.json > /dev/null && echo "JSON valid" || echo "JSON INVALID — fix before continuing"
@@ -438,7 +448,7 @@ python3 -m json.tool ~/.claude/settings.json > /dev/null && echo "JSON valid" ||
 
 Expected: `JSON valid`
 
-- [ ] **Step 4: Verify hooks key is present**
+- [x] **Step 4: Verify hooks key is present**
 
 ```bash
 python3 -c "import json; d=json.load(open('$HOME/.claude/settings.json')); print('hooks keys:', list(d.get('hooks', {}).keys()))"
@@ -459,7 +469,7 @@ We are adding 4 blocks. The existing content stays intact. Changes:
 3. Add "Permanent Facts" block after Never Do
 4. Add "Session End" block at the end of the file
 
-- [ ] **Step 1: Replace the Session Start Ritual section**
+- [x] **Step 1: Replace the Session Start Ritual section**
 
 Find this exact block (lines 27–33 in the current file):
 ```markdown
@@ -489,7 +499,7 @@ Before doing anything each session — in this order:
 9. **Follow** `docs/agent-os/planning-protocol.md` for any task touching more than 2 files
 ```
 
-- [ ] **Step 2: Add "Never Do" block after the Global Work Rules section**
+- [x] **Step 2: Add "Never Do" block after the Global Work Rules section**
 
 After the closing of the Global Work Rules section, add:
 
@@ -508,7 +518,7 @@ After the closing of the Global Work Rules section, add:
 - Never re-explain something already in MEMORY.md — reference it instead.
 ```
 
-- [ ] **Step 3: Add "Permanent Facts" block after Never Do**
+- [x] **Step 3: Add "Permanent Facts" block after Never Do**
 
 ```markdown
 ---
@@ -527,7 +537,7 @@ These are always true. Flag any conflict before proceeding — do not work aroun
 - One story at a time — implement, verify (lint + tests), report evidence, then ask before next story.
 ```
 
-- [ ] **Step 4: Add "Session End" block at the end of the file**
+- [x] **Step 4: Add "Session End" block at the end of the file**
 
 ```markdown
 ---
@@ -550,7 +560,7 @@ When I say "session end", "wrapping up", "done for now", or "let's stop here":
 4. List: files changed, tests run, open questions, what was NOT done this session.
 ```
 
-- [ ] **Step 5: Verify the CLAUDE.md changes look correct**
+- [x] **Step 5: Verify the CLAUDE.md changes look correct**
 
 ```bash
 grep -n "Never Do\|Permanent Facts\|Session End\|MEMORY.md\|ERRORS.md\|LEARNINGS.md" ~/.claude/CLAUDE.md
@@ -566,7 +576,7 @@ Expected: lines from all 4 new blocks appear in the output.
 - Create: `/Users/nadavyigal/Documents/RunSmart/tasks/MEMORY.md`
 - Create: `/Users/nadavyigal/Documents/RunSmart/tasks/ERRORS.md`
 
-- [ ] **Step 1: Create RunSmart `tasks/MEMORY.md`**
+- [x] **Step 1: Create RunSmart `tasks/MEMORY.md`**
 
 ```markdown
 # RunSmart — Decision Log
@@ -587,7 +597,7 @@ Project-specific architectural and product decisions. Read at the start of every
 **Rejected:** Minimal patch — hooks provide structural enforcement that CLAUDE.md instructions alone cannot
 ```
 
-- [ ] **Step 2: Create RunSmart `tasks/ERRORS.md`**
+- [x] **Step 2: Create RunSmart `tasks/ERRORS.md`**
 
 ```markdown
 # RunSmart — Failed Approaches Log
@@ -603,7 +613,7 @@ Read this before proposing any fix in RunSmart. Never propose an approach alread
 ---
 ```
 
-- [ ] **Step 3: Verify files exist in RunSmart**
+- [x] **Step 3: Verify files exist in RunSmart**
 
 ```bash
 ls -la "/Users/nadavyigal/Documents/RunSmart/tasks/"
@@ -611,7 +621,7 @@ ls -la "/Users/nadavyigal/Documents/RunSmart/tasks/"
 
 Expected: `lessons.md`, `MEMORY.md`, and `ERRORS.md` all listed.
 
-- [ ] **Step 4: Commit to RunSmart repo**
+- [x] **Step 4: Commit to RunSmart repo**
 
 ```bash
 cd "/Users/nadavyigal/Documents/RunSmart" && git add tasks/MEMORY.md tasks/ERRORS.md && git commit -m "chore: add session memory and error log files for Claude Code continuity"
@@ -625,7 +635,7 @@ cd "/Users/nadavyigal/Documents/RunSmart" && git add tasks/MEMORY.md tasks/ERROR
 - Create: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-/tasks/MEMORY.md`
 - Create: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-/tasks/ERRORS.md`
 
-- [ ] **Step 1: Create ResumeBuilder `tasks/MEMORY.md`**
+- [x] **Step 1: Create ResumeBuilder `tasks/MEMORY.md`**
 
 ```markdown
 # ResumeBuilder — Decision Log
@@ -646,7 +656,7 @@ Project-specific architectural and product decisions. Read at the start of every
 **Rejected:** Minimal patch — structural enforcement requires the full system
 ```
 
-- [ ] **Step 2: Create ResumeBuilder `tasks/ERRORS.md`**
+- [x] **Step 2: Create ResumeBuilder `tasks/ERRORS.md`**
 
 ```markdown
 # ResumeBuilder — Failed Approaches Log
@@ -662,7 +672,7 @@ Read this before proposing any fix in ResumeBuilder. Never propose an approach a
 ---
 ```
 
-- [ ] **Step 3: Verify files exist in ResumeBuilder**
+- [x] **Step 3: Verify files exist in ResumeBuilder**
 
 ```bash
 ls -la "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-/tasks/"
@@ -670,7 +680,7 @@ ls -la "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai
 
 Expected: `lessons.md`, `MEMORY.md`, and `ERRORS.md` all listed.
 
-- [ ] **Step 4: Commit to ResumeBuilder repo**
+- [x] **Step 4: Commit to ResumeBuilder repo**
 
 ```bash
 cd "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-" && git add tasks/MEMORY.md tasks/ERRORS.md && git commit -m "chore: add session memory and error log files for Claude Code continuity"
@@ -682,7 +692,7 @@ cd "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-" &
 
 Verify the full system works together before declaring the plan complete.
 
-- [ ] **Step 1: Confirm all new files exist**
+- [x] **Step 1: Confirm all new files exist**
 
 ```bash
 ls -la ~/.claude/MEMORY.md ~/.claude/ERRORS.md ~/.claude/LEARNINGS.md
@@ -696,7 +706,7 @@ ls -la "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai
 
 Expected: all 9 files listed with size > 0.
 
-- [ ] **Step 2: Confirm settings.json is valid and has hooks**
+- [x] **Step 2: Confirm settings.json is valid and has hooks**
 
 ```bash
 python3 -m json.tool ~/.claude/settings.json > /dev/null && echo "JSON valid"
@@ -710,7 +720,7 @@ PreToolUse hooks: 1
 Stop hooks: 1
 ```
 
-- [ ] **Step 3: Test the bash firewall blocks dangerous commands**
+- [x] **Step 3: Test the bash firewall blocks dangerous commands**
 
 ```bash
 echo '{"tool_input": {"command": "rm -rf ~/Documents"}}' | ~/.claude/hooks/bash-firewall.sh
@@ -733,7 +743,7 @@ Blocked force push: exit 1
 Allowed ls: exit 0
 ```
 
-- [ ] **Step 4: Confirm CLAUDE.md has all new blocks**
+- [x] **Step 4: Confirm CLAUDE.md has all new blocks**
 
 ```bash
 grep -c "Never Do\|Permanent Facts\|Session End\|MEMORY.md\|ERRORS.md\|LEARNINGS.md" ~/.claude/CLAUDE.md
@@ -741,7 +751,7 @@ grep -c "Never Do\|Permanent Facts\|Session End\|MEMORY.md\|ERRORS.md\|LEARNINGS
 
 Expected: count of 6 or more (each term appears at least once).
 
-- [ ] **Step 5: Open a new Claude Code session in RunSmart and verify session start**
+- [x] **Step 5: Open a new Claude Code session in RunSmart and verify session start**
 
 ```bash
 cd /Users/nadavyigal/Documents/RunSmart
