@@ -1,0 +1,90 @@
+# Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications
+
+- Status: Open — blocked on WP-25 (connection gate) landing first, and on WP-27 (evidence pack) before the commercial app is actually submitted for Production review
+- Created: 2026-07-02
+- Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24
+- Mode: Maintainer
+- Workflow pattern: normal
+- Input trust: founder-authenticated external system (Garmin Developer Portal) — every field value must be confirmed with the founder before submission, nothing external goes out without explicit sign-off in the session
+- Outcome loop: RunSmart Garmin production approval
+- Related: WP-24 (superseded by this packet — see WP-24's Status line pointer), WP-25 (must land first), WP-27 (evidence dependency), [[project_wp24_garmin_fresh_production_app]] memory
+- Success signal: two Developer Portal applications exist (Internal Test, Commercial), the commercial one has been submitted for Production review exactly once with a complete evidence package, and no further "what is this / start over" replies have come back from Garmin
+
+## Owner Role
+
+Release Manager + RunSmart Web operator. Execute with Codex/Claude in a session where the founder has `developerportal.garmin.com` open and logged in in their own browser — this is founder-credentialed and external. Codex drives field-by-field content and evidence prep; the founder performs the actual clicks/logins/submission.
+
+## Project
+
+RunSmart Web (supporting evidence, credentials) + Garmin Developer Portal (external, browser-based)
+
+Path: `/Users/nadavyigal/Documents/RunSmart`
+
+## Goal
+
+File exactly what Marc Lussi asked for on 2026-07-01: two separate Developer Portal applications, not a reset of the old one. Submit the commercial application for Production review **once**, complete, with every item numbered against Garmin's own requirements list — not another partial, iterative reply.
+
+## Context
+
+Garmin deactivated RunSmart's single Evaluation-tier application on 2026-07-01 because it was serving real (external) users, which Evaluation tier's Terms prohibit outright. This is not a continuation of the three prior Gate-4 brand rejections — it is a different, higher-severity finding that makes the old app unusable regardless of how compliant its screenshots become. Garmin requires two new applications: one for internal testing/verification only, one for commercial/production use after passing review.
+
+The STORM analysis (vault `2026-07-02-garmin-deactivation-storm.md`) found, across five independent lenses, one consistent recommendation: this thread's problem was never really the brand assets, it was treating a deterministic compliance process as a negotiable conversation — three same-day, partial replies in nine days read as thrashing, not diligence. The fix is not speed, it is completeness: one full, numbered, boring resubmission after everything is actually ready.
+
+Founder already confirmed the two-app plan to Marc by email on 2026-07-02 (10:31). The reply is sent; the work is filing the apps and preparing the resubmission correctly this time.
+
+## Read First
+
+- Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (full five-lens analysis + ordered plan)
+- Builder OS vault `02-Products/RunSmart/Domain/Garmin-Integration.md` (Current State block)
+- `docs/garmin-application/GARMIN-STATUS.md`
+- Garmin email chain, 2026-07-01 and 2026-07-02 (founder has this; ticket 213165)
+- `docs/garmin-application/21-GARMIN-REPLY-DRAFT-2026-07-01-3RD-REJECTION.md` and any later draft for tone/precedent
+- WP-25 (must be merged before Step 1 below — the connection gate should already be live so no new user connects mid-filing)
+
+## Task
+
+1. **Confirm WP-25 landed.** Do not proceed to portal work until the connection gate and credential guard from WP-25 are merged — filing new apps while new users can still hit the dead old app makes the outage worse, not better.
+2. **File the Internal Testing / Verification application.**
+   - Name: `RunSmart - Internal Test` (avoid anything that reads production-facing to a future reviewer).
+   - Tier: Evaluation.
+   - Scope: Health API + Activity API (import only). No Training/Courses API.
+   - Users: founder's own Garmin test account(s) only — never a real RunSmart customer.
+   - Record `client_id`/`client_secret`; store only in a non-production environment (local `.env`, Vercel Preview, or dedicated staging), matching `GARMIN_TEST_CLIENT_ID`/`GARMIN_TEST_CLIENT_SECRET` from WP-25.
+   - Use this application for Gate-4 screenshot capture (WP-27) and for running Garmin's Data Generator + Partner Verification tools, including the still-open **USER_DEREG** coverage item — this can finally be demonstrated deliberately on a test account instead of waiting for an organic real-user disconnect.
+3. **Do NOT file the commercial application yet if WP-27's evidence isn't ready.** Only proceed to commercial filing once WP-27 reports the live build confirmed and real-device screenshots captured.
+4. **File the Commercial application** (once WP-27 is done):
+   - Name: `RunSmart` (public-facing name).
+   - Tier: request Production directly if the portal offers it for a new application; otherwise Evaluation-then-Production. Observe what the portal actually presents and report back — this flow for a brand-new application (vs. an upgrade of an existing one) is unconfirmed.
+   - Scope: Health API + Activity API (import only). Explicitly do NOT request Training/Courses API — this caused an earlier unresolvable demand for a screenshot RunSmart cannot produce (import-only product, workout-push parked per 2026-06-25 decision).
+   - Commercial terms: already answered by Garmin 2026-06-15 — do not re-ask. Subscription use YES, AI coaching from Garmin data YES, no license fees, 30-day historical data max.
+   - Account: `nadav.yigal@runsmart-ai.com` only (company domain, no freemail), API Blog notifications enabled, no third-party integrators.
+5. **Assemble the resubmission package**, numbered against Garmin's own four-gate requirements list verbatim (Legal / Technical / Account / UX+Brand — see the 2026-06-22 requirements email in the thread), using WP-27's real-device evidence. Draft the reply for founder review before sending — no email goes to Marc without explicit sign-off in the session.
+6. **Submit once.** After the founder confirms the draft, submit the commercial application for Production review and send the single consolidated reply. Do not send a follow-up until Garmin responds.
+7. Update `docs/garmin-application/GARMIN-STATUS.md`, both repos' `tasks/progress.md`, and the Builder OS vault `Garmin-Integration.md` Current State block with both applications' portal references and the submission date.
+
+## Constraints
+
+- No Garmin Developer Portal action, and no email to Marc, without the founder confirming in the current session.
+- Never connect a real RunSmart user account to the internal-testing application.
+- Do not resubmit for Production review using simulator screenshots or a build that isn't the one actually live on the App Store.
+- Do not re-add Training/Courses API scope to either application.
+- Do not rotate production `GARMIN_CLIENT_ID`/`GARMIN_CLIENT_SECRET` until the commercial application's credentials exist and are ready to receive traffic (that cutover is its own step after approval, not part of this packet).
+- One consolidated resubmission, not another round of partial replies — this is the whole point of the packet.
+
+## Validation
+
+- Internal Test application exists in the portal; credentials confirmed present only in non-production env.
+- Data Generator + Partner Verification run against the Internal Test app, including a deliberate USER_DEREG event, with results captured for the evidence package.
+- Commercial application exists; scope matches exactly Health + Activity import, no Training API.
+- Resubmission reply reviewed and approved by the founder before sending.
+
+## Completion Gate
+
+Report:
+
+- Internal Test application portal reference and confirmation credentials are non-production only.
+- Data Generator / Partner Verification results, including USER_DEREG coverage.
+- Commercial application portal reference and exact scope requested.
+- Whether the resubmission was sent (date, and confirm founder approved it first) or is still pending WP-27.
+- `GARMIN-STATUS.md` and vault `Garmin-Integration.md` update confirmation.
+- What was NOT done.

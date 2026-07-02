@@ -2,7 +2,7 @@
 
 **Created:** 2026-07-01
 **Updated:** 2026-07-01 — Marc confirmed the answer to WP-24's original open question, and it's worse than the hypothetical: escalated from "which portal capability exists" to an active deactivation.
-**Status:** URGENT — the current (sole) application is being deactivated by Garmin. Check live-user impact before anything else.
+**Status:** SUPERSEDED (2026-07-02) — scope grew beyond a single packet after the STORM analysis (Builder OS vault `2026-07-02-garmin-deactivation-storm.md`, PR #13). Split into WP-25 (gate off new connections + push/merge the credential guard, which was stranded local-only at `baa19aa`), WP-26 (file the two portal applications + single consolidated resubmission — the direct continuation of this packet's Goal), WP-27 (real-device evidence pack, a hard dependency this packet under-specified), and WP-28 (reconnect flow for the 7 existing users — a gap this packet never covered). The reconnaissance and context below remain accurate background; execute via WP-25 → WP-27 → WP-26 → WP-28 in that dependency order, not this file.
 **Repos:** `/Users/nadavyigal/Documents/RunSmart` (web/backend), `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app` (iOS)
 **External system:** Garmin Developer Portal (`developerportal.garmin.com`) — browser-based, founder-authenticated
 **Execute with:** Codex, in a session where the founder has the Garmin Developer Portal open and logged in in their own browser. Codex reads/writes the repos for supporting evidence and drives the field-by-field portal work; the founder performs the actual clicks/logins since this is founder-credentialed and external.
