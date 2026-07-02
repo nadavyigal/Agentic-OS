@@ -36,7 +36,9 @@ Cursor.
 - No auto-execution of any path (explicitly rejected in design).
 - No new taxonomy: it composes existing tables (`ORCHESTRATION-GATE.md` Tiers/
   Modes/Patterns, vault advisors, `GLOBAL-WORKFLOWS.md`). It invents nothing.
-- Not building the Red Team advisor prompt (tracked separately; see Open Items).
+- Not building the Red Team advisor prompt (was unbuilt at design time; built
+  separately in vault PR #14, 2026-07-02, and now referenced as real — see
+  Open Items).
 - Not a replacement for `DAILY.md`, `ORCHESTRATION-GATE.md`, or the advisors — it
   is the layer above them that decides which one the prompt needs.
 
@@ -109,15 +111,18 @@ Advisor selection:
   ("is this Level 0 or Level 1?"). Source: the vault's `/advisor` command
   (project-scoped to the Nadav Builder OS vault repo) and vault
   `04-Prompts/Claude/high-agency-advisor.md`.
-- **Red Team** — needs adversarial challenge. **Unbuilt** (no file exists). The
-  advisor recommends it with a note that it is not yet built and falls back to
-  the `adversarial-review` pattern in `GLOBAL-WORKFLOWS.md`.
+- **Red Team** — needs adversarial stress-testing of a plan/launch/pitch/
+  feature/hire/decision before committing to it. Built 2026-07-02 (vault PR
+  #14): the vault's `/red-team` command (project-scoped, same pattern as
+  `/advisor`) and vault `04-Prompts/Claude/cia-red-team-stress-test.md` — 4
+  phases (Key Assumptions Check, Pre-Mortem, Hostile Competitor, 1-Star
+  Review) adapted from the CIA Tradecraft Primer.
 
 Output contract:
 
 ```
 VERDICT: Think — <one-sentence why>
-Advisor: <Storm | High-Agency | Red Team (unbuilt → adversarial-review fallback)>
+Advisor: <Storm | High-Agency | Red Team>
 
 <paste-ready advisor prompt, with the framed question inlined>
 ```
@@ -177,14 +182,15 @@ expected path and a block that is genuinely one-action-to-start:
 4. "What should I progress this week?" → **Act** → reads decisions/plans/WPs →
    recommends the next milestone + paste-ready packet.
 5. "Poke holes in my plan to file two Garmin portal apps." → **Think** (Red Team)
-   → recommend Red Team, note unbuilt, fall back to adversarial-review.
+   → recommend Red Team, paste-ready `/red-team` prompt.
 6. A vague one-liner with no clear signal → **Act** (default) → gate default
    (Tier 1 · Builder · normal) + note low confidence.
 
 ## Open Items (out of scope for this spec)
 
-- Build the Red Team advisor prompt as a real file (vault
-  `04-Prompts/Claude/red-team-advisor.md`), mirroring the Storm / High-Agency
-  pattern. Until then, Think routes to it with the unbuilt note.
+- ~~Build the Red Team advisor prompt as a real file~~ — done, vault PR #14
+  (2026-07-02): `.claude/commands/red-team.md` + vault
+  `04-Prompts/Claude/cia-red-team-stress-test.md`. Built independently of
+  this spec's timeline; Founder Advisor updated to reference it as real.
 - Decide whether `/founder` should later gain an opt-in act-on-confirm mode
   (explicitly deferred; recommend-only for now).

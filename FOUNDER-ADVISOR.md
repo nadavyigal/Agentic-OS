@@ -52,18 +52,22 @@ Pick exactly one advisor:
   anti-rumination challenge ("is this Level 0 or Level 1?"). Source: the
   vault's `/advisor` command (project-scoped to the Nadav Builder OS vault
   repo) and vault `04-Prompts/Claude/high-agency-advisor.md`.
-- **Red Team** — the prompt needs adversarial challenge ("poke holes in
-  this," "what could go wrong," "is this safe to ship"). **This advisor is
-  not built yet — no file exists anywhere, vault or Agentic OS.** Recommend
-  it anyway when it is the right fit, say plainly that it is unbuilt, and
-  fall back to the `adversarial-review` pattern in `GLOBAL-WORKFLOWS.md`
-  (owner: Risk OS / QA / Taste, depending on context).
+- **Red Team** — the prompt needs adversarial stress-testing before
+  committing ("poke holes in this," "what could go wrong," "is this safe
+  to ship," a plan/launch/pitch/feature/hire/decision that hasn't been
+  challenged yet). Source: the vault's `/red-team` command (project-scoped
+  to the Nadav Builder OS vault repo, same pattern as `/advisor`) and vault
+  `04-Prompts/Claude/cia-red-team-stress-test.md`. Runs 4 phases in one
+  pass: Key Assumptions Check, Pre-Mortem, Hostile Competitor, 1-Star
+  Review. See vault `04-Prompts/Claude/thinking-tools-guide.md` if it's
+  unclear whether this prompt calls for Red Team, Storm, or High-Agency
+  instead.
 
 Output exactly this shape:
 
 ```
 VERDICT: Think — <one sentence: why this is a thinking prompt, not an action>
-Advisor: <Storm | High-Agency Advisor | Red Team (unbuilt — falls back to adversarial-review)>
+Advisor: <Storm | High-Agency Advisor | Red Team>
 
 <the paste-ready prompt for that advisor, with the founder's actual
 question already filled in — reworded into that advisor's format, not a
