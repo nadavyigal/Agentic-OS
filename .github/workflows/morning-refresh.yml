@@ -1,0 +1,66 @@
+name: Morning Refresh (cloud)
+
+# Cloud replacement for the local launchd job (com.nadav.agentic-os-refresh),
+# which is intentionally left as-is and blocked on macOS TCC/Full Disk Access.
+# This runs the same `./agentic-os refresh` pipeline on a GitHub-hosted runner
+# so status stays fresh even when the Mac is asleep, locked, or off.
+#
+# 04:00 UTC = 07:00 IDT (UTC+3, summer). During Israel Standard Time (UTC+2,
+# winter) this becomes 06:00 IST. Adjust the cron below at the DST boundary if
+# the hour drifting by one matters to you.
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Agentic OS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Clone sibling repos (read-only, shallow)
+        run: |
+          set -euo pipefail
+          base="$GITHUB_WORKSPACE/siblings/Documents"
+          mkdir -p "$base"
+          git clone --depth 1 https://github.com/nadavyigal/Running-coach-.git \
+            "$base/RunSmart"
+          mkdir -p "$base/Projects /ResumeBuilder"
+          git clone --depth 1 https://github.com/nadavyigal/new-ResumeBuilder-ai-.git \
+            "$base/Projects /ResumeBuilder/new-ResumeBuilder-ai-"
+          git clone --depth 1 https://github.com/nadavyigal/ResumeBuilder-IOS-APP.git \
+            "$base/Projects /ResumeBuilder/ResumeBuilder IOS APP"
+          mkdir -p "$base/Projects /IOS RunSmart light "
+          git clone --depth 1 https://github.com/nadavyigal/IOS-runsmart-light-app-.git \
+            "$base/Projects /IOS RunSmart light /IOS RunSmart app"
+
+      - name: Refresh status
+        env:
+          AGENTIC_OS_PATH_ROOT_MAP: "/Users/nadavyigal/Documents=>${{ github.workspace }}/siblings/Documents"
+        run: python3 scripts/agentic_os/cli.py refresh
+
+      - name: Commit refreshed status
+        run: |
+          set -euo pipefail
+          git config user.name "agentic-os-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add DASHBOARD.md PROJECT-STATUS.md dashboard/ executive-os/EXECUTIVE-DASHBOARD.md
+          if git diff --cached --quiet; then
+            echo "No status changes."
+          else
+            git commit -m "chore: cloud morning refresh $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

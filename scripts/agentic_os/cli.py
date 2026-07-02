@@ -465,6 +465,24 @@ def write_json(path: Path, data: dict[str, Any]) -> None:
     path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
+def remap_ci_path(path: Path) -> Path:
+    """Remap a local Mac path to its CI clone location.
+
+    PROJECT-PATHS.md holds Nadav's local absolute paths. In CI (e.g. the cloud
+    morning-refresh workflow) sibling repos are cloned under a different root, so
+    AGENTIC_OS_PATH_ROOT_MAP="<local-prefix>=><ci-prefix>" swaps the prefix before
+    the path is read. No-op when the env var is unset (local/launchd runs).
+    """
+    mapping = os.environ.get("AGENTIC_OS_PATH_ROOT_MAP")
+    if not mapping or "=>" not in mapping:
+        return path
+    local_prefix, ci_prefix = mapping.split("=>", 1)
+    path_str = str(path)
+    if path_str.startswith(local_prefix):
+        return Path(ci_prefix + path_str[len(local_prefix):])
+    return path
+
+
 def parse_project_paths() -> list[tuple[str, Path]]:
     text = (ROOT / "PROJECT-PATHS.md").read_text(encoding="utf-8")
     rows: list[tuple[str, Path]] = []
@@ -477,7 +495,10 @@ def parse_project_paths() -> list[tuple[str, Path]]:
         name = re.sub(r"`", "", cells[0]).strip()
         path_match = re.search(r"`([^`]+)`", cells[1])
         if name in PROJECT_ALIASES and path_match:
-            rows.append((name, Path(path_match.group(1))))
+            # This repo's own row always resolves to ROOT (this checkout), never
+            # remapped -- there's no sibling clone of Agentic OS itself in CI.
+            resolved = ROOT if name == "Global Agentic OS" else remap_ci_path(Path(path_match.group(1)))
+            rows.append((name, resolved))
     if "Global Agentic OS" not in {name for name, _ in rows}:
         rows.append(("Global Agentic OS", ROOT))
     return rows

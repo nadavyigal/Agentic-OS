@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-01 IDT",
+    "lastUpdated": "2026-07-02 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -10,16 +10,16 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-01 19:18"
+    "lastSuccessfulRefresh": "2026-07-02 15:21"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
+    "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\" \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
     "bestNextAction": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
     "mainBlockers": [
-      "RunSmart iOS: (1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin",
+      "RunSmart iOS: (1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo",
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
       "RunSmart Web: Garmin Developer Portal actions require founder-authenticated browser access",
-      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed",
+      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ],
     "needsDecision": [
@@ -27,7 +27,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-07-01",
+    "evidenceFreshDate": "2026-07-02",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -38,20 +38,20 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle. Active: Land PR #69, ship a new build with the fixes, recapture and re-verify all 6 Gate-4 screenshots on a real device, clarify Marc's \"start all over\" instruction before resubmitting. Last completed: 2026-07-01 - Root-caused the 3rd rejection by direct code read (not guessing): \"Garmin Wellness\" is an invented compound feature name that needed full removal (`GarminWellnessViews`/`.garminWellness` -> `WellnessTrendsView`/`.wellnessTrends` across `SecondaryFlowView.swift`, `ProfileTabView.swift`, `RunSmartGate4ScreenshotMode.swift`); the official Garmin Connect tile was being reshaped via `.clipShape(RoundedRectangle(...))` in two places (`GarminConnectBrandMark.swift`, `ProfileTabView`'s `ConnectedServiceTile`) which brand guidelines prohibit. Build PASS; full test suite run, one pre-existing unrelated failure confirmed via `git stash` against `main`. Source: tasks/progress.md, updated 2026-07-01.",
+      "status": "Phase: PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle. Active: WP-27: finish Garmin Gate-4 evidence cleanup and verify Garmin data labels, fallback behavior, and source attribution across Today, Report/Activity, Recovery, Wellness Trends, and Profile. Last completed: 2026-07-02 - Implemented WP-27 Garmin Data Trust Audit: added Garmin recovery provenance, gated Recovery/Wellness/Morning Check-In attribution on actual Garmin-backed data, normalized cached Garmin device names, and documented audit results. Corrected the Gate-4 evidence runbook numbering from WP-26 to WP-27. Source: tasks/progress.md, updated 2026-07-02.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle",
-      "activeStory": "Land PR #69, ship a new build with the fixes, recapture and re-verify all 6 Gate-4 screenshots on a real device, clarify Marc's \"start all over\" instruction before resubmitting",
-      "lastCompletedStory": "2026-07-01 - Root-caused the 3rd rejection by direct code read (not guessing): \"Garmin Wellness\" is an invented compound feature name that needed full removal (`GarminWellnessViews`/`.garminWellness` -> `WellnessTrendsView`/`.wellnessTrends` across `SecondaryFlowView.swift`, `ProfileTabView.swift`, `RunSmartGate4ScreenshotMode.swift`); the official Garmin Connect tile was being reshaped via `.clipShape(RoundedRectangle(...))` in two places (`GarminConnectBrandMark.swift`, `ProfileTabView`'s `ConnectedServiceTile`) which brand guidelines prohibit. Build PASS; full test suite run, one pre-existing unrelated failure confirmed via `git stash` against `main`",
-      "nextRecommendedStory": "Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means",
+      "activeStory": "WP-27: finish Garmin Gate-4 evidence cleanup and verify Garmin data labels, fallback behavior, and source attribution across Today, Report/Activity, Recovery, Wellness Trends, and Profile",
+      "lastCompletedStory": "2026-07-02 - Implemented WP-27 Garmin Data Trust Audit: added Garmin recovery provenance, gated Recovery/Wellness/Morning Check-In attribution on actual Garmin-backed data, normalized cached Garmin device names, and documented audit results. Corrected the Gate-4 evidence runbook numbering from WP-26 to WP-27",
+      "nextRecommendedStory": "Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\"",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "2026-07-01 - `xcodebuild build` PASS on iPhone 17 simulator destination. Full `xcodebuild test` run; one failure (`RunSmartReadinessTests.testRunRecorderDiscardResetsCurrentWorkoutWithoutSaving`, GPS/RunRecorder, unrelated to Garmin) confirmed pre-existing on `main` via `git stash` + re-run before these changes, so not a regression from this fix",
+      "lastValidation": "2026-07-02 - Full `xcodebuild test` passed on `iPhone 17 Pro, OS=26.5` with `-parallel-testing-enabled NO`: 234 XCTest tests and 3 Swift Testing tests passed. Confirmed `testBareConnectedGarminDeviceFallbackGetsBrandPrefix` and `testRecoverySnapshotDefaultsToNonGarminUntilExplicitlyMarked` executed and passed. Earlier iPhone 17 attempt built and launched but stalled before test-case output and was interrupted. Known HealthKit `HKWorkout` deprecation warning remains",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-07-02",
       "blockers": [
-        "(1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin"
+        "(1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -94,7 +94,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-01 a1aca4f Merge pull request #70 from nadavyigal/chore/bump-1.0.7-build20",
+        "lastCommit": "2026-07-02 8b9dfee Merge pull request #72 from nadavyigal/codex/wp27-garmin-data-trust-audit",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -121,6 +121,7 @@
           "docs/superpowers/plans/2026-05-19-posthog-analytics.md",
           "docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
           "docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+          "docs/specs/wp25-garmin-track.md",
           "docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
           "docs/specs/e7-garmin-wearable-depth.md",
           "docs/specs/demo-mode-simulator-recording.md",
@@ -129,31 +130,34 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-01",
+        "freshestDate": "2026-07-02",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-01"
+        "evidenceDate": "2026-07-02"
       },
       "taskParse": {
-        "status": "v1.0.6 (19) is LIVE on the App Store (2026-07-01 morning). Same day, Marc Lussi rejected the Gate-4 evidence a 3rd time: \"Garmin Wellness\" naming and the Garmin Connect logo are both still non-compliant, and he told the team to \"start all over.\" Root-caused and fixed on branch `fix/garmin-3rd-rejection-wellness-rename-and-logo-clip` (PR #69): renamed the feature away from \"Garmin Wellness\" everywhere, and removed a `.clipShape` that was altering the official Garmin Connect tile on render",
+        "status": "WP-27 Garmin Gate-4 evidence cleanup plus Garmin Data Trust Audit are complete locally on PR #72. The evidence recapture runbook was renumbered from the mistaken WP-26 framing to WP-27; founder-run real-device screenshots and Garmin ticket reply remain pending. PR #69 fixed the \"Garmin Wellness\" naming/logo rendering issue, and PR #70 bumped the app to `1.0.7 (20)` for the next resubmission build",
         "currentPhase": "PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle",
-        "activeStory": "Land PR #69, ship a new build with the fixes, recapture and re-verify all 6 Gate-4 screenshots on a real device, clarify Marc's \"start all over\" instruction before resubmitting",
-        "lastCompletedStory": "2026-07-01 - Root-caused the 3rd rejection by direct code read (not guessing): \"Garmin Wellness\" is an invented compound feature name that needed full removal (`GarminWellnessViews`/`.garminWellness` -> `WellnessTrendsView`/`.wellnessTrends` across `SecondaryFlowView.swift`, `ProfileTabView.swift`, `RunSmartGate4ScreenshotMode.swift`); the official Garmin Connect tile was being reshaped via `.clipShape(RoundedRectangle(...))` in two places (`GarminConnectBrandMark.swift`, `ProfileTabView`'s `ConnectedServiceTile`) which brand guidelines prohibit. Build PASS; full test suite run, one pre-existing unrelated failure confirmed via `git stash` against `main`",
-        "nextRecommendedStory": "Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means",
+        "activeStory": "WP-27: finish Garmin Gate-4 evidence cleanup and verify Garmin data labels, fallback behavior, and source attribution across Today, Report/Activity, Recovery, Wellness Trends, and Profile",
+        "lastCompletedStory": "2026-07-02 - Implemented WP-27 Garmin Data Trust Audit: added Garmin recovery provenance, gated Recovery/Wellness/Morning Check-In attribution on actual Garmin-backed data, normalized cached Garmin device names, and documented audit results. Corrected the Gate-4 evidence runbook numbering from WP-26 to WP-27",
+        "nextRecommendedStory": "Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\"",
         "blockers": [
-          "(1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin"
+          "(1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo"
         ],
         "risks": [],
-        "lastValidation": "2026-07-01 - `xcodebuild build` PASS on iPhone 17 simulator destination. Full `xcodebuild test` run; one failure (`RunSmartReadinessTests.testRunRecorderDiscardResetsCurrentWorkoutWithoutSaving`, GPS/RunRecorder, unrelated to Garmin) confirmed pre-existing on `main` via `git stash` + re-run before these changes, so not a regression from this fix",
-        "lastUpdated": "2026-07-01",
+        "lastValidation": "2026-07-02 - Full `xcodebuild test` passed on `iPhone 17 Pro, OS=26.5` with `-parallel-testing-enabled NO`: 234 XCTest tests and 3 Swift Testing tests passed. Confirmed `testBareConnectedGarminDeviceFallbackGetsBrandPrefix` and `testRecoverySnapshotDefaultsToNonGarminUntilExplicitlyMarked` executed and passed. Earlier iPhone 17 attempt built and launched but stalled before test-case output and was interrupted. Known HealthKit `HKWorkout` deprecation warning remains",
+        "lastUpdated": "2026-07-02",
         "qaNeeded": null,
-        "estimatedCompletion": "Code fix is done and PR'd. Remaining: founder-only App Store steps (archive/upload/confirm live), on-device screenshot recapture, brand-PDF re-verification, decision on how to interpret \"start all over,\" then reply",
+        "estimatedCompletion": "WP-27 local repo work and PR handoff are complete. Founder-only Gate-4 screenshot capture remains separate",
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
-          "tests": [],
+          "tests": [
+            "234 XCTest",
+            "3 Swift Testing"
+          ],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-07-01"
+          "evidenceDate": "2026-07-02"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -183,7 +187,7 @@
       "name": "Resumely iOS",
       "type": "Native SwiftUI iOS app",
       "role": "Native iOS app for Resumely resume optimization product.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "pre-submission",
       "status": "Phase: Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration. Active: Post-live production analytics verification (PostHog project 270848: upload-funnel + `fit_check_*` events) and zero-budget founder outreach (personal DM, vibecoding FB group, LinkedIn job-seeker groups). Last completed: Product-marketing context and current ASO positioning update \u2014 Fit/Match front-door story, unsafe ATS claim cleanup, no-paid-acquisition rule, and Fit-First marketing direction captured in `.agents/product-marketing.md` (2026-06-28). Source: tasks/progress.md, updated 2026-06-29.",
       "currentPhase": "Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration",
@@ -195,7 +199,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "2026-06-26 \u2014 full test suite passed on iPhone 17 simulator (105 XCTest + 5 Swift Testing, 0 failures); iPhone SE 3rd gen simulator visual smoke passed for Home EN/HE, locked Optimized/Design/Expert teasers, and Me language/RTL after fixing visible Hebrew fallback strings",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-07-02",
       "blockers": [
         "Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)"
       ],
@@ -255,7 +259,7 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-06-29",
         "evidenceGap": true,
         "evidenceDate": "2026-06-26"
@@ -320,20 +324,20 @@
       "role": "Main AI running coach product and source of product logic.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved. Active: WP-24 web-side guard: hard-separate commercial and internal-test Garmin OAuth credentials so production cannot start OAuth, token exchange, refresh, or revoke using test/Evaluation credentials. Last completed: 2026-07-01 \u2014 checked live Garmin connection impact via Supabase aggregate read: 9 `garmin_connections` rows, 7 still `connected`, 2 `reauth_required`, 0 connected rows with `last_sync_error`, 7 connected rows with `last_successful_sync_at` inside the prior 24h; newest successful sync `2026-07-01T03:40:58.044+00:00`, newest webhook `2026-06-28T06:07:03.186+00:00`. Added Garmin credential resolver and route/store guards so production uses only commercial credentials and fails closed if test credentials are selected or aliased into production. Source: tasks/progress.md, updated 2026-07-01.",
-      "currentPhase": "Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved",
-      "activeStory": "WP-24 web-side guard: hard-separate commercial and internal-test Garmin OAuth credentials so production cannot start OAuth, token exchange, refresh, or revoke using test/Evaluation credentials",
-      "lastCompletedStory": "2026-07-01 \u2014 checked live Garmin connection impact via Supabase aggregate read: 9 `garmin_connections` rows, 7 still `connected`, 2 `reauth_required`, 0 connected rows with `last_sync_error`, 7 connected rows with `last_successful_sync_at` inside the prior 24h; newest successful sync `2026-07-01T03:40:58.044+00:00`, newest webhook `2026-06-28T06:07:03.186+00:00`. Added Garmin credential resolver and route/store guards so production uses only commercial credentials and fails closed if test credentials are selected or aliased into production",
-      "nextRecommendedStory": "Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review",
+      "status": "Phase: WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending. Active: WP-25 \u2014 gate off new Garmin connections and land the credential guard. Existing authenticated sync paths remain in place; only new OAuth starts are blocked. Last completed: 2026-07-02 \u2014 PR #114 merged the stranded Garmin credential guard into `main`. Added `GARMIN_CONNECT_ENABLED`, defaulting off in production, to block `/api/devices/garmin/connect` and `/garmin/connect` before any OAuth state or Garmin authorize URL is generated. The blocked response uses the approved temporary-unavailable message and the client CTAs surface that message. Read-only `vercel env ls production` confirmed `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are not set in production, and production `GARMIN_CLIENT_ID` / `GARMIN_CLIENT_SECRET` were not rotated. Source: tasks/progress.md, updated 2026-07-02.",
+      "currentPhase": "WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending",
+      "activeStory": "WP-25 \u2014 gate off new Garmin connections and land the credential guard. Existing authenticated sync paths remain in place; only new OAuth starts are blocked",
+      "lastCompletedStory": "2026-07-02 \u2014 PR #114 merged the stranded Garmin credential guard into `main`. Added `GARMIN_CONNECT_ENABLED`, defaulting off in production, to block `/api/devices/garmin/connect` and `/garmin/connect` before any OAuth state or Garmin authorize URL is generated. The blocked response uses the approved temporary-unavailable message and the client CTAs surface that message. Read-only `vercel env ls production` confirmed `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are not set in production, and production `GARMIN_CLIENT_ID` / `GARMIN_CLIENT_SECRET` were not rotated",
+      "nextRecommendedStory": "Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Unknown",
-      "lastValidation": "2026-07-01 \u2014 Supabase aggregate impact check passed as above; focused Garmin tests passed, 13 tests; `npm run type-check` passed; targeted `npx eslint` for the changed Garmin TypeScript files passed with no warnings",
+      "lastValidation": "2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-07-02",
       "blockers": [
         "Garmin Developer Portal actions require founder-authenticated browser access",
-        "production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed"
+        "production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app"
       ],
       "risks": [
         "AI coaching correctness and user trust",
@@ -351,11 +355,11 @@
         "repo": "file:///Users/nadavyigal/Documents/RunSmart"
       },
       "localEvidence": {
-        "branch": "codex/wp24-garmin-credential-guard",
+        "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 6,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-01 baa19aa Guard Garmin production credentials",
+        "lastCommit": "2026-07-02 554b50e docs: finalize WP-25 tracking status",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -382,41 +386,42 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-01",
+        "freshestDate": "2026-07-02",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-01"
+        "evidenceDate": "2026-07-02"
       },
       "taskParse": {
         "status": "Active",
-        "currentPhase": "Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved",
-        "activeStory": "WP-24 web-side guard: hard-separate commercial and internal-test Garmin OAuth credentials so production cannot start OAuth, token exchange, refresh, or revoke using test/Evaluation credentials",
-        "lastCompletedStory": "2026-07-01 \u2014 checked live Garmin connection impact via Supabase aggregate read: 9 `garmin_connections` rows, 7 still `connected`, 2 `reauth_required`, 0 connected rows with `last_sync_error`, 7 connected rows with `last_successful_sync_at` inside the prior 24h; newest successful sync `2026-07-01T03:40:58.044+00:00`, newest webhook `2026-06-28T06:07:03.186+00:00`. Added Garmin credential resolver and route/store guards so production uses only commercial credentials and fails closed if test credentials are selected or aliased into production",
-        "nextRecommendedStory": "Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review",
+        "currentPhase": "WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending",
+        "activeStory": "WP-25 \u2014 gate off new Garmin connections and land the credential guard. Existing authenticated sync paths remain in place; only new OAuth starts are blocked",
+        "lastCompletedStory": "2026-07-02 \u2014 PR #114 merged the stranded Garmin credential guard into `main`. Added `GARMIN_CONNECT_ENABLED`, defaulting off in production, to block `/api/devices/garmin/connect` and `/garmin/connect` before any OAuth state or Garmin authorize URL is generated. The blocked response uses the approved temporary-unavailable message and the client CTAs surface that message. Read-only `vercel env ls production` confirmed `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are not set in production, and production `GARMIN_CLIENT_ID` / `GARMIN_CLIENT_SECRET` were not rotated",
+        "nextRecommendedStory": "Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials",
         "blockers": [
           "Garmin Developer Portal actions require founder-authenticated browser access",
-          "production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed"
+          "production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app"
         ],
         "risks": [
           "Connected users may lose Garmin sync when the old Evaluation app is fully deactivated, even though the aggregate check at 2026-07-01T16:12:29Z still showed all 7 connected rows had recent successful syncs. Migration drift remains: production has ~26 applied Supabase migrations with no matching file in v0/supabase/migrations/ (separate cleanup story)"
         ],
-        "lastValidation": "2026-07-01 \u2014 Supabase aggregate impact check passed as above; focused Garmin tests passed, 13 tests; `npm run type-check` passed; targeted `npx eslint` for the changed Garmin TypeScript files passed with no warnings",
-        "lastUpdated": "2026-07-01",
+        "lastValidation": "2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
+        "lastUpdated": "2026-07-02",
         "qaNeeded": "PR #101 \u2014 CodeRabbit found 2 real correctness issues + 1 doc-accuracy issue + 1 deferred nitpick (DB-level CHECK constraints, reasonable to skip since app-level clamping already enforces 0-100 and columns are already live); all addressed before merge",
-        "estimatedCompletion": "Web guard implemented; portal creation, production credential wiring, real-device screenshots, commercial submission, and user-facing outage messaging are still founder/manual or follow-up work",
+        "estimatedCompletion": "Credential guard merged and connection gate implemented in code; production deployment/merge of the gate PR, Developer Portal app creation, internal-test credential wiring, commercial credential cutover, real-device screenshots, and commercial submission remain open",
         "decisionsNeeded": [
           "(open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)"
         ],
         "openQuestions": [
-          "Founder still needs to decide user-facing outage messaging for connected Garmin users",
-          "Founder still needs to create the Internal Test and Commercial apps in the Garmin Developer Portal"
+          "Founder still needs to create the Internal Test and Commercial apps in the Garmin Developer Portal",
+          "Production env cutover remains blocked until a commercial application exists"
         ],
         "evidence": {
           "tests": [
-            "13 tests"
+            "13 tests",
+            "36 tests"
           ],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-07-01"
+          "evidenceDate": "2026-07-02"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -447,7 +452,7 @@
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building). Active: None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work). Last completed: PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open. Source: tasks/progress.md, updated 2026-06-22. Newer commits exist after this status (last commit: 2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)); trust git for the latest state.",
+      "status": "Phase: ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building). Active: None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work). Last completed: PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open. Source: tasks/progress.md, updated 2026-06-22. Newer commits exist after this status (last commit: 2026-07-02 612b91b feat: grandfather existing free users before monetization); trust git for the latest state.",
       "currentPhase": "ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
       "activeStory": "None \u2014 between stories. Awaiting founder direction on next priority (e.g. PM-planning the parked metrics-nudge feature, or other work)",
       "lastCompletedStory": "PR #80 merged (keyword-substring word-boundary fix). Story 1: fixed `extractFromLinkedIn`'s heading-matching so non-literal section headings (\"What You Will Be Doing\", \"What We Are Looking For\", \"Added bonus\") are classified by keyword family instead of requiring an exact phrase match \u2014 verified against the real Fresha LinkedIn posting (job 4425913724, the same one that scored 34/100 in prod). Branch fix/ats-jd-requirements-and-metrics, commit 3c0a4ee, PR #81 open",
@@ -457,7 +462,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "fix/ats-jd-requirements-and-metrics (commit 3c0a4ee) \u2014 new regression test (`tests/unit/linkedin-job-extractor.test.ts` + fixture `guest-fragment-varied-headings.html`), 32/32 unit tests pass, lint clean, tsc 21 pre-existing errors only (none in touched files). Real-data repro against live Fresha LinkedIn guest fragment confirmed responsibilities/requirements/nice_to_have all populate where they were previously null",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-07-02",
       "blockers": [
         "Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
       ],
@@ -477,11 +482,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/new-ResumeBuilder-ai-"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "feat/grandfather-legacy-free-users...origin/feat/grandfather-legacy-free-users",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 2,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)",
+        "lastCommit": "2026-07-02 612b91b feat: grandfather existing free users before monetization",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -500,7 +505,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-01",
+        "freshestDate": "2026-07-02",
         "evidenceGap": true,
         "evidenceDate": "2026-06-22"
       },
@@ -603,7 +608,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-01 03b3d76 Update WP-24: Marc confirmed two-app requirement, escalated to deactivation); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-02 6ce5a03 Close WP-25, advance WP-27 to founder-blocked, unblock WP-26 Step 2); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -613,7 +618,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-01",
+      "lastUpdated": "2026-07-02",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -630,12 +635,14 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-01 03b3d76 Update WP-24: Marc confirmed two-app requirement, escalated to deactivation",
+        "lastCommit": "2026-07-02 6ce5a03 Close WP-25, advance WP-27 to founder-blocked, unblock WP-26 Step 2",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
+          "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "docs/superpowers/plans/2026-07-02-founder-advisor.md",
           "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
           "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
           "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
@@ -647,7 +654,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-01",
+        "freshestDate": "2026-07-02",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -706,28 +713,28 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means",
+      "RunSmart iOS: Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\"",
       "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next"
     ],
     "next": [
-      "RunSmart Web: Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review",
+      "RunSmart Web: Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials",
       "ResumeBuilder AI (Web): Story 2 was investigated, not implemented \u2014 traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only \"15+ years\" in the summary). The AI optimizer correctly preserved this truthfully per its \"never fabricate metrics\" rule \u2014 `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input"
     ],
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-      "RunSmart iOS: 24 saved plan(s) \u2014 latest \"Build 18 ASC Submission + Garmin Brand Compliance Resend \u2014 2026-06-26\" (2026-06-26). See Saved Plans.",
+      "RunSmart iOS: 25 saved plan(s) \u2014 latest \"Build 18 ASC Submission + Garmin Brand Compliance Resend \u2014 2026-06-26\" (2026-06-26). See Saved Plans.",
       "Resumely iOS: 10 saved plan(s) \u2014 latest \"v1.1 Build 7 ASC Submission Readiness \u2014 2026-06-26\" (2026-06-26). See Saved Plans.",
       "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
       "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
-      "Agentic OS: 7 saved plan(s) \u2014 latest \"OS Improvement Plan Completion Implementation Plan\" (2026-07-01). See Saved Plans.",
+      "Agentic OS: 9 saved plan(s) \u2014 latest \"Founder Advisor \u2014 Design\" (2026-07-02). See Saved Plans.",
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "RunSmart iOS: (1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin",
+      "RunSmart iOS: (1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo",
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
       "RunSmart Web: Garmin Developer Portal actions require founder-authenticated browser access",
-      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed",
+      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ]
   },
@@ -845,7 +852,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-01 19:18",
+    "lastRefresh": "2026-07-02 15:21",
     "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -853,9 +860,11 @@
       "Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md",
       "Agentic OS: docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
       "Agentic OS: docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+      "Agentic OS: docs/superpowers/plans/2026-07-02-founder-advisor.md",
       "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
       "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
       "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+      "Agentic OS: docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
       "Agentic OS: tasks/MEMORY.md",
       "Agentic OS: tasks/progress.md",
       "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
@@ -919,6 +928,7 @@
       "RunSmart iOS: docs/specs/e7-garmin-wearable-depth.md",
       "RunSmart iOS: docs/specs/post-submission-ux-redesign-1.0.1.md",
       "RunSmart iOS: docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+      "RunSmart iOS: docs/specs/wp25-garmin-track.md",
       "RunSmart iOS: docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
       "RunSmart iOS: docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
       "RunSmart iOS: docs/superpowers/plans/2026-05-19-posthog-analytics.md",
@@ -956,10 +966,10 @@
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
       "state": "PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle",
-      "nextAction": "Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means",
+      "nextAction": "Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\"",
       "blockerCount": 1,
       "blockers": [
-        "(1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin"
+        "(1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo"
       ],
       "gtm": {
         "exists": true,
@@ -1110,6 +1120,13 @@
           "kind": "plan"
         },
         {
+          "title": "wp25 garmin track",
+          "path": "docs/specs/wp25-garmin-track.md",
+          "date": null,
+          "status": null,
+          "kind": "spec"
+        },
+        {
           "title": "Sprint 9 Spec: Real Activity Today Data Flow UX",
           "path": "docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
           "date": null,
@@ -1142,13 +1159,16 @@
       "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-01 a1aca4f Merge pull request #70 from nadavyigal/chore/bump-1.0.7-build20",
+      "lastCommit": "2026-07-02 8b9dfee Merge pull request #72 from nadavyigal/codex/wp27-garmin-data-trust-audit",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-01",
+      "freshestDate": "2026-07-02",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-01",
-      "evidenceTests": [],
+      "evidenceDate": "2026-07-02",
+      "evidenceTests": [
+        "234 XCTest",
+        "3 Swift Testing"
+      ],
       "buildStatus": null,
       "qaDocs": [],
       "sourceFiles": [
@@ -1177,6 +1197,7 @@
         "docs/superpowers/plans/2026-05-19-posthog-analytics.md",
         "docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
         "docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+        "docs/specs/wp25-garmin-track.md",
         "docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
         "docs/specs/e7-garmin-wearable-depth.md",
         "docs/specs/demo-mode-simulator-recording.md",
@@ -1184,9 +1205,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-01 - `xcodebuild build` PASS on iPhone 17 simulator destination. Full `xcodebuild test` run; one failure (`RunSmartReadinessTests.testRunRecorderDiscardResetsCurrentWorkoutWithoutSaving`, GPS/RunRecorder, unrelated to Garmin) confirmed pre-existing on `main` via `git stash` + re-run before these changes, so not a regression from this fix",
-      "parsedLastUpdated": "2026-07-01",
-      "parsedActiveStory": "Land PR #69, ship a new build with the fixes, recapture and re-verify all 6 Gate-4 screenshots on a real device, clarify Marc's \"start all over\" instruction before resubmitting"
+      "parsedLastValidation": "2026-07-02 - Full `xcodebuild test` passed on `iPhone 17 Pro, OS=26.5` with `-parallel-testing-enabled NO`: 234 XCTest tests and 3 Swift Testing tests passed. Confirmed `testBareConnectedGarminDeviceFallbackGetsBrandPrefix` and `testRecoverySnapshotDefaultsToNonGarminUntilExplicitlyMarked` executed and passed. Earlier iPhone 17 attempt built and launched but stalled before test-case output and was interrupted. Known HealthKit `HKWorkout` deprecation warning remains",
+      "parsedLastUpdated": "2026-07-02",
+      "parsedActiveStory": "WP-27: finish Garmin Gate-4 evidence cleanup and verify Garmin data labels, fallback behavior, and source attribution across Today, Report/Activity, Recovery, Wellness Trends, and Profile"
     },
     {
       "id": "resumebuilder-ios",
@@ -1282,7 +1303,7 @@
       "branch": "main...origin/main [ahead 1]",
       "lastCommit": "2026-06-29 c3e6645 Tighten Resumely analytics contract metadata",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-06-29",
       "evidenceGap": true,
       "evidenceDate": "2026-06-26",
@@ -1322,12 +1343,12 @@
     {
       "id": "runsmart-web",
       "name": "RunSmart Web",
-      "state": "Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved",
-      "nextAction": "Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review",
+      "state": "WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending",
+      "nextAction": "Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials",
       "blockerCount": 2,
       "blockers": [
         "Garmin Developer Portal actions require founder-authenticated browser access",
-        "production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed"
+        "production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app"
       ],
       "gtm": {
         "exists": false,
@@ -1432,15 +1453,16 @@
       "dirty": true,
       "dirtyCount": 6,
       "extraWorktrees": 0,
-      "branch": "codex/wp24-garmin-credential-guard",
-      "lastCommit": "2026-07-01 baa19aa Guard Garmin production credentials",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-02 554b50e docs: finalize WP-25 tracking status",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-01",
+      "freshestDate": "2026-07-02",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-01",
+      "evidenceDate": "2026-07-02",
       "evidenceTests": [
-        "13 tests"
+        "13 tests",
+        "36 tests"
       ],
       "buildStatus": null,
       "qaDocs": [],
@@ -1469,9 +1491,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-01 \u2014 Supabase aggregate impact check passed as above; focused Garmin tests passed, 13 tests; `npm run type-check` passed; targeted `npx eslint` for the changed Garmin TypeScript files passed with no warnings",
-      "parsedLastUpdated": "2026-07-01",
-      "parsedActiveStory": "WP-24 web-side guard: hard-separate commercial and internal-test Garmin OAuth credentials so production cannot start OAuth, token exchange, refresh, or revoke using test/Evaluation credentials"
+      "parsedLastValidation": "2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
+      "parsedLastUpdated": "2026-07-02",
+      "parsedActiveStory": "WP-25 \u2014 gate off new Garmin connections and land the credential guard. Existing authenticated sync paths remain in place; only new OAuth starts are blocked"
     },
     {
       "id": "resumebuilder-ai",
@@ -1562,13 +1584,13 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 2,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-01 602b661 fix: reset loading state on refine/apply-refinement failure (#99)",
+      "branch": "feat/grandfather-legacy-free-users...origin/feat/grandfather-legacy-free-users",
+      "lastCommit": "2026-07-02 612b91b feat: grandfather existing free users before monetization",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-01",
+      "freshestDate": "2026-07-02",
       "evidenceGap": true,
       "evidenceDate": "2026-06-22",
       "evidenceTests": [
@@ -1612,6 +1634,20 @@
         "lastUpdated": null
       },
       "plans": [
+        {
+          "title": "Founder Advisor \u2014 Design",
+          "path": "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "date": "2026-07-02",
+          "status": null,
+          "kind": "spec"
+        },
+        {
+          "title": "Founder Advisor Implementation Plan",
+          "path": "docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "date": "2026-07-02",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "OS Improvement Plan Completion Implementation Plan",
           "path": "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
@@ -1663,13 +1699,13 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 8,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-01 03b3d76 Update WP-24: Marc confirmed two-app requirement, escalated to deactivation",
+      "lastCommit": "2026-07-02 6ce5a03 Close WP-25, advance WP-27 to founder-blocked, unblock WP-26 Step 2",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-01",
+      "freshestDate": "2026-07-02",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1678,6 +1714,8 @@
       "sourceFiles": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "docs/superpowers/plans/2026-07-02-founder-advisor.md",
         "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
         "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
         "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
@@ -1730,7 +1768,7 @@
       "role": "iOS Release / Product Engineer",
       "repoState": "Clean",
       "branch": "main...origin/main",
-      "nextAction": "Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means",
+      "nextAction": "Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\"",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1759,12 +1797,13 @@
         "docs/superpowers/plans/2026-05-19-posthog-analytics.md",
         "docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
         "docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+        "docs/specs/wp25-garmin-track.md",
         "docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
         "docs/specs/e7-garmin-wearable-depth.md",
         "docs/specs/demo-mode-simulator-recording.md",
         ".agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle. Next action: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means. Known blockers: (1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle. Next action: Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\". Known blockers: (1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -1801,8 +1840,8 @@
       "project": "RunSmart Web",
       "role": "Backend Support Engineer",
       "repoState": "Dirty",
-      "branch": "codex/wp24-garmin-credential-guard",
-      "nextAction": "Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review",
+      "branch": "main...origin/main",
+      "nextAction": "Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1828,14 +1867,14 @@
         "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
         "docs/plans/2026-02-12-runsmart-execution-plan.md"
       ],
-      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved. Next action: Founder creates the two Garmin Developer Portal apps and stores the Internal Test app credentials only in non-production. Then archive/upload/confirm `1.0.7 (20)` live, recapture real-device Gate-4 screenshots, verify the tile asset, and submit the commercial application for Production review. Known blockers: Garmin Developer Portal actions require founder-authenticated browser access; production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending. Next action: Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials. Known blockers: Garmin Developer Portal actions require founder-authenticated browser access; production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ai",
       "project": "ResumeBuilder AI (Web)",
       "role": "Backend Rollout Engineer",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "feat/grandfather-legacy-free-users...origin/feat/grandfather-legacy-free-users",
       "nextAction": "Story 2 was investigated, not implemented \u2014 traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only \"15+ years\" in the summary). The AI optimizer correctly preserved this truthfully per its \"never fabricate metrics\" rule \u2014 `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1868,6 +1907,8 @@
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
+        "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "docs/superpowers/plans/2026-07-02-founder-advisor.md",
         "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
         "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
         "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
@@ -1876,22 +1917,22 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md, docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-07-02-founder-advisor-design.md, docs/superpowers/plans/2026-07-02-founder-advisor.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
     "headline": "Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next",
-    "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder merges PR #69, bumps version/build, archives + uploads + confirms live, then recaptures all 6 Gate-4 screenshots on a real device against that build, re-verifies against the brand PDF, and either replies to Marc's ticket (213145/213165) or first asks him to clarify what \"start all over\" means \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 Garmin app deactivation response in progress. Marc confirmed Evaluation apps cannot serve external users and asked for two new Developer Portal apps: internal-test Evaluation and commercial Production-review. Production Garmin sync has no legitimate path for real users until the commercial app is approved \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
+    "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies \"start all over.\" \u00b7 Resumely iOS \u2014 Post-launch \u2014 v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next \u00b7 RunSmart Web \u2014 WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending \u00b7 ResumeBuilder AI (Web) \u2014 ATS scoring accuracy \u2014 both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building)",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
       "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
     ],
     "risks": [
-      "RunSmart iOS: (1) Whether `GarminConnectTile.imageset/garmin-connect-tile.jpg` (a 512x512 lossy JPEG) is actually the pristine official asset from Garmin's brand kit or a re-saved capture is unverified \u2014 worth re-downloading from `developer.garmin.com/brand-guidelines/connect/` before the next resubmission. (2) Archive/upload/submit to App Store Connect is a founder-only manual Xcode step with no git-visible commit. (3) \"Generate a production app to start all over\" is ambiguous (new Developer Portal production app vs. full UX rebuild) and unconfirmed with Garmin",
+      "RunSmart iOS: (1) WP-27 real-device evidence is not complete and remains founder-owned. (2) \"Generate a production app to start all over\" remains ambiguous until Garmin clarifies or accepts the corrected package. WP-26 is founder-only Garmin Developer Portal application work and is not owned by this repo",
       "Resumely iOS: Backend/state capabilities remain absent for paste-text diagnosis, sample/demo diagnosis, parser-stage progress callbacks, point-delta apply-all fixes, resumable offline analysis, globally accurate pre-optimization `hasResume`/`hasJob` flags, and a true NWPathMonitor-driven auto-resume for connection-lost recovery (current Retry is manual only)",
       "RunSmart Web: Garmin Developer Portal actions require founder-authenticated browser access",
-      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist and the guard is deployed",
+      "RunSmart Web: production Vercel env vars must not be rotated until commercial credentials exist. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` are intentionally absent from production until WP-26 creates an Internal Test app",
       "ResumeBuilder AI (Web): Founder decision on Story 2's framing above. Also still open from before: keyword_phrase (12% weight) re-weighting \u2014 requires verbatim 3-6 word n-gram overlap, near-0 for any paraphrased resume by design, not a bug"
     ],
     "openDecisionCount": 4,
@@ -1953,9 +1994,9 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-07-01 19:18",
+    "lastRunAt": "2026-07-02 15:22",
     "checksStatus": "Passed",
-    "checksCompletedAt": "2026-07-01 19:18",
+    "checksCompletedAt": "2026-07-02 15:22",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
@@ -1979,11 +2020,11 @@
   "openQuestionsBoard": [
     {
       "project": "RunSmart Web",
-      "question": "Founder still needs to decide user-facing outage messaging for connected Garmin users"
+      "question": "Founder still needs to create the Internal Test and Commercial apps in the Garmin Developer Portal"
     },
     {
       "project": "RunSmart Web",
-      "question": "Founder still needs to create the Internal Test and Commercial apps in the Garmin Developer Portal"
+      "question": "Production env cutover remains blocked until a commercial application exists"
     },
     {
       "project": "Agentic OS",
@@ -2020,7 +2061,7 @@
     {
       "project": "RunSmart iOS",
       "projectId": "runsmart-ios",
-      "total": 24,
+      "total": 25,
       "shown": 7,
       "plans": [
         {
@@ -2234,9 +2275,23 @@
     {
       "project": "Agentic OS",
       "projectId": "agentic-os",
-      "total": 7,
+      "total": 9,
       "shown": 6,
       "plans": [
+        {
+          "title": "Founder Advisor \u2014 Design",
+          "path": "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "date": "2026-07-02",
+          "status": null,
+          "kind": "spec"
+        },
+        {
+          "title": "Founder Advisor Implementation Plan",
+          "path": "docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "date": "2026-07-02",
+          "status": null,
+          "kind": "plan"
+        },
         {
           "title": "OS Improvement Plan Completion Implementation Plan",
           "path": "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
@@ -2262,20 +2317,6 @@
           "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
           "path": "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
           "date": "2026-06-04",
-          "status": null,
-          "kind": "spec"
-        },
-        {
-          "title": "Design: Morning Brief Prompt",
-          "path": "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-          "date": "2026-05-24",
-          "status": null,
-          "kind": "spec"
-        },
-        {
-          "title": "Claude Code Setup Overhaul \u2014 Design Spec",
-          "path": "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-          "date": "2026-05-20",
           "status": null,
           "kind": "spec"
         }
@@ -2677,6 +2718,82 @@
         "memoryUpdate": null,
         "successSignal": null,
         "path": "executive-os/work-packets/WP-24-garmin-fresh-production-app-registration.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-25 - Garmin: Gate Off New Connections + Push/Merge the Credential Guard",
+        "status": "Unknown",
+        "project": "RunSmart Web",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "Stop the bleeding on the two things that are pure code and do not require the Garmin Developer Portal: (1) new users can no longer start a Garmin connect flow while there is no legitimate application to connect them to, and (2) the credential-separation guard that fixes the root cause of the whole deactivation sits merged in intent but unmerged in git \u2014 land it for real",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 1-2 of the synthesis action plan",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted \u2014 direct git read of the RunSmart repo confirmed the guard commit's existence and its stranded state",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "production cannot start a Garmin OAuth flow with test/Evaluation credentials, and no new user can begin a Garmin connect flow until the commercial app is approved",
+        "path": "executive-os/work-packets/WP-25-garmin-gate-connections-and-push-credential-guard.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications",
+        "status": "Open",
+        "project": "RunSmart Web (supporting evidence, credentials) + Garmin Developer Portal (external, browser-based)",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "File exactly what Marc Lussi asked for on 2026-07-01: two separate Developer Portal applications, not a reset of the old one. Submit the commercial application for Production review **once**, complete, with every item numbered against Garmin's own requirements list \u2014 not another partial, iterative reply",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24",
+        "workflowPattern": "normal",
+        "inputTrust": "founder-authenticated external system (Garmin Developer Portal) \u2014 every field value must be confirmed with the founder before submission, nothing external goes out without explicit sign-off in the session",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "two Developer Portal applications exist (Internal Test, Commercial), the commercial one has been submitted for Production review exactly once with a complete evidence package, and no further \"what is this / start over\" replies have come back from Garmin",
+        "path": "executive-os/work-packets/WP-26-garmin-file-two-portal-applications.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission",
+        "status": "Unknown",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Produce evidence that cannot trigger a fourth rejection: real-device screenshots (not simulator), captured against the build that is actually live on the App Store, with the pristine unaltered official Garmin Connect brand asset, and zero remaining references to the invented \"Garmin Wellness\" term Marc rejected on 2026-07-01",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), step 4 of the synthesis action plan",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted internal (App Store Connect state needs founder confirmation \u2014 HUMAN checkpoint below)",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "6 Garmin UX screenshots exist, captured on a real device against the confirmed-live build, using the pristine official Garmin Connect tile asset, with no remaining \"Garmin Wellness\" references anywhere in the app",
+        "path": "executive-os/work-packets/WP-27-garmin-real-device-gate4-evidence-pack.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-28 - Garmin: Reconnect Flow for the Existing 7 Connected Users",
+        "status": "Open",
+        "project": "RunSmart Web (+ RunSmart iOS if the reconnect entry point needs a native surface)",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "Build the reconnect flow now, while there is no time pressure, so it is not a scramble on Garmin approval day. Every metric this packet touches must cite what it moves, per the Grower mode contract: the target is reconnect rate among the 7 (or however many by then) previously-connected users, measured within a defined window after the commercial app goes live",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged) \u2014 the \"blind spot no lens addressed\" finding: none of the STORM lenses, and neither the founder's plan nor the ChatGPT advisory draft, planned the reconnect migration for existing users",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted internal \u2014 Supabase aggregate reads already establish the baseline user count",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "on the day the commercial Garmin application is approved, every previously-connected user can re-establish sync in-app without a support ticket, and RunSmart can report a reconnect rate \u2014 the specific metric this packet must move",
+        "path": "executive-os/work-packets/WP-28-garmin-reconnect-flow-for-existing-users.md",
         "copyPrompt": null,
         "decision": null
       },
@@ -3083,7 +3200,7 @@
       },
       {
         "name": "Work packets",
-        "what": "0 active, 25 total. Copy only Active packets; closed packets are history."
+        "what": "0 active, 29 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -3435,6 +3552,82 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-25 - Garmin: Gate Off New Connections + Push/Merge the Credential Guard",
+        "status": "Unknown",
+        "project": "RunSmart Web",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "Stop the bleeding on the two things that are pure code and do not require the Garmin Developer Portal: (1) new users can no longer start a Garmin connect flow while there is no legitimate application to connect them to, and (2) the credential-separation guard that fixes the root cause of the whole deactivation sits merged in intent but unmerged in git \u2014 land it for real",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 1-2 of the synthesis action plan",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted \u2014 direct git read of the RunSmart repo confirmed the guard commit's existence and its stranded state",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "production cannot start a Garmin OAuth flow with test/Evaluation credentials, and no new user can begin a Garmin connect flow until the commercial app is approved",
+        "path": "executive-os/work-packets/WP-25-garmin-gate-connections-and-push-credential-guard.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications",
+        "status": "Open",
+        "project": "RunSmart Web (supporting evidence, credentials) + Garmin Developer Portal (external, browser-based)",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "File exactly what Marc Lussi asked for on 2026-07-01: two separate Developer Portal applications, not a reset of the old one. Submit the commercial application for Production review **once**, complete, with every item numbered against Garmin's own requirements list \u2014 not another partial, iterative reply",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24",
+        "workflowPattern": "normal",
+        "inputTrust": "founder-authenticated external system (Garmin Developer Portal) \u2014 every field value must be confirmed with the founder before submission, nothing external goes out without explicit sign-off in the session",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "two Developer Portal applications exist (Internal Test, Commercial), the commercial one has been submitted for Production review exactly once with a complete evidence package, and no further \"what is this / start over\" replies have come back from Garmin",
+        "path": "executive-os/work-packets/WP-26-garmin-file-two-portal-applications.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission",
+        "status": "Unknown",
+        "project": "RunSmart iOS",
+        "repoId": "runsmart-ios",
+        "repoPath": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
+        "goal": "Produce evidence that cannot trigger a fourth rejection: real-device screenshots (not simulator), captured against the build that is actually live on the App Store, with the pristine unaltered official Garmin Connect brand asset, and zero remaining references to the invented \"Garmin Wellness\" term Marc rejected on 2026-07-01",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), step 4 of the synthesis action plan",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted internal (App Store Connect state needs founder confirmation \u2014 HUMAN checkpoint below)",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "6 Garmin UX screenshots exist, captured on a real device against the confirmed-live build, using the pristine official Garmin Connect tile asset, with no remaining \"Garmin Wellness\" references anywhere in the app",
+        "path": "executive-os/work-packets/WP-27-garmin-real-device-gate4-evidence-pack.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
+        "title": "Work Packet WP-28 - Garmin: Reconnect Flow for the Existing 7 Connected Users",
+        "status": "Open",
+        "project": "RunSmart Web (+ RunSmart iOS if the reconnect entry point needs a native surface)",
+        "repoId": "runsmart-web",
+        "repoPath": "/Users/nadavyigal/Documents/RunSmart",
+        "goal": "Build the reconnect flow now, while there is no time pressure, so it is not a scramble on Garmin approval day. Every metric this packet touches must cite what it moves, per the Grower mode contract: the target is reconnect rate among the 7 (or however many by then) previously-connected users, measured within a defined window after the commercial app goes live",
+        "source": "Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged) \u2014 the \"blind spot no lens addressed\" finding: none of the STORM lenses, and neither the founder's plan nor the ChatGPT advisory draft, planned the reconnect migration for existing users",
+        "workflowPattern": "normal",
+        "inputTrust": "trusted internal \u2014 Supabase aggregate reads already establish the baseline user count",
+        "outcomeLoop": "RunSmart Garmin production approval",
+        "loop": null,
+        "signal": null,
+        "memoryUpdate": null,
+        "successSignal": "on the day the commercial Garmin application is approved, every previously-connected user can re-establish sync in-app without a support ticket, and RunSmart can report a reconnect rate \u2014 the specific metric this packet must move",
+        "path": "executive-os/work-packets/WP-28-garmin-reconnect-flow-for-existing-users.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
         "title": "Work Packet WP-3 - RunSmart Build 12 Resubmission",
         "status": "Superseded",
         "project": "RunSmart iOS",
@@ -3569,15 +3762,15 @@
       }
     ],
     "brainstormExists": true,
-    "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- 2026-07-01: RunSmart Hebrew-first distribution playbook \u2014 full playbook already drafted at `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`, created 2026-06-22). Found un-surfaced during an OS review; was sitting only as a saved-plan pointer (`docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md`) with no path to a decision. Needs a founder go/no-go: approve and promote to an EXD decision + work packet, or park it explicitly below. Not started, not approved \u2014 no work has begun on this channel.\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
+    "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- 2026-07-01: RunSmart Hebrew-first distribution playbook \u2014 full playbook already drafted at `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`, created 2026-06-22). Found un-surfaced during an OS review; was sitting only as a saved-plan pointer (`docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md`) with no path to a decision. Needs a founder go/no-go: approve and promote to an EXD decision + work packet, or park it explicitly below. Not started, not approved \u2014 no work has begun on this channel.\n- 2026-07-02: RunSmart legal entity registration \u2014 surfaced by the Garmin deactivation STORM analysis (Builder OS vault `2026-07-02-garmin-deactivation-storm.md`). Garmin's Developer Program is enterprise/business-facing; the founder has run the account under a personal domain and the title \"Founder & CEO\" without a registered legal entity behind it. Not blocking the Garmin critical path (WP-25/26/27/28) \u2014 Garmin never asked for entity paperwork and has accepted the account as-is \u2014 but the commercial resubmission (WP-26) should use \"Founder, RunSmart\" rather than \"CEO\" until this resolves, to avoid a mismatch if Garmin or a future partner (Apple, Paddle) asks for legal-entity details. Founder decision needed: register an Israeli Ltd. company vs. a self-employed business file, on a CPA/lawyer's recommendation \u2014 off the Garmin critical path, run in parallel. Not started.\n- _Not now, but do not lose._\n---\nUpdated: 2026-06-04"
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 2,
     "extraWorktrees": 0,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ]
   },
   "planExecution": {
@@ -3674,7 +3867,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -3689,7 +3882,7 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-01",
+    "generatedOn": "2026-07-02",
     "items": [
       {
         "project": "RunSmart iOS",
@@ -3700,7 +3893,7 @@
       {
         "project": "RunSmart iOS",
         "type": "cleanup",
-        "detail": "3 merged branch(es) safe to delete",
+        "detail": "4 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       },
       {
@@ -3736,8 +3929,8 @@
       {
         "project": "RunSmart Web",
         "type": "local-only",
-        "detail": "codex/wp24-garmin-credential-guard: unmerged commits, never pushed, last commit 2026-07-01",
-        "action": "Push codex/wp24-garmin-credential-guard and open a PR, or consciously discard it."
+        "detail": "garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22",
+        "action": "Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart Web",
@@ -3750,6 +3943,12 @@
         "type": "dirty",
         "detail": "6 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "RunSmart Web",
+        "type": "cleanup",
+        "detail": "4 merged branch(es) safe to delete",
+        "action": "Delete merged local branches to cut noise."
       },
       {
         "project": "ResumeBuilder AI (Web)",
@@ -3772,7 +3971,7 @@
       {
         "project": "ResumeBuilder AI (Web)",
         "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
+        "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -3784,7 +3983,7 @@
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
+        "detail": "8 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       }
     ],
@@ -3793,7 +3992,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-01 19:18",
+    "generatedAt": "2026-07-02 15:22",
     "apps": [
       {
         "projectId": 171597,
@@ -3822,13 +4021,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 13,
+        "liveUsers7d": 8,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 32,
+        "liveUsers7d": 29,
         "source": "api"
       }
     ],
