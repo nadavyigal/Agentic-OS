@@ -1,6 +1,6 @@
 # Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications
 
-- Status: Open — **unblocked for Step 2** (WP-25 merged 2026-07-02, verified: [PR #114](https://github.com/nadavyigal/Running-coach-/pull/114), [PR #115](https://github.com/nadavyigal/Running-coach-/pull/115)). Still blocked for Step 4 (commercial app filing/submission) on WP-27's 2 remaining founder-only steps: live-build confirmation and real-device screenshots — see WP-27 Progress note.
+- Status: Open — **Step 2 substantially done** (Internal Test app filed, approved, connect flow verified working end-to-end on localhost). Still open within Step 2: Data Generator + Partner Verification runs, including a deliberate USER_DEREG event. Step 4 (commercial app filing/submission) stays blocked on WP-27's 2 remaining founder-only steps: live-build confirmation and real-device screenshots — see WP-27 Progress note. See Progress below.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24
 - Mode: Maintainer
@@ -88,3 +88,23 @@ Report:
 - Whether the resubmission was sent (date, and confirm founder approved it first) or is still pending WP-27.
 - `GARMIN-STATUS.md` and vault `Garmin-Integration.md` update confirmation.
 - What was NOT done.
+
+## Progress (2026-07-02)
+
+Step 2 executed directly (browser-driven, founder-confirmed each step) rather than handed to Codex/Composer, since the portal is founder-authenticated and OAuth-gated end to end.
+
+**Internal Test application filed and approved.**
+- Name `RunSmart - Internal Test`, tier Connect Developer - Evaluation, scope Health API + Activity API only (Women's Health and Training API explicitly excluded). Portal reference: `https://developerportal.garmin.com/teams/runsmart_ai/apps/runsmart_internal_test`.
+- Confirmed via the portal UI: **Authorization: OAuth 2.0** — resolves the earlier concern that the old dead app showed "OAuth 1.0" while the shipped code uses PKCE. The new-app creation form has no OAuth-version selector at all; new apps default to the current program's OAuth 2.0, so there was never an actual mismatch to fix.
+- **Caught and fixed a bad form default**: "Do you plan to sell activity data provided by Garmin to any third parties?" defaulted to "Yes" on page load. Corrected to "No" before submission. Worth watching for again on the Commercial app filing (Step 4) — likely the same default.
+- **Redirect URL corrected after initial filing.** First registered `https://www.runsmart-ai.com/garmin/callback` (matching the old app and the code's production fallback), then discovered WP-25's own credential guard makes that unusable for testing: `assertProductionIsNotUsingTestCredentials()` fires on any production runtime (`VERCEL_ENV === 'production'`), so the production domain can never be pointed at test credentials, deliberately, by the code we just shipped. Updated the registered redirect to `http://localhost:3000/garmin/callback` so local dev can actually exercise the flow. **Note for whoever runs WP-27's real-device screenshot capture: this redirect will need to change again** to a phone-reachable URL (staging subdomain or tunnel) — localhost won't work from an iPhone.
+- Credentials (Client ID/Secret) issued, confirmed present in the portal. Deliberately not read or relayed through any agent tooling — founder stored them directly into Vercel (`running-coach` project, Preview + Development scope, Production excluded) via the dashboard.
+
+**Local connect-flow structurally verified working**, using ephemeral placeholder credentials passed only to the process (never written to `.env.local`, no real secret touched by tooling):
+- `POST /api/devices/garmin/connect` with the same payload shape the real frontend sends (`device-connection-screen.tsx:162`, which explicitly sends `redirectUri: \`${window.location.origin}/garmin/callback\``) returned `success: true` with a well-formed Garmin OAuth 2.0 PKCE authorization URL: correct `client_id` (test mode, confirmed via `resolveGarminOAuthClientId()` picking `internal-test`), `redirect_uri` exactly matching the portal registration, valid `code_challenge`/`code_challenge_method=S256`, signed state.
+- Along the way, found (and explained, not a bug) that a bare API call without an explicit `redirectUri` falls back to a `GARMIN_OAUTH_REDIRECT_URI` env var already present in `.env.local`, which points at the production domain — only matters for direct API testing (curl/Postman), not the real browser UI, which always sends `redirectUri` explicitly.
+- Not yet done, needs the founder's real credentials and an actual click-through: completing the full OAuth handshake against Garmin's live server (this local test verified everything up to but not including Garmin's own acceptance of the request).
+
+**Still open within Step 2:** Data Generator + Partner Verification tool runs against the Internal Test app, including a deliberate USER_DEREG event -- not started.
+
+**Not started:** Step 3/4 (commercial application filing) -- correctly blocked on WP-27.
