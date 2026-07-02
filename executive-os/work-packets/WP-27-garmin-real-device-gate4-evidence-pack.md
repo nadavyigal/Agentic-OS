@@ -12,7 +12,7 @@
 
 ## Owner Role
 
-RunSmart iOS operator
+RunSmart iOS operator — execute with Codex or Cursor Composer 2.5. Note: this repo has an `AGENTS.md` for Codex but **no `.cursor/` directory** (checked 2026-07-02) — Cursor Composer will work here but without repo-specific rules/skills the web repo has. Step 1 (confirming the live App Store build) and the physical-device screenshot capture are HUMAN steps regardless of tool — neither Codex nor Composer can hold an iPhone or read App Store Connect on its own; the agent's job is the tile-asset diff, the "Garmin Wellness" grep, and packaging the zip once the founder supplies the captures.
 
 ## Project
 

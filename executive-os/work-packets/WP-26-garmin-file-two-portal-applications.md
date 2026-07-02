@@ -12,7 +12,7 @@
 
 ## Owner Role
 
-Release Manager + RunSmart Web operator. Execute with Codex/Claude in a session where the founder has `developerportal.garmin.com` open and logged in in their own browser — this is founder-credentialed and external. Codex drives field-by-field content and evidence prep; the founder performs the actual clicks/logins/submission.
+Release Manager + RunSmart Web operator. Execute with Codex or Cursor Composer 2.5, in a session where the founder has `developerportal.garmin.com` open and logged in in their own browser — this is founder-credentialed and external, and neither tool can drive a live OAuth-gated browser session itself. The agent drives field-by-field content, evidence prep, and drafts the resubmission text; the founder performs the actual portal clicks/logins/submission and reads back what the portal shows when this packet asks "observe what the portal actually presents." This is the one packet in the Garmin track that cannot be fully agent-driven regardless of tool choice.
 
 ## Project
 

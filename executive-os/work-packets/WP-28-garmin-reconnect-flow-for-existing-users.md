@@ -12,7 +12,7 @@
 
 ## Owner Role
 
-RunSmart Web operator
+RunSmart Web operator — execute with Codex or Cursor Composer 2.5, same as WP-25 (repo already has `.codex`, `AGENTS.md`, `.cursor/rules`, `.cursor/skills`). If a native iOS surface turns out to be needed (Task step 1), that slice moves to the iOS repo and inherits WP-27's caveat: Codex works there via `AGENTS.md`, but there is no `.cursor/` config for Composer yet.
 
 ## Project
 

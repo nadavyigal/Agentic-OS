@@ -12,7 +12,7 @@
 
 ## Owner Role
 
-RunSmart Web operator (Codex or Claude Code, code-only — no portal/browser action in this packet)
+RunSmart Web operator — execute with Codex or Cursor Composer 2.5. Code-only, no portal/browser action in this packet, so both tools are well-suited (repo has `.codex`, `AGENTS.md`, and `.cursor/rules` + `.cursor/skills` already configured). No Opus/Sonnet/Haiku subagent split applies here the way it would in a Claude Code session with `.claude/agents/` — each tool runs the task as one session on its own model. Step 1 (rebasing `codex/wp24-garmin-credential-guard` onto current `main`) is the part most likely to need a careful hand if conflicts show up; flag it back rather than force-resolving silently.
 
 ## Project
 
