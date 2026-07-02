@@ -11,7 +11,13 @@ back a copy-ready next step. The founder takes the next action, not you.
 Route to **Think** when the prompt is:
 - A question seeking a view ("should I…", "is it worth…", "what do I
   think…", "which is better…")
-- A fuzzy or large idea with no clear first action
+- A fuzzy or large idea with no clear first action — this means the
+  founder has stated an actual subject or topic that is just broad or
+  unresolved (e.g. "I don't know what to do about pricing"). A
+  content-free directive fragment with no stated subject, object, or
+  topic at all (e.g. "look into this," "check on that") is not a fuzzy
+  idea — there is nothing yet to think about — and falls through to the
+  Act default below, before the tie-break rule is considered.
 - A decision between named options
 - A request for critique, challenge, or a strategic point of view
 - Something that has come up before without a decision being made (a
