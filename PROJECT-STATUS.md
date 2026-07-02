@@ -18,7 +18,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration | (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next | 1 | No | Needs Review | High | tasks/progress.md | 2026-06-29 c3e6645 Tighten Resumely analytics contract metadata |
 | RunSmart Web | WP-25 Garmin app deactivation response in progress. The production/internal-test credential guard is merged; new Garmin OAuth connection attempts are gated off by default in production while Garmin production approval is pending | Founder creates the Internal Test Garmin Developer Portal application and stores its credentials only in non-production; separately, founder creates/submits the commercial Production-review application when the evidence package is ready. Production env cutover waits for commercial credentials | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-02 554b50e docs: finalize WP-25 tracking status |
 | ResumeBuilder AI (Web) | ATS scoring accuracy — both compounding causes from the 2026-06-21 diagnosis are resolved. PR #80 and PR #81 both merged to main. Story 2's metric-nudge follow-up is parked for a future build (founder decision 2026-06-21/22: leave metrics_presence as-is for now, plan the nudge feature via PM skill before building) | Story 2 was investigated, not implemented — traced the d30a6841 optimization back to its pre-optimization source resume (`resumes.raw_text` for resume_id b797b20e) and confirmed it has ZERO quantified metrics anywhere in the original, founder-authored text (only "15+ years" in the summary). The AI optimizer correctly preserved this truthfully per its "never fabricate metrics" rule — `metrics_presence: 0` is accurate, not a defect. No fix implemented. Founder decision needed: ship a UX nudge prompting users with metric-free resumes to add real numbers (new feature, out of this session's scope), or accept the score as correctly reflecting genuinely metric-free input | 1 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-02 612b91b feat: grandfather existing free users before monetization |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-02 6ce5a03 Close WP-25, advance WP-27 to founder-blocked, unblock WP-26 Step 2 |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-07-02 b9314d2 Restore dashboard trust refresh state |
 
 ## Evidence Gaps
 
@@ -26,7 +26,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - Resumely iOS: validated 2026-06-26, last commit 2026-06-29 c3e6645 Tighten Resumely analytics contract metadata
 - ResumeBuilder AI (Web): validated 2026-06-22, last commit 2026-07-02 612b91b feat: grandfather existing free users before monetization
-- Agentic OS: validated 2026-06-12, last commit 2026-07-02 6ce5a03 Close WP-25, advance WP-27 to founder-blocked, unblock WP-26 Step 2
+- Agentic OS: validated 2026-06-12, last commit 2026-07-02 b9314d2 Restore dashboard trust refresh state
 
 ## Drift Warnings
 
@@ -52,7 +52,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [ResumeBuilder AI (Web)] 6 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
 
 ## Work Packet Hygiene
 
