@@ -49,9 +49,9 @@ Pick exactly one advisor:
   synthesis. Source: vault `04-Prompts/Claude/storm-project-system-prompt.md`
   and `04-Prompts/Claude/storm-multi-perspective-research.md`.
 - **High-Agency Advisor** — the prompt needs a bias-to-action or
-  anti-rumination challenge ("is this Level 0 or Level 1?"). Source:
-  `~/.claude/commands/advisor.md` and vault
-  `04-Prompts/Claude/high-agency-advisor.md`.
+  anti-rumination challenge ("is this Level 0 or Level 1?"). Source: the
+  vault's `/advisor` command (project-scoped to the Nadav Builder OS vault
+  repo) and vault `04-Prompts/Claude/high-agency-advisor.md`.
 - **Red Team** — the prompt needs adversarial challenge ("poke holes in
   this," "what could go wrong," "is this safe to ship"). **This advisor is
   not built yet — no file exists anywhere, vault or Agentic OS.** Recommend

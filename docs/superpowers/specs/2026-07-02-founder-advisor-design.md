@@ -106,8 +106,9 @@ Advisor selection:
   vault `04-Prompts/Claude/storm-project-system-prompt.md` +
   `storm-multi-perspective-research.md`.
 - **High-Agency Advisor** — needs a bias-to-action / anti-rumination challenge
-  ("is this Level 0 or Level 1?"). Source: `~/.claude/commands/advisor.md` +
-  vault `04-Prompts/Claude/high-agency-advisor.md`.
+  ("is this Level 0 or Level 1?"). Source: the vault's `/advisor` command
+  (project-scoped to the Nadav Builder OS vault repo) and vault
+  `04-Prompts/Claude/high-agency-advisor.md`.
 - **Red Team** — needs adversarial challenge. **Unbuilt** (no file exists). The
   advisor recommends it with a note that it is not yet built and falls back to
   the `adversarial-review` pattern in `GLOBAL-WORKFLOWS.md`.
