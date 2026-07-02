@@ -1,6 +1,6 @@
 # Work Packet WP-25 - Garmin: Gate Off New Connections + Push/Merge the Credential Guard
 
-- Status: Open
+- Status: **Closed** (2026-07-02) — verified independently, not just self-reported. See Closeout below.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 1-2 of the synthesis action plan
 - Mode: Maintainer
@@ -70,3 +70,13 @@ Report:
 - Confirmation that production env vars were NOT touched.
 - Files changed, tests run, and their results.
 - What was NOT done (expected: portal application creation, screenshot recapture, reconnect flow — all separate WPs).
+
+## Closeout (2026-07-02)
+
+Executed via Codex in the RunSmart Web repo. Verified independently (not taken on self-report) after an earlier session had drifted the WP-25/26/27 labels onto the wrong repo/content — see WP-26 and WP-27's history for that incident.
+
+- **Credential guard:** PR [#114](https://github.com/nadavyigal/Running-coach-/pull/114) "Guard Garmin production credentials," merged `2026-07-02T10:43:25Z`, commit `d74348d`. Read `v0/lib/server/garmin-credentials.ts` directly off `main`: `resolveGarminOAuthClientId()` throws in production if `GARMIN_USE_TEST_CREDENTIALS`/`GARMIN_CREDENTIAL_SET` explicitly request test creds, AND separately throws if the resolved client ID aliases `GARMIN_TEST_CLIENT_ID` — both the explicit and the aliasing failure modes are covered.
+- **Connection gate:** PR [#115](https://github.com/nadavyigal/Running-coach-/pull/115) "Gate new Garmin connections," merged `2026-07-02T10:48:56Z`, commit `7128efb`. Read `v0/lib/server/garmin-connect-gate.ts` off `main`: `isGarminConnectEnabled()` defaults to `NODE_ENV !== 'production'` (disabled by default in prod, explicit override via `GARMIN_CONNECT_ENABLED`). Confirmed it's actually called at the top of `v0/app/api/devices/garmin/connect/route.ts` (not just defined, wired), returns HTTP 503 with the exact disabled-message text specified in this packet.
+- **Env verification:** PR #115's body reports a read-only `vercel env ls production` check — production still has only `GARMIN_CLIENT_ID`/`GARMIN_CLIENT_SECRET`, no test creds, no rotation. Not independently re-run by this session, but consistent with the git-level evidence.
+- **CI flag, resolved:** both PRs' `quality-gates` GitHub Actions check shows `FAILURE`, and they merged anyway. Investigated: the failure is 2 assertions in `v0/lib/activation-loop.test.ts`, a file neither PR touches. Reproduced the identical failure by checking out the pre-merge commit (`ed04e30`) and running the test locally — confirmed pre-existing, unrelated to Garmin, not a regression from this work. Worth its own fix eventually, but does not block this closeout.
+- **Existing-user sync:** PR #115's body states the change only touches new-connection entry points, not refresh/revoke/webhook/import paths. Not independently re-verified against live Supabase data in this closeout pass.

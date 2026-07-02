@@ -1,6 +1,6 @@
 # Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission
 
-- Status: Open
+- Status: **Open — engineering complete, 2 founder-only steps remain** (2026-07-02). Not closed: this packet's own Success Signal requires 6 real-device screenshots, which do not exist yet. See Progress below.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), step 4 of the synthesis action plan
 - Mode: Builder
@@ -72,3 +72,18 @@ Report:
 - Grep result for stray "Garmin Wellness" references.
 - Screenshot zip location and per-screenshot brand-guideline check result.
 - What was NOT done, and explicit confirmation this evidence is ready to hand to WP-26 (or what's still blocking it).
+
+## Progress (2026-07-02)
+
+Executed via Codex in the RunSmart iOS repo, PR [#72](https://github.com/nadavyigal/IOS-runsmart-light-app-/pull/72), merged `2026-07-02T11:21:45Z` after independent review (not taken on self-report — see review notes below). An earlier same-day session had mislabeled this packet's content as "WP-26" on a different branch; that naming was corrected as part of this closeout (`docs/qa/wp27-garmin-gate4-evidence-recapture.md`, `docs/specs/wp25-garmin-track.md` reconciled to point at the canonical Agentic OS specs).
+
+**Done, independently verified:**
+- **Tile asset replaced.** Fetched `https://static.garmincdn.com/com.garmin.connect/content/images/developer/gc-app-tile/gc-app-tile_iOS.pdf` directly, `shasum -a 256` matches the file now in the repo (`f5c298184be1139257a22814b04a01da6f020f3123e14eca8f47d30a8c2d9712`), confirmed genuinely a valid PDF (not corrupted). `Contents.json` updated to reference `gc-app-tile_iOS.pdf` as the sole `universal` asset; old `garmin-connect-tile.jpg` fully removed from the tree, not left orphaned.
+- **No stray "Garmin Wellness" references.** Grep across app source returned zero hits, consistent across two independent sessions today.
+- **Attribution accuracy bug found and fixed** (not originally scoped, but directly relevant to this packet's brand-compliance goal): `RecoveryDashboardView`, `MorningCheckinView`, and `WellnessTrendsView` were showing "Garmin [device]" labels even when the underlying data was Apple-Health-sourced. New `RecoverySnapshot.includesGarminDeviceSourcedData` flag traced through both code paths in `SupabaseRunSmartServices.recoverySnapshot()` — correctly scoped to the Garmin-backed branch only. Confirmed no other view in the app had the same unguarded pattern (`ProfileTabView`/`SecondaryFlowView` already attribute per-record, never had this bug).
+- **Tests genuinely pass**, not just build. Full `xcodebuild test` run on `iPhone 17 Pro, OS=26.5`: 234 tests, 0 failures, including the two new tests and the previously-known-flaky RunRecorder test.
+
+**Still open, founder-only (this packet is not closed until these happen):**
+- **Live-build confirmation.** Task 1's "confirm 1.0.7 (20) is actually live in App Store Connect, cite the source" was never explicitly done this session — do not assume it from `tasks/progress.md`.
+- **Real-device screenshot capture.** All 6 Gate-4 screenshots. Correctly not attempted by any agent session — explicitly flagged as founder-only, not fabricated.
+- **Visual tile render check.** The new PDF-based asset compiles cleanly (Xcode's `actool` accepted it, tests ran against a successful build), but nobody has actually looked at it rendered in a simulator or device to confirm it's not blurry or mis-sized — worth a 10-second glance before it goes into the evidence package, since tile rendering is literally what got rejected before.

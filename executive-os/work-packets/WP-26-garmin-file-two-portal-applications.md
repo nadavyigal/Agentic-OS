@@ -1,6 +1,6 @@
 # Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications
 
-- Status: Open — blocked on WP-25 (connection gate) landing first, and on WP-27 (evidence pack) before the commercial app is actually submitted for Production review
+- Status: Open — **unblocked for Step 2** (WP-25 merged 2026-07-02, verified: [PR #114](https://github.com/nadavyigal/Running-coach-/pull/114), [PR #115](https://github.com/nadavyigal/Running-coach-/pull/115)). Still blocked for Step 4 (commercial app filing/submission) on WP-27's 2 remaining founder-only steps: live-build confirmation and real-device screenshots — see WP-27 Progress note.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24
 - Mode: Maintainer
