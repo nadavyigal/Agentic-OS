@@ -2,6 +2,15 @@
 
 One page for every work day. Executive OS, research, decisions, and long-running GTM/launch/monetization plans are **fully preserved** — this file only defines what you open **first**.
 
+## Tier -1 — Gate (only for a raw, ungated request)
+
+If what just came in is a raw ask — not already a Tier 0 daily action and not
+already a scoped work packet with Goal/Task/Constraints/Validation — classify
+it against `ORCHESTRATION-GATE.md` before doing anything else. That table
+picks the Tier, the `Mode`, and the `Workflow pattern` in one lookup instead
+of three separate manual decisions. Skip this step entirely once the request
+is already a Tier 0 action or an Execution-mode packet.
+
 ## Tier 0 — Daily (60–90 seconds)
 
 1. From the Agentic OS repo root, run:

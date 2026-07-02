@@ -178,7 +178,7 @@
 
     <script id="os-data" type="application/json">
 {
-  "generated": "2026-07-01 19:18",
+  "generated": "2026-07-02 07:39",
   "launch": [
     {
       "label": "RunSmart iOS",
@@ -216,11 +216,43 @@
   ],
   "layers": [
     {
+      "id": "vault-advisors",
+      "tag": "Layer -1",
+      "title": "Founder Advisors (Vault layer)",
+      "desc": "Live one layer above this repo, in the Nadav Builder OS vault — not Agentic OS state. Shown here for orientation only.",
+      "cards": [
+        {
+          "t": "Storm",
+          "s": "vault: 04-Prompts/Claude/storm-project-system-prompt.md + storm-multi-perspective-research.md — 5-lens research/synthesis persona",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "High-Agency Advisor",
+          "s": "vault: .claude/commands/advisor.md + 04-Prompts/Claude/high-agency-advisor.md — wired into decision-template.md + weekly-review-template.md",
+          "p": "active",
+          "pill": "ready"
+        },
+        {
+          "t": "Red Team",
+          "s": "Not filed anywhere yet, vault or Agentic OS. Concept only — maps to the adversarial-review pattern in GLOBAL-WORKFLOWS.md.",
+          "p": "concept",
+          "pill": "idle"
+        }
+      ]
+    },
+    {
       "id": "orchestration",
       "tag": "Layer 0",
       "title": "Orchestration & Governance",
       "desc": "Rules, planning protocol, and the swarm that routes work to the right agent.",
       "cards": [
+        {
+          "t": "Request Gate",
+          "s": "ORCHESTRATION-GATE.md — classifies a raw request into Tier/Mode/Pattern before DAILY.md or GLOBAL-WORKFLOWS.md gets applied by hand",
+          "p": "new",
+          "pill": "ready"
+        },
         {
           "t": "Director / Swarm",
           "s": "swarm-orchestrator + dev-swarm route multi-agent work",
@@ -456,6 +488,12 @@
         {
           "t": "Distribution Prompts/Workflows",
           "s": "13 workflows + ASO/SEO/directory prompts",
+          "p": "core",
+          "pill": "ready"
+        },
+        {
+          "t": "Product Management (8)",
+          "s": ".agents/skills/product-management/ — create-prd, user-stories, prioritization-frameworks, pre-mortem, outcome-roadmap, analyze-feature-requests…",
           "p": "core",
           "pill": "ready"
         },

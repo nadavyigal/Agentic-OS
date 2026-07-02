@@ -119,6 +119,10 @@ re-collect it. See `executive-os/EXECUTIVE-RHYTHM.md` for the full cadence.
 
 ## Advanced Workflow Modes
 
+For a raw, ungated request, run it through `ORCHESTRATION-GATE.md` first — it
+picks the Tier, Mode, and pattern below in one lookup. The table here remains
+the definitive reference for what each pattern means and who owns it.
+
 Most work packets use the normal single-agent path. Add a `Workflow pattern` only
 when the extra cost has a concrete quality, risk, research, or context benefit.
 
