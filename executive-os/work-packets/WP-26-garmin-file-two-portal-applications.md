@@ -89,6 +89,13 @@ Report:
 - `GARMIN-STATUS.md` and vault `Garmin-Integration.md` update confirmation.
 - What was NOT done.
 
+## Garmin-side confirmation (2026-07-02, received while paused — no action taken)
+
+Two things arrived from Garmin after this packet paused; recorded here as evidence, not as a resumption of Steps 3-4.
+
+- **Marc Lussi, 2026-07-02 10:11 GMT+2:** "You do not have a production app so we cannot speak of 'a new'. Please generate your first production app to re-initiate the production review process." Confirms in Garmin's own terms what root-cause analysis already established: the deactivated app was never Production tier, only Evaluation — there is no existing production app to reset, only a first one to eventually file. This is Garmin's process restating itself, not a deadline or a question; per the priority-reset decision, filing that first production app is exactly the paused Step-4 work and stays parked. No reply sent.
+- **Automated Garmin Developer Portal notification:** the Internal Test application (Connect Developer - Evaluation) is **approved**, scoped to exactly `ACTIVITY, HEALTH` — matches what was filed, confirms no Training/Women's Health API slipped through. No action needed; credentials were already retrieved and stored per the 2026-07-02 filing.
+
 ## Progress (2026-07-02)
 
 Step 2 executed directly (browser-driven, founder-confirmed each step) rather than handed to Codex/Composer, since the portal is founder-authenticated and OAuth-gated end to end.
