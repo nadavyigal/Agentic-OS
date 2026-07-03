@@ -99,3 +99,17 @@ Impact:
 - **Flip trigger (2026-06-24):** If D7 Gate A baseline is stable, open a PR flipping `isFitCheckEnabled=true` on `main` for the next build (1.1 build 7 or post-approval build 6 re-release). If D7 shows activation regression or open issues, extend defer and re-evaluate.
 - **Not chosen:** Full 100% flip on day one (too much exposure before D7 baseline). Staged percentage rollout (no server-side/client percentage gate exists today).
 - Evidence: `docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md` in the iOS repo.
+
+## 2026-07-02: Priority Reset — Resumely Primary, RunSmart Garmin to Maintenance
+
+Decision: ResumeBuilder/Resumely becomes the primary product, with a target of 20% real (founder-excluded) activation — defined as launch → export — within 30 days (by 2026-08-01). RunSmart's Garmin integration drops to pure maintenance: no new Developer Portal applications, no Production re-submission, no relaunch push. RunSmart's core focus shifts explicitly to non-wearable runners (the Phone-Only-Runner persona).
+
+Reason: A same-session cross-layer audit (vault + Agentic OS status + both repos' live git/task state) plus a live PostHog query on both products' real 30-day funnels showed both products at ~0% real activation once measured honestly (founder account excluded). Resumely: 49 reached the app, 2 exported (4% launch-to-export), with the biggest cliff at launch→fit-check-start (63% bounce). RunSmart: 48 reached the app, 3 completed a run (6% launch-to-run), with the biggest cliff at launch→onboarding-start (73% never begin). RunSmart's own activation threshold ("≥20% plan-to-run") was measuring the wrong step — of the 8 users who got a plan, 3 ran (37%, above threshold), but only 8 of 48 ever reached that step. Garmin has consumed disproportionate founder attention (3 Gate-4 brand rejections, a full app deactivation, a "start all over" instruction from Garmin, two new required portal applications) while serving only 5 users (`garmin_sync_completed`, 30d) — a sunk-cost pattern, not a growth lever. Resumely has the shorter, more tractable activation funnel (upload → optimize → export vs. onboard → plan → run → habit) and no active platform-relationship fire.
+
+Impact:
+
+- RunSmart's prior "gets priority over ResumeBuilder in a conflict" default (2026-06-07) is reversed for the duration of this push.
+- RunSmart: keep the 5 currently Garmin-synced users working; fix only breakage, do not expand scope. Revisit the Garmin track at day 30 based on Resumely's result.
+- Resumely: weekly focus is fixing funnel cliffs in order (launch→fit-check-start, then fit-check-complete→upload, then optimize→export), re-measuring the founder-excluded 30-day funnel weekly against the 20% target.
+- Gate A (paywall) on Resumely stays held until the 20% target is hit or clearly abandoned.
+- Full plan and reasoning: Nadav Builder OS vault `05-Decisions/2026-07-02-priority-reset-resumely-primary.md`; living pages `RunSmart.md` and `ResumeBuilder.md` updated in place.
