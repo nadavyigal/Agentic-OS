@@ -113,3 +113,15 @@ Impact:
 - Resumely: weekly focus is fixing funnel cliffs in order (launch→fit-check-start, then fit-check-complete→upload, then optimize→export), re-measuring the founder-excluded 30-day funnel weekly against the 20% target.
 - Gate A (paywall) on Resumely stays held until the 20% target is hit or clearly abandoned.
 - Full plan and reasoning: Nadav Builder OS vault `05-Decisions/2026-07-02-priority-reset-resumely-primary.md`; living pages `RunSmart.md` and `ResumeBuilder.md` updated in place.
+
+## 2026-07-03: Resumely Gate A — Disable Premium CTAs Until Activation Gate Opens
+
+Decision: Choose WP-29 S4 option A. Premium upgrade CTAs must be hidden or disabled while Gate A is closed; do not route signed-in users to Stripe, checkout, or a signup redirect presented as an upgrade. Keep the monetization gate closed until the Resumely activation decision is revisited.
+
+Reason: The signed-in `/pricing` Premium CTA currently creates a silent dead end by redirecting back to `/dashboard`, and wiring real checkout would contradict the 2026-07-02 Gate A hold. A disabled/non-actionable CTA is honest and reversible.
+
+Impact:
+
+- Web implementation should show Premium as unavailable/coming later instead of a clickable upgrade action.
+- `/api/upgrade` should not create checkout sessions while the gate is closed.
+- Re-opening Premium requires an explicit founder decision updating this gate record and the product code gate.
