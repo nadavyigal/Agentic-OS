@@ -1,6 +1,6 @@
 # Work Packet WP-29 - Resumely Web: Fix the 4 P0 Funnel Breaks (Demo 1 findings)
 
-- Status: **READY** (created 2026-07-03, not started)
+- Status: **IN PROGRESS** (S1 complete 2026-07-03; S2 next)
 - Created: 2026-07-03
 - Source: Builder OS vault `02-Products/ResumeBuilder/2026-07-03-resumely-ux-walkthrough-friction-report.md` (PR #17, merged branch `claude/peaceful-mendeleev-04b751`) — full production browser walkthrough by Claude (Fable 5), every P0 verified twice
 - Mode: Builder
@@ -97,3 +97,4 @@ Re-run the /qa-only walkthrough against production (or preview deploy) covering 
 ## Progress
 
 - 2026-07-03: Packet created from Demo 1 findings (Builder OS PR #17). Not started.
+- 2026-07-03: S1 completed in ResumeBuilder Web on branch `codex/wp29-s1-optimization-review-crash`. Current `origin/main` already wrapped the review tree in `SectionSelectionProvider`; added regression coverage that guards the route wrapper and proves the real `DesignRenderer`/`ChatSidebar` consumers fail without the provider and render with it. Validation: focused regression passed (2/2), targeted eslint passed, `git diff --check` passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S1 files. S2 is next.
