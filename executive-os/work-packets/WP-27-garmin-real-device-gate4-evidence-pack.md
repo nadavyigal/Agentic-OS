@@ -1,6 +1,6 @@
 # Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission
 
-- Status: **Open — engineering complete, 2 founder-only steps remain** (2026-07-02). Not closed: this packet's own Success Signal requires 6 real-device screenshots, which do not exist yet. See Progress below.
+- Status: **PAUSED 2026-07-03** — under the 2026-07-02 priority-reset (Resumely primary, RunSmart Garmin maintenance-only through ~2026-08-01), real-device screenshot capture and the App Store Connect build check are not being pursued; this packet exists only to feed WP-26's commercial resubmission, which itself is paused. Engineering-side work (tile asset, "Garmin Wellness" grep, attribution fix) remains done and is not being undone — see Progress below. Do not resume without re-checking [[project_resumely_primary_runsmart_maintenance]] memory first.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), step 4 of the synthesis action plan
 - Mode: Builder

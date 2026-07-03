@@ -1,6 +1,6 @@
 # Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications
 
-- Status: Open — **Step 2 substantially done** (Internal Test app filed, approved, connect flow verified working end-to-end on localhost). Still open within Step 2: Data Generator + Partner Verification runs, including a deliberate USER_DEREG event. Step 4 (commercial app filing/submission) stays blocked on WP-27's 2 remaining founder-only steps: live-build confirmation and real-device screenshots — see WP-27 Progress note. See Progress below.
+- Status: **PAUSED 2026-07-03** — Steps 3-4 (commercial application filing/submission) will not proceed under the 2026-07-02 priority-reset decision (Resumely primary, RunSmart Garmin maintenance-only through ~2026-08-01). Step 2's remaining sub-item (Data Generator + Partner Verification runs) also not pursued while paused. Step 2's core deliverable — Internal Test app filed, approved, connect flow verified — stands as done; nothing here is being undone. See [[project_resumely_primary_runsmart_maintenance]] memory and Agentic OS `DECISIONS.md` 2026-07-02 entry. Do not resume Steps 3-4 without re-checking that decision first.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), steps 3+5+7 of the synthesis action plan; supersedes WP-24
 - Mode: Maintainer

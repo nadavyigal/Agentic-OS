@@ -1,6 +1,6 @@
 # Work Packet WP-28 - Garmin: Reconnect Flow for the Existing 7 Connected Users
 
-- Status: Open — not urgent, but must exist before the commercial application is approved (see Success signal)
+- Status: **PAUSED 2026-07-03** — under the 2026-07-02 priority-reset (Resumely primary, RunSmart Garmin maintenance-only through ~2026-08-01), this packet's premise (build a reconnect flow ahead of commercial-app approval) doesn't apply while the commercial app isn't being filed. Maintenance mode is "fix breakage only, do not expand scope" — a new reconnect flow is scope expansion, not a fix, so this stays unbuilt. Revisit alongside WP-26 Steps 3-4 at the day-30 checkpoint. See [[project_resumely_primary_runsmart_maintenance]] memory.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged) — the "blind spot no lens addressed" finding: none of the STORM lenses, and neither the founder's plan nor the ChatGPT advisory draft, planned the reconnect migration for existing users
 - Mode: Grower
