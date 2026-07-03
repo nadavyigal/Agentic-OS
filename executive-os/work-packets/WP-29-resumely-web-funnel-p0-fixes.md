@@ -22,6 +22,7 @@ Cheapest capable model per story; Opus only where correctness/judgment is the ri
 | S4 upgrade CTA decision + fix | Founder decision first; then small scoped change | **HUMAN gate → Sonnet** |
 | S5 carry anonymous session through signup | Cross-boundary data flow (anon session → authed user), needs design judgment | **Opus** design + **Sonnet** implementation |
 | S6 cleanup batch (overflow, CSP, empty states, stop-phrases) | Mostly mechanical, well-specified edits | **Haiku** or Codex background; CSP change reviewed by **Sonnet** code-reviewer |
+| S8 fix (wrong route wrapped in S1) | Correctness-critical: same class of bug as S1, on the actual production route | **Cursor** (assigned 2026-07-03, founder-executed — second attempt at the original crash) |
 | Final validation walkthrough | Browser QA re-run + report | **Sonnet** (/qa-only) |
 
 Repo subagents are already model-pinned (ResumeBuilder scaffolding PR #94); use them rather than ad-hoc prompts. Run S6 in a short, scoped session per the cost note (don't carry a huge context for boilerplate).
@@ -75,6 +76,16 @@ The anonymous check already returns a `sessionId`; persist it through signup (qu
 - Keyword extraction: filter stop-phrases (e.g. "are hiring a") from public ats-check suggestions — the PR #80/#81 filter apparently doesn't cover this path.
 - Copy: dashboard greeting for first-session users (not "Welcome back"), applications empty state ("Add your first job" not "No applications match your search"), don't render the red "0 words" error before input, decide "Work Email" → "Email".
 Acceptance: each item verified in a browser; no unrelated files touched.
+
+### S8 — Fix the real crash: wrong route was wrapped in S1 — **Cursor** (assigned 2026-07-03, founder-executed)
+S1 wrapped `SectionSelectionProvider` around `src/app/[locale]/dashboard/optimizations/[id]/page.tsx` and added a regression test for that route. That route is not the one real users hit. The actual flow — landing check or dashboard "Start Full Optimization" → "Check My Match"/"Start optimization" — lands on the sibling route `src/app/[locale]/dashboard/optimization-reviews/[id]/page.tsx`, which imports and renders `DesignRenderer` (a `useSectionSelection` consumer, around line 307) with **no provider anywhere in the file**. Confirmed live on production 2026-07-03 13:04 UTC, reproduced twice (initial load + reload): full-page crash, "We Hit a Snag — useSectionSelection must be used within SectionSelectionProvider".
+
+Task:
+1. Wrap the render tree in `src/app/[locale]/dashboard/optimization-reviews/[id]/page.tsx` in `SectionSelectionProvider`, mirroring exactly how S1 did it in `optimizations/[id]/page.tsx` (see that file for the pattern — import path `@/hooks/useSectionSelection`).
+2. Add a regression test that targets the **actual** `optimization-reviews` route — do not copy S1's existing test as-is, since that test passes today while the real route is still broken and would give false confidence again.
+3. Evaluate whether `src/app/[locale]/dashboard/optimizations/[id]/page.tsx` is dead code (unreferenced by any live nav/redirect). If so, flag it for removal in a follow-up — its existence as an unused, already-correct decoy is exactly what let this slip through S1's own review, Codex's S6/S7 QA passes, and one earlier browser walkthrough before finally getting caught on this pass.
+
+Acceptance: sign in, upload a resume, paste a 100+ word job description, click through to `/dashboard/optimization-reviews/{id}` — page renders the review with no error boundary, on first load and on reload. New regression test passes and fails on `main` without the fix (verify by temporarily reverting the wrap locally, confirming the new test catches it, then restoring the fix).
 
 ### Final validation — **Sonnet**
 Re-run the /qa-only walkthrough against production (or preview deploy) covering the exact Demo 1 paths. Target: zero P0s, health score ≥ 80. File the delta report to the Builder OS vault and update the [[ResumeBuilder]] living page.
