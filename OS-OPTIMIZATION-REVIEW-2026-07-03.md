@@ -22,11 +22,11 @@ Full-system audit by Claude (Fable 5): global Claude layer (~/.claude), Agentic 
 **Fix:** add a product-vs-meta split line to the morning brief from `dashboard/usage.json` (data already exists, byProject). Set a working target: ≥60% of weekly tokens on product repos while the activation push is on. Treat a week where the vault outspends ResumeBuilder as a drift warning, same class as a stale dashboard.
 
 ### P0-2 · Cache-read burn ≈ 50% of total cost
-5,589,620,529 cache-read tokens/30d (Opus 2.18B ≈ $3.3k, Sonnet 3.41B ≈ $1.0k). Root cause: long sessions re-reading a very large static context every turn. Measured static surface today: 66 gstack skills + ~11 plugin suites' skills and instructions + 14 MCP servers (9 of which are OAuth-unauthenticated and unusable) injected at session start.
-**Fix (three cheap levers):**
-1. **Skill diet:** gstack analytics show **8 skill invocations ever, 5 distinct skills used** (qa-only, qa, office-hours, plan-eng-review, investigate) out of 66 installed. Uninstall or disable the ~60 never-used gstack skills (keep browse/qa/qa-only/investigate/ship family); re-add on demand.
-2. **Plugin diet:** the productivity suite injects 7 MCP servers (Asana, Atlassian, ClickUp, Linear, Monday, Notion, Slack) that are unauthenticated and unused by a solo founder. Disable the plugin; same for any unused suite (anthropic-skills, cowork-plugin-management). Note: these are not in settings.json enabledPlugins, so they're enabled at another level (claude.ai connectors / marketplace defaults) — worth hunting down.
-3. **Session hygiene:** the routing policy's cost note already says it: shorter, scoped sessions for mechanical work. 75 vault sessions in 30d suggests long-lived catch-all sessions. Close and reopen rather than carrying 200k of context to file a note.
+5,589,620,529 cache-read tokens/30d (Opus 2.18B ≈ $3.3k, Sonnet 3.41B ≈ $1.0k). Root cause, corrected after investigation: it is **not** the always-injected skill-catalog list (that's just names + one-liners, cheap). It's that each skill's *full* instructions load into context on invocation and then persist for the rest of the session, getting cache-read on every subsequent turn — a heavy skill invoked early in a long session compounds badly. gstack analytics show **8 invocations ever, 5 distinct skills used** (qa, qa-only, office-hours, plan-eng-review, investigate) out of 66 installed.
+**Fix (founder-approved 2026-07-03, three levers):**
+1. **Skill routing, not skill deletion:** gstack is one monolithic install ("one repo, one install, entire AI engineering workflow") — not per-skill toggleable, and deleting individual `SKILL.md` folders risks breakage on the next `gstack-upgrade`. Founder decision: keep the full 66-skill catalog installed and reachable, but make the 5 actually-used skills the *default* proactive working set; the rest are invoke-by-explicit-name only (same pattern as `/red-team` or a STORM analysis — full power on request, not on autopilot). Implemented in `~/.claude/CLAUDE.md` Skills section, 2026-07-03.
+2. **Productivity connector suite:** 7 unauthenticated MCP servers (Asana, Atlassian, ClickUp, Linear, Monday, Notion, Slack) are confirmed **not** in this machine's `settings.json` `enabledPlugins` — they're enabled at the claude.ai account/connector level, outside file-edit reach. Founder action needed: disconnect unused connectors via claude.ai connector settings if they're not wanted.
+3. **Session hygiene:** the routing policy's cost note already says it: shorter, scoped sessions for mechanical work. 75 vault sessions in 30d suggests long-lived catch-all sessions. After invoking a heavy skill (qa-only, plan-eng-review), prefer closing and reopening for the next unrelated task rather than carrying its full payload into hours of unrelated work.
 
 ### P0-3 · Opus routing exists on paper, not in behavior
 Opus: 73% of cost from 23% of sessions (46 sessions, avg $136). The tier table (GLOBAL-TOOL-USAGE.md) reserves Opus for architecture/hard debugging, but sessions default to whatever model the window opened with.
@@ -59,12 +59,12 @@ Three separate "review" skills (gstack /review, built-in /review, plan-*-review 
 3. Created the missing `posthog-founder-account-exclusion` vault note (resolves 5 phantom refs).
 4. Refreshed dashboards as a side effect of the audit (`./agentic-os refresh`, usage.json regenerated).
 
-## Founder decisions needed
+## Founder decisions — resolved 2026-07-03
 
-1. P1-4: delete the failing LaunchAgent, or invest in fixing TCC properly?
-2. P0-2: approve the skill/plugin diet (list of survivors above)?
-3. P1-5: approve retiring ~/.claude/MEMORY.md to a pointer file (touches the global ritual)?
-4. The two dirty vault worktrees (cool-sanderson-0092f0, focused-raman-e4f264): keep or inspect-and-clean?
+1. **P1-4 (launchd):** DELETE — done. `com.nadav.agentic-os-refresh` unloaded and its plist removed; morning-brief refresh already covers this.
+2. **P0-2 (skill/plugin diet):** APPROVED with a modification — keep gstack's full 66-skill catalog installed and reachable by explicit name (not per-skill toggleable without breakage risk); make the 5 actually-used skills the default proactive working set via `~/.claude/CLAUDE.md` routing guidance. Productivity connector suite (7 unauthenticated MCP servers) confirmed to live at the claude.ai account level, not this repo — founder to disconnect via claude.ai connector settings if desired.
+3. **P1-5 (MEMORY.md):** APPROVED — done. `~/.claude/MEMORY.md` body replaced with a pointer to auto-memory + `DECISIONS.md`; historical entries kept below the pointer for reference. `CLAUDE.md` session-start ritual step 1 updated to match.
+4. **Dirty vault worktrees:** LEAVE AS IS — founder call, no action taken on `cool-sanderson-0092f0` or `focused-raman-e4f264`.
 
 ## Measurement to watch
 
