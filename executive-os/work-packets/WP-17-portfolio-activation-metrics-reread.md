@@ -1,6 +1,6 @@
 # Work Packet WP-17 - Portfolio Activation Metrics Reread
 
-- Status: Open
+- Status: **Done** (closed 2026-07-05)
 - Created: 2026-06-24
 - Source: EXD-013; `executive-os/reviews/2026-06-24-portfolio-exec-ceo-plan.md`
 - Workflow pattern: metric-diagnostic
@@ -72,5 +72,15 @@ Report:
 - OKR 2 hold/revise recommendation.
 - Files changed.
 - Checks run.
+
+## Closed — 2026-07-05
+
+- RunSmart D7 activation reread: **0%** (0/12 mature App Store cohort, install 2026-06-19–06-28), first true App Store cohort. Onboarding drop 94.7%, plan→run wall at 0%.
+- Resumely cleaned D7: **0%** (0/37 mature organic). All-time funnel shows the real bottleneck: 46 `guest_mode_started` → 1 `resume_upload_succeeded` ever.
+- OKR 2 recommendation: **Hold both targets** — 0% samples aren't yet large enough to revise ≥30%/≥40% down; treat as directional pending WP-15/WP-18 diagnostics.
+- Saved readout: `executive-os/reviews/2026-07-05-activation-reread.md`.
+- Files changed: this packet (status), `EXECUTIVE-METRICS.md` (Product Metrics table), `CEO-OS.md` (OKR 2 baselines), the saved readout.
+- Checks run: readout numbers sourced from live PostHog SQL (project 171597 + 270848), founder/QA/bot excluded per memory `posthog-founder-account-exclusion`.
+- Not done: web `$pageview` platform-split cleanup in dashboards (flagged in the readout, not blocking this packet's success signal).
 - What was NOT done.
 

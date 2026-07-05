@@ -99,8 +99,8 @@ _All KR metrics follow the format: value known / unknown — need: \<source\>._
 
 | # | Key Result | Metric | Baseline | Target | Source |
 |---|---|---|---|---|---|
-| 1 | RunSmart iOS: % of new installs who complete a GPS run within 7 days of install (D7 activation) | D7 activation rate | 0% (0/10), 2026-06-24 — pre-App-Store beta cohort; first organic read ~2026-06-26 | ≥ 30% | PostHog funnel: install → run_completed |
-| 2 | Resumely iOS: % of new installs who complete an optimization within 7 days (D7 activation) | D7 activation rate | ≈0% real organic (3/35 raw, all founder-attributed), 2026-06-24 | ≥ 40% | PostHog funnel: install → optimize_completed |
+| 1 | RunSmart iOS: % of new installs who complete a GPS run within 7 days of install (D7 activation) | D7 activation rate | 0% (0/12 mature App Store cohort), 2026-07-05 — first true post-launch organic read; break is plan→run, before onboarding even converts (94.7% drop) | ≥ 30% | PostHog funnel: install → run_completed |
+| 2 | Resumely iOS: % of new installs who complete an optimization within 7 days (D7 activation) | D7 activation rate | 0% real organic (0/37 mature, 2 raw completers both founder-attributed), 2026-07-05 — break is upload friction (1 successful upload ever from 46 who reached guest mode) | ≥ 40% | PostHog funnel: install → optimize_completed |
 | 3 | At least 1 paid subscriber across the portfolio (first revenue signal) | Paid subscription count | 0 | ≥ 1 | App Store Connect / RevenueCat |
 
 - **Owner:** Nadav
