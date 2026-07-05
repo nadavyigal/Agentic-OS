@@ -43,9 +43,13 @@ Raw signal (before exclusion): 2 users hit D7 `optimization_completed` — `761e
 
 Platform split (cleaned cohort): 46 iOS-first, 14 web-first users since 2026-06-10.
 
-Supporting funnel (cleaned, all-time, not 7d-windowed): `guest_mode_started` 46 users ever engaged → `resume_upload_succeeded` **1 user ever** → `fit_check_completed` 19 → `optimization_completed` 4 (all founder/bot after attribution) → `export_success` 3.
+~~Supporting funnel (cleaned, all-time, not 7d-windowed): `guest_mode_started` 46 users ever engaged → `resume_upload_succeeded` **1 user ever** → `fit_check_completed` 19 → `optimization_completed` 4 (all founder/bot after attribution) → `export_success` 3.~~
 
-Named drop-off: **upload is still the bottleneck.** Massive traffic reaches guest mode and fit-check, but almost nobody completes a real upload.
+~~Named drop-off: **upload is still the bottleneck.** Massive traffic reaches guest mode and fit-check, but almost nobody completes a real upload.~~
+
+**CORRECTED same day (2026-07-05) — see Correction section below.** The line above used the wrong event name for uploads. Corrected funnel: `guest_mode_started` 46 → `resume_uploaded` (correct event) **8** → `optimization_completed` **2** → `export_success` **0**.
+
+Named drop-off (corrected): **export is the bottleneck, not upload.** 8 real people uploaded a resume and 2 completed an optimization, but zero real (non-founder) people have ever exported in 60 days.
 
 Acquisition trend (weekly `app_launched`): 2026-06-08: 6 · 2026-06-15: 16 · 2026-06-22: 28 · 2026-06-29: 5.
 
@@ -54,16 +58,45 @@ Acquisition trend (weekly `app_launched`): 2026-06-08: 6 · 2026-06-15: 16 · 20
 | Target | Still valid? | Rationale |
 |---|---|---|
 | RunSmart ≥30% D7 activation | Hold | Right north star, but 0/12 mature with no run signal means the target is aspirational, not directional yet. |
-| Resumely ≥40% D7 activation | Hold | Same. 0/37 mature real organic. Upload friction (WP-18) is the leading hypothesis. |
+| Resumely ≥40% D7 activation | Hold | Same. 0/37 mature real organic. Corrected 2026-07-05: optimization→export friction, not upload friction, is the leading hypothesis — see Correction section. WP-18 scope should be re-checked against this. |
 
 ## What this readout does NOT change
 
 - EXD-013 stands: investigate activation now, not monetize/GTM.
 - RunSmart plan→run diagnostic (WP-15) is still the priority product investigation.
-- Resumely upload friction diagnostic (WP-18) is still the priority before new features.
+- Resumely activation friction diagnostic (WP-18) is still the priority before new features — re-scoped same day from upload to optimization→export (see Correction section).
 - Measurement integrity work (WP-30) is paying off on Resumely exclusions, but web `$pageview` attribution still needs clean platform splits in dashboards.
 
 ## Recommended next reads
 
 - RunSmart: re-read 2026-07-12 when the 7 immature installs (2026-06-29 to 2026-07-03) mature.
-- Resumely: re-read 2026-07-12 when the 7 immature users (first-seen after 2026-06-28) mature. Watch whether any non-founder user hits `resume_upload_succeeded`.
+- Resumely: re-read 2026-07-12 when the 7 immature users (first-seen after 2026-06-28) mature. Watch whether any non-founder user hits `resume_uploaded` or `export_success`.
+
+## Correction — 2026-07-05 (same day, found while rebuilding the vault activation dashboard)
+
+**Bug:** the original "Supporting funnel" line above cited `resume_upload_succeeded` for the upload step. Root cause identified precisely (not just a naming duplicate): `resume_upload_succeeded` is **new instrumentation shipped by WP-18** (PR #80, still "In Review" / not yet broadly merged/live) — one of 9 new upload-journey events WP-18 added to fill in what its own diagnosis called a "measurement black box." It has only 13 events / 1 distinct person all-time because it isn't live for most users yet, not because upload is rare. The actual established terminal upload event — the one WP-18's own 2026-06-24 diagnosis confirmed as "the terminal event that fires" — is `resume_uploaded` (90 events / 11 distinct people all-time, 87 iOS + 3 web). Readout #2 queried the not-yet-rolled-out event instead of the established one.
+
+**Verification (live HogQL, project 270848, 60-day window):**
+
+| Event | Total events | Distinct people (all-time) |
+|---|---|---|
+| `guest_mode_started` | 119 | 48 |
+| `fit_check_completed` | 104 | 19 |
+| `resume_uploaded` (correct) | 90 | 11 |
+| `optimization_started` | 50 | 4 |
+| `resume_upload_started` | 22 | 1 |
+| `export_success` | 20 | 3 |
+| `resume_upload_succeeded` (WP-18's new event, PR #80 still in review — do not use until merged/live) | 13 | 1 |
+| `resume_upload_failed` | 3 | 1 |
+
+Founder/QA/bot exclusion applied to distinct people per event (excluding `a6441489` = nadav.yigal@gmail.com, `761e5b1b`, `712cf425` = founder dogfood pattern, `067544b5` = automation/bot):
+
+- `resume_uploaded`: 11 distinct → **8 clean**.
+- `optimization_completed`: 6 distinct (`a6441489`, `761e5b1b`, `712cf425`, `067544b5`, `eb943c28`, `1c4937d7`) → **2 clean** (`eb943c28`, `1c4937d7` — no email captured on these persons, so this identification rests on process of elimination against the known founder/bot IDs, not a positive confirmation; flag for the next readout to double-check).
+- `export_success`: 3 distinct (`a6441489`, `761e5b1b`, `712cf425`) → **0 clean**. All three exports in the last 60 days are founder-pattern accounts.
+
+**Corrected all-time funnel (founder/QA/bot excluded):** `guest_mode_started` 46 → `resume_uploaded` 8 → `optimization_completed` 2 → `export_success` 0.
+
+**What this changes:** the narrative flips from "almost nobody uploads" to "uploads and optimizations happen at a real (if low) rate, but nobody has ever exported." This reconciles the original discrepancy (upload count 1 vs optimization count 4, which is logically impossible) and is closer to — though not identical to — the 2026-07-03 30-day funnel's "9 uploaded" figure (different window and slightly different exclusion set, but same order of magnitude, unlike the "1 ever" figure this replaces).
+
+**Action:** WP-18 (Resumely upload/import friction diagnostic) should be re-checked — its scope may need to shift toward the optimization→export step, since the corrected data shows upload is not the near-total wall it was reported as. Not re-scoped in this file; flagged for whoever picks up WP-18 next.

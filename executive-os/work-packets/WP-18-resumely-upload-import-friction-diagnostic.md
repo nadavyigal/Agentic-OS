@@ -140,3 +140,7 @@ Report:
 - Next metric to watch: `guest_mode_started -> resume_upload_cta_tapped -> resume_file_selected -> resume_upload_succeeded -> job_added`.
 - What was NOT done.
 
+## Note — 2026-07-05 (found while correcting D7 Activation Readout #2)
+
+Readout #2 mistakenly queried `resume_upload_succeeded` (this packet's new event, PR #80 still in review) as if it were the established terminal upload event — it isn't live for most users yet (13 events / 1 person all-time), so it read as a near-total upload wall. The actual established event, `resume_uploaded` (confirmed by this packet's own 2026-06-24 diagnosis as the one terminal event that fires), shows 90 events / 11 people all-time (8 after founder/QA/bot exclusion) — real, if modest, upload activity. Corrected downstream funnel: uploaded 8 → optimized 2 → **exported 0** (all 3 all-time exports are founder-pattern accounts). Once PR #80 merges and `resume_upload_succeeded` accumulates real traffic, re-verify this packet's new events line up with `resume_uploaded` counts (they should track closely) — and consider whether this packet's scope should extend to the optimization→export step, since that's now the more severe gap. Full correction: `executive-os/reviews/2026-07-05-activation-reread.md`.
+
