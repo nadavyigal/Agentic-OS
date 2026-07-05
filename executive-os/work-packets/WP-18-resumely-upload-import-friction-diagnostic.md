@@ -144,3 +144,13 @@ Report:
 
 Readout #2 mistakenly queried `resume_upload_succeeded` (this packet's new event, PR #80 still in review) as if it were the established terminal upload event — it isn't live for most users yet (13 events / 1 person all-time), so it read as a near-total upload wall. The actual established event, `resume_uploaded` (confirmed by this packet's own 2026-06-24 diagnosis as the one terminal event that fires), shows 90 events / 11 people all-time (8 after founder/QA/bot exclusion) — real, if modest, upload activity. Corrected downstream funnel: uploaded 8 → optimized 2 → **exported 0** (all 3 all-time exports are founder-pattern accounts). Once PR #80 merges and `resume_upload_succeeded` accumulates real traffic, re-verify this packet's new events line up with `resume_uploaded` counts (they should track closely) — and consider whether this packet's scope should extend to the optimization→export step, since that's now the more severe gap. Full correction: `executive-os/reviews/2026-07-05-activation-reread.md`.
 
+## Follow-up — 2026-07-05 (Codex/PostHog implementation pass)
+
+Do **not** extend this upload/import packet into export work. Keep its canonical outcome as: `resume_uploaded` remains the cross-version upload denominator, while `resume_upload_succeeded` is a v1.2+ granular diagnostic event. The export gap is now split into its own packet: `WP-36-resumely-export-friction-diagnostic.md`.
+
+PostHog implementation completed:
+
+- Created pinned dashboard `Resumely — Activation + Export Diagnostic` (project 270848, dashboard id `1801425`).
+- Added `Resumely — Canonical Activation Status (cleaned 60d)` (insight `3NiBhRDP`) using explicit known founder/QA/bot person-prefix exclusions and `resume_uploaded` as the upload step.
+- Added `Resumely — Export Friction Diagnostic (cleaned 60d)` (insight `lVFdiDCs`) to track optimized users through diagnosis, export tap, export start, export success/failure, and submit package.
+- Updated PostHog event definitions: `resume_uploaded` marked verified/canonical; `resume_upload_succeeded` marked verified/diagnostic with warning not to use it as the historical denominator.
