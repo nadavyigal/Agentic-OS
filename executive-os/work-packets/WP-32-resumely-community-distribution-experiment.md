@@ -1,6 +1,6 @@
 # Work Packet WP-32 - Resumely: Community / FB-Groups Distribution Experiment (rb-he-comm-001)
 
-- Status: Ready (created 2026-07-05, not started)
+- Status: Posted (2026-07-05; 7-day measurement pending)
 - Created: 2026-07-05
 - Source: Founder request 2026-07-05 ("start posting in facebook groups to try using the app"), promoting `rb-he-comm-001` from `distribution-os/projects/resumebuilder/scaffold/hebrew-first-playbook.md`
 - Mode: Builder drafts + founder publish gate
@@ -51,3 +51,8 @@ Produce the Founder-Led Local Post Pack (playbook Asset Recipe #3), adapted for 
 ## Progress
 
 - 2026-07-05: Packet created from founder request during weekly review. Not started.
+- 2026-07-05: Founder posted the community experiment manually in three Facebook groups:
+  - `https://www.facebook.com/groups/israel.hitech.jobs/posts/10162695610290807/?notif_id=1783240698437026&notif_t=group_post_approved&ref=notif`
+  - `https://www.facebook.com/groups/1684554685829832/posts/2072696087015688/?notif_id=1783240478117588&notif_t=group_post_approved&ref=notif`
+  - `https://www.facebook.com/groups/israel.hightech/posts/10163521132537677/?notif_id=1783240597243645&notif_t=group_post_approved&ref=notif`
+  Verification note: URLs are founder-supplied approved-post links; Facebook content fetch was blocked from this environment, so post body/engagement could not be independently read. Next evidence to collect: 7-day Israeli storefront install lift, comments/reactions, direct replies, and any qualitative fit/activation signal.

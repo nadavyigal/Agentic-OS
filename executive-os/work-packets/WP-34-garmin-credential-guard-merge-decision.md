@@ -1,6 +1,6 @@
 # Work Packet WP-34 - Garmin Credential Guard: Merge or Explicitly Park
 
-- Status: Ready (created 2026-07-05, not started)
+- Status: Needs re-triage (referenced branch/commit not found 2026-07-05)
 - Created: 2026-07-05
 - Source: Weekly review 2026-07-05 — flagged twice now (2026-07-02 STORM analysis, 2026-07-05 weekly review) as finished code sitting stranded, unmerged
 - Mode: Builder (mechanical merge) + founder confirmation that maintenance-mode still wants it
@@ -41,3 +41,4 @@ RunSmart iOS: `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS Run
 ## Progress
 
 - 2026-07-05: Packet created from weekly review — this is the second time the stranded commit has been flagged without action. Not started.
+- 2026-07-05: Founder asked to check status. Verification in RunSmart iOS repo found current `main` clean at `8b9dfee` (`origin/main`), with Garmin-related branches present but no `codex/wp24-garmin-credential-guard` branch, no local commit `baa19aa`, and no branch containing that commit. `tasks/progress.md` currently points to WP-27 Garmin Gate-4 evidence cleanup / Garmin Data Trust Audit, not a completed credential-guard merge. Treat this packet as not completed until the missing branch/commit is recovered from another clone/worktree or the decision is explicitly parked.
