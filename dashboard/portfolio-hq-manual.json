@@ -1,0 +1,163 @@
+{
+  "asOf": "2026-07-05",
+  "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
+  "founderCommand": [
+    {
+      "title": "Close the loop on WP-32 / 33 / 34",
+      "body": "Ran in Codex/Cursor and reported done — but the packet files in Agentic OS still said 'not started' as of 07-05. Note: Agentic OS commit c2d0fc8 (07-05) parked WP-34 via EXD-019; verify 32/33 before acting.",
+      "prompt": "In the Agentic OS repo, update work packets WP-32, WP-33, WP-34 (executive-os/work-packets/) to reflect completed work. For each: read the packet, ask me what was actually done and where the output lives (PR links, files, drafts), verify the evidence exists, then update the Status line and add a dated Progress entry. Commit and push."
+    },
+    {
+      "title": "Three decisions sitting in NEXT-MOVES",
+      "body": "RunSmart Hebrew playbook — approve or park? Legal entity — Israeli Ltd. vs self-employed? Dead 'Upgrade to Premium' button on Resumely web — hide, waitlist, or wire checkout (recommended: hide until Gate A).",
+      "prompt": "Read executive-os/NEXT-MOVES.md in the Agentic OS repo. I want to decide the three Shaping items now. Walk me through them one at a time with a recommendation each, record my choices as EXD rows in EXECUTIVE-DECISIONS.md, and promote any that need work into work packets."
+    },
+    {
+      "title": "Two 5-minute calls with no date",
+      "body": "Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use).",
+      "prompt": null
+    }
+  ],
+  "tracks": [
+    {
+      "id": "michal",
+      "name": "Michal / AI Audit Toolkit",
+      "pill": "FIRST CLIENT PILOT",
+      "tone": "run",
+      "standing": "Everything is drafted (4 Gems, Voice doc, privacy rules). The only thing missing is a scheduled session with her Gemini account.",
+      "items": [
+        { "tone": "done", "text": "WP-33 prep ran in Cursor (per founder)" },
+        { "tone": "you", "text": "Schedule the live session with Michal. That's the whole blocker." },
+        { "tone": "info", "text": "After the session: file the first toolkit template so the pilot feeds the AI Audit Toolkit product." }
+      ],
+      "prompts": [
+        {
+          "label": "Run the live session (when scheduled)",
+          "text": "I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo (/Users/nadavyigal/Documents/Projects /Michal) and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."
+        }
+      ]
+    }
+  ],
+  "traffic": [
+    {
+      "id": "resumely",
+      "label": "Resumely — people opening the app per week (founder excluded)",
+      "color": "#3b7ea1",
+      "weeks": [
+        { "label": "Jun 01", "v": 4 },
+        { "label": "Jun 08", "v": 5 },
+        { "label": "Jun 15", "v": 14 },
+        { "label": "Jun 22", "v": 26 },
+        { "label": "Jun 29 →", "v": 4, "partial": true }
+      ],
+      "story": "The launch push worked (26 people, most tried a fit check), then traffic died. This is the number WP-31/32 have to move."
+    },
+    {
+      "id": "runsmart",
+      "label": "RunSmart — installs per week",
+      "color": "#c07a3e",
+      "weeks": [
+        { "label": "Jun 08", "v": 15 },
+        { "label": "Jun 15", "v": 11 },
+        { "label": "Jun 22", "v": 9 },
+        { "label": "Jun 29 →", "v": 7, "partial": true }
+      ],
+      "story": "Steadier than Resumely, but 0% of installers ever complete a run — volume isn't the problem here, the plan→run step is."
+    }
+  ],
+  "funnels": [
+    {
+      "id": "resumely",
+      "name": "Resumely",
+      "tag": "web + iOS · all-time cumulative, founder-excluded",
+      "color": "#3b7ea1",
+      "steps": [
+        ["Guest mode started", 46],
+        ["Fit check completed", 19],
+        ["Resume uploaded (corrected event)", 8],
+        ["Optimization completed", 2],
+        ["Export success (0 real — all founder)", 0]
+      ]
+    },
+    {
+      "id": "runsmart",
+      "name": "RunSmart",
+      "tag": "iOS · mature-cohort 7-day window (n=19)",
+      "color": "#c07a3e",
+      "steps": [
+        ["Installed (since launch)", 19],
+        ["Onboarding", 1],
+        ["Plan generated", 1],
+        ["Run started", 0],
+        ["Run completed", 0]
+      ]
+    }
+  ],
+  "activationHeadline": {
+    "rows": [
+      { "metric": "Real D7 activation", "resumely": "0% (0/37)", "runsmart": "0% (0/12)", "bad": true },
+      { "metric": "The wall", "resumely": "export — 8 uploaded, 2 optimized, 0 ever exported", "runsmart": "plan→run — 1 of 19 got a plan, 0 ran" },
+      { "metric": "Target", "resumely": "≥40%", "runsmart": "≥30%" }
+    ],
+    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule."
+  },
+  "clocks": [
+    { "date": "2026-07-12", "what": "Activation re-read, both apps (7 immature users each mature by then)", "state": "running" },
+    { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
+    { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
+    { "date": null, "when": "After you post", "what": "WP-32 FB groups — 7-day measurement window", "state": "waiting" },
+    { "date": null, "when": "No date yet", "what": "Michal live Gemini session", "state": "you" }
+  ],
+  "knownUnknown": {
+    "kk": [
+      "Both live: RunSmart 1.0.7(21) since 07-05; Resumely v1.3(8) since 07-05.",
+      "Both 0% real D7 activation on mature App Store cohorts (Readout #2).",
+      "Resumely wall = export (8 uploaded, 2 optimized, 0 real exports ever).",
+      "RunSmart wall = plan→run (onboarding drop 94.7%; 0 runs).",
+      "Traffic collapsed post-launch-push; WP-29 web funnel fixed + verified."
+    ],
+    "ku": [
+      "Do the 7 immature installs/app convert by the 07-12 re-read?",
+      "Does FB-group / Hebrew-first posting actually move traffic?",
+      "Why does nobody export? (WP-36 diagnostic live, awaiting 1.3(8) data.)",
+      "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)",
+      "Voice-coach flag: flip or keep parked? No decision date."
+    ],
+    "uk": [
+      "Michal Track C fully drafted — blocked only on her live Gemini account.",
+      "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated."
+    ],
+    "uu": [
+      "Does the PostHog leak run both ways (Resumely → RunSmart project)?",
+      "Do Garmin's real review criteria exceed Marc's emails? (STORM: ungrounded.)",
+      "Do other dashboards carry founder/QA contamination (the 50% inflation pattern)?",
+      "Is 'activation' the right north star before there's traffic to activate?"
+    ]
+  },
+  "weekPriorities": [
+    {
+      "n": 1,
+      "title": "Resumely — fix the export wall, then drive traffic",
+      "body": "Product wall: WP-36 export-friction diagnostic is live in 1.3(8) — read the funnel data when it lands. Distribution: publish WP-31 Hebrew ASO and post the WP-32 FB-group drafts — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."
+    },
+    {
+      "n": 2,
+      "title": "RunSmart — verify the WP-15 fix moved the needle",
+      "body": "1.0.7(21) shipped the first-run activation fix. Re-run the PostHog funnel 07-08+ for build-21-only users. Garmin stays maintenance-only (EXD-015); WP-34 parked via EXD-019."
+    },
+    {
+      "n": 3,
+      "title": "Michal — schedule the live Gemini session",
+      "body": "Track C fully drafted. One calendar invite unblocks the first paid pilot of the OS."
+    },
+    {
+      "n": 4,
+      "title": "OS hygiene — keep the record true",
+      "body": "End every Codex/Cursor session with 'update the work packet'. Clear the stranded-work board (see Today tab count)."
+    }
+  ],
+  "readouts": [
+    { "app": "RunSmart iOS", "r1": "0% (0/10 beta)", "r2": "0% (0/12 mature App Store)", "target": "≥30%", "wall": "plan→run: 1/19 planned, 0 ran" },
+    { "app": "Resumely", "r1": "0% (0/35 organic)", "r2": "0% (0/37 mature organic)", "target": "≥40%", "wall": "export: 0 real people ever exported" }
+  ]
+}

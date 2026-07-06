@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio HQ — Agentic OS</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --bg:#0a0a0f; --surface:#0d1117; --surface2:#111827; --border:#1e293b; --border2:#161b22;
+    --text:#e2e8f0; --dim:#94a3b8; --faint:#64748b; --ghost:#475569;
+    --green:#4ade80; --green-bg:#0f1f10; --green-bdr:#1a3320;
+    --blue:#38bdf8; --blue-bg:#0f1822; --blue-bdr:#1a2f3a;
+    --amber:#fbbf24; --amber-bg:#1f1a0f; --amber-bdr:#3a2f1a;
+    --red:#f87171; --red-bg:#1f0f10; --red-bdr:#3a1a1c;
+    --purple:#c084fc; --purple-bg:#170f1f; --purple-bdr:#2d1a3a;
+    --orange:#fb923c; --orange-bg:#1a1108; --orange-bdr:#2e2010;
+  }
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;line-height:1.5;}
+  a{color:#3b82f6;text-decoration:none;} a:hover{text-decoration:underline;}
+  code{background:#1e293b;padding:1px 5px;border-radius:4px;font-size:.92em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+  /* ── top bar ── */
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(10,10,15,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .brand{font-size:15px;font-weight:700;margin-right:8px;}
+  .brand small{color:var(--faint);font-weight:500;font-size:10px;display:block;letter-spacing:.12em;text-transform:uppercase;}
+  nav{display:flex;gap:2px;flex-wrap:wrap;}
+  nav button{background:none;border:1px solid transparent;color:var(--dim);font-size:13px;padding:6px 13px;border-radius:8px;cursor:pointer;font-family:inherit;}
+  nav button:hover{color:var(--text);background:var(--surface2);}
+  nav button.on{color:var(--text);background:var(--surface2);border-color:var(--border);}
+  nav button b{font-weight:400;color:var(--ghost);font-size:10px;margin-right:5px;}
+  .chips{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+  .chip{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--dim);white-space:nowrap;}
+  .chip.g{background:var(--green-bg);border-color:var(--green-bdr);color:var(--green);}
+  .chip.a{background:var(--amber-bg);border-color:var(--amber-bdr);color:var(--amber);}
+  .chip.r{background:var(--red-bg);border-color:var(--red-bdr);color:var(--red);}
+
+  main{max-width:1180px;margin:0 auto;padding:22px 24px 90px;}
+  .view{display:none;} .view.on{display:block;}
+  h2{font-size:17px;font-weight:600;margin:26px 0 3px;}
+  .ssub{color:var(--dim);font-size:12.5px;margin-bottom:12px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  .card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;background:var(--surface);margin-bottom:12px;}
+  .card.green{background:var(--green-bg);border-color:var(--green-bdr);}
+  .card.amber{background:var(--amber-bg);border-color:var(--amber-bdr);}
+  .card.blue{background:var(--blue-bg);border-color:var(--blue-bdr);}
+  .card.red{background:var(--red-bg);border-color:var(--red-bdr);}
+  .card.purple{background:var(--purple-bg);border-color:var(--purple-bdr);}
+  .qh{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;color:var(--dim);}
+  .green .qh{color:var(--green);} .amber .qh{color:var(--amber);} .blue .qh{color:var(--blue);} .red .qh{color:var(--red);} .purple .qh{color:var(--purple);}
+  p,li,td{font-size:13.5px;}
+  ul.dash{list-style:none;}
+  ul.dash li{padding:3px 0 3px 16px;position:relative;}
+  ul.dash li::before{content:"–";position:absolute;left:0;color:var(--faint);}
+  b{font-weight:600;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--border);vertical-align:top;}
+  th{color:var(--dim);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.03em;}
+  .bad{color:var(--red);font-weight:600;} .good{color:var(--green);font-weight:600;}
+
+  .pill{font-size:10px;font-weight:600;text-transform:uppercase;padding:2px 8px;border-radius:20px;white-space:nowrap;display:inline-block;}
+  .p-done{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bdr);}
+  .p-run{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bdr);}
+  .p-wait{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bdr);}
+  .p-you{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bdr);}
+  .p-info{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bdr);}
+
+  .banner{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:12px 14px;font-size:13px;margin-bottom:14px;border:1px solid var(--border);background:var(--surface);}
+  .banner .dot{width:9px;height:9px;border-radius:50%;margin-top:5px;flex:none;}
+  .banner.warn{background:var(--amber-bg);border-color:var(--amber-bdr);} .banner.warn .dot{background:var(--amber);box-shadow:0 0 0 3px rgba(251,191,36,.14);}
+  .banner.crit{background:var(--red-bg);border-color:var(--red-bdr);} .banner.crit .dot{background:var(--red);box-shadow:0 0 0 3px rgba(248,113,113,.14);}
+  .banner.ok{background:var(--green-bg);border-color:var(--green-bdr);} .banner.ok .dot{background:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.14);}
+
+  .hero{border:1px solid var(--blue-bdr);background:linear-gradient(160deg,var(--blue-bg),var(--surface) 70%);border-radius:14px;padding:18px 20px;margin-bottom:14px;}
+  .hero .eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+  .hero .big{font-size:16px;font-weight:600;line-height:1.45;}
+  .hero .sub{color:var(--dim);font-size:12.5px;margin-top:8px;}
+
+  .prompt{position:relative;margin:8px 0 4px;}
+  .prompt pre{background:#05070c;border:1px solid var(--border);border-radius:8px;padding:10px 12px;padding-right:64px;font-size:12px;line-height:1.5;white-space:pre-wrap;color:var(--dim);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .cbtn{background:var(--surface);border:1px solid var(--border);color:var(--dim);font-size:11px;padding:3px 10px;border-radius:6px;cursor:pointer;font-family:inherit;}
+  .cbtn:hover{color:var(--text);border-color:var(--dim);}
+  .cbtn.copied{color:var(--green);border-color:var(--green-bdr);}
+  .prompt .cbtn{position:absolute;top:6px;right:6px;}
+  details{margin:6px 0;}
+  summary{cursor:pointer;font-size:12.5px;color:var(--dim);padding:4px 0;}
+  summary:hover{color:var(--text);}
+  .foot{font-size:11px;color:var(--faint);margin-top:8px;line-height:1.5;}
+
+  .kpis{display:flex;gap:18px;flex-wrap:wrap;}
+  .kpis>div{display:flex;flex-direction:column;min-width:90px;}
+  .kpis b{font-size:21px;font-variant-numeric:tabular-nums;line-height:1.15;}
+  .kpis b.warn{color:var(--red);} .kpis b.ok{color:var(--green);} .kpis b.mid{color:var(--amber);}
+  .kpis small{font-size:10.5px;color:var(--dim);margin-top:2px;}
+
+  .clock{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--border2);font-size:13px;}
+  .clock:last-child{border-bottom:none;}
+  .clock .cd{font-variant-numeric:tabular-nums;font-weight:700;min-width:86px;font-size:12.5px;}
+  .cd.red{color:var(--red);} .cd.amber{color:var(--amber);} .cd.blue{color:var(--blue);} .cd.dim{color:var(--faint);font-weight:500;}
+
+  .git{font-size:11.5px;color:var(--faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:6px;line-height:1.6;}
+  .track-head{display:flex;align-items:center;gap:10px;margin:24px 0 8px;flex-wrap:wrap;}
+  .track-head h2{margin:0;}
+
+  .funnel{display:flex;flex-direction:column;gap:5px;margin:10px 0 6px;}
+  .step{cursor:pointer;}
+  .step .row{display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;}
+  .step .row span:last-child{font-variant-numeric:tabular-nums;color:var(--dim);}
+  .bar{height:20px;background:rgba(148,163,184,.10);border-radius:5px;overflow:hidden;}
+  .bar i{display:block;height:100%;border-radius:5px;transition:width .6s cubic-bezier(.2,.7,.2,1);width:0;}
+  .step .drop{font-size:11px;color:var(--red);margin-top:3px;display:none;}
+  .step.open .drop{display:block;}
+  .spark{width:100%;height:58px;display:block;}
+  .wk-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--faint);margin-top:2px;}
+
+  .filter{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;padding:8px 12px;margin-bottom:12px;font-family:inherit;}
+  .filter:focus{outline:none;border-color:var(--blue-bdr);}
+  .pk{border:1px solid var(--border2);border-radius:9px;background:var(--surface2);padding:10px 13px;margin-bottom:8px;}
+  .pk .pkh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+  .pk .pkt{font-size:13px;font-weight:600;}
+  .pk .goal{font-size:12px;color:var(--dim);margin-top:3px;}
+
+  .rhythm{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:860px){.rhythm{grid-template-columns:1fr 1fr;}}
+  .rcell{border-radius:9px;padding:13px 15px;border:1px solid transparent;display:flex;flex-direction:column;gap:4px;}
+  .rcell .dl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .rcell .mn{font-size:13px;font-weight:600;}
+  .rcell .plus{font-size:10px;color:var(--faint);}
+  .rcell .tb{font-size:10px;border-radius:4px;padding:2px 8px;width:fit-content;font-weight:500;margin-top:3px;}
+  .r-mon{background:var(--green-bg);border-color:var(--green-bdr);} .r-mon .dl{color:var(--green);} .r-mon .tb{background:var(--green-bdr);color:var(--green);}
+  .r-mid{background:var(--blue-bg);border-color:var(--blue-bdr);} .r-mid .dl{color:var(--blue);} .r-mid .tb{background:var(--blue-bdr);color:var(--blue);}
+  .r-fri{background:var(--purple-bg);border-color:var(--purple-bdr);} .r-fri .dl{color:var(--purple);} .r-fri .tb{background:var(--purple-bdr);color:var(--purple);}
+  .r-mth{background:var(--orange-bg);border-color:var(--orange-bdr);} .r-mth .dl{color:var(--orange);} .r-mth .tb{background:var(--orange-bdr);color:var(--orange);}
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:860px){.tgrid{grid-template-columns:1fr;}}
+  .tcard{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;}
+  .tcard .sit{font-size:11px;color:var(--faint);}
+  .tcard .act{font-size:14px;font-weight:700;}
+  .tcard .tool{font-size:10px;color:var(--faint);}
+  .tcard .lnk{margin-top:5px;}
+  .cp-inline{background:none;border:none;padding:0;font-size:11px;color:#3b82f6;cursor:pointer;font-family:inherit;}
+  .cp-inline:hover{opacity:.75;} .cp-inline.copied{color:var(--green);}
+  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);background:#1e293b;color:#e2e8f0;font-size:12px;padding:8px 18px;border-radius:6px;border:1px solid #334155;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;white-space:nowrap;z-index:50;}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .src-tag{font-size:10px;color:var(--ghost);text-transform:uppercase;letter-spacing:.07em;font-weight:600;}
+  .usage-bar{display:flex;align-items:center;gap:9px;font-size:12px;padding:4px 0;}
+  .usage-bar .nm{width:130px;color:var(--dim);flex:none;}
+  .usage-bar .tr{flex:1;height:10px;background:rgba(148,163,184,.10);border-radius:5px;overflow:hidden;}
+  .usage-bar .tr i{display:block;height:100%;background:var(--purple);border-radius:5px;}
+  .usage-bar .val{font-variant-numeric:tabular-nums;color:var(--dim);width:70px;text-align:right;flex:none;}
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<div class="topbar">
+  <div class="brand">Portfolio HQ<small>Agentic OS</small></div>
+  <nav id="nav"></nav>
+  <div class="chips" id="chips"></div>
+</div>
+
+<main>
+  <div id="stale-banner"></div>
+  <div id="v-today" class="view"></div>
+  <div id="v-tracks" class="view"></div>
+  <div id="v-numbers" class="view"></div>
+  <div id="v-week" class="view"></div>
+  <div id="v-map" class="view"></div>
+</main>
+
+<script id="hq-data" type="application/json">
+{"generatedAt":"2026-07-06 16:33 UTC","sources":{"status":"2026-07-06 19:33","usage":"2026-06-26T09:56:00.409730+00:00","manual":"2026-07-05"},"auto":{"summary":{"overallStatus":"RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next","bestNextAction":"Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2","mainBlockers":["RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive — release built from clean detached worktree at `6ed8b97`","RunSmart iOS: clean duplicates before next local archive","Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured","Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list","RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production","RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard","ResumeBuilder AI (Web): Gate A remains closed by decision","ResumeBuilder AI (Web): do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"],"needsDecision":["RunSmart iOS: if build 8 is rejected again, decide minimal fix scope vs. expanding to v2 feature set.","Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.","ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."]},"trust":{"level":"refresh_required","label":"Refresh required","reasons":["Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.","2 uncommitted change(s). Commit so nothing is lost between sessions/tools."],"refreshToday":true,"needsNextPacketCount":4,"hygieneWarnings":["Uncommitted files in product repos: RunSmart iOS, Resumely iOS.","Extra product worktrees retained for review: RunSmart iOS (1)."]},"priority":{"now":["RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes","Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2"],"next":["RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope","ResumeBuilder AI (Web): WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty"],"blocked":["RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production","RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"],"laterCount":8},"health":[{"id":"runsmart-ios","name":"RunSmart iOS","state":"PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015)","nextAction":"Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes","blockers":["(1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive — release built from clean detached worktree at `6ed8b97`","clean duplicates before next local archive"],"dirty":true,"dirtyCount":36,"extraWorktrees":1,"branch":"main...origin/main","lastCommit":"2026-07-05 81bd11b Ship 1.0.7 (21) — WP-15 first-run activation fix live","freshness":"Fresh","stale":false,"evidenceGap":false,"evidenceDate":"2026-07-05","buildStatus":null,"gtm":{"exists":true,"path":".agent-os/distribution/gtm-plan.md","positioning":"The AI running coach for beginners and returning runners who need safe daily adaptation — not just faster race plans","status":"draft","lastUpdated":"2026-06-01"}},{"id":"resumebuilder-ios","name":"Resumely iOS","state":"Post-launch — activation measurement hardening before export/paywall/monetization work","nextAction":"Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2","blockers":["Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured","missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"],"dirty":true,"dirtyCount":12,"extraWorktrees":0,"branch":"main...origin/main","lastCommit":"2026-07-05 214826f Ship 1.3 (8) — WP-36 export-visibility instrumentation, smoke-tested live","freshness":"Fresh","stale":false,"evidenceGap":false,"evidenceDate":"2026-07-06","buildStatus":"succeeded","gtm":{"exists":false,"path":null,"positioning":null,"status":null,"lastUpdated":null}},{"id":"runsmart-web","name":"RunSmart Web","state":"Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes","nextAction":"**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope","blockers":["Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production","the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"],"dirty":true,"dirtyCount":6,"extraWorktrees":0,"branch":"main...origin/main","lastCommit":"2026-07-03 ffc2b51 fix(garmin): distinguish planned Garmin pause from real connection errors","freshness":"Needs Review","stale":false,"evidenceGap":false,"evidenceDate":"2026-07-03","buildStatus":null,"gtm":{"exists":false,"path":null,"positioning":null,"status":null,"lastUpdated":null}},{"id":"resumebuilder-ai","name":"ResumeBuilder AI (Web)","state":"WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next","nextAction":"WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty","blockers":["Gate A remains closed by decision","do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"],"dirty":true,"dirtyCount":2,"extraWorktrees":0,"branch":"fix/posthog-expert-event-dedupe...origin/fix/posthog-expert-event-dedupe","lastCommit":"2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3)","freshness":"Fresh","stale":false,"evidenceGap":true,"evidenceDate":"2026-07-03","buildStatus":null,"gtm":{"exists":true,"path":".agent-os/distribution/gtm-plan.md","positioning":"ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional — without sounding like a robot","status":"draft","lastUpdated":"2026-05-28"}},{"id":"agentic-os","name":"Agentic OS","state":"Advanced OS patterns lean pilot","nextAction":"Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative","blockers":[],"dirty":true,"dirtyCount":4,"extraWorktrees":0,"branch":"main...origin/main","lastCommit":"2026-07-06 dc30ed7 ./agentic-os refresh — pick up both apps' ASC submissions, WP-34 park, stranded-work cleanup","freshness":"Fresh","stale":false,"evidenceGap":true,"evidenceDate":"2026-06-12","buildStatus":null,"gtm":{"exists":false,"path":null,"positioning":null,"status":null,"lastUpdated":null}}],"stranded":{"generatedOn":"2026-07-06","actionableCount":25,"items":[{"project":"RunSmart iOS","type":"local-only","detail":"claude/ios-docs-sweep-2026-06-19: unmerged commits, remote branch deleted, last commit 2026-06-19","action":"Push claude/ios-docs-sweep-2026-06-19 and open a PR, or consciously discard it."},{"project":"RunSmart iOS","type":"local-only","detail":"garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22","action":"Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it."},{"project":"RunSmart iOS","type":"local-only","detail":"preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21","action":"Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it."},{"project":"RunSmart iOS","type":"worktree","detail":"worktree on detached, 1 uncommitted file(s) at /private/tmp/runsmart-wp15-release-1783271110","action":"Land or discard this worktree, then `git worktree remove` it."},{"project":"RunSmart iOS","type":"dirty","detail":"36 uncommitted file(s) in the primary working tree","action":"Commit or discard before the next session ends."},{"project":"Resumely iOS","type":"local-only","detail":"codex/fitcheck-service: unmerged commits, remote branch deleted, last commit 2026-06-23","action":"Push codex/fitcheck-service and open a PR, or consciously discard it."},{"project":"Resumely iOS","type":"local-only","detail":"feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16","action":"Push feat/localization-updates and open a PR, or consciously discard it."},{"project":"Resumely iOS","type":"local-only","detail":"pr-72-review: unmerged commits, never pushed, last commit 2026-06-22","action":"Push pr-72-review and open a PR, or consciously discard it."},{"project":"Resumely iOS","type":"dirty","detail":"12 uncommitted file(s) in the primary working tree","action":"Commit or discard before the next session ends."},{"project":"RunSmart Web","type":"local-only","detail":"garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22","action":"Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it."},{"project":"RunSmart Web","type":"local-only","detail":"pr-108-review: unmerged commits, never pushed, last commit 2026-06-30","action":"Push pr-108-review and open a PR, or consciously discard it."},{"project":"RunSmart Web","type":"dirty","detail":"6 uncommitted file(s) in the primary working tree","action":"Commit or discard before the next session ends."},{"project":"ResumeBuilder AI (Web)","type":"unpushed","detail":"codex/wp29-s1-optimization-review-crash: 1 unpushed commit(s), last commit 2026-07-03","action":"Push codex/wp29-s1-optimization-review-crash and open a PR, or explicitly hand it off."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/fit-first-triage-story-0: unmerged commits, remote branch deleted, last commit 2026-06-23","action":"Push codex/fit-first-triage-story-0 and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/resumebuilder-posthog-llm-observability: unmerged commits, remote branch deleted, last commit 2026-06-30","action":"Push codex/resumebuilder-posthog-llm-observability and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/wp29-s2-en-funnel-messages: unmerged commits, never pushed, last commit 2026-07-03","action":"Push codex/wp29-s2-en-funnel-messages and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/wp29-s3-word-count-errors: unmerged commits, never pushed, last commit 2026-07-03","action":"Push codex/wp29-s3-word-count-errors and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/wp29-s4-disable-premium-cta: unmerged commits, never pushed, last commit 2026-07-03","action":"Push codex/wp29-s4-disable-premium-cta and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/wp29-s5-anon-session-handoff: unmerged commits, never pushed, last commit 2026-07-03","action":"Push codex/wp29-s5-anon-session-handoff and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"codex/wp29-s6-cleanup-batch: unmerged commits, never pushed, last commit 2026-07-03","action":"Push codex/wp29-s6-cleanup-batch and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"fix/ats-keyword-phrase-quality: unmerged commits, remote branch deleted, last commit 2026-06-22","action":"Push fix/ats-keyword-phrase-quality and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03","action":"Push fix/pdf-parse-xref-error and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"local-only","detail":"pr-83-review: unmerged commits, never pushed, last commit 2026-06-22","action":"Push pr-83-review and open a PR, or consciously discard it."},{"project":"ResumeBuilder AI (Web)","type":"dirty","detail":"2 uncommitted file(s) in the primary working tree","action":"Commit or discard before the next session ends."},{"project":"Agentic OS","type":"dirty","detail":"4 uncommitted file(s) in the primary working tree","action":"Commit or discard before the next session ends."}]},"packets":[{"title":"Work Packet WP-10","status":"Open","project":"Resumely iOS (ResumeBuilder IOS APP)","goal":"Close remaining gaps from EXD-012 so Resumely's score is consistently positioned as a self-defined **Resumely Match Score** (or **Match Score** in tight UI), with disclosure copy, not an external ATS vendor score","path":"executive-os/work-packets/WP-10-resumely-match-score-positioning-audit.md","copyPrompt":null},{"title":"Work Packet WP-11 — Daily Execution Plan 2026-06-23","status":"Open","project":null,"goal":null,"path":"executive-os/work-packets/WP-11-2026-06-23-daily-execution-plan.md","copyPrompt":null},{"title":"Work Packet WP-12 — Resumely ATS Next Priority: Land the Fit-First Triage Wedge","status":"Unknown","project":null,"goal":null,"path":"executive-os/work-packets/WP-12-resumely-fit-first-triage-wedge.md","copyPrompt":null},{"title":"Work Packet WP-13 — Ship the Fit-First Triage Release, Then Flip the Flag","status":"Open","project":null,"goal":null,"path":"executive-os/work-packets/WP-13-fit-first-release-and-flip.md","copyPrompt":null},{"title":"Work Packet WP-15 - RunSmart Plan-to-Run Activation Diagnostic","status":"Open","project":"RunSmart iOS","goal":"Explain why 0/10 real users completed a run within 7 days even though 30% reached `plan_generated`, then prepare the smallest activation intervention that can move plan-to-run conversion above zero","path":"executive-os/work-packets/WP-15-runsmart-plan-to-run-activation-diagnostic.md","copyPrompt":null},{"title":"Work Packet WP-17 - Portfolio Activation Metrics Reread","status":"Unknown","project":"Agentic OS, with PostHog/App Store evidence from RunSmart and Resumely","goal":"Run the next portfolio activation reread after the first true RunSmart organic cohort becomes available, update the executive metrics, and decide whether OKR 2 targets still hold","path":"executive-os/work-packets/WP-17-portfolio-activation-metrics-reread.md","copyPrompt":null},{"title":"Work Packet WP-18 - Resumely Upload / Import Friction Diagnostic","status":"In Review","project":"Resumely iOS, with optional ResumeBuilder Web comparison if event taxonomy or upload behavior differs","goal":"Diagnose and instrument the largest measurable Resumely activation drop-off: users launch or enter guest mode, but most do not reach `resume_uploaded`","path":"executive-os/work-packets/WP-18-resumely-upload-import-friction-diagnostic.md","copyPrompt":null},{"title":"Work Packet WP-2 (Research Complete)","status":"Research","project":null,"goal":"Define the freemium model for both apps now — the free activation moment, the paywall line, and the upgrade trigger — and prepare a ready-to-build spec, so when first-cohort activation data arrives we implement immediately instead of starting from scratch","path":"executive-os/work-packets/WP-2-monetization-freemium.md","copyPrompt":null},{"title":"WP-2 Monetization Spec — Ready-to-Build","status":"Ready to build","project":null,"goal":null,"path":"executive-os/work-packets/WP-2-monetization-spec.md","copyPrompt":null},{"title":"Work Packet WP-20 - RunSmart First-Run Activation Build","status":"Open","project":"RunSmart iOS","goal":"Ship one small, App Store-submittable RunSmart iOS/backend build that covers the current Report/Activity `device_name` fallback fix and the smallest `rs-onboarding-001` first-run activation intervention","path":"executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md","copyPrompt":null},{"title":"WP-21 — ResumeBuilder PostHog LLM Observability","status":"Unknown","project":null,"goal":null,"path":"executive-os/work-packets/WP-21-resumebuilder-posthog-llm-observability.md","copyPrompt":null},{"title":"WP-23 — RunSmart PostHog LLM Observability","status":"Unknown","project":null,"goal":null,"path":"executive-os/work-packets/WP-23-runsmart-posthog-llm-observability.md","copyPrompt":null},{"title":"WP-24 — Garmin: File Two Developer Portal Applications (Internal Test + Commercial)","status":"Unknown","project":null,"goal":"File exactly what Marc asked for — two separate Developer Portal applications, not one reset application:","path":"executive-os/work-packets/WP-24-garmin-fresh-production-app-registration.md","copyPrompt":null},{"title":"Work Packet WP-25 - Garmin: Gate Off New Connections + Push/Merge the Credential Guard","status":"Unknown","project":"RunSmart Web","goal":"Stop the bleeding on the two things that are pure code and do not require the Garmin Developer Portal: (1) new users can no longer start a Garmin connect flow while there is no legitimate application to connect them to, and (2) the credential-separation guard that fixes the root cause of the whole deactivation sits merged in intent but unmerged in git — land it for real","path":"executive-os/work-packets/WP-25-garmin-gate-connections-and-push-credential-guard.md","copyPrompt":null},{"title":"Work Packet WP-26 - Garmin: File Internal Test + Commercial Portal Applications","status":"Unknown","project":"RunSmart Web (supporting evidence, credentials) + Garmin Developer Portal (external, browser-based)","goal":"File exactly what Marc Lussi asked for on 2026-07-01: two separate Developer Portal applications, not a reset of the old one. Submit the commercial application for Production review **once**, complete, with every item numbered against Garmin's own requirements list — not another partial, iterative reply","path":"executive-os/work-packets/WP-26-garmin-file-two-portal-applications.md","copyPrompt":null},{"title":"Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission","status":"Unknown","project":"RunSmart iOS","goal":"Produce evidence that cannot trigger a fourth rejection: real-device screenshots (not simulator), captured against the build that is actually live on the App Store, with the pristine unaltered official Garmin Connect brand asset, and zero remaining references to the invented \"Garmin Wellness\" term Marc rejected on 2026-07-01","path":"executive-os/work-packets/WP-27-garmin-real-device-gate4-evidence-pack.md","copyPrompt":null},{"title":"Work Packet WP-28 - Garmin: Reconnect Flow for the Existing 7 Connected Users","status":"Unknown","project":"RunSmart Web (+ RunSmart iOS if the reconnect entry point needs a native surface)","goal":"Build the reconnect flow now, while there is no time pressure, so it is not a scramble on Garmin approval day. Every metric this packet touches must cite what it moves, per the Grower mode contract: the target is reconnect rate among the 7 (or however many by then) previously-connected users, measured within a defined window after the commercial app goes live","path":"executive-os/work-packets/WP-28-garmin-reconnect-flow-for-existing-users.md","copyPrompt":null},{"title":"Work Packet WP-29 - Resumely Web: Fix the 4 P0 Funnel Breaks (Demo 1 findings)","status":"Unknown","project":"ResumeBuilder Web (Resumely)","goal":"Remove the four production defects that structurally cap web activation, in impact order, without opening the monetization gate by accident and without bundling unrelated changes","path":"executive-os/work-packets/WP-29-resumely-web-funnel-p0-fixes.md","copyPrompt":null},{"title":"Work Packet WP-30 - Resumely: Measurement Integrity + Distribution Ignition (Demo 3)","status":"Unknown","project":null,"goal":null,"path":"executive-os/work-packets/WP-30-resumely-measurement-integrity-and-distribution.md","copyPrompt":null},{"title":"Work Packet WP-31 - Resumely: Hebrew ASO Pass (rb-he-aso-001)","status":"Unknown","project":null,"goal":null,"path":"executive-os/work-packets/WP-31-resumely-hebrew-aso-pass.md","copyPrompt":null},{"title":"Work Packet WP-33 - Michal AI Operations Pilot: Track C Kickoff (first AI Audit Toolkit client)","status":"In progress","project":"Michal repo: `/Users/nadavyigal/Documents/Projects /Michal`","goal":null,"path":"executive-os/work-packets/WP-33-michal-ai-os-pilot-kickoff.md","copyPrompt":null},{"title":"Work Packet WP-35 - RunSmart Legal Entity Investigation","status":"Ready","project":"Agentic OS coordination plus founder-admin follow-up. No product repo code changes are expected","goal":null,"path":"executive-os/work-packets/WP-35-runsmart-legal-entity-investigation.md","copyPrompt":null},{"title":"Work Packet WP-5","status":"Open","project":"Resumely iOS (ResumeBuilder IOS APP)","goal":"Resubmit Resumely iOS so it passes both rejection points: Guideline 2.1(a) (Sign in with Apple error) and Guideline 5.1.1(v) (account deletion)","path":"executive-os/work-packets/WP-5-resumely-resubmission-build3-apple-signin-deletion.md","copyPrompt":null},{"title":"Work Packet WP-9","status":"open","project":"RunSmart iOS","goal":"Address the three highest-value findings from the ASO audit: lift store conversion and break the zero-ratings ceiling that is currently capping installs (and therefore the D7 gate)","path":"executive-os/work-packets/WP-9-runsmart-aso-conversion-fixes.md","copyPrompt":null}],"prompts":[{"projectId":"runsmart-ios","project":"RunSmart iOS","role":"iOS Release / Product Engineer","repoState":"Dirty","branch":"main...origin/main","nextAction":"Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes","sourceConfidence":"High","trustDirective":"Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.","evidence":["tasks/MEMORY.md","tasks/todo.md","tasks/progress.md","tasks/session-log.md","docs/specs/README.md",".agent-os/distribution/gtm-plan.md","docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md","docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend 2.md","docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md","docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup 2.md","docs/plans/2026-06-11-code-review-fix-plan.md","docs/plans/2026-06-11-code-review-baseline-audit.md","docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md","docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md","docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md","docs/superpowers/plans/2026-06-03-build-8-resubmission.md","docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md","docs/specs/post-submission-ux-redesign-1.0.1.md","docs/superpowers/plans/01-runsmart-ios-archive-submit.md","docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md","docs/specs/e5-adaptive-flex-week.md","docs/superpowers/specs/2026-05-24-e2-e6-design.md","docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md","docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md","docs/superpowers/plans/2026-05-19-posthog-analytics.md","docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md","docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md","docs/specs/wp25-garmin-track.md","docs/specs/wp25-garmin-track 2.md","docs/specs/sprint-9-real-activity-today-data-flow-ux.md","docs/specs/e7-garmin-wearable-depth.md","docs/specs/demo-mode-simulator-recording.md","docs/specs/demo-mode-simulator-recording 2.md",".agent-os/distribution/weekly-plan.md"],"copyPrompt":"Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015). Next action: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes. Known blockers: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive — release built from clean detached worktree at `6ed8b97`; clean duplicates before next local archive. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."},{"projectId":"resumebuilder-ios","project":"Resumely iOS","role":"iOS Release Manager","repoState":"Dirty","branch":"main...origin/main","nextAction":"Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2","sourceConfidence":"High","trustDirective":"Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.","evidence":["tasks/MEMORY.md","tasks/todo.md","tasks/progress.md","tasks/session-log.md","docs/specs/README.md","docs/product/product-vision.md","docs/product/current-product-state.md","docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md","docs/superpowers/specs/2026-06-18-v5-build-ship-design.md","docs/superpowers/plans/2026-06-18-v5-build-ship.md","docs/specs/resume-aha-moments.md","docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md","docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md","docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md","docs/specs/app-store-screenshot-generator.md","docs/superpowers/plans/2026-06-03-app-store-submission.md","docs/specs/resumely-pre-submission-ux-ui-transformation.md"],"copyPrompt":"Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch — activation measurement hardening before export/paywall/monetization work. Next action: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2. Known blockers: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured; missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."},{"projectId":"runsmart-web","project":"RunSmart Web","role":"Backend Support Engineer","repoState":"Dirty","branch":"main...origin/main","nextAction":"**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope","sourceConfidence":"High","trustDirective":"Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.","evidence":["tasks/MEMORY.md","tasks/todo.md","tasks/progress.md","tasks/session-log.md","docs/agent-os/project-context.md","docs/specs/README.md","docs/product/product-vision.md","docs/product/current-product-state.md","docs/superpowers/plans/2026-07-01-garmin-first-aha.md","docs/superpowers/plans/2026-06-18-garmin-push-cleanup.md","docs/superpowers/plans/2026-06-15-garmin-production-roadmap.md","docs/superpowers/plans/2026-06-15-garmin-production-enablement.md","docs/superpowers/plans/2026-06-15-garmin-evaluation-fixes.md","docs/plans/2026-06-10-aha-moments-phase-1-implementation-prompt.md","docs/specs/2026-05-12-today-command-center.md","docs/plans/2026-03-17-runsmart-ios-app-plan.md","docs/plans/2026-02-24-runsmart-groups-A-D-implementation-plan.md","docs/plans/2026-02-24-runsmart-execution-prompts-pack.md","docs/plans/2026-02-15-app-refinement-plan.md","docs/plans/2026-02-12-runsmart-product-strategy-design.md","docs/plans/2026-02-12-runsmart-execution-plan.md"],"copyPrompt":"Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Next action: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope. Known blockers: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production; the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."},{"projectId":"resumebuilder-ai","project":"ResumeBuilder AI (Web)","role":"Backend Rollout Engineer","repoState":"Dirty","branch":"fix/posthog-expert-event-dedupe...origin/fix/posthog-expert-event-dedupe","nextAction":"WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty","sourceConfidence":"High","trustDirective":"Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.","evidence":["tasks/MEMORY.md","tasks/progress.md","docs/agent-os/project-context.md",".agent-os/distribution/gtm-plan.md","docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md","docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md","docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md","docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md","docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md","docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md","docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md","docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",".agent-os/distribution/weekly-plan.md"],"copyPrompt":"Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, .agent-os/distribution/gtm-plan.md. Current state: WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next. Next action: WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty. Known blockers: Gate A remains closed by decision; do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."},{"projectId":"agentic-os","project":"Agentic OS","role":"Agentic OS Operator","repoState":"Dirty","branch":"main...origin/main","nextAction":"Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative","sourceConfidence":"High","trustDirective":"Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.","evidence":["tasks/MEMORY.md","tasks/progress.md","docs/superpowers/specs/2026-07-02-founder-advisor-design.md","docs/superpowers/plans/2026-07-02-founder-advisor.md","docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md","docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md","docs/superpowers/plans/2026-06-07-obsidian-integration.md","docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md","docs/superpowers/specs/2026-05-24-morning-brief-design.md","docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md","docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"],"copyPrompt":"Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/superpowers/specs/2026-07-02-founder-advisor-design.md, docs/superpowers/plans/2026-07-02-founder-advisor.md. Current state: Advanced OS patterns lean pilot. Next action: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."}],"decisions":[{"id":"EXD-019","date":"2026-07-05","area":"Technical","decision":"Park WP-34 (Garmin credential-guard fix) unrecoverable, do not reimplement this week","recommendation":"Park under maintenance mode","owner":"Nadav","review":"2026-08-01 (with EXD-015 reread)","status":"Decided"},{"id":"EXD-018","date":"2026-07-05","area":"Growth","decision":"Resumely web Premium CTA stays hidden/disabled until Gate A opens","recommendation":"Hide/disable until Gate A","owner":"Nadav","review":"Gate A review / 2026-09-30","status":"Decided"},{"id":"EXD-017","date":"2026-07-05","area":"Strategy","decision":"Investigate RunSmart legal entity path with CPA/lawyer before changing external posture","recommendation":"Investigate with CPA/lawyer; keep external wording as \"Founder, RunSmart\" until recommendation lands","owner":"Nadav","review":"2026-07-19","status":"Decided"},{"id":"EXD-016","date":"2026-07-05","area":"Growth","decision":"Park RunSmart Hebrew-first distribution playbook until Resumely activation window closes","recommendation":"Park until 2026-08-01","owner":"Nadav","review":"2026-08-01","status":"Decided"},{"id":"EXD-015","date":"2026-07-02","area":"Strategy","decision":"Portfolio priority reset: Resumely primary, RunSmart Garmin to maintenance","recommendation":"Resumely becomes primary; target 20% real (founder-excluded) activation, launch→export, within 30 days (by 2026-08-01). RunSmart's Garmin track drops to pure maintenance — no new Developer Portal apps, no Production resubmission, no relaunch push; keep the 5 currently-synced users working. RunSmart's core focus shifts to non-wearable runners (Phone-Only-Runner persona, already the primary 60%-focus persona).","owner":"Nadav","review":"2026-08-01 (30-day activation window close)","status":"Decided"},{"id":"EXD-014","date":"2026-06-24","area":"Release","decision":"RunSmart live-vs-blocked status contradiction before Garmin reply","recommendation":"Reconcile source status first, then reply to Garmin only if the live build and evidence package match","owner":"Nadav","review":"2026-06-26","status":"Reconciled 2026"},{"id":"EXD-013","date":"2026-06-24","area":"Growth","decision":"Response to first D7 activation readout","recommendation":"Investigate activation now; do not unlock monetization, paywall work, paid acquisition, or GTM volume","owner":"Nadav","review":"2026-07-01","status":"Decided"},{"id":"EXD-012","date":"2026-06-22","area":"Product","decision":"Resumely score positioning: keep self-defined score, reposition label away from \"ATS Match Score\"","recommendation":"Reposition (O1): keep mechanic, rename to Resumely Match Score / Match Score, add one-line disclosure, optional target band (~80); keep \"ATS\" only in discoverability/descriptive copy","owner":"Nadav","review":"2026-09-30 (post D7 readout)","status":"Decided"},{"id":"EXD-011","date":"2026-06-18","area":"Release","decision":"Resumely iOS v1.1 (5) review freeze","recommendation":"Freeze scope while v1.1 (5) is in review; minimal fix only if rejected","owner":"Nadav","review":"On Apple response","status":"Decided"},{"id":"EXD-010","date":"2026-06-12","area":"Release","decision":"RunSmart iOS 1.0.2 build 14 resubmission scope","recommendation":"WP-4+WP-6+cursor code review fixes only; no new features","owner":"Nadav","review":"Post-approval","status":"Decided"},{"id":"EXD-009","date":"2026-06-02","area":"Growth","decision":"Introduce monetization before or after reading first-cohort activation","recommendation":"After: read activation first, consistent with CEO-OS focus rule 5","owner":"Nadav","review":"2026-09-30","status":"Decided"},{"id":"EXD-007","date":"2026-06-02","area":"Strategy","decision":"Ratify the separate-brand portfolio model for RunSmart and Resumely","recommendation":"Keep brands and audiences separate; share only the operating layer (workflows, ASO skill, analytics conventions, Executive OS)","owner":"Nadav","review":"2026-06-30","status":"Decided"},{"id":"EXD-006","date":"2026-06-02","area":"Release","decision":"Resumely iOS App Store Connect upload path","recommendation":"Use the founder-controlled App Store Connect path available at submission time.","owner":"Nadav","review":"2026-06-09","status":"Decided"},{"id":"EXD-005","date":"2026-06-02","area":"Finance","decision":"Choose the monetization model per app (free vs paid structure)","recommendation":"Decide the model shape now (freemium with a free activation moment); set the price after first-cohort activation data","owner":"Nadav","review":"2026-06-30","status":"Decided"},{"id":"EXD-004","date":"2026-05-31","area":"Growth","decision":"Integrate PostHog in Resumely iOS before first App Store submission","recommendation":"Integrate before submit","owner":"Nadav","review":"2026-06-07","status":"Decided"},{"id":"EXD-003","date":"2026-05-30","area":"Release","decision":"Refresh stale 2026-05-15 portfolio status before relying on it","recommendation":"Pull fresh local status","owner":"Nadav","review":"2026-06-06","status":"Decided"},{"id":"EXD-002","date":"2026-05-30","area":"Growth","decision":"Wire minimal analytics before any new feature work","recommendation":"Instrument first","owner":"Nadav","review":"2026-06-13","status":"Decided"},{"id":"EXD-001","date":"2026-05-30","area":"Strategy","decision":"Add Executive Intelligence OS as Layer 8, markdown-first, phased","recommendation":"Phased spine","owner":"Nadav","review":"2026-06-30","status":"Decided"}],"groundTruth":{"apps":[{"projectId":171597,"appId":"runsmart-ios","app":"RunSmart","declaredState":"PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015)","git":{"available":true,"tag":"pre-consolidation-r2","date":"2026-05-10"}},{"projectId":270848,"appId":"resumebuilder-ios","app":"Resumely","declaredState":"Post-launch — activation measurement hardening before export/paywall/monetization work","git":{"available":true,"tag":"consolidated-2026-05-11","date":"2026-05-10"}}],"posthog":[{"appId":"runsmart-ios","available":true,"liveUsers7d":10,"source":"api"},{"appId":"resumebuilder-ios","available":true,"liveUsers7d":41,"source":"api"}],"appStore":[{"appId":"runsmart-ios","state":"live","date":null,"source":"env","available":true},{"appId":"resumebuilder-ios","state":"live","date":null,"source":"env","available":true}],"contradictions":[]},"usage":{"generatedAt":"2026-06-26T09:56:00.409730+00:00","windowDays":7,"totalCostUsd":5620.61,"byProject":{"Agentic OS":3130.38,"Builder OS Vault":2071.26,"RunSmart":222.84,"ResumeBuilder":196.13},"note":"Claude Code: priced from on-disk usage. Codex: activity only (no token counts persisted). Cursor: not captured (see README). Prices in PRICES are directional — verify against current pricing. Cache-read tokens (from long sessions) are typically the dominant cost driver."}},"manual":{"asOf":"2026-07-05","note":"Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.","founderCommand":[{"title":"Close the loop on WP-32 / 33 / 34","body":"Ran in Codex/Cursor and reported done — but the packet files in Agentic OS still said 'not started' as of 07-05. Note: Agentic OS commit c2d0fc8 (07-05) parked WP-34 via EXD-019; verify 32/33 before acting.","prompt":"In the Agentic OS repo, update work packets WP-32, WP-33, WP-34 (executive-os/work-packets/) to reflect completed work. For each: read the packet, ask me what was actually done and where the output lives (PR links, files, drafts), verify the evidence exists, then update the Status line and add a dated Progress entry. Commit and push."},{"title":"Three decisions sitting in NEXT-MOVES","body":"RunSmart Hebrew playbook — approve or park? Legal entity — Israeli Ltd. vs self-employed? Dead 'Upgrade to Premium' button on Resumely web — hide, waitlist, or wire checkout (recommended: hide until Gate A).","prompt":"Read executive-os/NEXT-MOVES.md in the Agentic OS repo. I want to decide the three Shaping items now. Walk me through them one at a time with a recommendation each, record my choices as EXD rows in EXECUTIVE-DECISIONS.md, and promote any that need work into work packets."},{"title":"Two 5-minute calls with no date","body":"Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use).","prompt":null}],"tracks":[{"id":"michal","name":"Michal / AI Audit Toolkit","pill":"FIRST CLIENT PILOT","tone":"run","standing":"Everything is drafted (4 Gems, Voice doc, privacy rules). The only thing missing is a scheduled session with her Gemini account.","items":[{"tone":"done","text":"WP-33 prep ran in Cursor (per founder)"},{"tone":"you","text":"Schedule the live session with Michal. That's the whole blocker."},{"tone":"info","text":"After the session: file the first toolkit template so the pilot feeds the AI Audit Toolkit product."}],"prompts":[{"label":"Run the live session (when scheduled)","text":"I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo (/Users/nadavyigal/Documents/Projects /Michal) and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."}]}],"traffic":[{"id":"resumely","label":"Resumely — people opening the app per week (founder excluded)","color":"#3b7ea1","weeks":[{"label":"Jun 01","v":4},{"label":"Jun 08","v":5},{"label":"Jun 15","v":14},{"label":"Jun 22","v":26},{"label":"Jun 29 →","v":4,"partial":true}],"story":"The launch push worked (26 people, most tried a fit check), then traffic died. This is the number WP-31/32 have to move."},{"id":"runsmart","label":"RunSmart — installs per week","color":"#c07a3e","weeks":[{"label":"Jun 08","v":15},{"label":"Jun 15","v":11},{"label":"Jun 22","v":9},{"label":"Jun 29 →","v":7,"partial":true}],"story":"Steadier than Resumely, but 0% of installers ever complete a run — volume isn't the problem here, the plan→run step is."}],"funnels":[{"id":"resumely","name":"Resumely","tag":"web + iOS · all-time cumulative, founder-excluded","color":"#3b7ea1","steps":[["Guest mode started",46],["Fit check completed",19],["Resume uploaded (corrected event)",8],["Optimization completed",2],["Export success (0 real — all founder)",0]]},{"id":"runsmart","name":"RunSmart","tag":"iOS · mature-cohort 7-day window (n=19)","color":"#c07a3e","steps":[["Installed (since launch)",19],["Onboarding",1],["Plan generated",1],["Run started",0],["Run completed",0]]}],"activationHeadline":{"rows":[{"metric":"Real D7 activation","resumely":"0% (0/37)","runsmart":"0% (0/12)","bad":true},{"metric":"The wall","resumely":"export — 8 uploaded, 2 optimized, 0 ever exported","runsmart":"plan→run — 1 of 19 got a plan, 0 ran"},{"metric":"Target","resumely":"≥40%","runsmart":"≥30%"}],"note":"No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule."},"clocks":[{"date":"2026-07-12","what":"Activation re-read, both apps (7 immature users each mature by then)","state":"running"},{"date":"2026-08-01","what":"EXD-015 review — did Resumely hit 20% real activation in 30 days?","state":"running"},{"date":null,"when":"After you publish","what":"WP-31 Hebrew ASO — 21-day measurement window","state":"waiting"},{"date":null,"when":"After you post","what":"WP-32 FB groups — 7-day measurement window","state":"waiting"},{"date":null,"when":"No date yet","what":"Michal live Gemini session","state":"you"}],"knownUnknown":{"kk":["Both live: RunSmart 1.0.7(21) since 07-05; Resumely v1.3(8) since 07-05.","Both 0% real D7 activation on mature App Store cohorts (Readout #2).","Resumely wall = export (8 uploaded, 2 optimized, 0 real exports ever).","RunSmart wall = plan→run (onboarding drop 94.7%; 0 runs).","Traffic collapsed post-launch-push; WP-29 web funnel fixed + verified."],"ku":["Do the 7 immature installs/app convert by the 07-12 re-read?","Does FB-group / Hebrew-first posting actually move traffic?","Why does nobody export? (WP-36 diagnostic live, awaiting 1.3(8) data.)","Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)","Voice-coach flag: flip or keep parked? No decision date."],"uk":["Michal Track C fully drafted — blocked only on her live Gemini account.","WP files lag Codex/Cursor sessions — dashboards lie until packets are updated."],"uu":["Does the PostHog leak run both ways (Resumely → RunSmart project)?","Do Garmin's real review criteria exceed Marc's emails? (STORM: ungrounded.)","Do other dashboards carry founder/QA contamination (the 50% inflation pattern)?","Is 'activation' the right north star before there's traffic to activate?"]},"weekPriorities":[{"n":1,"title":"Resumely — fix the export wall, then drive traffic","body":"Product wall: WP-36 export-friction diagnostic is live in 1.3(8) — read the funnel data when it lands. Distribution: publish WP-31 Hebrew ASO and post the WP-32 FB-group drafts — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."},{"n":2,"title":"RunSmart — verify the WP-15 fix moved the needle","body":"1.0.7(21) shipped the first-run activation fix. Re-run the PostHog funnel 07-08+ for build-21-only users. Garmin stays maintenance-only (EXD-015); WP-34 parked via EXD-019."},{"n":3,"title":"Michal — schedule the live Gemini session","body":"Track C fully drafted. One calendar invite unblocks the first paid pilot of the OS."},{"n":4,"title":"OS hygiene — keep the record true","body":"End every Codex/Cursor session with 'update the work packet'. Clear the stranded-work board (see Today tab count)."}],"readouts":[{"app":"RunSmart iOS","r1":"0% (0/10 beta)","r2":"0% (0/12 mature App Store)","target":"≥30%","wall":"plan→run: 1/19 planned, 0 ran"},{"app":"Resumely","r1":"0% (0/35 organic)","r2":"0% (0/37 mature organic)","target":"≥40%","wall":"export: 0 real people ever exported"}]}}
+</script>
+
+<script>
+"use strict";
+var DATA = JSON.parse(document.getElementById('hq-data').textContent || '{}');
+var CP = []; // copy-text registry
+function reg(t){ CP.push(t); return CP.length-1; }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function md(s){ // minimal: **bold**, `code` — applied after escaping
+  return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`([^`]+)`/g,'<code>$1</code>');
+}
+function cbtn(text,label){ return '<button class="cbtn" data-ci="'+reg(text)+'">'+(label||'Copy')+'</button>'; }
+function promptBlock(text){ return '<div class="prompt">'+cbtn(text)+'<pre>'+esc(text)+'</pre></div>'; }
+function pathBtn(path,label){ return '<button class="cp-inline" data-ci="'+reg('open "'+path+'"')+'">'+esc(label)+'</button>'; }
+
+/* ── freshness ── */
+function parseWhen(s){
+  if(!s) return null;
+  var m = String(s).match(/(\d{4})-(\d{2})-(\d{2})[T ]?(\d{2})?:?(\d{2})?/);
+  if(!m) return null;
+  return new Date(+m[1], +m[2]-1, +m[3], +(m[4]||12), +(m[5]||0));
+}
+function ageDays(s){ var d=parseWhen(s); return d? (Date.now()-d.getTime())/864e5 : null; }
+function ageClass(days, warn, crit){ if(days==null) return 'r'; return days<=warn?'g':(days<=crit?'a':'r'); }
+function fmtAge(days){
+  if(days==null) return 'unknown';
+  if(days<0) return 'future?';
+  if(days<1) return 'today';
+  if(days<2) return 'yesterday';
+  return Math.floor(days)+'d ago';
+}
+
+/* ── tabs ── */
+var TABS=[['today','Today'],['tracks','Tracks'],['numbers','Numbers'],['week','Week'],['map','Map']];
+function show(tab){
+  TABS.forEach(function(t){
+    document.getElementById('v-'+t[0]).classList.toggle('on', t[0]===tab);
+  });
+  document.querySelectorAll('#nav button').forEach(function(b){ b.classList.toggle('on', b.dataset.t===tab); });
+  if(history.replaceState) history.replaceState(null,'','#'+tab);
+  document.querySelectorAll('.view.on .bar i').forEach(function(b){ b.style.width=b.dataset.w+'%'; });
+}
+document.getElementById('nav').innerHTML = TABS.map(function(t,i){
+  return '<button data-t="'+t[0]+'"><b>'+(i+1)+'</b>'+t[1]+'</button>';
+}).join('');
+document.getElementById('nav').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(b) show(b.dataset.t);
+});
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.metaKey||e.ctrlKey||e.altKey) return;
+  var i=+e.key-1; if(i>=0&&i<TABS.length) show(TABS[i][0]);
+});
+window.addEventListener('hashchange',function(){
+  var t=(location.hash||'#today').slice(1);
+  if(TABS.some(function(x){return x[0]===t;})) show(t);
+});
+
+/* ── guard: empty payload ── */
+if(!DATA.auto){
+  document.getElementById('stale-banner').innerHTML =
+    '<div class="banner crit"><span class="dot"></span><div><b>No data embedded.</b> Run <code>./agentic-os refresh</code> in the Agentic OS repo — it regenerates this file automatically as its last step.</div></div>';
+} else { render(); }
+
+function render(){
+  var A=DATA.auto, M=DATA.manual, S=DATA.sources;
+
+  /* freshness chips */
+  var aStatus=ageDays(S.status), aManual=ageDays(S.manual), aUsage=ageDays(S.usage);
+  document.getElementById('chips').innerHTML =
+    '<span class="chip '+ageClass(aStatus,1.5,3)+'" title="Agentic OS status.json — rebuilt by ./agentic-os refresh">repos: '+fmtAge(aStatus)+'</span>'+
+    '<span class="chip '+ageClass(aManual,2.5,6)+'" title="dashboard/portfolio-hq-manual.json — PostHog metrics + founder queue">metrics: '+fmtAge(aManual)+'</span>'+
+    '<span class="chip '+ageClass(aUsage,4,10)+'" title="Agentic OS usage.json — token cost">cost: '+fmtAge(aUsage)+'</span>';
+
+  /* staleness / trust banner */
+  var banners='';
+  if(aStatus==null || aStatus>1.5){
+    banners+='<div class="banner crit"><span class="dot"></span><div><b>Repo evidence is '+fmtAge(aStatus)+'.</b> Run <code>./agentic-os refresh</code> before trusting status claims — it regenerates this file automatically.</div></div>';
+  }
+  if(aManual!=null && aManual>4){
+    banners+='<div class="banner warn"><span class="dot"></span><div><b>Metrics layer is '+fmtAge(aManual)+'.</b> Funnels, traffic and the founder queue may be stale — ask Claude to refresh them (prompt on the Map tab).</div></div>';
+  }
+  var tr=A.trust||{};
+  if(tr.label){
+    var tone = /required|low|risk/i.test(tr.level||'') ? 'warn' : 'ok';
+    banners+='<div class="banner '+tone+'"><span class="dot"></span><div><b>Portfolio trust: '+esc(tr.label)+'.</b> '+
+      (tr.reasons||[]).map(md).join(' ')+
+      ((tr.hygieneWarnings||[]).length?' <span style="color:var(--dim)">'+(tr.hygieneWarnings||[]).map(md).join(' ')+'</span>':'')+
+      '</div></div>';
+  }
+  document.getElementById('stale-banner').innerHTML=banners;
+
+  renderToday(A,M,S);
+  renderTracks(A,M);
+  renderNumbers(A,M,S);
+  renderWeek(M,S);
+  renderMap();
+
+  show((location.hash||'#today').slice(1));
+  /* animate bars on first paint */
+  setTimeout(function(){ document.querySelectorAll('.bar i').forEach(function(b){ b.style.width=b.dataset.w+'%'; }); },80);
+}
+
+/* ════════ TODAY ════════ */
+function renderToday(A,M,S){
+  var h='';
+  h+='<div class="hero"><div class="eyebrow">Best next action · from repo truth '+esc(S.status||'')+'</div>'+
+     '<div class="big">'+md(A.summary.bestNextAction||'—')+'</div>'+
+     '<div class="sub">'+md(A.summary.overallStatus||'')+'</div>'+
+     '<div style="margin-top:10px">'+cbtn(A.summary.bestNextAction||'','Copy next action')+'</div></div>';
+
+  /* pulse strip */
+  var ph=(A.groundTruth.posthog||[]);
+  function live(id){ var x=ph.filter(function(p){return p.appId===id;})[0]; return x&&x.available?x.liveUsers7d:'—'; }
+  var cost=A.usage&&A.usage.totalCostUsd!=null?('$'+Math.round(A.usage.totalCostUsd).toLocaleString()):'—';
+  h+='<div class="card"><div class="qh">Live pulse</div><div class="kpis">'+
+     '<div><b>'+live('resumebuilder-ios')+'</b><small>Resumely users · 7d (PostHog)</small></div>'+
+     '<div><b>'+live('runsmart-ios')+'</b><small>RunSmart users · 7d (PostHog)</small></div>'+
+     '<div><b class="'+((A.stranded.actionableCount||0)>0?'mid':'ok')+'">'+(A.stranded.actionableCount||0)+'</b><small>stranded work items</small></div>'+
+     '<div><b>'+(A.packets||[]).length+'</b><small>open work packets</small></div>'+
+     '<div><b>'+cost+'</b><small>Claude cost · '+(A.usage.windowDays||'?')+'d</small></div>'+
+     '</div></div>';
+
+  h+='<div class="grid2">';
+  /* do now / next */
+  h+='<div class="card blue"><div class="qh">Do now</div><ul class="dash">'+
+     (A.priority.now||[]).map(function(x){return '<li>'+md(x)+'</li>';}).join('')+'</ul>'+
+     ((A.priority.next||[]).length?'<div class="qh" style="margin-top:10px">Up next</div><ul class="dash">'+(A.priority.next||[]).map(function(x){return '<li>'+md(x)+'</li>';}).join('')+'</ul>':'')+
+     '</div>';
+  /* decisions */
+  var dec=(A.summary.needsDecision||[]);
+  h+='<div class="card amber"><div class="qh">Needs your decision</div><ul class="dash">'+
+     dec.map(function(x){return '<li>'+md(x)+'</li>';}).join('')+
+     '</ul>'+((A.decisions||[]).length?'<details><summary>'+(A.decisions||[]).length+' open decision rows (EXD log)</summary><ul class="dash">'+
+     (A.decisions||[]).map(function(d){return '<li><b>'+esc(d.id||'')+'</b> '+md(d.decision||'')+' <span style="color:var(--faint)">('+esc(d.status||'')+(d.review?', review '+esc(d.review):'')+')</span></li>';}).join('')+'</ul></details>':'')+'</div>';
+  h+='</div>';
+
+  /* founder command (manual) */
+  if(M.founderCommand&&M.founderCommand.length){
+    h+='<h2>Founder command <span class="src-tag">manual · as of '+esc(M.asOf)+'</span></h2>'+
+       '<p class="ssub">Blocked on a decision or action only you can take. Copy a prompt, open a session, go.</p>';
+    M.founderCommand.forEach(function(f,i){
+      h+='<div class="card red"><div class="qh">'+(i+1)+' · '+esc(f.title)+'</div><p>'+md(f.body)+'</p>'+
+         (f.prompt?promptBlock(f.prompt):'')+'</div>';
+    });
+  }
+
+  /* clocks */
+  h+='<h2>Clocks running <span class="src-tag">manual · as of '+esc(M.asOf)+'</span></h2><div class="card">';
+  (M.clocks||[]).forEach(function(c){
+    var cd,cls;
+    if(c.date){
+      var d=Math.ceil((parseWhen(c.date)-Date.now())/864e5);
+      if(d<0){cd='overdue '+(-d)+'d';cls='red';}
+      else if(d===0){cd='today';cls='red';}
+      else {cd='in '+d+'d';cls=d<=3?'red':(d<=10?'amber':'blue');}
+      cd+=' · '+c.date.slice(5);
+    } else {cd=c.when||'—';cls='dim';}
+    h+='<div class="clock"><span class="cd '+cls+'">'+esc(cd)+'</span><span>'+md(c.what)+'</span>'+
+       (c.state?'<span class="pill p-'+(c.state==='you'?'you':(c.state==='waiting'?'wait':'run'))+'">'+esc(c.state)+'</span>':'')+'</div>';
+  });
+  h+='</div>';
+
+  /* stranded work */
+  var st=A.stranded||{items:[]};
+  h+='<h2>Stranded work <span class="src-tag">auto · '+esc(st.generatedOn||'')+'</span></h2>'+
+     '<div class="card '+((st.actionableCount||0)>0?'amber':'green')+'">'+
+     '<p>'+(st.actionableCount||0)+' items at risk of being lost between tools.</p>'+
+     (st.items.length?'<details><summary>Show all</summary><table><tr><th>Project</th><th>Type</th><th>Detail</th><th>Action</th></tr>'+
+       st.items.map(function(i){return '<tr><td>'+esc(i.project)+'</td><td>'+esc(i.type)+'</td><td>'+esc(i.detail)+'</td><td>'+esc(i.action)+'</td></tr>';}).join('')+'</table></details>':'')+
+     '</div>';
+
+  document.getElementById('v-today').innerHTML=h;
+}
+
+/* ════════ TRACKS ════════ */
+function trackCard(p, prompts){
+  var pr = prompts.filter(function(x){return x.projectId===p.id;})[0];
+  var tone = p.freshness==='Fresh'?'p-done':(p.freshness==='Needs Review'?'p-wait':'p-you');
+  var h='<div class="card">';
+  h+='<div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;">'+
+     '<b style="font-size:15px">'+esc(p.name)+'</b>'+
+     '<span><span class="pill '+tone+'">'+esc(p.freshness||'?')+'</span>'+
+     (p.dirty?' <span class="pill p-wait">'+p.dirtyCount+' uncommitted</span>':'')+
+     (p.evidenceGap?' <span class="pill p-you">evidence gap</span>':'')+'</span></div>';
+  h+='<p style="color:var(--dim);font-size:12.5px;margin:6px 0 4px">'+md(p.state||'')+'</p>';
+  if(p.nextAction) h+='<p><b>Next:</b> '+md(p.nextAction)+'</p>';
+  if((p.blockers||[]).length) h+='<p style="margin-top:4px"><b class="bad">Blocked:</b> '+(p.blockers||[]).map(md).join(' · ')+'</p>';
+  h+='<div class="git">'+esc(p.branch||'')+(p.lastCommit?' · '+esc(p.lastCommit):'')+'</div>';
+  if(pr&&pr.copyPrompt) h+='<details><summary>Copy-paste: start a session on this ('+esc(pr.sourceConfidence||'?')+' confidence)</summary>'+promptBlock(pr.copyPrompt)+'</details>';
+  h+='</div>';
+  return h;
+}
+function renderTracks(A,M){
+  var h='<h2 style="margin-top:6px">Product & OS tracks <span class="src-tag">auto · parsed from repos</span></h2>'+
+        '<p class="ssub">Each card is rebuilt from git + task files on every refresh — prose can\'t drift from reality. Copy prompts start a correctly-briefed session.</p>';
+  (A.health||[]).forEach(function(p){ h+=trackCard(p,A.prompts||[]); });
+
+  (M.tracks||[]).forEach(function(t){
+    h+='<div class="track-head"><h2>'+esc(t.name)+'</h2><span class="pill p-'+(t.tone||'run')+'">'+esc(t.pill||'')+'</span><span class="src-tag">manual · as of '+esc(M.asOf)+'</span></div>';
+    h+='<div class="card"><p class="ssub" style="margin-bottom:8px">'+md(t.standing||'')+'</p><ul class="dash">';
+    (t.items||[]).forEach(function(i){
+      var pill={done:'<span class="pill p-done">done</span> ',run:'<span class="pill p-run">running</span> ',wait:'<span class="pill p-wait">waiting</span> ',you:'<span class="pill p-you">you</span> ',info:''}[i.tone]||'';
+      h+='<li>'+pill+md(i.text)+'</li>';
+    });
+    h+='</ul>';
+    (t.prompts||[]).forEach(function(p){ h+='<details><summary>Copy-paste: '+esc(p.label)+'</summary>'+promptBlock(p.text)+'</details>'; });
+    h+='</div>';
+  });
+
+  h+='<h2>Open work packets <span class="src-tag">auto · Agentic OS registry</span></h2>'+
+     '<p class="ssub">Everything not closed/shipped. Filter, expand, copy the starter prompt.</p>'+
+     '<input class="filter" id="pk-filter" placeholder="Filter packets — try: resumely, garmin, aso, diagnostic …">'+
+     '<div id="pk-list"></div>';
+  document.getElementById('v-tracks').innerHTML=h;
+
+  function drawPackets(q){
+    q=(q||'').toLowerCase();
+    var list=(A.packets||[]).filter(function(w){
+      return !q || (String(w.title)+' '+String(w.project)+' '+String(w.goal)+' '+String(w.status)).toLowerCase().indexOf(q)>=0;
+    });
+    document.getElementById('pk-list').innerHTML = list.map(function(w){
+      var stone=/open|ready|progress|review|research/i.test(w.status||'')?(/progress|review/i.test(w.status)?'p-run':'p-wait'):'p-info';
+      return '<div class="pk"><div class="pkh"><span class="pkt">'+esc(w.title||'')+'</span>'+
+        '<span><span class="pill '+stone+'">'+esc(w.status||'?')+'</span> <span style="font-size:11px;color:var(--faint)">'+esc(w.project||'')+'</span></span></div>'+
+        (w.goal?'<div class="goal">'+md(w.goal)+'</div>':'')+
+        (w.copyPrompt?'<details><summary>Starter prompt</summary>'+promptBlock(w.copyPrompt)+'</details>':'')+
+        '</div>';
+    }).join('') || '<p class="ssub">No packets match.</p>';
+  }
+  drawPackets('');
+  document.getElementById('pk-filter').addEventListener('input',function(e){ drawPackets(e.target.value); });
+}
+
+/* ════════ NUMBERS ════════ */
+function renderNumbers(A,M,S){
+  var h='<h2 style="margin-top:6px">Activation — the headline <span class="src-tag">manual · as of '+esc(M.asOf)+'</span></h2>';
+  var ah=M.activationHeadline||{rows:[]};
+  h+='<div class="card"><table><tr><th></th><th>Resumely</th><th>RunSmart</th></tr>'+
+     ah.rows.map(function(r){
+       var cls=r.bad?' class="bad"':'';
+       return '<tr><td>'+esc(r.metric)+'</td><td'+cls+'>'+md(r.resumely)+'</td><td'+cls+'>'+md(r.runsmart)+'</td></tr>';
+     }).join('')+'</table><p class="foot">'+md(ah.note||'')+'</p></div>';
+
+  h+='<h2>Funnels <span class="src-tag">manual · founder-excluded PostHog</span></h2><div class="grid2">';
+  (M.funnels||[]).forEach(function(f){
+    h+='<div class="card"><div class="qh" style="color:'+f.color+'">'+esc(f.name)+' <span style="color:var(--faint);text-transform:none;letter-spacing:0;font-weight:500">· '+esc(f.tag||'')+'</span></div><div class="funnel">';
+    var top=f.steps[0][1];
+    f.steps.forEach(function(s,i){
+      var pct=top>0?Math.round(s[1]/top*100):0;
+      var prev=i>0?f.steps[i-1][1]:0;
+      var drop=(i>0&&prev>0)?Math.round((prev-s[1])/prev*100):null;
+      var dl=i===0?'entry point':(drop===null?'previous step was already zero':'&#8595; '+drop+'% dropped off from the previous step');
+      h+='<div class="step" onclick="this.classList.toggle(\'open\')"><div class="row"><span>'+esc(s[0])+'</span><span>'+s[1]+' &middot; '+pct+'%</span></div>'+
+         '<div class="bar"><i data-w="'+pct+'" style="background:'+f.color+'"></i></div><div class="drop">'+dl+'</div></div>';
+    });
+    h+='</div><p class="foot">Click a step for its drop-off.</p></div>';
+  });
+  h+='</div>';
+
+  h+='<h2>Traffic — weeks start Monday, last column is the current week still running <span class="src-tag">manual</span></h2><div class="grid2">';
+  (M.traffic||[]).forEach(function(t,ti){
+    h+='<div class="card"><div class="qh" style="color:'+t.color+'">'+esc(t.label)+'</div>'+
+       '<table><tr>'+t.weeks.map(function(w){return '<th>'+esc(w.label)+'</th>';}).join('')+'</tr>'+
+       '<tr>'+t.weeks.map(function(w,i){
+          var cls=w.partial?' class="bad"':(i>0&&w.v>t.weeks[i-1].v*1.5?' class="good"':'');
+          return '<td'+cls+'>'+w.v+(w.partial?' so far':'')+'</td>';
+       }).join('')+'</tr></table>'+
+       '<svg class="spark" id="spark-'+ti+'" viewBox="0 0 260 58" preserveAspectRatio="none"></svg>'+
+       '<p class="foot">'+md(t.story||'')+'</p></div>';
+  });
+  h+='</div>';
+
+  /* cost */
+  var u=A.usage||{};
+  h+='<h2>What the OS costs <span class="src-tag">auto · usage.json '+esc(S.usage||'')+'</span></h2><div class="card">'+
+     '<div class="kpis" style="margin-bottom:10px"><div><b>$'+Math.round(u.totalCostUsd||0).toLocaleString()+'</b><small>Claude Code · last '+(u.windowDays||'?')+' days</small></div></div>';
+  var bp=u.byProject||{}, max=0; Object.keys(bp).forEach(function(k){ if(bp[k]>max)max=bp[k]; });
+  Object.keys(bp).sort(function(a,b){return bp[b]-bp[a];}).forEach(function(k){
+    h+='<div class="usage-bar"><span class="nm">'+esc(k)+'</span><span class="tr"><i style="width:'+(max?Math.round(bp[k]/max*100):0)+'%"></i></span><span class="val">$'+Math.round(bp[k]).toLocaleString()+'</span></div>';
+  });
+  h+='<p class="foot">'+md(u.note||'')+'</p></div>';
+
+  document.getElementById('v-numbers').innerHTML=h;
+
+  (M.traffic||[]).forEach(function(t,ti){
+    var svg=document.getElementById('spark-'+ti); if(!svg)return;
+    var w=t.weeks.map(function(x){return x.v;}), mx=Math.max.apply(null,w)||1, n=w.length;
+    var pts=w.map(function(v,i){return [8+i*(244/(n-1)), 52-(v/mx)*40];});
+    var line=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ');
+    svg.innerHTML='<path d="'+line+' L252 52 L8 52 Z" fill="'+t.color+'" opacity=".10"/>'+
+      '<path d="'+line+'" fill="none" stroke="'+t.color+'" stroke-width="2" stroke-linejoin="round"/>'+
+      pts.map(function(p,i){return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(i===n-1?3.5:2.4)+'" fill="'+t.color+'"/><text x="'+p[0].toFixed(1)+'" y="'+(p[1]-6).toFixed(1)+'" font-size="9" fill="'+t.color+'" text-anchor="middle" font-family="system-ui">'+w[i]+'</text>';}).join('');
+  });
+}
+
+/* ════════ WEEK ════════ */
+function renderWeek(M,S){
+  var h='<h2 style="margin-top:6px">D7 activation readouts <span class="src-tag">manual · as of '+esc(M.asOf)+'</span></h2>';
+  h+='<div class="card"><table><tr><th>App</th><th>Readout #1 (06-24)</th><th>Readout #2 (07-05)</th><th>Target</th><th>The wall</th></tr>'+
+     (M.readouts||[]).map(function(r){return '<tr><td><b>'+esc(r.app)+'</b></td><td>'+esc(r.r1)+'</td><td class="bad">'+esc(r.r2)+'</td><td>'+esc(r.target)+'</td><td>'+md(r.wall)+'</td></tr>';}).join('')+
+     '</table></div>';
+
+  var ku=M.knownUnknown||{};
+  h+='<h2>Known / unknown map</h2><div class="grid2">';
+  [['green','Known knowns · act on these','kk'],['amber','Known unknowns · tracking','ku'],
+   ['blue','Unknown knowns · known, not surfaced','uk'],['red','Unknown unknowns · probe these','uu']].forEach(function(q){
+    h+='<div class="card '+q[0]+'"><div class="qh">'+q[1]+'</div><ul class="dash">'+
+       (ku[q[2]]||[]).map(function(x){return '<li>'+md(x)+'</li>';}).join('')+'</ul></div>';
+  });
+  h+='</div>';
+
+  h+='<h2>This week — priorities</h2>';
+  var colors=['var(--green)','var(--amber)','var(--purple)','var(--blue)'];
+  (M.weekPriorities||[]).forEach(function(p,i){
+    h+='<div style="border-left:3px solid '+colors[i%4]+';padding-left:14px;margin-bottom:14px;">'+
+       '<h3 style="font-size:14px;font-weight:600;margin-bottom:4px">'+p.n+' · '+esc(p.title)+'</h3>'+
+       '<p style="font-size:13px;color:var(--dim)">'+md(p.body)+'</p></div>';
+  });
+  document.getElementById('v-week').innerHTML=h;
+}
+
+/* ════════ MAP ════════ */
+function renderMap(){
+  var AG='/Users/nadavyigal/Documents/Projects /Agentic OS';
+  var h='<h2 style="margin-top:6px">Weekly rhythm</h2><div class="rhythm">';
+  h+='<div class="rcell r-mon"><span class="dl">Monday</span><span class="mn">Morning Brief</span><span class="plus">+</span><span class="mn">Weekly Plan</span><span class="tb">Agentic OS</span></div>';
+  h+='<div class="rcell r-mid"><span class="dl">Tue – Thu</span><span class="mn">Ship</span><span class="tb">Claude Code CLI</span></div>';
+  h+='<div class="rcell r-fri"><span class="dl">Friday</span><span class="mn">Distribution Review</span><span class="plus">→</span><span class="mn">CEO Review</span><span class="plus">→</span><span class="mn"><a href="obsidian://open?vault=Nadav%20Builder%20OS&file=07-Weekly-Reviews%2FWeekly%20Review">Weekly Review</a></span><span class="tb">Agentic OS + Claude.ai</span></div>';
+  h+='<div class="rcell r-mth"><span class="dl">Month start</span><span class="mn">Finance Review</span><span class="tb">Agentic OS (CFO)</span></div>';
+  h+='</div>';
+
+  h+='<h2>Reactive triggers — what to open for the situation</h2><div class="tgrid">';
+  [
+    ['Starting my day','Morning Brief','Agentic OS',AG+'/PROMPTS/morning-brief.md'],
+    ['What do I do next?','COO Operating Review','Agentic OS',AG+'/PROMPTS/coo-operating-review.md'],
+    ['Shipping code','Claude Code CLI','Product repo',null,'<button class="cp-inline" data-ci="'+reg('open "/Users/nadavyigal/Documents/RunSmart"')+'">→ RunSmart</button> · <button class="cp-inline" data-ci="'+reg('open "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-"')+'">ResumeBuilder</button>'],
+    ['Strategic question','CEO Review','Claude.ai Projects',null,'<span style="font-size:10px;color:var(--ghost);font-style:italic">claude.ai → CEO Strategic Review project</span>'],
+    ['Stuck for 3+ days','High Agency Advisor','Claude.ai Projects',null,'<span style="font-size:10px;color:var(--ghost);font-style:italic">claude.ai → High Agency Advisor project</span>'],
+    ['Capturing a thought','Obsidian Inbox','00-Inbox',null,'<a style="font-size:11px" href="obsidian://open?vault=Nadav%20Builder%20OS&file=00-Inbox">→ open in Obsidian</a>'],
+    ['Making a decision','Decision Log','Obsidian → Agentic OS',null,'<a style="font-size:11px" href="obsidian://open?vault=Nadav%20Builder%20OS&file=05-Decisions%2FDecision%20Log">→ open in Obsidian</a>'],
+    ['Need evidence first','Research Brief','Agentic OS (Analysis)',AG+'/PROMPTS/analysis-research-sprint.md'],
+    ['Before a big planning session','Context Extraction','Agentic OS (Chief of Staff)',AG+'/PROMPTS/context-extraction.md']
+  ].forEach(function(t){
+    h+='<div class="tcard"><span class="sit">'+esc(t[0])+'</span><span class="act">'+esc(t[1])+'</span><span class="tool">'+esc(t[2])+'</span>'+
+       '<span class="lnk">'+(t[3]?pathBtn(t[3],'→ copy path'):(t[4]||''))+'</span></div>';
+  });
+  h+='</div>';
+
+  h+='<h2>Source of truth</h2><div class="grid3">';
+  h+='<div class="card"><div class="qh" style="color:#f472b6">Product code</div><p style="font-size:12px;color:var(--faint)">GitHub repos — '+pathBtn('/Users/nadavyigal/Documents/RunSmart','RunSmart')+' · '+pathBtn('/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-','ResumeBuilder')+'</p></div>';
+  h+='<div class="card"><div class="qh" style="color:var(--blue)">Product status</div><p style="font-size:12px;color:var(--faint)">'+pathBtn(AG+'/DASHBOARD.md','DASHBOARD.md')+' · '+pathBtn(AG+'/PROJECT-STATUS.md','PROJECT-STATUS.md')+'</p></div>';
+  h+='<div class="card"><div class="qh" style="color:var(--green)">Thinking + synthesis</div><p style="font-size:12px;color:var(--faint)"><a href="obsidian://open?vault=Nadav%20Builder%20OS&file=Home">Obsidian vault</a> — readable, not authoritative</p></div>';
+  h+='</div>';
+
+  var refreshPrompt='Refresh my Portfolio HQ. 1) Pull live PostHog numbers with founder/QA/bot accounts excluded: weekly people (Resumely) and weekly installs (RunSmart), plus both activation funnels. 2) In "/Users/nadavyigal/Documents/Projects /Agentic OS", update dashboard/portfolio-hq-manual.json — bump asOf and update traffic, funnels, activationHeadline, clocks, founderCommand, knownUnknown and weekPriorities where reality changed. 3) Run ./agentic-os refresh (it rebuilds status.json and regenerates portfolio-hq.html in one step). 4) Tell me in plain language what changed since the last refresh and whether any clock or decision became urgent.';
+  h+='<h2>How this page refreshes</h2><div class="card purple">'+
+     '<ul class="dash">'+
+     '<li><b>Daily (with the morning brief):</b> <code>./agentic-os refresh</code> (or <code>morning</code>) — this now regenerates Portfolio HQ automatically as its last step, no second command needed.</li>'+
+     '<li><b>Weekly (or when metrics matter):</b> paste the prompt below into Claude Code — it refreshes the <span class="src-tag">manual</span> metrics layer from live PostHog, then re-runs <code>./agentic-os refresh</code>.</li>'+
+     '<li>The chips in the top bar always show how old each layer is. Red chip = don\'t trust that layer, refresh first.</li>'+
+     '</ul>'+promptBlock(refreshPrompt)+'</div>';
+
+  h+='<p class="foot">Portfolio HQ lives in the Agentic OS repo (dashboard/portfolio-hq.html) so Claude Code, Cursor and Codex all see the same file. It replaces Operations-Dashboard.html, Activation-Dashboard.html, Weekly-Command-View.html, Daily-Operations-Map.html and the other Agentic OS dashboard pages as the single daily entry point. Sections tagged <span class="src-tag">auto</span> rebuild from parsed repo truth; sections tagged <span class="src-tag">manual</span> come from dashboard/portfolio-hq-manual.json and carry their own as-of date. Refreshes automatically as the last step of ./agentic-os refresh / morning.</p>';
+  document.getElementById('v-map').innerHTML=h;
+}
+
+/* ── copy handling (event delegation) ── */
+var toast=document.getElementById('toast'), toastTimer;
+document.body.addEventListener('click',function(e){
+  var b=e.target.closest('[data-ci]'); if(!b) return;
+  var text=CP[+b.dataset.ci]||'';
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=b.textContent;
+    b.textContent='✓ copied'; b.classList.add('copied');
+    setTimeout(function(){ b.textContent=orig; b.classList.remove('copied'); },1600);
+    clearTimeout(toastTimer);
+    toast.textContent='Copied to clipboard';
+    toast.classList.add('show');
+    toastTimer=setTimeout(function(){ toast.classList.remove('show'); },2200);
+  }).catch(function(){ window.prompt('Copy this:',text); });
+});
+</script>
+</body>
+</html>
