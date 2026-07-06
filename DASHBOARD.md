@@ -1,18 +1,18 @@
 # Portfolio Dashboard
 
-Last updated: 2026-07-05 IDT
+Last updated: 2026-07-06 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Garmin Production Gate 4 remediation, 3rd rejection cycle: Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies "start all over." · Resumely iOS — Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
-Best next action: Resumely iOS: (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next
+Best next action: Resumely iOS: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX
 
 ## Run Center
 
-- Last refresh: 2026-07-05 17:02
+- Last refresh: 2026-07-06 09:35
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,9 +20,9 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Garmin Production Gate 4 remediation, 3rd rejection cycle | Founder recaptures WP-27 real-device Gate-4 screenshots, then keep WP-28 Garmin Product Depth blocked until Gate-4 evidence is sent or Garmin clarifies "start all over." | No | Needs Review | High |
-| Resumely iOS | Post-launch — v1.2 (7) live; verifying production funnel events and planning next ASO/outreach iteration | (1) Verify production PostHog project 270848 receives upload-funnel and `fit_check_*` events now that 1.2 (7) is live. (2) Read results of the founder's zero-budget outreach wave. (3) Use the clean post-1.2 funnel read to decide whether ASO volume, lifecycle messaging, monetization, or backend/state follow-ups are next | Yes | Needs Review | High |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Fresh | High |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes | Yes | Fresh | High |
+| Resumely iOS | Post-launch — WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data | After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX | No | Fresh | High |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Needs Review | High |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Fresh | High |
 | Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | Yes | Fresh | High |
 
@@ -33,10 +33,11 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 - [RunSmart iOS] claude/ios-docs-sweep-2026-06-19: unmerged commits, remote branch deleted, last commit 2026-06-19
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
+- [RunSmart iOS] worktree on detached, 1 uncommitted file(s) at /private/tmp/runsmart-wp15-release-1783271110
+- [RunSmart iOS] 35 uncommitted file(s) in the primary working tree
 - [Resumely iOS] codex/fitcheck-service: unmerged commits, remote branch deleted, last commit 2026-06-23
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
-- [Resumely iOS] 3 uncommitted file(s) in the primary working tree
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
 - [RunSmart Web] 6 uncommitted file(s) in the primary working tree
@@ -52,12 +53,11 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
-- [Agentic OS] worktree on claude/elastic-hawking-f9758d, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/elastic-hawking-f9758d
-- [Agentic OS] 12 uncommitted file(s) in the primary working tree
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
-- None. Active/open packet states match the current project status.
+- ERROR [executive-os/COO-LATEST-REVIEW.md]: COO latest review references build 18, but current RunSmart status is build 21.
 
 ## Decision Board
 
@@ -77,7 +77,6 @@ Best next action: Resumely iOS: (1) Verify production PostHog project 270848 rec
 
 ## Evidence Gaps
 
-- Resumely iOS: validated 2026-06-26, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
 - Agentic OS: validated 2026-06-12, latest commit is newer.
 

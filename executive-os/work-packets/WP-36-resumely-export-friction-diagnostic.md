@@ -1,6 +1,6 @@
 # Work Packet WP-36 - Resumely Export Friction Diagnostic
 
-- Status: In Progress
+- Status: Shipped — **1.3 (8) uploaded to ASC 2026-07-05** (processing). Instrumentation + visibility fix validated in simulator smoke.
 - Created: 2026-07-05
 - Source: D7 Activation Readout #2 correction + Codex/PostHog implementation pass, project 270848
 - Mode: Builder
@@ -65,6 +65,26 @@ Interpretation: current data does not yet show whether the export wall is visibi
 - Added one-shot optimized-result visibility tracking in `OptimizedResumeView` when an optimization identifier is available.
 - Validation run: focused `AnalyticsServiceTests` passed, 9 tests / 0 failures.
 - Still pending: simulator/live smoke that reaches the optimized result screen and confirms the new events in PostHog dashboard `1801425`.
+
+2026-07-05 ship + readout (Cursor):
+
+- **Smoke PASS:** iPhone 17 simulator; seeded `latest_optimization_id`; opened Optimized tab (`--smoke-open-optimized-tab` DEBUG arg). Console: `optimized_viewed`, `export_cta_seen`. PostHog 270848 confirmed both at `2026-07-05T17:20:08Z`, `$lib=resumely-ios-urlsession`, `build_number=8`.
+- **Pre-ship fix:** `OptimizedResumeView` now tracks on `isActive` (`.task` / `.onChange`) — original `onAppear`-only wiring did not fire while the Optimized tab was hidden (`opacity: 0` in `MainTabViewV2`).
+- **ASC:** `MARKETING_VERSION` bumped **1.2 → 1.3**, `CURRENT_PROJECT_VERSION` **8** (1.2 train closed). Archive + upload succeeded **2026-07-05**.
+- **PostHog funnel (60d, iOS `$lib`, exclude person prefixes `067544b5`, `761e5b1b`, `a6441489`, `712cf425`):**
+
+| Step | Clean people | Notes |
+|---|---:|---|
+| `resume_uploaded` | 9 | Baseline readout #2: 8 |
+| `optimization_completed` | 2 historical; 0 in upload→optimize intersection | Completers don't chain cleanly from iOS upload event |
+| `optimized_viewed` | 1 | Smoke only (pre-production) |
+| `export_cta_seen` | 1 | Smoke only (pre-production) |
+| `export_success` | 0 | Unchanged vs baseline |
+| `export_pdf_tapped` / `export_started` / `export_failed` | 0 | No export intent or failure telemetry |
+
+- **Finding:** Export funnel still breaks at **export intent** (zero taps) or earlier (**Optimized tab never viewed after complete** — now measurable once 1.3 (8) is live). Pre-fix blind spot: could not distinguish "never saw Optimized" from "saw but didn't tap." Historical data: 2 clean `optimization_completed`, 0 exports ever.
+- **Query:** HogQL `POST /api/projects/270848/query/` via `AGENTIC_OS_POSTHOG_API_KEY`; per-event `uniq(person_id)` with filters above; dashboard [1801425](https://us.posthog.com/project/270848/dashboard/1801425), insight `lVFdiDCs`.
+- **Next:** Re-read after 1.3 (8) live. If `optimization_completed` without `optimized_viewed`, audit `onSwitchTab(.optimized)` in Home/Tailor before export UX changes (plan-feature, not guess).
 
 ## Read First
 
