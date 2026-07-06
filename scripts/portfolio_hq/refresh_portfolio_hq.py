@@ -30,10 +30,25 @@ USAGE = DASHBOARD / "usage.json"
 PACKET_DONE = {"closed", "completed", "superseded", "shipped", "posted"}
 DECISION_DONE = {"closed", "done", "superseded", "reconciled"}
 
+# status.json text fields (work packet "project"/"goal"/etc.) sometimes carry absolute local
+# filesystem paths (e.g. a client repo path). This dashboard ends up in a public repo, so strip
+# them from the auto layer before embedding rather than repeating them verbatim.
+ABSOLUTE_PATH = re.compile(r"/Users/[^`\"\n)]+")
+
+
+def redact_paths(value):
+    if isinstance(value, str):
+        return ABSOLUTE_PATH.sub("<local path redacted>", value)
+    if isinstance(value, list):
+        return [redact_paths(v) for v in value]
+    if isinstance(value, dict):
+        return {k: redact_paths(v) for k, v in value.items()}
+    return value
+
 
 def load(path):
     try:
-        return json.loads(path.read_text())
+        return json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
         sys.exit(f"ERROR: missing {path}")
     except json.JSONDecodeError as e:
@@ -126,11 +141,11 @@ def main():
             "usage": usage.get("generatedAt"),
             "manual": manual.get("asOf"),
         },
-        "auto": build_auto(status, usage),
+        "auto": redact_paths(build_auto(status, usage)),
         "manual": manual,
     }
 
-    html = HTML.read_text()
+    html = HTML.read_text(encoding="utf-8")
     blob = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     # </script> inside JSON strings would terminate the block early
     blob = blob.replace("</", "<\\/")
@@ -143,7 +158,7 @@ def main():
     )
     if n != 1:
         sys.exit("ERROR: hq-data block not found in dashboard/portfolio-hq.html")
-    HTML.write_text(new_html)
+    HTML.write_text(new_html, encoding="utf-8")
     print(f"- portfolio HQ: refreshed (dashboard/portfolio-hq.html, {len(payload['auto']['packets'])} open packets, "
           f"{payload['auto']['stranded']['actionableCount']} stranded, {len(payload['auto']['decisions'])} open decisions)")
 

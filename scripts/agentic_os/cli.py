@@ -3611,7 +3611,13 @@ def refresh(args: argparse.Namespace) -> int:
 
 def refresh_portfolio_hq() -> None:
     script = ROOT / "scripts" / "portfolio_hq" / "refresh_portfolio_hq.py"
-    result = subprocess.run([sys.executable, str(script)], capture_output=True, text=True)
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script)], capture_output=True, text=True, timeout=60
+        )
+    except subprocess.TimeoutExpired:
+        print("⚠️ portfolio HQ refresh timed out (dashboard/portfolio-hq.html left as-is)")
+        return
     if result.returncode == 0:
         print(result.stdout.strip())
     else:

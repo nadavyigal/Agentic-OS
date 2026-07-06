@@ -33,7 +33,7 @@
       "prompts": [
         {
           "label": "Run the live session (when scheduled)",
-          "text": "I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo (/Users/nadavyigal/Documents/Projects /Michal) and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."
+          "text": "I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."
         }
       ]
     }
