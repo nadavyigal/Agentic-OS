@@ -3605,7 +3605,24 @@ def refresh(args: argparse.Namespace) -> int:
         print(f"- ground truth: unavailable ({'; '.join(ground.get('unavailable', [])[:2])})")
     else:
         print("- ground truth: local git + optional overrides only (no PostHog key)")
+    refresh_portfolio_hq()
     return 0
+
+
+def refresh_portfolio_hq() -> None:
+    script = ROOT / "scripts" / "portfolio_hq" / "refresh_portfolio_hq.py"
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script)], capture_output=True, text=True, timeout=60
+        )
+    except subprocess.TimeoutExpired:
+        print("⚠️ portfolio HQ refresh timed out (dashboard/portfolio-hq.html left as-is)")
+        return
+    if result.returncode == 0:
+        print(result.stdout.strip())
+    else:
+        print("⚠️ portfolio HQ refresh failed (dashboard/portfolio-hq.html left as-is)")
+        print(f"  - {result.stderr.strip() or result.stdout.strip()}")
 
 
 def doctor() -> int:
