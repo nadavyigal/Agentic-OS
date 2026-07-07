@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-06 IDT",
+    "lastUpdated": "2026-07-07 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -111,16 +111,16 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-06 09:35"
+    "lastSuccessfulRefresh": "2026-07-07 10:05"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-    "bestNextAction": "Resumely iOS: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+    "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "bestNextAction": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
     "mainBlockers": [
       "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
       "RunSmart iOS: clean duplicates before next local archive",
-      "Resumely iOS: App Store review submit for 1.3 (8) if promoting beyond TestFlight internal",
-      "Resumely iOS: backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)",
+      "Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
+      "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
       "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
       "ResumeBuilder AI (Web): Gate A remains closed by decision",
@@ -131,7 +131,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-07-05",
+    "evidenceFreshDate": "2026-07-06",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -153,7 +153,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "2026-07-05 \u2014 Release archive **SUCCEEDED** (clean worktree, ~10 min). ASC upload **SUCCEEDED** (`ExportOptionsAppStoreUpload.plist`). Archive metadata: `RunSmart` / `com.runsmart.lite` / `1.0.7` / `21` / `ITSAppUsesNonExemptEncryption=false` / dSYM present. Known HKWorkout deprecation warning only",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-06",
+      "lastUpdated": "2026-07-07",
       "blockers": [
         "(1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
         "clean duplicates before next local archive"
@@ -197,7 +197,7 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 35,
+        "dirtyCount": 36,
         "extraWorktrees": 1,
         "lastCommit": "2026-07-05 81bd11b Ship 1.0.7 (21) \u2014 WP-15 first-run activation fix live",
         "sourceFiles": [
@@ -297,20 +297,20 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data. Active: WP-36 / EXD-015 \u2014 read `optimized_viewed` \u2192 `export_cta_seen` \u2192 `export_success` chain after 1.3 (8) is live. Last completed: WP-36 instrumentation smoke + ASC upload of 1.3 (8) (2026-07-05). Source: tasks/progress.md, updated 2026-07-05.",
-      "currentPhase": "Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data",
-      "activeStory": "WP-36 / EXD-015 \u2014 read `optimized_viewed` \u2192 `export_cta_seen` \u2192 `export_success` chain after 1.3 (8) is live",
-      "lastCompletedStory": "WP-36 instrumentation smoke + ASC upload of 1.3 (8) (2026-07-05)",
-      "nextRecommendedStory": "After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+      "status": "Phase: Post-launch \u2014 activation measurement hardening before export/paywall/monetization work. Active: Story 1 / Analytics identity hardening \u2014 code complete, authenticated anonymous-to-signed-in evidence pending. Last completed: Story 1 implementation + tests/build/PostHog launch-property verification (2026-07-06); not accepted as fully done until authenticated smoke proves `$create_alias` / `$identify` live. Source: tasks/progress.md, updated 2026-07-06.",
+      "currentPhase": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
+      "activeStory": "Story 1 / Analytics identity hardening \u2014 code complete, authenticated anonymous-to-signed-in evidence pending",
+      "lastCompletedStory": "Story 1 implementation + tests/build/PostHog launch-property verification (2026-07-06); not accepted as fully done until authenticated smoke proves `$create_alias` / `$identify` live",
+      "nextRecommendedStory": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "2026-07-05 \u2014 simulator smoke PASS (`optimized_viewed`, `export_cta_seen` in PostHog 270848); `AnalyticsServiceTests` 9/9; Release archive + ASC upload succeeded for 1.3 (8)",
+      "lastValidation": "2026-07-06 \u2014 focused `AnalyticsServiceTests` 12/12; full simulator suite 121 passed, 1 skipped, 0 failed; Debug simulator build succeeded; PostHog project `270848` confirmed fresh `app_launched` rows with `app=resumely_ios`, `marketing_version=1.3`, `build_number=8`, `anonymous_session_id`, and `is_internal_tester=true`",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-06",
+      "lastUpdated": "2026-07-07",
       "blockers": [
-        "App Store review submit for 1.3 (8) if promoting beyond TestFlight internal",
-        "backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)"
+        "Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
+        "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"
       ],
       "risks": [
         "WKWebView PDF/export fragility on real device",
@@ -342,9 +342,9 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "HEAD (no branch)",
+        "dirty": true,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
         "lastCommit": "2026-07-05 214826f Ship 1.3 (8) \u2014 WP-36 export-visibility instrumentation, smoke-tested live",
         "sourceFiles": [
@@ -369,37 +369,37 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-05",
+        "freshestDate": "2026-07-06",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-05"
+        "evidenceDate": "2026-07-06"
       },
       "taskParse": {
-        "status": "v1.2 (7) LIVE on App Store; **v1.3 (8) uploaded to ASC 2026-07-05** (WP-36 instrumentation + visibility fix), processing for TestFlight",
-        "currentPhase": "Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data",
-        "activeStory": "WP-36 / EXD-015 \u2014 read `optimized_viewed` \u2192 `export_cta_seen` \u2192 `export_success` chain after 1.3 (8) is live",
-        "lastCompletedStory": "WP-36 instrumentation smoke + ASC upload of 1.3 (8) (2026-07-05)",
-        "nextRecommendedStory": "After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+        "status": "v1.2 (7) LIVE on App Store; v1.3 (8) uploaded to ASC 2026-07-05; Story 1 analytics identity hardening implemented with authenticated-smoke evidence still blocked",
+        "currentPhase": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
+        "activeStory": "Story 1 / Analytics identity hardening \u2014 code complete, authenticated anonymous-to-signed-in evidence pending",
+        "lastCompletedStory": "Story 1 implementation + tests/build/PostHog launch-property verification (2026-07-06); not accepted as fully done until authenticated smoke proves `$create_alias` / `$identify` live",
+        "nextRecommendedStory": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
         "blockers": [
-          "App Store review submit for 1.3 (8) if promoting beyond TestFlight internal",
-          "backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)"
+          "Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
+          "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"
         ],
         "risks": [
           "New Submit Package copy is source-English in newly added SwiftUI strings until localization extraction/translation catches up",
           "existing Hebrew keys still cover the main pre-existing labels"
         ],
-        "lastValidation": "2026-07-05 \u2014 simulator smoke PASS (`optimized_viewed`, `export_cta_seen` in PostHog 270848); `AnalyticsServiceTests` 9/9; Release archive + ASC upload succeeded for 1.3 (8)",
-        "lastUpdated": "2026-07-05",
+        "lastValidation": "2026-07-06 \u2014 focused `AnalyticsServiceTests` 12/12; full simulator suite 121 passed, 1 skipped, 0 failed; Debug simulator build succeeded; PostHog project `270848` confirmed fresh `app_launched` rows with `app=resumely_ios`, `marketing_version=1.3`, `build_number=8`, `anonymous_session_id`, and `is_internal_tester=true`",
+        "lastUpdated": "2026-07-06",
         "qaNeeded": "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md",
         "estimatedCompletion": null,
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [],
-          "buildStatus": null,
+          "buildStatus": "succeeded",
           "qaDocs": [
             "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
           ],
-          "evidenceDate": "2026-07-05"
+          "evidenceDate": "2026-07-06"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -441,7 +441,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-06",
+      "lastUpdated": "2026-07-07",
       "blockers": [
         "Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
@@ -462,7 +462,7 @@
         "repo": "file:///Users/nadavyigal/Documents/RunSmart"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "HEAD (no branch)",
         "dirty": true,
         "dirtyCount": 6,
         "extraWorktrees": 0,
@@ -569,7 +569,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-06",
+      "lastUpdated": "2026-07-07",
       "blockers": [
         "Gate A remains closed by decision",
         "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
@@ -714,7 +714,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-05 c2d0fc8 WP-18/30/36: canonicalize resume_uploaded, add export-friction diagnostic; WP-31 Hebrew ASO packet; EXD-019 parks WP-34); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-06 09a51d6 pages: disable Jekyll processing for GitHub Pages); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -724,7 +724,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-06",
+      "lastUpdated": "2026-07-07",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -740,10 +740,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-05 c2d0fc8 WP-18/30/36: canonicalize resume_uploaded, add export-friction diagnostic; WP-31 Hebrew ASO packet; EXD-019 parks WP-34",
+        "lastCommit": "2026-07-06 09a51d6 pages: disable Jekyll processing for GitHub Pages",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -760,7 +760,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-05",
+        "freshestDate": "2026-07-06",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12"
       },
@@ -820,7 +820,7 @@
   "priorityBoard": {
     "now": [
       "RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes",
-      "Resumely iOS: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX"
+      "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2"
     ],
     "next": [
       "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -837,7 +837,6 @@
       "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "Resumely iOS: backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)",
       "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
     ]
@@ -956,8 +955,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-06 09:35",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-07-07 10:05",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1293,7 +1292,7 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 35,
+      "dirtyCount": 36,
       "extraWorktrees": 1,
       "branch": "main...origin/main",
       "lastCommit": "2026-07-05 81bd11b Ship 1.0.7 (21) \u2014 WP-15 first-run activation fix live",
@@ -1350,12 +1349,12 @@
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data",
-      "nextAction": "After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+      "state": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
+      "nextAction": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
       "blockerCount": 2,
       "blockers": [
-        "App Store review submit for 1.3 (8) if promoting beyond TestFlight internal",
-        "backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)"
+        "Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
+        "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"
       ],
       "gtm": {
         "exists": false,
@@ -1436,18 +1435,18 @@
           "kind": "spec"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 12,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
+      "branch": "HEAD (no branch)",
       "lastCommit": "2026-07-05 214826f Ship 1.3 (8) \u2014 WP-36 export-visibility instrumentation, smoke-tested live",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-05",
+      "freshestDate": "2026-07-06",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-05",
+      "evidenceDate": "2026-07-06",
       "evidenceTests": [],
-      "buildStatus": null,
+      "buildStatus": "succeeded",
       "qaDocs": [
         "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
       ],
@@ -1472,9 +1471,9 @@
       ],
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-05 \u2014 simulator smoke PASS (`optimized_viewed`, `export_cta_seen` in PostHog 270848); `AnalyticsServiceTests` 9/9; Release archive + ASC upload succeeded for 1.3 (8)",
-      "parsedLastUpdated": "2026-07-05",
-      "parsedActiveStory": "WP-36 / EXD-015 \u2014 read `optimized_viewed` \u2192 `export_cta_seen` \u2192 `export_success` chain after 1.3 (8) is live"
+      "parsedLastValidation": "2026-07-06 \u2014 focused `AnalyticsServiceTests` 12/12; full simulator suite 121 passed, 1 skipped, 0 failed; Debug simulator build succeeded; PostHog project `270848` confirmed fresh `app_launched` rows with `app=resumely_ios`, `marketing_version=1.3`, `build_number=8`, `anonymous_session_id`, and `is_internal_tester=true`",
+      "parsedLastUpdated": "2026-07-06",
+      "parsedActiveStory": "Story 1 / Analytics identity hardening \u2014 code complete, authenticated anonymous-to-signed-in evidence pending"
     },
     {
       "id": "runsmart-web",
@@ -1589,7 +1588,7 @@
       "dirty": true,
       "dirtyCount": 6,
       "extraWorktrees": 0,
-      "branch": "main...origin/main",
+      "branch": "HEAD (no branch)",
       "lastCommit": "2026-07-03 ffc2b51 fix(garmin): distinguish planned Garmin pause from real connection errors",
       "stale": false,
       "freshness": "Needs Review",
@@ -1833,14 +1832,14 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 1,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-05 c2d0fc8 WP-18/30/36: canonicalize resume_uploaded, add export-friction diagnostic; WP-31 Hebrew ASO packet; EXD-019 parks WP-34",
+      "lastCommit": "2026-07-06 09a51d6 pages: disable Jekyll processing for GitHub Pages",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-05",
+      "freshestDate": "2026-07-06",
       "evidenceGap": true,
       "evidenceDate": "2026-06-12",
       "evidenceTests": [],
@@ -1948,9 +1947,9 @@
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
-      "nextAction": "After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+      "repoState": "Dirty",
+      "branch": "HEAD (no branch)",
+      "nextAction": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -1972,14 +1971,14 @@
         "docs/superpowers/plans/2026-06-03-app-store-submission.md",
         "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data. Next action: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX. Known blockers: App Store review submit for 1.3 (8) if promoting beyond TestFlight internal; backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement hardening before export/paywall/monetization work. Next action: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2. Known blockers: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured; missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
       "project": "RunSmart Web",
       "role": "Backend Support Engineer",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "HEAD (no branch)",
       "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -2038,7 +2037,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
@@ -2060,8 +2059,8 @@
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
-    "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "headline": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
+    "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -2070,8 +2069,8 @@
     "risks": [
       "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
       "RunSmart iOS: clean duplicates before next local archive",
-      "Resumely iOS: App Store review submit for 1.3 (8) if promoting beyond TestFlight internal",
-      "Resumely iOS: backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.)",
+      "Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
+      "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
       "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
       "ResumeBuilder AI (Web): Gate A remains closed by decision",
@@ -2082,9 +2081,9 @@
     "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
+      "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2135,23 +2134,39 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-06 09:35",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-07-07 10:05",
+    "checksStatus": "Failed",
+    "checksCompletedAt": "2026-07-07 10:05",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data. Next action: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX. Known blockers: App Store review submit for 1.3 (8) if promoting beyond TestFlight internal; backend/state gaps unchanged (paste-text diagnosis, NWPathMonitor auto-resume, etc.). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-    "targetRepoState": "Clean",
-    "targetBranch": "main...origin/main",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement hardening before export/paywall/monetization work. Next action: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2. Known blockers: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured; missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "targetRepoState": "Dirty",
+    "targetBranch": "HEAD (no branch)",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: After 1.3 (8) is live, re-run PostHog dashboard `1801425` / insight `lVFdiDCs`; if `optimization_completed` without `optimized_viewed`, investigate tab-routing before export UX",
+    "summary": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
     "nextActions": [
       {
-        "title": "Restore dashboard trust",
-        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-        "type": "system"
+        "title": "Run a COO operating review",
+        "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+        "type": "global-OS",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
+      },
+      {
+        "title": "Use the Weekly CEO Review only for a priority choice",
+        "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+        "type": "executive",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+      },
+      {
+        "title": "Validate caution items before risky moves",
+        "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "type": "system",
+        "where": "Affected product repo(s)",
+        "copyPrompt": null
       }
     ],
     "topBanner": null,
@@ -4262,11 +4277,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -4359,16 +4374,16 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Refresh required",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: RunSmart iOS, Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS.",
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (1)."
     ]
   },
@@ -4381,7 +4396,7 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-06",
+    "generatedOn": "2026-07-07",
     "items": [
       {
         "project": "RunSmart iOS",
@@ -4410,7 +4425,7 @@
       {
         "project": "RunSmart iOS",
         "type": "dirty",
-        "detail": "35 uncommitted file(s) in the primary working tree",
+        "detail": "36 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -4430,6 +4445,12 @@
         "type": "local-only",
         "detail": "pr-72-review: unmerged commits, never pushed, last commit 2026-06-22",
         "action": "Push pr-72-review and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "dirty",
+        "detail": "12 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "RunSmart Web",
@@ -4520,12 +4541,6 @@
         "type": "dirty",
         "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
       }
     ],
     "actionableCount": 24,
@@ -4539,7 +4554,7 @@
     }
   ],
   "groundTruth": {
-    "generatedAt": "2026-07-06 09:35",
+    "generatedAt": "2026-07-07 10:05",
     "apps": [
       {
         "projectId": 171597,
@@ -4556,7 +4571,7 @@
         "projectId": 270848,
         "appId": "resumebuilder-ios",
         "app": "Resumely",
-        "declaredState": "Post-launch \u2014 WP-36 export-friction diagnostic live; awaiting 1.3 (8) production funnel data",
+        "declaredState": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
         "git": {
           "available": true,
           "tag": "consolidated-2026-05-11",
@@ -4568,13 +4583,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 11,
+        "liveUsers7d": 9,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 34,
+        "liveUsers7d": 45,
         "source": "api"
       }
     ],
