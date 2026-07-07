@@ -14,18 +14,21 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes | 2 | Yes (36) | Fresh | High | tasks/progress.md | 2026-07-05 81bd11b Ship 1.0.7 (21) — WP-15 first-run activation fix live |
-| Resumely iOS | Post-launch — activation measurement hardening before export/paywall/monetization work | Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 | 2 | Yes (12) | Fresh | High | tasks/progress.md | 2026-07-05 214826f Ship 1.3 (8) — WP-36 export-visibility instrumentation, smoke-tested live |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (6) | Needs Review | High | tasks/progress.md | 2026-07-03 ffc2b51 fix(garmin): distinguish planned Garmin pause from real connection errors |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes | 2 | Yes (35) | Fresh | High | tasks/progress.md | 2026-07-07 435a6e2 tasks: log Garmin certification research pass (2026-07-06) |
+| Resumely iOS | Post-launch — activation measurement hardening before export/paywall/monetization work | Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 | 2 | No | Fresh | High | tasks/progress.md | 2026-07-07 20adb89 Merge pull request #89 from nadavyigal/claude/analytics-identity-hardening-2026-07-06 |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-07 1e20ea5 chore: stamp progress.md date (auto) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3) |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-07-06 09a51d6 pages: disable Jekyll processing for GitHub Pages |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-07 3a97eec Merge pull request #24 from nadavyigal/claude/portfolio-hq-app-store-live |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
+- RunSmart iOS: validated 2026-07-05, last commit 2026-07-07 435a6e2 tasks: log Garmin certification research pass (2026-07-06)
+- Resumely iOS: validated 2026-07-06, last commit 2026-07-07 20adb89 Merge pull request #89 from nadavyigal/claude/analytics-identity-hardening-2026-07-06
+- RunSmart Web: validated 2026-07-03, last commit 2026-07-07 1e20ea5 chore: stamp progress.md date (auto)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3)
-- Agentic OS: validated 2026-06-12, last commit 2026-07-06 09a51d6 pages: disable Jekyll processing for GitHub Pages
+- Agentic OS: validated 2026-06-12, last commit 2026-07-07 3a97eec Merge pull request #24 from nadavyigal/claude/portfolio-hq-app-store-live
 
 ## Drift Warnings
 
@@ -39,11 +42,10 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
 - [RunSmart iOS] worktree on detached, 1 uncommitted file(s) at /private/tmp/runsmart-wp15-release-1783271110 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 36 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart iOS] 35 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Resumely iOS] codex/fitcheck-service: unmerged commits, remote branch deleted, last commit 2026-06-23 -> Push codex/fitcheck-service and open a PR, or consciously discard it.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
-- [Resumely iOS] 12 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -59,6 +61,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03 -> Push fix/pdf-parse-xref-error and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 
 ## Work Packet Hygiene
 
