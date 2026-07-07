@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-05",
+  "asOf": "2026-07-07",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
@@ -110,7 +110,7 @@
   ],
   "knownUnknown": {
     "kk": [
-      "Both live: RunSmart 1.0.7(21) since 07-05; Resumely v1.3(8) since 07-05.",
+      "Both apps passed App Store review and are live (confirmed 07-07): RunSmart 1.0.7(21), Resumely 1.3(8).",
       "Both 0% real D7 activation on mature App Store cohorts (Readout #2).",
       "Resumely wall = export (8 uploaded, 2 optimized, 0 real exports ever).",
       "RunSmart wall = plan→run (onboarding drop 94.7%; 0 runs).",
@@ -125,7 +125,8 @@
     ],
     "uk": [
       "Michal Track C fully drafted — blocked only on her live Gemini account.",
-      "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated."
+      "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated.",
+      "status.json's needsDecision still lists \"RunSmart iOS: if build 8 is rejected again\" — stale, from before 1.0.7(21) shipped and passed review. Not a portfolio-hq bug; RunSmart iOS's own task files need a refresh to clear it. Same staleness pattern flagged by ./agentic-os verify for COO-LATEST-REVIEW.md (references build 18, current is build 21)."
     ],
     "uu": [
       "Does the PostHog leak run both ways (Resumely → RunSmart project)?",
