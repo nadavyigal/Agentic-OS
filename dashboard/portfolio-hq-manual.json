@@ -9,8 +9,8 @@
     },
     {
       "title": "Three decisions sitting in NEXT-MOVES",
-      "body": "RunSmart Hebrew playbook — approve or park? Legal entity — Israeli Ltd. vs self-employed? Dead 'Upgrade to Premium' button on Resumely web — hide, waitlist, or wire checkout (recommended: hide until Gate A).",
-      "prompt": "Read executive-os/NEXT-MOVES.md in the Agentic OS repo. I want to decide the three Shaping items now. Walk me through them one at a time with a recommendation each, record my choices as EXD rows in EXECUTIVE-DECISIONS.md, and promote any that need work into work packets."
+      "body": "Resolved 2026-07-08: RunSmart Hebrew playbook parked (EXD-016); legal entity → accountant call, reminder 2026-07-22 (EXD-017/WP-35); Premium CTA hide until Gate A (EXD-018/WP-29).",
+      "prompt": null
     },
     {
       "title": "Two 5-minute calls with no date",
@@ -104,6 +104,7 @@
   },
   "clocks": [
     { "date": "2026-07-12", "what": "Activation re-read, both apps (7 immature users each mature by then)", "state": "running" },
+    { "date": "2026-07-22", "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35", "state": "you" },
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
     { "date": "2026-07-12", "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)", "state": "running" },

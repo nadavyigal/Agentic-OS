@@ -1,6 +1,6 @@
 # Work Packet WP-35 - RunSmart Legal Entity Investigation
 
-- Status: Ready (created 2026-07-05, not started)
+- Status: Waiting on founder — accountant call to be scheduled (reminder 2026-07-22)
 - Created: 2026-07-05
 - Source: EXD-017, promoted from `executive-os/NEXT-MOVES.md` shaping item surfaced by the 2026-07-02 Garmin deactivation STORM analysis
 - Mode: Maintainer / founder-admin
@@ -48,3 +48,4 @@ Prepare and run a professional-advice check with a CPA or lawyer:
 ## Progress
 
 - 2026-07-05: Packet created from founder decision to investigate with CPA/lawyer. Not started.
+- 2026-07-08: EXD-017 re-confirmed in NEXT-MOVES shaping walkthrough. Founder will schedule the accountant call directly; no agent prep needed before then. Reminder set for **2026-07-22** to confirm the call happened and capture the recommendation.

@@ -14,10 +14,13 @@ Keep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) o
 ## Shaping (becoming a decision or packet)
 
 - _Ideas being turned into an EXD decision or a WP work packet. Note which._
-- 2026-07-05: Three prior shaping items resolved into EXD decisions:
-  - RunSmart Hebrew-first distribution playbook parked until 2026-08-01 (EXD-016; no work packet).
-  - RunSmart legal entity path promoted to CPA/lawyer investigation (EXD-017; `work-packets/WP-35-runsmart-legal-entity-investigation.md`).
-  - Resumely web Premium CTA stays hidden/disabled until Gate A opens (EXD-018; existing WP-29 already covers implementation).
+- _None active — last shaping walkthrough completed 2026-07-08._
+
+## Resolved shaping (2026-07-08 walkthrough)
+
+- ✅ RunSmart Hebrew-first distribution playbook — **park until 2026-08-01** (EXD-016 re-confirmed; no work packet).
+- ✅ RunSmart legal entity — **investigate with accountant**; founder scheduling call (EXD-017 re-confirmed; WP-35; reminder **2026-07-22**).
+- ✅ Resumely web Premium CTA — **hide/disable until Gate A** (EXD-018 re-confirmed; WP-29 S4 already covers implementation; no new packet).
 
 ## Parked / someday
 
@@ -25,4 +28,4 @@ Keep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) o
 - 2026-07-05: RunSmart Hebrew-first distribution playbook is parked until the Resumely 30-day activation window closes on 2026-08-01. Source draft remains `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`). Decision: EXD-016.
 
 ---
-Updated: 2026-07-05
+Updated: 2026-07-08
