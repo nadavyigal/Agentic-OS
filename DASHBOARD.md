@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Wait for a post-fix cohort read of `resume_uploa
 
 ## Run Center
 
-- Last refresh: 2026-07-08 11:46
+- Last refresh: 2026-07-08 12:08
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,7 +28,7 @@ Best next action: Resumely iOS: Wait for a post-fix cohort read of `resume_uploa
 
 ## Stranded Work
 
-24 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+25 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] claude/ios-docs-sweep-2026-06-19: unmerged commits, remote branch deleted, last commit 2026-06-19
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
@@ -54,6 +54,7 @@ Best next action: Resumely iOS: Wait for a post-fix cohort read of `resume_uploa
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
 - [Agentic OS] main has 1 unpushed commit(s)
+- [Agentic OS] cursor/next-moves-shaping-walkthrough: 1 unpushed commit(s), last commit 2026-07-08
 
 ## Work Packet Hygiene
 
