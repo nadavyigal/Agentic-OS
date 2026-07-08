@@ -14,21 +14,20 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes | 2 | Yes (35) | Fresh | High | tasks/progress.md | 2026-07-07 435a6e2 tasks: log Garmin certification research pass (2026-07-06) |
-| Resumely iOS | Post-launch — activation measurement hardening before export/paywall/monetization work | Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 | 2 | No | Fresh | High | tasks/progress.md | 2026-07-07 20adb89 Merge pull request #89 from nadavyigal/claude/analytics-identity-hardening-2026-07-06 |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-07 1e20ea5 chore: stamp progress.md date (auto) |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes | 2 | Yes (35) | Fresh | High | tasks/progress.md | 2026-07-08 20f9a3a docs: sync WP-34 status to EXD-019 closure (was stale since 07-05) |
+| Resumely iOS | Post-launch — activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review | Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority | 2 | No | Fresh | High | tasks/progress.md | 2026-07-08 7c18896 fix: skip intermediate upload sheet, track CTA-seen and picker cancellation |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Needs Review | High | tasks/progress.md | 2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3) |
-| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status |
+| Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | 0 | No | Fresh | High | tasks/progress.md | 2026-07-08 2a6f72a portfolio-hq: fold in 5-next-actions results (Garmin resolved, PR #90, WP-32/33/34 verified) |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-07-05, last commit 2026-07-07 435a6e2 tasks: log Garmin certification research pass (2026-07-06)
-- Resumely iOS: validated 2026-07-06, last commit 2026-07-07 20adb89 Merge pull request #89 from nadavyigal/claude/analytics-identity-hardening-2026-07-06
-- RunSmart Web: validated 2026-07-03, last commit 2026-07-07 1e20ea5 chore: stamp progress.md date (auto)
+- RunSmart iOS: validated 2026-07-05, last commit 2026-07-08 20f9a3a docs: sync WP-34 status to EXD-019 closure (was stale since 07-05)
+- RunSmart Web: validated 2026-07-03, last commit 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3)
-- Agentic OS: validated 2026-06-12, last commit 2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status
+- Agentic OS: validated 2026-06-12, last commit 2026-07-08 2a6f72a portfolio-hq: fold in 5-next-actions results (Garmin resolved, PR #90, WP-32/33/34 verified)
 
 ## Drift Warnings
 
@@ -61,6 +60,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03 -> Push fix/pdf-parse-xref-error and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
 
 ## Work Packet Hygiene
 
@@ -82,18 +82,18 @@ Packet states that may make the dashboard misleading:
 
 ## Morning Brief
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review: Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## What To Do Next
 
-Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2
+Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority
 
 ## Action Board
 
 ### Now
 
-- RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes
-- Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2
+- RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes
+- Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority
 
 ### Next
 
@@ -113,6 +113,7 @@ Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential
 
 ### Blocked
 
+- Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
 - RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
 - RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard
 

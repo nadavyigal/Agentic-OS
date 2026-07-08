@@ -589,13 +589,13 @@
   "generated": "2026-07-08",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-      "bestNextAction": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
+      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "bestNextAction": "Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority",
       "mainBlockers": [
-        "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
+        "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
         "RunSmart iOS: clean duplicates before next local archive",
-        "Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
-        "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
+        "Resumely iOS: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
+        "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
         "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
         "ResumeBuilder AI (Web): Gate A remains closed by decision",
@@ -606,13 +606,13 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-07-07",
+      "evidenceFreshDate": "2026-07-08",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes",
-        "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2"
+        "RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes",
+        "Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority"
       ],
       "next": [
         "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -629,13 +629,14 @@
         "Portfolio: 4 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
       ],
       "blocked": [
+        "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
         "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-08 07:21",
-      "command": "./agentic-os morning",
+      "lastRefresh": "2026-07-08 11:46",
+      "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -752,10 +753,10 @@
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
         "state": "PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015)",
-        "nextAction": "Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes",
+        "nextAction": "Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes",
         "blockerCount": 2,
         "blockers": [
-          "(1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
+          "(1) Post-fix cohort not yet measurable same-day as upload. (2) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
           "clean duplicates before next local archive"
         ],
         "gtm": {
@@ -974,10 +975,10 @@
         "dirtyCount": 35,
         "extraWorktrees": 1,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-07 435a6e2 tasks: log Garmin certification research pass (2026-07-06)",
+        "lastCommit": "2026-07-08 20f9a3a docs: sync WP-34 status to EXD-019 closure (was stale since 07-05)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-07",
+        "freshestDate": "2026-07-08",
         "evidenceGap": true,
         "evidenceDate": "2026-07-05",
         "evidenceTests": [],
@@ -1028,12 +1029,12 @@
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
-        "nextAction": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
+        "state": "Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review",
+        "nextAction": "Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority",
         "blockerCount": 2,
         "blockers": [
-          "Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
-          "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"
+          "Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
+          "automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap"
         ],
         "gtm": {
           "exists": false,
@@ -1117,15 +1118,15 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-07-07 20adb89 Merge pull request #89 from nadavyigal/claude/analytics-identity-hardening-2026-07-06",
+        "branch": "claude/activation-friction-stories-2-3-4-2026-07-08...origin/claude/activation-friction-stories-2-3-4-2026-07-08",
+        "lastCommit": "2026-07-08 7c18896 fix: skip intermediate upload sheet, track CTA-seen and picker cancellation",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-07",
-        "evidenceGap": true,
-        "evidenceDate": "2026-07-06",
+        "freshestDate": "2026-07-08",
+        "evidenceGap": false,
+        "evidenceDate": "2026-07-08",
         "evidenceTests": [],
-        "buildStatus": "succeeded",
+        "buildStatus": null,
         "qaDocs": [
           "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
         ],
@@ -1150,9 +1151,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-06 \u2014 focused `AnalyticsServiceTests` 12/12; full simulator suite 121 passed, 1 skipped, 0 failed; Debug simulator build succeeded; PostHog project `270848` confirmed fresh `app_launched` rows with `app=resumely_ios`, `marketing_version=1.3`, `build_number=8`, `anonymous_session_id`, and `is_internal_tester=true`",
-        "parsedLastUpdated": "2026-07-06",
-        "parsedActiveStory": "Story 1 / Analytics identity hardening \u2014 code complete, authenticated anonymous-to-signed-in evidence pending"
+        "parsedLastValidation": "2026-07-08 \u2014 focused `AnalyticsServiceTests` passed 12/12; patched Home screenshot confirmed `Files \u00b7 iCloud Drive \u00b7 Downloads`; Files picker opened directly; PostHog project `270848` confirmed fresh `resume_upload_cta_seen`, `resume_upload_cta_tapped`, and `resume_file_picker_opened` QA rows with `is_internal_tester=True`",
+        "parsedLastUpdated": "2026-07-08",
+        "parsedActiveStory": "None. Awaiting explicit approval before Story 5 or any new work"
       },
       {
         "id": "runsmart-web",
@@ -1268,10 +1269,10 @@
         "dirtyCount": 6,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-07 1e20ea5 chore: stamp progress.md date (auto)",
+        "lastCommit": "2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-07",
+        "freshestDate": "2026-07-08",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03",
         "evidenceTests": [
@@ -1514,11 +1515,11 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status",
+        "branch": "main...origin/main [ahead 1]",
+        "lastCommit": "2026-07-08 2a6f72a portfolio-hq: fold in 5-next-actions results (Garmin resolved, PR #90, WP-32/33/34 verified)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-07",
+        "freshestDate": "2026-07-08",
         "evidenceGap": true,
         "evidenceDate": "2026-06-12",
         "evidenceTests": [],
@@ -1581,7 +1582,7 @@
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
         "branch": "main...origin/main",
-        "nextAction": "Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes",
+        "nextAction": "Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
@@ -1620,17 +1621,17 @@
           "docs/specs/demo-mode-simulator-recording 2.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015). Next action: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes. Known blockers: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`; clean duplicates before next local archive. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015). Next action: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes. Known blockers: (1) Post-fix cohort not yet measurable same-day as upload. (2) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`; clean duplicates before next local archive. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Clean",
-        "branch": "main...origin/main",
-        "nextAction": "Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
+        "branch": "claude/activation-friction-stories-2-3-4-2026-07-08...origin/claude/activation-friction-stories-2-3-4-2026-07-08",
+        "nextAction": "Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -1650,7 +1651,7 @@
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement hardening before export/paywall/monetization work. Next action: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2. Known blockers: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured; missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review. Next action: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority. Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -1717,7 +1718,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Clean",
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 1]",
         "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1738,18 +1739,18 @@
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
-      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "headline": "Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority",
+      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
         "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
       ],
       "risks": [
-        "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
+        "RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
         "RunSmart iOS: clean duplicates before next local archive",
-        "Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
-        "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
+        "Resumely iOS: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
+        "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
         "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
         "ResumeBuilder AI (Web): Gate A remains closed by decision",
@@ -1771,10 +1772,9 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 5,
+      "evidenceGapCount": 4,
       "evidenceGapProjects": [
         "RunSmart iOS",
-        "Resumely iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)",
         "Agentic OS"
@@ -3891,7 +3891,7 @@
       "reasons": [
         "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
         "Dirty shippable app repo: RunSmart iOS.",
-        "Evidence gap after latest commit: RunSmart iOS, Resumely iOS."
+        "Evidence gap after latest commit: RunSmart iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
@@ -3901,7 +3901,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-08 07:21",
+      "generatedAt": "2026-07-08 11:47",
       "apps": [
         {
           "projectId": 171597,
@@ -3918,7 +3918,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "Post-launch \u2014 activation measurement hardening before export/paywall/monetization work",
+          "declaredState": "Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -3963,19 +3963,26 @@
     },
     "contradictions": [],
     "dailyRunResult": {
-      "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-07-08 07:21",
-      "checksStatus": "Failed",
-      "checksCompletedAt": "2026-07-08 07:21",
+      "lastCommand": "./agentic-os refresh",
+      "lastRunAt": "2026-07-08 11:47",
+      "checksStatus": "Pending verify",
+      "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement hardening before export/paywall/monetization work. Next action: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2. Known blockers: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured; missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review. Next action: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority. Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Clean",
-      "targetBranch": "main...origin/main",
+      "targetBranch": "claude/activation-friction-stories-2-3-4-2026-07-08...origin/claude/activation-friction-stories-2-3-4-2026-07-08",
       "readyForNextSession": false,
-      "summary": "Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2",
+      "summary": "Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` \u2192 `resume_upload_cta_tapped` \u2192 `resume_file_picker_opened` \u2192 `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority",
       "nextActions": [
+        {
+          "title": "Check App Store Connect",
+          "detail": "Check Resumely iOS. If Apple has not responded, do not change the submitted builds.",
+          "type": "manual-founder",
+          "where": "App Store Connect",
+          "copyPrompt": null
+        },
         {
           "title": "Run a COO operating review",
           "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
@@ -3989,13 +3996,6 @@
           "type": "executive",
           "where": "Agentic OS repo, in this Codex thread",
           "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
-        },
-        {
-          "title": "Validate caution items before risky moves",
-          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-          "type": "system",
-          "where": "Affected product repo(s)",
-          "copyPrompt": null
         }
       ],
       "topBanner": null,

@@ -6,13 +6,13 @@ Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, t
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review: Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
-Best next action: Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2
+Best next action: Resumely iOS: Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority
 
 ## Run Center
 
-- Last refresh: 2026-07-08 07:21
+- Last refresh: 2026-07-08 11:46
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,15 +20,15 @@ Best next action: Resumely iOS: Complete Story 1 authenticated QA smoke with a r
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes | Yes | Fresh | High |
-| Resumely iOS | Post-launch — activation measurement hardening before export/paywall/monetization work | Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 | No | Fresh | High |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015) | Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes | Yes | Fresh | High |
+| Resumely iOS | Post-launch — activation measurement is hardened and the two largest early upload frictions have focused local fixes awaiting review | Wait for a post-fix cohort read of `resume_upload_cta_seen` → `resume_upload_cta_tapped` → `resume_file_picker_opened` → `resume_file_selected`; Story 5 Expert Mode visibility is optional/lower priority | No | Fresh | High |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Fresh | High |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Needs Review | High |
 | Agentic OS | Advanced OS patterns lean pilot | Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative | No | Fresh | High |
 
 ## Stranded Work
 
-23 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+24 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] claude/ios-docs-sweep-2026-06-19: unmerged commits, remote branch deleted, last commit 2026-06-19
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
@@ -53,6 +53,7 @@ Best next action: Resumely iOS: Complete Story 1 authenticated QA smoke with a r
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 1 unpushed commit(s)
 
 ## Work Packet Hygiene
 
@@ -77,7 +78,6 @@ Best next action: Resumely iOS: Complete Story 1 authenticated QA smoke with a r
 ## Evidence Gaps
 
 - RunSmart iOS: validated 2026-07-05, latest commit is newer.
-- Resumely iOS: validated 2026-07-06, latest commit is newer.
 - RunSmart Web: validated 2026-07-03, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
 - Agentic OS: validated 2026-06-12, latest commit is newer.
