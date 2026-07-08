@@ -3,18 +3,8 @@
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Review + smoke-test PR #90 (Resumely Stories 2-4 activation-friction fixes)",
-      "body": "Story 1 shipped 07-07 (PR #89). Stories 2-4 ran in Codex 07-08: Story 2 relabeled PostHog insight 3NiBhRDP to the canonical activation metric; Story 3/4 removed the intermediate upload sheet so Home's \"Choose a file\" opens the system picker directly, and added resume_upload_cta_seen + a picker-cancellation fallback. Found sitting uncommitted (6 modified files, no local commits) — salvaged into a branch, 12/12 AnalyticsServiceTests independently reverified, opened as PR #90.",
-      "prompt": "Open https://github.com/nadavyigal/ResumeBuilder-IOS-APP/pull/90 in the ResumeBuilder IOS APP repo. Review the diff, confirm on a real device or the simulator that Home's upload CTA opens the Files picker directly (no intermediate sheet) and that upload still completes end to end. If it looks right, merge it, then re-run the PostHog funnel read to confirm the new resume_upload_cta_seen event is landing for real (non-founder) traffic."
-    },
-    {
-      "title": "Three decisions sitting in NEXT-MOVES",
-      "body": "Resolved 2026-07-08: RunSmart Hebrew playbook parked (EXD-016); legal entity → accountant call, reminder 2026-07-22 (EXD-017/WP-35); Premium CTA hide until Gate A (EXD-018/WP-29).",
-      "prompt": null
-    },
-    {
-      "title": "Two 5-minute calls with no date",
-      "body": "Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use).",
+      "title": "Three calls/dates still open",
+      "body": "Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use). RunSmart legal entity — schedule the accountant call (EXD-017/WP-35, reminder 2026-07-22); the decision to investigate is already made, this is just booking it.",
       "prompt": null
     }
   ],
@@ -100,7 +90,7 @@
       { "metric": "The wall", "resumely": "export — 8 uploaded, 2 optimized, 0 ever exported", "runsmart": "plan→run — 1 of 19 got a plan, 0 ran" },
       { "metric": "Target", "resumely": "≥40%", "runsmart": "≥30%" }
     ],
-    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity; Stories 2-4 proceeded 07-08 without a dedicated manual sign-in confirmation step (see PR #90 in Founder Command)."
+    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity. PR #90 (Stories 2-4 upload-picker friction fixes) merged 07-08 — next funnel read should show the effect on real (non-founder) traffic."
   },
   "clocks": [
     { "date": "2026-07-12", "what": "Activation re-read, both apps (7 immature users each mature by then)", "state": "running" },
@@ -123,7 +113,7 @@
     "ku": [
       "Do the 7 immature installs/app convert by the 07-12 re-read?",
       "Does FB-group / Hebrew-first posting actually move traffic?",
-      "Did Resumely Stories 2-4 (PR #90) actually land the intended activation-friction fixes for real (non-founder) traffic? Re-read after merge.",
+      "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)",
       "Voice-coach flag: flip or keep parked? No decision date."
     ],
@@ -143,8 +133,8 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — review/merge PR #90, then keep chasing the export wall",
-      "body": "Stories 2-4 shipped 07-08 (PostHog insight relabel + upload-picker friction fixes) as PR #90 — review, smoke-test, and merge. Distribution: WP-31 Hebrew ASO and WP-32 FB-group posts are both live and running their measurement windows — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."
+      "title": "Resumely — PR #90 merged, now watch the export wall for movement",
+      "body": "Stories 2-4 (PostHog insight relabel + upload-picker friction fixes) merged 07-08 as PR #90. Distribution: WP-31 Hebrew ASO and WP-32 FB-group posts are both live and running their measurement windows — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."
     },
     {
       "n": 2,
