@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-07 IDT",
+    "lastUpdated": "2026-07-08 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.",
     "freshnessRule": {
@@ -111,7 +111,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-07 10:59"
+    "lastSuccessfulRefresh": "2026-07-08 07:21"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -153,7 +153,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "2026-07-05 \u2014 Release archive **SUCCEEDED** (clean worktree, ~10 min). ASC upload **SUCCEEDED** (`ExportOptionsAppStoreUpload.plist`). Archive metadata: `RunSmart` / `com.runsmart.lite` / `1.0.7` / `21` / `ITSAppUsesNonExemptEncryption=false` / dSYM present. Known HKWorkout deprecation warning only",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-07",
+      "lastUpdated": "2026-07-08",
       "blockers": [
         "(1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive \u2014 release built from clean detached worktree at `6ed8b97`",
         "clean duplicates before next local archive"
@@ -307,7 +307,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "2026-07-06 \u2014 focused `AnalyticsServiceTests` 12/12; full simulator suite 121 passed, 1 skipped, 0 failed; Debug simulator build succeeded; PostHog project `270848` confirmed fresh `app_launched` rows with `app=resumely_ios`, `marketing_version=1.3`, `build_number=8`, `anonymous_session_id`, and `is_internal_tester=true`",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-07",
+      "lastUpdated": "2026-07-08",
       "blockers": [
         "Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured",
         "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list"
@@ -441,7 +441,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-07",
+      "lastUpdated": "2026-07-08",
       "blockers": [
         "Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
@@ -557,7 +557,7 @@
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "reference",
       "status": "Phase: WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next. Active: WP-29 S5 \u2014 carry anonymous check results through signup into the new account/dashboard. Last completed: WP-29 S4 \u2014 disabled Premium CTAs while Gate A is closed, guarded `/api/upgrade`, and recorded the option A decision in Agentic OS `DECISIONS.md`. Branch `codex/wp29-s4-disable-premium-cta`. Source: tasks/progress.md, updated 2026-07-03. Newer commits exist after this status (last commit: 2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3)); trust git for the latest state.",
       "currentPhase": "WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -569,7 +569,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-07",
+      "lastUpdated": "2026-07-08",
       "blockers": [
         "Gate A remains closed by decision",
         "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
@@ -612,7 +612,7 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-07-05",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03"
@@ -714,7 +714,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-07 3a97eec Merge pull request #24 from nadavyigal/claude/portfolio-hq-app-store-live); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -724,7 +724,7 @@
       "progressLabel": "Active",
       "lastValidation": "./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-07",
+      "lastUpdated": "2026-07-08",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -740,10 +740,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-07 3a97eec Merge pull request #24 from nadavyigal/claude/portfolio-hq-app-store-live",
+        "lastCommit": "2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -955,8 +955,8 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-07 10:59",
-    "command": "./agentic-os refresh",
+    "lastRefresh": "2026-07-08 07:21",
+    "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
       "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1725,7 +1725,7 @@
       "branch": "fix/posthog-expert-event-dedupe...origin/fix/posthog-expert-event-dedupe",
       "lastCommit": "2026-07-05 7b4b00a fix(analytics): dedupe legacy expert workflow PostHog events (WP-30 S3)",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-07-05",
       "evidenceGap": true,
       "evidenceDate": "2026-07-03",
@@ -1832,11 +1832,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 1,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-07 3a97eec Merge pull request #24 from nadavyigal/claude/portfolio-hq-app-store-live",
+      "lastCommit": "2026-07-07 0b1abc2 portfolio-hq: fold in yesterday's Codex findings + refresh status",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-07",
@@ -2037,7 +2037,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
@@ -2078,12 +2078,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
       "RunSmart iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2137,10 +2136,10 @@
     }
   ],
   "dailyRunResult": {
-    "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-07 10:59",
-    "checksStatus": "Pending verify",
-    "checksCompletedAt": "",
+    "lastCommand": "./agentic-os morning",
+    "lastRunAt": "2026-07-08 07:21",
+    "checksStatus": "Failed",
+    "checksCompletedAt": "2026-07-08 07:21",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
@@ -4400,7 +4399,7 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-07",
+    "generatedOn": "2026-07-08",
     "items": [
       {
         "project": "RunSmart iOS",
@@ -4539,15 +4538,9 @@
         "type": "dirty",
         "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
       }
     ],
-    "actionableCount": 24,
+    "actionableCount": 23,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [
@@ -4558,7 +4551,7 @@
     }
   ],
   "groundTruth": {
-    "generatedAt": "2026-07-07 10:59",
+    "generatedAt": "2026-07-08 07:21",
     "apps": [
       {
         "projectId": 171597,
@@ -4587,13 +4580,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 9,
+        "liveUsers7d": 8,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 47,
+        "liveUsers7d": 46,
         "source": "api"
       }
     ],

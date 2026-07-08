@@ -2,7 +2,7 @@
 
 Manual source-of-truth dashboard for the Executive Intelligence OS. Financial cells stay `Needs Data` until a real source exists.
 
-Last updated: 2026-07-07 IDT
+Last updated: 2026-07-08 IDT
 
 ## Executive Summary
 
