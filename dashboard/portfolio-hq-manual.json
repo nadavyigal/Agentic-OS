@@ -1,21 +1,11 @@
 {
-  "asOf": "2026-07-07",
+  "asOf": "2026-07-08",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Confirm Garmin fees + certification checklist before resuming Commercial-tier work",
-      "body": "A 2026-07-06 research pass found \"NO fees\" is not confirmed — Garmin's own Agreement reserves future/excess-volume fees, and its public FAQ + Health API page both say commercial use may require a license fee. The full Gate 1-4 certification checklist is also not publicly documented, only Marc-thread-derived. Full findings: RunSmart Web docs/garmin-application/22-OFFICIAL-REQUIREMENTS-VS-MARC-NOTES-2026-07-06.md. GARMIN-STATUS.md's Commercial Terms table already updated to flag Q3/Q4 as unconfirmed rather than \"Confirmed.\"",
-      "prompt": "Draft a short email to Marc Lussi (or Garmin Partner Services, ticket 213145/213165) asking him to confirm two things in writing before we resume any Commercial-tier Garmin work: (1) the exact fee structure that applies to RunSmart specifically — Garmin's own public Agreement/FAQ/Health API page reserve fees that Marc's \"NO fees\" note doesn't mention; (2) whether there's a written Gate 1-4 certification checklist beyond what he's told us informally. Read RunSmart Web's docs/garmin-application/22-OFFICIAL-REQUIREMENTS-VS-MARC-NOTES-2026-07-06.md for the full grounding detail first."
-    },
-    {
-      "title": "Unblock ResumeBuilder Story 2 (PostHog insight updates)",
-      "body": "Story 1 (analytics identity/alias hardening) shipped and merged 07-07 — 12/12 tests independently reverified. Story 2 is intentionally blocked: the simulator's secure-field automation can't drive a real sign-in, so nobody has confirmed $identify/$create_alias actually fires yet. That's the exact mechanism that fixes the \"one tester account = 22/23 of all activity\" problem, so shipping Story 2 without confirming it defeats the point.",
-      "prompt": "In the ResumeBuilder IOS APP repo, do one manual sign-in on a real device or the simulator (type the password by hand rather than automating the secure field) to trigger the new PostHog $identify/$create_alias wiring. Confirm one fresh $identify or $create_alias row lands in PostHog project 270848. Once confirmed, proceed to Story 2 (PostHog insight updates) using the corrected event names and the founder-exclusion rule."
-    },
-    {
-      "title": "Close the loop on WP-32 / 33 / 34",
-      "body": "Ran in Codex/Cursor and reported done — but the packet files in Agentic OS still said 'not started' as of 07-05. Note: Agentic OS commit c2d0fc8 (07-05) parked WP-34 via EXD-019; verify 32/33 before acting.",
-      "prompt": "In the Agentic OS repo, update work packets WP-32, WP-33, WP-34 (executive-os/work-packets/) to reflect completed work. For each: read the packet, ask me what was actually done and where the output lives (PR links, files, drafts), verify the evidence exists, then update the Status line and add a dated Progress entry. Commit and push."
+      "title": "Review + smoke-test PR #90 (Resumely Stories 2-4 activation-friction fixes)",
+      "body": "Story 1 shipped 07-07 (PR #89). Stories 2-4 ran in Codex 07-08: Story 2 relabeled PostHog insight 3NiBhRDP to the canonical activation metric; Story 3/4 removed the intermediate upload sheet so Home's \"Choose a file\" opens the system picker directly, and added resume_upload_cta_seen + a picker-cancellation fallback. Found sitting uncommitted (6 modified files, no local commits) — salvaged into a branch, 12/12 AnalyticsServiceTests independently reverified, opened as PR #90.",
+      "prompt": "Open https://github.com/nadavyigal/ResumeBuilder-IOS-APP/pull/90 in the ResumeBuilder IOS APP repo. Review the diff, confirm on a real device or the simulator that Home's upload CTA opens the Files picker directly (no intermediate sheet) and that upload still completes end to end. If it looks right, merge it, then re-run the PostHog funnel read to confirm the new resume_upload_cta_seen event is landing for real (non-founder) traffic."
     },
     {
       "title": "Three decisions sitting in NEXT-MOVES",
@@ -110,15 +100,14 @@
       { "metric": "The wall", "resumely": "export — 8 uploaded, 2 optimized, 0 ever exported", "runsmart": "plan→run — 1 of 19 got a plan, 0 ran" },
       { "metric": "Target", "resumely": "≥40%", "runsmart": "≥30%" }
     ],
-    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity — pending one manual sign-in to confirm it actually fires (see Founder Command)."
+    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity; Stories 2-4 proceeded 07-08 without a dedicated manual sign-in confirmation step (see PR #90 in Founder Command)."
   },
   "clocks": [
     { "date": "2026-07-12", "what": "Activation re-read, both apps (7 immature users each mature by then)", "state": "running" },
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
-    { "date": null, "when": "After you post", "what": "WP-32 FB groups — 7-day measurement window", "state": "waiting" },
-    { "date": null, "when": "No date yet", "what": "Michal live Gemini session", "state": "you" },
-    { "date": null, "when": "No date yet", "what": "Marc/Garmin written confirmation on fees + certification checklist", "state": "you" }
+    { "date": "2026-07-12", "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)", "state": "running" },
+    { "date": null, "when": "No date yet", "what": "Michal live Gemini session", "state": "you" }
   ],
   "knownUnknown": {
     "kk": [
@@ -128,19 +117,18 @@
       "RunSmart wall = plan→run (onboarding drop 94.7%; 0 runs).",
       "Traffic collapsed post-launch-push; WP-29 web funnel fixed + verified.",
       "One backend tester account owned 22/23 of all Resumely Supabase optimizations pre-hardening — analytics identity/alias wiring shipped 07-07 (Story 1) to fix this going forward.",
-      "Garmin: brand attribution + Internal-Test-vs-Commercial tiering are well-grounded in Garmin's public docs (matches 3 real rejections). The exact Gate 1-4 checklist, the 30-day historical-data rule, and \"NO fees\" are not — \"NO fees\" is directly contradicted by Garmin's own Agreement/FAQ/Health API page. See RunSmart Web docs/garmin-application/22-OFFICIAL-REQUIREMENTS-VS-MARC-NOTES-2026-07-06.md."
+      "Garmin: brand attribution + Internal-Test-vs-Commercial tiering are well-grounded in Garmin's public docs (matches 3 real rejections). Fee structure for RunSmart specifically and the Gate 1-4 checklist are founder-confirmed directly with Marc via email/attachments (2026-07-08) — the 07-06 research pass's \"unconfirmed\" flag was based on Garmin's generic public docs, not RunSmart's actual terms with Marc; no further written confirmation needed."
     ],
     "ku": [
       "Do the 7 immature installs/app convert by the 07-12 re-read?",
       "Does FB-group / Hebrew-first posting actually move traffic?",
-      "Will the manual sign-in test confirm $identify/$create_alias actually fires? (Blocks Resumely Story 2.)",
-      "Will Marc/Garmin confirm the fee structure and certification checklist in writing before Commercial-tier Garmin work resumes?",
+      "Did Resumely Stories 2-4 (PR #90) actually land the intended activation-friction fixes for real (non-founder) traffic? Re-read after merge.",
       "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)",
       "Voice-coach flag: flip or keep parked? No decision date."
     ],
     "uk": [
       "Michal Track C fully drafted — blocked only on her live Gemini account.",
-      "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated. Two Codex sessions found on detached HEAD (ResumeBuilder iOS APP, RunSmart Web) 07-06/07 — branched and preserved, but a recurring risk worth remembering before trusting 'no local changes.'",
+      "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated. Three Codex/Cursor sessions found work sitting uncommitted or on detached HEAD this week (ResumeBuilder iOS APP x2, RunSmart Web) 07-06/07/08 — branched, verified, and preserved each time (PR #89, #90, #116), but a recurring risk worth remembering before trusting 'no local changes.' WP-32/33/34 were the exception this round — Cursor updated and pushed the packets itself (commit fe9ad95).",
       "status.json's needsDecision still lists \"RunSmart iOS: if build 8 is rejected again\" — stale, from before 1.0.7(21) shipped and passed review. Not a portfolio-hq bug; RunSmart iOS's own task files need a refresh to clear it. Same staleness pattern flagged by ./agentic-os verify for COO-LATEST-REVIEW.md (references build 18, current is build 21).",
       "ResumeBuilder IOS APP is missing tasks/ERRORS.md and docs/agent-os/project-context.md — flagged as a required-read gap by two separate Codex sessions now.",
       "RunSmart iOS has ~30 untracked Finder-duplicate '* 2.swift'/'* 2.md' files cluttering the repo — pre-existing, same issue already named in status.json's blockers as blocking clean archives."
@@ -154,13 +142,13 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — confirm Story 2 unblock, then fix the export wall",
-      "body": "Do the one manual sign-in test to confirm PostHog identity wiring fires, then resume Story 2 (insight updates) and the WP-36 export-friction diagnostic. Distribution: publish WP-31 Hebrew ASO and post the WP-32 FB-group drafts — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."
+      "title": "Resumely — review/merge PR #90, then keep chasing the export wall",
+      "body": "Stories 2-4 shipped 07-08 (PostHog insight relabel + upload-picker friction fixes) as PR #90 — review, smoke-test, and merge. Distribution: WP-31 Hebrew ASO and WP-32 FB-group posts are both live and running their measurement windows — traffic is the binding constraint; 20%/30d is not reachable at 4–5 people/week."
     },
     {
       "n": 2,
-      "title": "RunSmart — verify the WP-15 fix moved the needle; hold Garmin for a written fee answer",
-      "body": "1.0.7(21) shipped the first-run activation fix. Re-run the PostHog funnel 07-08+ for build-21-only users. Garmin stays maintenance-only (EXD-015); before resuming WP-24/26/27/28, get Marc/Garmin to confirm fees + certification checklist in writing — the 07-06 research pass found \"NO fees\" is contradicted by Garmin's own public docs."
+      "title": "RunSmart — verify the WP-15 fix moved the needle; Garmin stays parked",
+      "body": "1.0.7(21) shipped the first-run activation fix. Re-run the PostHog funnel 07-08+ for build-21-only users. Garmin stays maintenance-only (EXD-015) — fees and the Gate 1-4 checklist are founder-confirmed directly with Marc (email/attachments), no further confirmation needed; WP-24/26/27/28 stay paused on priority, not on missing information."
     },
     {
       "n": 3,

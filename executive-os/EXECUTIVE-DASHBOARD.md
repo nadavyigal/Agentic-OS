@@ -6,7 +6,7 @@ Last updated: 2026-07-08 IDT
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Activation diagnostics + Garmin maintenance (EXD-015): Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). WP-34 closed/parked per EXD-019 — not a pending decision. Then WP-27 Gate-4 screenshots if Garmin path resumes · Resumely iOS — Post-launch — activation measurement hardening before export/paywall/monetization work: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## CEO Focus
 
@@ -38,7 +38,7 @@ How much each project's state is backed by parsed local task files versus narrat
 
 ## Risk Board
 
-- RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) WP-34 lost work. (3) Local main worktree has Finder duplicate `* 2.swift` files that block archive — release built from clean detached worktree at `6ed8b97`
+- RunSmart iOS: (1) Post-fix cohort not yet measurable same-day as upload. (2) Local main worktree has Finder duplicate `* 2.swift` files that block archive — release built from clean detached worktree at `6ed8b97`
 - RunSmart iOS: clean duplicates before next local archive
 - Resumely iOS: Simulator secure password entry via MCP UI automation did not enter a valid password, so no fresh PostHog `$create_alias` / `$identify` row was captured
 - Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list
@@ -49,5 +49,5 @@ How much each project's state is backed by parsed local task files versus narrat
 
 ## Next Recommended Actions
 
-1. RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Founder: decide WP-34 re-implement vs park. Then WP-27 Gate-4 screenshots if Garmin path resumes
+1. RunSmart iOS: Re-run PostHog funnel on **2026-07-08+** for build-21-only users (`filterTestAccounts=true`). Then WP-27 Gate-4 screenshots if Garmin path resumes
 1. Resumely iOS: Complete Story 1 authenticated QA smoke with a reliable credential/device or fix secure-field automation, then update PostHog evidence before starting Story 2
