@@ -3,13 +3,13 @@
 Project: Global Agentic OS
 Status: Active
 Current Phase: Advanced OS patterns lean pilot
-Active Story: Pilot shipped; one of two COO operating reviews now run (weekly distribution cycle, 2026-07-09) — one more operating review still needed before any additional outcome loops
-Last Completed Story: Weekly distribution review (2026-07-09) — logged WP-31 (Resumely Hebrew ASO) and WP-32 (Facebook-groups community) into `distribution-os/experiment-log.md`, `distribution-command-center.md`, and `weekly-growth-review.md`; closed the "distribution blind spot" the 2026-07-09 CEO review had flagged (approved/live experiments untracked for 3+ weeks)
-Next Recommended Story: Run the second COO operating review to close out the pilot's validation gate; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt-architecture study); add no further loop cards unless current and non-duplicative.
-Estimated Completion: Pilot implementation complete; one operating review remains for validation
+Active Story: Portfolio HQ v3 (branch claude/portfolio-hq-v3, PR #25) — 6-tab redesign: Command (founder-as-orchestrator), Products, Numbers, Growth (reads distribution-os), Executive (reads executive-os), Map with a "Should I run it?" workflow board showing real last-ran dates. Rebased onto main (2026-07-09) so it carries the weekly distribution review's WP-31/WP-32 logging; founder decision session (voice-coach defer, Michal pivot, librarian rejected) recorded on this branch.
+Last Completed Story: Portfolio HQ v3 shipped — generator now parses executive-os (WEEKLY-CEO-LATEST, COO review) and distribution-os (experiment log, growth review) plus per-workflow last-ran dates; HTML shell rewritten in plain language with an orchestrator SVG map and run/edit prompts per layer. Prior on main: weekly distribution review (2026-07-09) logged WP-31 (Resumely Hebrew ASO) + WP-32 (Facebook-groups) and the 2026-07-09 monthly CFO review.
+Next Recommended Story: Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate.
+Estimated Completion: v3 implementation complete; awaiting merge
 Blockers: —
-Risks: Outcome loops could duplicate project status if expanded before the pilot is reviewed; untrusted input still requires least-privilege tools and founder approval for consequential actions; WP-31/WP-32 still have real gaps (no asset pack drafted for WP-31, no engagement/ASC log yet for WP-32) that need founder input before the 2026-07-12 measurement window closes
-Last Validation: ./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12.
+Risks: Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) — if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes.
+Last Validation: python3 scripts/portfolio_hq/refresh_portfolio_hq.py exit 0 on 2026-07-09; all 6 tabs rendered in Playwright with zero JS console errors; workflow last-ran dates verified against git/file truth.
 Last Updated: 2026-07-09
 Latest QA Report: —
 
