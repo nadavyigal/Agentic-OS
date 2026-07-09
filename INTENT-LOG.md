@@ -36,6 +36,13 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ## Entries
 
+## 2026-07-09 - Weekly distribution review: log WP-31/WP-32 into the cycle
+**Request:** Run the weekly distribution review per `PROMPTS/distribution-weekly.md`; specifically close the gap the CEO review flagged — WP-31 (Resumely Hebrew ASO) and WP-32 (Facebook-groups posting) were founder-approved and live but never logged into `distribution-os/experiment-log.md` or `weekly-growth-review.md`.
+**Intent / why:** Wants the distribution cycle to reflect ground truth, not a 3-week-stale snapshot — the CEO review had explicitly called this a "distribution blind spot" undermining the OS's own trust story. Standing pattern: don't let founder-side actions (manual FB posts, approvals) go dark in the system just because no agent session logged them.
+**Themes:** distribution-os, evidence-before-done, cross-session-continuity
+
+---
+
 ## 2026-07-01 - Mode tagging system + close out OS-IMPROVEMENT-PLAN-2026-06-30
 **Request:** Explore whether Boris Cherny's 5 role archetypes (Prototyper/Builder/Sweeper/Grower/Maintainer) should replace or fold into the executive-os (CEO/COO/CFO/Risk/Analysis) structure; once decided, add it; then review and close every remaining uncommitted or unfinished item in the Agentic OS repo, including the 2026-06-30 improvement plan and 3 older saved plans.
 **Intent / why:** Wants the OS to help him move faster as a solo founder, not accrete ceremony — repeatedly pushed back on complexity ("isn't this just more documentation?") until the design earned its keep. Also wants nothing left half-done or silently stale across sessions/tools (Claude, Cursor) — the recurring theme of this whole session was finding and closing gaps between what looked done and what was actually verified.

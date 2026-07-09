@@ -3,14 +3,14 @@
 Project: Global Agentic OS
 Status: Active
 Current Phase: Advanced OS patterns lean pilot
-Active Story: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops
-Last Completed Story: Prompt-architecture study (asgeirtj/system_prompts_leaks) — added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map
-Next Recommended Story: Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative.
-Estimated Completion: Pilot implementation complete; operating validation remains
+Active Story: Pilot shipped; one of two COO operating reviews now run (weekly distribution cycle, 2026-07-09) — one more operating review still needed before any additional outcome loops
+Last Completed Story: Weekly distribution review (2026-07-09) — logged WP-31 (Resumely Hebrew ASO) and WP-32 (Facebook-groups community) into `distribution-os/experiment-log.md`, `distribution-command-center.md`, and `weekly-growth-review.md`; closed the "distribution blind spot" the 2026-07-09 CEO review had flagged (approved/live experiments untracked for 3+ weeks)
+Next Recommended Story: Run the second COO operating review to close out the pilot's validation gate; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt-architecture study); add no further loop cards unless current and non-duplicative.
+Estimated Completion: Pilot implementation complete; one operating review remains for validation
 Blockers: —
-Risks: Outcome loops could duplicate project status if expanded before the pilot is reviewed; untrusted input still requires least-privilege tools and founder approval for consequential actions
+Risks: Outcome loops could duplicate project status if expanded before the pilot is reviewed; untrusted input still requires least-privilege tools and founder approval for consequential actions; WP-31/WP-32 still have real gaps (no asset pack drafted for WP-31, no engagement/ASC log yet for WP-32) that need founder input before the 2026-07-12 measurement window closes
 Last Validation: ./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12.
-Last Updated: 2026-06-20
+Last Updated: 2026-07-09
 Latest QA Report: —
 
 <!--
