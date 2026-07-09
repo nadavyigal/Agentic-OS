@@ -1,6 +1,6 @@
 # WP-39 — Analytics + Backend Integrity Audit (RunSmart + Resumely)
 
-- **Status:** OPEN — investigation packet, validation-first
+- **Status:** OPEN — S1 CLOSED (merged PR #111, `b7db662`, 2026-07-09). S2-S10 open. Phase 1 Supabase validation done; PostHog validation still blocked on tooling.
 - **Opened:** 2026-07-09
 - **Source:** External PostHog + Supabase audit report (founder-supplied, 2026-07-09). Treated as **hypotheses to validate**, not ground truth — per the report's own instruction.
 - **Apps:** RunSmart (Running coach, PostHog 171597, Supabase `dxqglotcyirxzyqaxqln`) · Resumely (ResumeBuilder AI, PostHog 270848, Supabase `brtdyamysfmctrhuankn`)
@@ -44,7 +44,7 @@ Every PostHog-side number in the report (S2 environment pollution, S3 export eve
 
 ---
 
-## S1 — [P0, Resumely] Auth-URL token/PII leak into PostHog — CONFIRMED
+## S1 — [P0, Resumely] Auth-URL token/PII leak into PostHog — CLOSED (merged `b7db662`, 2026-07-09)
 **Issue:** Auth callback URLs (with `access_token`/`refresh_token`/`code`/`email`) are captured into PostHog as `$current_url`.
 **Evidence (code, validated 2026-07-09):**
 - `src/components/providers/posthog-provider.tsx:51-53` — `posthog.capture('$pageview', { $current_url: window.location.href })` sends the full href, hash included, unsanitized.
