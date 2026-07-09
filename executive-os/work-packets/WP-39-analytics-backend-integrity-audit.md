@@ -18,6 +18,32 @@
 
 ---
 
+## Phase 1 — Supabase validation results (2026-07-09)
+
+Ran read-only aggregate SQL against both production databases (`dxqglotcyirxzyqaxqln`, `brtdyamysfmctrhuankn`) plus `get_advisors(security)` on both. **No PostHog-side query tool was available in this session** (only a render-UI widget requiring an `exec` tool not exposed here) — the PostHog half of every hypothesis below is still unvalidated; Supabase side is done.
+
+**Headline: the report's Supabase numbers are highly accurate.** Every claimed count either matched exactly or was within a few units (explained by rolling-14-day-window drift between when the report ran and when this validation ran — both are moving windows, not a real discrepancy). Two things the report got meaningfully wrong, and two root causes it missed entirely:
+
+### Corrected: S4 expert-workflow diagnosis (was HYPOTHESIS, now CONFIRMED + reframed)
+Report said "26 runs exist, all stuck, 0 applied." Reality: **124 runs exist all-time** (26 is just the last-14-day cohort). All-time status: 105 `needs_user_input`, 19 `completed`. 10 runs (all-time) have a non-null `applied_at` — the apply mechanism has worked before.
+**The real finding is sharper and worse:** `max(applied_at)` across the entire table is **2026-03-10**. Zero applies in exactly four months, across ~110 runs created since then (weekly creation continued steadily: 18, 5, 10, 22, 11, 14, 26 runs/week through late June). Meanwhile the structurally similar `optimization_review_runs` table (separate apply flow, same product) shows **12 of 16 applied in the last 14 days alone (75%)** — that flow is healthy.
+**Revised root cause hypothesis:** this smells like a dead/orphaned code path, not a discoverability problem. Something around 2026-03-10 likely replaced or disconnected the expert-workflow apply action while `optimization_review_runs`' apply flow kept working. **Recommended first step for S4 is now: grep the codebase for where `expert_workflow_runs.applied_at` gets written, and confirm whether an "Apply" action for expert-workflow output still exists and is reachable in the current UI** — before writing new instrumentation, since if the button is gone or dead, better UI copy won't fix it. `expert_workflow_artifacts` (334 rows: cover letter variants 99, quantified bullets 90, screening answers 60, summary options 55, ATS reports 29) confirms the workflow does generate real output per run — it's specifically the finalize/apply step that stopped landing.
+
+### Confirmed root cause the report missed: S6 Garmin — `App not Approved`
+`garmin_connections.error_state` contains, for multiple connections starting **2026-07-02**: `"invalid_client-app_not_approved: App not Approved"`. This is a direct root cause for the reauth_required cascade (**9/9 connections, 100%, are `reauth_required`; 0 are `connected`**) and lines up with `garmin_activities.max(created_at) = 2026-06-30` (ingestion silently stopped 9 days before this validation ran). A secondary, independent bug also present: several `garmin_import_jobs.last_error` rows read `"Garmin connection N is missing profile_id"` — a data-integrity gap unrelated to the app-approval issue. Also worth noting for context (not urgency): of 16,403 total import jobs, 16,240 are `status=failed`, but a sample of `last_error` shows some of those are intentional dead-letters (`"[DEAD: wellness dataset, not a real activity]"`, `"Dead-lettered: phantom provider_user_id with no active connection"`) rather than real breakage — the failure count is inflated by correctly-rejected non-activity payloads mixed in with genuine failures.
+**This is decision-relevant for EXD-015.** The park decision assumed an open-ended "5-user feature not worth attention" framing. What's actually broken is narrower and possibly bounded: a Garmin Developer Portal app re-approval (ties to the existing `WP-24` "file new Garmin Developer Portal app" thread) plus one data-integrity fix (`profile_id` backfill). Flagging for the founder to weigh — not deciding it here; EXD-019's 2026-08-01 review date stands unless the founder wants to pull it forward given this specific, scoped root cause.
+
+### Confirmed exact matches (Supabase side)
+RunSmart: auth users 0 new/14d, profiles 0 new/14d, plans 0 new/14d, workouts 0 new/14d, runs 3 new/14d (0 completed), Garmin activity-files pending 2/14d, analytics_events 3 distinct users/14d with only `page_viewed`/`pwa_install_prompt_shown` firing, aha moments 0/14d, ai_insights 0 ever. Resumely: auth users 5 new/14d, resumes 20/14d, job_descriptions 23/14d, optimizations 12/14d (all completed), optimization_review_runs 16 created/12 applied/14d, saved_resumes 7/14d (7 total — brand-new feature), anonymous_ats_scores 28 new/14d + 1 converted/14d, `public.events` 0 rows **ever** (stronger than the report's "0 in period"), storage.objects in `applications` bucket 6/14d (72 total all-time).
+
+### S10 — concrete advisor findings (was HYPOTHESIS, now CONFIRMED with specifics)
+Both projects: leaked-password protection disabled; several functions with mutable `search_path`. Resumely also: Postgres `17.4.1.075` has security patches available; pgvector extension installed in `public` schema (should move); several `SECURITY DEFINER` functions **executable by the `anon` role**, including the exact categories the report flagged — **`consume_credit`, `grant_apple_credits`** (credit RPCs) and **`generate_file_path`** (file-path RPC). Anon-executable doesn't automatically mean exploitable (the function body may still check `auth.uid()` internally), but these three are the highest-priority to manually read before Gate A reopens (EXD-018), since they touch money/credits and file paths. RunSmart's RLS findings are mostly benign-by-design (RLS enabled + zero policies on `app_secrets`, `garmin_tokens`, `user_memory_snapshots` is a correct default-deny posture for service-role-only tables, not a bug) but it also has anon-executable SECURITY DEFINER functions worth a read: `finalize_onboarding` (accepts arbitrary `jsonb` profile payload), `link_beta_signup_to_profile`.
+
+### Still unvalidated (needs a different tool/session)
+Every PostHog-side number in the report (S2 environment pollution, S3 export events, S5 anon-ATS PostHog linkage, S7 activation funnel, S8 screen names) — no PostHog query tool was reachable from this session. Recommend validating via the founder's own PostHog dashboard, or a session where the PostHog MCP's `exec` tool is actually available.
+
+---
+
 ## S1 — [P0, Resumely] Auth-URL token/PII leak into PostHog — CONFIRMED
 **Issue:** Auth callback URLs (with `access_token`/`refresh_token`/`code`/`email`) are captured into PostHog as `$current_url`.
 **Evidence (code, validated 2026-07-09):**
@@ -98,5 +124,7 @@ Validate every `HYPOTHESIS` above with live PostHog + Supabase queries (read-onl
 
 ## Open decisions for founder
 - **D1:** Retroactive scrub of already-leaked tokens in PostHog history (S1) — do it, or accept + rotate-forward? (Privacy call.)
-- **D2:** Garmin instrumentation now vs fully parked until 2026-08-01 (S6).
+- **D2 (sharpened 2026-07-09):** Garmin's root cause is now a specific, bounded item — OAuth app re-approval + one `profile_id` backfill — not an open-ended repair project. Given that, does EXD-015's 2026-08-01 review date still hold, or does this specific finding justify a scoped fix now? Not deciding this here; flagging because "park until Aug 1" and "the fix is small and known" are in tension.
 - **D3:** Separate PostHog project/key for preview/dev (S2) vs super-prop filtering only.
+- **D4 (new):** Read `consume_credit`, `grant_apple_credits`, `generate_file_path` function bodies (Resumely) for actual anon-callable risk before Gate A reopens — quick code review, not a migration; do this regardless of D1-D3 timing.
+- **D5 (new):** S4's revised scope (find the dead/orphaned apply path vs write new instrumentation) changes the work from a UX pass to a code-archaeology pass — confirm this reprioritization before someone starts building new "clearer CTA" UI for a button that may not exist.
