@@ -1,6 +1,6 @@
 # Work Packet WP-37 - Resumely Activation Follow-ups (Jul-8 walkthrough)
 
-- Status: **IN PROGRESS** (S1 done pending founder submit; S2–S5 not started)
+- Status: **IN PROGRESS** (S1 live 1.4; S2/S3/S5 done; S4 coded pending ship; Verify read filed)
 - Created: 2026-07-08
 - Source: Builder OS vault `02-Products/ResumeBuilder/2026-07-08-resumely-activation-walkthrough-friction-report.md` — full production walkthrough by Claude (Fable 5), both surfaces, every finding with blind repro
 - Mode: Builder
@@ -140,3 +140,6 @@ Cheapest capable model per story; Opus only where correctness/judgment is the ri
 - 2026-07-08: **S1 executed (agent).** `main` at `41d6fce`; build **1.3 (9)** cut; Debug tests green; Release compile green; upload hero smoke on iPhone 17 sim (build 9, location cues visible). **Blocked on founder:** Xcode Organizer archive → validate → distribute → submit (Apple Distribution signing). Uncommitted in iOS repo: `project.pbxproj` version bump only.
 - 2026-07-08: **S2 executed (agent).** Web rate-limit path now preserves `UploadForm` state across rate-limit → back-to-checker; tests + lint + build green. Uncommitted in web repo: `FreeATSChecker.tsx`, test file.
 - 2026-07-08: **S3 closed (investigator, no code).** Guest saved-resume list showing founder CVs was leftover Keychain-restored Supabase session on the test simulator, not a cross-user leak. Library API is auth-gated end-to-end.
+- 2026-07-09: **S4 executed (agent).** `ScrollViewReader` scrolls to job input after resume select; iOS Debug build green. Pending 1.4.1 ASC submit.
+- 2026-07-09: **S5 executed (agent).** JD requirement fragment filter + quiet 404 anon conversion; tests + build green. Pending web deploy.
+- 2026-07-09: **Verify read (post-1.4 live).** PostHog project `270848`, iOS `$lib=resumely-ios-urlsession`, since `2026-07-08`: 3 `resume_upload_cta_seen` → 1 tapped → 1 picker opened → 1 file selected → 0 optimization → 0 export. Sample too small for delta vs pre-1.4 baseline (60d clean: 10 picker / 5 selected); re-read in 7–14d.
