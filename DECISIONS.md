@@ -125,3 +125,25 @@ Impact:
 - Web implementation should show Premium as unavailable/coming later instead of a clickable upgrade action.
 - `/api/upgrade` should not create checkout sessions while the gate is closed.
 - Re-opening Premium requires an explicit founder decision updating this gate record and the product code gate.
+
+## 2026-07-09: Founder Queue Clearance — Voice Coach Deferred, Michal Pivots to OpenAI/Codex, Librarian Bot Rejected
+
+Decision: In a founder decision session (three founder-only queue items plus one new OS proposal), the founder made four calls:
+
+1. **RunSmart voice coach — defer, do not flip.** `VOICE_COACH_ENABLED` stays `false`. Review at the 2026-07-12 activation re-read, or after WP-40 (HealthKit activation) lands — whichever gives a clearer read on RunSmart's plan→run wall. This closes a ~1-month-old open loop without flipping.
+2. **Michal / AI Audit Toolkit pilot — park, then rebuild on OpenAI/Codex.** Michal is migrating from Gemini to OpenAI. The pilot waits until she completes that move; then she is set up on Codex and we build "Michal's OS" (a Codex-based operating layer for her) rather than the previously-drafted Gemini-Gems path. The existing Gemini Track-C drafts (4 Gems, voice doc, privacy rules) are now superseded as the delivery vehicle, though the underlying audit framing carries over.
+3. **RunSmart legal entity (EXD-017/WP-35) — no change.** Keep the existing 2026-07-22 reminder; investigation decision already made, only the accountant call remains and it is not urgent.
+4. **"Librarian" auto-updater bot — rejected.** Do not build an autonomous cheap-model routine that edits docs unattended on a schedule.
+
+Reason:
+
+- Voice coach: RunSmart is maintenance-only (2026-07-02 priority reset); its wall is activation (plan→run, 0 runs), not missing features. Flipping an unverified voice feature adds surface area and splits focus; deferring with a real date ends the indecision.
+- Michal: the delivery platform changed under the drafted plan. Waiting for her platform migration and rebuilding on Codex avoids shipping onto a stack she's leaving, and aligns her toolkit with the OS's own primary tooling.
+- Librarian: the OS's entire value is *trustworthy parsed truth* with confidence ratings and evidence citations (2026-06-02 Dashboard Trust Rule). An unreviewed cheap-model editor running every ~2h introduces exactly the drift/churn that rule exists to prevent; `ERRORS.md` (2026-06-12) already warns against automation nobody reviews and favors attaching checks to a ritual that demonstrably runs (the daily refresh); and macOS TCC blocks scheduled runs on this Mac anyway (see auto-memory `agentic-os-launchd-tcc`). The recommended lighter alternative — a read-only staleness auditor wired into `./agentic-os refresh` — was offered and also declined for now; existing `refresh` + `verify` + morning-brief staleness checks stay the safeguard.
+
+Impact:
+
+- Portfolio HQ founder queue (`dashboard/portfolio-hq-manual.json`) updated: voice-coach + legal-entity items resolved/annotated; the Michal track rewritten to the OpenAI→Codex "Michal's OS" plan; `asOf` bumped.
+- Auto-memory `voice-coach-flag-pending` updated from "remind every session" to "deferred with review date 2026-07-12" so it stops nagging.
+- No librarian workflow, cron, or autonomous editor is to be added. If the read-only auditor is reconsidered later, it must land as a `refresh`-invoked, edits-nothing check, not a scheduler.
+- `status.json` decision board is stale (still references the build-8 era: "if build 8 is rejected", "Resumely device smoke before archive", the old voice-flag framing). Flagged for cleanup in RunSmart iOS / Resumely task files — it is not a portfolio-hq bug.

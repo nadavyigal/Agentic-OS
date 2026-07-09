@@ -1,33 +1,52 @@
 {
-  "asOf": "2026-07-08",
+  "asOf": "2026-07-09",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
-  "founderCommand": [
-    {
-      "title": "Three calls/dates still open",
-      "body": "Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use). RunSmart legal entity — schedule the accountant call (EXD-017/WP-35, reminder 2026-07-22); the decision to investigate is already made, this is just booking it.",
-      "prompt": null
-    }
-  ],
+  "founderCommand": [],
   "tracks": [
+    {
+      "id": "wp40",
+      "name": "RunSmart WP-40 / Apple Health activation",
+      "pill": "BUILDING NOW",
+      "tone": "run",
+      "standing": "In progress in a live session (founder-confirmed 2026-07-09). This is the concrete lever against the plan-to-run wall: make the already-built Apple Health connection reachable in the main flow instead of buried in Profile.",
+      "items": [
+        { "tone": "done", "text": "Work moved off main onto branch claude/wp40-healthkit-activation, nothing lost" },
+        { "tone": "done", "text": "Debug flag -RUNSMART_SKIP_AHA_MOMENTS added and build succeeded; the flag combo lands automation directly on the Apple Health onboarding step (screenshot-confirmed), no tap-sweeping needed" },
+        { "tone": "run", "text": "Left to verify: tap Connect Apple Health, get through the system permission sheet, screenshot Today. This is the exact step Cursor's automation could not do reliably." }
+      ]
+    },
     {
       "id": "michal",
       "name": "Michal / AI Audit Toolkit",
-      "pill": "FIRST CLIENT PILOT",
-      "tone": "run",
-      "standing": "Everything is drafted (4 Gems, Voice doc, privacy rules). The only thing missing is a scheduled session with her Gemini account.",
+      "pill": "PARKED — WAITING ON HER",
+      "tone": "wait",
+      "standing": "Parked by founder decision 2026-07-09. Michal is migrating from Gemini to OpenAI. We wait until she finishes that move, then set her up on Codex and build 'Michal's OS' — a Codex-based operating layer — instead of the drafted Gemini-Gems path. The audit framing carries over; the Gemini delivery vehicle does not.",
       "items": [
-        { "tone": "done", "text": "WP-33 prep ran in Cursor (per founder)" },
-        { "tone": "you", "text": "Schedule the live session with Michal. That's the whole blocker." },
-        { "tone": "info", "text": "After the session: file the first toolkit template so the pilot feeds the AI Audit Toolkit product." }
-      ],
-      "prompts": [
-        {
-          "label": "Run the live session (when scheduled)",
-          "text": "I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."
-        }
+        { "tone": "done", "text": "Gemini Track-C prep drafted (4 Gems, voice doc, privacy rules) — framing reusable, delivery vehicle superseded" },
+        { "tone": "wait", "text": "Blocked on Michal's Gemini → OpenAI migration. No action from us until she's moved." },
+        { "tone": "info", "text": "When she's on OpenAI: set her up on Codex and build Michal's OS; then file the first toolkit template so the pilot feeds the AI Audit Toolkit product." }
       ]
     }
   ],
+  "suggestedSessions": [
+    {
+      "product": "Resumely (primary)",
+      "model": "Fable 5 / frontier tier - ambiguous debugging, correctness-critical",
+      "title": "Break the export wall: find and fix why 0 real people have ever exported",
+      "why": "The funnel says it plainly: 8 uploaded, 2 optimized, 0 real exports ever. Every readout since 06-24 ends with 'fix export before spending on traffic or monetization'. Traffic experiments (WP-31/32) are running, so when they bring people, export must work. This is the single highest-leverage engineering session on the primary product.",
+      "prompt": "Diagnose and fix the Resumely export wall. Evidence: all-time founder-excluded funnel shows 8 uploads, 2 optimizations completed, 0 real export successes ever (see docs/qa/reports/supabase-post-live-current-state-2026-07-06.md in the ResumeBuilder IOS APP repo). Work in the ResumeBuilder web repo (new-ResumeBuilder-ai-). 1) Reproduce the full optimize-to-export path on production as a real non-founder user (use the QA account convention, exclude it from analytics afterwards). 2) Read PostHog events and Supabase rows for every real user who completed an optimization but never exported: find the exact step where each one stopped (button never seen? click with no response? server error? paywall/auth trap?). 3) Root-cause with the investigator approach before writing any fix, check tasks/ERRORS.md first. 4) Fix the one blocking defect, add a test, verify the export end-to-end with evidence. 5) One story at a time; report the funnel step you expect to move and how we will re-measure it founder-excluded."
+    },
+    {
+      "product": "RunSmart (maintenance-plus)",
+      "model": "Sonnet tier - well-specified feature against an existing pattern (per GLOBAL-TOOL-USAGE model routing)",
+      "title": "First-run commitment + reminder: turn generated plans into first runs",
+      "why": "The wall is plan-to-run: of 19 installs, 1 generated a plan, 0 ever ran. WP-40 (in flight in another session) fixes Apple Health discoverability; this attacks the same wall from the other side with the already-scored experiment rs-onboarding-001 (WP-20, queued). Do not start until WP-40 merges, both touch the post-onboarding flow.",
+      "prompt": "Implement WP-20 (experiment rs-onboarding-001) in the RunSmart repo: after a training plan is generated, ask the user for a concrete first-run commitment (day + time, one tap options) and schedule a local notification reminder for it. Read the WP-20 packet and docs/agent-os/project-context.md first; follow the existing onboarding/notification patterns; instrument first_run_committed and reminder_fired PostHog events so the plan-to-run funnel can attribute movement. Coordinate with WP-40 (HealthKit activation, branch claude/wp40-healthkit-activation): branch from main only after WP-40 merges to avoid conflicting onboarding changes. Tests included; one story at a time."
+    }
+  ],
+  "growth": {
+    "note": "WP-31 (Hebrew ASO) and WP-32 (Facebook groups) are live and inside their measurement windows, but neither is logged in the experiment log yet, and the last logged growth cycle is the week of 2026-06-21. Run the distribution review to bring this layer back to true."
+  },
   "traffic": [
     {
       "id": "resumely",
@@ -98,7 +117,7 @@
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
     { "date": "2026-07-12", "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)", "state": "running" },
-    { "date": null, "when": "No date yet", "what": "Michal live Gemini session", "state": "you" }
+    { "date": null, "when": "After her OpenAI move", "what": "Michal — set up on Codex, build Michal's OS (parked pending her Gemini→OpenAI migration, decided 2026-07-09)", "state": "waiting" }
   ],
   "knownUnknown": {
     "kk": [
@@ -115,7 +134,7 @@
       "Does FB-group / Hebrew-first posting actually move traffic?",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)",
-      "Voice-coach flag: flip or keep parked? No decision date."
+      "Voice-coach flag: DECIDED 2026-07-09 — deferred (stays off), review at the 07-12 activation re-read or after WP-40 lands. No longer an open question."
     ],
     "uk": [
       "Michal Track C fully drafted — blocked only on her live Gemini account.",
