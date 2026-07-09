@@ -1,6 +1,6 @@
 # Work Packet WP-38 - RunSmart Record-Run UX Follow-ups
 
-- Status: **S9-S12 COMPLETE** (2026-07-09) — S9-S11 merged PR #81 (`e5001bd`), S12 merged PR #82 (`cb5d76c`). S13 stays gated (HealthKit accuracy precondition unmet). S14a-d not started.
+- Status: **COMPLETE** (2026-07-09) — S9-S11 merged PR #81 (`e5001bd`), S12 merged PR #82 (`cb5d76c`), S14a-d merged PR #83 (`f9d7c89`, CodeRabbit feedback addressed in `7d47cc9`). S13 stays gated (HealthKit accuracy precondition unmet) — does not block packet completion per its own gate.
 - Created: 2026-07-09
 - Source: WP-37's "Explicitly deferred (with reason)" list, promoted to stories after WP-37 closeout verification (all 8 WP-37 stories confirmed merged to `main` at `4476a7d`, PR #53 closed as fully superseded, local worktree cleaned and rebuilt clean on 2026-07-09)
 - Mode: Builder (this packet)
