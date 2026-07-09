@@ -13,6 +13,48 @@ Append-only. One entry per week per product focus. Use the template at `template
 
 <!-- newest first -->
 
+### Week of 2026-07-07 — ResumeBuilder iOS — Hebrew-First Distribution Catch-Up (WP-31, WP-32)
+
+**Status:** Catch-up cycle. Two experiments (WP-31 Hebrew ASO, WP-32 Facebook-groups community) were founder-approved/requested on 2026-07-04/05 and executed in the field, but had not been logged into `experiment-log.md` or this review — this entry closes that gap per the 2026-07-09 CEO review finding ("Distribution blind spot").
+
+#### Metrics This Week
+
+| Metric | This Week | Prior Week | Notes |
+|---|---|---|---|
+| RunSmart real activation (D7) | 0% (readout #2, 2026-07-05) | 0% | Inside EXD-015 30-day window, closes 2026-08-01 |
+| Resumely real activation (D7) | 0% (readout #2, 2026-07-05) | 0% | Same window; traffic is the confirmed constraint, not the funnel (WP-30 evidence) |
+| Resumely weekly launches | 5 (latest) | 28 (prior) | Trend: 6→16→28→5, per WEEKLY-CEO-LATEST 2026-07-09 |
+| WP-32 Israeli storefront installs, before/after | not yet pulled | — | Window closes 2026-07-12; App Store Connect export still needed |
+| WP-32 manual engagement log | not yet captured | — | Comments/reactions/replies on the 3 posted groups not yet logged |
+
+#### What Happened
+
+- rb-he-aso-001 (Hebrew ASO) promoted to WP-31 on 2026-07-04 after founder approved `hebrew-first-playbook.md`. Status: ready, not started — no asset pack drafted yet.
+- rb-he-comm-001 (Facebook-groups community) promoted to WP-32 on 2026-07-05 at founder's explicit request, posted ahead of WP-31 (sequencing override, noted in the packet). Founder manually posted in 3 Israeli job-seeker/tech groups: `israel.hitech.jobs`, `israel.hightech`, and group `1684554685829832`.
+- 2026-07-08 evidence audit found two open gaps against WP-32's acceptance criteria: (1) no draft post pack filed under `distribution-os/projects/resumebuilder/scaffold/drafts/` — posts went live without an in-repo asset pack; (2) no manual engagement log or App Store Connect before/after read captured yet.
+- Both experiments added to `experiment-log.md` Active table this cycle (previously untracked there); `distribution-command-center.md` This Week and ResumeBuilder channel status updated to reflect the real state (Hebrew market: planned → measuring).
+- No channel-level or experiment-level score exists yet for rb-he-aso-001 / rb-he-comm-001 in the playbook's experiment menu — logged as unscored rather than inventing a number.
+
+#### Top 3 Experiments (this cycle)
+
+1. **rb-he-comm-001** (unscored) — Facebook-groups posting; measuring, 7-day window closes 2026-07-12.
+2. **rb-he-aso-001** (unscored) — Hebrew ASO pass; founder-approved, asset pack not started.
+3. **rs-onboarding-001** (score 21) — Held behind WP-40 HealthKit activation per EXD-021; RunSmart's active lever this week is WP-40, not this queued item.
+
+#### Blockers
+
+- WP-31: RTL PDF export status needs product-QA confirmation before any Hebrew ASO copy references it.
+- WP-32: target-group shortlist for future posts and the manual engagement log for the 3 already-posted groups are founder-only inputs, not yet supplied.
+- Both: App Store Connect Israeli-storefront install export needed to compute before/after lift; not available in this environment.
+
+#### Next Week Focus
+
+- Founder: log WP-32 engagement (comments/reactions/replies) and pull the Israeli-storefront install comparison once the 2026-07-12 window closes.
+- Agent: draft the WP-31 Hebrew ASO asset pack (subtitle, keywords, promo text, 5 captions, reviewer note) so it is ready for founder review the moment RTL PDF export is confirmed.
+- Feed WP-32's 2026-07-12 readout back into `hebrew-first-playbook.md` Progress log and this review.
+
+---
+
 ### Week of 2026-06-21 — Portfolio — Post-Launch Growth (Both Apps Live)
 
 **Status:** First distribution cycle with both iOS apps live on the App Store. Pre-launch positioning retired.
