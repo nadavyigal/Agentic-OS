@@ -2,7 +2,7 @@
 
 Manual source-of-truth dashboard for the Executive Intelligence OS. Financial cells stay `Needs Data` until a real source exists.
 
-Last updated: 2026-07-09 IDT
+Last updated: 2026-07-09 IDT (Monthly CFO Review run this date — see Financial Snapshot)
 
 ## Executive Summary
 
@@ -16,7 +16,7 @@ RunSmart iOS — PHASE 2 — Activation diagnostics + record-run polish follow-u
 
 ## Financial Snapshot
 
-Needs Data - no revenue/cost instrumentation wired.
+Needs Data - no revenue/cost instrumentation wired. Monthly CFO Review run 2026-07-09 (first run of this workflow): all revenue, cost, margin, and runway lines remain `Needs Data`; only known figure is $0 marketing spend (default, no paid ads). Top recommendation: build a one-time manual cost list before next review. Full report: `executive-os/reviews/2026-07-09-monthly-finance-review.md`.
 
 ## Open Decisions
 

@@ -63,6 +63,10 @@ Data-source policy is reused from `../distribution-os/data/source-of-truth-polic
 | Open high-severity risks | see `EXECUTIVE-DASHBOARD.md` Risk Board | manual | Tracked |
 | Apps blocked on approval | Resumely v1.1 (5) in review; RunSmart live | App Store Connect / Resumely iOS tasks/progress.md | Tracked |
 
+## Monthly CFO Review Log
+
+- 2026-07-09: First run of `executive-os/workflows/monthly-finance-review.md`. All revenue, cost (except $0 marketing spend), margin, and runway figures remain `Needs Data` — no App Store Connect / RevenueCat / provider billing / manual cost list was available. Full report: `executive-os/reviews/2026-07-09-monthly-finance-review.md`.
+
 ## Current Manual Data Sources
 
 - Project status: `../DASHBOARD.md`, `../PROJECT-STATUS.md`, local repo `tasks/`.
