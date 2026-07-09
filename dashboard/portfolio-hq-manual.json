@@ -1,13 +1,7 @@
 {
   "asOf": "2026-07-09",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
-  "founderCommand": [
-    {
-      "title": "Three calls/dates still open",
-      "body": "Voice-coach flag (RunSmart) — flip it or park it with a review date, open since mid-June. Michal session — pick the date for the live Gemini setup (WP-33 output is ready to use). RunSmart legal entity — schedule the accountant call (EXD-017/WP-35, reminder 2026-07-22); the decision to investigate is already made, this is just booking it.",
-      "prompt": null
-    }
-  ],
+  "founderCommand": [],
   "tracks": [
     {
       "id": "wp40",
@@ -24,19 +18,13 @@
     {
       "id": "michal",
       "name": "Michal / AI Audit Toolkit",
-      "pill": "FIRST CLIENT PILOT",
-      "tone": "run",
-      "standing": "Everything is drafted (4 Gems, Voice doc, privacy rules). The only thing missing is a scheduled session with her Gemini account.",
+      "pill": "PARKED — WAITING ON HER",
+      "tone": "wait",
+      "standing": "Parked by founder decision 2026-07-09. Michal is migrating from Gemini to OpenAI. We wait until she finishes that move, then set her up on Codex and build 'Michal's OS' — a Codex-based operating layer — instead of the drafted Gemini-Gems path. The audit framing carries over; the Gemini delivery vehicle does not.",
       "items": [
-        { "tone": "done", "text": "WP-33 prep ran in Cursor (per founder)" },
-        { "tone": "you", "text": "Schedule the live session with Michal. That's the whole blocker." },
-        { "tone": "info", "text": "After the session: file the first toolkit template so the pilot feeds the AI Audit Toolkit product." }
-      ],
-      "prompts": [
-        {
-          "label": "Run the live session (when scheduled)",
-          "text": "I'm in a live session with Michal's Gemini account now. Read docs/track-c-meeting-runbook.md in the Michal repo and walk me through it step by step: account audit, stand up the 4 Gems from gems/, PII red-team, confirm the dual-practice framing with her. No client PII in anything we produce."
-        }
+        { "tone": "done", "text": "Gemini Track-C prep drafted (4 Gems, voice doc, privacy rules) — framing reusable, delivery vehicle superseded" },
+        { "tone": "wait", "text": "Blocked on Michal's Gemini → OpenAI migration. No action from us until she's moved." },
+        { "tone": "info", "text": "When she's on OpenAI: set her up on Codex and build Michal's OS; then file the first toolkit template so the pilot feeds the AI Audit Toolkit product." }
       ]
     }
   ],
@@ -129,7 +117,7 @@
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
     { "date": "2026-07-12", "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)", "state": "running" },
-    { "date": null, "when": "No date yet", "what": "Michal live Gemini session", "state": "you" }
+    { "date": null, "when": "After her OpenAI move", "what": "Michal — set up on Codex, build Michal's OS (parked pending her Gemini→OpenAI migration, decided 2026-07-09)", "state": "waiting" }
   ],
   "knownUnknown": {
     "kk": [
@@ -146,7 +134,7 @@
       "Does FB-group / Hebrew-first posting actually move traffic?",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.)",
-      "Voice-coach flag: flip or keep parked? No decision date."
+      "Voice-coach flag: DECIDED 2026-07-09 — deferred (stays off), review at the 07-12 activation re-read or after WP-40 lands. No longer an open question."
     ],
     "uk": [
       "Michal Track C fully drafted — blocked only on her live Gemini account.",
