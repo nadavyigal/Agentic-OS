@@ -1,6 +1,6 @@
 # Work Packet WP-27 - Garmin: Real-Device Gate-4 Evidence Pack for the Commercial Resubmission
 
-- Status: **PAUSED 2026-07-03** — under the 2026-07-02 priority-reset (Resumely primary, RunSmart Garmin maintenance-only through ~2026-08-01), real-device screenshot capture and the App Store Connect build check are not being pursued; this packet exists only to feed WP-26's commercial resubmission, which itself is paused. Engineering-side work (tile asset, "Garmin Wellness" grep, attribution fix) remains done and is not being undone — see Progress below. Do not resume without re-checking [[project_resumely_primary_runsmart_maintenance]] memory first.
+- Status: **RESCOPED 2026-07-09 (EXD-021)** — this packet's evidence capture (real-device screenshots, App Store Connect build check) doesn't need the עוסק מורשה certificate itself, only the eventual commercial submission (WP-26 Step 3) does — so this can proceed now as low-priority background prep, ready the moment the certificate lands, rather than staying frozen. Not RunSmart's engineering priority (that's HealthKit/non-wearable per EXD-021) but no longer blocked by a calendar date. Engineering-side work (tile asset, "Garmin Wellness" grep, attribution fix) remains done — see Progress below.
 - Created: 2026-07-02
 - Source: Builder OS vault `02-Products/RunSmart/2026-07-02-garmin-deactivation-storm.md` (PR #13, merged), step 4 of the synthesis action plan
 - Mode: Builder
