@@ -4,27 +4,29 @@ The single page that answers: what is this week about, what is shipping, what is
 
 ## This Week
 
-- **Week of**: 2026-06-30
-- **Focused product**: RunSmart iOS (post-launch ASO + first-run activation)
-- **Other product status**: ResumeBuilder iOS — maintenance / D7 readout follow-up; directory submissions remain founder-action work
-- **Theme**: Turn the 2026-06-20 RunSmart distribution-cycle findings into founder-reviewable next actions.
+- **Week of**: 2026-07-07
+- **Focused product**: ResumeBuilder iOS (Hebrew-first distribution — WP-31 ASO, WP-32 community)
+- **Other product status**: RunSmart iOS — activation-gated, not distribution-gated; WP-40 HealthKit activation in progress, GTM volume on hold until plan→run activation improves
+- **Theme**: Log the WP-31 (Hebrew ASO) and WP-32 (Facebook-groups community) experiments into the distribution cycle — both were founder-approved/requested on 2026-07-04/05 but had not yet been reflected in `experiment-log.md` or `weekly-growth-review.md`.
 - **Top 3 experiments** (link to rows in `experiment-log.md`):
-  1. rs-onboarding-001 (score 21) — first-run commitment + local reminder after plan generation
-  2. rs-aso-003 (score 20) — post-launch ASO cleanup: first-review prompt, subtitle/keyword review, screenshot captions, metadata sync
-  3. rs-aso-002 (score 18) — screenshot caption overlays for the live listing
+  1. rb-he-comm-001 — Facebook-groups posting (WP-32); posted 2026-07-05 in 3 groups, 7-day measurement window closes 2026-07-12
+  2. rb-he-aso-001 — Hebrew ASO pass (WP-31); founder-approved, asset pack not yet drafted
+  3. rs-onboarding-001 (score 21) — WP-40 HealthKit activation now supersedes this as the live RunSmart activation lever; first-run commitment work stays queued behind it
 - **Assets in flight**:
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md` — reviewed, needs founder approval before product work
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md` — reviewed, needs founder approval before ASC / app changes
+  - WP-31 Hebrew ASO asset pack (subtitle, keywords, promo text, 5 captions, reviewer note) — not yet drafted in `distribution-os/projects/resumebuilder/scaffold/drafts/`
 - **Awaiting founder action**:
-  - `rs-onboarding-001` is now `executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md`; execute it in RunSmart iOS if it can stay inside the current small build.
-  - Export App Store Connect baseline for RunSmart product page views, conversion, keyword impressions, and ratings count.
-  - Approve or reject ASC metadata edits, screenshot caption work, and first-review prompt timing.
+  - `rs-onboarding-001` is now `executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md`; hold behind WP-40 per EXD-021.
+  - Export App Store Connect Israeli storefront baseline (installs) so WP-31/WP-32 before/after comparisons are possible.
+  - Confirm RTL PDF export status with product QA before any Hebrew ASO copy references it (WP-31 blocker).
+  - Supply/confirm the WP-32 target-group shortlist and log manual engagement (comments/reactions/replies) for the 3 posted groups before the 2026-07-12 window closes.
 - **Awaiting external response**:
+  - App Store Connect Israeli storefront install data for the 2026-07-05 → 2026-07-12 WP-32 window.
   - App Store Connect metrics export for the live RunSmart listing.
-  - PostHog volume increase before D7 retention can be evaluated.
 - **Blocked**:
-  - D7 retention gate is not statistically useful at current RunSmart volume.
-  - No App Store metadata, screenshot, notification, or review-prompt change should publish without explicit founder approval.
+  - WP-31 asset drafting has not started — no draft post/copy pack filed yet despite founder approval.
+  - No App Store metadata, screenshot, notification, review-prompt, or Hebrew ASO copy change should publish without explicit founder approval.
 
 ## Current Channel Status
 
@@ -54,7 +56,7 @@ The single page that answers: what is this week about, what is shipping, what is
 | Directories | awaiting review | Founder — review directory pack; press submit after App Store live | rb-dir-001 pack drafted for 5 directories; blocked on App Store URL |
 | Lifecycle email | not started | Agent — next focus week | Needs analytics instrumentation first |
 | Conversion optimization | not started | Agent — next focus week | Signup → editor → export funnel |
-| Hebrew market | planned | Agent — after English listing is approved | Approach confirmed (single listing + locale); in-app RTL not yet built; Hebrew metadata deferred to T+30 after App Store live |
+| Hebrew market | measuring | Founder — log WP-32 engagement; Agent — draft WP-31 asset pack | WP-31 (Hebrew ASO) founder-approved, not yet drafted; WP-32 (FB-groups) posted 2026-07-05 in 3 groups, 7-day window closes 2026-07-12 |
 | Programmatic SEO | not started | Agent — after ASO proves | Demoted to Tier B until ASO + landings prove install |
 | Career coach partnerships | not started | Agent — next focus week | |
 | LinkedIn job-seeker content | not started | Deferred | Tier C |
@@ -69,6 +71,8 @@ Status values: `not started` · `planned` · `in progress` · `awaiting review` 
 - 2026-05-27: Android out of scope for 2026; Hebrew ASO in scope
 - 2026-05-27: Email platform = Resend via Supabase Edge Functions (free 3K/mo)
 - 2026-05-28: Distribution scaffold installed in both product repos — RunSmart iOS (missing scaffold files added; curated files preserved) and ResumeBuilder Web (full scaffold v1)
+- 2026-07-04: Founder approved `hebrew-first-playbook.md`; `rb-he-aso-001` promoted to WP-31 (Hebrew ASO pass)
+- 2026-07-05: Founder requested and manually posted `rb-he-comm-001` (WP-32, Facebook-groups) in 3 Israeli job-seeker/tech groups, ahead of WP-31 publishing (explicit sequencing override, noted in WP-32)
 
 ## This Week's Done Definition
 
