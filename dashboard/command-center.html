@@ -635,7 +635,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-09 14:44",
+      "lastRefresh": "2026-07-09 16:58",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -939,8 +939,8 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 42,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
         "lastCommit": "2026-07-09 86a9452 docs: mark WP-38 COMPLETE after PR #83 merge",
@@ -1476,11 +1476,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 9,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-09 a0b4192 docs(wp-40): scope RunSmart HealthKit activation and discoverability",
+        "lastCommit": "2026-07-09 edfdd29 docs: Weekly CEO Review run early (2026-07-09) + dashboard refresh sync",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-09",
@@ -1544,7 +1544,7 @@
         "projectId": "runsmart-ios",
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main...origin/main",
         "nextAction": "S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
         "sourceConfidence": "High",
@@ -1677,7 +1677,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main...origin/main",
         "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
         "sourceConfidence": "High",
@@ -1720,9 +1720,9 @@
       "blockedProjectCount": 4,
       "dirtyProjectCount": 3,
       "dirtyProjects": [
+        "RunSmart iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)",
-        "Agentic OS"
+        "ResumeBuilder AI (Web)"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -4055,17 +4055,20 @@
       ]
     },
     "portfolioTrust": {
-      "level": "actionable",
-      "label": "Actionable",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Dirty shippable app repo: RunSmart iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
-      "hygieneWarnings": []
+      "hygieneWarnings": [
+        "Uncommitted files in product repos: RunSmart iOS."
+      ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-09 14:44",
+      "generatedAt": "2026-07-09 16:58",
       "apps": [
         {
           "projectId": 171597,
@@ -4094,7 +4097,7 @@
         {
           "appId": "runsmart-ios",
           "available": true,
-          "liveUsers7d": 9,
+          "liveUsers7d": 10,
           "source": "api"
         },
         {
@@ -4128,7 +4131,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-09 14:44",
+      "lastRunAt": "2026-07-09 16:58",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -4153,6 +4156,13 @@
           "type": "executive",
           "where": "Agentic OS repo, in this Codex thread",
           "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+        },
+        {
+          "title": "Validate caution items before risky moves",
+          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+          "type": "system",
+          "where": "Affected product repo(s)",
+          "copyPrompt": null
         }
       ],
       "topBanner": null,

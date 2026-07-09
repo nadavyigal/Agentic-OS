@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-09 14:44"
+    "lastSuccessfulRefresh": "2026-07-09 16:58"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed): S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -95,8 +95,8 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 42,
         "extraWorktrees": 0,
         "lastCommit": "2026-07-09 86a9452 docs: mark WP-38 COMPLETE after PR #83 merge",
         "sourceFiles": [
@@ -609,7 +609,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-09 a0b4192 docs(wp-40): scope RunSmart HealthKit activation and discoverability); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Pilot shipped; awaiting two COO operating reviews before any additional outcome loops. Last completed: Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map. Source: tasks/progress.md, updated 2026-06-20. Newer commits exist after this status (last commit: 2026-07-09 edfdd29 docs: Weekly CEO Review run early (2026-07-09) + dashboard refresh sync); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Pilot shipped; awaiting two COO operating reviews before any additional outcome loops",
       "lastCompletedStory": "Prompt-architecture study (asgeirtj/system_prompts_leaks) \u2014 added GLOBAL-TOOL-USAGE.md and PROMPTS/plan-mode-contract.md, hardened plan-feature.md with the decision-complete bar, wired both into the AGENTS.md File Map",
@@ -635,10 +635,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 9,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-09 a0b4192 docs(wp-40): scope RunSmart HealthKit activation and discoverability",
+        "lastCommit": "2026-07-09 edfdd29 docs: Weekly CEO Review run early (2026-07-09) + dashboard refresh sync",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -851,7 +851,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-09 14:44",
+    "lastRefresh": "2026-07-09 16:58",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
     "sourcesRead": [
@@ -1155,8 +1155,8 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 42,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
       "lastCommit": "2026-07-09 86a9452 docs: mark WP-38 COMPLETE after PR #83 merge",
@@ -1692,11 +1692,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 9,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-09 a0b4192 docs(wp-40): scope RunSmart HealthKit activation and discoverability",
+      "lastCommit": "2026-07-09 edfdd29 docs: Weekly CEO Review run early (2026-07-09) + dashboard refresh sync",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-09",
@@ -1760,7 +1760,7 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "main...origin/main",
       "nextAction": "S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
       "sourceConfidence": "High",
@@ -1893,7 +1893,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Use the Resumely submission loop in two COO reviews; optionally add GLOBAL-OUTPUT-CONTRACT.md (deferred from the prompt study); add no further loop cards unless current and non-duplicative",
       "sourceConfidence": "High",
@@ -1936,9 +1936,9 @@
     "blockedProjectCount": 4,
     "dirtyProjectCount": 3,
     "dirtyProjects": [
+      "RunSmart iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -1991,7 +1991,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-09 14:44",
+    "lastRunAt": "2026-07-09 16:58",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -2016,6 +2016,13 @@
         "type": "executive",
         "where": "Agentic OS repo, in this Codex thread",
         "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+      },
+      {
+        "title": "Validate caution items before risky moves",
+        "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "type": "system",
+        "where": "Affected product repo(s)",
+        "copyPrompt": null
       }
     ],
     "topBanner": null,
@@ -4433,14 +4440,17 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "actionable",
-    "label": "Actionable",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: RunSmart iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
-    "hygieneWarnings": []
+    "hygieneWarnings": [
+      "Uncommitted files in product repos: RunSmart iOS."
+    ]
   },
   "latestCooReview": {
     "reviewed": "2026-06-29",
@@ -4464,6 +4474,12 @@
         "type": "local-only",
         "detail": "preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21",
         "action": "Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "dirty",
+        "detail": "42 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "RunSmart iOS",
@@ -4530,12 +4546,6 @@
         "type": "dirty",
         "detail": "2 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "9 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
       }
     ],
     "actionableCount": 13,
@@ -4543,7 +4553,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-09 14:44",
+    "generatedAt": "2026-07-09 16:58",
     "apps": [
       {
         "projectId": 171597,
@@ -4572,7 +4582,7 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 9,
+        "liveUsers7d": 10,
         "source": "api"
       },
       {
