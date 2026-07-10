@@ -34,10 +34,13 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DASHBOARD = os.path.join(ROOT, "dashboard")
 MANUAL = os.path.join(DASHBOARD, "usage-manual.jsonl")
 
-# Price table, USD per million tokens. VERIFY against current pricing
-# (claude-api skill / anthropic.com/pricing) — these are directional defaults.
+# Price table, USD per million tokens. Verified 2026-07-10 against the claude-api
+# skill / dashboard/model-registry.json. Opus 4.x is $5/$25 — NOT the Claude-3-era
+# $15/$75 (that stale row inflated the Opus cost line ~3x). cache_write = 1.25x in,
+# cache_read = 0.1x in. Sonnet 5 lists $3/$15 ($2/$10 intro through 2026-08-31 —
+# using the standard rate here so cost isn't understated after the intro ends).
 PRICES = {
-    "opus":   {"in": 15.0, "out": 75.0, "cache_write": 18.75, "cache_read": 1.50},
+    "opus":   {"in": 5.0,  "out": 25.0, "cache_write": 6.25,  "cache_read": 0.50},
     "sonnet": {"in": 3.0,  "out": 15.0, "cache_write": 3.75,  "cache_read": 0.30},
     "haiku":  {"in": 1.0,  "out": 5.0,  "cache_write": 1.25,  "cache_read": 0.10},
 }
@@ -207,7 +210,7 @@ def main():
         "totalCostUsd": total_cost,
         "totalCacheReadTokens": total_cache_read,
         "sessionCount": len(records),
-        "note": "Claude Code: priced from on-disk usage. Codex: activity only (no token counts persisted). Cursor: not captured (see README). Prices in PRICES are directional — verify against current pricing. Cache-read tokens (from long sessions) are typically the dominant cost driver.",
+        "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver.",
         "byTool": agg("tool"),
         "byProject": agg("project"),
         "byModelFamily": agg("model_family"),

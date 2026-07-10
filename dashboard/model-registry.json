@@ -1,0 +1,39 @@
+{
+  "asOf": "2026-07-10",
+  "source": "July 2026 capability review (founder + ChatGPT draft). Pricing independently verified 2026-07-10: Claude via claude-api skill; GPT-5.6 / Grok 4.5 / Composer 2.5 via web search. All figures confirmed against the draft.",
+  "note": "Model selection is a RECOMMENDATION, not a rule. The `harness` column shows where each model runs natively, but routes are advisory — you can run any task in whichever tool you choose (Claude Code, Codex, Cursor, xAI) and pick a different model than the one suggested. Canonical policy: GLOBAL-TOOL-USAGE.md 'Model routing'.",
+  "harnesses": [
+    {"id": "claude-code", "name": "Claude Code", "vendor": "Anthropic", "utility": "Primary driver + orchestration", "detail": "Native subagents (model: frontmatter), /model per session, workflows (opts.model per stage)."},
+    {"id": "codex", "name": "Codex", "vendor": "OpenAI", "utility": "Tool-heavy autonomous execution", "detail": "GPT-5.6 family. Multi-step repo tasks, terminal/CI, cross-repo, prod verification, cross-vendor review of Claude work."},
+    {"id": "cursor", "name": "Cursor Composer", "vendor": "Cursor", "utility": "Cheap in-flow executor", "detail": "Composer 2.5. Localized edits, boilerplate, mechanical refactors, UI iteration from an explicit plan."},
+    {"id": "xai", "name": "Grok (xAI)", "vendor": "xAI", "utility": "Live-info + cheap parallel (optional)", "detail": "Grok 4.5. Live web/X research, terminal-heavy work, parallel cheap exploration. Only if wired into the active harness."}
+  ],
+  "models": [
+    {"model": "Claude Fable 5", "id": "claude-fable-5", "vendor": "Anthropic", "harness": "claude-code", "in": 10.0, "out": 50.0, "ctx": "1M", "tier": "frontier", "role": "Exceptional escalation — architecture authority, unresolved failures, final reasoning reviewer."},
+    {"model": "Claude Opus 4.8", "id": "claude-opus-4-8", "vendor": "Anthropic", "harness": "claude-code", "in": 5.0, "out": 25.0, "ctx": "1M", "tier": "high", "role": "Architecture, ambiguous specs, hard debugging, difficult code review, large unfamiliar repos."},
+    {"model": "Claude Sonnet 5", "id": "claude-sonnet-5", "vendor": "Anthropic", "harness": "claude-code", "in": 3.0, "out": 15.0, "intro": "$2/$10 through 2026-08-31", "ctx": "1M", "tier": "mid", "role": "Everyday Claude agent — medium features, detailed specs, first-pass review."},
+    {"model": "Claude Haiku 4.5", "id": "claude-haiku-4-5", "vendor": "Anthropic", "harness": "claude-code", "in": 1.0, "out": 5.0, "ctx": "200K", "tier": "low", "role": "Mechanical edits, status/progress sync, changelogs, classification."},
+    {"model": "GPT-5.6 Sol", "id": "gpt-5.6-sol", "vendor": "OpenAI", "harness": "codex", "in": 5.0, "out": 30.0, "ctx": "—", "tier": "high", "role": "Tool-heavy autonomous Codex tasks, terminal/CI failures, cross-repo, prod verification."},
+    {"model": "GPT-5.6 Terra", "id": "gpt-5.6-terra", "vendor": "OpenAI", "harness": "codex", "in": 2.5, "out": 15.0, "ctx": "—", "tier": "mid", "role": "Fallback tier only — not a default route (Luna or Sol usually win on cost/success)."},
+    {"model": "GPT-5.6 Luna", "id": "gpt-5.6-luna", "vendor": "OpenAI", "harness": "codex", "in": 1.0, "out": 6.0, "ctx": "—", "tier": "low", "role": "OpenAI high-volume default — summaries, docs, test gen, small fixes, first-pass impl."},
+    {"model": "Grok 4.5", "id": "grok-4.5", "vendor": "xAI", "harness": "xai", "in": 2.0, "out": 6.0, "cacheIn": 0.5, "ctx": "500K", "tier": "mid", "role": "Feature impl, terminal-heavy, CI/build, live web/X research, cheap parallel exploration."},
+    {"model": "Composer 2.5 Standard", "id": "composer-2.5-standard", "vendor": "Cursor", "harness": "cursor", "in": 0.5, "out": 2.5, "ctx": "—", "tier": "low", "role": "Default cheap executor from an explicit plan — localized UI, boilerplate, cleanup."},
+    {"model": "Composer 2.5 Fast", "id": "composer-2.5-fast", "vendor": "Cursor", "harness": "cursor", "in": 3.0, "out": 15.0, "ctx": "—", "tier": "low", "role": "Same intelligence as Standard at 6x cost — only when interactive latency blocks UI iteration."}
+  ],
+  "matrix": [
+    {"task": "Classification / summaries / status sync / mechanical edits", "primary": "Haiku 4.5", "review": "— (or Composer Standard / GPT-5.6 Luna in-tool)"},
+    {"task": "Small, clearly-scoped edit from an explicit plan", "primary": "Composer 2.5 Standard", "review": "Sonnet 5"},
+    {"task": "Normal feature implementation", "primary": "Sonnet 5", "review": "Sonnet 5 (or Grok 4.5 / Codex Luna in-flow)"},
+    {"task": "Detailed spec with many instructions", "primary": "Sonnet 5", "review": "Opus 4.8"},
+    {"task": "Terminal / CI / build / dependency failure", "primary": "Codex GPT-5.6 Sol", "review": "Opus 4.8 (or Grok 4.5)"},
+    {"task": "Tool-heavy autonomous multi-step task", "primary": "GPT-5.6 Sol", "review": "Opus 4.8"},
+    {"task": "Architecture / hard debugging / correctness-critical", "primary": "Opus 4.8", "review": "Fable 5 (hardest only)"},
+    {"task": "Large unfamiliar repo comprehension", "primary": "Opus 4.8", "review": "GPT-5.6 Sol"},
+    {"task": "Code review — first pass", "primary": "Sonnet 5", "review": "—"},
+    {"task": "Difficult / high-risk code review", "primary": "Opus 4.8", "review": "cross-vendor (GPT-5.6 Sol)"},
+    {"task": "Live web / X research", "primary": "Grok 4.5 (if available)", "review": "Sol/Opus with web tools"},
+    {"task": "High-risk: auth / payments / DB / security / infra", "primary": "Opus 4.8 or GPT-5.6 Sol", "review": "mandatory cross-vendor review"},
+    {"task": "Exceptional escalation / highest-stakes reasoning", "primary": "Fable 5", "review": "GPT-5.6 Sol max"}
+  ],
+  "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review."
+}

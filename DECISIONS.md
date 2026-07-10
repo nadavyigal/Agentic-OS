@@ -161,3 +161,17 @@ Impact:
 - Subagent `model:` frontmatter refreshed to current IDs in RunSmart and ResumeBuilder (`claude-sonnet-4-6` → `claude-sonnet-5`; Opus already `claude-opus-4-8`, Haiku already `claude-haiku-4-5-20251001`). Role→tier mapping unchanged — only stale IDs were updated. Product-repo changes ship as isolated branches + PRs; this Agentic OS change lands on `main` per AGENTS.md rule 1.
 - Source research (ChatGPT capability review) was treated as a draft: model facts adopted, the software-router build rejected, vendor list narrowed to tools actually in use. Prices/benchmarks in the doc are launch-window claims; our own repo evals override them.
 - Deeper per-agent re-routing (e.g. promoting `code-reviewer` to Opus, or adding a cross-vendor GPT-5.6 Sol reviewer step) is a separate follow-up, not part of this change.
+
+## 2026-07-10: Model Routing — Tracking, Verified Pricing, Tool-Agnostic Git (follow-up)
+
+Decision: Extend the same-day routing refresh with three things the founder asked for: (1) surface the whole model lineup, pricing, routing and real spend on Portfolio HQ; (2) treat model selection explicitly as a recommendation, not a rule; (3) make the git workflow (commit / push / open PR / review PR / merge) equally available to Codex and Cursor, not Claude Code only. Also fixed a real cost-tracking bug found in passing.
+
+Reason: Routing that lives only in a markdown doc is easy to forget; putting it on the dashboard (with actual spend next to the recommendation) makes it a live operating surface. The founder runs across Claude Code, Codex, and Cursor and wanted it unambiguous that a route names a suggested model but any tool can execute it and do the full git cycle.
+
+Impact:
+
+- New `dashboard/model-registry.json` — machine-readable lineup (10 models, 4 harnesses/utilities, 13-row routing matrix, cross-vendor rule). Single source the dashboard reads; mirrors GLOBAL-TOOL-USAGE.md.
+- New Portfolio HQ **Models** tab (`dashboard/portfolio-hq.html` + `scripts/portfolio_hq/refresh_portfolio_hq.py`): utilities, the lineup + verified pricing, the routing matrix, and "where the money actually went" (spend by tool + by Claude model family from `usage.json`). Rendered and verified in-browser.
+- **Cost-tracking bug fixed:** `scripts/usage/collect_usage.py` priced Opus at the Claude-3-era $15/$75; Opus 4.x is $5/$25. That inflated the Opus cost line ~3x (most of the dashboard total). Corrected to $5/$25 (+ cache rates) and re-ran the collector — 30-day Claude Code spend now reads ~$4.4k (opus $2.36k / sonnet $2.0k), not the old ~$8.6k. Prior cost figures in memory/notes were overstated for that reason.
+- Pricing independently verified 2026-07-10 (Claude via claude-api skill; GPT-5.6 / Grok 4.5 / Composer 2.5 via web search) — every figure in the source draft confirmed, nothing corrected.
+- GLOBAL-TOOL-USAGE.md now states routes are "a recommendation, not a rule" and lists model-registry.json as the fourth router surface. AGENTS.md now states the git workflow is tool-agnostic (Claude Code / Codex / Cursor may all commit, push, PR, review, merge), with cross-vendor review for high-risk changes.

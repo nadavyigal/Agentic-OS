@@ -36,12 +36,20 @@ Match model cost to task complexity. The token data (`scripts/usage/collect_usag
 showed the frontier model at ~83% of spend, much of it mechanical/orchestration work a
 cheaper model handles fine. Reserve the frontier model for where judgment actually matters.
 
-There is no software router. The "router" is three things: this section, the `model:`
-frontmatter in each subagent, and the **Model route** field every work packet now carries.
-Route by judgment against the table below.
+**These routes are a recommendation, not a rule.** Each route names the model+effort that
+usually fits, but you drive execution — take any task to whichever tool you choose (Claude
+Code, Codex, Cursor, xAI) and pick a different model than the one suggested if you have a
+reason. The route is the default, not a gate.
 
-Lineup as of July 2026 (adapted from a founder capability review; prices/benchmarks are
-launch-window claims, not independently re-verified — trust our own repo evals over them):
+There is no software router. The "router" is four things: this section, the `model:`
+frontmatter in each subagent, the **Model route** field every work packet now carries, and
+`dashboard/model-registry.json` (the machine-readable lineup that feeds the Portfolio HQ
+**Models** tab). Route by judgment against the table below.
+
+Lineup as of July 2026 (adapted from a founder capability review). Pricing was independently
+verified 2026-07-10 (Claude via the claude-api skill; GPT-5.6 / Grok 4.5 / Composer 2.5 via
+web search) — all figures confirmed. Benchmarks remain launch-window claims; trust our own
+repo evals over them.
 
 | Harness / tool | Models, cheapest → frontier |
 |---|---|

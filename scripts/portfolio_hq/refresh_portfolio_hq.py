@@ -27,6 +27,7 @@ HTML = DASHBOARD / "portfolio-hq.html"
 MANUAL = DASHBOARD / "portfolio-hq-manual.json"
 STATUS = DASHBOARD / "status.json"
 USAGE = DASHBOARD / "usage.json"
+REGISTRY = DASHBOARD / "model-registry.json"
 
 PACKET_DONE = {"closed", "completed", "superseded", "shipped", "posted"}
 DECISION_DONE = {"closed", "done", "superseded", "reconciled"}
@@ -54,6 +55,15 @@ def load(path):
         sys.exit(f"ERROR: missing {path}")
     except json.JSONDecodeError as e:
         sys.exit(f"ERROR: bad JSON in {path}: {e}")
+
+
+def load_optional(path):
+    """Like load(), but a missing/broken file returns {} instead of aborting the
+    whole refresh — the Models tab is nice-to-have, not load-bearing."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
 
 
 def git_date(rel_path):
@@ -244,7 +254,34 @@ def build_distribution():
     }
 
 
-def build_auto(status, usage, manual):
+def build_models(usage, registry):
+    """Model routing registry + real spend, for the Models tab. Registry is the
+    recommendation layer (models, pricing, roles, harnesses/utilities); usage is
+    where the money actually went (by model family and by tool)."""
+    fam = {
+        k: {"cost_usd": round(v.get("cost_usd", 0), 2), "sessions": v.get("sessions", 0)}
+        for k, v in usage.get("byModelFamily", {}).items()
+    }
+    tool = {
+        k: {"cost_usd": round(v.get("cost_usd", 0), 2), "sessions": v.get("sessions", 0)}
+        for k, v in usage.get("byTool", {}).items()
+    }
+    return {
+        "asOf": registry.get("asOf"),
+        "source": registry.get("source"),
+        "note": registry.get("note"),
+        "harnesses": registry.get("harnesses", []),
+        "models": registry.get("models", []),
+        "matrix": registry.get("matrix", []),
+        "crossVendorReview": registry.get("crossVendorReview"),
+        "spendByFamily": fam,
+        "spendByTool": tool,
+        "spendWindowDays": usage.get("windowDays"),
+        "spendGeneratedAt": usage.get("generatedAt"),
+    }
+
+
+def build_auto(status, usage, manual, registry):
     packets = [
         {
             "title": w.get("title"),
@@ -318,6 +355,7 @@ def build_auto(status, usage, manual):
         "workflows": build_workflows(status, usage, manual),
         "executive": build_executive(status),
         "distribution": build_distribution(),
+        "models": build_models(usage, registry),
     }
 
 
@@ -325,6 +363,7 @@ def main():
     status = load(STATUS)
     usage = load(USAGE)
     manual = load(MANUAL)
+    registry = load_optional(REGISTRY)
 
     payload = {
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
@@ -333,7 +372,7 @@ def main():
             "usage": usage.get("generatedAt"),
             "manual": manual.get("asOf"),
         },
-        "auto": redact_paths(build_auto(status, usage, manual)),
+        "auto": redact_paths(build_auto(status, usage, manual, registry)),
         "manual": manual,
     }
 
