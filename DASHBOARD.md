@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 
 ## Run Center
 
-- Last refresh: 2026-07-10 07:30
+- Last refresh: 2026-07-10 14:26
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -32,7 +32,7 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
-- [RunSmart iOS] 48 uncommitted file(s) in the primary working tree
+- [RunSmart iOS] 1 uncommitted file(s) in the primary working tree
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
@@ -47,7 +47,7 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 - [Agentic OS] worktree on claude/monthly-cfo-review-54bdaa, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/monthly-cfo-review-54bdaa
 - [Agentic OS] worktree on claude/weekly-distribution-review-279a16, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/weekly-distribution-review-279a16
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/wp-40-merge-main-b26b2d
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -71,6 +71,7 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 
 ## Evidence Gaps
 
+- RunSmart iOS: validated 2026-07-09, latest commit is newer.
 - RunSmart Web: validated 2026-07-03, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
 

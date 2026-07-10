@@ -606,7 +606,7 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-07-09",
+      "evidenceFreshDate": "2026-07-10",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
@@ -635,7 +635,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-10 07:30",
+      "lastRefresh": "2026-07-10 14:26",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -940,14 +940,14 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 48,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "branch": "claude/wp40-healthkit-activation",
-        "lastCommit": "2026-07-09 86a9452 docs: mark WP-38 COMPLETE after PR #83 merge",
+        "branch": "claude/wp40-healthkit-activation...origin/claude/wp40-healthkit-activation",
+        "lastCommit": "2026-07-10 c9f6ae3 feat(healthkit): WP-40 S2 \u2014 auto-import after HealthKit connect",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-09",
-        "evidenceGap": false,
+        "freshestDate": "2026-07-10",
+        "evidenceGap": true,
         "evidenceDate": "2026-07-09",
         "evidenceTests": [],
         "buildStatus": null,
@@ -1082,7 +1082,7 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "HEAD (no branch)",
+        "branch": "main...origin/main",
         "lastCommit": "2026-07-09 d0f6bb4 docs: sync progress.md status to 1.4 live / 1.4.1 pending submit",
         "stale": false,
         "freshness": "Fresh",
@@ -1477,15 +1477,15 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 2,
+        "dirtyCount": 1,
         "extraWorktrees": 3,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-09 9cadfb9 Merge pull request #25 from nadavyigal/claude/portfolio-hq-v3",
+        "lastCommit": "2026-07-10 50c7776 portfolio: add Models tab, verify pricing, fix Opus cost bug",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-09",
+        "freshestDate": "2026-07-10",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-09",
+        "evidenceDate": "2026-07-10",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -1504,8 +1504,8 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "python3 scripts/portfolio_hq/refresh_portfolio_hq.py exit 0 on 2026-07-09; all 6 tabs rendered in Playwright with zero JS console errors; workflow last-ran dates verified against git/file truth",
-        "parsedLastUpdated": "2026-07-09",
+        "parsedLastValidation": "Models-tab change (2026-07-10) \u2014 embedded payload JSON re-parsed clean (10 models / 4 harnesses / 13 matrix rows / spend); `node --check` on the page JS passed; Models tab rendered + screenshot-verified in a headless Chrome (recommendation banner, utilities, pricing table with tier dots, routing matrix, spend bars). `refresh_portfolio_hq.py` and `collect_usage.py` both exit 0. Product PRs #117/#113 merged (RunSmart CLEAN; ResumeBuilder merged --admin past the known-failing Cloudflare check). Both product repos restored to their original branches",
+        "parsedLastUpdated": "2026-07-10",
         "parsedActiveStory": "Portfolio HQ v3 (branch claude/portfolio-hq-v3, PR #25) \u2014 6-tab redesign: Command (founder-as-orchestrator), Products, Numbers, Growth (reads distribution-os), Executive (reads executive-os), Map with a \"Should I run it?\" workflow board showing real last-ran dates. Rebased onto main (2026-07-09) so it carries the weekly distribution review's WP-31/WP-32 logging; founder decision session (voice-coach defer, Michal pivot, librarian rejected) recorded on this branch"
       }
     ],
@@ -1545,10 +1545,10 @@
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
-        "branch": "claude/wp40-healthkit-activation",
+        "branch": "claude/wp40-healthkit-activation...origin/claude/wp40-healthkit-activation",
         "nextAction": "S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -1581,14 +1581,14 @@
           "docs/specs/demo-mode-simulator-recording.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed). Next action: S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS. Known blockers: Re-check Finder `* 2.*` duplicates before next Release archive; physical lock-screen Live Activity capture still owed for S14b. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed). Next action: S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS. Known blockers: Re-check Finder `* 2.*` duplicates before next Release archive; physical lock-screen Live Activity capture still owed for S14b. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Clean",
-        "branch": "HEAD (no branch)",
+        "branch": "main...origin/main",
         "nextAction": "Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1733,8 +1733,9 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 2,
+      "evidenceGapCount": 3,
       "evidenceGapProjects": [
+        "RunSmart iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)"
       ],
@@ -1744,7 +1745,7 @@
       "driftWarningCount": 0,
       "driftProjects": [],
       "openQuestionCount": 4,
-      "repoDecisionCount": 5
+      "repoDecisionCount": 6
     },
     "dataFlow": [
       {
@@ -4070,7 +4071,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-10 07:30",
+      "generatedAt": "2026-07-10 14:26",
       "apps": [
         {
           "projectId": 171597,
@@ -4105,7 +4106,7 @@
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 55,
+          "liveUsers7d": 56,
           "source": "api"
         }
       ],
@@ -4133,7 +4134,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-10 07:30",
+      "lastRunAt": "2026-07-10 14:26",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -4141,7 +4142,7 @@
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log. Next action: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort. Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Clean",
-      "targetBranch": "HEAD (no branch)",
+      "targetBranch": "main...origin/main",
       "readyForNextSession": false,
       "summary": "Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
       "nextActions": [
@@ -4264,6 +4265,10 @@
       }
     ],
     "repoDecisions": [
+      {
+        "project": "RunSmart iOS",
+        "decision": "[ ] S2: periodic/background re-sync \u2014 confirmed no existing mechanism, explicitly NOT built per the packet's \"don't build speculatively\" instruction. Open decision for the founder, not a gap"
+      },
       {
         "project": "RunSmart iOS",
         "decision": "Founder decision needed:** Re-implement the Garmin credential guard as new scoped work (WP-34), or explicitly park it under EXD-015 maintenance mode"

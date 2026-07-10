@@ -14,16 +14,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed) | S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS | 2 | Yes (48) | Fresh | High | tasks/progress.md | 2026-07-09 86a9452 docs: mark WP-38 COMPLETE after PR #83 merge |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed) | S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS | 2 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-10 c9f6ae3 feat(healthkit): WP-40 S2 — auto-import after HealthKit connect |
 | Resumely iOS | Post-launch — activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log | Founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort | 2 | No | Fresh | High | tasks/progress.md | 2026-07-09 d0f6bb4 docs: sync progress.md status to 1.4 live / 1.4.1 pending submit |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (6) | Fresh | High | tasks/progress.md | 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-09 cfb60aa fix: surface expert apply finalize DB errors instead of false success |
-| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-09 9cadfb9 Merge pull request #25 from nadavyigal/claude/portfolio-hq-v3 |
+| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-10 50c7776 portfolio: add Models tab, verify pricing, fix Opus cost bug |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
+- RunSmart iOS: validated 2026-07-09, last commit 2026-07-10 c9f6ae3 feat(healthkit): WP-40 S2 — auto-import after HealthKit connect
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-09 cfb60aa fix: surface expert apply finalize DB errors instead of false success
 
@@ -37,8 +38,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
-- [RunSmart iOS] 48 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [RunSmart iOS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [RunSmart iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
@@ -53,7 +54,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Agentic OS] worktree on claude/monthly-cfo-review-54bdaa, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/monthly-cfo-review-54bdaa -> Land or discard this worktree, then `git worktree remove` it.
 - [Agentic OS] worktree on claude/weekly-distribution-review-279a16, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/weekly-distribution-review-279a16 -> Land or discard this worktree, then `git worktree remove` it.
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/wp-40-merge-main-b26b2d -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -62,6 +63,7 @@ None. Active/open packet states match the current project status.
 
 ## Open Questions & Decisions (from repos)
 
+- Decision needed [RunSmart iOS]: [ ] S2: periodic/background re-sync — confirmed no existing mechanism, explicitly NOT built per the packet's "don't build speculatively" instruction. Open decision for the founder, not a gap
 - Decision needed [RunSmart iOS]: Founder decision needed:** Re-implement the Garmin credential guard as new scoped work (WP-34), or explicitly park it under EXD-015 maintenance mode
 - Decision needed [RunSmart Web]: (open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)
 - Decision needed [ResumeBuilder AI (Web)]: (open decision in Agentic OS tasks/progress.md, approved by founder 2026-06-12)
