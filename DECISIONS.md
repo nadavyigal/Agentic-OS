@@ -147,3 +147,17 @@ Impact:
 - Auto-memory `voice-coach-flag-pending` updated from "remind every session" to "deferred with review date 2026-07-12" so it stops nagging.
 - No librarian workflow, cron, or autonomous editor is to be added. If the read-only auditor is reconsidered later, it must land as a `refresh`-invoked, edits-nothing check, not a scheduler.
 - `status.json` decision board is stale (still references the build-8 era: "if build 8 is rejected", "Resumely device smoke before archive", the old voice-flag framing). Flagged for cleanup in RunSmart iOS / Resumely task files — it is not a portfolio-hq bug.
+
+## 2026-07-10: Model Routing Refresh For The July 2026 Lineup
+
+Decision: Update the model-routing policy to the July 2026 model lineup (GPT-5.6 Sol/Terra/Luna, Claude Fable 5 / Opus 4.8 / Sonnet 5 / Haiku 4.5, Grok 4.5, Cursor Composer 2.5) and make every work packet carry an explicit model recommendation. The router stays what it has always been for this OS — a markdown policy plus subagent `model:` frontmatter plus a per-packet Model route field. We deliberately did **not** build the routing software system (scoring engine, feature flags, shadow mode, observability, eval harness) proposed in the source research's "Codex implementation brief"; that is over-engineered for a solo-founder markdown OS.
+
+Reason: Anthropic, OpenAI, xAI, and Cursor all shipped new models within days of each other (2026-07-08/09). The prior routing table was Claude-only, used a stale Sonnet ID (`claude-sonnet-4-6`), and had no place for Codex GPT-5.6 or Composer as first-class cost-optimized executors. The founder wants each WP/task to name the model that should run it so routing is a decision made at packet-authoring time, not improvised per session.
+
+Impact:
+
+- `GLOBAL-TOOL-USAGE.md` "Model routing" rewritten: July 2026 lineup table, a task→primary→reviewer matrix, a 0–10+ risk-score escalation ladder with auto-escalate triggers, and a cross-vendor review rule (implementer ≠ reviewer vendor for high-risk changes). Grok 4.5 is listed as optional ("only if wired into the harness") since it is not currently in the toolchain.
+- `executive-os/templates/work-packet-template.md` now has a required **Model route** field; multi-story packets use a per-story Model route column (WP-40 is the reference pattern).
+- Subagent `model:` frontmatter refreshed to current IDs in RunSmart and ResumeBuilder (`claude-sonnet-4-6` → `claude-sonnet-5`; Opus already `claude-opus-4-8`, Haiku already `claude-haiku-4-5-20251001`). Role→tier mapping unchanged — only stale IDs were updated. Product-repo changes ship as isolated branches + PRs; this Agentic OS change lands on `main` per AGENTS.md rule 1.
+- Source research (ChatGPT capability review) was treated as a draft: model facts adopted, the software-router build rejected, vendor list narrowed to tools actually in use. Prices/benchmarks in the doc are launch-window claims; our own repo evals override them.
+- Deeper per-agent re-routing (e.g. promoting `code-reviewer` to Opus, or adding a cross-vendor GPT-5.6 Sol reviewer step) is a separate follow-up, not part of this change.

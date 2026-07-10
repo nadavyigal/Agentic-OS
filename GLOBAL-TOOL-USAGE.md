@@ -33,25 +33,76 @@ token cost, and signal, not about what is allowed (see AGENTS.md for that).
 
 ## Model routing
 Match model cost to task complexity. The token data (`scripts/usage/collect_usage.py`)
-showed Opus at ~83% of spend, much of it mechanical/orchestration work that a cheaper
-model handles fine. Reserve the frontier model for where judgment actually matters.
+showed the frontier model at ~83% of spend, much of it mechanical/orchestration work a
+cheaper model handles fine. Reserve the frontier model for where judgment actually matters.
 
-Tiers (cheapest capable model wins):
+There is no software router. The "router" is three things: this section, the `model:`
+frontmatter in each subagent, and the **Model route** field every work packet now carries.
+Route by judgment against the table below.
 
-| Task | Claude tier | Also fits |
+Lineup as of July 2026 (adapted from a founder capability review; prices/benchmarks are
+launch-window claims, not independently re-verified — trust our own repo evals over them):
+
+| Harness / tool | Models, cheapest → frontier |
+|---|---|
+| **Claude Code** (native, primary) | `claude-haiku-4-5-20251001` → `claude-sonnet-5` → `claude-opus-4-8` → `claude-fable-5` |
+| **Codex** (OpenAI) | `gpt-5.6-luna` → `gpt-5.6-terra` (fallback only) → `gpt-5.6-sol` |
+| **Cursor Composer** | `composer-2.5-standard` → `composer-2.5-fast` (latency only) |
+| **xAI** (only if wired into the harness) | `grok-4.5` |
+
+### Route by task
+
+| Task | Primary | Reviewer / fallback |
 |---|---|---|
-| Architecture, ambiguous specs, hard debugging, correctness-critical code | **Opus** | (keep on the frontier model) |
-| Feature implementation against an established pattern, code review, refactors, specs/stories | **Sonnet** | Codex or Cursor Composer for well-specified, in-flow edits |
-| Test generation, doc/changelog updates, status/progress sync, story breakdown, mechanical edits | **Haiku** | Codex (background, well-specified) |
+| Classification, summaries, status/progress sync, changelogs, mechanical edits | **Haiku 4.5** — or Composer Standard / GPT-5.6 Luna in-tool | — |
+| Small, clearly-scoped edit from an explicit plan | **Composer 2.5 Standard** — or Sonnet 5 | Sonnet 5 |
+| Normal feature implementation against an established pattern | **Sonnet 5** — or Grok 4.5 / Codex Luna for in-flow | Sonnet 5 |
+| Detailed spec with many instructions, story breakdown | **Sonnet 5** | Opus 4.8 |
+| Terminal / CI / build / dependency failures | **Codex GPT-5.6 Sol** — or Grok 4.5 | Opus 4.8 |
+| Tool-heavy autonomous multi-step (Codex) task | **GPT-5.6 Sol** | Opus 4.8 |
+| Architecture, ambiguous specs, hard debugging, correctness-critical code | **Opus 4.8** | Fable 5 (hardest only) |
+| Large unfamiliar repo comprehension | **Opus 4.8** | GPT-5.6 Sol |
+| Code review — first pass | **Sonnet 5** | — |
+| Difficult / high-risk code review | **Opus 4.8** | cross-vendor (GPT-5.6 Sol) |
+| Live web / X research | **Grok 4.5** if available, else Sol/Opus with web tools | — |
+| High-risk: auth, payments, DB migrations, security, infra | **Opus 4.8 or GPT-5.6 Sol** implement | mandatory cross-vendor review |
+| Exceptional escalation: unresolved failures, major cross-product design, highest-stakes reasoning | **Fable 5** | GPT-5.6 Sol max |
 
-How to apply:
-- **Subagents**: set `model:` in the agent's frontmatter (e.g. `model: claude-sonnet-4-6`).
-  Read-only/triage/process agents → Sonnet or Haiku; the architect → Opus.
-- **Workflows**: pass `opts.model` per stage — low tiers for mechanical stages, Opus only
+### Escalation ladder
+Risk score = scope (0–3) + ambiguity (0–2) + operational risk (0–3) + tool depth (0–2) + context size (0–2):
+- **0–3** → Haiku / Composer Standard / GPT-5.6 Luna
+- **4–6** → Sonnet 5 / Grok 4.5
+- **7–9** → Opus 4.8 / GPT-5.6 Sol
+- **10+** → Fable 5 or Sol max, **with mandatory cross-vendor review**
+
+Auto-escalate one tier when: two failed attempts; tests still failing after the model claims done;
+edits land outside the expected scope; a new dependency appears without justification; the model
+can't explain the root cause; the change touches a public API or DB schema; or the fix requires
+weakening/suppressing tests. Hard overrides (high-risk domain, live research, huge context) beat the score.
+
+### Cross-vendor review rule
+For high-risk changes, implementer and reviewer must be different vendors — this cuts correlated
+mistakes better than just raising effort on the original model:
+- Composer / Grok / Luna implementation → **Opus 4.8** review
+- Claude implementation → **GPT-5.6 Sol** review
+- GPT-5.6 Sol implementation → **Opus 4.8 or Fable 5** review
+
+The reviewer inspects the diff, tests, migration impact, failure modes, and rollback path — it does
+not just restate the implementer's explanation.
+
+### How to apply
+- **Subagents**: set `model:` in the agent's frontmatter (e.g. `model: claude-sonnet-5`).
+  Read-only/triage/process agents → Sonnet 5 or Haiku 4.5; the architect → Opus 4.8.
+- **Workflows**: pass `opts.model` per stage — low tiers for mechanical stages, Opus/Fable only
   for the hardest verify/synthesis steps.
 - **Sessions**: drop to a cheaper `/model` for a mechanical session; don't run boilerplate on Opus.
-- **Across tools**: Codex and Cursor Composer are good for well-specified, in-flow implementation;
-  reserve Opus (highest cost) for architecture, verification, and ambiguous work.
+- **Work packets**: every WP carries a **Model route** field (see `executive-os/templates/work-packet-template.md`);
+  multi-story packets put a per-story **Model route** column in the Stories table (see WP-40 for the pattern).
+- **Across tools**: Codex (GPT-5.6) and Cursor Composer are strong for well-specified, in-flow
+  implementation; reserve Opus/Fable (highest cost) for architecture, verification, and ambiguous work.
 
-Cost note: cache-read tokens from long sessions dominate cost. Prefer shorter, scoped
-sessions for cheap-model work; don't carry a huge context just to run boilerplate.
+Cost notes: cache-read tokens from long sessions dominate cost — prefer shorter, scoped sessions for
+cheap-model work; don't carry a huge context just to run boilerplate. Sonnet 5's new tokenizer emits
+~30% more tokens per equivalent text, so its cheaper per-token price doesn't always mean cheaper per task —
+watch turn/output counts, not just list price. This routing supersedes the earlier Opus/Sonnet/Haiku-only
+table (see DECISIONS.md 2026-07-10).

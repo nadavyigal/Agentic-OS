@@ -39,6 +39,7 @@ Keep this lean. Do not make work packets heavy just to fill optional fields.
 - Signal: [Optional trigger or evidence]
 - Memory update: [Optional destination file or lesson]
 - Success signal: [Observable evidence or metric]
+- Model route: [Default model/tier to run this packet — see GLOBAL-TOOL-USAGE.md "Model routing". Multi-story packets add a per-story "Model route" column in the Stories table instead, e.g. WP-40]
 
 ## Owner Role
 [Local role]
