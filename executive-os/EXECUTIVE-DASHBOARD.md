@@ -54,3 +54,4 @@ How much each project's state is backed by parsed local task files versus narrat
 3. Distribution: log the WP-31/WP-32 cycle into `distribution-os/weekly-growth-review.md` so the next Distribution Review has current data instead of the 2026-06-21 entry.
 4. Portfolio hygiene: triage the 13 stranded-work items (`PROJECT-STATUS.md`), starting with Agentic OS's own 9 uncommitted files and ResumeBuilder AI Web's unpushed `fix/posthog-expert-event-dedupe` commit (2026-07-09, still fresh — push before it goes stale too).
 5. Both apps: hold for the 2026-07-12 activation re-read before any monetization, paywall, or GTM-volume move (EXD-013, EXD-015).
+6. Research (2026-07-11): competitor activation teardown filed at `executive-os/research/2026-07-11-competitor-activation-teardown.md` — next decision is whether to open a Resumely first-free-PDF export activation packet (Teal pattern) after founder confirm.

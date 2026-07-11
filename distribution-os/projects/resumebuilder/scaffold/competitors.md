@@ -51,3 +51,8 @@ The AI resume space has expanded rapidly. "AI-powered" is no longer a differenti
 - Major ATS vendor changes (Workday, Greenhouse, Lever)
 - New AI resume tools funded in 2026
 - Apple Intelligence resume suggestions (if Apple expands writing tools)
+
+## Activation note (2026-07-11 teardown)
+
+- Teal: unlimited free usable PDF remains the activation gold standard; gate AI depth, not first export.
+- Rezi / Kickresume / Resume.io: download caps, upgrade-to-download, and TXT-only free are the dominant complaint cluster — anti-patterns for Resumely. See `executive-os/research/2026-07-11-competitor-activation-teardown.md`.

@@ -70,3 +70,8 @@ The "AI running coach" label is no longer a wedge — it's a category. Different
 - Apple Workout Buddy feature scope expansion
 - Strava Athlete Intelligence depth increases
 - Garmin Connect+ new coaching features
+
+## Activation note (2026-07-11 teardown)
+
+- Runna: long confidence onboarding + soft trial paywall; steal **post-plan first-workout orientation**, not quiz length. See `executive-os/research/2026-07-11-competitor-activation-teardown.md`.
+- Strava/Garmin: late-2025 backlash for paywalling year-recaps of user-owned data — do not copy.
