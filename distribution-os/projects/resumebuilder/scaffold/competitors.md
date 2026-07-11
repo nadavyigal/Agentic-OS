@@ -57,8 +57,8 @@ The AI resume space has expanded rapidly. "AI-powered" is no longer a differenti
 - Teal: unlimited free usable PDF remains the activation gold standard; gate AI depth, not first export.
 - Rezi / Kickresume / Resume.io: download caps, upgrade-to-download, and TXT-only free are the dominant complaint cluster — anti-patterns for Resumely. See `executive-os/research/2026-07-11-competitor-activation-teardown.md`.
 
-## Demand-mining note (2026-07-11)
+## Demand-mining note (2026-07-11, upgraded Grok pass)
 
-- Target communities named: r/resumes, r/jobs, r/careerguidance, r/GetEmployed, r/cscareerquestions, r/recruiting, r/linkedin.
-- Direct defensibility risk found: a named competitor (Resume Worded) has its ATS score called "gameable" by users. Resumely's existing "Resumely Match Score" rebrand + "not affiliated with any ATS vendor" explainer (2026-06-20) is the right shape of fix for exactly this complaint pattern — keep enforcing it.
-- Billing-trap fatigue confirmed independently of the competitor teardown ("tools that look free but charge $20+/month," preference for one-time over recurring). See `executive-os/research/2026-07-11-demand-mining-right-user-fit.md`.
+- Communities: r/resumes, r/jobs, r/careerguidance, r/GetEmployed, r/cscareerquestions, r/recruiting, r/linkedin, plus **TeamBlind** (primary thread retrieved).
+- Primary Blind language: “really obvious it was written by ChatGPT”; pushback on “flowery prose.” ASO/in-app: sound like you, not generic AI.
+- Secondary (Reddit still blocked): “buzzwords… everyone else’s,” “gameable” ATS scores (Resume Worded), “look free but charge $20+/mo” export traps — keep Match Score diagnostic; pair with first free PDF (activation teardown). Full brief: `executive-os/research/2026-07-11-demand-mining-right-user-fit.md`.
