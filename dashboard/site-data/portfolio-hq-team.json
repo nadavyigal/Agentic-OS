@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-11 19:19 UTC",
+  "generatedAt": "2026-07-11 19:40 UTC",
   "sources": {
-    "status": "2026-07-11 22:19",
+    "status": "2026-07-11 22:40",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-10"
   },
@@ -197,7 +197,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-11 22:19",
+      "lastRan": "2026-07-11 22:40",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
