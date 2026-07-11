@@ -1,18 +1,18 @@
 # Portfolio Dashboard
 
-Last updated: 2026-07-10 IDT
+Last updated: 2026-07-11 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed): S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS · Resumely iOS — Post-launch — activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log: Founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated — its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect→sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority · Resumely iOS — Post-launch — 1.4.1 (11) live; next gate is re-reading the picker→file-selected funnel against a real post-1.4.1 cohort: Re-read the PostHog picker→file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18) · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
-Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort
+Best next action: Resumely iOS: Re-read the PostHog picker→file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)
 
 ## Run Center
 
-- Last refresh: 2026-07-10 14:26
+- Last refresh: 2026-07-11 08:36
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,9 +20,9 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed) | S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS | Yes | Fresh | High |
-| Resumely iOS | Post-launch — activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log | Founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort | No | Fresh | High |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Fresh | High |
+| RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped) | No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated — its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect→sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority | Yes | Fresh | High |
+| Resumely iOS | Post-launch — 1.4.1 (11) live; next gate is re-reading the picker→file-selected funnel against a real post-1.4.1 cohort | Re-read the PostHog picker→file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18) | No | Fresh | High |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Needs Review | High |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Fresh | High |
 | Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | Yes | Fresh | High |
 
@@ -47,7 +47,7 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 - [Agentic OS] worktree on claude/monthly-cfo-review-54bdaa, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/monthly-cfo-review-54bdaa
 - [Agentic OS] worktree on claude/weekly-distribution-review-279a16, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/weekly-distribution-review-279a16
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/wp-40-merge-main-b26b2d
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] 9 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -71,7 +71,6 @@ Best next action: Resumely iOS: Founder submits 1.4.1 (11); then re-read the Pos
 
 ## Evidence Gaps
 
-- RunSmart iOS: validated 2026-07-09, latest commit is newer.
 - RunSmart Web: validated 2026-07-03, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
 

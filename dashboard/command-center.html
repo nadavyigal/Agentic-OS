@@ -586,14 +586,15 @@
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-07-10",
+  "generated": "2026-07-11",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed): S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-      "bestNextAction": "Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
+      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18) \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "bestNextAction": "Resumely iOS: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)",
       "mainBlockers": [
         "RunSmart iOS: Re-check Finder `* 2.*` duplicates before next Release archive",
         "RunSmart iOS: physical lock-screen Live Activity capture still owed for S14b",
+        "RunSmart iOS: S3 on-device screenshot of Today/Recovery reflecting synced HealthKit data still not captured (code path confirmed correct, not blocking)",
         "Resumely iOS: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
         "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
         "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
@@ -606,13 +607,13 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-07-10",
+      "evidenceFreshDate": "2026-07-11",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
-        "Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort"
+        "RunSmart iOS: No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority",
+        "Resumely iOS: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)"
       ],
       "next": [
         "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -635,7 +636,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-10 14:26",
+      "lastRefresh": "2026-07-11 08:36",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -748,12 +749,13 @@
       {
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
-        "state": "PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed)",
-        "nextAction": "S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
-        "blockerCount": 2,
+        "state": "PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped)",
+        "nextAction": "No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority",
+        "blockerCount": 3,
         "blockers": [
           "Re-check Finder `* 2.*` duplicates before next Release archive",
-          "physical lock-screen Live Activity capture still owed for S14b"
+          "physical lock-screen Live Activity capture still owed for S14b",
+          "S3 on-device screenshot of Today/Recovery reflecting synced HealthKit data still not captured (code path confirmed correct, not blocking)"
         ],
         "gtm": {
           "exists": true,
@@ -942,13 +944,13 @@
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 0,
-        "branch": "claude/wp40-healthkit-activation...origin/claude/wp40-healthkit-activation",
-        "lastCommit": "2026-07-10 c9f6ae3 feat(healthkit): WP-40 S2 \u2014 auto-import after HealthKit connect",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-07-11 03f9b57 docs: close out WP-40 S1+S2 in progress.md/todo.md after PR #84 merge",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-10",
-        "evidenceGap": true,
-        "evidenceDate": "2026-07-09",
+        "freshestDate": "2026-07-11",
+        "evidenceGap": false,
+        "evidenceDate": "2026-07-11",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -986,15 +988,15 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-09 \u2014 WP-38 S14 Debug build **SUCCEEDED** post-review; PR #83 merged to `f9d7c89`",
-        "parsedLastUpdated": "2026-07-09",
-        "parsedActiveStory": "None \u2014 WP-38 packet closed"
+        "parsedLastValidation": "2026-07-11 \u2014 PR #84 checks green (GitGuardian pass), squash-merged to main, branch deleted",
+        "parsedLastUpdated": "2026-07-11",
+        "parsedActiveStory": "None \u2014 WP-40 S1+S2 merged. S3 is code-verified (no gap, see `docs/qa/reports/wp40-s3-s4-verification.md`); S4 real-cohort funnel re-read is unblocked now but needs days of live traffic through the merged onboarding flow"
       },
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log",
-        "nextAction": "Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
+        "state": "Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort",
+        "nextAction": "Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)",
         "blockerCount": 2,
         "blockers": [
           "Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
@@ -1083,12 +1085,12 @@
         "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-09 d0f6bb4 docs: sync progress.md status to 1.4 live / 1.4.1 pending submit",
+        "lastCommit": "2026-07-11 8e19237 docs: sync progress.md \u2014 1.4.1 (11) LIVE on App Store (founder-confirmed 2026-07-11)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-09",
+        "freshestDate": "2026-07-11",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-09",
+        "evidenceDate": "2026-07-11",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [
@@ -1115,9 +1117,9 @@
         ],
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-09 \u2014 Debug build **SUCCEEDED**; `.gstack/` gitignore hygiene fix committed (`597bf9f`); no new device QA since 2026-07-08 (`resume_upload_cta_seen/tapped`, `resume_file_picker_opened` PostHog QA rows still current from that date)",
-        "parsedLastUpdated": "2026-07-09",
-        "parsedActiveStory": "WP-37 S4 handoff \u2014 founder archive/submit 1.4.1 (11)"
+        "parsedLastValidation": "2026-07-09 \u2014 Debug build **SUCCEEDED**; `.gstack/` gitignore hygiene fix committed (`597bf9f`); no new device QA since 2026-07-08 (`resume_upload_cta_seen/tapped`, `resume_file_picker_opened` PostHog QA rows still current from that date). Live-on-Store status confirmed by founder 2026-07-11, not yet by a fresh PostHog read",
+        "parsedLastUpdated": "2026-07-11",
+        "parsedActiveStory": "None \u2014 WP-37 S4 handoff closed now that 1.4.1 (11) is live. Next: PostHog funnel re-read"
       },
       {
         "id": "runsmart-web",
@@ -1235,7 +1237,7 @@
         "branch": "main...origin/main",
         "lastCommit": "2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder",
         "stale": false,
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-07-08",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03",
@@ -1477,10 +1479,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 9,
         "extraWorktrees": 3,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-10 50c7776 portfolio: add Models tab, verify pricing, fix Opus cost bug",
+        "lastCommit": "2026-07-10 1cec4db dashboard: refresh (./agentic-os refresh)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-10",
@@ -1545,10 +1547,10 @@
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
-        "branch": "claude/wp40-healthkit-activation...origin/claude/wp40-healthkit-activation",
-        "nextAction": "S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS",
+        "branch": "main...origin/main",
+        "nextAction": "No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -1581,7 +1583,7 @@
           "docs/specs/demo-mode-simulator-recording.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed). Next action: S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS. Known blockers: Re-check Finder `* 2.*` duplicates before next Release archive; physical lock-screen Live Activity capture still owed for S14b. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped). Next action: No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority. Known blockers: Re-check Finder `* 2.*` duplicates before next Release archive; physical lock-screen Live Activity capture still owed for S14b; S3 on-device screenshot of Today/Recovery reflecting synced HealthKit data still not captured (code path confirmed correct, not blocking). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
@@ -1589,7 +1591,7 @@
         "role": "iOS Release Manager",
         "repoState": "Clean",
         "branch": "main...origin/main",
-        "nextAction": "Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
+        "nextAction": "Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -1611,7 +1613,7 @@
           "docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log. Next action: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort. Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort. Next action: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18). Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -1699,8 +1701,8 @@
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
-      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed): S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS \u00b7 Resumely iOS \u2014 Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "headline": "Resumely iOS: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)",
+      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated \u2014 its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect\u2192sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18) \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1709,6 +1711,7 @@
       "risks": [
         "RunSmart iOS: Re-check Finder `* 2.*` duplicates before next Release archive",
         "RunSmart iOS: physical lock-screen Live Activity capture still owed for S14b",
+        "RunSmart iOS: S3 on-device screenshot of Today/Recovery reflecting synced HealthKit data still not captured (code path confirmed correct, not blocking)",
         "Resumely iOS: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
         "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
         "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
@@ -1733,9 +1736,8 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 3,
+      "evidenceGapCount": 2,
       "evidenceGapProjects": [
-        "RunSmart iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)"
       ],
@@ -4071,13 +4073,13 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-10 14:26",
+      "generatedAt": "2026-07-11 08:36",
       "apps": [
         {
           "projectId": 171597,
           "appId": "runsmart-ios",
           "app": "RunSmart",
-          "declaredState": "PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed)",
+          "declaredState": "PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped)",
           "git": {
             "available": true,
             "tag": "pre-consolidation-r2",
@@ -4088,7 +4090,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log",
+          "declaredState": "Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -4106,7 +4108,7 @@
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 56,
+          "liveUsers7d": 53,
           "source": "api"
         }
       ],
@@ -4134,17 +4136,17 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-10 14:26",
+      "lastRunAt": "2026-07-11 08:36",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log. Next action: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort. Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; next gate is re-reading the picker\u2192file-selected funnel against a real post-1.4.1 cohort. Next action: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18). Known blockers: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Clean",
       "targetBranch": "main...origin/main",
       "readyForNextSession": false,
-      "summary": "Resumely iOS: Founder submits 1.4.1 (11); then re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4 for a real cohort",
+      "summary": "Resumely iOS: Re-read the PostHog picker\u2192file-selected funnel 7-14d post-1.4.1 for a real cohort (earliest usable window ~2026-07-18)",
       "nextActions": [
         {
           "title": "Restore dashboard trust",
