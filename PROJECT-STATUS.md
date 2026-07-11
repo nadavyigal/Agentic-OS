@@ -15,10 +15,10 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped) | No pre-scoped work packet is queued next for RunSmart iOS. S13 (live calories/steps) stays gated — its HealthKit accuracy research spike has not been done, do not start UI work on it. WP-35 (legal entity) is founder-admin, parked pending accountant call. Candidates for the next packet: (a) re-read the WP-40 HealthKit connect→sync funnel once a real cohort has flowed through the merged flow, (b) a fresh UX/activation audit pass now that WP-37/WP-38's audit backlog is fully closed out, or (c) founder-directed priority | 3 | No | Fresh | High | tasks/progress.md | 2026-07-11 58848f8 chore(qa): add RUNSMART_SKIP_AHA_MOMENTS debug flag for HealthKit sim QA |
-| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-11 8e19237 docs: sync progress.md — 1.4.1 (11) LIVE on App Store (founder-confirmed 2026-07-11) |
+| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | No | Fresh | High | tasks/progress.md | 2026-07-11 e60a7df docs: log PostHog picker->file-selected deferred-read attempt (2026-07-11) |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-09 cfb60aa fix: surface expert apply finalize DB errors instead of false success |
-| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | No | Fresh | High | tasks/progress.md | 2026-07-11 573608a dashboard: refresh (./agentic-os refresh) + add portfolio-hq preview launch config |
+| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | No | Fresh | High | tasks/progress.md | 2026-07-11 e3a154d dashboard: refresh (./agentic-os refresh) after RunSmart iOS QA-flag commit + worktree cleanup |
 
 ## Evidence Gaps
 
@@ -26,7 +26,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-09 cfb60aa fix: surface expert apply finalize DB errors instead of false success
-- Agentic OS: validated 2026-07-10, last commit 2026-07-11 573608a dashboard: refresh (./agentic-os refresh) + add portfolio-hq preview launch config
+- Agentic OS: validated 2026-07-10, last commit 2026-07-11 e3a154d dashboard: refresh (./agentic-os refresh) after RunSmart iOS QA-flag commit + worktree cleanup
 
 ## Drift Warnings
 
@@ -41,7 +41,6 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
-- [Resumely iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.

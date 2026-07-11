@@ -638,7 +638,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-11 17:23",
+      "lastRefresh": "2026-07-11 17:25",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -1084,11 +1084,11 @@
             "kind": "spec"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-11 8e19237 docs: sync progress.md \u2014 1.4.1 (11) LIVE on App Store (founder-confirmed 2026-07-11)",
+        "lastCommit": "2026-07-11 e60a7df docs: log PostHog picker->file-selected deferred-read attempt (2026-07-11)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1485,7 +1485,7 @@
         "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-11 573608a dashboard: refresh (./agentic-os refresh) + add portfolio-hq preview launch config",
+        "lastCommit": "2026-07-11 e3a154d dashboard: refresh (./agentic-os refresh) after RunSmart iOS QA-flag commit + worktree cleanup",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1592,7 +1592,7 @@
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
-        "repoState": "Dirty",
+        "repoState": "Clean",
         "branch": "main...origin/main",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "sourceConfidence": "High",
@@ -1725,9 +1725,8 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 3,
+      "dirtyProjectCount": 2,
       "dirtyProjects": [
-        "Resumely iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)"
       ],
@@ -4062,20 +4061,17 @@
       ]
     },
     "portfolioTrust": {
-      "level": "caution",
-      "label": "Use caution",
+      "level": "actionable",
+      "label": "Actionable",
       "reasons": [
-        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-        "Dirty shippable app repo: Resumely iOS."
+        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
-      "hygieneWarnings": [
-        "Uncommitted files in product repos: Resumely iOS."
-      ]
+      "hygieneWarnings": []
     },
     "groundTruth": {
-      "generatedAt": "2026-07-11 17:23",
+      "generatedAt": "2026-07-11 17:25",
       "apps": [
         {
           "projectId": 171597,
@@ -4138,14 +4134,14 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-11 17:23",
+      "lastRunAt": "2026-07-11 17:25",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-      "targetRepoState": "Dirty",
+      "targetRepoState": "Clean",
       "targetBranch": "main...origin/main",
       "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
@@ -4163,13 +4159,6 @@
           "type": "executive",
           "where": "Agentic OS repo, in this Codex thread",
           "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
-        },
-        {
-          "title": "Validate caution items before risky moves",
-          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-          "type": "system",
-          "where": "Affected product repo(s)",
-          "copyPrompt": null
         }
       ],
       "topBanner": null,
