@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "audience": "public",
+  "generatedAt": "2026-07-11 19:17 UTC",
+  "products": [
+    {
+      "name": "RunSmart iOS",
+      "availability": "In progress"
+    },
+    {
+      "name": "Resumely iOS",
+      "availability": "Live"
+    },
+    {
+      "name": "RunSmart Web",
+      "availability": "In progress"
+    },
+    {
+      "name": "ResumeBuilder AI (Web)",
+      "availability": "In progress"
+    },
+    {
+      "name": "Agentic OS",
+      "availability": "In progress"
+    }
+  ]
+}

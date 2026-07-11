@@ -9,6 +9,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 import os
+import json
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -226,6 +227,39 @@ class TestDriftAndConfidence(unittest.TestCase):
 
 
 class TestOSRegistry(unittest.TestCase):
+    def test_private_plugins_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            plugin = root / "plugins" / "founder-os"
+            skills = plugin / "skills"
+            manifest = plugin / ".codex-plugin"
+            skills.mkdir(parents=True)
+            manifest.mkdir(parents=True)
+            (manifest / "plugin.json").write_text(
+                json.dumps(
+                    {
+                        "name": "founder-os",
+                        "version": "0.1.0",
+                        "description": "Founder operating workflows.",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (skills / "morning-brief" ).mkdir()
+            (skills / "morning-brief" / "SKILL.md").write_text(
+                "# Morning Brief\n\nChoose the next evidence-backed action.\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+
+            self.assertEqual(registry["plugins"][0]["name"], "founder-os")
+            self.assertEqual(registry["plugins"][0]["skillCount"], 1)
+            self.assertEqual(
+                registry["plugins"][0]["path"],
+                "plugins/founder-os/.codex-plugin/plugin.json",
+            )
+
     def test_side_projects_and_research_topics_are_discovered(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)

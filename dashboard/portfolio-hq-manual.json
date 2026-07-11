@@ -55,10 +55,10 @@
   "suggestedSessions": [
     {
       "product": "Resumely (primary)",
-      "model": "Fable 5 / frontier tier - ambiguous debugging, correctness-critical",
-      "title": "Break the export wall: find and fix why 0 real people have ever exported",
-      "why": "The funnel says it plainly: 8 uploaded, 2 optimized, 0 real exports ever. Every readout since 06-24 ends with 'fix export before spending on traffic or monetization'. Traffic experiments (WP-31/32) are running, so when they bring people, export must work. This is the single highest-leverage engineering session on the primary product.",
-      "prompt": "Diagnose and fix the Resumely export wall. Evidence: all-time founder-excluded funnel shows 8 uploads, 2 optimizations completed, 0 real export successes ever (see docs/qa/reports/supabase-post-live-current-state-2026-07-06.md in the ResumeBuilder IOS APP repo). Work in the ResumeBuilder web repo (new-ResumeBuilder-ai-). 1) Reproduce the full optimize-to-export path on production as a real non-founder user (use the QA account convention, exclude it from analytics afterwards). 2) Read PostHog events and Supabase rows for every real user who completed an optimization but never exported: find the exact step where each one stopped (button never seen? click with no response? server error? paywall/auth trap?). 3) Root-cause with the investigator approach before writing any fix, check tasks/ERRORS.md first. 4) Fix the one blocking defect, add a test, verify the export end-to-end with evidence. 5) One story at a time; report the funnel step you expect to move and how we will re-measure it founder-excluded."
+      "model": "GPT-5.6 Sol / Codex - tool-heavy verification across analytics and repository evidence",
+      "title": "Ship web export observability, then measure the real export wall",
+      "why": "One real iOS export is now confirmed, so the old zero-export claim is superseded. Web remains unmeasurable until the prepared observability fix ships and enough real completers pass through it.",
+      "prompt": "In the ResumeBuilder web repo, review and ship the prepared export-observability fix on codex/fix-web-export-observability. Verify its tests and production build, commit and push it, open the appropriate PR, then re-measure the founder-excluded web funnel after 5 real completers: optimized_viewed → export_cta_seen → export_pdf_tapped → export_started → export_success/export_failed. Do not claim the web button is broken without event or reproduction evidence."
     },
     {
       "product": "RunSmart (maintenance-plus)",
@@ -69,7 +69,7 @@
     }
   ],
   "growth": {
-    "note": "WP-31 (Hebrew ASO) and WP-32 (Facebook groups) are live and inside their measurement windows, but neither is logged in the experiment log yet, and the last logged growth cycle is the week of 2026-06-21. Run the distribution review to bring this layer back to true."
+    "note": "The latest growth review is logged for 2026-07-07. WP-31 (Hebrew ASO) and WP-32 (Facebook groups) are live inside their measurement windows but still need explicit experiment-log entries so their outcomes can be reviewed cleanly."
   },
   "traffic": [
     {
@@ -198,6 +198,6 @@
   ],
   "readouts": [
     { "app": "RunSmart iOS", "r1": "0% (0/10 beta)", "r2": "0% (0/12 mature App Store)", "target": "≥30%", "wall": "plan→run: 1/19 planned, 0 ran" },
-    { "app": "Resumely", "r1": "0% (0/35 organic)", "r2": "0% (0/37 mature organic)", "target": "≥40%", "wall": "export: 0 real people ever exported" }
+    { "app": "Resumely", "r1": "0% (0/35 organic)", "r2": "0% (0/37 mature organic)", "target": "≥40%", "wall": "export: 1 confirmed iOS export; web unmeasurable until observability ships" }
   ]
 }

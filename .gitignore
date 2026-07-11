@@ -7,3 +7,12 @@ tools/
 dashboard/usage-log.jsonl
 dashboard/usage-manual.jsonl
 .DS_Store
+
+# Portfolio HQ Site local dependencies and generated build output
+sites/portfolio-hq/node_modules/
+sites/portfolio-hq/.vinext/
+sites/portfolio-hq/.wrangler/
+sites/portfolio-hq/dist/
+sites/portfolio-hq/.next/
+sites/portfolio-hq/.env
+sites/portfolio-hq/.env.local

@@ -638,7 +638,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-11 19:23",
+      "lastRefresh": "2026-07-11 22:17",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
@@ -946,8 +946,8 @@
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "codex/wp42-healthkit-funnel-autopsy...origin/codex/wp42-healthkit-funnel-autopsy",
-        "lastCommit": "2026-07-11 77312fc docs(analytics): record WP-42 HealthKit cohort autopsy",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-07-11 2877fcb docs(analytics): record WP-42 HealthKit cohort autopsy (#85)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1088,7 +1088,7 @@
         "dirtyCount": 0,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-11 d40118c docs: execute WP-41 early funnel autopsy (#91)",
+        "lastCommit": "2026-07-11 8944fff docs: log WP-44 S1 blocked finding (PR #92) in progress.md",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1371,11 +1371,11 @@
         "dirty": true,
         "dirtyCount": 2,
         "extraWorktrees": 1,
-        "branch": "fix/expert-apply-finalize-error-handling...origin/fix/expert-apply-finalize-error-handling",
-        "lastCommit": "2026-07-09 cfb60aa fix: surface expert apply finalize DB errors instead of false success",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-09",
+        "freshestDate": "2026-07-11",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03",
         "evidenceTests": [],
@@ -1482,10 +1482,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 18,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-11 8c1b039 research: right-user demand-mining brief for RunSmart + Resumely (2026-07-11)",
+        "lastCommit": "2026-07-11 e2fc508 research: upgrade demand-mining brief with primary sources (Cursor/Grok pass)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1550,7 +1550,7 @@
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
         "repoState": "Clean",
-        "branch": "codex/wp42-healthkit-funnel-autopsy...origin/codex/wp42-healthkit-funnel-autopsy",
+        "branch": "main...origin/main",
         "nextAction": "Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -1657,7 +1657,7 @@
         "project": "ResumeBuilder AI (Web)",
         "role": "Backend Rollout Engineer",
         "repoState": "Dirty",
-        "branch": "fix/expert-apply-finalize-error-handling...origin/fix/expert-apply-finalize-error-handling",
+        "branch": "main...origin/main",
         "nextAction": "WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -3050,6 +3050,15 @@
           "path": "SKILLS/ui-ux-agent.md"
         }
       ],
+      "plugins": [
+        {
+          "name": "founder-os",
+          "purpose": "Evidence-backed operating workflows for a solo founder managing multiple products.",
+          "version": "0.1.0",
+          "skillCount": 5,
+          "path": "plugins/founder-os/.codex-plugin/plugin.json"
+        }
+      ],
       "sideProjects": [
         {
           "name": "Clarity Funnel",
@@ -3065,7 +3074,7 @@
         },
         {
           "name": "Research Brief: Right-User Demand Mining for Fit (RunSmart + Resumely)",
-          "purpose": "This is a materially weaker evidence base than the 2026-07-11 competitor teardown, which had live Reddit/X access. Direct fetches to `reddit.com` failed in t...",
+          "purpose": "Earlier draft of this file (Claude, same day) correctly flagged weaker evidence. This upgrade **replaces paraphrased Reddit quotes with primary forum text wh...",
           "path": "executive-os/research/2026-07-11-demand-mining-right-user-fit.md"
         },
         {
@@ -4216,25 +4225,26 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 8,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "8 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "actionable",
-      "label": "Actionable",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "8 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
       "hygieneWarnings": []
     },
     "groundTruth": {
-      "generatedAt": "2026-07-11 19:23",
+      "generatedAt": "2026-07-11 22:17",
       "apps": [
         {
           "projectId": 171597,
@@ -4297,7 +4307,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-11 19:23",
+      "lastRunAt": "2026-07-11 22:17",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
@@ -4310,18 +4320,9 @@
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {
-          "title": "Run a COO operating review",
-          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
-          "type": "global-OS",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
-        },
-        {
-          "title": "Use the Weekly CEO Review only for a priority choice",
-          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-          "type": "executive",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+          "title": "Restore dashboard trust",
+          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+          "type": "system"
         }
       ],
       "topBanner": null,
@@ -4816,6 +4817,7 @@
         const groups = [
           ["Executive OS — your leadership (reviews status, makes decisions)", reg.leadership],
           ["Skill agents — your builders (execute the work packets)", reg.skillAgents],
+          ["Private plugins — reusable ChatGPT and Codex workflows", reg.plugins],
           ["Side projects and brainstorms", reg.sideProjects],
           ["Research topics", reg.researchTopics]
         ];

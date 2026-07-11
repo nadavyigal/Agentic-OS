@@ -952,6 +952,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
       status and make decisions. The matching agent file is just how each is run, so it is not
       listed separately (that double-listing was confusing).
     - skillAgents: the builders that execute work packets (architect, QA, release, etc.).
+    - plugins: private workflow bundles that package reusable skills for ChatGPT and Codex.
     Work packets, outcome loops, context checkpoints, and commands are returned too.
     Anything created under these folders surfaces on the next run — nothing can silently vanish.
     """
@@ -962,6 +963,7 @@ def build_os_registry(root: Path) -> dict[str, Any]:
         "outcomeLoops": [],
         "contextCheckpoints": [],
         "skillAgents": [],
+        "plugins": [],
         "sideProjects": [],
         "researchTopics": [],
     }
@@ -1118,6 +1120,23 @@ def build_os_registry(root: Path) -> dict[str, Any]:
         for skill in sorted(skills_dir.glob("*.md")):
             title, purpose = _doc_summary(skill)
             registry["skillAgents"].append({"name": title, "purpose": purpose, "path": str(skill.relative_to(root))})
+    plugins_dir = root / "plugins"
+    if plugins_dir.is_dir():
+        for manifest in sorted(plugins_dir.glob("*/.codex-plugin/plugin.json")):
+            try:
+                plugin = json.loads(manifest.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            plugin_root = manifest.parents[1]
+            registry["plugins"].append(
+                {
+                    "name": plugin.get("name") or plugin_root.name,
+                    "purpose": plugin.get("description") or "Private workflow plugin.",
+                    "version": plugin.get("version"),
+                    "skillCount": len(list((plugin_root / "skills").glob("*/SKILL.md"))),
+                    "path": str(manifest.relative_to(root)),
+                }
+            )
     for candidate in sorted(root.iterdir()) if root.is_dir() else []:
         if not candidate.is_dir() or candidate.name.startswith("."):
             continue
@@ -3564,6 +3583,7 @@ def refresh(args: argparse.Namespace) -> int:
         f" | outcome loops: {len(reg.get('outcomeLoops', []))}"
         f" | context checkpoints: {len(reg.get('contextCheckpoints', []))}"
         f" | skill agents (builders): {len(reg.get('skillAgents', []))}"
+        f" | plugins: {len(reg.get('plugins', []))}"
     )
     decisions = status.get("decisions", [])
     open_d = [d for d in decisions if d.get("status", "").lower().startswith("open")]

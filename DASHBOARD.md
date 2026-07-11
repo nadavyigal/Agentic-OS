@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-11 19:23
+- Last refresh: 2026-07-11 22:17
 - Localhost: `http://127.0.0.1:8787/index.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,7 +28,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Stranded Work
 
-15 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+14 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
@@ -37,14 +37,13 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree
-- [ResumeBuilder AI (Web)] main is 3 commit(s) behind origin (pull needed)
 - [ResumeBuilder AI (Web)] fix/posthog-expert-event-dedupe: 1 unpushed commit(s), last commit 2026-07-09
 - [ResumeBuilder AI (Web)] fix/ats-keyword-phrase-quality: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
-- [Agentic OS] 8 uncommitted file(s) in the primary working tree
+- [Agentic OS] 18 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
