@@ -75,3 +75,9 @@ The "AI running coach" label is no longer a wedge — it's a category. Different
 
 - Runna: long confidence onboarding + soft trial paywall; steal **post-plan first-workout orientation**, not quiz length. See `executive-os/research/2026-07-11-competitor-activation-teardown.md`.
 - Strava/Garmin: late-2025 backlash for paywalling year-recaps of user-owned data — do not copy.
+
+## Demand-mining note (2026-07-11)
+
+- Sourced ASO hook: only 27.3% of C25K users complete the 9-week program (2023 IJERPH study); injuries cluster past a 10%-weekly-jump threshold (5,200+ runner study). Both are quotable, study-backed proof points for "safe daily adaptation" positioning, not vibes claims.
+- Runna already ships a named "Post-Injury Plan" + "Plan Realignment" feature — "returning runner" is a served segment, not white space; differentiation needs to be sharper than "we support returning runners too."
+- Target communities named: r/running, r/C25K, RunningAhead Forums, Runners Forum (Beginners/Injury & Health subforums), LetsRun Forum. See `executive-os/research/2026-07-11-demand-mining-right-user-fit.md`.
