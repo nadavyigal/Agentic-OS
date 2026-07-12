@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-12 05:59 UTC",
+  "generatedAt": "2026-07-12 06:06 UTC",
   "sources": {
-    "status": "2026-07-12 08:59",
+    "status": "2026-07-12 09:06",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-12"
   },
@@ -193,7 +193,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 08:59",
+      "lastRan": "2026-07-12 09:06",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

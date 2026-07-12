@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-12 08:59
+- Last refresh: 2026-07-12 09:06
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -43,7 +43,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 5 unpushed commit(s)
+- [Agentic OS] main has 6 unpushed commit(s)
 
 ## Work Packet Hygiene
 

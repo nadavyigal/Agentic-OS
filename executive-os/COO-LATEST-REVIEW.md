@@ -1,3 +1,95 @@
+# COO Operating Review - 2026-07-12
+
+- Status: current
+- Reviewed: 2026-07-12
+- Selected next action: **Close WP-32's seven-day Resumely Facebook-groups experiment with App Store Connect Israeli-storefront data and manual engagement evidence.**
+- Action type: manual-founder, followed by global-OS evidence logging
+- Source: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json` (refreshed 2026-07-12 09:06), `dashboard/portfolio-hq-manual.json`, `executive-os/reviews/2026-07-12-activation-reread.md`, `executive-os/work-packets/WP-31-resumely-hebrew-aso-pass.md`, `executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md`, `executive-os/EXECUTIVE-DECISIONS.md`, `PROMPTS/coo-operating-review.md`, and `executive-os/workflows/coo-operating-review.md`.
+- Revisit when: WP-32 has a logged verdict; then execute existing WP-31 as the next Resumely distribution milestone. Separately re-read the Resumely 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred, and RunSmart WP-42 after a clean production disclosure viewer exists.
+
+## 1. Operating Summary
+
+Portfolio trust is actionable from the 2026-07-12 09:06 refresh. Today's live activation read remains **0%** for both products: Resumely **0/73** mature D7 activation with 9 uploads and 0 optimizations, RunSmart **0/13** with 1 onboarding/plan and 0 runs. Resumely stays primary under EXD-015. The product fixes previously named by the 2026-07-09 review are complete: Resumely 1.4.1 is live, RunSmart WP-40 S1+S2 is merged, and Resumely web export observability merged in PR #114. The remaining immediate work is measurement and distribution closeout, not another product story.
+
+Evidence: `executive-os/reviews/2026-07-12-activation-reread.md`; Resumely iOS and RunSmart iOS `tasks/progress.md`; `dashboard/portfolio-hq-manual.json` as of 2026-07-12.
+
+## 2. Loop Needing Attention
+
+**No registered loop needs attention.**
+
+The only registered loop, `resumely-submission`, is closed. WP-32 is an active distribution experiment and already has the correct owner/source/result structure in its packet and the Distribution OS, so creating a duplicate outcome loop would violate the pilot rule.
+
+Evidence: `dashboard/status.json` `osRegistry.outcomeLoops`; `executive-os/loops/resumely-submission.md`; `executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md`.
+
+## 3. Plans Needing Packets
+
+| Plan | Source | Next milestone to packetize |
+|---|---|---|
+| Business + GTM Plan v0 | Source: `executive-os/BUSINESS-GTM-PLAN-V0.md` | Close the existing WP-32 experiment, then execute existing WP-31. **No new packet** until those two milestones produce a result. |
+| Design: Pre-Launch Sprint — Two-Track GTM Prep | Source: `docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md` | **Superseded as an execution source** because both apps are live. Reuse only any still-valid asset recipes; do not packetize the pre-launch sequence. |
+| RunSmart Hebrew-First Distribution Playbook | Source: `docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md` | Parked until 2026-08-01 by EXD-016. No packet now. |
+| GTM Plan — RunSmart iOS | Source: RunSmart iOS `.agent-os/distribution/gtm-plan.md` | Hold until WP-42 has a clean HealthKit disclosure cohort or the 2026-08-01 portfolio review changes focus. No packet now. |
+
+The dashboard's four `needs_next_packet` rows are therefore not four invitations to create work. One is covered by existing packets, one is superseded, and two are decision-gated.
+
+## 4. Current Bottleneck
+
+**WP-32 has reached the end of its seven-day measurement window without the required App Store Connect Israeli-storefront comparison or manual Facebook engagement log.**
+
+Owner of unblock: **Founder**. The required evidence is available only through the founder's App Store Connect and Facebook context. Until it is captured, the portfolio cannot tell whether the first Hebrew community experiment moved traffic or merely created activity.
+
+Evidence: `executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md`; `distribution-os/distribution-command-center.md`; Portfolio HQ clock dated 2026-07-12.
+
+## 5. Next Execution Sequence
+
+1. **manual-founder:** Pull the 2026-07-05 to 2026-07-12 Israeli-storefront install comparison from App Store Connect and record comments, reactions, direct replies, and qualitative signals from the three WP-32 Facebook posts.
+2. **global-OS:** Update WP-32 and `distribution-os/experiment-log.md` with one result and one verdict: iterate, stop, or expand. Do not publish another post during the readout.
+3. **global-OS, then existing local workflow:** If WP-32 closes, execute existing WP-31 as the next Resumely milestone: draft the Hebrew ASO asset pack, run founder review, and keep the App Store publish gate manual.
+4. **QA / analytics wait:** Re-read Resumely 1.4.1 picker→file-selected on 2026-07-18 minimum / 2026-07-25 preferred. Re-run RunSmart WP-42 after one clean disclosure viewer exists; require 10 before recommending a product change.
+
+## 6. CEO Escalation Needed
+
+**No.** EXD-015 already sets Resumely as primary, and no competing A-priority requires a new focus decision.
+
+## 7. CFO Escalation Needed
+
+**No.** No spend, price, monetization, or billing choice blocks WP-32 closeout. Paid acquisition remains closed.
+
+## 8. Analysis Needed
+
+**No.** The missing inputs are first-party ASC and Facebook evidence, not external market research.
+
+## 9. Risk Review Needed
+
+**No.** The next steps are read-only evidence collection and internal documentation. Publishing, production changes, and spend are explicitly excluded.
+
+## 10. Escalation Question
+
+None.
+
+## 11. Work Packet
+
+**No new packet.** The immediate step is manual-founder plus global-OS work, which fails the local-repo work-packet rule. The next scoped execution item already exists as `executive-os/work-packets/WP-31-resumely-hebrew-aso-pass.md`; creating another packet would duplicate it.
+
+## 12. What Not To Touch
+
+- Do not start a new Resumely product story before closing WP-32 and reading the existing 1.4.1 cohort gate.
+- Do not open monetization, Stripe, StoreKit, paywall, or paid-acquisition work; EXD-009/013/015 remain in force.
+- Do not start RunSmart Hebrew GTM before the 2026-08-01 review; EXD-016 remains in force.
+- Do not change RunSmart product direction from WP-42 until at least 10 clean disclosure viewers exist.
+- Do not create another WP-31/WP-32 packet or a duplicate outcome loop.
+- Do not rewrite the 2026-07-09 review to look current. It is preserved below as superseded history.
+
+## Status Drift Observed
+
+- The 2026-07-09 executive/COO recommendations to submit Resumely 1.4.1 and execute RunSmart WP-40 S1 are superseded; both are complete.
+- ResumeBuilder Web's parsed summary still says WP-29 S5 is next, while canonical WP-29 is complete.
+- `planExecution` still labels the pre-launch sprint and parked RunSmart distribution plans as needing packets. This review explicitly declines to create packets from those stale classifications.
+
+---
+
+## Superseded COO Review Preserved Below
+
 # COO Operating Review - 2026-07-09
 
 - Status: current
