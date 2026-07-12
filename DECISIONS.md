@@ -175,3 +175,18 @@ Impact:
 - **Cost-tracking bug fixed:** `scripts/usage/collect_usage.py` priced Opus at the Claude-3-era $15/$75; Opus 4.x is $5/$25. That inflated the Opus cost line ~3x (most of the dashboard total). Corrected to $5/$25 (+ cache rates) and re-ran the collector — 30-day Claude Code spend now reads ~$4.4k (opus $2.36k / sonnet $2.0k), not the old ~$8.6k. Prior cost figures in memory/notes were overstated for that reason.
 - Pricing independently verified 2026-07-10 (Claude via claude-api skill; GPT-5.6 / Grok 4.5 / Composer 2.5 via web search) — every figure in the source draft confirmed, nothing corrected.
 - GLOBAL-TOOL-USAGE.md now states routes are "a recommendation, not a rule" and lists model-registry.json as the fourth router surface. AGENTS.md now states the git workflow is tool-agnostic (Claude Code / Codex / Cursor may all commit, push, PR, review, merge), with cross-vendor review for high-risk changes.
+
+## 2026-07-12: Resumely iOS — Remove the Pre-Optimization Fit Gate
+
+Decision: When an iOS user has already supplied a resume plus a job link or job description and taps Analyze, start the existing optimization flow directly. Do not present `FitCheckView`, ask for the job input again, require a second "Check Fit" tap, or make a low pre-optimization score a decision gate. Compute trustworthy fit guidance in the background and surface it inside the resulting diagnosis/optimization experience. If job extraction is unreliable, recover inline on the original input screen by asking for the missing job description; do not manufacture a score.
+
+Reason: The current Fit-First screen repeats intent the user already expressed and adds a network call, a second CTA, and a discouraging exit immediately before the product's core value. The 2026-07-12 score audit also found that the displayed number is the general ATS composite rather than a dedicated job-fit score: 31 of 47 stored rows over 60 days were below 50, no row reached the locked Strong threshold of 75, and the screenshot's 25 was reduced by resume-hygiene factors and penalties despite semantic relevance of 68. PostHog's 17 recorded iOS Fit Check completions were all internal tests, so the old thresholds are not validated on an organic iOS cohort.
+
+Impact:
+
+- This supersedes the 2026-06-23 Fit-First decision only for the authenticated iOS activation path and its pre-optimization `Strong / Stretch / Skip` gate. The public web checker may continue using `/api/public/ats-check` while its scoring contract is repaired.
+- Remove `FitCheckView` from Home/Tailor routing and deprecate `fit_check_optimize_tapped`; preserve the user's existing resume and job inputs through the direct optimize call.
+- Do not show a numeric fit score or hard verdict when extraction confidence is low or before the dedicated fit score is calibrated.
+- Keep the current general Resumely Match/ATS-readiness score for post-optimization guidance, but separate it from a future job-only fit score.
+- Success is measured against `job_added -> optimization_started -> optimization_completed -> export_success`, supporting the existing 20% founder-excluded launch-to-export activation target.
+- Execution plan: `executive-os/work-packets/WP-45-resumely-direct-optimize-and-score-calibration.md`.

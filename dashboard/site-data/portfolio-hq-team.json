@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 11:14 UTC",
+  "generatedAt": "2026-07-12 18:05 UTC",
   "sources": {
-    "status": "2026-07-12 14:14",
+    "status": "2026-07-12 21:05",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-12"
   },
@@ -12,13 +12,13 @@
     "label": "Mixed freshness",
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: Resumely iOS.",
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (1)."
     ]
   },
@@ -39,8 +39,8 @@
       "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-12",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 4
     },
     {
       "name": "Resumely iOS",
@@ -72,11 +72,11 @@
     {
       "name": "Agentic OS",
       "state": "Advanced OS patterns lean pilot",
-      "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
+      "nextAction": "Merge PR #27, then run ./agentic-os morning once to confirm the reconciled pipeline regenerates dashboards AND fires the daily-note habit end to end. (Older: PR #25 Portfolio HQ v3 still open.)",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-10",
-      "dirty": false,
-      "dirtyCount": 0
+      "evidenceDate": "2026-07-12",
+      "dirty": true,
+      "dirtyCount": 2
     }
   ],
   "numbers": {
@@ -209,7 +209,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 14:14",
+      "lastRan": "2026-07-12 21:05",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
