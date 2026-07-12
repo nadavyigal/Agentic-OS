@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-12 09:09"
+    "lastSuccessfulRefresh": "2026-07-12 09:48"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -368,7 +368,7 @@
         "dirty": true,
         "dirtyCount": 8,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder",
+        "lastCommit": "2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -616,7 +616,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Portfolio HQ v3 (branch claude/portfolio-hq-v3, PR #25) \u2014 6-tab redesign: Command (founder-as-orchestrator), Products, Numbers, Growth (reads distribution-os), Executive (reads executive-os), Map with a \"Should I run it?\" workflow board showing real last-ran dates. Rebased onto main (2026-07-09) so it carries the weekly distribution review's WP-31/WP-32 logging; founder decision session (voice-coach defer, Michal pivot, librarian rejected) recorded on this branch. Last completed: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-10. Newer commits exist after this status (last commit: 2026-07-12 75d30f0 executive: run July 12 COO operating review); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Portfolio HQ v3 (branch claude/portfolio-hq-v3, PR #25) \u2014 6-tab redesign: Command (founder-as-orchestrator), Products, Numbers, Growth (reads distribution-os), Executive (reads executive-os), Map with a \"Should I run it?\" workflow board showing real last-ran dates. Rebased onto main (2026-07-09) so it carries the weekly distribution review's WP-31/WP-32 logging; founder decision session (voice-coach defer, Michal pivot, librarian rejected) recorded on this branch. Last completed: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-10. Newer commits exist after this status (last commit: 2026-07-12 98dae3e distribution: close WP-32 experiment); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Portfolio HQ v3 (branch claude/portfolio-hq-v3, PR #25) \u2014 6-tab redesign: Command (founder-as-orchestrator), Products, Numbers, Growth (reads distribution-os), Executive (reads executive-os), Map with a \"Should I run it?\" workflow board showing real last-ran dates. Rebased onto main (2026-07-09) so it carries the weekly distribution review's WP-31/WP-32 logging; founder decision session (voice-coach defer, Michal pivot, librarian rejected) recorded on this branch",
       "lastCompletedStory": "Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
@@ -641,11 +641,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 7]",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "main...origin/main [ahead 9]",
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-12 75d30f0 executive: run July 12 COO operating review",
+        "lastCommit": "2026-07-12 98dae3e distribution: close WP-32 experiment",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -858,7 +858,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-12 09:09",
+    "lastRefresh": "2026-07-12 09:48",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1458,7 +1458,7 @@
       "dirtyCount": 8,
       "extraWorktrees": 0,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-08 52b9389 docs(garmin): close 07-06 fee/checklist confirmation gap per founder",
+      "lastCommit": "2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-11",
@@ -1701,11 +1701,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 7]",
-      "lastCommit": "2026-07-12 75d30f0 executive: run July 12 COO operating review",
+      "branch": "main...origin/main [ahead 9]",
+      "lastCommit": "2026-07-12 98dae3e distribution: close WP-32 experiment",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-12",
@@ -1902,8 +1902,8 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
-      "branch": "main...origin/main [ahead 7]",
+      "repoState": "Dirty",
+      "branch": "main...origin/main [ahead 9]",
       "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1945,10 +1945,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 2,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2001,7 +2002,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-12 09:09",
+    "lastRunAt": "2026-07-12 09:48",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -2015,8 +2016,8 @@
     "nextActions": [
       {
         "title": "Continue the COO-selected action",
-        "detail": "**Close WP-32's seven-day Resumely Facebook-groups experiment with App Store Connect Israeli-storefront data and manual engagement evidence.**",
-        "type": "manual-founder, followed by global-OS evidence logging",
+        "detail": "**Completed \u2014 WP-32 closed inconclusive on 2026-07-12; proceed to existing WP-31.**",
+        "type": "global-OS evidence logging completed; next action is existing local workflow WP-31",
         "where": "Agentic OS repo, in this Codex thread",
         "copyPrompt": "Continue the latest COO-selected action. Read executive-os/COO-LATEST-REVIEW.md and the Source file named there. Execute only the selected next action. Do not publish, email, deploy, submit, or touch product code without explicit approval."
       },
@@ -2895,7 +2896,7 @@
       },
       {
         "title": "Work Packet WP-32 - Resumely: Community / FB-Groups Distribution Experiment (rb-he-comm-001)",
-        "status": "Posted",
+        "status": "Closed",
         "project": null,
         "repoId": "research",
         "repoPath": null,
@@ -4137,7 +4138,7 @@
       },
       {
         "title": "Work Packet WP-32 - Resumely: Community / FB-Groups Distribution Experiment (rb-he-comm-001)",
-        "status": "Posted",
+        "status": "Closed",
         "project": null,
         "repoId": "research",
         "repoPath": null,
@@ -4647,10 +4648,10 @@
   },
   "latestCooReview": {
     "reviewed": "2026-07-12",
-    "selectedNextAction": "**Close WP-32's seven-day Resumely Facebook-groups experiment with App Store Connect Israeli-storefront data and manual engagement evidence.**",
-    "actionType": "manual-founder, followed by global-OS evidence logging",
+    "selectedNextAction": "**Completed \u2014 WP-32 closed inconclusive on 2026-07-12; proceed to existing WP-31.**",
+    "actionType": "global-OS evidence logging completed; next action is existing local workflow WP-31",
     "source": "`DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json` (refreshed 2026-07-12 09:06), `dashboard/portfolio-hq-manual.json`, `executive-os/reviews/2026-07-12-activation-reread.md`, `executive-os/work-packets/WP-31-resumely-hebrew-aso-pass.md`, `executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md`, `executive-os/EXECUTIVE-DECISIONS.md`, `PROMPTS/coo-operating-review.md`, and `executive-os/workflows/coo-operating-review.md`",
-    "revisitWhen": "WP-32 has a logged verdict; then execute existing WP-31 as the next Resumely distribution milestone. Separately re-read the Resumely 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred, and RunSmart WP-42 after a clean production disclosure viewer exists",
+    "revisitWhen": "Execute existing WP-31 as the next Resumely distribution milestone. Separately re-read the Resumely 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred, and RunSmart WP-42 after a clean production disclosure viewer exists",
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
@@ -4743,8 +4744,14 @@
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 7 unpushed commit(s)",
+        "detail": "main has 9 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "Agentic OS",
@@ -4753,12 +4760,12 @@
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 14,
+    "actionableCount": 15,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-12 09:09",
+    "generatedAt": "2026-07-12 09:48",
     "apps": [
       {
         "projectId": 171597,

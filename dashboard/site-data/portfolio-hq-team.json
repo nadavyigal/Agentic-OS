@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 06:09 UTC",
+  "generatedAt": "2026-07-12 06:48 UTC",
   "sources": {
-    "status": "2026-07-12 09:09",
-    "usage": "2026-07-10T11:01:59.711345+00:00",
+    "status": "2026-07-12 09:48",
+    "usage": "2026-07-12T06:41:24.237324+00:00",
     "manual": "2026-07-12"
   },
   "trust": {
@@ -71,8 +71,8 @@
       "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -193,7 +193,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 09:09",
+      "lastRan": "2026-07-12 09:48",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -242,7 +242,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-10T11:01:59.711345+00:00",
+      "lastRan": "2026-07-12T06:41:24.237324+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ]

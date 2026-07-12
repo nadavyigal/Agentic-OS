@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-12 06:09 UTC",
+  "generatedAt": "2026-07-12 06:48 UTC",
   "sources": {
-    "status": "2026-07-12 09:09",
-    "usage": "2026-07-10T11:01:59.711345+00:00",
+    "status": "2026-07-12 09:48",
+    "usage": "2026-07-12T06:41:24.237324+00:00",
     "manual": "2026-07-12"
   },
   "trust": {
@@ -71,8 +71,8 @@
       "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -193,7 +193,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 09:09",
+      "lastRan": "2026-07-12 09:48",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -242,7 +242,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-10T11:01:59.711345+00:00",
+      "lastRan": "2026-07-12T06:41:24.237324+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ],
@@ -344,18 +344,10 @@
         "hypothesis": "Publishing a Hebrew subtitle, keyword field, promo text, and 5 screenshot captions (Fit-First framing, per WP-31) will improve Israeli storefront App Store product page → install conversion within a 21-day measurement window",
         "score": "unscored (see `hebrew-first-playbook.md` experiment menu)",
         "status": "queued — WP-31 ready, founder-approved, asset pack not yet drafted"
-      },
-      {
-        "id": "rb-he-comm-001",
-        "product": "ResumeBuilder iOS",
-        "channel": "Community (Facebook groups)",
-        "hypothesis": "Founder posting a Hebrew, Fit-First-framed post in 3-5 Israeli job-seeker/tech Facebook groups (per WP-32) will produce a measurable Israeli storefront install lift plus qualitative engagement within a 7-day window",
-        "score": "unscored (see `hebrew-first-playbook.md` experiment menu)",
-        "status": "measuring — posted 2026-07-05 in 3 groups (day 3/7 as of 2026-07-08); window closes 2026-07-12"
       }
     ],
     "lastGrowthReview": "2026-07-07",
-    "logTouched": "2026-07-09"
+    "logTouched": "2026-07-12"
   },
   "models": {
     "asOf": "2026-07-10",
@@ -574,44 +566,44 @@
     ],
     "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
     "spendByFamily": {
-      "opus": {
-        "cost_usd": 2356.95,
-        "sessions": 44
-      },
       "sonnet": {
-        "cost_usd": 2009.22,
-        "sessions": 125
+        "cost_usd": 1053.91,
+        "sessions": 43
+      },
+      "opus": {
+        "cost_usd": 683.73,
+        "sessions": 9
       },
       "unknown": {
         "cost_usd": 0.0,
-        "sessions": 12
+        "sessions": 8
       }
     },
     "spendByTool": {
       "claude-code": {
-        "cost_usd": 4366.16,
-        "sessions": 169
+        "cost_usd": 1737.64,
+        "sessions": 52
       },
       "codex": {
         "cost_usd": 0.0,
-        "sessions": 12
+        "sessions": 8
       }
     },
-    "spendWindowDays": 30,
-    "spendGeneratedAt": "2026-07-10T11:01:59.711345+00:00"
+    "spendWindowDays": 9,
+    "spendGeneratedAt": "2026-07-12T06:41:24.237324+00:00"
   },
   "usage": {
-    "generatedAt": "2026-07-10T11:01:59.711345+00:00",
-    "windowDays": 30,
-    "totalCostUsd": 4366.16,
+    "generatedAt": "2026-07-12T06:41:24.237324+00:00",
+    "windowDays": 9,
+    "totalCostUsd": 1737.64,
     "byProject": {
-      "Builder OS Vault": 2090.41,
-      "Agentic OS": 1162.39,
-      "ResumeBuilder": 875.6,
-      "RunSmart": 192.53,
+      "Builder OS Vault": 1416.67,
+      "ResumeBuilder": 189.38,
+      "Agentic OS": 86.35,
       "Michal": 20.59,
       "Remotion - video": 17.43,
-      "hungry-thompson-3aa380": 7.23
+      "hungry-thompson-3aa380": 7.23,
+      "RunSmart": 0.0
     },
     "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver."
   }
