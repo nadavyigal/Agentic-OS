@@ -1,42 +1,43 @@
 {
-  "asOf": "2026-07-10",
+  "asOf": "2026-07-12",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Ship the Resumely export-observability fix (tests pass, nothing deployed)",
-      "body": "codex/fix-web-export-observability (ResumeBuilder web repo) adds the event instrumentation that was missing on the whole export path — this is the fix for the biggest blind spot in the funnel, not a cosmetic change. Contract test went 3/3 fail → 3/3 pass, targeted + full lint clean, production build succeeds, TypeScript clean outside pre-existing test debt. 5 files are uncommitted, 0 commits ahead of origin/main, nothing pushed or deployed. Every day this sits uncommitted is a day of real web traffic still generating zero export telemetry.",
-      "prompt": "In the ResumeBuilder web repo (new-ResumeBuilder-ai-, worktree export-observability, branch codex/fix-web-export-observability): review the 5 uncommitted files, commit, push, open a PR, and deploy. After deploy, watch PostHog by person_id filtered to platform=web, excluding founder prefixes, is_internal_tester=true, founder email, and the +qa email convention — re-read after the first 5 real web completers of optimized_viewed → export_cta_seen → export_pdf_tapped → export_started → export_success/export_failed."
+      "title": "Close the WP-32 Facebook-groups measurement window today",
+      "body": "The 7-day window for the three founder-posted Facebook groups closes today. Export the Israeli storefront install comparison from App Store Connect, log comments/reactions/direct replies for all three posts, and record one verdict: learned, iterate, or stop. Without this closeout, the first Hebrew distribution experiment produces activity but no reusable evidence.",
+      "prompt": "Close WP-32 today. Pull the 2026-07-05 to 2026-07-12 Israeli storefront install comparison from App Store Connect, add the manual engagement totals and qualitative replies for the three Facebook posts, then update executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md and distribution-os/experiment-log.md with one result and one next decision. Do not post again or spend money as part of this readout."
     },
     {
-      "title": "Commit and push RunSmart WP-40 S1 before it goes stale",
-      "body": "The Apple Health onboarding step (OnboardingView.swift) is implemented and simulator-validated — TDD red→green, debug build passed, Health prompt appears, Skip advances to Ready, Connect follows the real HealthKit path. The branch has no upstream and is uncommitted, including pre-existing partial S2 service changes. This is exactly the stranded-work pattern flagged repeatedly this week (three prior incidents, PR #89/#90/#116) — push it now even if S2-S4 and physical-device QA aren't done yet.",
-      "prompt": "In the RunSmart iOS repo (IOS RunSmart light): commit the WP-40 S1 changes (OnboardingView.swift, RunSmartReadinessTests.swift, wp40-simulator-qa.md, task progress/session memory), push to a named branch with upstream set, and open a draft PR so the work survives between sessions. Do not merge — S2-S4 and physical-device QA are still open."
+      "title": "Finish the WP-31 Hebrew ASO asset pack",
+      "body": "Resumely remains at 0% D7 activation and traffic is still the binding constraint. WP-31 is founder-approved, unstarted, and independent of the too-young 1.4.1 picker cohort. Complete the Hebrew subtitle, keyword field, promotional text, five screenshot captions, and reviewer note so the founder has one publish-ready organic channel asset.",
+      "prompt": "Execute WP-31 as a draft-only asset pass. Produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify every claim against the canonical product-marketing file and explicitly gate any RTL PDF-export claim on product QA. Stop at founder review; do not publish to App Store Connect automatically."
     }
   ],
   "tracks": [
     {
       "id": "wp40",
       "name": "RunSmart WP-40 / Apple Health activation",
-      "pill": "S1 DONE (SIM) — UNCOMMITTED",
-      "tone": "run",
-      "standing": "S1 is implemented and validated in the simulator (2026-07-10): the skippable Apple Health onboarding step is live in OnboardingView.swift, reusing the existing HealthKit connection route and analytics. S2-S4 and physical-device QA were intentionally not started this session. The branch (including pre-existing partial S2 service changes) has no upstream and is fully uncommitted — same stranded-work risk already named in this week's OS-hygiene priority.",
+      "pill": "S1+S2 MERGED — COHORT WAITING",
+      "tone": "wait",
+      "standing": "WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84 on 2026-07-11. The primary Apple Health connect step and automatic first import are shipped in code. WP-42 queried the first production-looking traffic through 2026-07-11 but found zero clean disclosure viewers after excluding emulator, TestFlight and sideloaded overlap, so no HealthKit product-change verdict is valid yet.",
       "items": [
         { "tone": "done", "text": "Skippable Apple Health onboarding step added (OnboardingView.swift), reusing the existing HealthKit connection route and analytics; Connect/Skip accessibility identifiers wired" },
         { "tone": "done", "text": "TDD red state reproduced then final focused test passed (1/1); debug simulator build passed; Health prompt appeared during onboarding; Skip advanced to Ready; Connect followed the real HealthKit path; git diff --check passed; only known warning is a pre-existing deprecated HKWorkout initializer" },
-        { "tone": "run", "text": "S2-S4 and physical-device QA not started. Branch has no upstream and remains uncommitted — commit and push before continuing, nothing has been lost yet but nothing is protected either" }
+        { "tone": "done", "text": "S1+S2 merged to main via PR #84; RunSmart repo is clean and synced" },
+        { "tone": "wait", "text": "Re-run WP-42 after at least one clean production disclosure viewer exists; wait for 10 clean viewers before recommending a product change" }
       ]
     },
     {
       "id": "resumely-export-observability",
       "name": "Resumely web export — observability fix",
-      "pill": "FIX READY — UNCOMMITTED",
-      "tone": "run",
-      "standing": "A fresh non-founder QA run completed the full production funnel (signup → upload → review → approve → real browser PDF download, no console errors) on 2026-07-10, proving the export mechanism itself works today. Separately, 7 real organic web users reached optimization pages and generated zero export telemetry — but that cannot be read as 'the export button is broken': the old web button was a raw redirect with zero tracking and session replay is past its 30-day window, so 'never clicked' and 'clicked, no response' are indistinguishable in the current data. The fix instruments the whole path so this ambiguity does not recur. Nothing has been committed, pushed, or deployed.",
+      "pill": "MERGED — WAIT FOR 5 WEB COMPLETERS",
+      "tone": "wait",
+      "standing": "The web export-observability fix merged in PR #114 on 2026-07-11. Core CI, GitGuardian, CodeRabbit and Vercel checks passed; the known Cloudflare Workers check failed independently of the Vercel production path. The export mechanism was already QA-verified end to end. The next valid read is after five real founder/QA-excluded web completers pass through the newly instrumented export path.",
       "items": [
         { "tone": "done", "text": "Optimization page now emits optimized_viewed, export_cta_seen, export_pdf_tapped; download route emits authenticated export_started then exactly one of export_success/export_failed, all tagged with optimization_id, platform=web, source, format, renderer/error code" },
         { "tone": "done", "text": "Regression test failed 3/3 before the fix, passes 3/3 after; targeted + full ESLint clean (11 pre-existing warnings, 0 new errors); production build succeeds; TypeScript clean outside documented pre-existing test errors; smoke test generated a 7,328-byte PDF" },
-        { "tone": "run", "text": "iOS (founder-excluded, updated 07-10) now shows 9 resume_uploaded → 2 optimization_completed → 1 export_success — first confirmed real export, corrects the earlier 'zero exports ever' read which was iOS-stale. Web side stays unmeasurable until this fix ships and 5 real completers pass through it" },
-        { "tone": "run", "text": "5 uncommitted files on branch codex/fix-web-export-observability, 0 commits ahead of origin/main, nothing deployed or published" }
+        { "tone": "done", "text": "PR #114 merged 2026-07-11; Vercel check passed and the instrumented export path is now available for measurement" },
+        { "tone": "wait", "text": "Re-measure optimized_viewed → export_cta_seen → export_pdf_tapped → export_started → export_success/export_failed after 5 real web completers" }
       ]
     },
     {
@@ -56,15 +57,15 @@
     {
       "product": "Resumely (primary)",
       "model": "GPT-5.6 Sol / Codex - tool-heavy verification across analytics and repository evidence",
-      "title": "Ship web export observability, then measure the real export wall",
-      "why": "One real iOS export is now confirmed, so the old zero-export claim is superseded. Web remains unmeasurable until the prepared observability fix ships and enough real completers pass through it.",
-      "prompt": "In the ResumeBuilder web repo, review and ship the prepared export-observability fix on codex/fix-web-export-observability. Verify its tests and production build, commit and push it, open the appropriate PR, then re-measure the founder-excluded web funnel after 5 real completers: optimized_viewed → export_cta_seen → export_pdf_tapped → export_started → export_success/export_failed. Do not claim the web button is broken without event or reproduction evidence."
+      "title": "Close WP-32, then finish the WP-31 Hebrew ASO pack",
+      "why": "The scheduled D7 read remains at 0% and both product fixes under review are already merged. The highest-leverage Resumely work is now to close the current Hebrew channel experiment and make the next organic asset publish-ready.",
+      "prompt": "First close WP-32 with the 2026-07-05 to 2026-07-12 Israeli storefront and Facebook engagement readout. Then, in a separate story, draft the complete WP-31 Hebrew ASO asset pack for founder review. Do not publish or start paid acquisition."
     },
     {
       "product": "RunSmart (maintenance-plus)",
       "model": "Sonnet tier - well-specified feature against an existing pattern (per GLOBAL-TOOL-USAGE model routing)",
       "title": "First-run commitment + reminder: turn generated plans into first runs",
-      "why": "The wall is plan-to-run: of 19 installs, 1 generated a plan, 0 ever ran. WP-40 (in flight in another session) fixes Apple Health discoverability; this attacks the same wall from the other side with the already-scored experiment rs-onboarding-001 (WP-20, queued). Do not start until WP-40 merges, both touch the post-onboarding flow.",
+      "why": "Today's mature-cohort read is still 0/13: one onboarded, one generated a plan, zero started or completed a run. WP-40 S1+S2 is merged, but no clean production HealthKit cohort exists yet, so avoid another product change until the evidence gate is met.",
       "prompt": "Implement WP-20 (experiment rs-onboarding-001) in the RunSmart repo: after a training plan is generated, ask the user for a concrete first-run commitment (day + time, one tap options) and schedule a local notification reminder for it. Read the WP-20 packet and docs/agent-os/project-context.md first; follow the existing onboarding/notification patterns; instrument first_run_committed and reminder_fired PostHog events so the plan-to-run funnel can attribute movement. Coordinate with WP-40 (HealthKit activation, branch claude/wp40-healthkit-activation): branch from main only after WP-40 merges to avoid conflicting onboarding changes. Tests included; one story at a time."
     }
   ],
@@ -102,24 +103,23 @@
     {
       "id": "resumely",
       "name": "Resumely",
-      "tag": "web + iOS · all-time cumulative, founder-excluded",
+      "tag": "web + iOS · mature D7 cohort through 2026-07-12",
       "color": "#3b7ea1",
       "steps": [
-        ["Guest mode started", 46],
-        ["Fit check completed", 19],
-        ["Resume uploaded (corrected event)", 9],
-        ["Optimization completed", 2],
-        ["Export success (1 real — iOS, as of 07-10)", 1]
+        ["First seen", 73],
+        ["Resume uploaded within D7", 9],
+        ["Optimization completed within D7", 0],
+        ["Export success within D7", 0]
       ],
-      "story": "Updated 07-10: founder-excluded iOS now shows 9 uploaded → 2 optimized → 1 real export success — the first confirmed real export, correcting the prior 'zero exports ever' read (that was stale for iOS). Web export telemetry is still unmeasurable: the old web button had zero click tracking and 7 real users who reached optimization pages left no export signal either way. Fix is written (branch codex/fix-web-export-observability, uncommitted) — full readout: ResumeBuilder IOS APP repo, docs/qa/reports/supabase-post-live-current-state-2026-07-06.md."
+      "story": "Updated 07-12 from live PostHog project 270848: 73 mature founder/test-excluded first-seen people, 9 uploaded within D7, 0 completed an optimization within D7, and 0 exported within D7. The activation gate remains closed. The separate all-time iOS result still contains one confirmed real export; do not confuse that cumulative signal with the D7 cohort."
     },
     {
       "id": "runsmart",
       "name": "RunSmart",
-      "tag": "iOS · mature-cohort 7-day window (n=19)",
+      "tag": "iOS · mature organic D7 cohort through 2026-07-12",
       "color": "#c07a3e",
       "steps": [
-        ["Installed (since launch)", 19],
+        ["Mature installs", 13],
         ["Onboarding", 1],
         ["Plan generated", 1],
         ["Run started", 0],
@@ -129,36 +129,35 @@
   ],
   "activationHeadline": {
     "rows": [
-      { "metric": "Real D7 activation", "resumely": "0% (0/37)", "runsmart": "0% (0/12)", "bad": true },
-      { "metric": "The wall", "resumely": "export — 9 uploaded, 2 optimized, 1 real export (iOS, 07-10); web still unmeasurable pre-fix", "runsmart": "plan→run — 1 of 19 got a plan, 0 ran" },
+      { "metric": "Real D7 activation", "resumely": "0% (0/73)", "runsmart": "0% (0/13)", "bad": true },
+      { "metric": "The wall", "resumely": "first seen→upload→optimization — 73 first seen, 9 uploaded, 0 optimized within D7", "runsmart": "install→onboarding and plan→run — 13 installed, 1 onboarded/planned, 0 ran" },
       { "metric": "Target", "resumely": "≥40%", "runsmart": "≥30%" }
     ],
-    "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity. PR #90 (Stories 2-4 upload-picker friction fixes) merged 07-08 — next funnel read should show the effect on real (non-founder) traffic. 07-10: iOS shows a first real export_success (1), and a web observability fix is written (uncommitted, codex/fix-web-export-observability) that closes the zero-click-tracking gap on the web button — 'export is broken' was never actually confirmed for web, only unmeasured."
+    "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
   },
   "clocks": [
-    { "date": "2026-07-12", "what": "Activation re-read, both apps (7 immature users each mature by then)", "state": "running" },
+    { "date": "2026-07-12", "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed", "state": "done" },
     { "date": "2026-07-22", "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35", "state": "you" },
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
-    { "date": "2026-07-12", "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)", "state": "running" },
+    { "date": "2026-07-12", "what": "WP-32 FB groups — close the 7-day measurement window with ASC installs + manual engagement", "state": "you" },
     { "date": null, "when": "After her OpenAI move", "what": "Michal — set up on Codex, build Michal's OS (parked pending her Gemini→OpenAI migration, decided 2026-07-09)", "state": "waiting" }
   ],
   "knownUnknown": {
     "kk": [
       "Both apps passed App Store review and are live (confirmed 07-07): RunSmart 1.0.7(21), Resumely 1.3(8).",
-      "Both 0% real D7 activation on mature App Store cohorts (Readout #2).",
-      "Resumely wall = export, revised 07-10: iOS now shows 1 real export_success (9 uploaded, 2 optimized) — the 'zero exports ever' claim was iOS-stale, not a live fact. Web export had zero click tracking until today, so 7 real users reaching optimization pages with no export event is not proof of a broken button, only proof of no visibility. Observability fix written, tested (3/3), not yet committed/pushed/deployed.",
-      "RunSmart wall = plan→run (onboarding drop 94.7%; 0 runs). WP-40 S1 (Apple Health onboarding step) is implemented and simulator-validated as of 07-10, but uncommitted with no upstream — S2-S4 and physical-device QA still open.",
+      "Both remain at 0% real D7 activation on the 2026-07-12 mature read: Resumely 0/73; RunSmart 0/13.",
+      "Resumely D7 wall = first seen→upload→optimization: 73 first seen, 9 uploaded, 0 optimized, 0 exported. PR #114 web export observability is merged; wait for 5 real web completers before reading that new path.",
+      "RunSmart wall = install→onboarding and plan→run: 13 mature installs, 1 onboarded/planned, 0 ran. WP-40 S1+S2 merged via PR #84; WP-42 has no clean production disclosure cohort yet.",
       "Traffic collapsed post-launch-push; WP-29 web funnel fixed + verified.",
       "One backend tester account owned 22/23 of all Resumely Supabase optimizations pre-hardening — analytics identity/alias wiring shipped 07-07 (Story 1) to fix this going forward.",
       "Garmin: brand attribution + Internal-Test-vs-Commercial tiering are well-grounded in Garmin's public docs (matches 3 real rejections). Fee structure for RunSmart specifically and the Gate 1-4 checklist are founder-confirmed directly with Marc via email/attachments (2026-07-08) — the 07-06 research pass's \"unconfirmed\" flag was based on Garmin's generic public docs, not RunSmart's actual terms with Marc; no further written confirmation needed."
     ],
     "ku": [
-      "Do the 7 immature installs/app convert by the 07-12 re-read?",
       "Does FB-group / Hebrew-first posting actually move traffic?",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
-      "Does the web export-observability fix (codex/fix-web-export-observability, uncommitted) reveal real web export failures once shipped, or does it turn out the button worked all along and was just untracked? Re-measure by person_id after 5 real web completers, founder/QA-excluded.",
-      "Why does no runner start after a plan? (WP-15 fix shipped in 1.0.7(21) — re-read 07-08+.) WP-40 S1 (Apple Health onboarding step) is the other lever on this wall — simulator-validated 07-10, needs S2-S4 + physical-device QA + a real push before it can move this number.",
+      "Does the merged web export-observability path reveal real web export failures after 5 real completers, or does it confirm the button works for organic users?",
+      "Why does no runner start after a plan? The 2026-07-12 read still shows 1 of 13 mature installers reaching onboarding/plan and 0 starting a run; WP-40's clean production cohort is not readable yet.",
       "Voice-coach flag: DECIDED 2026-07-09 — deferred (stays off), review at the 07-12 activation re-read or after WP-40 lands. No longer an open question."
     ],
     "uk": [
@@ -177,13 +176,13 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — export-observability fix is ready, ship it before the next re-read",
-      "body": "07-10: iOS's 'zero exports ever' turned out to be stale (1 real export_success now confirmed), and web export was never actually confirmed broken — it just had zero click tracking. A tested fix (3/3 pass, lint clean, build succeeds) instruments the full web export path and is sitting uncommitted on codex/fix-web-export-observability. Commit, push, deploy, then re-measure by person_id after 5 real web completers. WP-31 Hebrew ASO and WP-32 FB-group posts are both live in their measurement windows — traffic is still the binding constraint underneath this."
+      "title": "Resumely — close WP-32 today, then finish WP-31",
+      "body": "The D7 gate remains 0/73. Close the Facebook-groups experiment with ASC and engagement evidence today, then complete the approved Hebrew ASO asset pack. Traffic remains the binding constraint, but distribution work must produce measured learnings rather than more unlogged activity."
     },
     {
       "n": 2,
-      "title": "RunSmart — WP-40 S1 done in simulator, push it before continuing; Garmin stays parked",
-      "body": "WP-40 S1 (Apple Health onboarding step) is implemented and simulator-validated as of 07-10 but uncommitted with no upstream — commit and push before starting S2-S4 or physical-device QA. Also re-run the PostHog funnel for the WP-15 first-run fix (1.0.7(21)+) once there's a build-21-only cohort. Garmin stays maintenance-only (EXD-015) — fees and the Gate 1-4 checklist are founder-confirmed directly with Marc (email/attachments), no further confirmation needed; WP-24/26/27/28 stay paused on priority, not on missing information."
+      "title": "RunSmart — hold new product work until the WP-40 cohort is readable",
+      "body": "The 2026-07-12 mature D7 read is still 0/13, with 1 onboarding/plan and 0 runs. WP-40 S1+S2 is merged and RunSmart main is clean. Re-run WP-42 after one clean disclosure viewer; require 10 before changing product direction. Garmin stays maintenance-only."
     },
     {
       "n": 3,
@@ -197,7 +196,7 @@
     }
   ],
   "readouts": [
-    { "app": "RunSmart iOS", "r1": "0% (0/10 beta)", "r2": "0% (0/12 mature App Store)", "target": "≥30%", "wall": "plan→run: 1/19 planned, 0 ran" },
-    { "app": "Resumely", "r1": "0% (0/35 organic)", "r2": "0% (0/37 mature organic)", "target": "≥40%", "wall": "export: 1 confirmed iOS export; web unmeasurable until observability ships" }
+    { "app": "RunSmart iOS", "r1": "0% (0/12 mature, 07-05)", "r2": "0% (0/13 mature, 07-12)", "target": "≥30%", "wall": "13 installs → 1 onboarding/plan → 0 runs" },
+    { "app": "Resumely", "r1": "0% (0/37 mature, 07-05)", "r2": "0% (0/73 mature, 07-12)", "target": "≥40%", "wall": "73 first seen → 9 uploaded → 0 optimized/exported within D7" }
   ]
 }

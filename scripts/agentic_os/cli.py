@@ -2809,7 +2809,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["runCenter"] = {
         "lastRefresh": now_label(),
         "command": command,
-        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "localhostUrl": portfolio_hq_url(port),
         "sourcesRead": sources,
         "checksRun": [
             "parser unit tests",
@@ -2980,7 +2980,7 @@ def mark_daily_run_verified(port: int, passed: bool) -> None:
     result["checksStatus"] = "Passed" if passed else "Failed"
     result["checksCompletedAt"] = now_label()
     result["readyForNextSession"] = passed
-    result["localhostUrl"] = f"http://127.0.0.1:{port}/index.html"
+    result["localhostUrl"] = portfolio_hq_url(port)
     write_json(STATUS_JSON, status)
     sync_project_status_fallback(status)
     update_command_center_generated(today_idt(), status)

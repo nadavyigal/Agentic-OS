@@ -1112,6 +1112,23 @@ class TestPortfolioHqRouting(unittest.TestCase):
             "http://127.0.0.1:8787/portfolio-hq.html",
         )
 
+    def test_daily_run_result_uses_portfolio_hq_url(self):
+        result = cli.build_daily_run_result(
+            status={
+                "summary": {},
+                "portfolioTrust": {"level": "actionable"},
+                "contradictions": [],
+                "projectHealth": [],
+                "planExecution": {"needsNextPacket": 0},
+            },
+            project_prompts=[],
+            command="./agentic-os morning",
+            port=8787,
+            checks_status="Not Run",
+        )
+
+        self.assertEqual(result["localhostUrl"], cli.portfolio_hq_url(8787))
+
 
 if __name__ == "__main__":
     unittest.main()

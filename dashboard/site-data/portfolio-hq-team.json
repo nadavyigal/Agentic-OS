@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 03:44 UTC",
+  "generatedAt": "2026-07-12 05:57 UTC",
   "sources": {
-    "status": "2026-07-12 06:44",
+    "status": "2026-07-12 08:57",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-10"
+    "manual": "2026-07-12"
   },
   "trust": {
     "level": "mixed",
@@ -13,7 +13,7 @@
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "5 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -73,7 +73,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
       "dirty": true,
-      "dirtyCount": 7
+      "dirtyCount": 17
     }
   ],
   "numbers": {
@@ -81,14 +81,14 @@
       "rows": [
         {
           "metric": "Real D7 activation",
-          "resumely": "0% (0/37)",
-          "runsmart": "0% (0/12)",
+          "resumely": "0% (0/73)",
+          "runsmart": "0% (0/13)",
           "bad": true
         },
         {
           "metric": "The wall",
-          "resumely": "export — 9 uploaded, 2 optimized, 1 real export (iOS, 07-10); web still unmeasurable pre-fix",
-          "runsmart": "plan→run — 1 of 19 got a plan, 0 ran"
+          "resumely": "first seen→upload→optimization — 73 first seen, 9 uploaded, 0 optimized within D7",
+          "runsmart": "install→onboarding and plan→run — 13 installed, 1 onboarded/planned, 0 ran"
         },
         {
           "metric": "Target",
@@ -96,44 +96,40 @@
           "runsmart": "≥30%"
         }
       ],
-      "note": "No monetization / paid ads until these move (EXD-013). Both funnels founder/QA/bot-excluded per the exclusion rule. Analytics identity hardening shipped 07-07 (PostHog $identify/$create_alias wiring) so future reads can exclude the tester account that owned 22/23 of all Supabase activity. PR #90 (Stories 2-4 upload-picker friction fixes) merged 07-08 — next funnel read should show the effect on real (non-founder) traffic. 07-10: iOS shows a first real export_success (1), and a web observability fix is written (uncommitted, codex/fix-web-export-observability) that closes the zero-click-tracking gap on the web button — 'export is broken' was never actually confirmed for web, only unmeasured."
+      "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
     },
     "funnels": [
       {
         "id": "resumely",
         "name": "Resumely",
-        "tag": "web + iOS · all-time cumulative, founder-excluded",
+        "tag": "web + iOS · mature D7 cohort through 2026-07-12",
         "steps": [
           [
-            "Guest mode started",
-            46
+            "First seen",
+            73
           ],
           [
-            "Fit check completed",
-            19
-          ],
-          [
-            "Resume uploaded (corrected event)",
+            "Resume uploaded within D7",
             9
           ],
           [
-            "Optimization completed",
-            2
+            "Optimization completed within D7",
+            0
           ],
           [
-            "Export success (1 real — iOS, as of 07-10)",
-            1
+            "Export success within D7",
+            0
           ]
         ]
       },
       {
         "id": "runsmart",
         "name": "RunSmart",
-        "tag": "iOS · mature-cohort 7-day window (n=19)",
+        "tag": "iOS · mature organic D7 cohort through 2026-07-12",
         "steps": [
           [
-            "Installed (since launch)",
-            19
+            "Mature installs",
+            13
           ],
           [
             "Onboarding",
@@ -159,8 +155,8 @@
     {
       "date": "2026-07-12",
       "when": null,
-      "what": "Activation re-read, both apps (7 immature users each mature by then)",
-      "state": "running"
+      "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed",
+      "state": "done"
     },
     {
       "date": "2026-07-22",
@@ -183,8 +179,8 @@
     {
       "date": "2026-07-12",
       "when": null,
-      "what": "WP-32 FB groups — 7-day measurement window (posted 07-05, day 3/7)",
-      "state": "running"
+      "what": "WP-32 FB groups — close the 7-day measurement window with ASC installs + manual engagement",
+      "state": "you"
     },
     {
       "date": null,
@@ -198,14 +194,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 06:44",
+      "lastRan": "2026-07-12 08:57",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-10",
+      "lastRan": "2026-07-12",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
