@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 06:06 UTC",
+  "generatedAt": "2026-07-12 06:09 UTC",
   "sources": {
-    "status": "2026-07-12 09:06",
+    "status": "2026-07-12 09:09",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-12"
   },
@@ -193,7 +193,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 09:06",
+      "lastRan": "2026-07-12 09:09",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -214,7 +214,7 @@
       "id": "coo",
       "name": "COO operating review",
       "cadence": "as needed",
-      "lastRan": "2026-07-09",
+      "lastRan": "2026-07-12",
       "how": "Answers 'what do I do next?' from current evidence when you feel lost between sessions."
     },
     {
