@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-12 06:48 UTC",
+  "generatedAt": "2026-07-12 11:12 UTC",
   "sources": {
-    "status": "2026-07-12 09:48",
-    "usage": "2026-07-12T06:41:24.237324+00:00",
+    "status": "2026-07-12 14:12",
+    "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-12"
   },
   "trust": {
@@ -12,11 +12,15 @@
     "label": "Mixed freshness",
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
-      "4 strategic plan(s) need the next work packet (COO review) — plans are not abandoned."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "10 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
-    "needsNextPacketCount": 4,
-    "hygieneWarnings": []
+    "needsNextPacketCount": 3,
+    "hygieneWarnings": [
+      "Uncommitted files in product repos: Resumely iOS.",
+      "Extra product worktrees retained for review: RunSmart iOS (1)."
+    ]
   },
   "consistencyIssues": [
     {
@@ -31,10 +35,10 @@
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped)",
-      "nextAction": "Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call",
+      "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle)",
+      "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-11",
+      "evidenceDate": "2026-07-12",
       "dirty": false,
       "dirtyCount": 0
     },
@@ -44,8 +48,8 @@
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 1
     },
     {
       "name": "RunSmart Web",
@@ -72,7 +76,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 11
     }
   ],
   "numbers": {
@@ -91,7 +95,7 @@
         },
         {
           "metric": "Target",
-          "resumely": "≥40%",
+          "resumely": "≥20% by 2026-08-01",
           "runsmart": "≥30%"
         }
       ],
@@ -158,6 +162,18 @@
       "state": "done"
     },
     {
+      "date": "2026-07-18",
+      "when": null,
+      "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users",
+      "state": "running"
+    },
+    {
+      "date": "2026-07-25",
+      "when": null,
+      "what": "Resumely 1.4.1 definitive 14-day cohort read",
+      "state": "running"
+    },
+    {
       "date": "2026-07-22",
       "when": null,
       "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35",
@@ -178,8 +194,8 @@
     {
       "date": "2026-07-12",
       "when": null,
-      "what": "WP-32 FB groups — close the 7-day measurement window with ASC installs + manual engagement",
-      "state": "you"
+      "what": "WP-32 FB groups closed inconclusive — 3 reactions, 1 comment, ASC lift unavailable",
+      "state": "done"
     },
     {
       "date": null,
@@ -193,7 +209,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 09:48",
+      "lastRan": "2026-07-12 14:12",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -242,7 +258,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-12T06:41:24.237324+00:00",
+      "lastRan": "2026-07-10T11:01:59.711345+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ],
@@ -287,7 +303,15 @@
         "channel": "Onboarding",
         "hypothesis": "Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated",
         "score": "21",
-        "status": "queued — WP-20 created"
+        "status": "shipped in 1.0.7 (21) — measuring clean cohort"
+      },
+      {
+        "id": "rb-cro-001",
+        "product": "ResumeBuilder Web",
+        "channel": "CRO",
+        "hypothesis": "The six WP-43 Tier A entry-funnel changes will increase the share of qualified landers who submit the free checker",
+        "score": "unscored",
+        "status": "shipped in PR #115 — measuring"
       },
       {
         "id": "rs-aso-003",
@@ -566,44 +590,44 @@
     ],
     "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
     "spendByFamily": {
-      "sonnet": {
-        "cost_usd": 1053.91,
-        "sessions": 43
-      },
       "opus": {
-        "cost_usd": 683.73,
-        "sessions": 9
+        "cost_usd": 2356.95,
+        "sessions": 44
+      },
+      "sonnet": {
+        "cost_usd": 2009.22,
+        "sessions": 125
       },
       "unknown": {
         "cost_usd": 0.0,
-        "sessions": 8
+        "sessions": 12
       }
     },
     "spendByTool": {
       "claude-code": {
-        "cost_usd": 1737.64,
-        "sessions": 52
+        "cost_usd": 4366.16,
+        "sessions": 169
       },
       "codex": {
         "cost_usd": 0.0,
-        "sessions": 8
+        "sessions": 12
       }
     },
-    "spendWindowDays": 9,
-    "spendGeneratedAt": "2026-07-12T06:41:24.237324+00:00"
+    "spendWindowDays": 30,
+    "spendGeneratedAt": "2026-07-10T11:01:59.711345+00:00"
   },
   "usage": {
-    "generatedAt": "2026-07-12T06:41:24.237324+00:00",
-    "windowDays": 9,
-    "totalCostUsd": 1737.64,
+    "generatedAt": "2026-07-10T11:01:59.711345+00:00",
+    "windowDays": 30,
+    "totalCostUsd": 4366.16,
     "byProject": {
-      "Builder OS Vault": 1416.67,
-      "ResumeBuilder": 189.38,
-      "Agentic OS": 86.35,
+      "Builder OS Vault": 2090.41,
+      "Agentic OS": 1162.39,
+      "ResumeBuilder": 875.6,
+      "RunSmart": 192.53,
       "Michal": 20.59,
       "Remotion - video": 17.43,
-      "hungry-thompson-3aa380": 7.23,
-      "RunSmart": 0.0
+      "hungry-thompson-3aa380": 7.23
     },
     "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver."
   }

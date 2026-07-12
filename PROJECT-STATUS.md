@@ -14,11 +14,11 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped) | Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call | 3 | No | Fresh | High | tasks/progress.md | 2026-07-11 2877fcb docs(analytics): record WP-42 HealthKit cohort autopsy (#85) |
-| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | No | Fresh | High | tasks/progress.md | 2026-07-11 8944fff docs: log WP-44 S1 blocked finding (PR #92) in progress.md |
+| RunSmart iOS | PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle) | Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard | 1 | No | Fresh | Medium | tasks/progress.md | 2026-07-12 d9ce8fa release: bump to 1.0.8 (22) and record archived build awaiting review |
+| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-11 8944fff docs: log WP-44 S1 blocked finding (PR #92) in progress.md |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md |
-| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-12 98dae3e distribution: close WP-32 experiment |
+| Agentic OS | Advanced OS patterns lean pilot | Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate | 0 | Yes (11) | Fresh | High | tasks/progress.md | 2026-07-12 1c20785 dashboard: surface WP-32 closeout |
 
 ## Evidence Gaps
 
@@ -26,7 +26,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md
-- Agentic OS: validated 2026-07-10, last commit 2026-07-12 98dae3e distribution: close WP-32 experiment
+- Agentic OS: validated 2026-07-10, last commit 2026-07-12 1c20785 dashboard: surface WP-32 closeout
 
 ## Drift Warnings
 
@@ -36,11 +36,14 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
+- [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp40-release-closeout and open a PR, or consciously discard it.
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
+- [RunSmart iOS] worktree on detached, 1 uncommitted file(s) at /private/tmp/rs-release-108-22/repo -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
+- [Resumely iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -50,8 +53,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 9 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 10 unpushed commit(s) -> Sync the default branch first: pull, then push.
+- [Agentic OS] 11 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -73,7 +76,7 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call · Resumely iOS — Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle): Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard · Resumely iOS — Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## What To Do Next
 
@@ -83,7 +86,7 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 
 ### Now
 
-- RunSmart iOS: Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call
+- RunSmart iOS: Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard
 - Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition
 
 ### Next
@@ -99,11 +102,12 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Resumely iOS: 10 saved plan(s) — latest "v1.1 Build 7 ASC Submission Readiness — 2026-06-26" (2026-06-26). See Saved Plans.
 - RunSmart Web: 13 saved plan(s) — latest "Garmin First Aha First Build Plan" (2026-07-01). See Saved Plans.
 - ResumeBuilder AI (Web): 10 saved plan(s) — latest "Fit/Match Web Copy Reconciliation Implementation Plan" (2026-06-29). See Saved Plans.
-- Agentic OS: 9 saved plan(s) — latest "Founder Advisor — Design" (2026-07-02). See Saved Plans.
-- Portfolio: 4 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
+- Agentic OS: 10 saved plan(s) — latest "Portfolio Activation Playbook v2" (2026-07-12). See Saved Plans.
+- Portfolio: 3 strategic plan(s) need the next work packet — run COO operating review (see Command Center plan index).
 
 ### Blocked
 
+- RunSmart iOS: None — awaiting Apple review
 - Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)
 - Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
 - RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
@@ -123,6 +127,7 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Agentic OS: docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md
 - Agentic OS: docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md
 - Agentic OS: docs/superpowers/plans/2026-07-02-founder-advisor.md
+- Agentic OS: docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md
 - Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md
 - Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md
 - Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md

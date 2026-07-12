@@ -3,9 +3,9 @@
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Close the WP-32 Facebook-groups measurement window today",
-      "body": "The 7-day window for the three founder-posted Facebook groups closes today. Export the Israeli storefront install comparison from App Store Connect, log comments/reactions/direct replies for all three posts, and record one verdict: learned, iterate, or stop. Without this closeout, the first Hebrew distribution experiment produces activity but no reusable evidence.",
-      "prompt": "Close WP-32 today. Pull the 2026-07-05 to 2026-07-12 Israeli storefront install comparison from App Store Connect, add the manual engagement totals and qualitative replies for the three Facebook posts, then update executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md and distribution-os/experiment-log.md with one result and one next decision. Do not post again or spend money as part of this readout."
+      "title": "Run five observed Resumely first sessions before the July 18 gate",
+      "body": "Resumely is 0/73 for D7 export activation, but the post-1.4.1 picker cohort is still too young. Observe five right-fit users before adding another product story. Record only redacted friction: whether a usable resume file is on the phone, first useful moment, trust hesitation, next-action comprehension, and whether a usable export is reached.",
+      "prompt": "Use the observation protocol in docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md for five right-fit Resumely first sessions. Save only redacted aggregate notes. If at least 3 of 5 users lack a usable local resume file, record that WP-44 S2's qualitative gate is met, but do not build paste-text before the 2026-07-18 PostHog gate."
     },
     {
       "title": "Finish the WP-31 Hebrew ASO asset pack",
@@ -15,15 +15,28 @@
   ],
   "tracks": [
     {
+      "id": "activation-playbook-v2",
+      "name": "Portfolio Activation Playbook v2",
+      "pill": "CURRENT — RESUMELY 70 / RUNSMART 30",
+      "tone": "run",
+      "standing": "The canonical activation contract is now Intent → Setup → First value → Verified value → Repeat value, with one primary outcome per app. Resumely remains the main experiment lane through 2026-08-01; RunSmart closes existing WP-40 release evidence and measures shipped paths without adding a new feature.",
+      "items": [
+        { "tone": "done", "text": "Primary metrics locked: RunSmart physical install → run_completed within D7; Resumely first seen → export_success within D7" },
+        { "tone": "done", "text": "WP-20 and WP-43 are shipped/measuring; WP-44 S1 is blocked and dropped; paste-text is gated behind July 18 plus a 3-of-5 observation signal" },
+        { "tone": "wait", "text": "Cumulative clean Resumely export remains under review because the manual one-export claim conflicts with the saved clean report" },
+        { "tone": "run", "text": "Next gates: five observed Resumely sessions, July 18 minimum cohort read, July 25 definitive read, August 1 CEO/COO decision" }
+      ]
+    },
+    {
       "id": "wp40",
       "name": "RunSmart WP-40 / Apple Health activation",
-      "pill": "S1+S2 MERGED — COHORT WAITING",
+      "pill": "1.0.8 (22) ARCHIVED — COHORT WAITING",
       "tone": "wait",
-      "standing": "WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84 on 2026-07-11. The primary Apple Health connect step and automatic first import are shipped in code. WP-42 queried the first production-looking traffic through 2026-07-11 but found zero clean disclosure viewers after excluding emulator, TestFlight and sideloaded overlap, so no HealthKit product-change verdict is valid yet.",
+      "standing": "WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84. S3 physical-device evidence and S4's post-merge read are complete, and the founder archived 1.0.8 (22) on 2026-07-12. WP-42 still has zero clean disclosure viewers after exclusions, so no HealthKit product-change verdict is valid yet.",
       "items": [
         { "tone": "done", "text": "Skippable Apple Health onboarding step added (OnboardingView.swift), reusing the existing HealthKit connection route and analytics; Connect/Skip accessibility identifiers wired" },
         { "tone": "done", "text": "TDD red state reproduced then final focused test passed (1/1); debug simulator build passed; Health prompt appeared during onboarding; Skip advanced to Ready; Connect followed the real HealthKit path; git diff --check passed; only known warning is a pre-existing deprecated HKWorkout initializer" },
-        { "tone": "done", "text": "S1+S2 merged to main via PR #84; RunSmart repo is clean and synced" },
+        { "tone": "done", "text": "S1–S4 closeout and the 1.0.8 (22) archived-build handoff are preserved in RunSmart commit d9ce8fa" },
         { "tone": "wait", "text": "Re-run WP-42 after at least one clean production disclosure viewer exists; wait for 10 clean viewers before recommending a product change" }
       ]
     },
@@ -57,20 +70,20 @@
     {
       "product": "Resumely (primary)",
       "model": "GPT-5.6 Sol / Codex - tool-heavy verification across analytics and repository evidence",
-      "title": "Close WP-32, then finish the WP-31 Hebrew ASO pack",
-      "why": "The scheduled D7 read remains at 0% and both product fixes under review are already merged. The highest-leverage Resumely work is now to close the current Hebrew channel experiment and make the next organic asset publish-ready.",
-      "prompt": "First close WP-32 with the 2026-07-05 to 2026-07-12 Israeli storefront and Facebook engagement readout. Then, in a separate story, draft the complete WP-31 Hebrew ASO asset pack for founder review. Do not publish or start paid acquisition."
+      "title": "Finish the WP-31 Hebrew ASO pack",
+      "why": "WP-32 is closed inconclusive and the D7 activation gate remains 0/73. The next approved distribution unit is the draft-only WP-31 asset pack; observed first sessions run as a separate founder research task before July 18.",
+      "prompt": "Execute WP-31 as one draft-only story: produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify claims against the canonical product-marketing file and gate RTL PDF-export claims on QA. Do not publish or start paid acquisition."
     },
     {
       "product": "RunSmart (maintenance-plus)",
       "model": "Sonnet tier - well-specified feature against an existing pattern (per GLOBAL-TOOL-USAGE model routing)",
-      "title": "First-run commitment + reminder: turn generated plans into first runs",
-      "why": "Today's mature-cohort read is still 0/13: one onboarded, one generated a plan, zero started or completed a run. WP-40 S1+S2 is merged, but no clean production HealthKit cohort exists yet, so avoid another product change until the evidence gate is met.",
-      "prompt": "Implement WP-20 (experiment rs-onboarding-001) in the RunSmart repo: after a training plan is generated, ask the user for a concrete first-run commitment (day + time, one tap options) and schedule a local notification reminder for it. Read the WP-20 packet and docs/agent-os/project-context.md first; follow the existing onboarding/notification patterns; instrument first_run_committed and reminder_fired PostHog events so the plan-to-run funnel can attribute movement. Coordinate with WP-40 (HealthKit activation, branch claude/wp40-healthkit-activation): branch from main only after WP-40 merges to avoid conflicting onboarding changes. Tests included; one story at a time."
+      "title": "Measure the shipped first-run commitment path",
+      "why": "WP-20 already shipped in 1.0.7 (21). Today's mature cohort is still 0/13, but only one user reached onboarding/plan, so another product change would be guesswork.",
+      "prompt": "Run a read-only ordered RunSmart funnel for clean physical App Store users: install → onboarding_completed → plan_generated → first_run_cta_viewed → first_run_cta_tapped (start_now/remind_me) → first_run_reminder_scheduled or run_started → run_completed. Exclude founder, QA, emulator, TestFlight and sideloaded people before counting. If the examined step has fewer than 10 eligible users, report the counts and defer product changes."
     }
   ],
   "growth": {
-    "note": "The latest growth review is logged for 2026-07-07. WP-31 (Hebrew ASO) and WP-32 (Facebook groups) are live inside their measurement windows but still need explicit experiment-log entries so their outcomes can be reviewed cleanly."
+    "note": "WP-32 closed inconclusive on 2026-07-12 with 3 reactions, 1 comment, no qualitative product feedback, and no available ASC lift read. WP-31 is the next approved draft-only organic asset; publishing remains founder-gated."
   },
   "traffic": [
     {
@@ -111,7 +124,7 @@
         ["Optimization completed within D7", 0],
         ["Export success within D7", 0]
       ],
-      "story": "Updated 07-12 from live PostHog project 270848: 73 mature founder/test-excluded first-seen people, 9 uploaded within D7, 0 completed an optimization within D7, and 0 exported within D7. The activation gate remains closed. The separate all-time iOS result still contains one confirmed real export; do not confuse that cumulative signal with the D7 cohort."
+      "story": "Updated 07-12 from live PostHog project 270848: 73 mature founder/test-excluded first-seen people, 9 uploaded within D7, 0 completed an optimization within D7, and 0 exported within D7. The activation gate remains closed. The cumulative clean-export count is under review: the manual one-export claim conflicts with the saved clean report and must not be cited until a reproducible query resolves it."
     },
     {
       "id": "runsmart",
@@ -131,16 +144,18 @@
     "rows": [
       { "metric": "Real D7 activation", "resumely": "0% (0/73)", "runsmart": "0% (0/13)", "bad": true },
       { "metric": "The wall", "resumely": "first seen→upload→optimization — 73 first seen, 9 uploaded, 0 optimized within D7", "runsmart": "install→onboarding and plan→run — 13 installed, 1 onboarded/planned, 0 ran" },
-      { "metric": "Target", "resumely": "≥40%", "runsmart": "≥30%" }
+      { "metric": "Target", "resumely": "≥20% by 2026-08-01", "runsmart": "≥30%" }
     ],
     "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
   },
   "clocks": [
     { "date": "2026-07-12", "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed", "state": "done" },
+    { "date": "2026-07-18", "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users", "state": "running" },
+    { "date": "2026-07-25", "what": "Resumely 1.4.1 definitive 14-day cohort read", "state": "running" },
     { "date": "2026-07-22", "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35", "state": "you" },
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
-    { "date": "2026-07-12", "what": "WP-32 FB groups — close the 7-day measurement window with ASC installs + manual engagement", "state": "you" },
+    { "date": "2026-07-12", "what": "WP-32 FB groups closed inconclusive — 3 reactions, 1 comment, ASC lift unavailable", "state": "done" },
     { "date": null, "when": "After her OpenAI move", "what": "Michal — set up on Codex, build Michal's OS (parked pending her Gemini→OpenAI migration, decided 2026-07-09)", "state": "waiting" }
   ],
   "knownUnknown": {
@@ -154,10 +169,11 @@
       "Garmin: brand attribution + Internal-Test-vs-Commercial tiering are well-grounded in Garmin's public docs (matches 3 real rejections). Fee structure for RunSmart specifically and the Gate 1-4 checklist are founder-confirmed directly with Marc via email/attachments (2026-07-08) — the 07-06 research pass's \"unconfirmed\" flag was based on Garmin's generic public docs, not RunSmart's actual terms with Marc; no further written confirmation needed."
     ],
     "ku": [
-      "Does FB-group / Hebrew-first posting actually move traffic?",
+      "Can the next Hebrew distribution test produce a measurable answer after WP-32 closed without attribution? It must use unique campaign links and verified analytics access before publishing.",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Does the merged web export-observability path reveal real web export failures after 5 real completers, or does it confirm the button works for organic users?",
       "Why does no runner start after a plan? The 2026-07-12 read still shows 1 of 13 mature installers reaching onboarding/plan and 0 starting a run; WP-40's clean production cohort is not readable yet.",
+      "Is Resumely's cumulative clean export count 0 or 1? The saved clean July 6 report says 0 while a later manual dashboard claim says 1; resolve with a reproducible query before citing it.",
       "Voice-coach flag: DECIDED 2026-07-09 — deferred (stays off), review at the 07-12 activation re-read or after WP-40 lands. No longer an open question."
     ],
     "uk": [
@@ -176,8 +192,8 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — close WP-32 today, then finish WP-31",
-      "body": "The D7 gate remains 0/73. Close the Facebook-groups experiment with ASC and engagement evidence today, then complete the approved Hebrew ASO asset pack. Traffic remains the binding constraint, but distribution work must produce measured learnings rather than more unlogged activity."
+      "title": "Resumely — finish WP-31 and observe five first sessions",
+      "body": "WP-32 is closed inconclusive and the D7 gate remains 0/73. Complete the approved draft-only Hebrew ASO pack as one story, while the founder separately observes five right-fit first sessions before the July 18 cohort gate. Do not open a new product story from percentages alone."
     },
     {
       "n": 2,
@@ -197,6 +213,6 @@
   ],
   "readouts": [
     { "app": "RunSmart iOS", "r1": "0% (0/12 mature, 07-05)", "r2": "0% (0/13 mature, 07-12)", "target": "≥30%", "wall": "13 installs → 1 onboarding/plan → 0 runs" },
-    { "app": "Resumely", "r1": "0% (0/37 mature, 07-05)", "r2": "0% (0/73 mature, 07-12)", "target": "≥40%", "wall": "73 first seen → 9 uploaded → 0 optimized/exported within D7" }
+    { "app": "Resumely", "r1": "0% (0/37 mature, 07-05)", "r2": "0% (0/73 mature, 07-12)", "target": "≥20% by 08-01", "wall": "73 first seen → 9 uploaded → 0 optimized/exported within D7" }
   ]
 }

@@ -1,12 +1,12 @@
 # WP-43 — ResumeBuilder Web Free ATS Checker Entry-Funnel Activation (Tier A)
 
-- **Status:** Ready for execution — PR open, not yet merged
+- **Status:** Shipped — all six Tier A changes merged in PR #115; measuring entry funnel
 - **Mode:** Builder
 - **Workflow pattern:** normal, one story at a time
 - **Input trust:** trusted local context, live product walkthrough evidence
 - **Project:** ResumeBuilder AI (Web), `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`
-- **PR:** [nadavyigal/new-ResumeBuilder-ai- #115](https://github.com/nadavyigal/new-ResumeBuilder-ai-/pull/115) on branch `docs/wp-43-free-ats-checker-activation`
-- **Full packet:** `tasks/work-pack-wp-43-free-ats-checker-entry-activation.md` in the product repo (on the PR branch)
+- **PR:** [nadavyigal/new-ResumeBuilder-ai- #115](https://github.com/nadavyigal/new-ResumeBuilder-ai-/pull/115), merged 2026-07-11
+- **Full packet:** `tasks/work-pack-wp-43-free-ats-checker-entry-activation.md` in the product repo
 - **Companion packet:** WP-44 (iOS upload activation) — same activation loop, web + iOS twin findings
 - **Success signal:** higher share of landers who reach `ats_checker_submitted`; fewer sessions that select a resume but never submit
 
@@ -33,4 +33,4 @@ Backend-dependent items (DOCX support on the free path, resume-only first score 
 
 ## Next step
 
-Execute via Codex or Cursor from the PR branch. Ties to the existing Resumely funnel re-read scheduled 2026-07-18 / 07-25 — new event `ats_checker_hero_cta_clicked` plus existing `ats_checker_submitted` volume are the measurement.
+Do not rebuild the six Tier A stories. Measure `ats_checker_hero_cta_clicked → ats_checker_submitted` and the existing input/submission path after enough founder/QA-excluded traffic exists. Keep Tier B DOCX and resume-only scoring deferred until the cheaper merged changes are measured.

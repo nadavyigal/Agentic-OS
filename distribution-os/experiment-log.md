@@ -10,7 +10,8 @@ Schema reference: `data/experiment-schema.md`. Template: `templates/experiment-c
 |---|---|---|---|---|---|---|---|---|
 | rs-aso-001 | RunSmart | ASO | Rewriting the App Store description with approved Garmin sentence and tighter opening will produce a clear, credible listing that converts at ≥35% (product page → install) after first 100 impressions | App Store product page → install conversion rate | 24 | awaiting review | — | — |
 | rs-analytics-001 | RunSmart | Analytics infra | Instrumenting onboarding_completed, plan_generated, and run_logged before launch will make the first 30 days of installs measurable, enabling data-driven iteration from week 2 | Activation funnel measurable in PostHog (all 3 events firing in production) | 22 | awaiting review | — | — |
-| rs-onboarding-001 | RunSmart | Onboarding | Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated | First-run activation rate: plan_generated → run_completed | 21 | queued — WP-20 created | — | — |
+| rs-onboarding-001 | RunSmart | Onboarding | Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated | Ordered clean funnel: plan_generated → first_run_cta_tapped → reminder/run_started → run_completed | 21 | shipped in 1.0.7 (21) — measuring clean cohort | 2026-06-30 | — |
+| rb-cro-001 | ResumeBuilder Web | CRO | The six WP-43 Tier A entry-funnel changes will increase the share of qualified landers who submit the free checker | `ats_checker_hero_cta_clicked → ats_checker_submitted` | unscored | shipped in PR #115 — measuring | 2026-07-11 | — |
 | rs-aso-003 | RunSmart | ASO | Post-launch ASO cleanup, first-review prompt, subtitle/keyword review, and screenshot captions will improve App Store product page → install conversion once baseline impressions exist | App Store product page → install conversion rate; rating count | 20 | reviewed — founder action needed | — | — |
 | rs-aso-002 | RunSmart | ASO | Adding approved A-variant caption overlays to all 5 screenshot slots will improve App Store conversion rate vs bare UI screenshots, measured at next keyword report | App Store product page → install conversion rate (compare pre/post in App Store Connect) | 18 | awaiting review | — | — |
 | rs-email-001 | RunSmart | Lifecycle email | Sending welcome + plan-nudge + 2-day no-show emails via Resend/Supabase will increase week-1 activation rate (plan generated → first run logged) vs no email baseline | Week-1 activation rate in PostHog (target ≥60% of plan-generated users log first run within 7 days) | 17 | awaiting product session | — | — |
@@ -23,6 +24,12 @@ Schema reference: `data/experiment-schema.md`. Template: `templates/experiment-c
 
 | ID | Product | Channel | Hypothesis | Metric | Score | Decided At |
 |---|---|---|---|---|---|---|
+
+## Evidence-Gated (Not Started)
+
+| ID | Product | Channel | Gate | Metric | Status |
+|---|---|---|---|---|---|
+| rb-cro-002 | Resumely iOS | CRO | On/after 2026-07-18: at least 3 of 5 relevant observed users lack a usable local resume file; otherwise target the measured downstream step | Share reaching first diagnosis without selecting a file; overall D7 export activation | WP-44 S2 gated — no UI/API work before gate |
 
 ## Done — Worked
 
