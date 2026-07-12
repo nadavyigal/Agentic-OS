@@ -3631,6 +3631,8 @@ def refresh(args: argparse.Namespace) -> int:
     else:
         print("- ground truth: local git + optional overrides only (no PostHog key)")
     refresh_portfolio_hq()
+    refresh_daily_note()
+    refresh_brain_map()
     return 0
 
 
@@ -3648,6 +3650,32 @@ def refresh_portfolio_hq() -> None:
     else:
         print("⚠️ portfolio HQ refresh failed (dashboard/portfolio-hq.html left as-is)")
         print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+
+
+def _run_vault_helper(script: Path, label: str) -> None:
+    """Run a founder-approved vault helper; never fail the refresh over it."""
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script)], capture_output=True, text=True, timeout=60
+        )
+    except subprocess.TimeoutExpired:
+        print(f"⚠️ {label} timed out (vault left as-is)")
+        return
+    if result.returncode == 0 and result.stdout.strip():
+        print(result.stdout.strip())
+    elif result.returncode != 0:
+        print(f"⚠️ {label} failed (vault left as-is)")
+        print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+
+
+def refresh_daily_note() -> None:
+    """Pre-fill today's Builder OS journal note (founder-approved 2026-07-12)."""
+    _run_vault_helper(ROOT / "scripts" / "agentic_os" / "daily_note.py", "daily note")
+
+
+def refresh_brain_map() -> None:
+    """Regenerate the vault Brain Map from real wikilinks (deterministic)."""
+    _run_vault_helper(ROOT / "scripts" / "brain_map" / "generate_brain_map.py", "brain map")
 
 
 def doctor() -> int:
@@ -3736,6 +3764,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("verify", help="verify dashboard JSON, fallback sync, links, and whitespace")
     sub.add_parser("test", help="run the parser unit tests")
     sub.add_parser("doctor", help="verify launchd health, refresh recency, and local toolchain")
+    sub.add_parser("brainmap", help="regenerate the vault Brain Map (clickable Excalidraw of real wikilinks)")
 
     clean_cmd = sub.add_parser(
         "clean",
@@ -3758,6 +3787,9 @@ def main(argv: list[str] | None = None) -> int:
         return verify()
     if args.command == "doctor":
         return doctor()
+    if args.command == "brainmap":
+        refresh_brain_map()
+        return 0
     if args.command == "serve":
         return serve(args.port, open_browser=not args.no_open)
     if args.command == "clean":
