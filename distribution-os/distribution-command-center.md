@@ -9,9 +9,9 @@ The single page that answers: what is this week about, what is shipping, what is
 - **Other product status**: RunSmart iOS — activation-gated, not distribution-gated; WP-40 HealthKit activation in progress, GTM volume on hold until plan→run activation improves
 - **Theme**: Log the WP-31 (Hebrew ASO) and WP-32 (Facebook-groups community) experiments into the distribution cycle — both were founder-approved/requested on 2026-07-04/05 but had not yet been reflected in `experiment-log.md` or `weekly-growth-review.md`.
 - **Top 3 experiments** (link to rows in `experiment-log.md`):
-  1. rb-he-comm-001 — Facebook-groups posting (WP-32); posted 2026-07-05 in 3 groups, 7-day measurement window closes 2026-07-12
-  2. rb-he-aso-001 — Hebrew ASO pass (WP-31); founder-approved, asset pack not yet drafted
-  3. rs-onboarding-001 (score 21) — WP-40 HealthKit activation now supersedes this as the live RunSmart activation lever; first-run commitment work stays queued behind it
+  1. rb-he-aso-001 — Hebrew ASO pass (WP-31); founder-approved, asset pack not yet drafted
+  2. rs-onboarding-001 (score 21) — WP-40 HealthKit activation now supersedes this as the live RunSmart activation lever; first-run commitment work stays queued behind it
+  3. rb-he-comm-001 — closed inconclusive 2026-07-12; 3 reactions and 1 comment across 3 posts, no qualitative feedback, ASC lift unknown; do not repeat without trackable links and verified analytics access
 - **Assets in flight**:
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md` — reviewed, needs founder approval before product work
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md` — reviewed, needs founder approval before ASC / app changes
@@ -73,6 +73,7 @@ Status values: `not started` · `planned` · `in progress` · `awaiting review` 
 - 2026-05-28: Distribution scaffold installed in both product repos — RunSmart iOS (missing scaffold files added; curated files preserved) and ResumeBuilder Web (full scaffold v1)
 - 2026-07-04: Founder approved `hebrew-first-playbook.md`; `rb-he-aso-001` promoted to WP-31 (Hebrew ASO pass)
 - 2026-07-05: Founder requested and manually posted `rb-he-comm-001` (WP-32, Facebook-groups) in 3 Israeli job-seeker/tech groups, ahead of WP-31 publishing (explicit sequencing override, noted in WP-32)
+- 2026-07-12: `rb-he-comm-001` closed inconclusive. The posts generated 3 visible reactions and 1 comment total; ASC install lift could not be read. Future community tests require unique per-group campaign links and analytics access confirmed before publishing.
 
 ## This Week's Done Definition
 

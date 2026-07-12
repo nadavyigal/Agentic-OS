@@ -18,7 +18,6 @@ Schema reference: `data/experiment-schema.md`. Template: `templates/experiment-c
 | rb-aso-002 | ResumeBuilder iOS | ASO | Producing a 5-slot screenshot brief with keyword-rich captions (indexed since 2025) and structured copy overlays will give the listing strong visual conversion signals from day one | App Store product page → install conversion rate (compare vs no-screenshot baseline) | 20 | approved — screenshots exported; PR #34 ready to merge; upload to ASC pending | — | — |
 | rb-dir-001 | ResumeBuilder iOS | Directory | Submitting Resumely to 5 AI/career directories (Futurepedia, TAAFT, Toolify, AI Tool Hunt, Launching Next) will produce initial backlinks and referral traffic to the web funnel that feeds App Store installs | Directory referral sessions in Search Console / Vercel; backlinks indexed in Google Search Console | 15 | awaiting review + App Store URL | — | — |
 | rb-he-aso-001 | ResumeBuilder iOS | Hebrew ASO | Publishing a Hebrew subtitle, keyword field, promo text, and 5 screenshot captions (Fit-First framing, per WP-31) will improve Israeli storefront App Store product page → install conversion within a 21-day measurement window | App Store Connect Israeli storefront install rate, before/after | unscored (see `hebrew-first-playbook.md` experiment menu) | queued — WP-31 ready, founder-approved, asset pack not yet drafted | — | — |
-| rb-he-comm-001 | ResumeBuilder iOS | Community (Facebook groups) | Founder posting a Hebrew, Fit-First-framed post in 3-5 Israeli job-seeker/tech Facebook groups (per WP-32) will produce a measurable Israeli storefront install lift plus qualitative engagement within a 7-day window | App Store Connect Israeli storefront installs before/after; manual engagement log (comments/reactions/replies) | unscored (see `hebrew-first-playbook.md` experiment menu) | measuring — posted 2026-07-05 in 3 groups (day 3/7 as of 2026-07-08); window closes 2026-07-12 | 2026-07-05 | 2026-07-12 |
 
 ## Queued (Approved, Not Started)
 
@@ -34,6 +33,7 @@ Schema reference: `data/experiment-schema.md`. Template: `templates/experiment-c
 
 | ID | Product | Channel | Hypothesis | Result Summary | Lesson Captured? |
 |---|---|---|---|---|---|
+| rb-he-comm-001 | ResumeBuilder iOS | Community (Facebook groups) | Founder posting a Hebrew, Fit-First-framed post in 3 Israeli job-seeker/tech Facebook groups will produce measurable Israeli storefront install lift plus qualitative engagement within 7 days | Closed inconclusive 2026-07-12: 3 visible reactions and 1 comment across 3 posts, no visible qualitative product feedback; ASC Israeli-storefront before/after unavailable, so lift remains unknown. The experiment failed to produce a measurable answer, not proof the channel cannot work. | Yes — require unique per-group campaign links, verified analytics access before publish, and a same-day manual log. See WP-32 and `hebrew-first-playbook.md`. |
 
 ## Rejected (Not Worth Running)
 

@@ -2,10 +2,14 @@
 
 - Status: current
 - Reviewed: 2026-07-12
-- Selected next action: **Close WP-32's seven-day Resumely Facebook-groups experiment with App Store Connect Israeli-storefront data and manual engagement evidence.**
-- Action type: manual-founder, followed by global-OS evidence logging
+- Selected next action: **Completed — WP-32 closed inconclusive on 2026-07-12; proceed to existing WP-31.**
+- Action type: global-OS evidence logging completed; next action is existing local workflow WP-31
 - Source: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json` (refreshed 2026-07-12 09:06), `dashboard/portfolio-hq-manual.json`, `executive-os/reviews/2026-07-12-activation-reread.md`, `executive-os/work-packets/WP-31-resumely-hebrew-aso-pass.md`, `executive-os/work-packets/WP-32-resumely-community-distribution-experiment.md`, `executive-os/EXECUTIVE-DECISIONS.md`, `PROMPTS/coo-operating-review.md`, and `executive-os/workflows/coo-operating-review.md`.
-- Revisit when: WP-32 has a logged verdict; then execute existing WP-31 as the next Resumely distribution milestone. Separately re-read the Resumely 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred, and RunSmart WP-42 after a clean production disclosure viewer exists.
+- Revisit when: Execute existing WP-31 as the next Resumely distribution milestone. Separately re-read the Resumely 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred, and RunSmart WP-42 after a clean production disclosure viewer exists.
+
+## Execution Update — 2026-07-12
+
+The selected action is complete. WP-32 closed inconclusive after an authenticated read-only check found 3 visible reactions and 1 comment across the three Facebook posts, with no visible qualitative product feedback. App Store Connect analytics was unavailable, so install lift remains unknown. The verdict and lesson are recorded in WP-32, `distribution-os/experiment-log.md`, and the Hebrew-first playbook. The next existing milestone is WP-31; no replacement packet is needed.
 
 ## 1. Operating Summary
 
