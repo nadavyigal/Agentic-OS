@@ -6,7 +6,7 @@ Project-level mirror of the rows in `distribution-os/experiment-log.md` that bel
 
 | ID | Channel | Hypothesis | Score | Status |
 |---|---|---|---|---|
-| rs-onboarding-001 | Onboarding | Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated | 21 | queued - WP-20 created |
+| rs-onboarding-001 | Onboarding | Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated | 21 | shipped in 1.0.7 (21) - measuring clean cohort |
 | rs-aso-003 | ASO | Post-launch ASO cleanup, first-review prompt, subtitle/keyword review, and screenshot captions will improve App Store product page to install conversion once baseline impressions exist | 20 | reviewed - founder action needed |
 
 ## Proposed (Hebrew-First Playbook - Created 2026-06-22)

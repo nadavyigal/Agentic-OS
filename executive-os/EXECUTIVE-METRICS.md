@@ -19,13 +19,14 @@ Data-source policy is reused from `../distribution-os/data/source-of-truth-polic
 
 | Metric | Current | Target | Source | Status |
 |---|---|---|---|---|
-| RunSmart iOS D7 activation (install → run_completed) | 0% (0/12 mature App Store cohort) | ≥30% | PostHog 171597, readout #2 2026-07-05 | Tracked (first true App Store cohort) |
-| Resumely D7 activation (first-seen → optimization_completed) | 0% confirmed real organic (0/37 mature; 2 raw D7 completers, both founder-attributed) | ≥40% | PostHog 270848, readout #2 2026-07-05 | Tracked |
-| RunSmart onboarding→plan funnel (D7) | onboarding 1/19 (5%), plan_generated 1/19 (5%), run_started 0 | — | PostHog 171597, readout #2 2026-07-05 | Tracked (mature cohort) |
-| Resumely all-time funnel (guest→export) | guest_mode 46 → uploaded 8 → optimized 2 → exported 0 (corrected 2026-07-05 — original readout cited the wrong upload event, `resume_upload_succeeded` instead of `resume_uploaded`) | — | PostHog 270848, readout #2 2026-07-05, corrected same day | Tracked — export is the bottleneck, not upload |
+| RunSmart iOS D7 activation (physical App Store install → `run_completed`) | 0% (0/13 mature clean cohort) | ≥30% | PostHog 171597, readout #3 2026-07-12 | Tracked |
+| Resumely D7 activation (first seen → `export_success`) | 0% (0/73 mature founder/test-excluded cohort) | ≥20% by 2026-08-01 | PostHog 270848, readout #3 2026-07-12 | Tracked; EXD-015 primary outcome |
+| RunSmart leading funnel (D7) | 13 installs → 1 onboarding → 1 plan → 0 run starts/completions | — | PostHog 171597, readout #3 2026-07-12 | Tracked; WP-20 shipped, measuring |
+| Resumely leading funnel (D7) | 73 first seen → 9 uploaded → 0 optimized → 0 exported | — | PostHog 270848, readout #3 2026-07-12 | Tracked; first seen→upload→optimization is current observed wall |
+| Resumely cumulative clean export | under review — manual dashboard says 1; saved 2026-07-06 clean report says 0 | — | needs reproducible PostHog query with the current exclusion contract | Contradictory; do not cite as confirmed |
 | Retention (D7 / D30) | unknown | TBD | PostHog | Needs Data |
 
-> Readout #2 caveats (2026-07-05, WP-17 closed): first true post-App-Store cohort for RunSmart (installs 2026-06-19–06-28, n=12), superseding the 2026-06-24 pre-launch TestFlight read (n=10). Both readouts exclude the founder's own account and QA/bot bursts per the founder-exclusion rule. RunSmart's break is plan→run, before Garmin is even relevant (consistent with EXD-015's non-wearable focus). Resumely's break was corrected same-day from "upload friction" to "optimization→export friction" — WP-18's scope should be re-checked against this before further diagnostic work. 7 immature installs/users per app still inside their D7 window; next re-read 2026-07-12. Full readout + correction: `executive-os/reviews/2026-07-05-activation-reread.md`. Prior baseline: vault `02-Products/*/Metrics/2026-06-24-*-d7-activation-readout.md`.
+> Readout #3 caveats (2026-07-12): RunSmart excludes emulator, TestFlight, sideloaded, and known founder identities. Resumely excludes internal testers plus the four established founder/QA/bot prefixes; its web-inclusive denominator may still contain unattributed automation because the virtual-bot property was unavailable. The result keeps gates closed but does not justify a new product story. Re-read the 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred. Full method: `executive-os/reviews/2026-07-12-activation-reread.md`.
 
 ## Financial Metrics
 

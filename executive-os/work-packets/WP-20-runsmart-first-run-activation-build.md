@@ -1,6 +1,6 @@
 # Work Packet WP-20 - RunSmart First-Run Activation Build
 
-- Status: Open
+- Status: Shipped — first-run CTA/reminder live in RunSmart 1.0.7 (21); measuring clean D7 cohort
 - Created: 2026-06-30
 - Source: `rs-onboarding-001`; RunSmart onboarding review `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md`; current founder note that a Report/Activity `device_name` fallback fix is already in progress
 - Workflow pattern: normal
@@ -10,6 +10,10 @@
 - Signal: RunSmart's current acquisition/activation data shows onboarding completion is healthy once started, but `plan_generated -> run_completed` is the immediate activation gap; a small iOS/backend build is already open, so the first-run intervention can be folded into the same ASC train if it stays small.
 - Memory update: RunSmart iOS `tasks/progress.md`, `tasks/session-log.md`, and `tasks/MEMORY.md`
 - Success signal: Report/Activity consistently displays a device name via activity row value or connection fallback, and a newly onboarded user gets a concrete first-run commitment/reminder path after plan generation.
+
+## Execution Update — 2026-07-12
+
+The first-run activation intervention is complete. RunSmart shipped the post-plan `Start now` / `Remind me` sheet, local first-run reminder, App Store review prompt gate, and `first_run_cta_viewed`, `first_run_cta_tapped`, and `first_run_reminder_scheduled` analytics in commits `78eed3e`, `6ed8b97`, and live release commit `81bd11b` (1.0.7 build 21). Do not rebuild this packet. Measure the ordered path through `run_completed`; require a clean cohort before recommending another product change.
 
 ## Owner Role
 

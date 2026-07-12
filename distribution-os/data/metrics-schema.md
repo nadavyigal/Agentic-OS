@@ -36,9 +36,11 @@ Examples:
 | `runsmart.acquisition.app_store_keyword_rank.{keyword}` | Daily ranking position for a tracked keyword | App Store Connect | integer (1 best) |
 | `runsmart.acquisition.web_landing_to_appstore_click_rate` | App Store CTA clicks / page views | PostHog | percentage |
 | `runsmart.activation.first_open_to_onboarding_complete` | % of first-opens completing onboarding | PostHog | percentage |
-| `runsmart.activation.first_plan_generated` | % of activated users generating a first plan | PostHog | percentage |
-| `runsmart.activation.first_run_logged` | % logging a first run within 7 days | PostHog | percentage |
+| `runsmart.activation.first_plan_generated` | % of new physical App Store installers generating a first plan; leading first-value metric | PostHog | percentage |
+| `runsmart.activation.first_run_committed` | % of plan-generated users choosing Start now or Remind me in the shipped first-run CTA; verified-value metric | PostHog | percentage |
+| `runsmart.activation.first_run_logged` | % of new physical App Store installers reaching `run_completed` within 7 days; primary activation | PostHog | percentage |
 | `runsmart.retention.week1_adherence` | Planned sessions completed / prescribed in week 1 | App backend | percentage |
+| `runsmart.retention.second_planned_workout_14d` | % of activated users completing a second planned workout within 14 days | App backend / PostHog | percentage |
 | `runsmart.retention.weekly_active_runners` | Distinct runners with a session in trailing 7 days | App backend / PostHog | count |
 | `runsmart.revenue.paid_users` | Active paid subscribers | App Store / Stripe | count |
 | `runsmart.revenue.mrr` | Monthly recurring revenue | App Store / Stripe | currency |
@@ -52,10 +54,12 @@ Examples:
 | `resumebuilder.acquisition.indexed_pages` | URLs in index | Search Console | count |
 | `resumebuilder.acquisition.signups` | Distinct accounts created | Supabase / PostHog | count |
 | `resumebuilder.acquisition.directory_referrals` | Signups attributed to a directory referrer | PostHog (utm) | count |
-| `resumebuilder.activation.first_resume_started` | % signups starting a resume | PostHog | percentage |
-| `resumebuilder.activation.first_resume_exported` | % signups exporting a resume | PostHog | percentage |
-| `resumebuilder.activation.signup_to_export_median` | Median time to first export | PostHog | hours |
-| `resumebuilder.retention.returned_within_14_days` | % activated users returning within 14 days | PostHog | percentage |
+| `resumebuilder.activation.first_resume_started` | % of new first-seen users supplying resume input and adding a job; setup diagnostic | PostHog | percentage |
+| `resumebuilder.activation.first_job_diagnosis` | % of new first-seen users reaching `free_ats_completed` or the first job-specific diagnosis; first-value metric | PostHog | percentage |
+| `resumebuilder.activation.first_optimized_viewed` | % of optimization completers reaching `optimized_viewed`; verified-value metric | PostHog | percentage |
+| `resumebuilder.activation.first_resume_exported` | % of new first-seen users reaching `export_success` within 7 days; primary activation | PostHog | percentage |
+| `resumebuilder.activation.signup_to_export_median` | Median time from first seen to first successful export | PostHog | hours |
+| `resumebuilder.retention.returned_within_14_days` | % of activated users returning or starting another job/resume cycle within 14 days | PostHog | percentage |
 | `resumebuilder.revenue.paid_conversion_rate` | Paid users / signups | Stripe + PostHog | percentage |
 | `resumebuilder.revenue.mrr` | MRR | Stripe | currency |
 

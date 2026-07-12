@@ -1,0 +1,23 @@
+{
+  "name": "founder-os",
+  "version": "0.1.0",
+  "description": "Evidence-backed operating workflows for a solo founder managing multiple products.",
+  "author": {
+    "name": "Nadav Yigal"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Founder OS",
+    "shortDescription": "Run portfolio reviews, activation reads, finance checks, and private HQ publishing.",
+    "longDescription": "Founder OS packages the repeatable Agentic OS workflows used to choose the next move, review product evidence, measure activation, inspect costs, and keep Portfolio HQ trustworthy.",
+    "developerName": "Nadav Yigal",
+    "category": "Productivity",
+    "capabilities": ["Portfolio review", "Analytics", "Private Sites"],
+    "defaultPrompt": [
+      "Run my founder morning brief.",
+      "What is the single best next move?",
+      "Audit Portfolio HQ for contradictions."
+    ],
+    "brandColor": "#7EC8EE"
+  }
+}

@@ -9,6 +9,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 import os
+import json
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -226,6 +227,39 @@ class TestDriftAndConfidence(unittest.TestCase):
 
 
 class TestOSRegistry(unittest.TestCase):
+    def test_private_plugins_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            plugin = root / "plugins" / "founder-os"
+            skills = plugin / "skills"
+            manifest = plugin / ".codex-plugin"
+            skills.mkdir(parents=True)
+            manifest.mkdir(parents=True)
+            (manifest / "plugin.json").write_text(
+                json.dumps(
+                    {
+                        "name": "founder-os",
+                        "version": "0.1.0",
+                        "description": "Founder operating workflows.",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (skills / "morning-brief" ).mkdir()
+            (skills / "morning-brief" / "SKILL.md").write_text(
+                "# Morning Brief\n\nChoose the next evidence-backed action.\n",
+                encoding="utf-8",
+            )
+
+            registry = cli.build_os_registry(root)
+
+            self.assertEqual(registry["plugins"][0]["name"], "founder-os")
+            self.assertEqual(registry["plugins"][0]["skillCount"], 1)
+            self.assertEqual(
+                registry["plugins"][0]["path"],
+                "plugins/founder-os/.codex-plugin/plugin.json",
+            )
+
     def test_side_projects_and_research_topics_are_discovered(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
@@ -1069,6 +1103,31 @@ class TestCleanupPolicy(unittest.TestCase):
 
     def test_dirty_agent_worktree_is_backed_up_even_if_merged(self):
         self.assertEqual(cli.decide_cleanup_action("claude/messy", True, True), "backup")
+
+
+class TestPortfolioHqRouting(unittest.TestCase):
+    def test_portfolio_hq_url_targets_new_dashboard(self):
+        self.assertEqual(
+            cli.portfolio_hq_url(8787),
+            "http://127.0.0.1:8787/portfolio-hq.html",
+        )
+
+    def test_daily_run_result_uses_portfolio_hq_url(self):
+        result = cli.build_daily_run_result(
+            status={
+                "summary": {},
+                "portfolioTrust": {"level": "actionable"},
+                "contradictions": [],
+                "projectHealth": [],
+                "planExecution": {"needsNextPacket": 0},
+            },
+            project_prompts=[],
+            command="./agentic-os morning",
+            port=8787,
+            checks_status="Not Run",
+        )
+
+        self.assertEqual(result["localhostUrl"], cli.portfolio_hq_url(8787))
 
 
 if __name__ == "__main__":

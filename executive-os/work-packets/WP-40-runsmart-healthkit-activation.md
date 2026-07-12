@@ -1,12 +1,20 @@
 # WP-40 — RunSmart: HealthKit Activation & Discoverability
 
-- **Status:** NOT STARTED
+- **Status:** Complete — S1–S4 captured; 1.0.8 (22) archived; clean production cohort waiting
 - **Created:** 2026-07-09
 - **Source:** EXD-021 (Garmin tri-track split + HealthKit redirect) — RunSmart's wearable-data engineering focus moves to HealthKit, since every iOS user already grants it and it's already built but essentially unused.
 - **Mode:** Builder
 - **Workflow pattern:** one story at a time, smallest shippable diff, device QA per story
 - **Related:** EXD-021, EXD-015 (non-wearable / Phone-Only-Runner focus), WP-39 S7 (RunSmart activation funnel — 0 `healthkit_sync_completed` in 14d), WP-26/27 (Garmin, now background-only)
 - **Success signal:** a real user can go from first launch to a connected, syncing HealthKit source without ever opening the Profile tab on their own initiative, and the existing `healthkit_disclosure_viewed → connect_tapped → sync_completed` funnel actually populates in PostHog with a real cohort.
+
+## Execution Update — 2026-07-12
+
+- S1+S2 merged to RunSmart `main` in PR #84 (`236dde0`): the skippable Apple Health onboarding step and automatic first import are shipped.
+- S3 physical-device evidence confirms Today displays Apple Health steps and active calories. The Recovery route is documented; its extra screenshot is optional.
+- S4 was re-run, but WP-42 still resolves to zero clean disclosure viewers after person-stable emulator/TestFlight/sideload exclusions. Mechanics are verified; no product verdict is valid.
+- The founder archived 1.0.8 (22) through Xcode Organizer on 2026-07-12. Release metadata, S3/S4 evidence, and the archived-build handoff are preserved in RunSmart commit `d9ce8fa` on `codex/wp40-release-closeout`. Next release steps are App Store Connect processing, TestFlight smoke, and Apple review; no further activation feature belongs in this packet.
+- Re-run WP-42 after at least one clean disclosure viewer exists; require 10 clean viewers before recommending a HealthKit change.
 
 ## Project
 

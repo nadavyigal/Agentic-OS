@@ -18,6 +18,7 @@ import json
 import re
 import subprocess
 import sys
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,6 +29,9 @@ MANUAL = DASHBOARD / "portfolio-hq-manual.json"
 STATUS = DASHBOARD / "status.json"
 USAGE = DASHBOARD / "usage.json"
 REGISTRY = DASHBOARD / "model-registry.json"
+SITE_DATA = DASHBOARD / "site-data"
+SITE_PROJECT_DATA = ROOT / "sites" / "portfolio-hq" / "data"
+SITE_AUDIENCES = ("founder", "team", "public")
 
 PACKET_DONE = {"closed", "completed", "superseded", "shipped", "posted"}
 DECISION_DONE = {"closed", "done", "superseded", "reconciled"}
@@ -36,6 +40,10 @@ DECISION_DONE = {"closed", "done", "superseded", "reconciled"}
 # filesystem paths (e.g. a client repo path). This dashboard ends up in a public repo, so strip
 # them from the auto layer before embedding rather than repeating them verbatim.
 ABSOLUTE_PATH = re.compile(r"/Users/[^`\"\n)]+")
+ENV_KEY = re.compile(
+    r"\b[A-Z][A-Z0-9_]{3,}_(?:KEY|SECRET|TOKEN|CLIENT_ID|CLIENT_SECRET|URL)\b"
+)
+EMAIL = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.I)
 
 
 def redact_paths(value):
@@ -46,6 +54,128 @@ def redact_paths(value):
     if isinstance(value, dict):
         return {k: redact_paths(v) for k, v in value.items()}
     return value
+
+
+def sanitize_site_value(value):
+    """Remove local and credential-shaped details from hostable payloads."""
+    if isinstance(value, str):
+        value = ABSOLUTE_PATH.sub("<local path redacted>", value)
+        value = ENV_KEY.sub("<configuration value>", value)
+        return EMAIL.sub("<email redacted>", value)
+    if isinstance(value, list):
+        return [sanitize_site_value(item) for item in value]
+    if isinstance(value, dict):
+        return {key: sanitize_site_value(item) for key, item in value.items()}
+    return value
+
+
+def site_display_text(value):
+    text = str(value or "").strip()
+    text = re.sub(
+        r";\s*see deferred-read entry above for query definition\.?$",
+        ".",
+        text,
+        flags=re.I,
+    )
+    return text
+
+
+def build_site_payload(payload, audience):
+    """Build an explicit, progressively narrower hosting contract."""
+    if audience not in SITE_AUDIENCES:
+        raise ValueError(f"unknown Site audience: {audience}")
+
+    auto = payload.get("auto", {})
+    manual = payload.get("manual", {})
+    products = []
+    for product in auto.get("health", []):
+        state = str(product.get("state", ""))
+        if audience == "public":
+            products.append(
+                {
+                    "name": product.get("name"),
+                    "availability": (
+                        "Live"
+                        if re.search(r"\blive\b|post-launch", state, re.I)
+                        else "In progress"
+                    ),
+                }
+            )
+            continue
+        products.append(
+            {
+                key: product.get(key)
+                for key in (
+                    "name",
+                    "state",
+                    "nextAction",
+                    "freshness",
+                    "evidenceDate",
+                    "dirty",
+                    "dirtyCount",
+                )
+            }
+        )
+
+    if audience == "public":
+        return sanitize_site_value(
+            {
+                "schemaVersion": 1,
+                "audience": audience,
+                "generatedAt": payload.get("generatedAt"),
+                "products": products,
+            }
+        )
+
+    site_payload = {
+        "schemaVersion": 1,
+        "audience": audience,
+        "generatedAt": payload.get("generatedAt"),
+        "sources": payload.get("sources", {}),
+        "trust": auto.get("trust", {}),
+        "consistencyIssues": auto.get("consistencyIssues", []),
+        "command": {
+            "bestNextAction": site_display_text(
+                auto.get("summary", {}).get("bestNextAction")
+            )
+        },
+        "products": products,
+        "numbers": {
+            "activation": manual.get("activationHeadline", {}),
+            "funnels": [
+                {
+                    key: funnel.get(key)
+                    for key in ("id", "name", "tag", "steps")
+                }
+                for funnel in manual.get("funnels", [])
+            ],
+        },
+        "clocks": [
+            {key: clock.get(key) for key in ("date", "when", "what", "state")}
+            for clock in manual.get("clocks", [])
+        ],
+        "workflows": [
+            {
+                key: workflow.get(key)
+                for key in ("id", "name", "cadence", "lastRan", "how")
+            }
+            for workflow in auto.get("workflows", [])
+        ],
+    }
+    if audience == "founder":
+        executive = auto.get("executive", {})
+        site_payload.update(
+            {
+                "executive": {
+                    "ceoReviewed": executive.get("ceoReviewed"),
+                    "top3": executive.get("top3", []),
+                },
+                "growth": auto.get("distribution", {}),
+                "models": auto.get("models", {}),
+                "usage": auto.get("usage", {}),
+            }
+        )
+    return sanitize_site_value(site_payload)
 
 
 def load(path):
@@ -83,6 +213,128 @@ def read_text(path):
         return path.read_text(encoding="utf-8")
     except OSError:
         return ""
+
+
+def string_values(value):
+    """Yield text leaves from a bounded JSON-like value."""
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, list):
+        for item in value:
+            yield from string_values(item)
+    elif isinstance(value, dict):
+        for item in value.values():
+            yield from string_values(item)
+
+
+def find_consistency_issues(auto, manual):
+    """Find contradictions between independently refreshed dashboard layers.
+
+    The checks intentionally target decision-driving claims, not historical notes.
+    Historical artifacts remain intact; the current dashboard is responsible for
+    warning when newer repository or metrics evidence supersedes them.
+    """
+    issues = []
+
+    resumely = next(
+        (f for f in manual.get("funnels", []) if f.get("id") == "resumely"),
+        {},
+    )
+    export_count = 0
+    for step in resumely.get("steps", []):
+        if len(step) >= 2 and "export" in str(step[0]).lower():
+            try:
+                export_count = max(export_count, int(step[1]))
+            except (TypeError, ValueError):
+                pass
+    decision_copy = " ".join(
+        string_values(
+            {
+                "suggestedSessions": manual.get("suggestedSessions", []),
+                "readouts": manual.get("readouts", []),
+            }
+        )
+    )
+    zero_export_claim = re.search(
+        r"(?:0|zero)\s+real\s+(?:people\s+have\s+ever\s+)?export",
+        decision_copy,
+        re.I,
+    )
+    if export_count > 0 and zero_export_claim:
+        issues.append(
+            {
+                "id": "resumely-export",
+                "source": "Command vs Numbers",
+                "message": (
+                    f"The Numbers layer records {export_count} real export, but a "
+                    "decision card still claims zero. Treat the card as superseded."
+                ),
+            }
+        )
+
+    live_versions = []
+    for project in auto.get("health", []):
+        if "resumely" not in str(project.get("name", "")).lower():
+            continue
+        match = re.search(
+            r"(\d+\.\d+(?:\.\d+)?)\s*(?:\([^)]*\))?\s*live",
+            str(project.get("state", "")),
+            re.I,
+        )
+        if match:
+            live_versions.append(match.group(1))
+    executive_copy = " ".join(string_values(auto.get("executive", {})))
+    stale_live_versions = [
+        version
+        for version in live_versions
+        if re.search(rf"submit\s+{re.escape(version)}\b", executive_copy, re.I)
+    ]
+    if stale_live_versions:
+        version = stale_live_versions[0]
+        issues.append(
+            {
+                "id": "resumely-live-version",
+                "source": "Products vs Executive",
+                "message": (
+                    f"Products says Resumely {version} is live, while the latest "
+                    "executive review still says to submit it. The review is historical."
+                ),
+            }
+        )
+
+    logged_review = auto.get("distribution", {}).get("lastGrowthReview")
+    growth_note = str(manual.get("growth", {}).get("note", ""))
+    note_match = re.search(r"last logged growth cycle.*?(\d{4}-\d{2}-\d{2})", growth_note, re.I)
+    if logged_review and note_match and note_match.group(1) < str(logged_review)[:10]:
+        issues.append(
+            {
+                "id": "growth-review-date",
+                "source": "Growth log vs Manual note",
+                "message": (
+                    f"The Growth log records {str(logged_review)[:10]}, while the "
+                    f"manual note still cites {note_match.group(1)}."
+                ),
+            }
+        )
+
+    return issues
+
+
+def build_consistency_trust(base_trust, issues):
+    trust = deepcopy(base_trust or {})
+    if not issues:
+        return trust
+    trust["level"] = "mixed"
+    trust["label"] = "Mixed freshness"
+    reasons = list(trust.get("reasons", []))
+    count = len(issues)
+    reasons.insert(
+        0,
+        f"{count} cross-layer contradiction{'s' if count != 1 else ''} "
+        f"{'needs' if count == 1 else 'need'} review before acting.",
+    )
+    trust["reasons"] = reasons
+    return trust
 
 
 def latest_vault_weekly_review():
@@ -365,6 +617,11 @@ def main():
     manual = load(MANUAL)
     registry = load_optional(REGISTRY)
 
+    auto = redact_paths(build_auto(status, usage, manual, registry))
+    consistency_issues = find_consistency_issues(auto, manual)
+    auto["consistencyIssues"] = consistency_issues
+    auto["trust"] = build_consistency_trust(auto.get("trust"), consistency_issues)
+
     payload = {
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "sources": {
@@ -372,7 +629,7 @@ def main():
             "usage": usage.get("generatedAt"),
             "manual": manual.get("asOf"),
         },
-        "auto": redact_paths(build_auto(status, usage, manual, registry)),
+        "auto": auto,
         "manual": manual,
     }
 
@@ -390,8 +647,23 @@ def main():
     if n != 1:
         sys.exit("ERROR: hq-data block not found in dashboard/portfolio-hq.html")
     HTML.write_text(new_html, encoding="utf-8")
+    SITE_DATA.mkdir(parents=True, exist_ok=True)
+    for audience in SITE_AUDIENCES:
+        site_payload = build_site_payload(payload, audience)
+        destination = SITE_DATA / f"portfolio-hq-{audience}.json"
+        destination.write_text(
+            json.dumps(site_payload, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        if audience == "founder" and SITE_PROJECT_DATA.parent.is_dir():
+            SITE_PROJECT_DATA.mkdir(parents=True, exist_ok=True)
+            (SITE_PROJECT_DATA / "portfolio-hq-founder.json").write_text(
+                json.dumps(site_payload, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
     print(f"- portfolio HQ: refreshed (dashboard/portfolio-hq.html, {len(payload['auto']['packets'])} open packets, "
-          f"{payload['auto']['stranded']['actionableCount']} stranded, {len(payload['auto']['decisions'])} open decisions)")
+          f"{payload['auto']['stranded']['actionableCount']} stranded, {len(payload['auto']['decisions'])} open decisions, "
+          f"{len(SITE_AUDIENCES)} Site audiences)")
 
 
 if __name__ == "__main__":

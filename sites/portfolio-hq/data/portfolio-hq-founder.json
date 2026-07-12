@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 1,
+  "audience": "founder",
+  "generatedAt": "2026-07-12 11:14 UTC",
+  "sources": {
+    "status": "2026-07-12 14:14",
+    "usage": "2026-07-10T11:01:59.711345+00:00",
+    "manual": "2026-07-12"
+  },
+  "trust": {
+    "level": "mixed",
+    "label": "Mixed freshness",
+    "reasons": [
+      "1 cross-layer contradiction needs review before acting.",
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: Resumely iOS."
+    ],
+    "refreshToday": true,
+    "needsNextPacketCount": 3,
+    "hygieneWarnings": [
+      "Uncommitted files in product repos: Resumely iOS.",
+      "Extra product worktrees retained for review: RunSmart iOS (1)."
+    ]
+  },
+  "consistencyIssues": [
+    {
+      "id": "resumely-live-version",
+      "source": "Products vs Executive",
+      "message": "Products says Resumely 1.4.1 is live, while the latest executive review still says to submit it. The review is historical."
+    }
+  ],
+  "command": {
+    "bestNextAction": "Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort."
+  },
+  "products": [
+    {
+      "name": "RunSmart iOS",
+      "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle)",
+      "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-12",
+      "dirty": false,
+      "dirtyCount": 0
+    },
+    {
+      "name": "Resumely iOS",
+      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
+      "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-11",
+      "dirty": true,
+      "dirtyCount": 1
+    },
+    {
+      "name": "RunSmart Web",
+      "state": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
+      "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-03",
+      "dirty": true,
+      "dirtyCount": 8
+    },
+    {
+      "name": "ResumeBuilder AI (Web)",
+      "state": "WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next",
+      "nextAction": "WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-03",
+      "dirty": true,
+      "dirtyCount": 2
+    },
+    {
+      "name": "Agentic OS",
+      "state": "Advanced OS patterns lean pilot",
+      "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-10",
+      "dirty": false,
+      "dirtyCount": 0
+    }
+  ],
+  "numbers": {
+    "activation": {
+      "rows": [
+        {
+          "metric": "Real D7 activation",
+          "resumely": "0% (0/73)",
+          "runsmart": "0% (0/13)",
+          "bad": true
+        },
+        {
+          "metric": "The wall",
+          "resumely": "first seen→upload→optimization — 73 first seen, 9 uploaded, 0 optimized within D7",
+          "runsmart": "install→onboarding and plan→run — 13 installed, 1 onboarded/planned, 0 ran"
+        },
+        {
+          "metric": "Target",
+          "resumely": "≥20% by 2026-08-01",
+          "runsmart": "≥30%"
+        }
+      ],
+      "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
+    },
+    "funnels": [
+      {
+        "id": "resumely",
+        "name": "Resumely",
+        "tag": "web + iOS · mature D7 cohort through 2026-07-12",
+        "steps": [
+          [
+            "First seen",
+            73
+          ],
+          [
+            "Resume uploaded within D7",
+            9
+          ],
+          [
+            "Optimization completed within D7",
+            0
+          ],
+          [
+            "Export success within D7",
+            0
+          ]
+        ]
+      },
+      {
+        "id": "runsmart",
+        "name": "RunSmart",
+        "tag": "iOS · mature organic D7 cohort through 2026-07-12",
+        "steps": [
+          [
+            "Mature installs",
+            13
+          ],
+          [
+            "Onboarding",
+            1
+          ],
+          [
+            "Plan generated",
+            1
+          ],
+          [
+            "Run started",
+            0
+          ],
+          [
+            "Run completed",
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  "clocks": [
+    {
+      "date": "2026-07-12",
+      "when": null,
+      "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-18",
+      "when": null,
+      "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users",
+      "state": "running"
+    },
+    {
+      "date": "2026-07-25",
+      "when": null,
+      "what": "Resumely 1.4.1 definitive 14-day cohort read",
+      "state": "running"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35",
+      "state": "you"
+    },
+    {
+      "date": "2026-08-01",
+      "when": null,
+      "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?",
+      "state": "running"
+    },
+    {
+      "date": null,
+      "when": "After you publish",
+      "what": "WP-31 Hebrew ASO — 21-day measurement window",
+      "state": "waiting"
+    },
+    {
+      "date": "2026-07-12",
+      "when": null,
+      "what": "WP-32 FB groups closed inconclusive — 3 reactions, 1 comment, ASC lift unavailable",
+      "state": "done"
+    },
+    {
+      "date": null,
+      "when": "After her OpenAI move",
+      "what": "Michal — set up on Codex, build Michal's OS (parked pending her Gemini→OpenAI migration, decided 2026-07-09)",
+      "state": "waiting"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "refresh",
+      "name": "Repo refresh (rebuilds this page)",
+      "cadence": "daily",
+      "lastRan": "2026-07-12 14:14",
+      "how": "Re-reads every repo and rebuilds all auto sections of this page."
+    },
+    {
+      "id": "metrics",
+      "name": "Live numbers refresh (PostHog layer)",
+      "cadence": "weekly",
+      "lastRan": "2026-07-12",
+      "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
+    },
+    {
+      "id": "ceo",
+      "name": "Weekly CEO review",
+      "cadence": "weekly",
+      "lastRan": "2026-07-09",
+      "how": "Reads the whole portfolio and picks the week's top 3. Output lands on the Executive tab."
+    },
+    {
+      "id": "coo",
+      "name": "COO operating review",
+      "cadence": "as needed",
+      "lastRan": "2026-07-12",
+      "how": "Answers 'what do I do next?' from current evidence when you feel lost between sessions."
+    },
+    {
+      "id": "growth",
+      "name": "Distribution growth review",
+      "cadence": "weekly",
+      "lastRan": "2026-07-07",
+      "how": "Logs the weekly growth cycle: what ran, what the numbers did, what to try next. Feeds the Growth tab."
+    },
+    {
+      "id": "vault",
+      "name": "Weekly review note (Obsidian)",
+      "cadence": "weekly",
+      "lastRan": "2026-07-05",
+      "how": "The human-readable week summary in the vault (07-Weekly-Reviews)."
+    },
+    {
+      "id": "cfo",
+      "name": "Finance review (CFO)",
+      "cadence": "monthly",
+      "lastRan": null,
+      "how": "Monthly money check. No logged run found yet — it has never produced a dated artifact."
+    },
+    {
+      "id": "usage",
+      "name": "Cost tracker (token spend)",
+      "cadence": "weekly",
+      "lastRan": "2026-07-10T11:01:59.711345+00:00",
+      "how": "Collects Claude Code token cost per project (Numbers tab)."
+    }
+  ],
+  "executive": {
+    "ceoReviewed": "2026-07-09",
+    "top3": [
+      {
+        "title": "RunSmart WP-40 — HealthKit activation, in progress",
+        "body": "Ship S1 (move the real Connect action out of Profile into the post-onboarding flow) through S4 (verify the `healthkit_disclosure_viewed → connect_tapped → sync_completed` funnel actually populates in PostHog). This is the concrete lever against the plan→run activation break ahead of 2026-07-12."
+      },
+      {
+        "title": "Resumely — submit 1.4.1, then run the approved distribution experiments",
+        "body": "Founder submits 1.4.1 (11) to ASC; separately, execute WP-31 (Hebrew ASO) and WP-32 (FB-groups posting) now that WP-30's measurement fixes are done — both are already founder-approved, just not logged into the distribution cycle."
+      },
+      {
+        "title": "Portfolio hygiene — 13 stranded items, including Agentic OS's own",
+        "body": "Triage `PROJECT-STATUS.md` Stranded Work, starting with Agentic OS's 9 uncommitted files and ResumeBuilder AI Web's `fix/posthog-expert-event-dedupe` (1 unpushed commit, 2026-07-09 — still fresh, push it before it joins the stale list)."
+      }
+    ]
+  },
+  "growth": {
+    "experiments": [
+      {
+        "id": "rs-aso-001",
+        "product": "RunSmart",
+        "channel": "ASO",
+        "hypothesis": "Rewriting the App Store description with approved Garmin sentence and tighter opening will produce a clear, credible listing that converts at ≥35% (product page → install) after first 100 impressions",
+        "score": "24",
+        "status": "awaiting review"
+      },
+      {
+        "id": "rs-analytics-001",
+        "product": "RunSmart",
+        "channel": "Analytics infra",
+        "hypothesis": "Instrumenting onboarding_completed, plan_generated, and run_logged before launch will make the first 30 days of installs measurable, enabling data-driven iteration from week 2",
+        "score": "22",
+        "status": "awaiting review"
+      },
+      {
+        "id": "rs-onboarding-001",
+        "product": "RunSmart",
+        "channel": "Onboarding",
+        "hypothesis": "Moving users from plan_generated to first run with a concrete first-run commitment and local reminder will improve first-run activation before D7 can be evaluated",
+        "score": "21",
+        "status": "shipped in 1.0.7 (21) — measuring clean cohort"
+      },
+      {
+        "id": "rb-cro-001",
+        "product": "ResumeBuilder Web",
+        "channel": "CRO",
+        "hypothesis": "The six WP-43 Tier A entry-funnel changes will increase the share of qualified landers who submit the free checker",
+        "score": "unscored",
+        "status": "shipped in PR #115 — measuring"
+      },
+      {
+        "id": "rs-aso-003",
+        "product": "RunSmart",
+        "channel": "ASO",
+        "hypothesis": "Post-launch ASO cleanup, first-review prompt, subtitle/keyword review, and screenshot captions will improve App Store product page → install conversion once baseline impressions exist",
+        "score": "20",
+        "status": "reviewed — founder action needed"
+      },
+      {
+        "id": "rs-aso-002",
+        "product": "RunSmart",
+        "channel": "ASO",
+        "hypothesis": "Adding approved A-variant caption overlays to all 5 screenshot slots will improve App Store conversion rate vs bare UI screenshots, measured at next keyword report",
+        "score": "18",
+        "status": "awaiting review"
+      },
+      {
+        "id": "rs-email-001",
+        "product": "RunSmart",
+        "channel": "Lifecycle email",
+        "hypothesis": "Sending welcome + plan-nudge + 2-day no-show emails via Resend/Supabase will increase week-1 activation rate (plan generated → first run logged) vs no email baseline",
+        "score": "17",
+        "status": "awaiting product session"
+      },
+      {
+        "id": "rb-aso-001",
+        "product": "ResumeBuilder iOS",
+        "channel": "ASO",
+        "hypothesis": "Writing the Resumely App Store listing (subtitle Option A, keywords field v1, description v1) will produce a conversion-optimised listing ready for first submission and establish a baseline for subsequent A/B iteration",
+        "score": "21",
+        "status": "approved — ready to file in ASC"
+      },
+      {
+        "id": "rb-aso-002",
+        "product": "ResumeBuilder iOS",
+        "channel": "ASO",
+        "hypothesis": "Producing a 5-slot screenshot brief with keyword-rich captions (indexed since 2025) and structured copy overlays will give the listing strong visual conversion signals from day one",
+        "score": "20",
+        "status": "approved — screenshots exported; PR #34 ready to merge; upload to ASC pending"
+      },
+      {
+        "id": "rb-dir-001",
+        "product": "ResumeBuilder iOS",
+        "channel": "Directory",
+        "hypothesis": "Submitting Resumely to 5 AI/career directories (Futurepedia, TAAFT, Toolify, AI Tool Hunt, Launching Next) will produce initial backlinks and referral traffic to the web funnel that feeds App Store installs",
+        "score": "15",
+        "status": "awaiting review + App Store URL"
+      },
+      {
+        "id": "rb-he-aso-001",
+        "product": "ResumeBuilder iOS",
+        "channel": "Hebrew ASO",
+        "hypothesis": "Publishing a Hebrew subtitle, keyword field, promo text, and 5 screenshot captions (Fit-First framing, per WP-31) will improve Israeli storefront App Store product page → install conversion within a 21-day measurement window",
+        "score": "unscored (see `hebrew-first-playbook.md` experiment menu)",
+        "status": "queued — WP-31 ready, founder-approved, asset pack not yet drafted"
+      }
+    ],
+    "lastGrowthReview": "2026-07-07",
+    "logTouched": "2026-07-12"
+  },
+  "models": {
+    "asOf": "2026-07-10",
+    "source": "July 2026 capability review (founder + ChatGPT draft). Pricing independently verified 2026-07-10: Claude via claude-api skill; GPT-5.6 / Grok 4.5 / Composer 2.5 via web search. All figures confirmed against the draft.",
+    "note": "Model selection is a RECOMMENDATION, not a rule. The `harness` column shows where each model runs natively, but routes are advisory — you can run any task in whichever tool you choose (Claude Code, Codex, Cursor, xAI) and pick a different model than the one suggested. Canonical policy: GLOBAL-TOOL-USAGE.md 'Model routing'.",
+    "harnesses": [
+      {
+        "id": "claude-code",
+        "name": "Claude Code",
+        "vendor": "Anthropic",
+        "utility": "Primary driver + orchestration",
+        "detail": "Native subagents (model: frontmatter), /model per session, workflows (opts.model per stage)."
+      },
+      {
+        "id": "codex",
+        "name": "Codex",
+        "vendor": "OpenAI",
+        "utility": "Tool-heavy autonomous execution",
+        "detail": "GPT-5.6 family. Multi-step repo tasks, terminal/CI, cross-repo, prod verification, cross-vendor review of Claude work."
+      },
+      {
+        "id": "cursor",
+        "name": "Cursor Composer",
+        "vendor": "Cursor",
+        "utility": "Cheap in-flow executor",
+        "detail": "Composer 2.5. Localized edits, boilerplate, mechanical refactors, UI iteration from an explicit plan."
+      },
+      {
+        "id": "xai",
+        "name": "Grok (xAI)",
+        "vendor": "xAI",
+        "utility": "Live-info + cheap parallel (optional)",
+        "detail": "Grok 4.5. Live web/X research, terminal-heavy work, parallel cheap exploration. Only if wired into the active harness."
+      }
+    ],
+    "models": [
+      {
+        "model": "Claude Fable 5",
+        "id": "claude-fable-5",
+        "vendor": "Anthropic",
+        "harness": "claude-code",
+        "in": 10.0,
+        "out": 50.0,
+        "ctx": "1M",
+        "tier": "frontier",
+        "role": "Exceptional escalation — architecture authority, unresolved failures, final reasoning reviewer."
+      },
+      {
+        "model": "Claude Opus 4.8",
+        "id": "claude-opus-4-8",
+        "vendor": "Anthropic",
+        "harness": "claude-code",
+        "in": 5.0,
+        "out": 25.0,
+        "ctx": "1M",
+        "tier": "high",
+        "role": "Architecture, ambiguous specs, hard debugging, difficult code review, large unfamiliar repos."
+      },
+      {
+        "model": "Claude Sonnet 5",
+        "id": "claude-sonnet-5",
+        "vendor": "Anthropic",
+        "harness": "claude-code",
+        "in": 3.0,
+        "out": 15.0,
+        "intro": "$2/$10 through 2026-08-31",
+        "ctx": "1M",
+        "tier": "mid",
+        "role": "Everyday Claude agent — medium features, detailed specs, first-pass review."
+      },
+      {
+        "model": "Claude Haiku 4.5",
+        "id": "claude-haiku-4-5",
+        "vendor": "Anthropic",
+        "harness": "claude-code",
+        "in": 1.0,
+        "out": 5.0,
+        "ctx": "200K",
+        "tier": "low",
+        "role": "Mechanical edits, status/progress sync, changelogs, classification."
+      },
+      {
+        "model": "GPT-5.6 Sol",
+        "id": "gpt-5.6-sol",
+        "vendor": "OpenAI",
+        "harness": "codex",
+        "in": 5.0,
+        "out": 30.0,
+        "ctx": "—",
+        "tier": "high",
+        "role": "Tool-heavy autonomous Codex tasks, terminal/CI failures, cross-repo, prod verification."
+      },
+      {
+        "model": "GPT-5.6 Terra",
+        "id": "gpt-5.6-terra",
+        "vendor": "OpenAI",
+        "harness": "codex",
+        "in": 2.5,
+        "out": 15.0,
+        "ctx": "—",
+        "tier": "mid",
+        "role": "Fallback tier only — not a default route (Luna or Sol usually win on cost/success)."
+      },
+      {
+        "model": "GPT-5.6 Luna",
+        "id": "gpt-5.6-luna",
+        "vendor": "OpenAI",
+        "harness": "codex",
+        "in": 1.0,
+        "out": 6.0,
+        "ctx": "—",
+        "tier": "low",
+        "role": "OpenAI high-volume default — summaries, docs, test gen, small fixes, first-pass impl."
+      },
+      {
+        "model": "Grok 4.5",
+        "id": "grok-4.5",
+        "vendor": "xAI",
+        "harness": "xai",
+        "in": 2.0,
+        "out": 6.0,
+        "cacheIn": 0.5,
+        "ctx": "500K",
+        "tier": "mid",
+        "role": "Feature impl, terminal-heavy, CI/build, live web/X research, cheap parallel exploration."
+      },
+      {
+        "model": "Composer 2.5 Standard",
+        "id": "composer-2.5-standard",
+        "vendor": "Cursor",
+        "harness": "cursor",
+        "in": 0.5,
+        "out": 2.5,
+        "ctx": "—",
+        "tier": "low",
+        "role": "Default cheap executor from an explicit plan — localized UI, boilerplate, cleanup."
+      },
+      {
+        "model": "Composer 2.5 Fast",
+        "id": "composer-2.5-fast",
+        "vendor": "Cursor",
+        "harness": "cursor",
+        "in": 3.0,
+        "out": 15.0,
+        "ctx": "—",
+        "tier": "low",
+        "role": "Same intelligence as Standard at 6x cost — only when interactive latency blocks UI iteration."
+      }
+    ],
+    "matrix": [
+      {
+        "task": "Classification / summaries / status sync / mechanical edits",
+        "primary": "Haiku 4.5",
+        "review": "— (or Composer Standard / GPT-5.6 Luna in-tool)"
+      },
+      {
+        "task": "Small, clearly-scoped edit from an explicit plan",
+        "primary": "Composer 2.5 Standard",
+        "review": "Sonnet 5"
+      },
+      {
+        "task": "Normal feature implementation",
+        "primary": "Sonnet 5",
+        "review": "Sonnet 5 (or Grok 4.5 / Codex Luna in-flow)"
+      },
+      {
+        "task": "Detailed spec with many instructions",
+        "primary": "Sonnet 5",
+        "review": "Opus 4.8"
+      },
+      {
+        "task": "Terminal / CI / build / dependency failure",
+        "primary": "Codex GPT-5.6 Sol",
+        "review": "Opus 4.8 (or Grok 4.5)"
+      },
+      {
+        "task": "Tool-heavy autonomous multi-step task",
+        "primary": "GPT-5.6 Sol",
+        "review": "Opus 4.8"
+      },
+      {
+        "task": "Architecture / hard debugging / correctness-critical",
+        "primary": "Opus 4.8",
+        "review": "Fable 5 (hardest only)"
+      },
+      {
+        "task": "Large unfamiliar repo comprehension",
+        "primary": "Opus 4.8",
+        "review": "GPT-5.6 Sol"
+      },
+      {
+        "task": "Code review — first pass",
+        "primary": "Sonnet 5",
+        "review": "—"
+      },
+      {
+        "task": "Difficult / high-risk code review",
+        "primary": "Opus 4.8",
+        "review": "cross-vendor (GPT-5.6 Sol)"
+      },
+      {
+        "task": "Live web / X research",
+        "primary": "Grok 4.5 (if available)",
+        "review": "Sol/Opus with web tools"
+      },
+      {
+        "task": "High-risk: auth / payments / DB / security / infra",
+        "primary": "Opus 4.8 or GPT-5.6 Sol",
+        "review": "mandatory cross-vendor review"
+      },
+      {
+        "task": "Exceptional escalation / highest-stakes reasoning",
+        "primary": "Fable 5",
+        "review": "GPT-5.6 Sol max"
+      }
+    ],
+    "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
+    "spendByFamily": {
+      "opus": {
+        "cost_usd": 2356.95,
+        "sessions": 44
+      },
+      "sonnet": {
+        "cost_usd": 2009.22,
+        "sessions": 125
+      },
+      "unknown": {
+        "cost_usd": 0.0,
+        "sessions": 12
+      }
+    },
+    "spendByTool": {
+      "claude-code": {
+        "cost_usd": 4366.16,
+        "sessions": 169
+      },
+      "codex": {
+        "cost_usd": 0.0,
+        "sessions": 12
+      }
+    },
+    "spendWindowDays": 30,
+    "spendGeneratedAt": "2026-07-10T11:01:59.711345+00:00"
+  },
+  "usage": {
+    "generatedAt": "2026-07-10T11:01:59.711345+00:00",
+    "windowDays": 30,
+    "totalCostUsd": 4366.16,
+    "byProject": {
+      "Builder OS Vault": 2090.41,
+      "Agentic OS": 1162.39,
+      "ResumeBuilder": 875.6,
+      "RunSmart": 192.53,
+      "Michal": 20.59,
+      "Remotion - video": 17.43,
+      "hungry-thompson-3aa380": 7.23
+    },
+    "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver."
+  }
+}

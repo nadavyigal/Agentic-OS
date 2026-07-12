@@ -19,11 +19,11 @@ is already a Tier 0 action or an Execution-mode packet.
    ./agentic-os morning
    ```
 
-2. Open the Command Center (localhost link from the command output).
+2. Open Portfolio HQ (localhost link from the command output).
 
 3. Read only the first two sections:
 
-   - **Suggested next actions** — choose one action. Each card says where to do
+   - **The one thing to do next** — choose one action. Each card says where to do
      it and includes a copy button when an agent prompt is useful.
    - **Active work packets** — copy one only if this section shows an active
      packet. It names the exact product repo where the packet should be pasted.

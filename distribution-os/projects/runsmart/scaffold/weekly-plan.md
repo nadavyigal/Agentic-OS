@@ -12,9 +12,9 @@ The current week's plan for RunSmart. Overwritten each week. Last week's plan is
 - Assets in flight:
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-onboarding-review/onboarding-review.md`
   - `distribution-os/projects/runsmart/scaffold/drafts/2026-06-20-rs-aso-003-listing-audit/aso-review.md`
+- Measuring:
+  - `rs-onboarding-001` shipped in RunSmart 1.0.7 (21) with the first-run Start now / Remind me path and local reminder. Measure the clean ordered path; do not rebuild WP-20.
 - Awaiting founder review:
-  - `rs-onboarding-001` has been promoted to `executive-os/work-packets/WP-20-runsmart-first-run-activation-build.md`.
-  - Confirm whether WP-20 should be folded into the current Report/Activity `device_name` fallback build and submitted as the next ASC train.
   - Confirm ASC metadata changes before any subtitle, keyword, screenshot, or Hebrew-locale updates.
   - Confirm whether first-review prompt timing should be first run completed or first plan week completed.
 - Awaiting external response:
@@ -28,7 +28,7 @@ The current week's plan for RunSmart. Overwritten each week. Last week's plan is
 | Channel | Status | Next step |
 |---|---|---|
 | ASO | reviewed | Founder reviews `rs-aso-003`; export ASC baseline before edits |
-| Onboarding | queued | Execute WP-20 in RunSmart iOS if this build remains small |
+| Onboarding | measuring | Read the shipped WP-20 funnel after a clean cohort exists; no new product change before evidence |
 | Landing pages | paused | Resume after ASO baseline and first-run activation path are clearer |
 | LinkedIn | draft | Existing launch post can be reviewed, but not the main bottleneck this week |
 | Facebook page | draft | Existing launch post can be reviewed, but not the main bottleneck this week |
