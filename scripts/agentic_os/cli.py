@@ -887,6 +887,7 @@ def collect_plans(path: Path) -> list[dict[str, Any]]:
 # Every `./agentic-os` command and a plain-language description of what it does.
 OS_COMMANDS = [
     ("./agentic-os morning", "The one command. Refreshes from every repo, surfaces all OS layers and plans, rebuilds the brief, updates the dashboard, verifies, and opens it on localhost."),
+    ("./agentic-os eod", "Evening bookend. Drafts today's End-of-Day close in the Builder OS daily note from today's git commits + Claude Code sessions (Cursor stays a manual line)."),
     ("./agentic-os refresh", "Rebuilds the dashboard data from local repos. No server."),
     ("./agentic-os serve", "Opens the current dashboard on localhost. No refresh."),
     ("./agentic-os verify", "Checks the dashboard data, links, and tests all line up."),
@@ -3678,6 +3679,29 @@ def refresh_brain_map() -> None:
     _run_vault_helper(ROOT / "scripts" / "brain_map" / "generate_brain_map.py", "brain map")
 
 
+def run_eod_close(force: bool = False) -> None:
+    """Draft today's end-of-day close in the Builder OS daily note (evening rail)."""
+    script = ROOT / "scripts" / "agentic_os" / "eod_close.py"
+    argv = [str(script), "--force"] if force else [str(script)]
+    _run_vault_helper_argv(argv, "eod close")
+
+
+def _run_vault_helper_argv(argv: list[str], label: str) -> None:
+    """Like _run_vault_helper but for a helper that takes CLI arguments."""
+    try:
+        result = subprocess.run(
+            [sys.executable, *argv], capture_output=True, text=True, timeout=60
+        )
+    except subprocess.TimeoutExpired:
+        print(f"⚠️ {label} timed out (vault left as-is)")
+        return
+    if result.returncode == 0 and result.stdout.strip():
+        print(result.stdout.strip())
+    elif result.returncode != 0:
+        print(f"⚠️ {label} failed (vault left as-is)")
+        print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+
+
 def doctor() -> int:
     issues: list[str] = []
     status = read_json(STATUS_JSON)
@@ -3766,6 +3790,9 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("doctor", help="verify launchd health, refresh recency, and local toolchain")
     sub.add_parser("brainmap", help="regenerate the vault Brain Map (clickable Excalidraw of real wikilinks)")
 
+    eod_cmd = sub.add_parser("eod", help="draft today's end-of-day close in the Builder OS daily note")
+    eod_cmd.add_argument("--force", action="store_true", help="redraft even if the End-of-Day block is already filled")
+
     clean_cmd = sub.add_parser(
         "clean",
         help="remove agent worktrees/branches (claude/*, codex/*); backup-first, dry run by default",
@@ -3789,6 +3816,9 @@ def main(argv: list[str] | None = None) -> int:
         return doctor()
     if args.command == "brainmap":
         refresh_brain_map()
+        return 0
+    if args.command == "eod":
+        run_eod_close(force=args.force)
         return 0
     if args.command == "serve":
         return serve(args.port, open_browser=not args.no_open)
