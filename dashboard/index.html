@@ -637,7 +637,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-12 14:12",
+      "lastRefresh": "2026-07-12 14:14",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -1486,11 +1486,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 11,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 10]",
-        "lastCommit": "2026-07-12 1c20785 dashboard: surface WP-32 closeout",
+        "branch": "main...origin/main [ahead 11]",
+        "lastCommit": "2026-07-12 9cc38ab feat: install portfolio activation playbook v2",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-12",
@@ -1688,8 +1688,8 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 10]",
+        "repoState": "Clean",
+        "branch": "main...origin/main [ahead 11]",
         "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1730,12 +1730,11 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 4,
+      "dirtyProjectCount": 3,
       "dirtyProjects": [
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)",
-        "Agentic OS"
+        "ResumeBuilder AI (Web)"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -4231,19 +4230,19 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 10,
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "synced": false,
+      "synced": true,
       "notes": [
-        "10 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Clean: on main, fully committed, no stray worktrees."
       ]
     },
     "portfolioTrust": {
-      "level": "refresh_required",
-      "label": "Refresh required",
+      "level": "caution",
+      "label": "Use caution",
       "reasons": [
-        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "10 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "Dirty shippable app repo: Resumely iOS."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
@@ -4253,7 +4252,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-12 14:12",
+      "generatedAt": "2026-07-12 14:14",
       "apps": [
         {
           "projectId": 171597,
@@ -4316,7 +4315,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-12 14:12",
+      "lastRunAt": "2026-07-12 14:14",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -4329,9 +4328,25 @@
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {
-          "title": "Restore dashboard trust",
-          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-          "type": "system"
+          "title": "Continue the COO-selected action",
+          "detail": "**Completed \u2014 WP-32 closed inconclusive on 2026-07-12; proceed to existing WP-31.**",
+          "type": "global-OS evidence logging completed; next action is existing local workflow WP-31",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Continue the latest COO-selected action. Read executive-os/COO-LATEST-REVIEW.md and the Source file named there. Execute only the selected next action. Do not publish, email, deploy, submit, or touch product code without explicit approval."
+        },
+        {
+          "title": "Use the Weekly CEO Review only for a priority choice",
+          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+          "type": "executive",
+          "where": "Agentic OS repo, in this Codex thread",
+          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+        },
+        {
+          "title": "Validate caution items before risky moves",
+          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+          "type": "system",
+          "where": "Affected product repo(s)",
+          "copyPrompt": null
         }
       ],
       "topBanner": null,

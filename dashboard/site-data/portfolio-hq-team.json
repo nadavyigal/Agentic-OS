@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 11:12 UTC",
+  "generatedAt": "2026-07-12 11:14 UTC",
   "sources": {
-    "status": "2026-07-12 14:12",
+    "status": "2026-07-12 14:14",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-12"
   },
@@ -12,8 +12,8 @@
     "label": "Mixed freshness",
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "10 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -75,8 +75,8 @@
       "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
-      "dirty": true,
-      "dirtyCount": 11
+      "dirty": false,
+      "dirtyCount": 0
     }
   ],
   "numbers": {
@@ -209,7 +209,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 14:12",
+      "lastRan": "2026-07-12 14:14",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
