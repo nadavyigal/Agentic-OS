@@ -586,7 +586,7 @@
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-07-11",
+  "generated": "2026-07-12",
   "fallbackStatus": {
     "summary": {
       "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Activation diagnostics + record-run polish follow-ups (WP-38 closed, WP-40 S1+S2 shipped): Re-run WP-42 after at least one build `1.0.7 (21)` disclosure viewer has no emulator/TestFlight/sideloaded evidence; wait for 10 clean disclosure viewers before product-change recommendations. S13 (live calories/steps) remains gated by HealthKit accuracy research. WP-35 remains founder-admin pending the accountant call \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -638,8 +638,8 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-11 22:40",
-      "command": "./agentic-os morning",
+      "lastRefresh": "2026-07-12 06:44",
+      "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/index.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -1481,11 +1481,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 7,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 2]",
-        "lastCommit": "2026-07-11 37a64c0 dashboard: record synced Portfolio HQ launch",
+        "branch": "main...origin/main [ahead 3]",
+        "lastCommit": "2026-07-11 e34a3e8 dashboard: refresh Portfolio HQ morning evidence",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-11",
@@ -1682,8 +1682,8 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
-        "branch": "main...origin/main [ahead 2]",
+        "repoState": "Dirty",
+        "branch": "main...origin/main [ahead 3]",
         "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1725,10 +1725,11 @@
       ],
       "openDecisionCount": 4,
       "blockedProjectCount": 4,
-      "dirtyProjectCount": 2,
+      "dirtyProjectCount": 3,
       "dirtyProjects": [
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -4224,25 +4225,26 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 3,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "actionable",
-      "label": "Actionable",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "4 strategic plan(s) need the next work packet (COO review) \u2014 plans are not abandoned."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 4,
       "hygieneWarnings": []
     },
     "groundTruth": {
-      "generatedAt": "2026-07-11 22:40",
+      "generatedAt": "2026-07-12 06:44",
       "apps": [
         {
           "projectId": 171597,
@@ -4304,32 +4306,23 @@
     },
     "contradictions": [],
     "dailyRunResult": {
-      "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-07-11 22:40",
-      "checksStatus": "Passed",
-      "checksCompletedAt": "2026-07-11 22:40",
-      "localhostUrl": "http://127.0.0.1:8787/index.html",
+      "lastCommand": "./agentic-os refresh",
+      "lastRunAt": "2026-07-12 06:44",
+      "checksStatus": "Pending verify",
+      "checksCompletedAt": "",
+      "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Clean",
       "targetBranch": "main...origin/main",
-      "readyForNextSession": true,
+      "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {
-          "title": "Run a COO operating review",
-          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
-          "type": "global-OS",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
-        },
-        {
-          "title": "Use the Weekly CEO Review only for a priority choice",
-          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-          "type": "executive",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+          "title": "Restore dashboard trust",
+          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+          "type": "system"
         }
       ],
       "topBanner": null,

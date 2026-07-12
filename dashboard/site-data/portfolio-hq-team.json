@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-11 19:40 UTC",
+  "generatedAt": "2026-07-12 03:44 UTC",
   "sources": {
-    "status": "2026-07-11 22:40",
+    "status": "2026-07-12 06:44",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-10"
   },
@@ -12,7 +12,8 @@
     "label": "Mixed freshness",
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
-      "4 strategic plan(s) need the next work packet (COO review) — plans are not abandoned."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 4,
@@ -71,8 +72,8 @@
       "nextAction": "Merge PR #25, then run ./agentic-os refresh once to confirm the full pipeline regenerates the new page end to end; run the second COO operating review to close the pilot's validation gate",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-10",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 7
     }
   ],
   "numbers": {
@@ -197,7 +198,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-11 22:40",
+      "lastRan": "2026-07-12 06:44",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

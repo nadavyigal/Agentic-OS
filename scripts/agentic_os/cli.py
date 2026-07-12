@@ -30,6 +30,7 @@ INDEX_HTML = DASHBOARD / "index.html"
 PROJECT_STATUS_HTML = DASHBOARD / "project-status.html"
 COMMAND_CENTER_HTML = DASHBOARD / "command-center.html"
 ORCHESTRATION_HTML = DASHBOARD / "orchestration.html"
+PORTFOLIO_HQ_PAGE = "portfolio-hq.html"
 
 
 PROJECT_ALIASES = {
@@ -2641,7 +2642,7 @@ def build_daily_run_result(
         "lastRunAt": now_label(),
         "checksStatus": checks_status,
         "checksCompletedAt": "",
-        "localhostUrl": f"http://127.0.0.1:{port}/index.html",
+        "localhostUrl": portfolio_hq_url(port),
         "recommendedPromptProject": recommended.get("project", "No project prompt available"),
         "recommendedPromptRole": recommended.get("role", "Project Operator"),
         "recommendedPrompt": recommended.get("copyPrompt", "Run ./agentic-os refresh to generate project prompts."),
@@ -3534,20 +3535,24 @@ def find_port(start: int) -> int:
     raise RuntimeError("No free localhost port found")
 
 
+def portfolio_hq_url(port: int) -> str:
+    return f"http://127.0.0.1:{port}/{PORTFOLIO_HQ_PAGE}"
+
+
 def serve(port: int, open_browser: bool = True) -> int:
     port = find_port(port)
-    # Serve from dashboard/ so the simple URL http://127.0.0.1:PORT/index.html works.
+    # Serve from dashboard/ so Portfolio HQ and its generated data stay together.
     # Content that lives outside dashboard/ (brainstorm, work packets) is read INTO status.json
     # by the parser and rendered inline, so there are no cross-directory links to break.
     os.chdir(DASHBOARD)
     handler = http.server.SimpleHTTPRequestHandler
-    url = f"http://127.0.0.1:{port}/index.html"
+    url = portfolio_hq_url(port)
 
     class ReusableTCPServer(socketserver.TCPServer):
         allow_reuse_address = True
 
     with ReusableTCPServer(("127.0.0.1", port), handler) as httpd:
-        print(f"Agentic OS Command Center: {url}")
+        print(f"Portfolio HQ: {url}")
         print("Press Ctrl-C to stop.")
         if open_browser:
             webbrowser.open(url)
@@ -3717,7 +3722,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="./agentic-os", description="Local Agentic OS command center")
     sub = parser.add_subparsers(dest="command", required=True)
 
-    morning = sub.add_parser("morning", help="refresh, verify, serve localhost, and open Command Center")
+    morning = sub.add_parser("morning", help="refresh, verify, serve localhost, and open Portfolio HQ")
     morning.add_argument("--port", type=int, default=8787)
     morning.add_argument("--no-open", action="store_true", help="serve without opening a browser")
 

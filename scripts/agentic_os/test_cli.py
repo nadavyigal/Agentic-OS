@@ -1105,5 +1105,13 @@ class TestCleanupPolicy(unittest.TestCase):
         self.assertEqual(cli.decide_cleanup_action("claude/messy", True, True), "backup")
 
 
+class TestPortfolioHqRouting(unittest.TestCase):
+    def test_portfolio_hq_url_targets_new_dashboard(self):
+        self.assertEqual(
+            cli.portfolio_hq_url(8787),
+            "http://127.0.0.1:8787/portfolio-hq.html",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
