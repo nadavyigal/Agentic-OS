@@ -129,6 +129,13 @@ def scan_vault():
             if (VAULT / rel) == OUT:
                 continue
             title = f[:-3]
+            # File-sync conflict copies ("CLAUDE 2.md" beside "CLAUDE.md") are
+            # shadows of a real note, not notes: mapping them produces phantom
+            # "[[Title 2]]" nodes, and a synced copy of this map itself embeds
+            # [[links]] to every note, turning it into a fake mega-hub.
+            m = re.fullmatch(r"(.+) \d+", title)
+            if m and os.path.exists(os.path.join(root, m.group(1) + ".md")):
+                continue
             notes[title] = rel
             txt = Path(root, f).read_text(errors="ignore")
             bodies[title] = txt
