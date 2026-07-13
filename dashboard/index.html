@@ -589,7 +589,7 @@
   "generated": "2026-07-13",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle): Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle) \u2014 live: Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "bestNextAction": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "mainBlockers": [
         "RunSmart iOS: None \u2014 awaiting Apple review",
@@ -611,7 +611,7 @@
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+        "RunSmart iOS: Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard",
         "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition"
       ],
       "next": [
@@ -637,8 +637,8 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-13 08:19",
-      "command": "./agentic-os morning",
+      "lastRefresh": "2026-07-13 13:50",
+      "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
         "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
@@ -751,8 +751,8 @@
       {
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
-        "state": "PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle)",
-        "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+        "state": "PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle) \u2014 live",
+        "nextAction": "Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard",
         "blockerCount": 1,
         "blockers": [
           "None \u2014 awaiting Apple review"
@@ -943,14 +943,14 @@
         ],
         "dirty": true,
         "dirtyCount": 4,
-        "extraWorktrees": 1,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-07-12 3b66bde release: bump to 1.0.8 (22) and record archived build awaiting review (#86)",
+        "extraWorktrees": 0,
+        "branch": "main...origin/main [ahead 1]",
+        "lastCommit": "2026-07-13 7b15df1 docs: log RunSmart iOS 1.0.8 (22) App Store approval and live status",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-12",
+        "freshestDate": "2026-07-13",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-12",
+        "evidenceDate": "2026-07-13",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
@@ -988,9 +988,9 @@
         ],
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-12 \u2014 Release archive from Xcode; version 1.0.8 (22)",
-        "parsedLastUpdated": "2026-07-12",
-        "parsedActiveStory": "ASC review / TestFlight smoke after processing"
+        "parsedLastValidation": "2026-07-13 \u2014 App Store Connect shows 1.0.8 (22) approved and live (founder-confirmed)",
+        "parsedLastUpdated": "2026-07-13",
+        "parsedActiveStory": "TestFlight/live smoke on 1.0.8 (22); re-run WP-42 once a clean post-release cohort exists"
       },
       {
         "id": "resumebuilder-ios",
@@ -1082,14 +1082,14 @@
             "kind": "spec"
           }
         ],
-        "dirty": true,
-        "dirtyCount": 1,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "branch": "codex/wp45-s0-measurement-contract",
-        "lastCommit": "2026-07-12 d53d091 feat: instrument WP-45 analyze intent baseline",
+        "branch": "claude/wp-31-draft-assets-5ef590...origin/claude/wp-31-draft-assets-5ef590",
+        "lastCommit": "2026-07-13 b761e80 docs: log WP-31 Hebrew ASO draft pass in progress.md",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-12",
+        "freshestDate": "2026-07-13",
         "evidenceGap": true,
         "evidenceDate": "2026-07-11",
         "evidenceTests": [],
@@ -1486,11 +1486,11 @@
             "kind": "plan"
           }
         ],
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-13 85033330 chore: restore portfolio dashboard trust",
+        "lastCommit": "2026-07-13 5af01698 log: 2026-07-13 intent entry for the Brain Map phantom-link investigation",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-13",
@@ -1556,8 +1556,8 @@
         "project": "RunSmart iOS",
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
-        "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+        "branch": "main...origin/main [ahead 1]",
+        "nextAction": "Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
         "evidence": [
@@ -1592,14 +1592,14 @@
           "docs/specs/demo-mode-simulator-recording.md",
           ".agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle). Next action: Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard. Known blockers: None \u2014 awaiting Apple review. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle) \u2014 live. Next action: Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard. Known blockers: None \u2014 awaiting Apple review. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
-        "repoState": "Dirty",
-        "branch": "codex/wp45-s0-measurement-contract",
+        "repoState": "Clean",
+        "branch": "claude/wp-31-draft-assets-5ef590...origin/claude/wp-31-draft-assets-5ef590",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -1688,7 +1688,7 @@
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
-        "repoState": "Clean",
+        "repoState": "Dirty",
         "branch": "main...origin/main",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
@@ -1712,7 +1712,7 @@
     ],
     "executiveOverview": {
       "headline": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
-      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle): Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "portfolioState": "RunSmart iOS \u2014 PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle) \u2014 live: Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -1733,9 +1733,9 @@
       "dirtyProjectCount": 4,
       "dirtyProjects": [
         "RunSmart iOS",
-        "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "blockedProjects": [
         "RunSmart iOS",
@@ -4273,36 +4273,34 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 1,
       "extraWorktrees": 0,
-      "synced": true,
+      "synced": false,
       "notes": [
-        "Clean: on main, fully committed, no stray worktrees."
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ]
     },
     "portfolioTrust": {
-      "level": "caution",
-      "label": "Use caution",
+      "level": "refresh_required",
+      "label": "Refresh required",
       "reasons": [
-        "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-        "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
-        "Evidence gap after latest commit: Resumely iOS."
+        "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
       "hygieneWarnings": [
-        "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-        "Extra product worktrees retained for review: RunSmart iOS (1)."
+        "Uncommitted files in product repos: RunSmart iOS."
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-13 08:19",
+      "generatedAt": "2026-07-13 13:50",
       "apps": [
         {
           "projectId": 171597,
           "appId": "runsmart-ios",
           "app": "RunSmart",
-          "declaredState": "PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle)",
+          "declaredState": "PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle) \u2014 live",
           "git": {
             "available": true,
             "tag": "pre-consolidation-r2",
@@ -4331,7 +4329,7 @@
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 44,
+          "liveUsers7d": 43,
           "source": "api"
         }
       ],
@@ -4358,39 +4356,23 @@
     },
     "contradictions": [],
     "dailyRunResult": {
-      "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-07-13 08:19",
-      "checksStatus": "Passed",
-      "checksCompletedAt": "2026-07-13 08:19",
+      "lastCommand": "./agentic-os refresh",
+      "lastRunAt": "2026-07-13 13:50",
+      "checksStatus": "Pending verify",
+      "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
-      "targetRepoState": "Dirty",
-      "targetBranch": "codex/wp45-s0-measurement-contract",
-      "readyForNextSession": true,
+      "targetRepoState": "Clean",
+      "targetBranch": "claude/wp-31-draft-assets-5ef590...origin/claude/wp-31-draft-assets-5ef590",
+      "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {
-          "title": "Run a COO operating review",
-          "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
-          "type": "global-OS",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
-        },
-        {
-          "title": "Use the Weekly CEO Review only for a priority choice",
-          "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
-          "type": "executive",
-          "where": "Agentic OS repo, in this Codex thread",
-          "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
-        },
-        {
-          "title": "Validate caution items before risky moves",
-          "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-          "type": "system",
-          "where": "Affected product repo(s)",
-          "copyPrompt": null
+          "title": "Restore dashboard trust",
+          "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
+          "type": "system"
         }
       ],
       "topBanner": null,

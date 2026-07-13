@@ -1,25 +1,23 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-13 05:19 UTC",
+  "generatedAt": "2026-07-13 10:50 UTC",
   "sources": {
-    "status": "2026-07-13 08:19",
+    "status": "2026-07-13 13:50",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-13"
   },
   "trust": {
-    "level": "caution",
-    "label": "Use caution",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
-      "Evidence gap after latest commit: Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (1)."
+      "Uncommitted files in product repos: RunSmart iOS."
     ]
   },
   "consistencyIssues": [],
@@ -29,10 +27,10 @@
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle)",
-      "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+      "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle) — live",
+      "nextAction": "Live smoke pass on 1.0.8 (22) from the App Store build; re-run WP-42 on a clean 1.0.8 cohort after users onboard",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-12",
+      "evidenceDate": "2026-07-13",
       "dirty": true,
       "dirtyCount": 4
     },
@@ -42,8 +40,8 @@
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
-      "dirty": true,
-      "dirtyCount": 1
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "RunSmart Web",
@@ -69,8 +67,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 12
     }
   ],
   "numbers": {
@@ -203,7 +201,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-13 08:19",
+      "lastRan": "2026-07-13 13:50",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
