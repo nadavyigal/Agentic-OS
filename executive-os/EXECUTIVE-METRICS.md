@@ -62,7 +62,7 @@ Data-source policy is reused from `../distribution-os/data/source-of-truth-polic
 | Metric | Current | Source | Status |
 |---|---|---|---|
 | Open high-severity risks | see `EXECUTIVE-DASHBOARD.md` Risk Board | manual | Tracked |
-| Apps blocked on approval | Resumely v1.1 (5) in review; RunSmart live | App Store Connect / Resumely iOS tasks/progress.md | Tracked |
+| Apps blocked on approval | 0; RunSmart 1.0.8 (22) and Resumely 1.4.1 (11) live | Founder-confirmed App Store Connect status, 2026-07-13; dashboard manual evidence layer | Tracked |
 
 ## Monthly CFO Review Log
 

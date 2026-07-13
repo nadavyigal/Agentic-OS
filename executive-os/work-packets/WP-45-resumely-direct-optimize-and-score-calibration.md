@@ -1,6 +1,6 @@
 # WP-45 — Resumely Direct Optimize + Trustworthy Score Calibration
 
-- **Status:** Ready
+- **Status:** In Progress
 - **Created:** 2026-07-12
 - **Mode:** Grower
 - **Workflow pattern:** normal, one story at a time; web contract before score UI; cross-vendor review for the scorer change
@@ -114,6 +114,8 @@ Rules:
 | S6 — Release, readout, and cleanup | iOS + PostHog | Maintainer | Claude Fable 5 or GPT-5.6 Sol | Verify activation lift and remove dead Fit-first code |
 
 ### S0 — Measurement contract and baseline
+
+**Implemented 2026-07-12:** Resumely iOS branch `codex/wp45-s0-measurement-contract`, commit `d53d091`. The authenticated Home and Tailor intent points now emit `analysis_cta_tapped` with the stable envelope and `flow_version=fit_gate_v1`; existing Fit events carry flow/score version and the completion event carries a bounded score bucket. The privacy-safe 60-day baseline is saved in the product repo at `docs/qa/reports/wp45-s0-measurement-baseline-2026-07-12.md`. Focused analytics tests passed 13/13, the Debug simulator build succeeded, and `git diff --check` passed. The baseline is underpowered, with 6 clean people and no clean downstream intent events, so S1 must not claim lift until the packet's cohort gate is met. The branch is local and unpushed as of the 2026-07-13 Agentic OS refresh; preserve and review it before S1.
 
 Add or verify these privacy-safe fields on the existing iOS analytics envelope before changing the flow:
 

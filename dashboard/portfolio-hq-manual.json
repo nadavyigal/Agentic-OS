@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-07-12",
+  "asOf": "2026-07-13",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
@@ -23,6 +23,8 @@
       "items": [
         { "tone": "done", "text": "Primary metrics locked: RunSmart physical install → run_completed within D7; Resumely first seen → export_success within D7" },
         { "tone": "done", "text": "WP-20 and WP-43 are shipped/measuring; WP-44 S1 is blocked and dropped; paste-text is gated behind July 18 plus a 3-of-5 observation signal" },
+        { "tone": "run", "text": "Founder is actively developing Playbook V2 and the distribution ranking with Claude Code; preserve that work as the current planning lane" },
+        { "tone": "done", "text": "WP-45 S0 measurement contract and baseline implemented on Resumely iOS branch codex/wp45-s0-measurement-contract at d53d091; S1 is next after the branch is pushed and reviewed" },
         { "tone": "wait", "text": "Cumulative clean Resumely export remains under review because the manual one-export claim conflicts with the saved clean report" },
         { "tone": "run", "text": "Next gates: five observed Resumely sessions, July 18 minimum cohort read, July 25 definitive read, August 1 CEO/COO decision" }
       ]
@@ -30,13 +32,13 @@
     {
       "id": "wp40",
       "name": "RunSmart WP-40 / Apple Health activation",
-      "pill": "1.0.8 (22) ARCHIVED — COHORT WAITING",
+      "pill": "1.0.8 (22) LIVE — COHORT WAITING",
       "tone": "wait",
-      "standing": "WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84. S3 physical-device evidence and S4's post-merge read are complete, and the founder archived 1.0.8 (22) on 2026-07-12. WP-42 still has zero clean disclosure viewers after exclusions, so no HealthKit product-change verdict is valid yet.",
+      "standing": "RunSmart 1.0.8 (22) is live on App Store Connect, founder-confirmed 2026-07-13. WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84; S3 physical-device evidence and S4's post-merge read are complete. WP-42 still has zero clean disclosure viewers after exclusions, so no HealthKit product-change verdict is valid yet.",
       "items": [
         { "tone": "done", "text": "Skippable Apple Health onboarding step added (OnboardingView.swift), reusing the existing HealthKit connection route and analytics; Connect/Skip accessibility identifiers wired" },
         { "tone": "done", "text": "TDD red state reproduced then final focused test passed (1/1); debug simulator build passed; Health prompt appeared during onboarding; Skip advanced to Ready; Connect followed the real HealthKit path; git diff --check passed; only known warning is a pre-existing deprecated HKWorkout initializer" },
-        { "tone": "done", "text": "S1–S4 closeout and the 1.0.8 (22) archived-build handoff are preserved in RunSmart commit d9ce8fa" },
+        { "tone": "done", "text": "S1–S4 closeout and the 1.0.8 (22) release handoff are preserved in RunSmart commit d9ce8fa; founder confirmed the build live on 2026-07-13" },
         { "tone": "wait", "text": "Re-run WP-42 after at least one clean production disclosure viewer exists; wait for 10 clean viewers before recommending a product change" }
       ]
     },
@@ -160,7 +162,7 @@
   ],
   "knownUnknown": {
     "kk": [
-      "Both apps passed App Store review and are live (confirmed 07-07): RunSmart 1.0.7(21), Resumely 1.3(8).",
+      "Both current releases are live on App Store Connect, founder-confirmed 2026-07-13: RunSmart 1.0.8 (22) and Resumely 1.4.1 (11).",
       "Both remain at 0% real D7 activation on the 2026-07-12 mature read: Resumely 0/73; RunSmart 0/13.",
       "Resumely D7 wall = first seen→upload→optimization: 73 first seen, 9 uploaded, 0 optimized, 0 exported. PR #114 web export observability is merged; wait for 5 real web completers before reading that new path.",
       "RunSmart wall = install→onboarding and plan→run: 13 mature installs, 1 onboarded/planned, 0 ran. WP-40 S1+S2 merged via PR #84; WP-42 has no clean production disclosure cohort yet.",

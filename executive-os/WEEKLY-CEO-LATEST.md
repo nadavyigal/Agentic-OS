@@ -8,9 +8,11 @@
 - Important execution update: WP-40 (RunSmart HealthKit activation & discoverability) opened 2026-07-09 from EXD-021 and is now in progress per founder confirmation — not yet reflected in `dashboard/status.json` or `tasks/progress.md` since it just started. Portfolio HQ (`dashboard/portfolio-hq.html`) was refreshed the same day (14:44) and is current.
 - Sources: `dashboard/status.json`, `DASHBOARD.md`, `PROJECT-STATUS.md`, `executive-os/EXECUTIVE-DECISIONS.md`, `executive-os/EXECUTIVE-METRICS.md`, `executive-os/work-packets/WP-40-runsmart-healthkit-activation.md`, `distribution-os/weekly-growth-review.md`, `dashboard/portfolio-hq.html`.
 
+> Status reconciliation, 2026-07-13: the founder confirmed RunSmart 1.0.8 (22) and Resumely 1.4.1 (11) are live on App Store Connect. The release actions below are historical. Current execution is Portfolio Activation Playbook V2 plus distribution ranking in Claude Code; WP-45 S0 is implemented on Resumely iOS branch `codex/wp45-s0-measurement-contract` at `d53d091`.
+
 ## Operating Read
 
-Both apps are still at 0% real activation (readout #2, 2026-07-05), and the 2026-07-12 re-read is three days out — inside the EXD-015 30-day window (closes 2026-08-01, ~40% elapsed). The one new, concrete move this week is WP-40: RunSmart's HealthKit integration is already built and instrumented but unreachable outside the Profile tab, and EXD-021 already redirected engineering focus there over Garmin (which is now gated on an external business-registration timeline with no fixed date). Resumely's lever is still founder action (submit 1.4.1) plus two approved-but-unlogged distribution experiments (WP-31 Hebrew ASO, WP-32 FB-groups). Separately, portfolio hygiene is compounding: 13 stranded-work items across 5 repos, including Agentic OS's own 9 uncommitted files — the OS that tracks stranded work is itself contributing to the list.
+Both apps remain at 0% real activation on the newer 2026-07-12 readout, while both current releases are live. The release gate is closed. The current operating lane is Portfolio Activation Playbook V2: preserve the founder's in-progress distribution ranking, land WP-45 S0 safely, and wait for the defined cohort gates before claiming product lift.
 
 Evidence: `DASHBOARD.md` Executive Summary, Project Health, Stranded Work; `dashboard/status.json` `portfolioTrust`; `EXECUTIVE-METRICS.md` Product Metrics; `WP-40` packet file.
 
@@ -26,7 +28,7 @@ Evidence: `DASHBOARD.md` Executive Summary, Project Health, Stranded Work; `dash
 ## Top 3 Priorities
 
 1. **RunSmart WP-40 — HealthKit activation, in progress.** Ship S1 (move the real Connect action out of Profile into the post-onboarding flow) through S4 (verify the `healthkit_disclosure_viewed → connect_tapped → sync_completed` funnel actually populates in PostHog). This is the concrete lever against the plan→run activation break ahead of 2026-07-12. Source: `WP-40` packet, EXD-021, `EXECUTIVE-METRICS.md`.
-2. **Resumely — submit 1.4.1, then run the approved distribution experiments.** Founder submits 1.4.1 (11) to ASC; separately, execute WP-31 (Hebrew ASO) and WP-32 (FB-groups posting) now that WP-30's measurement fixes are done — both are already founder-approved, just not logged into the distribution cycle. Source: `DASHBOARD.md`, vault 2026-07-05 weekly review, `distribution-os/weekly-growth-review.md`.
+2. **Resumely — continue the ranked distribution lane and WP-45.** Version 1.4.1 (11) is live. Preserve the Claude Code distribution-ranking work, complete the approved WP-31 draft asset, and move from WP-45 S0 to S1 only after S0 is pushed and reviewed. Source: founder confirmation 2026-07-13, `dashboard/portfolio-hq-manual.json`, WP-45, and the Resumely iOS progress file.
 3. **Portfolio hygiene — 13 stranded items, including Agentic OS's own.** Triage `PROJECT-STATUS.md` Stranded Work, starting with Agentic OS's 9 uncommitted files and ResumeBuilder AI Web's `fix/posthog-expert-event-dedupe` (1 unpushed commit, 2026-07-09 — still fresh, push it before it joins the stale list). Source: `PROJECT-STATUS.md` Stranded Work, `DASHBOARD.md`.
 
 ## Key Decisions
@@ -56,7 +58,7 @@ Standing recommendations:
 | Priority | Owner/workflow | Task |
 |---|---|---|
 | WP-40 HealthKit activation | RunSmart iOS build | S1-S4 per packet; device QA screenshots per story; report per completion gate. |
-| Resumely 1.4.1 submission | Founder | Submit build to ASC; no agent action until submitted. |
+| Resumely 1.4.1 release | Closed | Live on ASC, founder-confirmed 2026-07-13; no submission action remains. |
 | WP-31/WP-32 distribution | Distribution / COO OS | Execute Hebrew ASO + FB-groups experiments; log the cycle to `weekly-growth-review.md`. |
 | Portfolio hygiene | COO OS | Triage 13 stranded items; push the fresh ResumeBuilder AI Web commit first, then work through the older branches. |
 | 2026-07-12 activation re-read | Analytics / CEO OS | Re-pull RunSmart + Resumely funnels; this is the next gate before any monetization or GTM-volume decision. |
@@ -72,7 +74,7 @@ Standing recommendations:
 ## Recommended Next Actions
 
 1. RunSmart: continue WP-40 S1-S4; confirm exact onboarding placement with founder if not already decided.
-2. Resumely: founder submits 1.4.1 (11); Distribution runs WP-31/WP-32 and logs the cycle.
+2. Resumely: preserve the in-progress distribution ranking, finish the WP-31 draft asset, and push/review WP-45 S0 before S1.
 3. Agentic OS: push/triage the 13 stranded items, starting with the 9 uncommitted files in this repo and the fresh ResumeBuilder AI Web commit.
 4. CEO OS: hold all monetization/GTM/paywall decisions until the 2026-07-12 re-read.
 5. No new EXECUTIVE-DECISIONS row needed this week beyond the EXD-021 addendum; revisit at the 2026-07-12 re-read if activation trend changes.

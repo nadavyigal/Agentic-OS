@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-12 18:06 UTC",
+  "generatedAt": "2026-07-13 05:17 UTC",
   "sources": {
-    "status": "2026-07-12 21:06",
+    "status": "2026-07-13 08:17",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-12"
+    "manual": "2026-07-13"
   },
   "trust": {
     "level": "mixed",
     "label": "Mixed freshness",
     "reasons": [
       "1 cross-layer contradiction needs review before acting.",
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: RunSmart iOS, Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -72,11 +72,11 @@
     {
       "name": "Agentic OS",
       "state": "Advanced OS patterns lean pilot",
-      "nextAction": "Merge PR #27, then run ./agentic-os morning once to confirm the reconciled pipeline regenerates dashboards AND fires the daily-note habit end to end. (Older: PR #25 Portfolio HQ v3 still open.)",
+      "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-12",
-      "dirty": false,
-      "dirtyCount": 0
+      "evidenceDate": "2026-07-13",
+      "dirty": true,
+      "dirtyCount": 15
     }
   ],
   "numbers": {
@@ -209,14 +209,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-12 21:06",
+      "lastRan": "2026-07-13 08:17",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-12",
+      "lastRan": "2026-07-13",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
