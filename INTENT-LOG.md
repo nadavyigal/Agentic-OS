@@ -36,6 +36,11 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ## Entries
 
+## 2026-07-13 - Brain Map phantom links: verify the deep-pass exclusion before trusting it
+**Request:** Investigate why the Builder OS Brain Map gained " 2"-suffixed phantom wikilinks after an Excalidraw open+save, since the monthly deep pass had excluded the Brain Map from its phantom-link checker on the assumption it was a generator/re-save artifact, not vault rot.
+**Intent / why:** Don't let a lint exclusion stand on an unverified premise. The founder's deep pass is only trustworthy if its exclusions are checked against the filesystem, not assumed - here the premise was inverted (real sync-duplicate files in the vault, not Excalidraw dedupe), so the phantom-link checker was silently skipping actual rot.
+**Themes:** trust, verifiability
+
 ## 2026-07-09 - Weekly distribution review: log WP-31/WP-32 into the cycle
 **Request:** Run the weekly distribution review per `PROMPTS/distribution-weekly.md`; specifically close the gap the CEO review flagged — WP-31 (Resumely Hebrew ASO) and WP-32 (Facebook-groups posting) were founder-approved and live but never logged into `distribution-os/experiment-log.md` or `weekly-growth-review.md`.
 **Intent / why:** Wants the distribution cycle to reflect ground truth, not a 3-week-stale snapshot — the CEO review had explicitly called this a "distribution blind spot" undermining the OS's own trust story. Standing pattern: don't let founder-side actions (manual FB posts, approvals) go dark in the system just because no agent session logged them.
