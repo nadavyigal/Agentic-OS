@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-13 08:17"
+    "lastSuccessfulRefresh": "2026-07-13 08:19"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 PHASE 2 \u2014 Release 1.0.8 (22) (WP-37/38/40 bundle): Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -635,11 +635,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 2]",
-        "dirty": true,
-        "dirtyCount": 15,
+        "branch": "main...origin/main",
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-12 c58729b9 chore: refresh agentic os after wp45",
+        "lastCommit": "2026-07-13 85033330 chore: restore portfolio dashboard trust",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -854,7 +854,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-13 08:17",
+    "lastRefresh": "2026-07-13 08:19",
     "command": "./agentic-os morning",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1703,11 +1703,11 @@
           "kind": "plan"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 15,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 2]",
-      "lastCommit": "2026-07-12 c58729b9 chore: refresh agentic os after wp45",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-13 85033330 chore: restore portfolio dashboard trust",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-13",
@@ -1905,8 +1905,8 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 2]",
+      "repoState": "Clean",
+      "branch": "main...origin/main",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -1947,13 +1947,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2006,9 +2005,9 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os morning",
-    "lastRunAt": "2026-07-13 08:17",
+    "lastRunAt": "2026-07-13 08:19",
     "checksStatus": "Passed",
-    "checksCompletedAt": "2026-07-13 08:17",
+    "checksCompletedAt": "2026-07-13 08:19",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
@@ -2019,9 +2018,25 @@
     "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
     "nextActions": [
       {
-        "title": "Restore dashboard trust",
-        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-        "type": "system"
+        "title": "Run a COO operating review",
+        "detail": "Choose the next milestone from plans marked Needs next packet. Create at most one packet.",
+        "type": "global-OS",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Run the COO operating review using PROMPTS/coo-operating-review.md."
+      },
+      {
+        "title": "Use the Weekly CEO Review only for a priority choice",
+        "detail": "Run it when launch preparation, product work, and a side project genuinely compete for focus.",
+        "type": "executive",
+        "where": "Agentic OS repo, in this Codex thread",
+        "copyPrompt": "Run the Weekly Executive Review using PROMPTS/executive-weekly-review.md."
+      },
+      {
+        "title": "Validate caution items before risky moves",
+        "detail": "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+        "type": "system",
+        "where": "Affected product repo(s)",
+        "copyPrompt": null
       }
     ],
     "topBanner": null,
@@ -4559,11 +4574,11 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 3,
+    "uncommitted": 0,
     "extraWorktrees": 0,
-    "synced": false,
+    "synced": true,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Clean: on main, fully committed, no stray worktrees."
     ]
   },
   "planExecution": {
@@ -4665,11 +4680,12 @@
     "vocabulary": "Plan execution uses active | needs_next_packet | research_only. Repo freshness Stale is separate."
   },
   "portfolioTrust": {
-    "level": "refresh_required",
-    "label": "Refresh required",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
+      "Evidence gap after latest commit: Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -4805,35 +4821,17 @@
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 2 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "local-only",
-        "detail": "claude/eod-run-5c9323: unmerged commits, never pushed, last commit 2026-07-12",
-        "action": "Push claude/eod-run-5c9323 and open a PR, or consciously discard it."
-      },
-      {
-        "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "15 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
         "type": "cleanup",
-        "detail": "2 merged branch(es) safe to delete",
+        "detail": "3 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 21,
+    "actionableCount": 18,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-13 08:17",
+    "generatedAt": "2026-07-13 08:19",
     "apps": [
       {
         "projectId": 171597,

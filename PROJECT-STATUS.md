@@ -18,7 +18,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-12 d53d091 feat: instrument WP-45 analyze intent baseline |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (15) | Fresh | Medium | tasks/progress.md | 2026-07-12 c58729b9 chore: refresh agentic os after wp45 |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | No | Fresh | Medium | tasks/progress.md | 2026-07-13 85033330 chore: restore portfolio dashboard trust |
 
 ## Evidence Gaps
 
@@ -55,10 +55,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 2 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] claude/eod-run-5c9323: unmerged commits, never pushed, last commit 2026-07-12 -> Push claude/eod-run-5c9323 and open a PR, or consciously discard it.
-- [Agentic OS] 15 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Agentic OS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
 

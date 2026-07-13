@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-13 05:17 UTC",
+  "generatedAt": "2026-07-13 05:19 UTC",
   "sources": {
-    "status": "2026-07-13 08:17",
+    "status": "2026-07-13 08:19",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-13"
   },
   "trust": {
-    "level": "mixed",
-    "label": "Mixed freshness",
+    "level": "caution",
+    "label": "Use caution",
     "reasons": [
-      "1 cross-layer contradiction needs review before acting.",
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
+      "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
+      "Evidence gap after latest commit: Resumely iOS."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -22,13 +22,7 @@
       "Extra product worktrees retained for review: RunSmart iOS (1)."
     ]
   },
-  "consistencyIssues": [
-    {
-      "id": "resumely-live-version",
-      "source": "Products vs Executive",
-      "message": "Products says Resumely 1.4.1 is live, while the latest executive review still says to submit it. The review is historical."
-    }
-  ],
+  "consistencyIssues": [],
   "command": {
     "bestNextAction": "Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort."
   },
@@ -75,8 +69,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": true,
-      "dirtyCount": 15
+      "dirty": false,
+      "dirtyCount": 0
     }
   ],
   "numbers": {
@@ -209,7 +203,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-13 08:17",
+      "lastRan": "2026-07-13 08:19",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -270,8 +264,8 @@
         "body": "Ship S1 (move the real Connect action out of Profile into the post-onboarding flow) through S4 (verify the `healthkit_disclosure_viewed → connect_tapped → sync_completed` funnel actually populates in PostHog). This is the concrete lever against the plan→run activation break ahead of 2026-07-12."
       },
       {
-        "title": "Resumely — submit 1.4.1, then run the approved distribution experiments",
-        "body": "Founder submits 1.4.1 (11) to ASC; separately, execute WP-31 (Hebrew ASO) and WP-32 (FB-groups posting) now that WP-30's measurement fixes are done — both are already founder-approved, just not logged into the distribution cycle."
+        "title": "Resumely — continue the ranked distribution lane and WP-45",
+        "body": "Version 1.4.1 (11) is live. Preserve the Claude Code distribution-ranking work, complete the approved WP-31 draft asset, and move from WP-45 S0 to S1 only after S0 is pushed and reviewed."
       },
       {
         "title": "Portfolio hygiene — 13 stranded items, including Agentic OS's own",
