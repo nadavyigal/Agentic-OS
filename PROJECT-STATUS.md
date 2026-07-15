@@ -18,7 +18,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | Optimization Review blank-screen regression FIXED (2026-07-14) | rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé | 3 | Yes (3) | Fresh | High | tasks/progress.md latest entry | 2026-07-14 a9fcf96 fix(ios): retain optimization review state |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Needs Review | High | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Needs Review | High | tasks/progress.md | 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (25) | Fresh | Medium | tasks/progress.md | 2026-07-13 33dd8fcf dashboard: refresh with RunSmart iOS 1.0.8 (22) live status, worktree cleanup |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (12) | Fresh | Medium | tasks/progress.md | 2026-07-15 8509b55b fix: require upstream parity for dashboard sync |
 
 ## Evidence Gaps
 
@@ -27,6 +27,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 - RunSmart iOS: validated 2026-07-14, last commit 2026-07-15 b2f7dcd docs: record public 1.0.8 (22) live smoke evidence (2026-07-13) (#91)
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md
+- Agentic OS: validated 2026-07-13, last commit 2026-07-15 8509b55b fix: require upstream parity for dashboard sync
 
 ## Drift Warnings
 
@@ -41,7 +42,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp40-release-closeout and open a PR, or consciously discard it.
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
-- [RunSmart iOS] worktree on release/1.0.9-build23 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] worktree on release/1.0.9-build23, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
@@ -58,8 +59,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 25 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] main has 4 unpushed commit(s) -> Sync the default branch first: pull, then push.
+- [Agentic OS] 12 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene

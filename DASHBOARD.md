@@ -12,7 +12,7 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 
 ## Run Center
 
-- Last refresh: 2026-07-15 08:21
+- Last refresh: 2026-07-15 08:26
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -35,7 +35,7 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
-- [RunSmart iOS] worktree on release/1.0.9-build23 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace
+- [RunSmart iOS] worktree on release/1.0.9-build23, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648
 - [RunSmart iOS] 4 uncommitted file(s) in the primary working tree
 - [Resumely iOS] codex/wp45-s0-measurement-contract: unmerged commits, never pushed, last commit 2026-07-12
@@ -51,8 +51,8 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
-- [Agentic OS] main has 1 unpushed commit(s)
-- [Agentic OS] 25 uncommitted file(s) in the primary working tree
+- [Agentic OS] main has 4 unpushed commit(s)
+- [Agentic OS] 12 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -79,6 +79,7 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 - RunSmart iOS: validated 2026-07-14, latest commit is newer.
 - RunSmart Web: validated 2026-07-03, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
+- Agentic OS: validated 2026-07-13, latest commit is newer.
 
 ## Drift Warnings
 

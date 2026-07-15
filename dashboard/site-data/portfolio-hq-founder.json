@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-15 05:21 UTC",
+  "generatedAt": "2026-07-15 05:26 UTC",
   "sources": {
-    "status": "2026-07-15 08:21",
+    "status": "2026-07-15 08:26",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-15"
   },
@@ -12,7 +12,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "13 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -69,7 +69,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 25
+      "dirtyCount": 12
     }
   ],
   "numbers": {
@@ -224,7 +224,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-15 08:21",
+      "lastRan": "2026-07-15 08:26",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

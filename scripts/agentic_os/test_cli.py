@@ -10,8 +10,10 @@ import tempfile
 import unittest
 import os
 import json
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
+from unittest.mock import patch
 
 import cli
 
@@ -1196,6 +1198,24 @@ class TestPortfolioHqRouting(unittest.TestCase):
         )
 
         self.assertEqual(result["localhostUrl"], cli.portfolio_hq_url(8787))
+
+
+class TestRepoIntegrity(unittest.TestCase):
+    @patch("cli.run")
+    def test_unpushed_commits_are_not_reported_as_synced(self, mock_run):
+        mock_run.side_effect = [
+            subprocess.CompletedProcess([], 0, "main\n", ""),
+            subprocess.CompletedProcess([], 0, "", ""),
+            subprocess.CompletedProcess([], 0, "/tmp/repo abc123 [main]\n", ""),
+            subprocess.CompletedProcess([], 0, "0\t3\n", ""),
+        ]
+
+        integrity = cli.check_repo_integrity(Path("/tmp/repo"))
+
+        self.assertFalse(integrity["synced"])
+        self.assertEqual(integrity["ahead"], 3)
+        self.assertEqual(integrity["behind"], 0)
+        self.assertIn("3 local commit(s) not pushed", integrity["notes"][0])
 
 
 if __name__ == "__main__":
