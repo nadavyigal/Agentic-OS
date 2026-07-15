@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-15 11:24 UTC",
+  "generatedAt": "2026-07-15 11:33 UTC",
   "sources": {
-    "status": "2026-07-15 14:24",
+    "status": "2026-07-15 14:33",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-15"
   },
@@ -12,8 +12,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "4 local commit(s) not pushed to the upstream branch."
+      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -24,7 +23,7 @@
   },
   "consistencyIssues": [],
   "command": {
-    "bestNextAction": "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks"
+    "bestNextAction": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback"
   },
   "products": [
     {
@@ -38,12 +37,12 @@
     },
     {
       "name": "Resumely iOS",
-      "state": "Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15)",
-      "nextAction": "install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+      "state": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+      "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-15",
+      "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 9
+      "dirtyCount": 8
     },
     {
       "name": "RunSmart Web",
@@ -70,7 +69,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 4
+      "dirtyCount": 12
     }
   ],
   "numbers": {
@@ -221,7 +220,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-15 14:24",
+      "lastRan": "2026-07-15 14:33",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

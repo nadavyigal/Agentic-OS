@@ -589,8 +589,8 @@
   "generated": "2026-07-15",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15): install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-      "bestNextAction": "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+      "overallStatus": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15): land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "bestNextAction": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
       "mainBlockers": [
         "RunSmart iOS: None \u2014 waiting on Apple App Review turnaround",
         "Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
@@ -612,7 +612,7 @@
     "priorityBoard": {
       "now": [
         "RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
-        "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks"
+        "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback"
       ],
       "next": [
         "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -637,7 +637,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-15 14:24",
+      "lastRefresh": "2026-07-15 14:33",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -1136,8 +1136,8 @@
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15)",
-        "nextAction": "install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+        "state": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+        "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
         "blockerCount": 3,
         "blockers": [
           "PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
@@ -1361,17 +1361,17 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 9,
+        "dirtyCount": 8,
         "extraWorktrees": 0,
         "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
-        "lastCommit": "2026-07-14 a9fcf96 fix(ios): retain optimization review state",
+        "lastCommit": "2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-15",
-        "evidenceGap": false,
-        "evidenceDate": "2026-07-15",
+        "evidenceGap": true,
+        "evidenceDate": "2026-07-11",
         "evidenceTests": [],
-        "buildStatus": "succeeded",
+        "buildStatus": null,
         "qaDocs": [
           "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
         ],
@@ -1418,9 +1418,9 @@
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md latest entry",
-        "parsedLastValidation": "Set `MARKETING_VERSION` to **1.4.2** and `CURRENT_PROJECT_VERSION` to **12** and removed the manually supplied `UIDeviceFamily` Info.plist key. The fresh Debug iPhone 17 Pro simulator build/install/launch passed and exposed the restored optimized-preview flow. The exact unsigned 1.4.2 (12) generic-iOS Release build succeeded and passed Xcode store validation; its resolved plist has the production API URL, 1.4.2/12, and no UIDeviceFamily source warning. One narrow Apply transition regression passed; the timeout-recovery regression again aborted the documented XCTest host (`SIGABRT`), not an assertion failure. The authorized Release archive compiled to code signing with `-allowProvisioningUpdates`, but Xcode selected `Apple Development: Nadav Yigal (V2D7D57MXR)` and its iOS Team provisioning profile, then waited for keychain access. That identity cannot create an App Store Connect distribution archive, so the attempt was stopped and no archive, upload, TestFlight build, or review submission occurred. **Next:** install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+        "parsedLastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
         "parsedLastUpdated": "2026-07-15",
-        "parsedActiveStory": "Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15)"
+        "parsedActiveStory": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)"
       },
       {
         "id": "runsmart-web",
@@ -1790,7 +1790,7 @@
             "date": "2026-07-12",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1799,7 +1799,7 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1808,7 +1808,7 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1817,7 +1817,7 @@
             "date": "2026-07-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1826,7 +1826,7 @@
             "date": "2026-06-22",
             "status": "draft",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1835,7 +1835,7 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1844,7 +1844,7 @@
             "date": "2026-06-04",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1853,7 +1853,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1862,7 +1862,7 @@
             "date": "2026-05-20",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -1871,15 +1871,15 @@
             "date": "2026-05-20",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           }
         ],
         "dirty": true,
-        "dirtyCount": 4,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 4]",
-        "lastCommit": "2026-07-15 7b255580 fix: require upstream parity for dashboard sync",
+        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts",
+        "lastCommit": "2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-15",
@@ -1907,7 +1907,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "dashboard/ftux-submissions-and-artifacts"
         },
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
@@ -2016,9 +2016,9 @@
         "role": "iOS Release Manager",
         "repoState": "Dirty",
         "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
-        "nextAction": "install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+        "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -2056,7 +2056,7 @@
           "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15). Next action: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Next action: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -2138,7 +2138,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 4]",
+        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2163,8 +2163,8 @@
       }
     ],
     "executiveOverview": {
-      "headline": "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
-      "portfolioState": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15): install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "headline": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+      "portfolioState": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15): land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -2198,8 +2198,9 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 3,
+      "evidenceGapCount": 4,
       "evidenceGapProjects": [
+        "Resumely iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)",
         "Agentic OS"
@@ -2519,7 +2520,7 @@
             "date": "2026-07-12",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -2528,7 +2529,7 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -2537,7 +2538,7 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -2546,7 +2547,7 @@
             "date": "2026-07-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -2555,7 +2556,7 @@
             "date": "2026-06-22",
             "status": "draft",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           },
           {
@@ -2564,7 +2565,7 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
             "source": "primary"
           }
         ]
@@ -4789,15 +4790,14 @@
       "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _None active \u2014 last shaping walkthrough completed 2026-07-08._\n- \u2705 RunSmart Hebrew-first distribution playbook \u2014 **park until 2026-08-01** (EXD-016 re-confirmed; no work packet).\n- \u2705 RunSmart legal entity \u2014 **investigate with accountant**; founder scheduling call (EXD-017 re-confirmed; WP-35; reminder **2026-07-22**).\n- \u2705 Resumely web Premium CTA \u2014 **hide/disable until Gate A** (EXD-018 re-confirmed; WP-29 S4 already covers implementation; no new packet).\n- _Not now, but do not lose._\n- 2026-07-05: RunSmart Hebrew-first distribution playbook is parked until the Resumely 30-day activation window closes on 2026-08-01. Source draft remains `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`). Decision: EXD-016.\n---\nUpdated: 2026-07-08"
     },
     "repoIntegrity": {
-      "branch": "main",
-      "uncommitted": 2,
+      "branch": "dashboard/ftux-submissions-and-artifacts",
+      "uncommitted": 0,
       "extraWorktrees": 0,
-      "ahead": 4,
+      "ahead": 0,
       "behind": 0,
       "synced": false,
       "notes": [
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "4 local commit(s) not pushed to the upstream branch."
+        "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
       ]
     },
     "portfolioTrust": {
@@ -4805,8 +4805,7 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "4 local commit(s) not pushed to the upstream branch."
+        "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
@@ -4816,7 +4815,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-15 14:24",
+      "generatedAt": "2026-07-15 14:33",
       "apps": [
         {
           "projectId": 171597,
@@ -4833,7 +4832,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15)",
+          "declaredState": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -4879,17 +4878,17 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-15 14:24",
+      "lastRunAt": "2026-07-15 14:33",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) ASC archive attempt \u2014 BLOCKED (2026-07-15). Next action: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Next action: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
       "targetBranch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
       "readyForNextSession": false,
-      "summary": "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
+      "summary": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
       "nextActions": [
         {
           "title": "Restore dashboard trust",
