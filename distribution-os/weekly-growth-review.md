@@ -13,6 +13,45 @@ Append-only. One entry per week per product focus. Use the template at `template
 
 <!-- newest first -->
 
+### Week of 2026-07-14 — ResumeBuilder iOS — Live Experiment Reconciliation (WP-31, WP-32)
+
+**Status:** Reconciliation cycle complete. Founder confirmed on 2026-07-15 that WP-31 Hebrew ASO is live. WP-32 Facebook-groups distribution went live on 2026-07-05 and closed inconclusive on 2026-07-12. Both live states are now reflected in `experiment-log.md`; no external publishing occurred in this review.
+
+#### Metrics This Week
+
+| Metric | This Week | Prior Week | Notes |
+|---|---|---|---|
+| WP-31 Hebrew ASO publish state | live (founder-confirmed 2026-07-15) | queued / unlogged | Actual App Store Connect publish timestamp is not yet logged |
+| WP-31 Israeli storefront conversion | unknown | unknown | Baseline export is missing; 21-day close date cannot be set honestly until the publish timestamp is captured |
+| WP-32 Facebook-group posts live | 3 posts (published 2026-07-05) | 0 logged | `israel.hitech.jobs`, `Vibe Coding - Israel`, and `israel.hightech` |
+| WP-32 visible engagement at close | 3 reactions, 1 comment, 0 visible qualitative product-feedback replies | not captured | Authenticated read-only closeout on 2026-07-12 |
+| WP-32 Israeli storefront install lift | unknown | unknown | App Store Connect analytics was unavailable at closeout |
+
+#### What Happened
+
+- `rb-he-aso-001` (WP-31) moved from queued to **published — measuring** after the founder confirmed the Hebrew ASO changes are live. The publish date and pre-publish Israeli-storefront baseline remain unlogged, so this review does not invent a start date or result.
+- `rb-he-comm-001` (WP-32) is recorded as an experiment that **went live** on 2026-07-05 and then closed inconclusive on 2026-07-12. Its current home remains `Done — Did Not Work` because the setup failed to produce a measurable install-lift answer; this is not evidence that Facebook groups themselves cannot work.
+- No new experiment or asset was created. This cycle corrected the operating record so future reviews no longer treat live distribution work as queued or absent.
+
+#### Experiments Reviewed
+
+1. **rb-he-aso-001** (unscored) — live and measuring; collect the actual publish timestamp and App Store Connect Israeli-storefront baseline, then set the 21-day readout date.
+2. **rb-he-comm-001** (unscored) — live 2026-07-05, closed inconclusive 2026-07-12; do not repeat without unique per-group campaign links, confirmed analytics access, and a same-day manual engagement log.
+
+No third experiment was selected. This was a status-reconciliation cycle, and no additional scored candidate had current evidence or an approved asset ready to run.
+
+#### Blockers
+
+- WP-31: actual App Store Connect publish timestamp and Israeli-storefront baseline/export are missing.
+- WP-32: primary install-lift result remains unknowable for the completed window because attribution and App Store Connect access were not in place before publish.
+
+#### Next Week Focus
+
+- Record WP-31's actual publish timestamp, calculate its 21-day close date, and pull the Israeli-storefront baseline/current comparison.
+- Keep WP-32 closed. Carry its measurement-design requirements into any future community experiment before another post publishes.
+
+---
+
 ### Week of 2026-07-07 — ResumeBuilder iOS — Hebrew-First Distribution Catch-Up (WP-31, WP-32)
 
 **Status:** Catch-up cycle. Two experiments (WP-31 Hebrew ASO, WP-32 Facebook-groups community) were founder-approved/requested on 2026-07-04/05 and executed in the field, but had not been logged into `experiment-log.md` or this review — this entry closes that gap per the 2026-07-09 CEO review finding ("Distribution blind spot").
