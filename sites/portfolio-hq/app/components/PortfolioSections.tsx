@@ -130,6 +130,21 @@ export function Numbers({ data }: { data: PortfolioData }) {
             </div>
           ))}
         </div>
+        <div className="posthog-grid">
+          {data.numbers.posthogDashboards.map((dashboard) => (
+            <article className="posthog-card" key={dashboard.id}>
+              <header><p className="eyebrow">{dashboard.product} decision snapshot</p></header>
+              <h2>{dashboard.decisionSnapshot}</h2>
+              <dl>
+                <div><dt>Exclusions</dt><dd>{dashboard.exclusions}</dd></div>
+                <div><dt>Cohort</dt><dd>{dashboard.cohortCutoff}</dd></div>
+                <div><dt>Refreshed</dt><dd>{dashboard.refreshedAt}</dd></div>
+              </dl>
+              <p className="metric-warning"><strong>Why PostHog differs:</strong> {dashboard.warning}</p>
+              <a href={dashboard.url} target="_blank" rel="noreferrer">Open live PostHog <span aria-hidden="true">↗</span></a>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section aria-labelledby="funnels-title">

@@ -190,3 +190,17 @@ Impact:
 - Keep the current general Resumely Match/ATS-readiness score for post-optimization guidance, but separate it from a future job-only fit score.
 - Success is measured against `job_added -> optimization_started -> optimization_completed -> export_success`, supporting the existing 20% founder-excluded launch-to-export activation target.
 - Execution plan: `executive-os/work-packets/WP-45-resumely-direct-optimize-and-score-calibration.md`.
+
+## 2026-07-15: Morning Reads EOD And Active Worktrees
+
+Decision: Extend the Dashboard Trust Rule so `./agentic-os morning` reads the previous Builder OS EOD handoff and selects the freshest validated task status and saved plans across every active product worktree, while leaving product primary checkouts untouched.
+
+Reason: Product implementation deliberately runs in isolated worktrees. Reading only the primary checkout made completed FTUX stories and plans invisible until merge, while the EOD note could record the work without feeding it back into Portfolio HQ.
+
+Impact:
+
+- EOD git evidence scans all refs, so commits made on worktree branches appear in the evening close.
+- Morning surfaces the latest EOD Moved / Didn't / Carry handoff as dated evidence.
+- Task status chooses the freshest dated source across the primary checkout and active worktrees, with the selected branch labeled in Portfolio HQ.
+- Saved-plan discovery includes active worktrees and `docs/specs/drafts/`, de-duplicated by plan path and title.
+- Portfolio HQ keeps founder-excluded mature D7 numbers as the decision snapshot and provides authenticated PostHog links as differently-windowed operational drill-downs.

@@ -27,6 +27,17 @@ export type Funnel = {
   steps: [string, number][];
 };
 
+export type PostHogDashboard = {
+  id: string;
+  product: string;
+  url: string;
+  decisionSnapshot: string;
+  exclusions: string;
+  cohortCutoff: string;
+  refreshedAt: string;
+  warning: string;
+};
+
 export type Workflow = {
   id: string;
   name: string;
@@ -48,6 +59,7 @@ export type PortfolioData = {
       note: string;
     };
     funnels: Funnel[];
+    posthogDashboards: PostHogDashboard[];
   };
   clocks: Array<{
     date: string | null;
