@@ -15,18 +15,19 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-07-15 6cb4094 docs: 1.0.9 (23) archived and submitted to ASC; S6/S1 device smoke waived (#94) |
-| Resumely iOS | Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15) | install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks | 3 | Yes (9) | Fresh | High | tasks/progress.md latest entry | 2026-07-14 a9fcf96 fix(ios): retain optimization review state |
+| Resumely iOS | Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15) | land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback | 3 | Yes (8) | Fresh | High | tasks/progress.md latest entry | 2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Needs Review | High | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Needs Review | High | tasks/progress.md | 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (4) | Fresh | Medium | tasks/progress.md | 2026-07-15 7b255580 fix: require upstream parity for dashboard sync |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (12) | Fresh | Medium | tasks/progress.md | 2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
+- Resumely iOS: validated 2026-07-11, last commit 2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md
-- Agentic OS: validated 2026-07-13, last commit 2026-07-15 7b255580 fix: require upstream parity for dashboard sync
+- Agentic OS: validated 2026-07-13, last commit 2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule
 
 ## Drift Warnings
 
@@ -48,7 +49,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Resumely iOS] codex/wp45-s0-measurement-contract: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp45-s0-measurement-contract and open a PR, or consciously discard it.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
-- [Resumely iOS] 9 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -59,7 +60,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] main has 4 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 12 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -81,18 +82,18 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15): install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15): land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## What To Do Next
 
-Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks
+Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback
 
 ## Action Board
 
 ### Now
 
 - RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll
-- Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks
+- Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback
 
 ### Next
 
