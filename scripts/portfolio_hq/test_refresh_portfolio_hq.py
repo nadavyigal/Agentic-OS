@@ -185,6 +185,30 @@ class SitePayloadTests(unittest.TestCase):
         self.assertEqual(public["products"], [{"name": "Resumely iOS", "availability": "Live"}])
         self.assertNotIn("nextAction", MODULE.json.dumps(public))
 
+    def test_artifact_registry_is_never_hosted(self):
+        """The artifact registry names branches and local paths, which no hosted
+        audience is allowed to carry. It is local-dashboard-only by design."""
+        source = self.source_payload()
+        source["manual"]["artifacts"] = {
+            "note": "Storage truth, not quality.",
+            "groups": [{
+                "name": "Resumely FTUX",
+                "items": [{
+                    "title": "First-time-user journey audit",
+                    "what": "The audit behind the 13-story plan.",
+                    "url": "https://github.com/x/y/blob/docs/ftux-audit-rescue/docs/audits/a.md",
+                    "local": "/Users/founder/repo/docs/audits/a.md",
+                    "state": "branch-only",
+                }],
+            }],
+        }
+        for audience in MODULE.SITE_AUDIENCES:
+            payload = MODULE.build_site_payload(source, audience)
+            encoded = MODULE.json.dumps(payload)
+            self.assertNotIn("artifacts", payload, f"{audience} must not host the registry")
+            self.assertNotIn("ftux-audit-rescue", encoded)
+            self.assertNotIn("/Users/", encoded)
+
     def test_rejects_unknown_site_audience(self):
         with self.assertRaises(ValueError):
             MODULE.build_site_payload(self.source_payload(), "customers")

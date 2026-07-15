@@ -6,13 +6,13 @@ Local evidence mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git,
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared: After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Optimization Review blank-screen regression FIXED (2026-07-14): rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15): install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
-Best next action: Resumely iOS: rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé
+Best next action: Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks
 
 ## Run Center
 
-- Last refresh: 2026-07-15 08:26
+- Last refresh: 2026-07-15 14:24
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,8 +20,8 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 3 — FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared | After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | Yes | Fresh | High |
-| Resumely iOS | Optimization Review blank-screen regression FIXED (2026-07-14) | rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé | Yes | Fresh | High |
+| RunSmart iOS | PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | Yes | Fresh | High |
+| Resumely iOS | Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15) | install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks | Yes | Fresh | High |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Needs Review | High |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Needs Review | High |
 | Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | Yes | Fresh | Medium |
@@ -35,13 +35,13 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
-- [RunSmart iOS] worktree on release/1.0.9-build23, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace
+- [RunSmart iOS] worktree on fix/zero-streak-profile, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648
 - [RunSmart iOS] 4 uncommitted file(s) in the primary working tree
 - [Resumely iOS] codex/wp45-s0-measurement-contract: unmerged commits, never pushed, last commit 2026-07-12
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
-- [Resumely iOS] 3 uncommitted file(s) in the primary working tree
+- [Resumely iOS] 9 uncommitted file(s) in the primary working tree
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree
@@ -52,7 +52,7 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
 - [Agentic OS] main has 4 unpushed commit(s)
-- [Agentic OS] 12 uncommitted file(s) in the primary working tree
+- [Agentic OS] 4 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -76,7 +76,6 @@ Best next action: Resumely iOS: rebuild the current branch on the physical devic
 
 ## Evidence Gaps
 
-- RunSmart iOS: validated 2026-07-14, latest commit is newer.
 - RunSmart Web: validated 2026-07-03, latest commit is newer.
 - ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
 - Agentic OS: validated 2026-07-13, latest commit is newer.
