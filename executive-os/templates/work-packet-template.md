@@ -72,7 +72,10 @@ Keep this lean. Do not make work packets heavy just to fill optional fields.
 - Keep the task to one focused work session.
 
 ## Validation
-[Build/test/manual QA required]
+[Name a runnable command or eval when one exists — e.g. `npm test`, `pytest`, or a
+named eval harness (RunSmart plan-generator eval, ResumeBuilder resume-optimizer
+eval). Fall back to manual QA steps only when no runnable check exists for this
+task.]
 
 ## Completion Gate
 Before final response, update or report:
