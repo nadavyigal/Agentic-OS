@@ -1,16 +1,16 @@
 {
-  "asOf": "2026-07-13",
+  "asOf": "2026-07-15",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Run five observed Resumely first sessions before the July 18 gate",
-      "body": "Resumely is 0/73 for D7 export activation, but the post-1.4.1 picker cohort is still too young. Observe five right-fit users before adding another product story. Record only redacted friction: whether a usable resume file is on the phone, first useful moment, trust hesitation, next-action comprehension, and whether a usable export is reached.",
-      "prompt": "Use the observation protocol in docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md for five right-fit Resumely first sessions. Save only redacted aggregate notes. If at least 3 of 5 users lack a usable local resume file, record that WP-44 S2's qualitative gate is met, but do not build paste-text before the 2026-07-18 PostHog gate."
+      "title": "Run the RunSmart 1.0.9 founder-device release gate",
+      "body": "WP-43, WP-44 and WP-45 are merged to main through PRs #88/#89. Release prep PR #90 is also merged, with version 1.0.9 (23), 273/273 tests passing and simulator smoke complete. The live App Store build remains 1.0.8 (22).",
+      "prompt": "In the RunSmart iOS repo, build 1.0.9 (23) on the founder device and run the documented fresh-install empty-goal and plan-generation failure smoke. If it passes, prepare Product → Archive and the submission handoff. Do not submit to App Store Connect without explicit approval."
     },
     {
-      "title": "Finish the WP-31 Hebrew ASO asset pack",
-      "body": "Resumely remains at 0% D7 activation and traffic is still the binding constraint. WP-31 is founder-approved, unstarted, and independent of the too-young 1.4.1 picker cohort. Complete the Hebrew subtitle, keyword field, promotional text, five screenshot captions, and reviewer note so the founder has one publish-ready organic channel asset.",
-      "prompt": "Execute WP-31 as a draft-only asset pass. Produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify every claim against the canonical product-marketing file and explicitly gate any RTL PDF-export claim on product QA. Stop at founder review; do not publish to App Store Connect automatically."
+      "title": "Land and validate Resumely FTUX Release A",
+      "body": "Stories 1-6 are implemented, but PRs #94 and #95 were merged into the WP-31 branch instead of main. Release A needs a clean main integration plus the short physical preview, Apply, save, export/share and relaunch acceptance pass.",
+      "prompt": "In the Resumely iOS repo, preserve the current dirty localization and audit files, create a clean integration branch from origin/main, bring in the Release A commits without unrelated WP-31 assets, run the focused suites plus Debug/Release validation, and complete the physical-device acceptance pass. Stop before Release B Story 7."
     }
   ],
   "tracks": [
@@ -19,14 +19,43 @@
       "name": "Portfolio Activation Playbook v2",
       "pill": "CURRENT — RESUMELY 70 / RUNSMART 30",
       "tone": "run",
-      "standing": "The canonical activation contract is now Intent → Setup → First value → Verified value → Repeat value, with one primary outcome per app. Resumely remains the main experiment lane through 2026-08-01; RunSmart closes existing WP-40 release evidence and measures shipped paths without adding a new feature.",
+      "standing": "The canonical activation contract remains Intent → Setup → First value → Verified value → Repeat value. Founder-excluded mature D7 snapshots drive decisions, while FTUX implementation now becomes the active delivery lane for both products.",
       "items": [
         { "tone": "done", "text": "Primary metrics locked: RunSmart physical install → run_completed within D7; Resumely first seen → export_success within D7" },
-        { "tone": "done", "text": "WP-20 and WP-43 are shipped/measuring; WP-44 S1 is blocked and dropped; paste-text is gated behind July 18 plus a 3-of-5 observation signal" },
+        { "tone": "run", "text": "RunSmart WP-43 is merged but unreleased; WP-44 plus the WP-45 remainder are complete on PR #89 and awaiting device smoke, merge and release" },
+        { "tone": "run", "text": "Resumely Release A Stories 1-6 are implemented; Releases B and C are now included in the founder's full-FTUX direction" },
         { "tone": "run", "text": "Founder is actively developing Playbook V2 and the distribution ranking with Claude Code; preserve that work as the current planning lane" },
         { "tone": "done", "text": "WP-45 S0 measurement contract and baseline implemented on Resumely iOS branch codex/wp45-s0-measurement-contract at d53d091; S1 is next after the branch is pushed and reviewed" },
         { "tone": "wait", "text": "Cumulative clean Resumely export remains under review because the manual one-export claim conflicts with the saved clean report" },
         { "tone": "run", "text": "Next gates: five observed Resumely sessions, July 18 minimum cohort read, July 25 definitive read, August 1 CEO/COO decision" }
+      ]
+    },
+    {
+      "id": "runsmart-ftux",
+      "name": "RunSmart FTUX upgrade",
+      "pill": "1.0.9 (23) RELEASE-READY",
+      "tone": "run",
+      "standing": "The live App Store build remains 1.0.8 (22) without FTUX. WP-43, WP-44 and WP-45 are merged to main. Release prep PR #90 is merged, 1.0.9 (23) is binary-verified, and the full suite passes 273 tests.",
+      "items": [
+        { "tone": "done", "text": "WP-43 P0 trust hardening merged: plan-generation state, human auth errors, consistent timeline, interval parsing, user-facing source labels and explicit onboarding choices" },
+        { "tone": "done", "text": "WP-44 S1-S6 implemented: first-screen promise, async failure states, single-source metrics, onboarding polish, rest-day guidance and in-app Terms/Privacy" },
+        { "tone": "done", "text": "WP-45 instrumentation remainder implemented, including abandonment, permissions, HealthKit failure, first-workout, report and insight events" },
+        { "tone": "done", "text": "PR #89 and release prep PR #90 merged to main; 1.0.9 (23) simulator smoke caught and fixed two numeric consistency bugs" },
+        { "tone": "you", "text": "Founder device fresh-install/failure-state smoke, then archive and submit only after explicit release approval" },
+        { "tone": "wait", "text": "Experiments E1-E3 start only after the release is live and the new PostHog events are verified" }
+      ]
+    },
+    {
+      "id": "resumely-ftux",
+      "name": "Resumely FTUX upgrade",
+      "pill": "RELEASE A IMPLEMENTED — B/C PENDING",
+      "tone": "run",
+      "standing": "Release A Stories 1-6 are implemented and validated in focused suites and builds. The code is not on main because PRs #94/#95 targeted the WP-31 branch. Full FTUX now includes Releases B and C.",
+      "items": [
+        { "tone": "done", "text": "Release A: golden-path harness, deterministic Apply route, one optimization source, shared job validation, recommendation safety and preview/save/export/relaunch recovery" },
+        { "tone": "you", "text": "Integrate Release A cleanly into main and complete physical review, Apply, optimized preview, save, export/share and relaunch acceptance" },
+        { "tone": "wait", "text": "Release B Stories 7-10: preserve guest context, merge Fit into diagnosis, evidence-backed Accept/Skip review and canonical activation instrumentation" },
+        { "tone": "wait", "text": "Release C Stories 11-13: localization/accessibility, second-job loop and full release-candidate journey audit" }
       ]
     },
     {
@@ -72,16 +101,16 @@
     {
       "product": "Resumely (primary)",
       "model": "GPT-5.6 Sol / Codex - tool-heavy verification across analytics and repository evidence",
-      "title": "Finish the WP-31 Hebrew ASO pack",
-      "why": "WP-32 is closed inconclusive and the D7 activation gate remains 0/73. The next approved distribution unit is the draft-only WP-31 asset pack; observed first sessions run as a separate founder research task before July 18.",
-      "prompt": "Execute WP-31 as one draft-only story: produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify claims against the canonical product-marketing file and gate RTL PDF-export claims on QA. Do not publish or start paid acquisition."
+      "title": "Land Resumely FTUX Release A on main",
+      "why": "The implementation exists and is validated, but its PRs targeted the WP-31 branch. Landing it correctly is the shortest path to a trustworthy first-session build.",
+      "prompt": "Create a clean integration branch from Resumely origin/main, preserve unrelated dirty files, bring in only Release A and its follow-up fix commits, run focused tests plus Debug/Release builds, and complete the documented physical-device acceptance pass."
     },
     {
       "product": "RunSmart (maintenance-plus)",
       "model": "Sonnet tier - well-specified feature against an existing pattern (per GLOBAL-TOOL-USAGE model routing)",
-      "title": "Measure the shipped first-run commitment path",
-      "why": "WP-20 already shipped in 1.0.7 (21). Today's mature cohort is still 0/13, but only one user reached onboarding/plan, so another product change would be guesswork.",
-      "prompt": "Run a read-only ordered RunSmart funnel for clean physical App Store users: install → onboarding_completed → plan_generated → first_run_cta_viewed → first_run_cta_tapped (start_now/remind_me) → first_run_reminder_scheduled or run_started → run_completed. Exclude founder, QA, emulator, TestFlight and sideloaded people before counting. If the examined step has fewer than 10 eligible users, report the counts and defer product changes."
+      "title": "Run the 1.0.9 founder-device release gate",
+      "why": "The FTUX core and release prep are merged and 273 tests pass, but users still receive the pre-FTUX 1.0.8 experience.",
+      "prompt": "Install RunSmart 1.0.9 (23) on the founder device, run the documented fresh-install empty-goal and plan-generation failure smoke, then prepare the archive/submission handoff. Do not submit without explicit approval."
     }
   ],
   "growth": {
@@ -150,6 +179,28 @@
     ],
     "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
   },
+  "posthogDashboards": [
+    {
+      "id": "runsmart",
+      "product": "RunSmart",
+      "url": "https://us.posthog.com/project/171597/dashboard/1841362",
+      "decisionSnapshot": "0% mature D7 activation, 0 run completions among 13 eligible installs",
+      "exclusions": "Founder prefixes, QA, emulator, TestFlight and sideloaded users",
+      "cohortCutoff": "Mature D7 through 2026-07-12",
+      "refreshedAt": "2026-07-12 08:46-09:00 IDT",
+      "warning": "The linked operational dashboard uses rolling 30-day charts, independent event totals and broader traffic. It can include founder signals and is not the mature ordered D7 cohort."
+    },
+    {
+      "id": "resumely",
+      "product": "Resumely",
+      "url": "https://us.posthog.com/project/270848/dashboard/1801425",
+      "decisionSnapshot": "0% mature D7 activation, 0 exports among 73 eligible first-seen people",
+      "exclusions": "is_internal_tester plus established founder, QA and bot person prefixes",
+      "cohortCutoff": "Mature D7 through 2026-07-12",
+      "refreshedAt": "2026-07-12 08:46-09:00 IDT",
+      "warning": "The linked dashboard uses a rolling clean iOS 60-day status view and an export diagnostic with different event filters. Founder exclusion and cohort maturity explain much of the difference."
+    }
+  ],
   "clocks": [
     { "date": "2026-07-12", "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed", "state": "done" },
     { "date": "2026-07-18", "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users", "state": "running" },
@@ -194,23 +245,23 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — finish WP-31 and observe five first sessions",
-      "body": "WP-32 is closed inconclusive and the D7 gate remains 0/73. Complete the approved draft-only Hebrew ASO pack as one story, while the founder separately observes five right-fit first sessions before the July 18 cohort gate. Do not open a new product story from percentages alone."
+      "title": "RunSmart — pass the 1.0.9 founder-device release gate",
+      "body": "PRs #88, #89 and #90 are merged, 1.0.9 (23) is binary-verified, and 273 tests pass. Complete the fresh-install/failure-state smoke before archive and explicit submission approval."
     },
     {
       "n": 2,
-      "title": "RunSmart — hold new product work until the WP-40 cohort is readable",
-      "body": "The 2026-07-12 mature D7 read is still 0/13, with 1 onboarding/plan and 0 runs. WP-40 S1+S2 is merged and RunSmart main is clean. Re-run WP-42 after one clean disclosure viewer; require 10 before changing product direction. Garmin stays maintenance-only."
+      "title": "Resumely — land Release A correctly",
+      "body": "Integrate Stories 1-6 into main without pulling unrelated WP-31 work, complete the physical acceptance pass, then begin Release B Story 7."
     },
     {
       "n": 3,
-      "title": "Michal — schedule the live Gemini session",
-      "body": "Track C fully drafted. One calendar invite unblocks the first paid pilot of the OS."
+      "title": "FTUX measurement — preserve the D7 contract",
+      "body": "Use Portfolio HQ's founder-excluded mature D7 cohort for decisions. Use the authenticated PostHog links for operational drill-down, not as a like-for-like replacement."
     },
     {
       "n": 4,
       "title": "OS hygiene — keep the record true",
-      "body": "End every Codex/Cursor session with 'update the work packet' and 'create a branch before committing' — two Codex sessions this week were found sitting on detached HEAD. Clear the stranded-work board (see Today tab count) and the ResumeBuilder iOS APP missing-file gap (tasks/ERRORS.md, docs/agent-os/project-context.md)."
+      "body": "Morning now reads the previous EOD handoff plus the freshest validated task and plan evidence across active product worktrees. Product main branches remain isolated while implementation is in flight."
     }
   ],
   "readouts": [

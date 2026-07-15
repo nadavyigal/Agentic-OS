@@ -79,7 +79,7 @@ def git_commits_today(day: str) -> list[tuple[str, list[str]]]:
             continue
         try:
             res = subprocess.run(
-                ["git", "-C", path, "log", "--no-merges",
+                ["git", "-C", path, "log", "--all", "--no-merges",
                  f"--since={since}", f"--until={until}", "--pretty=%s"],
                 capture_output=True, text=True, timeout=20,
             )

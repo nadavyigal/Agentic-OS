@@ -31,6 +31,7 @@ PROJECT_STATUS_HTML = DASHBOARD / "project-status.html"
 COMMAND_CENTER_HTML = DASHBOARD / "command-center.html"
 ORCHESTRATION_HTML = DASHBOARD / "orchestration.html"
 PORTFOLIO_HQ_PAGE = "portfolio-hq.html"
+BUILDER_OS_JOURNAL = Path("/Users/nadavyigal/Documents/Projects /Nadav Builder OS/11-Journal")
 
 
 PROJECT_ALIASES = {
@@ -137,6 +138,7 @@ PLAN_DIRS = [
     ("docs/plans", "plan"),
     ("docs/superpowers/specs", "spec"),
     ("docs/specs", "spec"),
+    ("docs/specs/drafts", "spec"),
     (".agent-os/distribution", "gtm"),
     ("docs/distribution", "gtm"),
 ]
@@ -186,6 +188,7 @@ class ProjectEvidence:
     extra_worktrees: int
     last_commit: str
     source_files: list[str]
+    task_source: dict[str, Any] = field(default_factory=dict)
     task_parse: dict[str, Any] = field(default_factory=dict)
     gtm: dict[str, Any] = field(default_factory=dict)
     plans: list[dict[str, Any]] = field(default_factory=list)
@@ -505,6 +508,55 @@ def parse_project_paths() -> list[tuple[str, Path]]:
     return rows
 
 
+def parse_eod_handoff(note_text: str, date: str | None = None) -> dict[str, Any]:
+    """Extract the founder-edited EOD handoff for the next morning."""
+    match = re.search(
+        r"^##\s+End-of-Day Check\s*$([\s\S]*?)(?=^##\s+|\Z)",
+        note_text,
+        re.MULTILINE,
+    )
+    result = {"date": date, "moved": [], "didnt": [], "carry": [], "source": "Builder OS daily note"}
+    if not match:
+        return result
+    mode: str | None = None
+    for line in match.group(1).splitlines():
+        stripped = line.strip()
+        if re.match(r"^-\s*Moved:\s*$", stripped, re.I):
+            mode = "moved"
+            continue
+        if re.match(r"^-\s*Didn't:\s*$", stripped, re.I):
+            mode = "didnt"
+            continue
+        carry = re.match(r"^-\s*Carry\s*(?:→|->)?\s*:?\s*(.+)$", stripped, re.I)
+        if carry:
+            value = clean_value(carry.group(1))
+            if value:
+                result["carry"].append(value)
+            mode = None
+            continue
+        bullet = re.match(r"^-\s+(.+)$", stripped)
+        if bullet and mode:
+            value = clean_value(bullet.group(1))
+            if value and not value.startswith("("):
+                result[mode].append(value)
+    return result
+
+
+def latest_eod_handoff(today: str | None = None) -> dict[str, Any]:
+    """Read the newest completed journal note before today, without modifying the vault."""
+    today = today or today_idt()
+    if not BUILDER_OS_JOURNAL.is_dir():
+        return {"date": None, "moved": [], "didnt": [], "carry": [], "source": "Builder OS daily note unavailable"}
+    notes = sorted(
+        p for p in BUILDER_OS_JOURNAL.glob("*.md")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.stem) and p.stem < today
+    )
+    if not notes:
+        return {"date": None, "moved": [], "didnt": [], "carry": [], "source": "No prior EOD note"}
+    note = notes[-1]
+    return parse_eod_handoff(note.read_text(encoding="utf-8", errors="replace"), note.stem)
+
+
 def record_if_exists(path: Path, root: Path, sources: list[str]) -> str:
     if not path.exists():
         return ""
@@ -774,6 +826,30 @@ def parse_task_files(path: Path) -> dict[str, Any]:
                 result[target] = split_list(field_name)
             else:
                 result[target] = clean_value(field_name)
+        # A product session may append a newer evidence-backed entry above an older
+        # structured status block. Prefer that newer entry instead of presenting the
+        # old block as current merely because it still contains Key: Value fields.
+        recent = re.search(
+            r"^\*\*(.+?\((\d{4}-\d{2}-\d{2})\)):\*\*\s*(.+)$",
+            progress,
+            re.MULTILINE,
+        )
+        if recent and (not result.get("lastUpdated") or recent.group(2) > result["lastUpdated"]):
+            title = clean_value(recent.group(1))
+            body = recent.group(3).strip()
+            next_match = re.search(r"\*\*Next:\*\*\s*(.+?)(?=\s+\*\*|$)", body)
+            result["lastUpdated"] = recent.group(2)
+            result["currentPhase"] = title
+            if title and re.search(r"\b(?:complete|implemented|fixed|shipped|done)\b", title, re.I):
+                result["lastCompletedStory"] = title
+                result["activeStory"] = None
+            else:
+                result["activeStory"] = title
+            if next_match:
+                result["nextRecommendedStory"] = clean_value(next_match.group(1))
+            if has_validation_evidence(body):
+                result["lastValidation"] = clean_value(body)
+            result["preferredSource"] = "tasks/progress.md latest entry"
     else:
         result["preferredSource"] = "derived"
         result["notes"] = (
@@ -882,6 +958,91 @@ def collect_plans(path: Path) -> list[dict[str, Any]]:
             )
     plans.sort(key=lambda p: (p["date"] or "0000-00-00", p["path"]), reverse=True)
     return plans
+
+
+def git_worktree_roots(path: Path) -> list[dict[str, Any]]:
+    """Return checked-out worktree roots and branches for a repository.
+
+    Product worktrees are deliberate isolation, not invisible scratch space. Morning
+    reads them as evidence while keeping the primary checkout's git state unchanged.
+    """
+    result = run(["git", "worktree", "list", "--porcelain"], cwd=path)
+    if result.returncode != 0:
+        return [{"path": path, "branch": None, "primary": True}]
+    roots: list[dict[str, Any]] = []
+    current: dict[str, Any] = {}
+    for line in result.stdout.splitlines() + [""]:
+        if not line:
+            if current.get("path"):
+                root = Path(current["path"])
+                current["primary"] = root.resolve() == path.resolve()
+                roots.append(current)
+            current = {}
+        elif line.startswith("worktree "):
+            current["path"] = line[len("worktree "):]
+        elif line.startswith("branch refs/heads/"):
+            current["branch"] = line[len("branch refs/heads/"):]
+        elif line == "detached":
+            current["branch"] = "detached"
+    return roots or [{"path": path, "branch": None, "primary": True}]
+
+
+def collect_worktree_truth(path: Path) -> tuple[dict[str, Any], dict[str, Any], list[dict[str, Any]], list[str]]:
+    """Pick the freshest task status and union plans across active worktrees."""
+    candidates: list[tuple[str, int, dict[str, Any], dict[str, Any]]] = []
+    all_plans: list[dict[str, Any]] = []
+    sources: list[str] = []
+    for root_info in git_worktree_roots(path):
+        root = Path(root_info["path"])
+        branch = root_info.get("branch") or "unknown"
+        parsed = parse_task_files(root)
+        if parsed.get("sourceConfidence") != "Unknown":
+            candidates.append(
+                (
+                    parsed.get("lastUpdated") or "0000-00-00",
+                    2 if root_info.get("primary") else 1,
+                    parsed,
+                    root_info,
+                )
+            )
+        for plan in collect_plans(root):
+            enriched = dict(plan)
+            enriched["sourceBranch"] = branch
+            enriched["source"] = "primary" if root_info.get("primary") else "worktree"
+            all_plans.append(enriched)
+        for rel in parsed.get("sourcesUsed", []):
+            prefix = "primary" if root_info.get("primary") else f"worktree:{branch}"
+            sources.append(f"{prefix}:{rel}")
+
+    if candidates:
+        _, _, task_parse, task_root = max(candidates, key=lambda item: (item[0], item[1]))
+    else:
+        task_parse = parse_task_files(path)
+        task_root = {"path": str(path), "branch": None, "primary": True}
+
+    # Same relative plan may appear in multiple worktrees. Keep the freshest copy,
+    # preferring an active worktree when dates tie.
+    by_plan: dict[tuple[str, str], dict[str, Any]] = {}
+    for plan in all_plans:
+        key = (plan["path"], plan["title"])
+        old = by_plan.get(key)
+        score = (plan.get("date") or "0000-00-00", 1 if plan.get("source") == "worktree" else 0)
+        old_score = (
+            old.get("date") or "0000-00-00",
+            1 if old and old.get("source") == "worktree" else 0,
+        ) if old else None
+        if old is None or score > old_score:
+            by_plan[key] = plan
+    plans = sorted(
+        by_plan.values(),
+        key=lambda p: (p.get("date") or "0000-00-00", p["path"]),
+        reverse=True,
+    )
+    task_source = {
+        "kind": "primary" if task_root.get("primary") else "worktree",
+        "branch": task_root.get("branch"),
+    }
+    return task_parse, task_source, plans, sources
 
 
 # Every `./agentic-os` command and a plain-language description of what it does.
@@ -2120,14 +2281,26 @@ def collect_evidence() -> list[ProjectEvidence]:
                 )
                 extra_worktrees = max(0, worktree_count - 1)
 
+        task_parse = empty_task_parse()
+        task_source = {"kind": "primary", "branch": None}
+        plans: list[dict[str, Any]] = []
+        worktree_sources: list[str] = []
+        if exists:
+            task_parse, task_source, plans, worktree_sources = collect_worktree_truth(path)
+            sources.extend(src for src in worktree_sources if src not in sources)
+
         gtm = parse_gtm(path) if exists else {"exists": False, "path": None, "positioning": None, "status": None, "lastUpdated": None}
         if gtm.get("exists") and gtm.get("path"):
             sources.append(gtm["path"])
 
-        plans = collect_plans(path) if exists else []
         for plan in plans:
-            if plan["path"] not in sources:
-                sources.append(plan["path"])
+            source_label = (
+                plan["path"]
+                if plan.get("source") == "primary"
+                else f"worktree:{plan.get('sourceBranch') or 'unknown'}:{plan['path']}"
+            )
+            if source_label not in sources:
+                sources.append(source_label)
 
         evidence.append(
             ProjectEvidence(
@@ -2141,7 +2314,8 @@ def collect_evidence() -> list[ProjectEvidence]:
                 extra_worktrees=extra_worktrees,
                 last_commit=last_commit,
                 source_files=sources,
-                task_parse=parse_task_files(path),
+                task_parse=task_parse,
+                task_source=task_source,
                 gtm=gtm,
                 plans=plans,
                 stranded=collect_stranded_work(path) if exists else {},
@@ -2223,6 +2397,7 @@ def project_health_from(evidence: list[ProjectEvidence], status: dict[str, Any])
                 "buildStatus": evidence.get("buildStatus"),
                 "qaDocs": evidence.get("qaDocs") or [],
                 "sourceFiles": item.source_files,
+                "taskSource": item.task_source,
                 "sourceConfidence": confidence,
                 "preferredSource": parse.get("preferredSource", "none"),
                 "parsedLastValidation": parse.get("lastValidation"),
@@ -2803,8 +2978,9 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
     status["metadata"]["lastUpdated"] = f"{generated} IDT"
     status["metadata"]["lastSuccessfulRefresh"] = now_label()
     status["metadata"]["sourcePolicy"] = (
-        "Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, "
-        "task memory/todo/session files, and existing dashboard status. No external dashboards queried."
+        "Local evidence mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, "
+        "the previous EOD handoff, and the freshest task/plan evidence across active worktrees. "
+        "PostHog decision snapshots remain a separately dated manual layer."
     )
 
     status["runCenter"] = {
@@ -2825,6 +3001,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
         "synthesisNote": "One process: `./agentic-os morning` refreshes evidence, surfaces every saved plan, rebuilds the brief from repo truth, updates the HTML, verifies, and serves localhost. No separate synthesis step.",
     }
     status["projectHealth"] = project_health
+    status["eodHandoff"] = latest_eod_handoff(generated)
 
     # ONE process, ONE source of truth. The headline, priority board, and blockers are ALWAYS
     # rebuilt from parsed repo truth (each repo's tasks/progress.md + every saved plan) on every
@@ -2938,6 +3115,7 @@ def update_status_json(port: int = 8787, command: str = "./agentic-os refresh") 
             "extraWorktrees": health["extraWorktrees"],
             "lastCommit": health["lastCommit"],
             "sourceFiles": health["sourceFiles"],
+            "taskSource": health.get("taskSource", {}),
             "sourceConfidence": health["sourceConfidence"],
             "preferredSource": health["preferredSource"],
             "freshness": health["freshness"],

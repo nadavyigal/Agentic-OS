@@ -178,6 +178,16 @@ button { font: inherit; }
 .activation-row:last-child { border-bottom: 0; }
 .activation-row.header { color: var(--faint); background: var(--surface); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .bad-number { color: var(--red); font-weight: 700; }
+.posthog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.posthog-card { padding: 20px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--blue-bg); }
+.posthog-card header { margin-bottom: 8px; }
+.posthog-card h2 { margin: 0 0 16px; font-size: 16px; line-height: 1.45; }
+.posthog-card dl { display: grid; gap: 9px; margin: 0; }
+.posthog-card dl div { display: grid; grid-template-columns: 80px 1fr; gap: 12px; }
+.posthog-card dt { color: var(--blue); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.posthog-card dd { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.metric-warning { color: var(--muted); font-size: 12px; line-height: 1.55; }
+.posthog-card > a { display: inline-block; margin-top: 5px; padding: 8px 11px; border: 1px solid var(--border-strong); border-radius: 7px; background: var(--surface); font-size: 12px; font-weight: 700; }
 
 .funnel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .funnel-card { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
@@ -232,6 +242,7 @@ button { font: inherit; }
   .metric-card { min-height: 128px; border-right: 0; border-bottom: 1px solid var(--border); }
   .metric-card:last-child { border-bottom: 0; }
   .activation-row { grid-template-columns: 1fr; gap: 7px; }
+  .posthog-grid { grid-template-columns: 1fr; }
   .activation-row.header { display: none; }
   .activation-row strong { color: var(--blue); }
   .clock-list article, .workflow-list article { grid-template-columns: 1fr; gap: 8px; }

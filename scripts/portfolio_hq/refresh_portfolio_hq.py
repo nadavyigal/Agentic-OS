@@ -164,6 +164,16 @@ def build_site_payload(payload, audience):
     }
     if audience == "founder":
         executive = auto.get("executive", {})
+        site_payload["numbers"]["posthogDashboards"] = [
+            {
+                key: dashboard.get(key)
+                for key in (
+                    "id", "product", "url", "decisionSnapshot", "exclusions",
+                    "cohortCutoff", "refreshedAt", "warning",
+                )
+            }
+            for dashboard in manual.get("posthogDashboards", [])
+        ]
         site_payload.update(
             {
                 "executive": {
@@ -559,6 +569,7 @@ def build_auto(status, usage, manual, registry):
                 "dirtyCount", "extraWorktrees", "branch", "lastCommit",
                 "freshness", "stale", "evidenceGap", "evidenceDate",
                 "buildStatus", "gtm",
+                "taskSource",
             )
         }
         for p in status.get("projectHealth", [])
@@ -582,6 +593,7 @@ def build_auto(status, usage, manual, registry):
             "blocked": status.get("priorityBoard", {}).get("blocked", []),
             "laterCount": len(status.get("priorityBoard", {}).get("later", [])),
         },
+        "eodHandoff": status.get("eodHandoff", {}),
         "health": health,
         "stranded": {
             "generatedOn": stranded.get("generatedOn"),
