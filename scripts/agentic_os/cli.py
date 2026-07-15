@@ -1411,7 +1411,11 @@ def check_repo_integrity(root: Path) -> dict[str, Any]:
     # Generated dashboard artifacts churn on every refresh; their change is not "unsynced work".
     # The sync signal should only flag REAL source drift, so exclude generated paths from the count.
     generated_prefixes = (
-        "dashboard/", "DASHBOARD.md", "PROJECT-STATUS.md", "executive-os/EXECUTIVE-DASHBOARD.md",
+        "dashboard/",
+        "sites/portfolio-hq/data/",
+        "DASHBOARD.md",
+        "PROJECT-STATUS.md",
+        "executive-os/EXECUTIVE-DASHBOARD.md",
     )
     real_changes = []
     if dirty.returncode == 0:
@@ -1423,7 +1427,23 @@ def check_repo_integrity(root: Path) -> dict[str, Any]:
     wt = run(["git", "worktree", "list"], cwd=root)
     worktrees = [ln for ln in wt.stdout.splitlines() if ln.strip()] if wt.returncode == 0 else []
     extra_worktrees = max(0, len(worktrees) - 1)
-    synced = current == "main" and uncommitted == 0 and extra_worktrees == 0
+    divergence = run(
+        ["git", "rev-list", "--left-right", "--count", "@{upstream}...HEAD"],
+        cwd=root,
+    )
+    behind = 0
+    ahead = 0
+    if divergence.returncode == 0:
+        counts = divergence.stdout.strip().split()
+        if len(counts) == 2 and all(value.isdigit() for value in counts):
+            behind, ahead = (int(value) for value in counts)
+    synced = (
+        current == "main"
+        and uncommitted == 0
+        and extra_worktrees == 0
+        and ahead == 0
+        and behind == 0
+    )
     notes: list[str] = []
     if current != "main":
         notes.append(f"On branch '{current}', not main. Merge to main so all tools see it.")
@@ -1431,12 +1451,18 @@ def check_repo_integrity(root: Path) -> dict[str, Any]:
         notes.append(f"{uncommitted} uncommitted change(s). Commit so nothing is lost between sessions/tools.")
     if extra_worktrees:
         notes.append(f"{extra_worktrees} extra worktree(s) open. Consolidate to main; do not work in worktrees.")
+    if ahead:
+        notes.append(f"{ahead} local commit(s) not pushed to the upstream branch.")
+    if behind:
+        notes.append(f"Local main is {behind} commit(s) behind its upstream branch.")
     return {
         "branch": current,
         "uncommitted": uncommitted,
         "extraWorktrees": extra_worktrees,
+        "ahead": ahead,
+        "behind": behind,
         "synced": synced,
-        "notes": notes or ["Clean: on main, fully committed, no stray worktrees."],
+        "notes": notes or ["Synced: on main, committed, pushed, and no stray worktrees."],
     }
 
 

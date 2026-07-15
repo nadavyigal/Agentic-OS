@@ -111,7 +111,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-15 08:21"
+    "lastSuccessfulRefresh": "2026-07-15 08:26"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared: After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Optimization Review blank-screen regression FIXED (2026-07-14): rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized r\u00e9sum\u00e9 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -142,7 +142,7 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: PHASE 3 \u2014 FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared. Active: Founder device build of 1.0.9 (23) \u2192 device smoke (S6 empty-goal Continue needs FRESH INSTALL; S1 failed card needs airplane mode AFTER the generating card appears) \u2192 Product \u2192 Archive \u2192 submit. Last completed: 2026-07-14 \u2014 1.0.9 (23) release prep with simulator smoke (2 live bugs found and fixed). Source: tasks/progress.md, updated 2026-07-14. Newer commits exist after this status (last commit: 2026-07-15 b2f7dcd docs: record public 1.0.8 (22) live smoke evidence (2026-07-13) (#91)); trust git for the latest state.",
+      "status": "Phase: PHASE 3 \u2014 FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared. Active: Founder device build of 1.0.9 (23) \u2192 device smoke (S6 empty-goal Continue needs FRESH INSTALL; S1 failed card needs airplane mode AFTER the generating card appears) \u2192 Product \u2192 Archive \u2192 submit. Last completed: 2026-07-14 \u2014 1.0.9 (23) release prep with simulator smoke (2 live bugs found and fixed). Source: tasks/progress.md, updated 2026-07-15.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
       "currentPhase": "PHASE 3 \u2014 FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared",
       "activeStory": "Founder device build of 1.0.9 (23) \u2192 device smoke (S6 empty-goal Continue needs FRESH INSTALL; S1 failed card needs airplane mode AFTER the generating card appears) \u2192 Product \u2192 Archive \u2192 submit",
@@ -252,8 +252,8 @@
           "worktree:release/1.0.9-build23:.agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
-          "kind": "primary",
-          "branch": "main"
+          "kind": "worktree",
+          "branch": "release/1.0.9-build23"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -271,7 +271,7 @@
         "blockers": [],
         "risks": [],
         "lastValidation": "2026-07-14 \u2014 full suite 273 tests, 0 failures; v1.0.9 (23) binary verified; simulator smoke evidence in docs/qa/reports/assets-2026-07-14-v109-smoke/",
-        "lastUpdated": "2026-07-14",
+        "lastUpdated": "2026-07-15",
         "qaNeeded": null,
         "estimatedCompletion": null,
         "decisionsNeeded": [
@@ -781,7 +781,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-13.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-13. Newer commits exist after this status (last commit: 2026-07-15 8509b55b fix: require upstream parity for dashboard sync); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
       "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
@@ -806,11 +806,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 1]",
+        "branch": "main...origin/main [ahead 4]",
         "dirty": true,
-        "dirtyCount": 25,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-13 33dd8fcf dashboard: refresh with RunSmart iOS 1.0.8 (22) live status, worktree cleanup",
+        "lastCommit": "2026-07-15 8509b55b fix: require upstream parity for dashboard sync",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -835,8 +835,8 @@
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-13",
-        "evidenceGap": false,
+        "freshestDate": "2026-07-15",
+        "evidenceGap": true,
         "evidenceDate": "2026-07-13"
       },
       "taskParse": {
@@ -1031,7 +1031,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-15 08:21",
+    "lastRefresh": "2026-07-15 08:26",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1519,13 +1519,13 @@
         "worktree:release/1.0.9-build23:.agent-os/distribution/weekly-plan.md"
       ],
       "taskSource": {
-        "kind": "primary",
-        "branch": "main"
+        "kind": "worktree",
+        "branch": "release/1.0.9-build23"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "2026-07-14 \u2014 full suite 273 tests, 0 failures; v1.0.9 (23) binary verified; simulator smoke evidence in docs/qa/reports/assets-2026-07-14-v109-smoke/",
-      "parsedLastUpdated": "2026-07-14",
+      "parsedLastUpdated": "2026-07-15",
       "parsedActiveStory": "Founder device build of 1.0.9 (23) \u2192 device smoke (S6 empty-goal Continue needs FRESH INSTALL; S1 failed card needs airplane mode AFTER the generating card appears) \u2192 Product \u2192 Archive \u2192 submit"
     },
     {
@@ -2261,14 +2261,14 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 25,
+      "dirtyCount": 12,
       "extraWorktrees": 0,
-      "branch": "main...origin/main [ahead 1]",
-      "lastCommit": "2026-07-13 33dd8fcf dashboard: refresh with RunSmart iOS 1.0.8 (22) live status, worktree cleanup",
+      "branch": "main...origin/main [ahead 4]",
+      "lastCommit": "2026-07-15 8509b55b fix: require upstream parity for dashboard sync",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-13",
-      "evidenceGap": false,
+      "freshestDate": "2026-07-15",
+      "evidenceGap": true,
       "evidenceDate": "2026-07-13",
       "evidenceTests": [],
       "buildStatus": null,
@@ -2522,10 +2522,10 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 1]",
+      "branch": "main...origin/main [ahead 4]",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
@@ -2543,7 +2543,7 @@
         "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
         "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -2582,11 +2582,12 @@
     ],
     "staleProjectCount": 0,
     "staleProjects": [],
-    "evidenceGapCount": 3,
+    "evidenceGapCount": 4,
     "evidenceGapProjects": [
       "RunSmart iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -2625,7 +2626,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-15 08:21",
+    "lastRunAt": "2026-07-15 08:26",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -5242,11 +5243,13 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 13,
+    "uncommitted": 0,
     "extraWorktrees": 0,
+    "ahead": 4,
+    "behind": 0,
     "synced": false,
     "notes": [
-      "13 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 local commit(s) not pushed to the upstream branch."
     ]
   },
   "planExecution": {
@@ -5352,7 +5355,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "13 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+      "4 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -5405,7 +5408,7 @@
       {
         "project": "RunSmart iOS",
         "type": "worktree",
-        "detail": "worktree on release/1.0.9-build23 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace",
+        "detail": "worktree on release/1.0.9-build23, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -5507,13 +5510,13 @@
       {
         "project": "Agentic OS",
         "type": "default-branch",
-        "detail": "main has 1 unpushed commit(s)",
+        "detail": "main has 4 unpushed commit(s)",
         "action": "Sync the default branch first: pull, then push."
       },
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "25 uncommitted file(s) in the primary working tree",
+        "detail": "12 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -5528,7 +5531,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-15 08:21",
+    "generatedAt": "2026-07-15 08:26",
     "apps": [
       {
         "projectId": 171597,

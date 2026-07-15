@@ -636,7 +636,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-15 08:21",
+      "lastRefresh": "2026-07-15 08:26",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -1124,13 +1124,13 @@
           "worktree:release/1.0.9-build23:.agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
-          "kind": "primary",
-          "branch": "main"
+          "kind": "worktree",
+          "branch": "release/1.0.9-build23"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "parsedLastValidation": "2026-07-14 \u2014 full suite 273 tests, 0 failures; v1.0.9 (23) binary verified; simulator smoke evidence in docs/qa/reports/assets-2026-07-14-v109-smoke/",
-        "parsedLastUpdated": "2026-07-14",
+        "parsedLastUpdated": "2026-07-15",
         "parsedActiveStory": "Founder device build of 1.0.9 (23) \u2192 device smoke (S6 empty-goal Continue needs FRESH INSTALL; S1 failed card needs airplane mode AFTER the generating card appears) \u2192 Product \u2192 Archive \u2192 submit"
       },
       {
@@ -1866,14 +1866,14 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 25,
+        "dirtyCount": 12,
         "extraWorktrees": 0,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-07-13 33dd8fcf dashboard: refresh with RunSmart iOS 1.0.8 (22) live status, worktree cleanup",
+        "branch": "main...origin/main [ahead 4]",
+        "lastCommit": "2026-07-15 8509b55b fix: require upstream parity for dashboard sync",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-13",
-        "evidenceGap": false,
+        "freshestDate": "2026-07-15",
+        "evidenceGap": true,
         "evidenceDate": "2026-07-13",
         "evidenceTests": [],
         "buildStatus": null,
@@ -2127,10 +2127,10 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
+        "branch": "main...origin/main [ahead 4]",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
-        "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+        "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -2148,7 +2148,7 @@
           "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
-        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
     ],
     "executiveOverview": {
@@ -2187,11 +2187,12 @@
       ],
       "staleProjectCount": 0,
       "staleProjects": [],
-      "evidenceGapCount": 3,
+      "evidenceGapCount": 4,
       "evidenceGapProjects": [
         "RunSmart iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
       "lowTrustProjects": [],
       "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -4779,11 +4780,13 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 13,
+      "uncommitted": 0,
       "extraWorktrees": 0,
+      "ahead": 4,
+      "behind": 0,
       "synced": false,
       "notes": [
-        "13 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "4 local commit(s) not pushed to the upstream branch."
       ]
     },
     "portfolioTrust": {
@@ -4791,7 +4794,7 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "13 uncommitted change(s). Commit so nothing is lost between sessions/tools."
+        "4 local commit(s) not pushed to the upstream branch."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
@@ -4801,7 +4804,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-15 08:21",
+      "generatedAt": "2026-07-15 08:26",
       "apps": [
         {
           "projectId": 171597,
@@ -4864,7 +4867,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-15 08:21",
+      "lastRunAt": "2026-07-15 08:26",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
