@@ -164,6 +164,10 @@ def build_site_payload(payload, audience):
     }
     if audience == "founder":
         executive = auto.get("executive", {})
+        # The artifact registry (manual["artifacts"]) is deliberately NOT hosted:
+        # every entry names a branch and a local path, which this payload's
+        # contract excludes. It renders only in the local dashboard HTML, which
+        # embeds the manual layer verbatim.
         site_payload["numbers"]["posthogDashboards"] = [
             {
                 key: dashboard.get(key)

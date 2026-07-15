@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-15 05:26 UTC",
+  "generatedAt": "2026-07-15 11:24 UTC",
   "sources": {
-    "status": "2026-07-15 08:26",
+    "status": "2026-07-15 14:24",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-15"
   },
@@ -12,6 +12,7 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "4 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
@@ -23,26 +24,26 @@
   },
   "consistencyIssues": [],
   "command": {
-    "bestNextAction": "Resumely iOS: rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé"
+    "bestNextAction": "Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks"
   },
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "PHASE 3 — FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared",
-      "nextAction": "After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
+      "state": "PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
+      "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-14",
+      "evidenceDate": "2026-07-15",
       "dirty": true,
       "dirtyCount": 4
     },
     {
       "name": "Resumely iOS",
-      "state": "Optimization Review blank-screen regression FIXED (2026-07-14)",
-      "nextAction": "rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé",
+      "state": "Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15)",
+      "nextAction": "install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-14",
+      "evidenceDate": "2026-07-15",
       "dirty": true,
-      "dirtyCount": 3
+      "dirtyCount": 9
     },
     {
       "name": "RunSmart Web",
@@ -69,7 +70,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 12
+      "dirtyCount": 4
     }
   ],
   "numbers": {
@@ -171,6 +172,24 @@
   },
   "clocks": [
     {
+      "date": "2026-07-15",
+      "when": null,
+      "what": "Both FTUX releases submitted to ASC — RunSmart 1.0.9 (23) and Resumely 1.4.2 (12); founder will confirm approval/live",
+      "state": "done"
+    },
+    {
+      "date": null,
+      "when": "Apple's clock",
+      "what": "ASC review outcome for both apps. Typical review is 24-48h; a rejection on either restarts the FTUX release lane",
+      "state": "waiting"
+    },
+    {
+      "date": null,
+      "when": "After both go live",
+      "what": "Verify the new WP-43/45 and Release A PostHog events actually fire in production before any FTUX activation claim",
+      "state": "waiting"
+    },
+    {
       "date": "2026-07-12",
       "when": null,
       "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed",
@@ -224,7 +243,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-15 08:26",
+      "lastRan": "2026-07-15 14:24",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

@@ -14,20 +14,19 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 3 — FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared | After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-07-15 b2f7dcd docs: record public 1.0.8 (22) live smoke evidence (2026-07-13) (#91) |
-| Resumely iOS | Optimization Review blank-screen regression FIXED (2026-07-14) | rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé | 3 | Yes (3) | Fresh | High | tasks/progress.md latest entry | 2026-07-14 a9fcf96 fix(ios): retain optimization review state |
+| RunSmart iOS | PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (4) | Fresh | High | tasks/progress.md | 2026-07-15 6cb4094 docs: 1.0.9 (23) archived and submitted to ASC; S6/S1 device smoke waived (#94) |
+| Resumely iOS | Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15) | install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks | 3 | Yes (9) | Fresh | High | tasks/progress.md latest entry | 2026-07-14 a9fcf96 fix(ios): retain optimization review state |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Needs Review | High | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Needs Review | High | tasks/progress.md | 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (12) | Fresh | Medium | tasks/progress.md | 2026-07-15 8509b55b fix: require upstream parity for dashboard sync |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (4) | Fresh | Medium | tasks/progress.md | 2026-07-15 7b255580 fix: require upstream parity for dashboard sync |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-07-14, last commit 2026-07-15 b2f7dcd docs: record public 1.0.8 (22) live smoke evidence (2026-07-13) (#91)
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md
-- Agentic OS: validated 2026-07-13, last commit 2026-07-15 8509b55b fix: require upstream parity for dashboard sync
+- Agentic OS: validated 2026-07-13, last commit 2026-07-15 7b255580 fix: require upstream parity for dashboard sync
 
 ## Drift Warnings
 
@@ -42,14 +41,14 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp40-release-closeout and open a PR, or consciously discard it.
 - [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21 -> Push preserve/apple-garmin-sync-docs and open a PR, or consciously discard it.
-- [RunSmart iOS] worktree on release/1.0.9-build23, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] worktree on fix/zero-streak-profile, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] codex/wp45-s0-measurement-contract: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp45-s0-measurement-contract and open a PR, or consciously discard it.
 - [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16 -> Push feat/localization-updates and open a PR, or consciously discard it.
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
-- [Resumely iOS] 3 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] 9 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -60,7 +59,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] main has 4 unpushed commit(s) -> Sync the default branch first: pull, then push.
-- [Agentic OS] 12 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -82,18 +81,18 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; release 1.0.9 (23) prepared: After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Optimization Review blank-screen regression FIXED (2026-07-14): rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Release A 1.4.2 (12) ASC archive attempt — BLOCKED (2026-07-15): install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## What To Do Next
 
-Resumely iOS: rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé
+Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks
 
 ## Action Board
 
 ### Now
 
-- RunSmart iOS: After 1.0.9 ships: verify WP-43/45 events live in PostHog, then Experiment E1 (coach preview). Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll
-- Resumely iOS: rebuild the current branch on the physical device, submit a job, and confirm review cards plus Apply appear before applying to view the optimized résumé
+- RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll
+- Resumely iOS: install/authorize an Apple Distribution identity and App Store profile for team `8VC4R5M425`, then rerun the signed archive/validation/upload and complete the remaining clean-install device + ASC console checks
 
 ### Next
 
@@ -105,7 +104,7 @@ Resumely iOS: rebuild the current branch on the physical device, submit a job, a
 - RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation — not just faster race plans — see .agent-os/distribution/gtm-plan.md
 - ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional — without sounding like a robot — see .agent-os/distribution/gtm-plan.md
 - RunSmart iOS: 26 saved plan(s) — latest "FTUX Upgrade Plan — RunSmart iOS" (2026-07-13). See Saved Plans.
-- Resumely iOS: 22 saved plan(s) — latest "Development Stories — Trustworthy First-Time Journey Upgrade" (2026-07-14). See Saved Plans.
+- Resumely iOS: 23 saved plan(s) — latest "Release B Initiation Prompt — Continuous, Evidence-Backed Journey" (2026-07-15). See Saved Plans.
 - RunSmart Web: 13 saved plan(s) — latest "Garmin First Aha First Build Plan" (2026-07-01). See Saved Plans.
 - ResumeBuilder AI (Web): 10 saved plan(s) — latest "Fit/Match Web Copy Reconciliation Implementation Plan" (2026-06-29). See Saved Plans.
 - Agentic OS: 10 saved plan(s) — latest "Portfolio Activation Playbook v2" (2026-07-12). See Saved Plans.
@@ -113,6 +112,7 @@ Resumely iOS: rebuild the current branch on the physical device, submit a job, a
 
 ### Blocked
 
+- RunSmart iOS: None — waiting on Apple App Review turnaround
 - Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)
 - Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
 - RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
@@ -177,6 +177,7 @@ Resumely iOS: rebuild the current branch on the physical device, submit a job, a
 - Resumely iOS: docs/specs/drafts/fit-first-triage-brief.md
 - Resumely iOS: docs/specs/drafts/fit-first-triage-spec.md
 - Resumely iOS: docs/specs/drafts/fit-first-triage-stories.md
+- Resumely iOS: docs/specs/drafts/release-b-initiation-prompt.md
 - Resumely iOS: docs/specs/drafts/resume-aha-moments-brief.md
 - Resumely iOS: docs/specs/drafts/resume-aha-moments-spec.md
 - Resumely iOS: docs/specs/drafts/resume-aha-moments-stories.md
@@ -244,34 +245,34 @@ Resumely iOS: rebuild the current branch on the physical device, submit a job, a
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md
-- RunSmart iOS: worktree:release/1.0.9-build23:.agent-os/distribution/gtm-plan.md
-- RunSmart iOS: worktree:release/1.0.9-build23:.agent-os/distribution/weekly-plan.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/plans/2026-06-11-code-review-baseline-audit.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/plans/2026-06-11-code-review-fix-plan.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/demo-mode-simulator-recording.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/e5-adaptive-flex-week.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/e7-garmin-wearable-depth.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/post-submission-ux-redesign-1.0.1.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/sprint-9-real-activity-today-data-flow-ux.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/specs/wp25-garmin-track.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/01-runsmart-ios-archive-submit.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-05-19-posthog-analytics.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-03-build-8-resubmission.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/specs/2026-05-24-e2-e6-design.md
-- RunSmart iOS: worktree:release/1.0.9-build23:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/ERRORS.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/MEMORY.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/lessons.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/progress.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/session-log.md
-- RunSmart iOS: worktree:release/1.0.9-build23:tasks/todo.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-fix-plan.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/demo-mode-simulator-recording.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/e5-adaptive-flex-week.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/e7-garmin-wearable-depth.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/post-submission-ux-redesign-1.0.1.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/sprint-9-real-activity-today-data-flow-ux.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/wp25-garmin-track.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/01-runsmart-ios-archive-submit.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-19-posthog-analytics.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-03-build-8-resubmission.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-24-e2-e6-design.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/ERRORS.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/MEMORY.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/lessons.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/progress.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/session-log.md
+- RunSmart iOS: worktree:fix/zero-streak-profile:tasks/todo.md
