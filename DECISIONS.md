@@ -190,3 +190,15 @@ Impact:
 - Keep the current general Resumely Match/ATS-readiness score for post-optimization guidance, but separate it from a future job-only fit score.
 - Success is measured against `job_added -> optimization_started -> optimization_completed -> export_success`, supporting the existing 20% founder-excluded launch-to-export activation target.
 - Execution plan: `executive-os/work-packets/WP-45-resumely-direct-optimize-and-score-calibration.md`.
+
+## 2026-07-15: Personal Investment OS Runs As Experiment PIOS-E1, Private And Read-Only
+
+Decision: A personal investment research system (working name `pios`) was built in the **private** repo `personal-investment-os` as a timeboxed experiment (PIOS-E1), not a new operating system. It is read-only (no broker integration, no order creation, no trade execution), uses deterministic code for all financial calculations, gates every recommendation through a founder-owned Investment Policy Statement, and keeps an append-only decision journal. Continue/iterate/kill verdict due ~2026-08-15 after at least 4 real research runs.
+
+Reason: The founder wanted source-backed, policy-disciplined investment decisions and explicitly reframed the build mid-session: "a disciplined experiment rather than the beginning of another large operating system." It is a personal tool exempted by the founder from the standing "Not now: new product ideas" line — it does not enter the product portfolio's priority competition (Resumely stays primary per the 2026-07-02 reset).
+
+Impact:
+
+- No holdings, IPS values, credentials, or any personal financial data may ever live in this (public) repo or the Builder OS vault — the private repo gitignores real holdings even there.
+- The experiment's scope gate is explicit: no feature expansion (monitoring, backtesting, OSS framework adoption) before the E1 verdict.
+- Vault record: Builder OS `05-Decisions/2026-07-15-personal-investment-os-e1.md` and the [[Personal Investment OS]] living page.
