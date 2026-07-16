@@ -9,6 +9,7 @@ Run with `python3 -m unittest test_eod_close`.
 from __future__ import annotations
 
 import unittest
+from unittest import mock
 
 import daily_note
 import eod_close
@@ -142,6 +143,21 @@ class CarryForwardLoopTests(unittest.TestCase):
             prev.write_text(note)
             recovered = daily_note.carried_lines(prev)
         self.assertEqual(recovered, carry)
+
+
+class AllRefsCommitTests(unittest.TestCase):
+    @mock.patch("eod_close.subprocess.run")
+    @mock.patch("eod_close.os.path.isdir", return_value=True)
+    def test_git_scan_includes_worktree_branches(self, _isdir, run):
+        run.return_value = mock.Mock(returncode=0, stdout="feat: worktree FTUX\n")
+        old_repos = eod_close.REPOS
+        eod_close.REPOS = [("/tmp/repo", "RunSmart")]
+        try:
+            commits = eod_close.git_commits_today("2026-07-14")
+        finally:
+            eod_close.REPOS = old_repos
+        self.assertEqual(commits, [("RunSmart", ["feat: worktree FTUX"])])
+        self.assertIn("--all", run.call_args.args[0])
 
 
 if __name__ == "__main__":

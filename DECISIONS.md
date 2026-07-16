@@ -190,3 +190,42 @@ Impact:
 - Keep the current general Resumely Match/ATS-readiness score for post-optimization guidance, but separate it from a future job-only fit score.
 - Success is measured against `job_added -> optimization_started -> optimization_completed -> export_success`, supporting the existing 20% founder-excluded launch-to-export activation target.
 - Execution plan: `executive-os/work-packets/WP-45-resumely-direct-optimize-and-score-calibration.md`.
+
+## 2026-07-15: Morning Reads EOD And Active Worktrees
+
+Decision: Extend the Dashboard Trust Rule so `./agentic-os morning` reads the previous Builder OS EOD handoff and selects the freshest validated task status and saved plans across every active product worktree, while leaving product primary checkouts untouched.
+
+Reason: Product implementation deliberately runs in isolated worktrees. Reading only the primary checkout made completed FTUX stories and plans invisible until merge, while the EOD note could record the work without feeding it back into Portfolio HQ.
+
+Impact:
+
+- EOD git evidence scans all refs, so commits made on worktree branches appear in the evening close.
+- Morning surfaces the latest EOD Moved / Didn't / Carry handoff as dated evidence.
+- Task status chooses the freshest dated source across the primary checkout and active worktrees, with the selected branch labeled in Portfolio HQ.
+- Saved-plan discovery includes active worktrees and `docs/specs/drafts/`, de-duplicated by plan path and title.
+- Portfolio HQ keeps founder-excluded mature D7 numbers as the decision snapshot and provides authenticated PostHog links as differently-windowed operational drill-downs.
+
+## 2026-07-15: Resumely FTUX Releases B Then C As One Push
+
+Decision: After Release A shipped to App Store Connect as 1.4.2 (12), Resumely continues straight through **Release B (Stories 7-10)** and then **Release C (Stories 11-13)** as a single FTUX push, in that order. Release B is the active lane; Release C is queued behind it, not skipped and not started early.
+
+Reason: The founder initially named Release C's three items (localization/accessibility, second-job loop, release-candidate journey audit) as "the 2nd release" — those are Stories 11-13, while the plan's second release is B. On clarification the founder chose both, in plan order. Release B is the half that attacks the measured D7 wall (guest context lost at auth, duplicated Fit work, missing canonical activation instrumentation); Release C is reach and retention polish, which is lower value while D7 activation reads 0/73.
+
+Impact:
+
+- Active lane is Release B, Stories 7-10, in order, per `docs/specs/drafts/release-b-initiation-prompt.md`.
+- **Story 9 stays hard-blocked** until the backend recommendation-evidence metadata contract has a named owner, schema, delivery plan and fallback. Do not start it on the assumption the contract will land.
+- Release B branches from the Release A merge point once Release A lands on `main` — see the separate defect below.
+- Release C (Stories 11-13) is queued, not cancelled.
+
+## 2026-07-15: Artifacts Are Indexed With Their Storage State
+
+Decision: Portfolio HQ carries an **Artifacts** tab indexing durable artifacts across Builder OS, Agentic OS and the product repos. Each entry records its real storage state — `on main`, `branch-only`, or `local-only` — which is storage truth, not a quality rating. The registry lives in `dashboard/portfolio-hq-manual.json` and is **never** included in any hosted site payload, because every entry names a branch and a local path that the payload contract forbids (enforced by `test_artifact_registry_is_never_hosted`).
+
+Reason: Both first-time-user journey audits — the evidence base for all 13 Resumely stories and all three RunSmart work packets — were invisible from `main`. The Resumely one was untracked in **every** branch and existed only on one disk; any `git clean -fd` would have destroyed it (rescued 2026-07-15, ResumeBuilder-IOS-APP PR #96). A dashboard link to an untracked file protects nothing, so the index has to state where the file actually lives.
+
+Impact:
+
+- 9 of 19 registered artifacts are not on `main` as of 2026-07-15.
+- Treat `branch-only` as one branch-cleanup away from invisible; re-verify links after any cleanup.
+- **Related defect to fix:** Resumely 1.4.2 (12) was submitted to Apple from `codex/first-time-journey-release-a`. `origin/main` has neither Stories 1-6 nor the version bump, so main cannot rebuild the shipped binary. Resumely `tasks/progress.md` also still reads "ASC archive attempt BLOCKED (2026-07-15)", contradicting the founder's submission statement — Apple-state changes leave no commit, so the repo record cannot self-correct.

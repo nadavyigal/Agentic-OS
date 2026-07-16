@@ -1,55 +1,54 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-13 05:19 UTC",
+  "generatedAt": "2026-07-15 11:33 UTC",
   "sources": {
-    "status": "2026-07-13 08:19",
+    "status": "2026-07-15 14:33",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-13"
+    "manual": "2026-07-15"
   },
   "trust": {
-    "level": "caution",
-    "label": "Use caution",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
-      "Evidence gap after latest commit: Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (1)."
+      "Extra product worktrees retained for review: RunSmart iOS (2)."
     ]
   },
   "consistencyIssues": [],
   "command": {
-    "bestNextAction": "Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort."
+    "bestNextAction": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback"
   },
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle)",
-      "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
+      "state": "PHASE 3 — FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
+      "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-12",
+      "evidenceDate": "2026-07-15",
       "dirty": true,
       "dirtyCount": 4
     },
     {
       "name": "Resumely iOS",
-      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
-      "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
+      "state": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+      "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 8
     },
     {
       "name": "RunSmart Web",
       "state": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
       "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "evidenceDate": "2026-07-03",
       "dirty": true,
       "dirtyCount": 8
@@ -58,7 +57,7 @@
       "name": "ResumeBuilder AI (Web)",
       "state": "WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next",
       "nextAction": "WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "evidenceDate": "2026-07-03",
       "dirty": true,
       "dirtyCount": 2
@@ -69,8 +68,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 12
     }
   ],
   "numbers": {
@@ -150,6 +149,24 @@
   },
   "clocks": [
     {
+      "date": "2026-07-15",
+      "when": null,
+      "what": "Both FTUX releases submitted to ASC — RunSmart 1.0.9 (23) and Resumely 1.4.2 (12); founder will confirm approval/live",
+      "state": "done"
+    },
+    {
+      "date": null,
+      "when": "Apple's clock",
+      "what": "ASC review outcome for both apps. Typical review is 24-48h; a rejection on either restarts the FTUX release lane",
+      "state": "waiting"
+    },
+    {
+      "date": null,
+      "when": "After both go live",
+      "what": "Verify the new WP-43/45 and Release A PostHog events actually fire in production before any FTUX activation claim",
+      "state": "waiting"
+    },
+    {
       "date": "2026-07-12",
       "when": null,
       "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed",
@@ -203,14 +220,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-13 08:19",
+      "lastRan": "2026-07-15 14:33",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-13",
+      "lastRan": "2026-07-15",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {

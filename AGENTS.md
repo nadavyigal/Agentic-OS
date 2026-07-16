@@ -119,6 +119,22 @@ If a packet has no `Mode` field, treat it as **Builder** (the existing default) 
 
 Then execute. Go beyond the basics. Deliver like a real production build.
 
+### Vocabulary Note
+
+If you have seen the "task contract / context package / verifier / execution
+record" framing elsewhere and are wondering how it maps here: it already
+exists under different names, and there is no separate artifact system to
+adopt.
+
+| Framing | Already lives as |
+|---|---|
+| Task contract | The work packet's Goal / Task / Constraints / Validation (`executive-os/templates/work-packet-template.md`) |
+| Context package | `Read First` list + bridge files + `tasks/MEMORY.md` / `project-context.md` |
+| Verifier | The `Validation` field — should name a runnable command or eval when one exists, not just prose |
+| Execution record | `tasks/progress.md` + `sourceConfidence` in the dashboard refresh (see the 2026-06-02 Dashboard Trust decision in `DECISIONS.md`) |
+
+No new process layer is needed here — see "Do NOT Introduce Unless Asked" below.
+
 ## Do NOT Introduce Unless Asked
 
 - New dependencies, plugins, MCP servers, package managers, or background services.

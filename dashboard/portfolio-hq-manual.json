@@ -1,16 +1,21 @@
 {
-  "asOf": "2026-07-13",
+  "asOf": "2026-07-15",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Run five observed Resumely first sessions before the July 18 gate",
-      "body": "Resumely is 0/73 for D7 export activation, but the post-1.4.1 picker cohort is still too young. Observe five right-fit users before adding another product story. Record only redacted friction: whether a usable resume file is on the phone, first useful moment, trust hesitation, next-action comprehension, and whether a usable export is reached.",
-      "prompt": "Use the observation protocol in docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md for five right-fit Resumely first sessions. Save only redacted aggregate notes. If at least 3 of 5 users lack a usable local resume file, record that WP-44 S2's qualitative gate is met, but do not build paste-text before the 2026-07-18 PostHog gate."
+      "title": "Land Resumely Release A on main — the shipped build is not on main",
+      "body": "Founder submitted 1.4.2 (12) to ASC on 2026-07-15, built from branch codex/first-time-journey-release-a. origin/main does not contain Stories 1-6, the FTUX plan docs, or the 1.4.2 version bump. If review passes, the live App Store build will have no corresponding commit on main — main cannot rebuild what users are running. Resumely iOS tasks/progress.md still reads 'ASC archive attempt BLOCKED (2026-07-15)' and contradicts the founder's submission statement.",
+      "prompt": "In the Resumely iOS repo, open a PR from codex/first-time-journey-release-a into main covering Release A Stories 1-6 and the 1.4.2 (12) version bump. Preserve unrelated dirty files. Run the focused suites plus Debug and generic-device Release builds before merging. Then correct tasks/progress.md: per founder confirmation the 1.4.2 (12) archive and ASC submission did occur on 2026-07-15."
     },
     {
-      "title": "Finish the WP-31 Hebrew ASO asset pack",
-      "body": "Resumely remains at 0% D7 activation and traffic is still the binding constraint. WP-31 is founder-approved, unstarted, and independent of the too-young 1.4.1 picker cohort. Complete the Hebrew subtitle, keyword field, promotional text, five screenshot captions, and reviewer note so the founder has one publish-ready organic channel asset.",
-      "prompt": "Execute WP-31 as a draft-only asset pass. Produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify every claim against the canonical product-marketing file and explicitly gate any RTL PDF-export claim on product QA. Stop at founder review; do not publish to App Store Connect automatically."
+      "title": "Start Resumely FTUX Release B (Stories 7-10)",
+      "body": "Founder approved B then C as one FTUX push on 2026-07-15. The gated initiation prompt already exists at docs/specs/drafts/release-b-initiation-prompt.md (preserved on PR #96). Story 9 stays hard-blocked until the backend recommendation-evidence metadata contract has a named owner, schema, delivery plan and fallback.",
+      "prompt": "In the Resumely iOS repo, follow docs/specs/drafts/release-b-initiation-prompt.md. Implement Stories 7-10 in order: preserve guest context through auth, merge Fit into the diagnosis continuation, evidence-backed Accept/Skip review, canonical activation instrumentation. Do not begin Story 9 until the backend evidence-metadata contract is recorded and approved. Branch from the Release A merge point once it lands on main."
+    },
+    {
+      "title": "Merge the FTUX artifact rescue (PR #96)",
+      "body": "The Resumely first-time-user journey audit, its 20 evidence screenshots, the Figma contact sheet, the Release A ASC readiness report and the Release B initiation prompt were untracked in every branch — they existed only on one local disk. They are now committed and pushed on docs/ftux-audit-rescue, but the PR is still open.",
+      "prompt": "Review and merge ResumeBuilder-IOS-APP PR #96 (docs-only artifact rescue). Confirm nothing else in the Resumely or RunSmart repos is carrying untracked artifacts worth preserving."
     }
   ],
   "tracks": [
@@ -19,14 +24,46 @@
       "name": "Portfolio Activation Playbook v2",
       "pill": "CURRENT — RESUMELY 70 / RUNSMART 30",
       "tone": "run",
-      "standing": "The canonical activation contract is now Intent → Setup → First value → Verified value → Repeat value, with one primary outcome per app. Resumely remains the main experiment lane through 2026-08-01; RunSmart closes existing WP-40 release evidence and measures shipped paths without adding a new feature.",
+      "standing": "The canonical activation contract remains Intent → Setup → First value → Verified value → Repeat value. Founder-excluded mature D7 snapshots drive decisions. Both products' FTUX work is now submitted to Apple and awaiting review — the next activation read is the first that can show whether FTUX moved anything.",
       "items": [
         { "tone": "done", "text": "Primary metrics locked: RunSmart physical install → run_completed within D7; Resumely first seen → export_success within D7" },
-        { "tone": "done", "text": "WP-20 and WP-43 are shipped/measuring; WP-44 S1 is blocked and dropped; paste-text is gated behind July 18 plus a 3-of-5 observation signal" },
+        { "tone": "done", "text": "Both FTUX releases submitted to ASC 2026-07-15: RunSmart 1.0.9 (23) and Resumely 1.4.2 (12). Neither is live yet" },
+        { "tone": "run", "text": "Resumely Releases B then C approved as one FTUX push (founder, 2026-07-15); Release B Stories 7-10 are the active lane" },
         { "tone": "run", "text": "Founder is actively developing Playbook V2 and the distribution ranking with Claude Code; preserve that work as the current planning lane" },
         { "tone": "done", "text": "WP-45 S0 measurement contract and baseline implemented on Resumely iOS branch codex/wp45-s0-measurement-contract at d53d091; S1 is next after the branch is pushed and reviewed" },
         { "tone": "wait", "text": "Cumulative clean Resumely export remains under review because the manual one-export claim conflicts with the saved clean report" },
         { "tone": "run", "text": "Next gates: five observed Resumely sessions, July 18 minimum cohort read, July 25 definitive read, August 1 CEO/COO decision" }
+      ]
+    },
+    {
+      "id": "runsmart-ftux",
+      "name": "RunSmart FTUX upgrade",
+      "pill": "1.0.9 (23) SUBMITTED — IN REVIEW",
+      "tone": "wait",
+      "standing": "1.0.9 (23) was archived and submitted to App Store Connect on 2026-07-15 (RunSmart iOS main commit 6cb4094, PR #94); the founder-device S6/S1 smoke was waived at submission. The live App Store build is still 1.0.8 (22) until review clears. WP-43, WP-44 and WP-45 are all merged to main and the full suite passes 273 tests.",
+      "items": [
+        { "tone": "done", "text": "WP-43 P0 trust hardening merged: plan-generation state, human auth errors, consistent timeline, interval parsing, user-facing source labels and explicit onboarding choices" },
+        { "tone": "done", "text": "WP-44 S1-S6 implemented: first-screen promise, async failure states, single-source metrics, onboarding polish, rest-day guidance and in-app Terms/Privacy" },
+        { "tone": "done", "text": "WP-45 instrumentation remainder implemented, including abandonment, permissions, HealthKit failure, first-workout, report and insight events" },
+        { "tone": "done", "text": "PR #89 and release prep PR #90 merged to main; 1.0.9 (23) simulator smoke caught and fixed two numeric consistency bugs" },
+        { "tone": "done", "text": "1.0.9 (23) archived and submitted to ASC 2026-07-15 (commit 6cb4094, PR #94); zero-streak profile fix (PR #92) landed first" },
+        { "tone": "wait", "text": "Apple review outcome. The S6 empty-goal and S1 plan-generation failure states were never smoked on a physical device — that gap shipped with the build" },
+        { "tone": "wait", "text": "Experiments E1-E3 start only after the release is live and the new PostHog events are verified" }
+      ]
+    },
+    {
+      "id": "resumely-ftux",
+      "name": "Resumely FTUX upgrade",
+      "pill": "1.4.2 (12) SUBMITTED — B+C APPROVED",
+      "tone": "run",
+      "standing": "Founder archived and submitted Release A as 1.4.2 (12) to ASC on 2026-07-15. The build was cut from codex/first-time-journey-release-a — Stories 1-6 and the version bump are NOT on origin/main, so main cannot currently rebuild the submitted binary. Founder approved Releases B then C as one FTUX push on 2026-07-15.",
+      "items": [
+        { "tone": "done", "text": "Release A: golden-path harness, deterministic Apply route, one optimization source, shared job validation, recommendation safety and preview/save/export/relaunch recovery" },
+        { "tone": "done", "text": "1.4.2 (12) archived and submitted to ASC 2026-07-15 (founder-confirmed). Live App Store build stays 1.4.1 (11) until review clears" },
+        { "tone": "you", "text": "Land Release A on main — the shipped code lives only on codex/first-time-journey-release-a, and progress.md still says the archive was BLOCKED" },
+        { "tone": "run", "text": "Release B Stories 7-10 approved and next: preserve guest context through auth, merge Fit into diagnosis, evidence-backed Accept/Skip review, canonical activation instrumentation" },
+        { "tone": "wait", "text": "Story 9 is hard-blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback (open question Q1)" },
+        { "tone": "wait", "text": "Release C Stories 11-13 queued behind B: touched-screen localization/accessibility, optimize-another-job retention loop, release-candidate journey audit" }
       ]
     },
     {
@@ -68,20 +105,191 @@
       ]
     }
   ],
+  "artifacts": {
+    "note": "Durable artifacts built across Builder OS, Agentic OS and the product repos, so nothing gets lost. `state` is the honest storage truth, not a quality rating: `safe` = committed and pushed to a branch on origin; `branch-only` = pushed but never merged to main, so it is invisible to anyone reading main; `local-only` = exists on one disk and one `git clean` from gone. Verified against origin on 2026-07-15 — re-verify before trusting a link after any branch cleanup.",
+    "groups": [
+      {
+        "name": "Resumely FTUX",
+        "items": [
+          {
+            "title": "First-time-user journey audit (2026-07-13)",
+            "what": "The fresh-install walkthrough that produced the entire 13-story FTUX plan. Verdict: strong guest-first positioning, then repeated Analyze/Check Fit work, recommendation-credibility defects, and a critical post-Apply blank/locked state.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/docs/ftux-audit-rescue/docs/audits/first-time-user-journey-audit.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/audits/first-time-user-journey-audit.md",
+            "state": "branch-only",
+            "stateNote": "Was local-only until 2026-07-15; rescued onto docs/ftux-audit-rescue, PR #96 open."
+          },
+          {
+            "title": "Journey audit evidence — 20 screenshots",
+            "what": "The captured fresh-install journey, screen by screen, from first home through the blank post-Apply state and the mixed-language Hebrew home.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/tree/docs/ftux-audit-rescue/docs/audits/first-time-user-journey-evidence",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/audits/first-time-user-journey-evidence",
+            "state": "branch-only",
+            "stateNote": "Rescued 2026-07-15 on PR #96."
+          },
+          {
+            "title": "13-story FTUX plan (Releases A/B/C)",
+            "what": "The approval-ready story plan. Release A trustworthy completion, Release B continuous evidence-backed journey, Release C reach and retention polish.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/codex/first-time-journey-release-a/docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+            "state": "branch-only",
+            "stateNote": "Never merged to main — lives only on codex/first-time-journey-release-a."
+          },
+          {
+            "title": "FTUX product brief + feature spec",
+            "what": "The brief and spec behind the story plan — the reasoning layer under the 13 stories.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/codex/first-time-journey-release-a/docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+            "state": "branch-only"
+          },
+          {
+            "title": "Release B initiation prompt (gated)",
+            "what": "The ready-to-paste prompt that starts Stories 7-10, including the Story 9 backend-evidence decision gate. This is the next session's entry point.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/docs/ftux-audit-rescue/docs/specs/drafts/release-b-initiation-prompt.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/specs/drafts/release-b-initiation-prompt.md",
+            "state": "branch-only",
+            "stateNote": "Rescued 2026-07-15 on PR #96."
+          },
+          {
+            "title": "Release A ASC readiness report (2026-07-15)",
+            "what": "The pre-submission readiness assessment. Records the signing-identity blocker that stopped the first archive attempt, before the founder completed the 1.4.2 submission.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/docs/ftux-audit-rescue/docs/qa/reports/release-a-asc-readiness-2026-07-15.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/qa/reports/release-a-asc-readiness-2026-07-15.md",
+            "state": "branch-only",
+            "stateNote": "Rescued 2026-07-15 on PR #96."
+          }
+        ]
+      },
+      {
+        "name": "RunSmart FTUX",
+        "items": [
+          {
+            "title": "First-time-user journey audit (2026-07-13)",
+            "what": "The RunSmart fresh-install audit. Source of the WP-43/44/45 risk list: blank plan-generation wait, raw Apple sign-in errors, the '21000 x 400 m' workout fabrication, developer-vocabulary badges, and the hidden default goal.",
+            "url": "https://github.com/nadavyigal/IOS-runsmart-light-app-/blob/claude/runsmart-ftux-audit-240648/docs/audits/first-time-user-journey-audit.md",
+            "local": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648/docs/audits/first-time-user-journey-audit.md",
+            "state": "branch-only",
+            "stateNote": "Pushed to origin but never merged to main; readable only via the audit branch or its worktree."
+          },
+          {
+            "title": "FTUX upgrade plan — WP-43/44/45 + experiments",
+            "what": "The plan derived from the audit: P0 trust hardening, first-screen promise and failure states, instrumentation, and experiments E1-E3.",
+            "url": "https://github.com/nadavyigal/IOS-runsmart-light-app-/blob/claude/runsmart-ftux-audit-240648/docs/plans/2026-07-13-ftux-upgrade-plan.md",
+            "local": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648/docs/plans/2026-07-13-ftux-upgrade-plan.md",
+            "state": "branch-only"
+          },
+          {
+            "title": "FTUX audit evidence assets",
+            "what": "Captured screens behind the audit's findings — first screen, health prompt, today/plan, run recording and paused states.",
+            "url": "https://github.com/nadavyigal/IOS-runsmart-light-app-/tree/claude/runsmart-ftux-audit-240648/docs/audits/assets/ftux-2026-07-13",
+            "local": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648/docs/audits/assets/ftux-2026-07-13",
+            "state": "branch-only"
+          }
+        ]
+      },
+      {
+        "name": "Agentic OS",
+        "items": [
+          {
+            "title": "DECISIONS.md — durable cross-project decisions",
+            "what": "The only durable record of decisions that span products. If a decision is not here, it does not exist.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/DECISIONS.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/DECISIONS.md",
+            "state": "safe"
+          },
+          {
+            "title": "PROJECT-STATUS.md — parsed cross-repo status",
+            "what": "Status rebuilt from each repo's task files on every refresh, with a source-confidence rating per project. The anti-drift layer.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/PROJECT-STATUS.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/PROJECT-STATUS.md",
+            "state": "safe"
+          },
+          {
+            "title": "Portfolio HQ manual layer",
+            "what": "The file behind this page. Everything not derivable from status.json — PostHog reads, founder statements, the queue, and this artifact registry.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/dashboard/portfolio-hq-manual.json",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/dashboard/portfolio-hq-manual.json",
+            "state": "safe"
+          },
+          {
+            "title": "Executive dashboard + COO review",
+            "what": "The executive OS layer: board view, executive backlog and the latest COO review.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/executive-os/EXECUTIVE-DASHBOARD.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/executive-os/EXECUTIVE-DASHBOARD.md",
+            "state": "safe"
+          },
+          {
+            "title": "Distribution OS — command center + experiment log",
+            "what": "Channel backlog, experiment log and metrics for distribution work, including the WP-32 inconclusive close.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/distribution-os/distribution-command-center.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/distribution-os/distribution-command-center.md",
+            "state": "safe"
+          },
+          {
+            "title": "Token + cost observability",
+            "what": "The usage collector behind the cost panel on the Numbers tab. Bins spend by launch directory.",
+            "url": "https://github.com/nadavyigal/Agentic-OS/blob/main/scripts/usage/collect_usage.py",
+            "local": "/Users/nadavyigal/Documents/Projects /Agentic OS/scripts/usage/collect_usage.py",
+            "state": "safe"
+          }
+        ]
+      },
+      {
+        "name": "Builder OS (Obsidian vault)",
+        "items": [
+          {
+            "title": "wiki-index — catalog of every vault page",
+            "what": "Read first when searching the vault. The curated catalog plus Dataview-generated index health.",
+            "url": "https://github.com/nadavyigal/builder-os-/blob/main/wiki-index.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Nadav Builder OS/wiki-index.md",
+            "state": "safe"
+          },
+          {
+            "title": "Builder OS Brain Map",
+            "what": "The Excalidraw brain map of the vault — 123 notes, 592 links, regenerated without sync-duplicate phantom nodes.",
+            "url": "https://github.com/nadavyigal/builder-os-/blob/main/01-Agentic-OS/Maps/Builder%20OS%20Brain%20Map.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Nadav Builder OS/01-Agentic-OS/Maps/Builder OS Brain Map.md",
+            "state": "safe"
+          },
+          {
+            "title": "Decision Log",
+            "what": "The vault's readable decision index. Durable decisions must also land in Agentic OS DECISIONS.md.",
+            "url": "https://github.com/nadavyigal/builder-os-/blob/main/05-Decisions/Decision%20Log.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Nadav Builder OS/05-Decisions/Decision Log.md",
+            "state": "safe"
+          },
+          {
+            "title": "Decision: priority reset — Resumely primary (2026-07-02)",
+            "what": "The standing decision that makes Resumely primary and puts RunSmart Garmin work in maintenance. Governs what the queue above is allowed to prioritize.",
+            "url": "https://github.com/nadavyigal/builder-os-/blob/main/05-Decisions/2026-07-02-priority-reset-resumely-primary.md",
+            "local": "/Users/nadavyigal/Documents/Projects /Nadav Builder OS/05-Decisions/2026-07-02-priority-reset-resumely-primary.md",
+            "state": "safe"
+          }
+        ]
+      }
+    ]
+  },
   "suggestedSessions": [
     {
       "product": "Resumely (primary)",
-      "model": "GPT-5.6 Sol / Codex - tool-heavy verification across analytics and repository evidence",
-      "title": "Finish the WP-31 Hebrew ASO pack",
-      "why": "WP-32 is closed inconclusive and the D7 activation gate remains 0/73. The next approved distribution unit is the draft-only WP-31 asset pack; observed first sessions run as a separate founder research task before July 18.",
-      "prompt": "Execute WP-31 as one draft-only story: produce Hebrew subtitle candidates, keyword-field candidates, promotional text, five screenshot captions, and a reviewer note. Verify claims against the canonical product-marketing file and gate RTL PDF-export claims on QA. Do not publish or start paid acquisition."
+      "model": "GPT-5.6 Sol / Codex - tool-heavy verification across repository evidence and build validation",
+      "title": "Land Resumely Release A on main",
+      "why": "1.4.2 (12) was submitted to Apple from codex/first-time-journey-release-a. Nothing on main can rebuild the binary users are about to receive. This is the highest-value hour in the portfolio right now — it is cheap, and it stops a live build from becoming unreproducible.",
+      "prompt": "Open a PR from Resumely codex/first-time-journey-release-a into main covering Release A Stories 1-6 and the 1.4.2 (12) bump. Preserve unrelated dirty files. Run focused suites plus Debug and generic-device Release builds before merging. Then correct tasks/progress.md, which still claims the ASC archive was BLOCKED."
     },
     {
-      "product": "RunSmart (maintenance-plus)",
-      "model": "Sonnet tier - well-specified feature against an existing pattern (per GLOBAL-TOOL-USAGE model routing)",
-      "title": "Measure the shipped first-run commitment path",
-      "why": "WP-20 already shipped in 1.0.7 (21). Today's mature cohort is still 0/13, but only one user reached onboarding/plan, so another product change would be guesswork.",
-      "prompt": "Run a read-only ordered RunSmart funnel for clean physical App Store users: install → onboarding_completed → plan_generated → first_run_cta_viewed → first_run_cta_tapped (start_now/remind_me) → first_run_reminder_scheduled or run_started → run_completed. Exclude founder, QA, emulator, TestFlight and sideloaded people before counting. If the examined step has fewer than 10 eligible users, report the counts and defer product changes."
+      "product": "Resumely (primary)",
+      "model": "GPT-5.6 Sol / Codex - long multi-story implementation against a written plan",
+      "title": "Start FTUX Release B — Stories 7-10",
+      "why": "Founder approved B then C as one push on 2026-07-15. Release B is the half of the FTUX plan that actually attacks the measured D7 wall: guest context loss at auth, duplicated Fit work, and the missing canonical activation instrumentation.",
+      "prompt": "Follow docs/specs/drafts/release-b-initiation-prompt.md in the Resumely iOS repo. Implement Stories 7-10 in order. Do not begin Story 9 until the backend recommendation-evidence metadata contract has a named owner, schema, delivery plan and fallback. Branch from the Release A merge point."
+    },
+    {
+      "product": "Both (hygiene)",
+      "model": "Sonnet tier - mechanical, well-specified",
+      "title": "Merge the artifact rescue and un-strand the FTUX branches",
+      "why": "Both first-time-user journey audits — the documents that justify every FTUX story — exist only on unmerged branches. The Resumely one was untracked entirely until 2026-07-15.",
+      "prompt": "Merge ResumeBuilder-IOS-APP PR #96. Then decide whether the RunSmart FTUX audit and plan on claude/runsmart-ftux-audit-240648 should land on main, and open that PR if so. Re-verify every artifact link on the Portfolio HQ Artifacts tab afterwards."
     }
   ],
   "growth": {
@@ -150,7 +358,32 @@
     ],
     "note": "Live read completed 2026-07-12 08:46-09:00 IDT against PostHog UTC projects 171597 and 270848. RunSmart excludes emulator, TestFlight, sideloaded and known founder prefixes; Resumely excludes is_internal_tester plus the four established founder/QA/bot person prefixes. No monetization, paid ads, or product-change claim is unlocked by these 0% results. Re-read Resumely's post-live 1.4.1 picker cohort on 2026-07-18 minimum / 2026-07-25 preferred; re-read WP-42 after one clean disclosure viewer, with 10 required for a product recommendation."
   },
+  "posthogDashboards": [
+    {
+      "id": "runsmart",
+      "product": "RunSmart",
+      "url": "https://us.posthog.com/project/171597/dashboard/1841362",
+      "decisionSnapshot": "0% mature D7 activation, 0 run completions among 13 eligible installs",
+      "exclusions": "Founder prefixes, QA, emulator, TestFlight and sideloaded users",
+      "cohortCutoff": "Mature D7 through 2026-07-12",
+      "refreshedAt": "2026-07-12 08:46-09:00 IDT",
+      "warning": "The linked operational dashboard uses rolling 30-day charts, independent event totals and broader traffic. It can include founder signals and is not the mature ordered D7 cohort."
+    },
+    {
+      "id": "resumely",
+      "product": "Resumely",
+      "url": "https://us.posthog.com/project/270848/dashboard/1801425",
+      "decisionSnapshot": "0% mature D7 activation, 0 exports among 73 eligible first-seen people",
+      "exclusions": "is_internal_tester plus established founder, QA and bot person prefixes",
+      "cohortCutoff": "Mature D7 through 2026-07-12",
+      "refreshedAt": "2026-07-12 08:46-09:00 IDT",
+      "warning": "The linked dashboard uses a rolling clean iOS 60-day status view and an export diagnostic with different event filters. Founder exclusion and cohort maturity explain much of the difference."
+    }
+  ],
   "clocks": [
+    { "date": "2026-07-15", "what": "Both FTUX releases submitted to ASC — RunSmart 1.0.9 (23) and Resumely 1.4.2 (12); founder will confirm approval/live", "state": "done" },
+    { "date": null, "when": "Apple's clock", "what": "ASC review outcome for both apps. Typical review is 24-48h; a rejection on either restarts the FTUX release lane", "state": "waiting" },
+    { "date": null, "when": "After both go live", "what": "Verify the new WP-43/45 and Release A PostHog events actually fire in production before any FTUX activation claim", "state": "waiting" },
     { "date": "2026-07-12", "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed", "state": "done" },
     { "date": "2026-07-18", "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users", "state": "running" },
     { "date": "2026-07-25", "what": "Resumely 1.4.1 definitive 14-day cohort read", "state": "running" },
@@ -162,7 +395,8 @@
   ],
   "knownUnknown": {
     "kk": [
-      "Both current releases are live on App Store Connect, founder-confirmed 2026-07-13: RunSmart 1.0.8 (22) and Resumely 1.4.1 (11).",
+      "Both FTUX releases were submitted to ASC on 2026-07-15 and are awaiting review (founder-confirmed): RunSmart 1.0.9 (23) and Resumely 1.4.2 (12). Neither is live yet — the live builds remain RunSmart 1.0.8 (22) and Resumely 1.4.1 (11).",
+      "Resumely's submitted 1.4.2 (12) was built from codex/first-time-journey-release-a, not main. origin/main has neither Stories 1-6 nor the version bump, so main cannot rebuild the submitted binary until that PR lands.",
       "Both remain at 0% real D7 activation on the 2026-07-12 mature read: Resumely 0/73; RunSmart 0/13.",
       "Resumely D7 wall = first seen→upload→optimization: 73 first seen, 9 uploaded, 0 optimized, 0 exported. PR #114 web export observability is merged; wait for 5 real web completers before reading that new path.",
       "RunSmart wall = install→onboarding and plan→run: 13 mature installs, 1 onboarded/planned, 0 ran. WP-40 S1+S2 merged via PR #84; WP-42 has no clean production disclosure cohort yet.",
@@ -183,6 +417,8 @@
       "WP files lag Codex/Cursor sessions — dashboards lie until packets are updated. Three Codex/Cursor sessions found work sitting uncommitted or on detached HEAD this week (ResumeBuilder iOS APP x2, RunSmart Web) 07-06/07/08 — branched, verified, and preserved each time (PR #89, #90, #116), but a recurring risk worth remembering before trusting 'no local changes.' WP-32/33/34 were the exception this round — Cursor updated and pushed the packets itself (commit fe9ad95).",
       "status.json's needsDecision still lists \"RunSmart iOS: if build 8 is rejected again\" — stale, from before 1.0.7(21) shipped and passed review. Not a portfolio-hq bug; RunSmart iOS's own task files need a refresh to clear it. Same staleness pattern flagged by ./agentic-os verify for COO-LATEST-REVIEW.md (references build 18, current is build 21).",
       "ResumeBuilder IOS APP is missing tasks/ERRORS.md and docs/agent-os/project-context.md — flagged as a required-read gap by two separate Codex sessions now.",
+      "Artifacts strand silently. Both FTUX audits — the evidence base for all 13 Resumely stories and all three RunSmart work packets — sit on branches never merged to main, and the Resumely one was untracked in every branch until 2026-07-15 (rescued via PR #96). The Artifacts tab now lists each one with its real storage state; treat `branch-only` as one branch-cleanup away from invisible.",
+      "Resumely iOS tasks/progress.md contradicts the founder on ASC state: it says the 1.4.2 archive was BLOCKED on signing identity, while the founder confirms the submission happened the same day. Apple-state changes leave no commit, so the repo record cannot self-correct — this is the same staleness pattern that made progress.md read 'in review' when 1.2 (7) was already live.",
       "RunSmart iOS has ~30 untracked Finder-duplicate '* 2.swift'/'* 2.md' files cluttering the repo — pre-existing, same issue already named in status.json's blockers as blocking clean archives."
     ],
     "uu": [
@@ -194,23 +430,23 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — finish WP-31 and observe five first sessions",
-      "body": "WP-32 is closed inconclusive and the D7 gate remains 0/73. Complete the approved draft-only Hebrew ASO pack as one story, while the founder separately observes five right-fit first sessions before the July 18 cohort gate. Do not open a new product story from percentages alone."
+      "title": "Resumely — land Release A on main",
+      "body": "1.4.2 (12) went to Apple from a feature branch. Until that PR lands, the build users receive has no commit on main behind it. Cheap to fix now, expensive after the next branch cleanup."
     },
     {
       "n": 2,
-      "title": "RunSmart — hold new product work until the WP-40 cohort is readable",
-      "body": "The 2026-07-12 mature D7 read is still 0/13, with 1 onboarding/plan and 0 runs. WP-40 S1+S2 is merged and RunSmart main is clean. Re-run WP-42 after one clean disclosure viewer; require 10 before changing product direction. Garmin stays maintenance-only."
+      "title": "Resumely — start Release B (Stories 7-10)",
+      "body": "Founder approved B then C as one FTUX push. Release B is the part that attacks the measured D7 wall: guest context through auth, merged Fit, evidence-backed review, canonical activation instrumentation. Story 9 stays gated on the backend evidence contract."
     },
     {
       "n": 3,
-      "title": "Michal — schedule the live Gemini session",
-      "body": "Track C fully drafted. One calendar invite unblocks the first paid pilot of the OS."
+      "title": "FTUX measurement — preserve the D7 contract",
+      "body": "Use Portfolio HQ's founder-excluded mature D7 cohort for decisions. Use the authenticated PostHog links for operational drill-down, not as a like-for-like replacement."
     },
     {
       "n": 4,
-      "title": "OS hygiene — keep the record true",
-      "body": "End every Codex/Cursor session with 'update the work packet' and 'create a branch before committing' — two Codex sessions this week were found sitting on detached HEAD. Clear the stranded-work board (see Today tab count) and the ResumeBuilder iOS APP missing-file gap (tasks/ERRORS.md, docs/agent-os/project-context.md)."
+      "title": "OS hygiene — keep the artifacts findable",
+      "body": "The Artifacts tab is now the index of everything built across Builder OS, Agentic OS and the product repos. Merge PR #96, decide whether the RunSmart audit branch lands on main, and correct Resumely's progress.md so the repo stops contradicting the founder on ASC state."
     }
   ],
   "readouts": [

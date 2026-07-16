@@ -10,8 +10,10 @@ import tempfile
 import unittest
 import os
 import json
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
+from unittest.mock import patch
 
 import cli
 
@@ -170,6 +172,74 @@ class TestParseTaskFiles(unittest.TestCase):
             parsed = cli.parse_task_files(Path(d))
             self.assertEqual(parsed["preferredSource"], "tasks/progress.md")
             self.assertEqual(parsed["sourceConfidence"], "Medium")
+
+    def test_newer_narrative_entry_supersedes_stale_structured_block(self):
+        with tempfile.TemporaryDirectory() as d:
+            write_tasks(
+                d,
+                {
+                    "progress.md": (
+                        "# Project Progress\n\n"
+                        "**FTUX Release A IMPLEMENTED (2026-07-14):** Focused tests passed 40/40. "
+                        "**Next:** complete physical-device acceptance.\n\n"
+                        "Current Phase: Old analytics wait\n"
+                        "Next Recommended Story: wait until July 25\n"
+                        "Last Validation: tests passed on 2026-06-28\n"
+                        "Last Updated: 2026-06-28\n"
+                    )
+                },
+            )
+            parsed = cli.parse_task_files(Path(d))
+            self.assertEqual(parsed["currentPhase"], "FTUX Release A IMPLEMENTED (2026-07-14)")
+            self.assertEqual(parsed["nextRecommendedStory"], "complete physical-device acceptance")
+            self.assertEqual(parsed["lastUpdated"], "2026-07-14")
+            self.assertEqual(parsed["sourceConfidence"], "High")
+
+
+class TestWorktreeTruth(unittest.TestCase):
+    def test_freshest_worktree_status_and_draft_plan_are_discovered(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "primary"
+            wt = Path(d) / "worktree"
+            write_tasks(
+                str(root),
+                {"progress.md": "Current Phase: Live release\nLast Updated: 2026-07-13\n"},
+            )
+            write_tasks(
+                str(wt),
+                {"progress.md": (
+                    "Current Phase: FTUX implementation complete\n"
+                    "Next Recommended Story: device smoke and merge\n"
+                    "Last Validation: 268 tests passed on 2026-07-14\n"
+                    "Last Updated: 2026-07-14\n"
+                )},
+            )
+            drafts = wt / "docs" / "specs" / "drafts"
+            drafts.mkdir(parents=True)
+            (drafts / "ftux-plan.md").write_text("# FTUX plan\n\n2026-07-14\n")
+            original = cli.git_worktree_roots
+            cli.git_worktree_roots = lambda _path: [
+                {"path": str(root), "branch": "main", "primary": True},
+                {"path": str(wt), "branch": "feat/ftux", "primary": False},
+            ]
+            try:
+                parsed, source, plans, _sources = cli.collect_worktree_truth(root)
+            finally:
+                cli.git_worktree_roots = original
+            self.assertEqual(parsed["currentPhase"], "FTUX implementation complete")
+            self.assertEqual(source, {"kind": "worktree", "branch": "feat/ftux"})
+            self.assertTrue(any(p["path"] == "docs/specs/drafts/ftux-plan.md" for p in plans))
+
+
+class TestEodHandoff(unittest.TestCase):
+    def test_extracts_moved_didnt_and_carry(self):
+        parsed = cli.parse_eod_handoff(
+            """# Daily\n\n## End-of-Day Check\n\n- Moved:\n    - RunSmart — feat: FTUX\n- Didn't:\n    - Device smoke\n- Carry → Device smoke\n\n## Links\n""",
+            "2026-07-14",
+        )
+        self.assertEqual(parsed["moved"], ["RunSmart — feat: FTUX"])
+        self.assertEqual(parsed["didnt"], ["Device smoke"])
+        self.assertEqual(parsed["carry"], ["Device smoke"])
 
     def test_derived_from_todo_and_session(self):
         with tempfile.TemporaryDirectory() as d:
@@ -1128,6 +1198,24 @@ class TestPortfolioHqRouting(unittest.TestCase):
         )
 
         self.assertEqual(result["localhostUrl"], cli.portfolio_hq_url(8787))
+
+
+class TestRepoIntegrity(unittest.TestCase):
+    @patch("cli.run")
+    def test_unpushed_commits_are_not_reported_as_synced(self, mock_run):
+        mock_run.side_effect = [
+            subprocess.CompletedProcess([], 0, "main\n", ""),
+            subprocess.CompletedProcess([], 0, "", ""),
+            subprocess.CompletedProcess([], 0, "/tmp/repo abc123 [main]\n", ""),
+            subprocess.CompletedProcess([], 0, "0\t3\n", ""),
+        ]
+
+        integrity = cli.check_repo_integrity(Path("/tmp/repo"))
+
+        self.assertFalse(integrity["synced"])
+        self.assertEqual(integrity["ahead"], 3)
+        self.assertEqual(integrity["behind"], 0)
+        self.assertIn("3 local commit(s) not pushed", integrity["notes"][0])
 
 
 if __name__ == "__main__":

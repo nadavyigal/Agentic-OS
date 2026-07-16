@@ -147,6 +147,13 @@ class SitePayloadTests(unittest.TestCase):
             "manual": {
                 "activationHeadline": {"rows": [], "note": "Founder-excluded."},
                 "funnels": [{"id": "resumely", "name": "Resumely", "tag": "real users", "steps": []}],
+                "posthogDashboards": [{
+                    "id": "resumely", "product": "Resumely",
+                    "url": "https://us.posthog.com/project/1/dashboard/2",
+                    "decisionSnapshot": "0/73", "exclusions": "Founder",
+                    "cohortCutoff": "2026-07-12", "refreshedAt": "2026-07-12",
+                    "warning": "Different window",
+                }],
                 "clocks": [{"date": "2026-07-25", "what": "Activation read", "state": "running"}],
             },
         }
@@ -162,6 +169,10 @@ class SitePayloadTests(unittest.TestCase):
         self.assertNotIn("copyPrompt", encoded)
         self.assertNotIn("branch", encoded)
         self.assertNotIn("GARMIN_TEST_CLIENT_SECRET", encoded)
+        self.assertEqual(
+            payload["numbers"]["posthogDashboards"][0]["url"],
+            "https://us.posthog.com/project/1/dashboard/2",
+        )
 
     def test_team_and_public_payloads_are_progressively_narrower(self):
         source = self.source_payload()
@@ -170,8 +181,33 @@ class SitePayloadTests(unittest.TestCase):
 
         self.assertNotIn("executive", team)
         self.assertNotIn("usage", team)
+        self.assertNotIn("posthogDashboards", team["numbers"])
         self.assertEqual(public["products"], [{"name": "Resumely iOS", "availability": "Live"}])
         self.assertNotIn("nextAction", MODULE.json.dumps(public))
+
+    def test_artifact_registry_is_never_hosted(self):
+        """The artifact registry names branches and local paths, which no hosted
+        audience is allowed to carry. It is local-dashboard-only by design."""
+        source = self.source_payload()
+        source["manual"]["artifacts"] = {
+            "note": "Storage truth, not quality.",
+            "groups": [{
+                "name": "Resumely FTUX",
+                "items": [{
+                    "title": "First-time-user journey audit",
+                    "what": "The audit behind the 13-story plan.",
+                    "url": "https://github.com/x/y/blob/docs/ftux-audit-rescue/docs/audits/a.md",
+                    "local": "/Users/founder/repo/docs/audits/a.md",
+                    "state": "branch-only",
+                }],
+            }],
+        }
+        for audience in MODULE.SITE_AUDIENCES:
+            payload = MODULE.build_site_payload(source, audience)
+            encoded = MODULE.json.dumps(payload)
+            self.assertNotIn("artifacts", payload, f"{audience} must not host the registry")
+            self.assertNotIn("ftux-audit-rescue", encoded)
+            self.assertNotIn("/Users/", encoded)
 
     def test_rejects_unknown_site_audience(self):
         with self.assertRaises(ValueError):
