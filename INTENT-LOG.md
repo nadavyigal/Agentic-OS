@@ -36,6 +36,12 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ## Entries
 
+## 2026-07-16 - WP-46: integrate Release B, gate Story 9 on a real contract, then unblock it same-day
+**Request:** Execute WP-46 (Resumely FTUX Release B+C continuation): reconcile the other session's Stories 7-8 PR chain without duplicating it, verify the Story 9 backend-evidence contract, then ship Stories 9-13 toward one 1.5.0 release. When the contract turned out not to exist, the founder asked for the approval checklist walked through with alternatives, chose client-side extraction (alternative B), and later stopped the session mid-Story-9 validation asking for a clean handoff.
+**Intent / why:** Ship the FTUX overhaul as one evidence-backed 1.5.0 release without re-doing work another session owns and without letting a phantom "approved contract" slip through - the gate held (the contract existed only as a requirement in DECISIONS.md), the founder decided with a recommendation in front of them, and the decisive unblock was noticing the backend had zero quality advantage at v1 over on-device extraction from text the endpoint already returns. Recurring pattern: gates are cheap to honor and expensive to fake.
+**Themes:** trust, evidence-before-done, cross-session-continuity, scope-discipline
+
+
 ## 2026-07-13 - Brain Map phantom links: verify the deep-pass exclusion before trusting it
 **Request:** Investigate why the Builder OS Brain Map gained " 2"-suffixed phantom wikilinks after an Excalidraw open+save, since the monthly deep pass had excluded the Brain Map from its phantom-link checker on the assumption it was a generator/re-save artifact, not vault rot.
 **Intent / why:** Don't let a lint exclusion stand on an unverified premise. The founder's deep pass is only trustworthy if its exclusions are checked against the filesystem, not assumed - here the premise was inverted (real sync-duplicate files in the vault, not Excalidraw dedupe), so the phantom-link checker was silently skipping actual rot.
