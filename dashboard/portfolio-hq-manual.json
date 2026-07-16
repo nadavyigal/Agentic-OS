@@ -1,21 +1,21 @@
 {
-  "asOf": "2026-07-15",
+  "asOf": "2026-07-16",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "Land Resumely Release A on main — the shipped build is not on main",
-      "body": "Founder submitted 1.4.2 (12) to ASC on 2026-07-15, built from branch codex/first-time-journey-release-a. origin/main does not contain Stories 1-6, the FTUX plan docs, or the 1.4.2 version bump. If review passes, the live App Store build will have no corresponding commit on main — main cannot rebuild what users are running. Resumely iOS tasks/progress.md still reads 'ASC archive attempt BLOCKED (2026-07-15)' and contradicts the founder's submission statement.",
-      "prompt": "In the Resumely iOS repo, open a PR from codex/first-time-journey-release-a into main covering Release A Stories 1-6 and the 1.4.2 (12) version bump. Preserve unrelated dirty files. Run the focused suites plus Debug and generic-device Release builds before merging. Then correct tasks/progress.md: per founder confirmation the 1.4.2 (12) archive and ASC submission did occur on 2026-07-15."
+      "title": "Verify RunSmart public sign-in now — P0 signal, not yet a proven outage",
+      "body": "The frozen 1.0.9 (23) post-live read found 2 clean physical App Store entrants, 5 non-cancel ASAuthorizationError code 1000 failures, 0 sign_in_completed and no progression beyond sign-in. The sample is only n=2 and sign_in_failed did not exist in prior builds, so this is a high-cost signal to disprove quickly, not a confirmed regression.",
+      "prompt": "Install public RunSmart 1.0.9 (23) on the founder device and attempt Sign in with Apple once using a valid non-destructive account. Record UTC time, exact visible result and whether onboarding opens. If it fails, capture the user-facing message and authorize the Supabase connector so the Apple provider configuration can be inspected. Do not change code or ASC configuration until the failure is reproduced."
     },
     {
-      "title": "Start Resumely FTUX Release B (Stories 7-10)",
-      "body": "Founder approved B then C as one FTUX push on 2026-07-15. The gated initiation prompt already exists at docs/specs/drafts/release-b-initiation-prompt.md (preserved on PR #96). Story 9 stays hard-blocked until the backend recommendation-evidence metadata contract has a named owner, schema, delivery plan and fallback.",
-      "prompt": "In the Resumely iOS repo, follow docs/specs/drafts/release-b-initiation-prompt.md. Implement Stories 7-10 in order: preserve guest context through auth, merge Fit into the diagnosis continuation, evidence-backed Accept/Skip review, canonical activation instrumentation. Do not begin Story 9 until the backend evidence-metadata contract is recorded and approved. Branch from the Release A merge point once it lands on main."
+      "title": "Finish active Stories 7-8, then execute the gated 1.5.0 continuation",
+      "body": "The active Claude Code session owns Stories 7 and 8. WP-46 continues from their integrated evidence through Stories 9-13 as one combined Release B+C target, without duplicating current work or touching the live 1.4.2 app.",
+      "prompt": "Execute WP-46 only after Stories 7 and 8 are committed, pushed and integrated. Verify the approved additive Story 9 backend-evidence contract, then deliver Stories 9-13 sequentially toward 1.5.0. Stop before archive, TestFlight or App Store actions."
     },
     {
-      "title": "Merge the FTUX artifact rescue (PR #96)",
-      "body": "The Resumely first-time-user journey audit, its 20 evidence screenshots, the Figma contact sheet, the Release A ASC readiness report and the Release B initiation prompt were untracked in every branch — they existed only on one local disk. They are now committed and pushed on docs/ftux-audit-rescue, but the PR is still open.",
-      "prompt": "Review and merge ResumeBuilder-IOS-APP PR #96 (docs-only artifact rescue). Confirm nothing else in the Resumely or RunSmart repos is carrying untracked artifacts worth preserving."
+      "title": "Merge RunSmart PR #96 after review",
+      "body": "PR #96 contains the read-only 1.0.9 post-live activation evidence plus the corrected progress narrative. It records the P0 sign-in signal, the undefined 0/0 mature-D7 state, the E1 instrumentation block and the July 22 checkpoint. Both commits are pushed; nothing is local-only.",
+      "prompt": "Review and merge RunSmart PR #96 if its two documentation-only commits match the saved evidence. Do not turn its n=2 sign-in signal into a confirmed outage claim and do not alter the live build."
     }
   ],
   "tracks": [
@@ -24,54 +24,61 @@
       "name": "Portfolio Activation Playbook v2",
       "pill": "CURRENT — RESUMELY 70 / RUNSMART 30",
       "tone": "run",
-      "standing": "The canonical activation contract remains Intent → Setup → First value → Verified value → Repeat value. Founder-excluded mature D7 snapshots drive decisions. Both products' FTUX work is now submitted to Apple and awaiting review — the next activation read is the first that can show whether FTUX moved anything.",
+      "standing": "The canonical activation contract remains Intent → Setup → First value → Verified value → Repeat value. Founder-excluded mature D7 snapshots still drive decisions. Both live FTUX releases now have post-live readiness reports, but neither has a mature clean cohort: RunSmart is 0/0 mature with a P0 n=2 sign-in signal, and Resumely has 0 clean post-release entrants. Existing 2026-07-12 D7 snapshots remain the last decision-grade read.",
       "items": [
         { "tone": "done", "text": "Primary metrics locked: RunSmart physical install → run_completed within D7; Resumely first seen → export_success within D7" },
-        { "tone": "done", "text": "Both FTUX releases submitted to ASC 2026-07-15: RunSmart 1.0.9 (23) and Resumely 1.4.2 (12). Neither is live yet" },
-        { "tone": "run", "text": "Resumely Releases B then C approved as one FTUX push (founder, 2026-07-15); Release B Stories 7-10 are the active lane" },
+        { "tone": "done", "text": "Both FTUX releases are live: Resumely 1.4.2 (12), founder-confirmed 2026-07-15; RunSmart 1.0.9 (23), founder-confirmed 2026-07-16" },
+        { "tone": "done", "text": "Resumely Release B Story 7 completed 2026-07-16: guest resume, job and diagnosis context now survives authentication; Story 8 is next" },
         { "tone": "run", "text": "Founder is actively developing Playbook V2 and the distribution ranking with Claude Code; preserve that work as the current planning lane" },
         { "tone": "done", "text": "WP-45 S0 measurement contract and baseline implemented on Resumely iOS branch codex/wp45-s0-measurement-contract at d53d091; S1 is next after the branch is pushed and reviewed" },
         { "tone": "wait", "text": "Cumulative clean Resumely export remains under review because the manual one-export claim conflicts with the saved clean report" },
-        { "tone": "run", "text": "Next gates: five observed Resumely sessions, July 18 minimum cohort read, July 25 definitive read, August 1 CEO/COO decision" }
+        { "tone": "wait", "text": "Post-live gates reset: RunSmart maturity checkpoint 2026-07-22; Resumely directional check after 2026-07-22 18:06 UTC and mature decision only after the first eligible clean entrant receives a full D7 window" }
       ]
     },
     {
       "id": "runsmart-ftux",
       "name": "RunSmart FTUX upgrade",
-      "pill": "1.0.9 (23) SUBMITTED — IN REVIEW",
-      "tone": "wait",
-      "standing": "1.0.9 (23) was archived and submitted to App Store Connect on 2026-07-15 (RunSmart iOS main commit 6cb4094, PR #94); the founder-device S6/S1 smoke was waived at submission. The live App Store build is still 1.0.8 (22) until review clears. WP-43, WP-44 and WP-45 are all merged to main and the full suite passes 273 tests.",
+      "pill": "1.0.9 (23) APPROVED — ACTIVE ON ASC",
+      "tone": "run",
+      "standing": "1.0.9 (23) is live. Read-only PostHog verification froze a 2026-07-16 05:30 UTC snapshot: 2 clean physical App Store installs, 0 mature D7 entrants, and both public entrants emitted non-cancel sign_in_failed with no sign_in_completed. This is a P0 signal to verify immediately, not a proven outage because n=2 and no prior-build failure baseline exists. E1 is BLOCKED on missing exposure/assignment instrumentation and absent lifecycle evidence.",
       "items": [
         { "tone": "done", "text": "WP-43 P0 trust hardening merged: plan-generation state, human auth errors, consistent timeline, interval parsing, user-facing source labels and explicit onboarding choices" },
         { "tone": "done", "text": "WP-44 S1-S6 implemented: first-screen promise, async failure states, single-source metrics, onboarding polish, rest-day guidance and in-app Terms/Privacy" },
         { "tone": "done", "text": "WP-45 instrumentation remainder implemented, including abandonment, permissions, HealthKit failure, first-workout, report and insight events" },
         { "tone": "done", "text": "PR #89 and release prep PR #90 merged to main; 1.0.9 (23) simulator smoke caught and fixed two numeric consistency bugs" },
-        { "tone": "done", "text": "1.0.9 (23) archived and submitted to ASC 2026-07-15 (commit 6cb4094, PR #94); zero-streak profile fix (PR #92) landed first" },
-        { "tone": "wait", "text": "Apple review outcome. The S6 empty-goal and S1 plan-generation failure states were never smoked on a physical device — that gap shipped with the build" },
-        { "tone": "wait", "text": "Experiments E1-E3 start only after the release is live and the new PostHog events are verified" }
+        { "tone": "done", "text": "1.0.9 (23) approved and active on ASC 2026-07-16 (founder-confirmed); zero-streak profile fix (PR #92) landed before submission" },
+        { "tone": "you", "text": "P0 verification: attempt public-build Sign in with Apple once on the founder device. If it fails, inspect shipped capability/provisioning and Supabase Apple provider configuration before changing code" },
+        { "tone": "you", "text": "If sign-in succeeds, capture S6 empty-goal and S1 plan-generation failure/retry evidence in the same physical-device session" },
+        { "tone": "wait", "text": "Founder decision: defer E1 until sign-in works and at least 10 clean mature-D7 entrants exist; do not build assignment instrumentation now" },
+        { "tone": "wait", "text": "Activation queries must exclude zero-distance or invalid-duration HealthKit rows; scope the product-side guard to a later release" },
+        { "tone": "wait", "text": "Keep share_progress_tapped; share_progress_completed stays parked until sharing is an active growth lever" },
+        { "tone": "wait", "text": "PR #96 is open with two pushed documentation commits; merge after review" }
       ]
     },
     {
       "id": "resumely-ftux",
       "name": "Resumely FTUX upgrade",
-      "pill": "1.4.2 (12) SUBMITTED — B+C APPROVED",
+      "pill": "1.4.2 (12) LIVE — RELEASE B ACTIVE",
       "tone": "run",
-      "standing": "Founder archived and submitted Release A as 1.4.2 (12) to ASC on 2026-07-15. The build was cut from codex/first-time-journey-release-a — Stories 1-6 and the version bump are NOT on origin/main, so main cannot currently rebuild the submitted binary. Founder approved Releases B then C as one FTUX push on 2026-07-15.",
+      "standing": "Release A 1.4.2 (12) is live and reproducible from main. A separate Claude Code session owns Stories 7 and 8. Founder decision: continue Stories 9-13 sequentially as one combined 1.5.0 Release B+C target after that work is integrated. The readiness audit found 82 exact-version events across 5 raw people, 4 excluded, and 0 clean post-release entrants. Measurement-ready is NO: mature D7 is 0/0 undefined, not 0%.",
       "items": [
         { "tone": "done", "text": "Release A: golden-path harness, deterministic Apply route, one optimization source, shared job validation, recommendation safety and preview/save/export/relaunch recovery" },
-        { "tone": "done", "text": "1.4.2 (12) archived and submitted to ASC 2026-07-15 (founder-confirmed). Live App Store build stays 1.4.1 (11) until review clears" },
-        { "tone": "you", "text": "Land Release A on main — the shipped code lives only on codex/first-time-journey-release-a, and progress.md still says the archive was BLOCKED" },
-        { "tone": "run", "text": "Release B Stories 7-10 approved and next: preserve guest context through auth, merge Fit into diagnosis, evidence-backed Accept/Skip review, canonical activation instrumentation" },
-        { "tone": "wait", "text": "Story 9 is hard-blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback (open question Q1)" },
-        { "tone": "wait", "text": "Release C Stories 11-13 queued behind B: touched-screen localization/accessibility, optimize-another-job retention loop, release-candidate journey audit" }
+        { "tone": "done", "text": "1.4.2 (12) approved and live 2026-07-15 (founder-confirmed)" },
+        { "tone": "done", "text": "PR #97 reconciled the live Release A source and exact version stamp onto origin/main; main can rebuild the active binary" },
+        { "tone": "run", "text": "Stories 7 and 8 are actively being built in Claude Code; Portfolio HQ must not duplicate or overwrite that session" },
+        { "tone": "done", "text": "1.4.2 event-presence audit: 82 rows, 5 raw people, 4 excluded, 0 clean post-release people; exact-version tagging 82/82 and PII/property inspection clean" },
+        { "tone": "wait", "text": "No exact-version production evidence yet for resume selection/upload, job acceptance, diagnosis, visible preview or export. Earliest directional checkpoint is after 2026-07-22 18:06 UTC" },
+        { "tone": "run", "text": "Story 10 remains required to make optimized_preview_rendered trustworthy, separate file selection from upload, and deduplicate repeated optimization_completed correlations" },
+        { "tone": "you", "text": "Story 9 contract decision is assigned to the active Claude session: named owner, additive schema, delivery plan, compatibility behavior and safe fallback" },
+        { "tone": "run", "text": "WP-46 is the continuation packet: after Stories 7-8 integrate, execute Stories 9-13 in order toward one 1.5.0 release-readiness handoff" }
       ]
     },
     {
       "id": "wp40",
       "name": "RunSmart WP-40 / Apple Health activation",
-      "pill": "1.0.8 (22) LIVE — COHORT WAITING",
+      "pill": "SHIPPED IN 1.0.8 — CLEAN COHORT WAITING",
       "tone": "wait",
-      "standing": "RunSmart 1.0.8 (22) is live on App Store Connect, founder-confirmed 2026-07-13. WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84; S3 physical-device evidence and S4's post-merge read are complete. WP-42 still has zero clean disclosure viewers after exclusions, so no HealthKit product-change verdict is valid yet.",
+      "standing": "WP-40 first shipped in RunSmart 1.0.8 (22); the current active ASC version is now 1.0.9 (23), founder-confirmed 2026-07-16. WP-40 S1+S2 merged to RunSmart main as 236dde0 via PR #84; S3 physical-device evidence and S4's post-merge read are complete. WP-42 still has zero clean disclosure viewers after exclusions, so no HealthKit product-change verdict is valid yet.",
       "items": [
         { "tone": "done", "text": "Skippable Apple Health onboarding step added (OnboardingView.swift), reusing the existing HealthKit connection route and analytics; Connect/Skip accessibility identifiers wired" },
         { "tone": "done", "text": "TDD red state reproduced then final focused test passed (1/1); debug simulator build passed; Health prompt appeared during onboarding; Skip advanced to Ready; Connect followed the real HealthKit path; git diff --check passed; only known warning is a pre-existing deprecated HKWorkout initializer" },
@@ -157,6 +164,14 @@
             "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/docs/qa/reports/release-a-asc-readiness-2026-07-15.md",
             "state": "branch-only",
             "stateNote": "Rescued 2026-07-15 on PR #96."
+          },
+          {
+            "title": "Release A 1.4.2 production measurement readiness (2026-07-16)",
+            "what": "Exact-version event-presence, exclusion, PII and funnel-contract audit. Verdict: measurement-ready No; 82 rows, 5 raw people, 4 excluded, 0 clean post-release entrants, mature D7 0/0 undefined.",
+            "url": "https://github.com/nadavyigal/ResumeBuilder-IOS-APP/blob/codex/release-a-measurement-baseline-2026-07-16/docs/qa/reports/release-a-1.4.2-production-measurement-readiness-2026-07-16.md",
+            "local": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-measurement-baseline/docs/qa/reports/release-a-1.4.2-production-measurement-readiness-2026-07-16.md",
+            "state": "branch-only",
+            "stateNote": "Committed and pushed at 8abe9a4; not merged to main."
           }
         ]
       },
@@ -184,6 +199,14 @@
             "url": "https://github.com/nadavyigal/IOS-runsmart-light-app-/tree/claude/runsmart-ftux-audit-240648/docs/audits/assets/ftux-2026-07-13",
             "local": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648/docs/audits/assets/ftux-2026-07-13",
             "state": "branch-only"
+          },
+          {
+            "title": "1.0.9 post-live activation evidence (2026-07-16)",
+            "what": "Frozen production read behind PR #96. Found 2 clean physical installs, 0 mature entrants, a P0 n=2 sign-in failure signal, E1 blocked on missing assignment instrumentation, and July 22 as a checkpoint rather than a decision date.",
+            "url": "https://github.com/nadavyigal/IOS-runsmart-light-app-/blob/claude/runsmart-1-0-9-verification-f8e8a2/docs/qa/reports/2026-07-16-release-1.0.9-build23-post-live-activation-evidence.md",
+            "local": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2/docs/qa/reports/2026-07-16-release-1.0.9-build23-post-live-activation-evidence.md",
+            "state": "branch-only",
+            "stateNote": "PR #96 open; two pushed documentation commits, nothing local-only."
           }
         ]
       },
@@ -271,25 +294,25 @@
   },
   "suggestedSessions": [
     {
-      "product": "Resumely (primary)",
-      "model": "GPT-5.6 Sol / Codex - tool-heavy verification across repository evidence and build validation",
-      "title": "Land Resumely Release A on main",
-      "why": "1.4.2 (12) was submitted to Apple from codex/first-time-journey-release-a. Nothing on main can rebuild the binary users are about to receive. This is the highest-value hour in the portfolio right now — it is cheap, and it stops a live build from becoming unreproducible.",
-      "prompt": "Open a PR from Resumely codex/first-time-journey-release-a into main covering Release A Stories 1-6 and the 1.4.2 (12) bump. Preserve unrelated dirty files. Run focused suites plus Debug and generic-device Release builds before merging. Then correct tasks/progress.md, which still claims the ASC archive was BLOCKED."
+      "product": "RunSmart (founder verification)",
+      "model": "Manual founder action - public App Store build on a physical device",
+      "title": "Disprove or reproduce the RunSmart sign-in P0",
+      "why": "Both clean public build-23 entrants emitted non-cancel sign-in failures and neither progressed. One founder-device attempt can distinguish a likely configuration failure from a tiny-sample signal before six more days of cohort time pass.",
+      "prompt": "Install public RunSmart 1.0.9 (23), attempt Sign in with Apple once, record UTC bounds and visible result, then flush and inspect the matching PostHog event. If it fails, inspect provisioning/ASC capability and authorize the Supabase connector for provider-config inspection before changing code."
     },
     {
       "product": "Resumely (primary)",
-      "model": "GPT-5.6 Sol / Codex - long multi-story implementation against a written plan",
-      "title": "Start FTUX Release B — Stories 7-10",
-      "why": "Founder approved B then C as one push on 2026-07-15. Release B is the half of the FTUX plan that actually attacks the measured D7 wall: guest context loss at auth, duplicated Fit work, and the missing canonical activation instrumentation.",
-      "prompt": "Follow docs/specs/drafts/release-b-initiation-prompt.md in the Resumely iOS repo. Implement Stories 7-10 in order. Do not begin Story 9 until the backend recommendation-evidence metadata contract has a named owner, schema, delivery plan and fallback. Branch from the Release A merge point."
+      "model": "Claude Code - continue only after the current Stories 7-8 session integrates",
+      "title": "Execute WP-46: combined Release B+C continuation",
+      "why": "The founder chose one 1.5.0 target while keeping Stories 7 and 8 under their current owner. WP-46 turns the remaining work into sequential, evidence-gated stories without interfering with the live app.",
+      "prompt": "Execute WP-46. Reconcile and preserve the current Stories 7-8 work, verify the approved Story 9 additive backend contract, then implement Stories 9-13 sequentially. Produce a 1.5.0 release-readiness handoff and stop before any archive or App Store action."
     },
     {
-      "product": "Both (hygiene)",
-      "model": "Sonnet tier - mechanical, well-specified",
-      "title": "Merge the artifact rescue and un-strand the FTUX branches",
-      "why": "Both first-time-user journey audits — the documents that justify every FTUX story — exist only on unmerged branches. The Resumely one was untracked entirely until 2026-07-15.",
-      "prompt": "Merge ResumeBuilder-IOS-APP PR #96. Then decide whether the RunSmart FTUX audit and plan on claude/runsmart-ftux-audit-240648 should land on main, and open that PR if so. Re-verify every artifact link on the Portfolio HQ Artifacts tab afterwards."
+      "product": "Measurement hygiene",
+      "model": "Sonnet tier - documentation review only",
+      "title": "Land both production-readiness reports",
+      "why": "RunSmart PR #96 and the Resumely 1.4.2 report branch contain the current measurement contracts and prevent the dashboard from falling back to stale review-era narratives.",
+      "prompt": "Review and merge RunSmart PR #96 and open/review the Resumely measurement-report PR from codex/release-a-measurement-baseline-2026-07-16. Preserve their uncertainty language and do not convert 0/0 into 0%."
     }
   ],
   "growth": {
@@ -381,12 +404,12 @@
     }
   ],
   "clocks": [
-    { "date": "2026-07-15", "what": "Both FTUX releases submitted to ASC — RunSmart 1.0.9 (23) and Resumely 1.4.2 (12); founder will confirm approval/live", "state": "done" },
-    { "date": null, "when": "Apple's clock", "what": "ASC review outcome for both apps. Typical review is 24-48h; a rejection on either restarts the FTUX release lane", "state": "waiting" },
-    { "date": null, "when": "After both go live", "what": "Verify the new WP-43/45 and Release A PostHog events actually fire in production before any FTUX activation claim", "state": "waiting" },
+    { "date": "2026-07-16", "what": "Both FTUX releases are active: RunSmart 1.0.9 (23) and Resumely 1.4.2 (12)", "state": "done" },
+    { "date": "2026-07-16", "what": "RunSmart P0: founder-device public sign-in attempt; if failure reproduces, inspect provisioning/ASC capability and Supabase Apple provider config", "state": "you" },
+    { "date": "2026-07-16", "what": "Decisions cleared: E1 deferred, WP-34 remains parked, zero-distance excluded, share completion parked, Resumely B+C targets 1.5.0", "state": "done" },
     { "date": "2026-07-12", "what": "Activation re-read complete — Resumely 0/73, RunSmart 0/13; gates remain closed", "state": "done" },
-    { "date": "2026-07-18", "what": "Resumely 1.4.1 minimum cohort gate — ordered WP-41 re-read; no funnel-only recommendation below 10 eligible users", "state": "running" },
-    { "date": "2026-07-25", "what": "Resumely 1.4.1 definitive 14-day cohort read", "state": "running" },
+    { "date": "2026-07-22", "what": "Resumely 1.4.2 directional event-presence reread after 18:06:44 UTC; mature D7 remains seven days after the first eligible clean launch", "state": "waiting" },
+    { "date": "2026-07-22", "what": "RunSmart 1.0.9 maturity checkpoint; expected denominator about 2 versus the minimum 10, so do not force a product verdict", "state": "waiting" },
     { "date": "2026-07-22", "what": "EXD-017 reminder — did you schedule/hold the RunSmart accountant call? Capture recommendation in WP-35", "state": "you" },
     { "date": "2026-08-01", "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?", "state": "running" },
     { "date": null, "when": "After you publish", "what": "WP-31 Hebrew ASO — 21-day measurement window", "state": "waiting" },
@@ -395,8 +418,10 @@
   ],
   "knownUnknown": {
     "kk": [
-      "Both FTUX releases were submitted to ASC on 2026-07-15 and are awaiting review (founder-confirmed): RunSmart 1.0.9 (23) and Resumely 1.4.2 (12). Neither is live yet — the live builds remain RunSmart 1.0.8 (22) and Resumely 1.4.1 (11).",
-      "Resumely's submitted 1.4.2 (12) was built from codex/first-time-journey-release-a, not main. origin/main has neither Stories 1-6 nor the version bump, so main cannot rebuild the submitted binary until that PR lands.",
+      "RunSmart 1.0.9 (23) and Resumely 1.4.2 (12) are both approved and active, founder-confirmed on 2026-07-16 and 2026-07-15 respectively.",
+      "Resumely PR #97 reconciled Release A Stories 1-6 and the exact 1.4.2 (12) version stamp onto origin/main; 151 tests passed, 1 intentional skip, 0 failures, so main can rebuild the active binary.",
+      "Resumely 1.4.2 production readiness is No: 82 exact-version rows across 5 raw people, 4 excluded and 0 clean post-release entrants. Mature D7 is 0/0 undefined; tagging is complete and the live property audit found no prohibited content.",
+      "RunSmart 1.0.9 post-live snapshot at 2026-07-16 05:30 UTC found 2 clean physical installs, 0 mature entrants and 5 non-cancel sign-in failures across both people with 0 sign-in completions. This is a P0 signal, not a proven outage at n=2.",
       "Both remain at 0% real D7 activation on the 2026-07-12 mature read: Resumely 0/73; RunSmart 0/13.",
       "Resumely D7 wall = first seen→upload→optimization: 73 first seen, 9 uploaded, 0 optimized, 0 exported. PR #114 web export observability is merged; wait for 5 real web completers before reading that new path.",
       "RunSmart wall = install→onboarding and plan→run: 13 mature installs, 1 onboarded/planned, 0 ran. WP-40 S1+S2 merged via PR #84; WP-42 has no clean production disclosure cohort yet.",
@@ -408,7 +433,7 @@
       "Can the next Hebrew distribution test produce a measurable answer after WP-32 closed without attribution? It must use unique campaign links and verified analytics access before publishing.",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Does the merged web export-observability path reveal real web export failures after 5 real completers, or does it confirm the button works for organic users?",
-      "Why does no runner start after a plan? The 2026-07-12 read still shows 1 of 13 mature installers reaching onboarding/plan and 0 starting a run; WP-40's clean production cohort is not readable yet.",
+      "Can a founder-device public RunSmart 1.0.9 sign-in succeed? This is the fastest discriminator for the n=2 P0 signal before inspecting provisioning, ASC capability and Supabase Apple provider configuration.",
       "Is Resumely's cumulative clean export count 0 or 1? The saved clean July 6 report says 0 while a later manual dashboard claim says 1; resolve with a reproducible query before citing it.",
       "Voice-coach flag: DECIDED 2026-07-09 — deferred (stays off), review at the 07-12 activation re-read or after WP-40 lands. No longer an open question."
     ],
@@ -418,7 +443,7 @@
       "status.json's needsDecision still lists \"RunSmart iOS: if build 8 is rejected again\" — stale, from before 1.0.7(21) shipped and passed review. Not a portfolio-hq bug; RunSmart iOS's own task files need a refresh to clear it. Same staleness pattern flagged by ./agentic-os verify for COO-LATEST-REVIEW.md (references build 18, current is build 21).",
       "ResumeBuilder IOS APP is missing tasks/ERRORS.md and docs/agent-os/project-context.md — flagged as a required-read gap by two separate Codex sessions now.",
       "Artifacts strand silently. Both FTUX audits — the evidence base for all 13 Resumely stories and all three RunSmart work packets — sit on branches never merged to main, and the Resumely one was untracked in every branch until 2026-07-15 (rescued via PR #96). The Artifacts tab now lists each one with its real storage state; treat `branch-only` as one branch-cleanup away from invisible.",
-      "Resumely iOS tasks/progress.md contradicts the founder on ASC state: it says the 1.4.2 archive was BLOCKED on signing identity, while the founder confirms the submission happened the same day. Apple-state changes leave no commit, so the repo record cannot self-correct — this is the same staleness pattern that made progress.md read 'in review' when 1.2 (7) was already live.",
+      "RunSmart E1 is deliberately deferred until sign-in works and at least 10 clean mature-D7 entrants exist; assignment instrumentation is not active work.",
       "RunSmart iOS has ~30 untracked Finder-duplicate '* 2.swift'/'* 2.md' files cluttering the repo — pre-existing, same issue already named in status.json's blockers as blocking clean archives."
     ],
     "uu": [
@@ -430,13 +455,13 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "Resumely — land Release A on main",
-      "body": "1.4.2 (12) went to Apple from a feature branch. Until that PR lands, the build users receive has no commit on main behind it. Cheap to fix now, expensive after the next branch cleanup."
+      "title": "RunSmart — verify the public sign-in P0",
+      "body": "Two clean public entrants both emitted non-cancel failures and neither signed in. Run one founder-device attempt now; reproduce before changing code or configuration."
     },
     {
       "n": 2,
-      "title": "Resumely — start Release B (Stories 7-10)",
-      "body": "Founder approved B then C as one FTUX push. Release B is the part that attacks the measured D7 wall: guest context through auth, merged Fit, evidence-backed review, canonical activation instrumentation. Story 9 stays gated on the backend evidence contract."
+      "title": "Resumely — preserve Stories 7-8, then execute WP-46",
+      "body": "Claude Code owns the active Stories 7-8 work. After it integrates, verify the Story 9 contract and execute Stories 9-13 sequentially toward one 1.5.0 release-readiness handoff."
     },
     {
       "n": 3,
@@ -445,8 +470,8 @@
     },
     {
       "n": 4,
-      "title": "OS hygiene — keep the artifacts findable",
-      "body": "The Artifacts tab is now the index of everything built across Builder OS, Agentic OS and the product repos. Merge PR #96, decide whether the RunSmart audit branch lands on main, and correct Resumely's progress.md so the repo stops contradicting the founder on ASC state."
+      "title": "Land the evidence and wait honestly",
+      "body": "Merge RunSmart PR #96 and the Resumely measurement report after review. July 22 is a checkpoint for both products, not permission to turn immature 0/0 cohorts into activation rates."
     }
   ],
   "readouts": [

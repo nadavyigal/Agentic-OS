@@ -218,6 +218,28 @@ Impact:
 - Release B branches from the Release A merge point once Release A lands on `main` — see the separate defect below.
 - Release C (Stories 11-13) is queued, not cancelled.
 
+## 2026-07-16: FTUX Evidence And Release Decisions Cleared
+
+Decision: The founder selected the following evidence and execution policy after reviewing the RunSmart 1.0.9 post-live report and the Resumely 1.4.2 measurement-readiness report:
+
+1. Reproduce or disprove the RunSmart public-build sign-in signal immediately on the founder device. If it reproduces, inspect the shipped capability/provisioning, App Store Connect Sign in with Apple capability and Supabase Apple provider configuration before changing app code.
+2. Defer RunSmart E1 until sign-in works and at least 10 clean mature-D7 entrants exist. Do not build experiment assignment instrumentation now.
+3. Capture S6 empty-goal and S1 plan-generation-failure physical-device evidence in the same founder session, if sign-in succeeds.
+4. Reaffirm EXD-019: WP-34 remains explicitly parked under EXD-015 until the 2026-08-01 reread. Do not reimplement the lost Garmin credential guard now.
+5. A zero-distance HealthKit row is not activation. Decision queries must require positive distance and valid duration; the product-side guard is scoped to a later RunSmart release rather than a live-build change.
+6. Keep `share_progress_tapped`; park `share_progress_completed` until sharing becomes an active growth lever. Do not migrate sharing UI only to produce this event.
+7. Resumely Story 9 requires an additive backend recommendation-evidence contract with a named owner, schema, delivery plan, compatibility behavior and safe no-evidence fallback. The active Claude Code Release B session owns that contract and Stories 7-8.
+8. Ship Resumely Stories 7-13 as one combined **1.5.0** FTUX release, implemented sequentially as Release B then Release C. Derive the build number from the repository at release-prep time. No archive, TestFlight or App Store action is authorized by this decision.
+
+Reason: The reports distinguish urgent uncertainty from proven failure. RunSmart has a costly sign-in signal at only n=2, no mature cohort, and no valid basis for E1. Resumely has complete version tagging but zero clean post-release entrants, while its remaining FTUX work is already under active implementation. The decisions remove speculative work while keeping one measurable path forward per product.
+
+Impact:
+
+- RunSmart's immediate founder action is one public sign-in attempt followed, on success, by the two waived device checks.
+- RunSmart activation reads exclude zero-distance imports; no historical numerator is silently rewritten until the reproducible query is rerun.
+- E1, WP-34 reimplementation and share-completion instrumentation are not active work.
+- Resumely Stories 7 and 8 are not duplicated. WP-46 begins by reconciling their merged evidence, then executes Stories 9-13 one at a time toward 1.5.0.
+
 ## 2026-07-15: Artifacts Are Indexed With Their Storage State
 
 Decision: Portfolio HQ carries an **Artifacts** tab indexing durable artifacts across Builder OS, Agentic OS and the product repos. Each entry records its real storage state — `on main`, `branch-only`, or `local-only` — which is storage truth, not a quality rating. The registry lives in `dashboard/portfolio-hq-manual.json` and is **never** included in any hosted site payload, because every entry names a branch and a local path that the payload contract forbids (enforced by `test_artifact_registry_is_never_hosted`).

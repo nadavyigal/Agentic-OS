@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-15 IDT",
+    "lastUpdated": "2026-07-16 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local evidence mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, the previous EOD handoff, and the freshest task/plan evidence across active worktrees. PostHog decision snapshots remain a separately dated manual layer.",
     "freshnessRule": {
@@ -111,11 +111,11 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-15 14:33"
+    "lastSuccessfulRefresh": "2026-07-16 09:10"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15): land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-    "bestNextAction": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+    "overallStatus": "RunSmart iOS \u2014 PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum) \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "bestNextAction": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
     "mainBlockers": [
       "RunSmart iOS: None \u2014 waiting on Apple App Review turnaround",
       "Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
@@ -131,7 +131,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-07-15",
+    "evidenceFreshDate": "2026-07-16",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -142,18 +142,18 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review. Active: None in flight. Waiting on App Store Connect / App Review for 1.0.9 (23). Last completed: 2026-07-15 \u2014 1.0.9 (23) archived and submitted to ASC; zero-streak Profile fix (PR #92); device smoke on S6/S1 waived by founder decision; FTUX audit board status refresh (12 of 16 findings closed, all Fixed badges verified live). Source: tasks/progress.md, updated 2026-07-15.",
+      "status": "Phase: PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation. Active: None in flight. 1.0.9 (23) is LIVE. Post-live activation verification executed 2026-07-16 (PR #96, evidence report only) \u2014 E1 verdict BLOCKED. Last completed: 2026-07-16 \u2014 1.0.9 (23) post-live activation verification executed read-only against PostHog 171597, snapshot frozen `2026-07-16 05:30 UTC` (PR #96, `docs/qa/reports/2026-07-16-release-1.0.9-build23-post-live-activation-evidence.md`). Public availability CONFIRMED (2 clean physical App Store installs, 2026-07-15, all physical flags false). Mature-D7 denominator **0** (cutoff 2026-07-09) \u2192 decision metric 0/0 undefined, not 0%; no bottleneck named per the <10 rule. Both backgrounding caveats CONFIRMED in code. New finding: `run_completed` fires without `run_started` via the HealthKit import path (`RunSmartProductionServices.swift:946`, `SupabaseRunSmartServices.swift:1518`) \u2014 this vindicates the direct-numerator design, but a 0.0 km HealthKit row carried `is_first_run=true`. Source: tasks/progress.md, updated 2026-07-16.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
-      "currentPhase": "PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
-      "activeStory": "None in flight. Waiting on App Store Connect / App Review for 1.0.9 (23)",
-      "lastCompletedStory": "2026-07-15 \u2014 1.0.9 (23) archived and submitted to ASC; zero-streak Profile fix (PR #92); device smoke on S6/S1 waived by founder decision; FTUX audit board status refresh (12 of 16 findings closed, all Fixed badges verified live)",
-      "nextRecommendedStory": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
+      "currentPhase": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
+      "activeStory": "None in flight. 1.0.9 (23) is LIVE. Post-live activation verification executed 2026-07-16 (PR #96, evidence report only) \u2014 E1 verdict BLOCKED",
+      "lastCompletedStory": "2026-07-16 \u2014 1.0.9 (23) post-live activation verification executed read-only against PostHog 171597, snapshot frozen `2026-07-16 05:30 UTC` (PR #96, `docs/qa/reports/2026-07-16-release-1.0.9-build23-post-live-activation-evidence.md`). Public availability CONFIRMED (2 clean physical App Store installs, 2026-07-15, all physical flags false). Mature-D7 denominator **0** (cutoff 2026-07-09) \u2192 decision metric 0/0 undefined, not 0%; no bottleneck named per the <10 rule. Both backgrounding caveats CONFIRMED in code. New finding: `run_completed` fires without `run_started` via the HealthKit import path (`RunSmartProductionServices.swift:946`, `SupabaseRunSmartServices.swift:1518`) \u2014 this vindicates the direct-numerator design, but a 0.0 km HealthKit row carried `is_first_run=true`",
+      "nextRecommendedStory": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "2026-07-15 \u2014 full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke explicitly waived, not observed \u2014 see entry above",
+      "lastValidation": "2026-07-16 \u2014 read-only PostHog verification only; no code changed, so no build/test run. Last code validation remains 2026-07-15: full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke still waived, not observed",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-15",
+      "lastUpdated": "2026-07-16",
       "blockers": [
         "None \u2014 waiting on Apple App Review turnaround"
       ],
@@ -197,8 +197,8 @@
         "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 4,
-        "extraWorktrees": 2,
-        "lastCommit": "2026-07-15 6cb4094 docs: 1.0.9 (23) archived and submitted to ASC; S6/S1 device smoke waived (#94)",
+        "extraWorktrees": 4,
+        "lastCommit": "2026-07-15 3606770 docs: add 1.0.9 post-live activation runbook (#95)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -217,12 +217,24 @@
           "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
           "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
           "worktree:fix/zero-streak-profile:tasks/lessons.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
+          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
+          "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
           "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
@@ -252,28 +264,26 @@
           "worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
-          "kind": "primary",
-          "branch": "main"
+          "kind": "worktree",
+          "branch": "claude/runsmart-1-0-9-verification-f8e8a2"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-15",
+        "freshestDate": "2026-07-16",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-15"
+        "evidenceDate": "2026-07-16"
       },
       "taskParse": {
-        "status": "**1.0.9 (23) ARCHIVED AND SUBMITTED TO APP STORE CONNECT for review (2026-07-15, founder-confirmed).** Zero-streak release blocker fixed and merged (`3186343`, PR #92); 275 tests green; Release build SUCCEEDED from the main checkout at `3186343`. FTUX plan (WP-43+44+45) fully merged to main (PR #88 `5fa2e00`, PR #89 `6c6162b`, PR #92, PR #93). The live App Store build is still 1.0.8 (22) until Apple approves 1.0.9 (23)",
-        "currentPhase": "PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
-        "activeStory": "None in flight. Waiting on App Store Connect / App Review for 1.0.9 (23)",
-        "lastCompletedStory": "2026-07-15 \u2014 1.0.9 (23) archived and submitted to ASC; zero-streak Profile fix (PR #92); device smoke on S6/S1 waived by founder decision; FTUX audit board status refresh (12 of 16 findings closed, all Fixed badges verified live)",
-        "nextRecommendedStory": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
-        "blockers": [
-          "None \u2014 waiting on Apple App Review turnaround"
-        ],
+        "status": "**1.0.9 (23) IS LIVE on the App Store** (confirmed 2026-07-16 via 2 clean physical installs, 2026-07-15). Post-live activation verification executed; **E1 verdict: BLOCKED**. P0 sign-in signal open \u2014 see Blockers. Zero-streak release blocker fixed and merged (`3186343`, PR #92); 275 tests green; Release build SUCCEEDED from the main checkout at `3186343`. FTUX plan (WP-43+44+45) fully merged to main (PR #88 `5fa2e00`, PR #89 `6c6162b`, PR #92, PR #93). The live App Store build is still 1.0.8 (22) until Apple approves 1.0.9 (23)",
+        "currentPhase": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
+        "activeStory": "None in flight. 1.0.9 (23) is LIVE. Post-live activation verification executed 2026-07-16 (PR #96, evidence report only) \u2014 E1 verdict BLOCKED",
+        "lastCompletedStory": "2026-07-16 \u2014 1.0.9 (23) post-live activation verification executed read-only against PostHog 171597, snapshot frozen `2026-07-16 05:30 UTC` (PR #96, `docs/qa/reports/2026-07-16-release-1.0.9-build23-post-live-activation-evidence.md`). Public availability CONFIRMED (2 clean physical App Store installs, 2026-07-15, all physical flags false). Mature-D7 denominator **0** (cutoff 2026-07-09) \u2192 decision metric 0/0 undefined, not 0%; no bottleneck named per the <10 rule. Both backgrounding caveats CONFIRMED in code. New finding: `run_completed` fires without `run_started` via the HealthKit import path (`RunSmartProductionServices.swift:946`, `SupabaseRunSmartServices.swift:1518`) \u2014 this vindicates the direct-numerator design, but a 0.0 km HealthKit row carried `is_first_run=true`",
+        "nextRecommendedStory": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
+        "blockers": [],
         "risks": [],
-        "lastValidation": "2026-07-15 \u2014 full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke explicitly waived, not observed \u2014 see entry above",
-        "lastUpdated": "2026-07-15",
+        "lastValidation": "2026-07-16 \u2014 read-only PostHog verification only; no code changed, so no build/test run. Last code validation remains 2026-07-15: full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke still waived, not observed",
+        "lastUpdated": "2026-07-16",
         "qaNeeded": null,
         "estimatedCompletion": null,
         "decisionsNeeded": [
@@ -287,7 +297,7 @@
           ],
           "buildStatus": "succeeded",
           "qaDocs": [],
-          "evidenceDate": "2026-07-15"
+          "evidenceDate": "2026-07-16"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -318,17 +328,17 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Active: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Last completed: PostHog picker\u2192file-selected deferred-read attempt (2026-07-11) \u2014 confirmed zero post-live 1.4.1 data; pre-live signal only (n=2, 0% convert). Source: tasks/progress.md latest entry, updated 2026-07-15.",
-      "currentPhase": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
-      "activeStory": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+      "status": "Phase: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Active: None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d). Last completed: PostHog picker\u2192file-selected deferred-read attempt (2026-07-11) \u2014 confirmed zero post-live 1.4.1 data; pre-live signal only (n=2, 0% convert). Source: tasks/progress.md, updated 2026-07-16.",
+      "currentPhase": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+      "activeStory": "None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d)",
       "lastCompletedStory": "PostHog picker\u2192file-selected deferred-read attempt (2026-07-11) \u2014 confirmed zero post-live 1.4.1 data; pre-live signal only (n=2, 0% convert)",
-      "nextRecommendedStory": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+      "nextRecommendedStory": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-15",
+      "lastUpdated": "2026-07-16",
       "blockers": [
         "PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
         "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
@@ -367,7 +377,7 @@
         "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
         "dirty": true,
         "dirtyCount": 8,
-        "extraWorktrees": 0,
+        "extraWorktrees": 3,
         "lastCommit": "2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it",
         "sourceFiles": [
           "tasks/MEMORY.md",
@@ -382,47 +392,62 @@
           "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/lessons.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
+          "worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
+          "worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
+          "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
+          "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
+          "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+          "worktree:claude/release-b-story-8:tasks/progress.md",
+          "worktree:claude/release-b-story-8:tasks/todo.md",
+          "worktree:claude/release-b-story-8:tasks/session-log.md",
+          "worktree:claude/release-b-story-8:tasks/MEMORY.md",
+          "worktree:claude/release-b-story-8:tasks/lessons.md",
           "docs/specs/drafts/release-b-initiation-prompt.md",
-          "docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-          "docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-          "docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-          "docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-          "docs/specs/drafts/fit-first-triage-stories.md",
-          "docs/specs/drafts/fit-first-triage-spec.md",
-          "docs/specs/drafts/fit-first-triage-brief.md",
-          "docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-          "docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-          "docs/specs/resume-aha-moments.md",
-          "docs/specs/drafts/resume-aha-moments-stories.md",
-          "docs/specs/drafts/resume-aha-moments-spec.md",
-          "docs/specs/drafts/resume-aha-moments-brief.md",
-          "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-          "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-          "docs/specs/drafts/app-store-screenshot-generator-stories.md",
-          "docs/specs/drafts/app-store-screenshot-generator-brief.md",
-          "docs/specs/app-store-screenshot-generator.md",
-          "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
         ],
         "taskSource": {
-          "kind": "primary",
-          "branch": "codex/first-time-journey-release-a"
+          "kind": "worktree",
+          "branch": "claude/release-b-story-8"
         },
         "sourceConfidence": "High",
-        "preferredSource": "tasks/progress.md latest entry",
+        "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-15",
+        "freshestDate": "2026-07-16",
         "evidenceGap": true,
         "evidenceDate": "2026-07-11"
       },
       "taskParse": {
         "status": "**v1.4.1 (11) LIVE on App Store, founder-confirmed 2026-07-11** (Apple state change, no commit \u2014 see WP-37 S4 for the code that shipped in this build)",
-        "currentPhase": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
-        "activeStory": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+        "currentPhase": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+        "activeStory": "None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d)",
         "lastCompletedStory": "PostHog picker\u2192file-selected deferred-read attempt (2026-07-11) \u2014 confirmed zero post-live 1.4.1 data; pre-live signal only (n=2, 0% convert)",
-        "nextRecommendedStory": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+        "nextRecommendedStory": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "blockers": [
           "PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
           "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
@@ -433,7 +458,7 @@
           "existing Hebrew keys still cover the main pre-existing labels"
         ],
         "lastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
-        "lastUpdated": "2026-07-15",
+        "lastUpdated": "2026-07-16",
         "qaNeeded": "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md",
         "estimatedCompletion": null,
         "decisionsNeeded": [],
@@ -446,7 +471,7 @@
           ],
           "evidenceDate": "2026-07-11"
         },
-        "preferredSource": "tasks/progress.md latest entry",
+        "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
           "tasks/progress.md",
           "tasks/todo.md",
@@ -486,7 +511,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-15",
+      "lastUpdated": "2026-07-16",
       "blockers": [
         "Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
@@ -624,7 +649,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-15",
+      "lastUpdated": "2026-07-16",
       "blockers": [
         "Gate A remains closed by decision",
         "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
@@ -782,7 +807,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-13. Newer commits exist after this status (last commit: 2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-13. Newer commits exist after this status (last commit: 2026-07-15 f258bcf4 Merge branch 'main' into dashboard/ftux-submissions-and-artifacts); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
       "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
@@ -792,7 +817,7 @@
       "progressLabel": "Active",
       "lastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-15",
+      "lastUpdated": "2026-07-16",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -807,11 +832,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts",
+        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts [ahead 2]",
         "dirty": true,
-        "dirtyCount": 12,
+        "dirtyCount": 15,
         "extraWorktrees": 0,
-        "lastCommit": "2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule",
+        "lastCommit": "2026-07-15 f258bcf4 Merge branch 'main' into dashboard/ftux-submissions-and-artifacts",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -894,8 +919,8 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
-      "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback"
+      "RunSmart iOS: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
+      "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition"
     ],
     "next": [
       "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -1033,7 +1058,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-15 14:33",
+    "lastRefresh": "2026-07-16 09:10",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1077,29 +1102,8 @@
       "Resumely iOS: docs/product/current-product-state.md",
       "Resumely iOS: docs/product/product-vision.md",
       "Resumely iOS: docs/specs/README.md",
-      "Resumely iOS: docs/specs/app-store-screenshot-generator.md",
-      "Resumely iOS: docs/specs/drafts/app-store-screenshot-generator-brief.md",
-      "Resumely iOS: docs/specs/drafts/app-store-screenshot-generator-stories.md",
-      "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
       "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md",
-      "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-      "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-      "Resumely iOS: docs/specs/drafts/fit-first-triage-brief.md",
-      "Resumely iOS: docs/specs/drafts/fit-first-triage-spec.md",
-      "Resumely iOS: docs/specs/drafts/fit-first-triage-stories.md",
       "Resumely iOS: docs/specs/drafts/release-b-initiation-prompt.md",
-      "Resumely iOS: docs/specs/drafts/resume-aha-moments-brief.md",
-      "Resumely iOS: docs/specs/drafts/resume-aha-moments-spec.md",
-      "Resumely iOS: docs/specs/drafts/resume-aha-moments-stories.md",
-      "Resumely iOS: docs/specs/resume-aha-moments.md",
-      "Resumely iOS: docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-03-app-store-submission.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-      "Resumely iOS: docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-      "Resumely iOS: docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
       "Resumely iOS: primary:tasks/MEMORY.md",
       "Resumely iOS: primary:tasks/lessons.md",
       "Resumely iOS: primary:tasks/progress.md",
@@ -1109,6 +1113,42 @@
       "Resumely iOS: tasks/progress.md",
       "Resumely iOS: tasks/session-log.md",
       "Resumely iOS: tasks/todo.md",
+      "Resumely iOS: worktree:claude/release-b-story-8:tasks/MEMORY.md",
+      "Resumely iOS: worktree:claude/release-b-story-8:tasks/lessons.md",
+      "Resumely iOS: worktree:claude/release-b-story-8:tasks/progress.md",
+      "Resumely iOS: worktree:claude/release-b-story-8:tasks/session-log.md",
+      "Resumely iOS: worktree:claude/release-b-story-8:tasks/todo.md",
+      "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
+      "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+      "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
+      "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
+      "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
+      "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
       "RunSmart Web: docs/agent-os/project-context.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -1148,6 +1188,12 @@
       "RunSmart iOS: tasks/progress.md",
       "RunSmart iOS: tasks/session-log.md",
       "RunSmart iOS: tasks/todo.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
+      "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
@@ -1155,6 +1201,12 @@
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
+      "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
       "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md",
       "RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md",
@@ -1203,8 +1255,8 @@
     {
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
-      "state": "PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
-      "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
+      "state": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
+      "nextAction": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
       "blockerCount": 1,
       "blockers": [
         "None \u2014 waiting on Apple App Review turnaround"
@@ -1454,14 +1506,14 @@
       ],
       "dirty": true,
       "dirtyCount": 4,
-      "extraWorktrees": 2,
+      "extraWorktrees": 4,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-15 6cb4094 docs: 1.0.9 (23) archived and submitted to ASC; S6/S1 device smoke waived (#94)",
+      "lastCommit": "2026-07-15 3606770 docs: add 1.0.9 post-live activation runbook (#95)",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-15",
+      "freshestDate": "2026-07-16",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-15",
+      "evidenceDate": "2026-07-16",
       "evidenceTests": [
         "275 tests"
       ],
@@ -1485,12 +1537,24 @@
         "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
         "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
         "worktree:fix/zero-streak-profile:tasks/lessons.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
         "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
         "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
@@ -1520,20 +1584,20 @@
         "worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md"
       ],
       "taskSource": {
-        "kind": "primary",
-        "branch": "main"
+        "kind": "worktree",
+        "branch": "claude/runsmart-1-0-9-verification-f8e8a2"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-15 \u2014 full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke explicitly waived, not observed \u2014 see entry above",
-      "parsedLastUpdated": "2026-07-15",
-      "parsedActiveStory": "None in flight. Waiting on App Store Connect / App Review for 1.0.9 (23)"
+      "parsedLastValidation": "2026-07-16 \u2014 read-only PostHog verification only; no code changed, so no build/test run. Last code validation remains 2026-07-15: full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke still waived, not observed",
+      "parsedLastUpdated": "2026-07-16",
+      "parsedActiveStory": "None in flight. 1.0.9 (23) is LIVE. Post-live activation verification executed 2026-07-16 (PR #96, evidence report only) \u2014 E1 verdict BLOCKED"
     },
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
-      "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+      "state": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+      "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "blockerCount": 3,
       "blockers": [
         "PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
@@ -1563,8 +1627,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Trustworthy First-Time Journey Upgrade",
@@ -1572,8 +1636,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Product Brief \u2014 Trustworthy First-Time Journey Upgrade",
@@ -1581,8 +1645,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "v1.1 Build 7 ASC Submission Readiness \u2014 2026-06-26",
@@ -1590,8 +1654,8 @@
           "date": "2026-06-26",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Dev Stories \u2014 Fit-First Triage",
@@ -1599,8 +1663,8 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Fit-First Triage",
@@ -1608,8 +1672,8 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Product Brief \u2014 Fit-First Triage",
@@ -1617,8 +1681,8 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "v5 Build & Ship \u2014 Design Spec",
@@ -1626,8 +1690,8 @@
           "date": "2026-06-18",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "v5 Build & Ship Implementation Plan",
@@ -1635,8 +1699,8 @@
           "date": "2026-06-18",
           "status": "App Store live; build 5 in review",
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Resume Aha Moments",
@@ -1644,8 +1708,8 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Dev Stories \u2014 Resume Aha Moments",
@@ -1653,8 +1717,8 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Resume Aha Moments",
@@ -1662,8 +1726,8 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Product Brief \u2014 Resume Aha Moments",
@@ -1671,8 +1735,8 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "2026-06-11 Smoke Test Follow-Up Plan",
@@ -1680,8 +1744,8 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Code Review Remediation Plan \u2014 2026-06-11",
@@ -1689,8 +1753,8 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Implementation Prompt \u2014 Code Review Remediation",
@@ -1698,8 +1762,8 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Development Stories \u2014 App Store Screenshot Generator",
@@ -1707,8 +1771,8 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Product Brief \u2014 App Store Screenshot Generator",
@@ -1716,8 +1780,8 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 App Store Screenshot Generator",
@@ -1725,8 +1789,8 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "App Store Submission \u2014 WP3 Implementation Plan",
@@ -1734,8 +1798,8 @@
           "date": "2026-06-03",
           "status": "Submitted for Review",
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Resumely Pre-Submission UX/UI Transformation",
@@ -1743,8 +1807,8 @@
           "date": "2026-05-31",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Figma Board Blueprint \u2014 Resumely First-Time Journey Upgrade",
@@ -1758,12 +1822,12 @@
       ],
       "dirty": true,
       "dirtyCount": 8,
-      "extraWorktrees": 0,
+      "extraWorktrees": 3,
       "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
       "lastCommit": "2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-15",
+      "freshestDate": "2026-07-16",
       "evidenceGap": true,
       "evidenceDate": "2026-07-11",
       "evidenceTests": [],
@@ -1784,39 +1848,54 @@
         "primary:tasks/session-log.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/lessons.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+        "worktree:claude/release-b-story-8:tasks/progress.md",
+        "worktree:claude/release-b-story-8:tasks/todo.md",
+        "worktree:claude/release-b-story-8:tasks/session-log.md",
+        "worktree:claude/release-b-story-8:tasks/MEMORY.md",
+        "worktree:claude/release-b-story-8:tasks/lessons.md",
         "docs/specs/drafts/release-b-initiation-prompt.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-        "docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-        "docs/specs/drafts/fit-first-triage-stories.md",
-        "docs/specs/drafts/fit-first-triage-spec.md",
-        "docs/specs/drafts/fit-first-triage-brief.md",
-        "docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-        "docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-        "docs/specs/resume-aha-moments.md",
-        "docs/specs/drafts/resume-aha-moments-stories.md",
-        "docs/specs/drafts/resume-aha-moments-spec.md",
-        "docs/specs/drafts/resume-aha-moments-brief.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-        "docs/specs/drafts/app-store-screenshot-generator-stories.md",
-        "docs/specs/drafts/app-store-screenshot-generator-brief.md",
-        "docs/specs/app-store-screenshot-generator.md",
-        "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
         "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
       ],
       "taskSource": {
-        "kind": "primary",
-        "branch": "codex/first-time-journey-release-a"
+        "kind": "worktree",
+        "branch": "claude/release-b-story-8"
       },
       "sourceConfidence": "High",
-      "preferredSource": "tasks/progress.md latest entry",
+      "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
-      "parsedLastUpdated": "2026-07-15",
-      "parsedActiveStory": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)"
+      "parsedLastUpdated": "2026-07-16",
+      "parsedActiveStory": "None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d)"
     },
     {
       "id": "runsmart-web",
@@ -2272,10 +2351,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 12,
+      "dirtyCount": 15,
       "extraWorktrees": 0,
-      "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts",
-      "lastCommit": "2026-07-15 35fb4067 decisions: record FTUX B-then-C push and the artifact storage-state rule",
+      "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts [ahead 2]",
+      "lastCommit": "2026-07-15 f258bcf4 Merge branch 'main' into dashboard/ftux-submissions-and-artifacts",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-15",
@@ -2349,7 +2428,7 @@
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
+      "nextAction": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
@@ -2370,12 +2449,24 @@
         "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
         "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
         "worktree:fix/zero-streak-profile:tasks/lessons.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
+        "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
+        "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
         "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
         "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
@@ -2404,7 +2495,7 @@
         "worktree:fix/zero-streak-profile:docs/specs/demo-mode-simulator-recording.md",
         "worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review. Next action: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll. Known blockers: None \u2014 waiting on Apple App Review turnaround. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation. Next action: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum). Known blockers: None \u2014 waiting on Apple App Review turnaround. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
@@ -2412,7 +2503,7 @@
       "role": "iOS Release Manager",
       "repoState": "Dirty",
       "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
-      "nextAction": "land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+      "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
       "evidence": [
@@ -2428,31 +2519,46 @@
         "primary:tasks/session-log.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/lessons.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
+        "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+        "worktree:claude/release-b-story-8:tasks/progress.md",
+        "worktree:claude/release-b-story-8:tasks/todo.md",
+        "worktree:claude/release-b-story-8:tasks/session-log.md",
+        "worktree:claude/release-b-story-8:tasks/MEMORY.md",
+        "worktree:claude/release-b-story-8:tasks/lessons.md",
         "docs/specs/drafts/release-b-initiation-prompt.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-        "docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-        "docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-        "docs/specs/drafts/fit-first-triage-stories.md",
-        "docs/specs/drafts/fit-first-triage-spec.md",
-        "docs/specs/drafts/fit-first-triage-brief.md",
-        "docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-        "docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-        "docs/specs/resume-aha-moments.md",
-        "docs/specs/drafts/resume-aha-moments-stories.md",
-        "docs/specs/drafts/resume-aha-moments-spec.md",
-        "docs/specs/drafts/resume-aha-moments-brief.md",
-        "docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-        "docs/specs/drafts/app-store-screenshot-generator-stories.md",
-        "docs/specs/drafts/app-store-screenshot-generator-brief.md",
-        "docs/specs/app-store-screenshot-generator.md",
-        "docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+        "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
         "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Next action: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -2534,7 +2640,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts",
+      "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts [ahead 2]",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2559,8 +2665,8 @@
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
-    "portfolioState": "RunSmart iOS \u2014 PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15): land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "headline": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
+    "portfolioState": "RunSmart iOS \u2014 PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum) \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -2638,17 +2744,17 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-15 14:33",
+    "lastRunAt": "2026-07-16 09:10",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15). Next action: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
     "targetBranch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: land Release A on `main` via a PR from `codex/first-time-journey-release-a`, then begin Release B (Stories 7-10) per `docs/specs/drafts/release-b-initiation-prompt.md`; founder approved B then C as one FTUX push on 2026-07-15, and Story 9 stays blocked until the backend recommendation-evidence metadata contract has an owner, schema, delivery plan and fallback",
+    "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
     "nextActions": [
       {
         "title": "Restore dashboard trust",
@@ -2798,8 +2904,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Feature Spec \u2014 Trustworthy First-Time Journey Upgrade",
@@ -2807,8 +2913,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Product Brief \u2014 Trustworthy First-Time Journey Upgrade",
@@ -2816,8 +2922,8 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "v1.1 Build 7 ASC Submission Readiness \u2014 2026-06-26",
@@ -2825,8 +2931,8 @@
           "date": "2026-06-26",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         },
         {
           "title": "Dev Stories \u2014 Fit-First Triage",
@@ -2834,8 +2940,8 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/first-time-journey-release-a",
-          "source": "primary"
+          "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+          "source": "worktree"
         }
       ]
     },
@@ -3894,6 +4000,25 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-46 - Resumely FTUX Release B+C Continuation",
+        "status": "Ready after the active Claude Code session finishes and pushes Stories",
+        "project": "Resumely iOS: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Continue from the active Stories 7-8 work, implement Stories 9-13 sequentially, and prepare one combined 1.5.0 FTUX release candidate without interfering with the live 1.4.2 app or performing any App Store action",
+        "source": "2026-07-16 FTUX Evidence And Release Decisions Cleared; Resumely FTUX plan; Release A 1.4.2 production measurement report",
+        "workflowPattern": "sequential multi-story delivery",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-launch-to-export-activation",
+        "loop": null,
+        "signal": "Release A is live but has 0 clean post-release entrants; Stories 7 and 8 are being built in another Claude Code session",
+        "memoryUpdate": "`tasks/progress.md`, `tasks/session-log.md`, and the canonical FTUX plan",
+        "successSignal": "a clean-install user can complete the evidence-backed journey through export, with canonical PII-safe measurement, and the repository can reproduce the 1.5.0 release candidate",
+        "path": "executive-os/work-packets/WP-46-resumely-ftux-release-b-c-continuation.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
         "title": "Work Packet WP-5",
         "status": "Open",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
@@ -4347,7 +4472,7 @@
       },
       {
         "name": "Work packets",
-        "what": "0 active, 47 total. Copy only Active packets; closed packets are history."
+        "what": "0 active, 48 total. Copy only Active packets; closed packets are history."
       },
       {
         "name": "Brainstorm / next moves",
@@ -5155,6 +5280,25 @@
         "decision": null
       },
       {
+        "title": "Work Packet WP-46 - Resumely FTUX Release B+C Continuation",
+        "status": "Ready after the active Claude Code session finishes and pushes Stories",
+        "project": "Resumely iOS: `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+        "repoId": "research",
+        "repoPath": null,
+        "goal": "Continue from the active Stories 7-8 work, implement Stories 9-13 sequentially, and prepare one combined 1.5.0 FTUX release candidate without interfering with the live 1.4.2 app or performing any App Store action",
+        "source": "2026-07-16 FTUX Evidence And Release Decisions Cleared; Resumely FTUX plan; Release A 1.4.2 production measurement report",
+        "workflowPattern": "sequential multi-story delivery",
+        "inputTrust": "trusted",
+        "outcomeLoop": "resumely-launch-to-export-activation",
+        "loop": null,
+        "signal": "Release A is live but has 0 clean post-release entrants; Stories 7 and 8 are being built in another Claude Code session",
+        "memoryUpdate": "`tasks/progress.md`, `tasks/session-log.md`, and the canonical FTUX plan",
+        "successSignal": "a clean-install user can complete the evidence-backed journey through export, with canonical PII-safe measurement, and the repository can reproduce the 1.5.0 release candidate",
+        "path": "executive-os/work-packets/WP-46-resumely-ftux-release-b-c-continuation.md",
+        "copyPrompt": null,
+        "decision": null
+      },
+      {
         "title": "Work Packet WP-5",
         "status": "Open",
         "project": "Resumely iOS (ResumeBuilder IOS APP)",
@@ -5255,13 +5399,15 @@
   },
   "repoIntegrity": {
     "branch": "dashboard/ftux-submissions-and-artifacts",
-    "uncommitted": 0,
+    "uncommitted": 2,
     "extraWorktrees": 0,
-    "ahead": 0,
+    "ahead": 2,
     "behind": 0,
     "synced": false,
     "notes": [
-      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
+      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "2 local commit(s) not pushed to the upstream branch."
     ]
   },
   "planExecution": {
@@ -5367,13 +5513,15 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it."
+      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "2 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (2)."
+      "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
     ]
   },
   "latestCooReview": {
@@ -5385,14 +5533,8 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-15",
+    "generatedOn": "2026-07-16",
     "items": [
-      {
-        "project": "RunSmart iOS",
-        "type": "unpushed",
-        "detail": "claude/device-smoke-release-prep-50eafe: 1 unpushed commit(s), last commit 2026-07-15",
-        "action": "Push claude/device-smoke-release-prep-50eafe and open a PR, or explicitly hand it off."
-      },
       {
         "project": "RunSmart iOS",
         "type": "local-only",
@@ -5402,8 +5544,38 @@
       {
         "project": "RunSmart iOS",
         "type": "local-only",
+        "detail": "claude/bold-noyce-678ace: unmerged commits, remote branch deleted, last commit 2026-07-14",
+        "action": "Push claude/bold-noyce-678ace and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "codex/docs-1.0.9-activation-read: unmerged commits, remote branch deleted, last commit 2026-07-15",
+        "action": "Push codex/docs-1.0.9-activation-read and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
         "detail": "codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12",
         "action": "Push codex/wp40-release-closeout and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "docs/1.0.9-asc-submission-waiver: unmerged commits, remote branch deleted, last commit 2026-07-15",
+        "action": "Push docs/1.0.9-asc-submission-waiver and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "docs/public-108-smoke-2026-07-13: unmerged commits, remote branch deleted, last commit 2026-07-15",
+        "action": "Push docs/public-108-smoke-2026-07-13 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "fix/zero-streak-profile: unmerged commits, remote branch deleted, last commit 2026-07-15",
+        "action": "Push fix/zero-streak-profile and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart iOS",
@@ -5419,6 +5591,12 @@
       },
       {
         "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "release/1.0.9-build23: unmerged commits, remote branch deleted, last commit 2026-07-15",
+        "action": "Push release/1.0.9-build23 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
         "type": "worktree",
         "detail": "worktree on fix/zero-streak-profile, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace",
         "action": "Land or discard this worktree, then `git worktree remove` it."
@@ -5426,7 +5604,19 @@
       {
         "project": "RunSmart iOS",
         "type": "worktree",
+        "detail": "worktree on claude/runsmart-1-0-9-verification-f8e8a2 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
         "detail": "worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "worktree",
+        "detail": "worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -5438,7 +5628,7 @@
       {
         "project": "RunSmart iOS",
         "type": "cleanup",
-        "detail": "1 merged branch(es) safe to delete",
+        "detail": "2 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       },
       {
@@ -5458,6 +5648,24 @@
         "type": "local-only",
         "detail": "pr-72-review: unmerged commits, never pushed, last commit 2026-06-22",
         "action": "Push pr-72-review and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on codex/release-a-measurement-baseline-2026-07-16 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-measurement-baseline",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on codex/reconcile-release-a-1.4.2 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-release-a-reconcile",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on claude/release-b-story-8, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-release-a-b-landing-325d9a",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
         "project": "Resumely iOS",
@@ -5521,14 +5729,14 @@
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 4 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
+        "type": "unpushed",
+        "detail": "dashboard/ftux-submissions-and-artifacts: 2 unpushed commit(s), last commit 2026-07-15",
+        "action": "Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off."
       },
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "12 uncommitted file(s) in the primary working tree",
+        "detail": "15 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -5538,18 +5746,18 @@
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 23,
+    "actionableCount": 33,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-15 14:33",
+    "generatedAt": "2026-07-16 09:10",
     "apps": [
       {
         "projectId": 171597,
         "appId": "runsmart-ios",
         "app": "RunSmart",
-        "declaredState": "PHASE 3 \u2014 FTUX upgrade: implementation + review complete; 1.0.9 (23) submitted, awaiting App Review",
+        "declaredState": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
         "git": {
           "available": true,
           "tag": "pre-consolidation-r2",
@@ -5560,7 +5768,7 @@
         "projectId": 270848,
         "appId": "resumebuilder-ios",
         "app": "Resumely",
-        "declaredState": "Release A 1.4.2 (12) SUBMITTED to App Store Connect, awaiting review (2026-07-15)",
+        "declaredState": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
         "git": {
           "available": true,
           "tag": "consolidated-2026-05-11",
@@ -5572,13 +5780,13 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 14,
+        "liveUsers7d": 13,
         "source": "api"
       },
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 47,
+        "liveUsers7d": 48,
         "source": "api"
       }
     ],
@@ -5605,17 +5813,27 @@
   },
   "contradictions": [],
   "eodHandoff": {
-    "date": "2026-07-14",
+    "date": "2026-07-15",
     "moved": [
-      "Resumely iOS \u2014 fix(ios): retain optimization review state; docs: record PR update lesson; fix: surface optimized resume preview first; feat: complete saved resume continuity; (+7 more)",
+      "**Resumely iOS \u2014 v1.4.2 (12) APPROVED and LIVE on the App Store** (founder-confirmed from ASC ~21:15; supersedes 1.4.1 (11)). Ships Release A / first-time journey Stories 1-6. Repo work today: chore(ios): reconcile Release A 1.4.2 source (#97); docs: record 1.4.2 (12) ASC submission; supersede the BLOCKED entries; (+3 more)",
+      "**Personal Investment OS \u2014 PIOS-E1 built end to end, 5 commits on `main` (pushed), 249 tests.** Bootstrap (calc engine, IPS policy gate, claim provenance) \u2192 connectors + `pios` CLI (EDGAR companyfacts/XBRL, Stooq, file cache) \u2192 agent layer + 20-case eval suite (committee subagents, `/research-memo` skill, templates) \u2192 PIOS-E1 experiment card + verified data-source terms + threat notes \u2192 first system-validation pilot memos, journal entries, lessons. Experiment, not an OS; verdict ~2026-08-15",
+      "RunSmart iOS \u2014 docs: add 1.0.9 post-live activation runbook (#95); docs: address activation runbook review; docs: fix mature D7 activation numerator; docs: record activation runbook PR state; (+13 more)",
+      "Agentic OS \u2014 decisions: PIOS-E1 \u2014 personal investment research experiment, private and read-only; dashboard: refresh after the Resumely progress.md correction; decisions: record FTUX B-then-C push and the artifact storage-state rule; dashboard: FTUX submissions, artifact registry, refreshed status; (+3 more)",
+      "Builder OS Vault \u2014 vault: Personal Investment OS filed \u2014 living page, PIOS-E1 decision, portfolio/index/log entries; vault: FTUX submissions on both living pages; log the artifact rescue",
       "Claude Code sessions today: Builder OS Vault, RunSmart",
       "Cursor \u2014 _fill manually (Cursor sessions aren't introspectable)_"
     ],
     "didnt": [
-      "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on 2026-07-25 (or minimum check 2026-07-18) for clean marketing_version=1.4.1 coho\u2026"
+      "RunSmart iOS: Replay HealthKit onboarding with a non-destructive fresh test account, then re-run WP-42 on a clean 1.0.8 cohort",
+      "Also closed today (worth naming \u2014 it was yesterday's biggest risk):",
+      "Resumely iOS: the live-build/source drift is **resolved**. PR #97 reconciled Release A Stories 1-6 and the exact 1.4.2 (12) version stamp onto `origin/main`, matching the submitted checkout byte-for-byte in `Config/Info.plist` and `project.pbxproj`; 151 tests, 1 intentional skip, 0 failures. `main` can now rebuild what users are running",
+      "Open, not merged (all pushed, awaiting your call):",
+      "Vault PR #34 (PIOS-E1 filed) \u00b7 Agentic OS PR #29 (PIOS-E1 decision record) \u00b7 Agentic OS PR #28 + Vault PR #33 (FTUX submissions/dashboard)"
     ],
     "carry": [
-      "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on 2026-07-25 (or minimum check 2026-07-18) for clean marketing_version=1.4.1 coho\u2026"
+      "RunSmart iOS: Replay HealthKit onboarding with a non-destructive fresh test account, then re-run WP-42 on a clean 1.0.8 cohort",
+      "Resumely iOS: 1.4.2 going live today resets the funnel plan \u2014 the marketing_version=1.4.1 cohort stops accumulating now, so re-scope the picker\u2192file-selected read to 1.4.2 and reset the earliest-usable window to ~2026-07-22",
+      "Resumely iOS: Release A shipped with two known-unverified items (timeout-recovery regression never went green \u2014 XCTest-host `SIGABRT`, not an assertion failure; clean-install signed device journey not completed). If App Review or users flag Release A, start there"
     ],
     "source": "Builder OS daily note"
   }
