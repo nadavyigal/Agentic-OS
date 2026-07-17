@@ -2,57 +2,72 @@
 
 Manual source-of-truth dashboard for the Executive Intelligence OS. Financial cells stay `Needs Data` until a real source exists.
 
-Last updated: 2026-07-09 IDT (Monthly CFO Review run this date — see Financial Snapshot)
+Last updated: 2026-07-17 IDT
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Activation diagnostics + record-run polish follow-ups (WP-38 closed): S13 only if HealthKit accuracy gate clears; otherwise next work packet from Agentic OS · Resumely iOS — Post-launch — activation measurement is hardened; WP-37 S1/S4 shipped to `main`; S2/S3/S5 are web-side (separate repo), already shipped per that repo's progress log: Founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+Resumely is primary through the 2026-08-01 activation window. Release A 1.4.2 (12) is live, Story 8 is the active FTUX lane, and WP-46 queues Stories 9-13 toward one 1.5.0 readiness handoff. RunSmart 1.0.9 (23) is live, but its n=2 public sign-in failure signal needs one founder-device reproduction before any code or configuration change. Mature activation remains Resumely 0/73 and RunSmart 0/13 from the 2026-07-12 read; newer exact-version cohorts are immature. Sources: `dashboard/portfolio-hq-manual.json`, `EXECUTIVE-METRICS.md`, and `DECISIONS.md`.
 
-## CEO Focus
+## Top 3 Priorities
 
-- RunSmart iOS: WP-40 (HealthKit activation & discoverability) in progress — S1 moves the real Connect action out of Profile into the primary post-onboarding flow. Directly targets the plan→run activation break ahead of the 2026-07-12 re-read.
-- Resumely iOS: founder submits 1.4.1 (11) to ASC, then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort.
-- Distribution: WP-31 (Hebrew ASO, founder-approved) and WP-32 (Resumely FB-groups posting, founder-requested) are ready to execute but not yet reflected in `distribution-os/weekly-growth-review.md` (log stale since week of 2026-06-21) — close that gap before next Distribution Review.
+1. Verify RunSmart public-build Sign in with Apple once on the founder device; reproduce before changing code or production configuration.
+2. Finish the existing Resumely Story 8 lane, then execute WP-46 Stories 9-13 sequentially toward a 1.5.0 readiness handoff; no App Store action.
+3. Protect measurement: land current evidence after review, record WP-31 publish/baseline data, and run the July 22/25 cohort checks without turning 0/0 into 0%.
+
+Source: `executive-os/reviews/2026-07-17-weekly-ceo-review.md`.
 
 ## Financial Snapshot
 
-Needs Data - no revenue/cost instrumentation wired. Monthly CFO Review run 2026-07-09 (first run of this workflow): all revenue, cost, margin, and runway lines remain `Needs Data`; only known figure is $0 marketing spend (default, no paid ads). Top recommendation: build a one-time manual cost list before next review. Full report: `executive-os/reviews/2026-07-09-monthly-finance-review.md`.
+Revenue, costs, margin, burn, and runway are `unknown - need: App Store Connect/RevenueCat, provider billing, cash on hand, and a manual cost list`. Marketing spend is the only known figure at `$0`. Source: `executive-os/reviews/2026-07-09-monthly-finance-review.md`.
 
-## Open Decisions
+## Decision Board
 
-- RunSmart iOS: WP-40 build has started per founder confirmation (2026-07-09) — EXD-021 flagged HealthKit as "a direction, not yet a scoped work packet... founder to confirm before build starts"; that condition is now satisfied, noted on EXD-021.
-- Portfolio hygiene: 13 stranded-work items across 5 repos (`PROJECT-STATUS.md` Stranded Work), including Agentic OS's own 9 uncommitted files — decide whether to run a cleanup packet now or explicitly hold until after the 2026-07-12 activation re-read.
-- RunSmart Web: Garmin's 9 `reauth_required` users have no maintenance-mode-compatible fix (per WP-26/27/28 status) — restoration is gated on the founder's עוסק מורשה registration completing (EXD-017/EXD-021), no fixed date yet.
+- Open executive decisions: 0.
+- Keep Resumely primary through 2026-08-01 (EXD-015).
+- Defer RunSmart E1 until sign-in works and at least 10 clean mature-D7 entrants exist (`DECISIONS.md`, 2026-07-16).
+- Keep Resumely Release B+C as one sequential 1.5.0 target; no archive, TestFlight, or App Store action is authorized (`DECISIONS.md`, 2026-07-16).
+- Keep Gate A, paid acquisition, RunSmart Hebrew distribution, and Garmin relaunch engineering closed or parked under their existing decisions.
+- New durable decision this review: none.
 
-## Status Confidence
+## Plan Board
 
-How much each project's state is backed by parsed local task files versus narrative only.
+- `BUSINESS-GTM-PLAN-V0.md`: COO drafts a post-cohort decision packet after the July 22/25 reads.
+- RunSmart Hebrew-first playbook: COO drafts a 2026-08-01 revisit packet; execution remains parked under EXD-016.
+- RunSmart iOS GTM plan: COO drafts a sign-in and cohort-gated packet, not a volume-launch packet.
+- Seven research briefs remain `research_only`; no execution assignment this week.
 
-| Project | Confidence | Source | Last Validation |
-| --- | --- | --- | --- |
-| RunSmart iOS | High | tasks/progress.md | 2026-07-09 — WP-38 S14 Debug build **SUCCEEDED** post-review; PR #83 merged to `f9d7c89` |
-| Resumely iOS | High | tasks/progress.md | 2026-07-09 — Debug build **SUCCEEDED**; `.gstack/` gitignore hygiene fix committed (`597bf9f`); no new device QA since 2026-07-08 (`resume_upload_cta_seen/tapped`, `resume_file_picker_opened` PostHog QA rows still current from that date) |
-| RunSmart Web | High | tasks/progress.md | 2026-07-03 — see Last Completed Story for today's checks. 2026-07-02 — credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation |
-| ResumeBuilder AI (Web) | High | tasks/progress.md | WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` — focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files |
-| Agentic OS | High | tasks/progress.md | ./agentic-os verify passed with JSON, fallback sync, confidence, freshness, drift, packet hygiene, links, and git diff checks on 2026-06-12 |
+Source: `dashboard/status.json` `planExecution`.
+
+## Contradictions
+
+- Parsed status still says Resumely 1.4.1 with no active story; the dated founder-confirmed layer says 1.4.2 live, Story 7 complete, Story 8 active, and WP-46 queued.
+- `CEO-OS.md` still names RunSmart as primary and describes pre-release stages; EXD-015 makes Resumely primary through 2026-08-01.
+- `EXECUTIVE-METRICS.md` uses the correct mature activation baseline but names prior live versions in its blocked-app row.
+- Portfolio evidence refreshed today, but trust is still `Refresh required` because one unrelated dirty worktree remains and the snapshot began with local commits ahead of origin.
+
+Resolution: use the dated manual evidence for current release sequencing, preserve the mature cohort contract for decisions, and keep the parser lag visible until its source is reconciled.
 
 ## Risk Board
 
-- RunSmart iOS: Re-check Finder `* 2.*` duplicates before next Release archive
-- RunSmart iOS: physical lock-screen Live Activity capture still owed for S14b
-- Resumely iOS: Missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list
-- Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
-- RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
-- RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard
-- ResumeBuilder AI (Web): Gate A remains closed by decision
-- ResumeBuilder AI (Web): do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened
+- RunSmart sign-in: possible public P0, but n=2 is not enough to declare an outage.
+- Resumely measurement: Release A has 0 clean post-release entrants, so no exact-version activation claim is valid yet.
+- Evidence durability: several current audit and measurement artifacts remain branch-only.
+- Portfolio trust: one unrelated dirty worktree remains open; do not treat generated readiness claims as automatically authoritative.
+- Distribution: WP-31 publish time and Israeli storefront baseline are still missing; WP-32 closed inconclusive because attribution was absent.
+- Finance: revenue, costs, burn, and runway remain unknown.
 
-## Next Recommended Actions
+## Weekly Review
 
-1. RunSmart iOS: continue WP-40 S1-S4 (HealthKit connect into primary flow, auto-import, value surfacing, funnel verification); report per-story per the packet's completion gate.
-2. Resumely iOS: founder submits 1.4.1 (11); then re-read the PostHog picker→file-selected funnel 7-14d post-1.4 for a real cohort.
-3. Distribution: log the WP-31/WP-32 cycle into `distribution-os/weekly-growth-review.md` so the next Distribution Review has current data instead of the 2026-06-21 entry.
-4. Portfolio hygiene: triage the 13 stranded-work items (`PROJECT-STATUS.md`), starting with Agentic OS's own 9 uncommitted files and ResumeBuilder AI Web's unpushed `fix/posthog-expert-event-dedupe` commit (2026-07-09, still fresh — push before it goes stale too).
-5. Both apps: hold for the 2026-07-12 activation re-read before any monetization, paywall, or GTM-volume move (EXD-013, EXD-015).
-6. Research (2026-07-11): competitor activation teardown filed at `executive-os/research/2026-07-11-competitor-activation-teardown.md` — next decision is whether to open a Resumely first-free-PDF export activation packet (Teal pattern) after founder confirm.
-7. Research (2026-07-11): right-user demand-mining brief upgraded at `executive-os/research/2026-07-11-demand-mining-right-user-fit.md` (Grok pass: HealthUnlocked + Blind primary language; Relph 27.3% + Frandsen single-session >10%/30d corrected). Next: draft RunSmart ASO variant for founder review (wrong-fit traffic angle on the ~94.7% onboarding drop). Reddit/X still network-blocked for direct scrape.
+- Current review: `executive-os/reviews/2026-07-17-weekly-ceo-review.md`.
+- Prior review preserved: `executive-os/reviews/2026-07-09-weekly-ceo-review.md`.
+- No new row added to `EXECUTIVE-DECISIONS.md`; evidence supports carrying forward existing decisions, not creating a new one.
+
+## Next Actions
+
+1. Founder runs one RunSmart public sign-in attempt and records UTC plus exact result.
+2. Existing Resumely session finishes and integrates Story 8.
+3. WP-46 continues Stories 9-13 only after the active work integrates.
+4. Review and merge the current evidence branches, then reconcile the stale Resumely progress source.
+5. Record WP-31 publish timestamp and App Store Connect Israeli storefront baseline.
+6. Run July 22 directional checks and the preferred July 25 Resumely cohort read.
+7. Build the one-time manual recurring-cost list before the next CFO review.

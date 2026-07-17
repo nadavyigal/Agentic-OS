@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-16 06:10 UTC",
+  "generatedAt": "2026-07-17 10:50 UTC",
   "sources": {
-    "status": "2026-07-16 09:10",
+    "status": "2026-07-17 13:50",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-16"
   },
@@ -12,15 +12,15 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 local commit(s) not pushed to the upstream branch."
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "10 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
+      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
     ]
   },
   "consistencyIssues": [],
@@ -71,7 +71,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 15
+      "dirtyCount": 16
     }
   ],
   "numbers": {
@@ -244,7 +244,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-16 09:10",
+      "lastRan": "2026-07-17 13:50",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -258,7 +258,7 @@
       "id": "ceo",
       "name": "Weekly CEO review",
       "cadence": "weekly",
-      "lastRan": "2026-07-09",
+      "lastRan": "2026-07-17",
       "how": "Reads the whole portfolio and picks the week's top 3. Output lands on the Executive tab."
     },
     {
@@ -298,19 +298,19 @@
     }
   ],
   "executive": {
-    "ceoReviewed": "2026-07-09",
+    "ceoReviewed": "2026-07-17",
     "top3": [
       {
-        "title": "RunSmart WP-40 — HealthKit activation, in progress",
-        "body": "Ship S1 (move the real Connect action out of Profile into the post-onboarding flow) through S4 (verify the `healthkit_disclosure_viewed → connect_tapped → sync_completed` funnel actually populates in PostHog). This is the concrete lever against the plan→run activation break ahead of 2026-07-12."
+        "title": "Verify RunSmart sign-in on the public build now",
+        "body": "Make one founder-device Sign in with Apple attempt and record the exact result. If it fails, inspect shipped provisioning, the App Store capability, and Supabase Apple provider configuration before changing app code."
       },
       {
-        "title": "Resumely — continue the ranked distribution lane and WP-45",
-        "body": "Version 1.4.1 (11) is live. Preserve the Claude Code distribution-ranking work, complete the approved WP-31 draft asset, and move from WP-45 S0 to S1 only after S0 is pushed and reviewed."
+        "title": "Finish the active Resumely lane, then continue the approved 1.5.0 sequence",
+        "body": "Do not duplicate Stories 7-8. After Story 8 integrates, verify the Story 9 evidence contract and deliver Stories 9-13 one at a time through WP-46. Stop before archive, TestFlight, or App Store actions."
       },
       {
-        "title": "Portfolio hygiene — 13 stranded items, including Agentic OS's own",
-        "body": "Triage `PROJECT-STATUS.md` Stranded Work, starting with Agentic OS's 9 uncommitted files and ResumeBuilder AI Web's `fix/posthog-expert-event-dedupe` (1 unpushed commit, 2026-07-09 — still fresh, push it before it joins the stale list)."
+        "title": "Protect the measurement contract while cohorts mature",
+        "body": "Merge the current evidence branches after review, record WP-31's actual publish timestamp and Israeli storefront baseline, and run the July 22/25 checkpoints without converting immature 0/0 cohorts into activation rates."
       }
     ]
   },

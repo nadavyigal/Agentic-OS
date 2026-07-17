@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-16 06:10 UTC",
+  "generatedAt": "2026-07-17 10:50 UTC",
   "sources": {
-    "status": "2026-07-16 09:10",
+    "status": "2026-07-17 13:50",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-16"
   },
@@ -12,15 +12,15 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 local commit(s) not pushed to the upstream branch."
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "10 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
+      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
     ]
   },
   "consistencyIssues": [],
@@ -71,7 +71,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 15
+      "dirtyCount": 16
     }
   ],
   "numbers": {
@@ -222,7 +222,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-16 09:10",
+      "lastRan": "2026-07-17 13:50",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -236,7 +236,7 @@
       "id": "ceo",
       "name": "Weekly CEO review",
       "cadence": "weekly",
-      "lastRan": "2026-07-09",
+      "lastRan": "2026-07-17",
       "how": "Reads the whole portfolio and picks the week's top 3. Output lands on the Executive tab."
     },
     {

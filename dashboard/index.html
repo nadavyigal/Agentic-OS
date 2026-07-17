@@ -586,7 +586,7 @@
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-07-16",
+  "generated": "2026-07-17",
   "fallbackStatus": {
     "summary": {
       "overallStatus": "RunSmart iOS \u2014 PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum) \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -606,7 +606,7 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-07-16",
+      "evidenceFreshDate": "2026-07-17",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
@@ -621,8 +621,8 @@
       "later": [
         "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
         "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-        "RunSmart iOS: 26 saved plan(s) \u2014 latest \"FTUX Upgrade Plan \u2014 RunSmart iOS\" (2026-07-13). See Saved Plans.",
-        "Resumely iOS: 23 saved plan(s) \u2014 latest \"Release B Initiation Prompt \u2014 Continuous, Evidence-Backed Journey\" (2026-07-15). See Saved Plans.",
+        "RunSmart iOS: 27 saved plan(s) \u2014 latest \"RunSmart Adaptive Preview \u2014 Side-by-Side Experiment\" (2026-07-16). See Saved Plans.",
+        "Resumely iOS: 24 saved plan(s) \u2014 latest \"Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)\" (2026-07-16). See Saved Plans.",
         "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
         "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
         "Agentic OS: 10 saved plan(s) \u2014 latest \"Portfolio Activation Playbook v2\" (2026-07-12). See Saved Plans.",
@@ -637,25 +637,28 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-16 09:10",
+      "lastRefresh": "2026-07-17 13:50",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
-        "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
-        "Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-        "Agentic OS: docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-        "Agentic OS: docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-        "Agentic OS: docs/superpowers/plans/2026-07-02-founder-advisor.md",
-        "Agentic OS: docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-        "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-        "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-        "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-        "Agentic OS: docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
         "Agentic OS: primary:tasks/ERRORS.md",
         "Agentic OS: primary:tasks/MEMORY.md",
         "Agentic OS: primary:tasks/progress.md",
         "Agentic OS: tasks/MEMORY.md",
         "Agentic OS: tasks/progress.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/ERRORS.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/MEMORY.md",
+        "Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/progress.md",
         "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
         "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
         "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md",
@@ -692,11 +695,12 @@
         "Resumely iOS: tasks/progress.md",
         "Resumely iOS: tasks/session-log.md",
         "Resumely iOS: tasks/todo.md",
-        "Resumely iOS: worktree:claude/release-b-story-8:tasks/MEMORY.md",
-        "Resumely iOS: worktree:claude/release-b-story-8:tasks/lessons.md",
-        "Resumely iOS: worktree:claude/release-b-story-8:tasks/progress.md",
-        "Resumely iOS: worktree:claude/release-b-story-8:tasks/session-log.md",
-        "Resumely iOS: worktree:claude/release-b-story-8:tasks/todo.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:tasks/MEMORY.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:tasks/lessons.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:tasks/progress.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:tasks/session-log.md",
+        "Resumely iOS: worktree:claude/release-b-story-9:tasks/todo.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
@@ -728,6 +732,11 @@
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
+        "Resumely iOS: worktree:detached:tasks/MEMORY.md",
+        "Resumely iOS: worktree:detached:tasks/lessons.md",
+        "Resumely iOS: worktree:detached:tasks/progress.md",
+        "Resumely iOS: worktree:detached:tasks/session-log.md",
+        "Resumely iOS: worktree:detached:tasks/todo.md",
         "RunSmart Web: docs/agent-os/project-context.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -767,12 +776,6 @@
         "RunSmart iOS: tasks/progress.md",
         "RunSmart iOS: tasks/session-log.md",
         "RunSmart iOS: tasks/todo.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
-        "RunSmart iOS: worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
@@ -786,6 +789,19 @@
         "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
         "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
         "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
+        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
+        "RunSmart iOS: worktree:detached:tasks/ERRORS.md",
+        "RunSmart iOS: worktree:detached:tasks/MEMORY.md",
+        "RunSmart iOS: worktree:detached:tasks/lessons.md",
+        "RunSmart iOS: worktree:detached:tasks/progress.md",
+        "RunSmart iOS: worktree:detached:tasks/session-log.md",
+        "RunSmart iOS: worktree:detached:tasks/todo.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md",
@@ -848,6 +864,15 @@
           "lastUpdated": "2026-06-01"
         },
         "plans": [
+          {
+            "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
+            "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
+            "date": "2026-07-16",
+            "status": "Implemented; review-ready with Simulator XCTest runner caveat",
+            "kind": "spec",
+            "sourceBranch": "codex/runsmart-adaptive-preview",
+            "source": "worktree"
+          },
           {
             "title": "FTUX Upgrade Plan \u2014 RunSmart iOS",
             "path": "docs/plans/2026-07-13-ftux-upgrade-plan.md",
@@ -1085,7 +1110,7 @@
         ],
         "dirty": true,
         "dirtyCount": 4,
-        "extraWorktrees": 4,
+        "extraWorktrees": 5,
         "branch": "main...origin/main",
         "lastCommit": "2026-07-15 3606770 docs: add 1.0.9 post-live activation runbook (#95)",
         "stale": false,
@@ -1116,12 +1141,12 @@
           "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
           "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
           "worktree:fix/zero-streak-profile:tasks/lessons.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
+          "worktree:detached:tasks/lessons.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
@@ -1134,7 +1159,14 @@
           "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
+          "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
           "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
           "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
@@ -1164,7 +1196,7 @@
         ],
         "taskSource": {
           "kind": "worktree",
-          "branch": "claude/runsmart-1-0-9-verification-f8e8a2"
+          "branch": "detached"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -1191,6 +1223,15 @@
           "lastUpdated": null
         },
         "plans": [
+          {
+            "title": "Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)",
+            "path": "docs/specs/drafts/recommendation-evidence-backend-contract.md",
+            "date": "2026-07-16",
+            "status": null,
+            "kind": "spec",
+            "sourceBranch": "claude/release-b-story-9",
+            "source": "worktree"
+          },
           {
             "title": "Release B Initiation Prompt \u2014 Continuous, Evidence-Backed Journey",
             "path": "docs/specs/drafts/release-b-initiation-prompt.md",
@@ -1401,7 +1442,7 @@
         ],
         "dirty": true,
         "dirtyCount": 8,
-        "extraWorktrees": 3,
+        "extraWorktrees": 4,
         "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
         "lastCommit": "2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it",
         "stale": false,
@@ -1437,11 +1478,17 @@
           "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
-          "worktree:claude/release-b-story-8:tasks/progress.md",
-          "worktree:claude/release-b-story-8:tasks/todo.md",
-          "worktree:claude/release-b-story-8:tasks/session-log.md",
-          "worktree:claude/release-b-story-8:tasks/MEMORY.md",
-          "worktree:claude/release-b-story-8:tasks/lessons.md",
+          "worktree:claude/release-b-story-9:tasks/progress.md",
+          "worktree:claude/release-b-story-9:tasks/todo.md",
+          "worktree:claude/release-b-story-9:tasks/session-log.md",
+          "worktree:claude/release-b-story-9:tasks/MEMORY.md",
+          "worktree:claude/release-b-story-9:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/lessons.md",
+          "worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
@@ -1468,7 +1515,7 @@
         ],
         "taskSource": {
           "kind": "worktree",
-          "branch": "claude/release-b-story-8"
+          "branch": "claude/release-b-story-9"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -1844,8 +1891,8 @@
             "date": "2026-07-12",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Founder Advisor \u2014 Design",
@@ -1853,8 +1900,8 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Founder Advisor Implementation Plan",
@@ -1862,8 +1909,8 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "OS Improvement Plan Completion Implementation Plan",
@@ -1871,8 +1918,8 @@
             "date": "2026-07-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "RunSmart Hebrew-First Distribution Playbook",
@@ -1880,8 +1927,8 @@
             "date": "2026-06-22",
             "status": "draft",
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "2026-06-07 Obsidian Integration Plan",
@@ -1889,8 +1936,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
@@ -1898,8 +1945,8 @@
             "date": "2026-06-04",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Design: Morning Brief Prompt",
@@ -1907,8 +1954,8 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Claude Code Setup Overhaul \u2014 Design Spec",
@@ -1916,8 +1963,8 @@
             "date": "2026-05-20",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Claude Code Setup Overhaul \u2014 Implementation Plan",
@@ -1925,18 +1972,18 @@
             "date": "2026-05-20",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           }
         ],
         "dirty": true,
-        "dirtyCount": 15,
-        "extraWorktrees": 0,
-        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts [ahead 2]",
-        "lastCommit": "2026-07-15 f258bcf4 Merge branch 'main' into dashboard/ftux-submissions-and-artifacts",
+        "dirtyCount": 16,
+        "extraWorktrees": 1,
+        "branch": "main...origin/main [ahead 10]",
+        "lastCommit": "2026-07-17 db34d432 Merge dashboard FTUX submissions and artifacts",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-15",
+        "freshestDate": "2026-07-17",
         "evidenceGap": true,
         "evidenceDate": "2026-07-13",
         "evidenceTests": [],
@@ -1948,25 +1995,28 @@
           "primary:tasks/progress.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
-          "docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-          "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-          "docs/superpowers/plans/2026-07-02-founder-advisor.md",
-          "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-          "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-          "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-          "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-          "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-          "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-          "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/progress.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/MEMORY.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/ERRORS.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
         "taskSource": {
-          "kind": "primary",
-          "branch": "dashboard/ftux-submissions-and-artifacts"
+          "kind": "worktree",
+          "branch": "claude/resumely-ftux-release-b-c-b5e864"
         },
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "parsedLastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
-        "parsedLastUpdated": "2026-07-13",
+        "parsedLastUpdated": "2026-07-16",
         "parsedActiveStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch"
       }
     ],
@@ -2028,12 +2078,12 @@
           "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
           "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
           "worktree:fix/zero-streak-profile:tasks/lessons.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/progress.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/todo.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/session-log.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/MEMORY.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/ERRORS.md",
-          "worktree:claude/runsmart-1-0-9-verification-f8e8a2:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
+          "worktree:detached:tasks/lessons.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
@@ -2046,7 +2096,14 @@
           "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
+          "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
+          "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
           "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
           "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
@@ -2108,11 +2165,17 @@
           "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
-          "worktree:claude/release-b-story-8:tasks/progress.md",
-          "worktree:claude/release-b-story-8:tasks/todo.md",
-          "worktree:claude/release-b-story-8:tasks/session-log.md",
-          "worktree:claude/release-b-story-8:tasks/MEMORY.md",
-          "worktree:claude/release-b-story-8:tasks/lessons.md",
+          "worktree:claude/release-b-story-9:tasks/progress.md",
+          "worktree:claude/release-b-story-9:tasks/todo.md",
+          "worktree:claude/release-b-story-9:tasks/session-log.md",
+          "worktree:claude/release-b-story-9:tasks/MEMORY.md",
+          "worktree:claude/release-b-story-9:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/lessons.md",
+          "worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
@@ -2219,7 +2282,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "dashboard/ftux-submissions-and-artifacts...origin/dashboard/ftux-submissions-and-artifacts [ahead 2]",
+        "branch": "main...origin/main [ahead 10]",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2229,16 +2292,19 @@
           "primary:tasks/progress.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
-          "docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-          "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-          "docs/superpowers/plans/2026-07-02-founder-advisor.md",
-          "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-          "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-          "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-          "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-          "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-          "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-          "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/progress.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/MEMORY.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/ERRORS.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+          "worktree:claude/resumely-ftux-release-b-c-b5e864:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
         "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
@@ -2326,9 +2392,18 @@
       {
         "project": "RunSmart iOS",
         "projectId": "runsmart-ios",
-        "total": 26,
+        "total": 27,
         "shown": 7,
         "plans": [
+          {
+            "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
+            "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
+            "date": "2026-07-16",
+            "status": "Implemented; review-ready with Simulator XCTest runner caveat",
+            "kind": "spec",
+            "sourceBranch": "codex/runsmart-adaptive-preview",
+            "source": "worktree"
+          },
           {
             "title": "FTUX Upgrade Plan \u2014 RunSmart iOS",
             "path": "docs/plans/2026-07-13-ftux-upgrade-plan.md",
@@ -2375,15 +2450,6 @@
             "source": "worktree"
           },
           {
-            "title": "RunSmart 1.0.1 Build 12 - App Review Rejection Recovery",
-            "path": "docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-            "date": "2026-06-08",
-            "status": null,
-            "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
-            "source": "worktree"
-          },
-          {
             "title": "GTM Plan \u2014 RunSmart iOS",
             "path": ".agent-os/distribution/gtm-plan.md",
             "date": "2026-06-01",
@@ -2397,9 +2463,18 @@
       {
         "project": "Resumely iOS",
         "projectId": "resumebuilder-ios",
-        "total": 23,
+        "total": 24,
         "shown": 6,
         "plans": [
+          {
+            "title": "Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)",
+            "path": "docs/specs/drafts/recommendation-evidence-backend-contract.md",
+            "date": "2026-07-16",
+            "status": null,
+            "kind": "spec",
+            "sourceBranch": "claude/release-b-story-9",
+            "source": "worktree"
+          },
           {
             "title": "Release B Initiation Prompt \u2014 Continuous, Evidence-Backed Journey",
             "path": "docs/specs/drafts/release-b-initiation-prompt.md",
@@ -2442,15 +2517,6 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
-            "source": "worktree"
-          },
-          {
-            "title": "Dev Stories \u2014 Fit-First Triage",
-            "path": "docs/specs/drafts/fit-first-triage-stories.md",
-            "date": "2026-06-22",
-            "status": null,
-            "kind": "spec",
             "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
             "source": "worktree"
           }
@@ -2601,8 +2667,8 @@
             "date": "2026-07-12",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Founder Advisor \u2014 Design",
@@ -2610,8 +2676,8 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "Founder Advisor Implementation Plan",
@@ -2619,8 +2685,8 @@
             "date": "2026-07-02",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "OS Improvement Plan Completion Implementation Plan",
@@ -2628,8 +2694,8 @@
             "date": "2026-07-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "RunSmart Hebrew-First Distribution Playbook",
@@ -2637,8 +2703,8 @@
             "date": "2026-06-22",
             "status": "draft",
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           },
           {
             "title": "2026-06-07 Obsidian Integration Plan",
@@ -2646,8 +2712,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "dashboard/ftux-submissions-and-artifacts",
-            "source": "primary"
+            "sourceBranch": "claude/resumely-ftux-release-b-c-b5e864",
+            "source": "worktree"
           }
         ]
       }
@@ -4909,16 +4975,16 @@
       "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _None active \u2014 last shaping walkthrough completed 2026-07-08._\n- \u2705 RunSmart Hebrew-first distribution playbook \u2014 **park until 2026-08-01** (EXD-016 re-confirmed; no work packet).\n- \u2705 RunSmart legal entity \u2014 **investigate with accountant**; founder scheduling call (EXD-017 re-confirmed; WP-35; reminder **2026-07-22**).\n- \u2705 Resumely web Premium CTA \u2014 **hide/disable until Gate A** (EXD-018 re-confirmed; WP-29 S4 already covers implementation; no new packet).\n- _Not now, but do not lose._\n- 2026-07-05: RunSmart Hebrew-first distribution playbook is parked until the Resumely 30-day activation window closes on 2026-08-01. Source draft remains `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`). Decision: EXD-016.\n---\nUpdated: 2026-07-08"
     },
     "repoIntegrity": {
-      "branch": "dashboard/ftux-submissions-and-artifacts",
-      "uncommitted": 2,
-      "extraWorktrees": 0,
-      "ahead": 2,
+      "branch": "main",
+      "uncommitted": 3,
+      "extraWorktrees": 1,
+      "ahead": 10,
       "behind": 0,
       "synced": false,
       "notes": [
-        "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "2 local commit(s) not pushed to the upstream branch."
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+        "10 local commit(s) not pushed to the upstream branch."
       ]
     },
     "portfolioTrust": {
@@ -4926,19 +4992,19 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "On branch 'dashboard/ftux-submissions-and-artifacts', not main. Merge to main so all tools see it.",
-        "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "2 local commit(s) not pushed to the upstream branch."
+        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+        "10 local commit(s) not pushed to the upstream branch."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
       "hygieneWarnings": [
         "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-        "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
+        "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-16 09:10",
+      "generatedAt": "2026-07-17 13:50",
       "apps": [
         {
           "projectId": 171597,
@@ -4967,13 +5033,13 @@
         {
           "appId": "runsmart-ios",
           "available": true,
-          "liveUsers7d": 13,
+          "liveUsers7d": 10,
           "source": "api"
         },
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 48,
+          "liveUsers7d": 44,
           "source": "api"
         }
       ],
@@ -5001,7 +5067,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-16 09:10",
+      "lastRunAt": "2026-07-17 13:50",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
