@@ -6,6 +6,7 @@ import contextlib
 import http.server
 import json
 import os
+import platform
 import re
 import shutil
 import socket
@@ -258,6 +259,14 @@ def parse_launchctl_job(text: str) -> dict[str, Any]:
 
 
 def launchd_job_status(label: str = LAUNCHD_LABEL) -> dict[str, Any]:
+    if platform.system() != "Darwin":
+        return {
+            "loaded": False,
+            "state": "not_applicable",
+            "lastExitCode": None,
+            "runs": 0,
+            "raw": "launchd is macOS-only; skipped on this platform",
+        }
     domain = f"gui/{os.getuid()}/{label}"
     proc = run(["launchctl", "print", domain], timeout=10)
     if proc.returncode != 0:

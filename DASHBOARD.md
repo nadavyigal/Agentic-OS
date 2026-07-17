@@ -1,18 +1,18 @@
 # Portfolio Dashboard
 
-Last updated: 2026-07-13 IDT
+Last updated: 2026-07-17 IDT
 
 Local folder mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, task memory/todo/session files, and existing dashboard status. No external dashboards queried.
 
 ## Executive Summary
 
-RunSmart iOS — PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle): Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard · Resumely iOS — Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle): Monitor Apple review of build 8 (submitted 2026-06-03); check App Store Connect for outcome. · Resumely iOS — Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists: Founder: unlock iPhone 13 → install: xcrun devicectl device install app --device 4A1D6EF2-8945-55B8-931A-46980B2A27E2 '/var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/ResumeBuilder IOS APP.app' · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
-Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition
+Best next action: Resumely iOS: Founder: unlock iPhone 13 → install: xcrun devicectl device install app --device 4A1D6EF2-8945-55B8-931A-46980B2A27E2 '/var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/ResumeBuilder IOS APP.app'
 
 ## Run Center
 
-- Last refresh: 2026-07-13 08:19
+- Last refresh: 2026-07-17 14:36
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -20,34 +20,17 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 | Project | State | Next Action | Dirty | Freshness | Confidence |
 | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle) | Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard | Yes | Fresh | Medium |
-| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | Yes | Fresh | High |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Fresh | High |
-| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Fresh | High |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | No | Fresh | Medium |
+| RunSmart iOS | PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle) | Monitor Apple review of build 8 (submitted 2026-06-03); check App Store Connect for outcome. | No | Unknown | Unknown |
+| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Founder: unlock iPhone 13 → install: xcrun devicectl device install app --device 4A1D6EF2-8945-55B8-931A-46980B2A27E2 '/var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/ResumeBuilder IOS APP.app' | No | Unknown | Unknown |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | Triage modified/untracked files before more web work. | No | Unknown | Unknown |
+| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | Leave parked unless Resumely smoke exposes backend parse/render issues. | No | Unknown | Unknown |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | Yes | Fresh | Medium |
 
 ## Stranded Work
 
-18 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+1 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
-- [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12
-- [RunSmart iOS] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
-- [RunSmart iOS] preserve/apple-garmin-sync-docs: unmerged commits, never pushed, last commit 2026-06-21
-- [RunSmart iOS] worktree on detached, 1 uncommitted file(s) at /private/tmp/rs-release-108-22/repo
-- [RunSmart iOS] 4 uncommitted file(s) in the primary working tree
-- [Resumely iOS] codex/wp45-s0-measurement-contract: unmerged commits, never pushed, last commit 2026-07-12
-- [Resumely iOS] feat/localization-updates: unmerged commits, never pushed, last commit 2026-06-16
-- [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
-- [Resumely iOS] 1 uncommitted file(s) in the primary working tree
-- [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
-- [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
-- [RunSmart Web] 8 uncommitted file(s) in the primary working tree
-- [ResumeBuilder AI (Web)] fix/posthog-expert-event-dedupe: 1 unpushed commit(s), last commit 2026-07-09
-- [ResumeBuilder AI (Web)] fix/ats-keyword-phrase-quality: unmerged commits, remote branch deleted, last commit 2026-06-22
-- [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
-- [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
-- [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
-- [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
+- [Agentic OS] 15 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
@@ -71,9 +54,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Evidence Gaps
 
-- Resumely iOS: validated 2026-07-11, latest commit is newer.
-- RunSmart Web: validated 2026-07-03, latest commit is newer.
-- ResumeBuilder AI (Web): validated 2026-07-03, latest commit is newer.
+- Agentic OS: validated 2026-07-13, latest commit is newer.
 
 ## Drift Warnings
 
