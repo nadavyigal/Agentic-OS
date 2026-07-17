@@ -1,67 +1,63 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-13 05:19 UTC",
+  "generatedAt": "2026-07-17 14:36 UTC",
   "sources": {
-    "status": "2026-07-13 08:19",
+    "status": "2026-07-17 14:36",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-13"
   },
   "trust": {
-    "level": "caution",
-    "label": "Use caution",
+    "level": "refresh_required",
+    "label": "Refresh required",
     "reasons": [
-      "Status can guide planning, but validate before acting on release, billing, auth, production, or App Store steps.",
-      "Dirty shippable app repo: RunSmart iOS, Resumely iOS.",
-      "Evidence gap after latest commit: Resumely iOS."
+      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools."
     ],
     "refreshToday": true,
-    "needsNextPacketCount": 3,
-    "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (1)."
-    ]
+    "needsNextPacketCount": 2,
+    "hygieneWarnings": []
   },
   "consistencyIssues": [],
   "command": {
-    "bestNextAction": "Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort."
+    "bestNextAction": "Resumely iOS: Founder: unlock iPhone 13 → install: xcrun devicectl device install app --device 4A1D6EF2-8945-55B8-931A-46980B2A27E2 '/var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/ResumeBuilder IOS APP.app'"
   },
   "products": [
     {
       "name": "RunSmart iOS",
       "state": "PHASE 2 — Release 1.0.8 (22) (WP-37/38/40 bundle)",
-      "nextAction": "Confirm ASC upload processing; TestFlight smoke; re-run WP-42 on clean 1.0.8 cohort after users onboard",
-      "freshness": "Fresh",
-      "evidenceDate": "2026-07-12",
-      "dirty": true,
-      "dirtyCount": 4
+      "nextAction": "Monitor Apple review of build 8 (submitted 2026-06-03); check App Store Connect for outcome.",
+      "freshness": "Unknown",
+      "evidenceDate": null,
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "Resumely iOS",
       "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
-      "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
-      "freshness": "Fresh",
-      "evidenceDate": "2026-07-11",
-      "dirty": true,
-      "dirtyCount": 1
+      "nextAction": "Founder: unlock iPhone 13 → install: xcrun devicectl device install app --device 4A1D6EF2-8945-55B8-931A-46980B2A27E2 '/var/tmp/resumebuilder-device-derived/Build/Products/Debug-iphoneos/ResumeBuilder IOS APP.app'",
+      "freshness": "Unknown",
+      "evidenceDate": null,
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "RunSmart Web",
       "state": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
-      "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-      "freshness": "Fresh",
-      "evidenceDate": "2026-07-03",
-      "dirty": true,
-      "dirtyCount": 8
+      "nextAction": "Triage modified/untracked files before more web work.",
+      "freshness": "Unknown",
+      "evidenceDate": null,
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "ResumeBuilder AI (Web)",
       "state": "WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next",
-      "nextAction": "WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty",
-      "freshness": "Fresh",
-      "evidenceDate": "2026-07-03",
-      "dirty": true,
-      "dirtyCount": 2
+      "nextAction": "Leave parked unless Resumely smoke exposes backend parse/render issues.",
+      "freshness": "Unknown",
+      "evidenceDate": null,
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "Agentic OS",
@@ -69,8 +65,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 15
     }
   ],
   "numbers": {
@@ -203,7 +199,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-13 08:19",
+      "lastRan": "2026-07-17 14:36",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -231,14 +227,14 @@
       "id": "growth",
       "name": "Distribution growth review",
       "cadence": "weekly",
-      "lastRan": "2026-07-07",
+      "lastRan": "2026-07-14",
       "how": "Logs the weekly growth cycle: what ran, what the numbers did, what to try next. Feeds the Growth tab."
     },
     {
       "id": "vault",
       "name": "Weekly review note (Obsidian)",
       "cadence": "weekly",
-      "lastRan": "2026-07-05",
+      "lastRan": null,
       "how": "The human-readable week summary in the vault (07-Weekly-Reviews)."
     },
     {
