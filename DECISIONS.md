@@ -251,3 +251,16 @@ Impact:
 - 9 of 19 registered artifacts are not on `main` as of 2026-07-15.
 - Treat `branch-only` as one branch-cleanup away from invisible; re-verify links after any cleanup.
 - **Related defect to fix:** Resumely 1.4.2 (12) was submitted to Apple from `codex/first-time-journey-release-a`. `origin/main` has neither Stories 1-6 nor the version bump, so main cannot rebuild the shipped binary. Resumely `tasks/progress.md` also still reads "ASC archive attempt BLOCKED (2026-07-15)", contradicting the founder's submission statement — Apple-state changes leave no commit, so the repo record cannot self-correct.
+
+## 2026-07-18: RunSmart Adaptive Coach Becomes Active Investment
+
+Decision: The founder greenlit building the recovery- and load-aware Adaptive Coach for RunSmart iOS as active product work (Phase 1: proactive Today card triggered by missed workouts, low readiness, or ACWR load spikes; feature-flagged, default off). This supersedes the "maintenance-only" reading of the 2026-07-02 priority reset for RunSmart core product work. It does NOT reopen Garmin: Garmin remains paused per 2026-07-02 and EXD-019; the load model computes ACWR client-side from RecordedRun (HealthKit + already-synced runs), no wearable dependency.
+
+Reason: The 2026-07-16 RunSmart Adaptive preview (branch codex/runsmart-adaptive-preview, PR #97) validated the missed-run reshape UX on demo data. The founder decided the differentiation is worth productionizing. The adaptive coach directly serves the Phone-Only-Runner persona named in the 2026-07-02 decision, so this is a scope escalation within the sanctioned focus, not a reversal of the Resumely-primary priority. Resumely remains the primary product.
+
+Impact:
+
+- Plan of record: `docs/specs/2026-07-18-adaptive-coach-phase1.md` in the RunSmart iOS repo (6 TDD tasks; flag `RUNSMART_ADAPTIVE_COACH_ENABLED`, default NO).
+- The FlexWeek duplicate-slot-ID bug fix from the preview branch ships to production independently (branch fix/flexweek-duplicate-slot-ids).
+- The preview branch/PR #97 itself is NOT merged; it remains a demo sandbox.
+- Rollout gate: flag flips to YES only after founder/QA PostHog exclusions are confirmed and the card funnel is measurable; 2 weeks of funnel data before Phase 2.

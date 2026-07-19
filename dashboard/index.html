@@ -586,10 +586,10 @@
 
     <script id="cc-data" type="application/json">
 {
-  "generated": "2026-07-17",
+  "generated": "2026-07-19",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum) \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "overallStatus": "RunSmart iOS \u2014 `coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "bestNextAction": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "mainBlockers": [
         "RunSmart iOS: None \u2014 waiting on Apple App Review turnaround",
@@ -606,12 +606,12 @@
         "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
         "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
       ],
-      "evidenceFreshDate": "2026-07-17",
+      "evidenceFreshDate": "2026-07-19",
       "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
     },
     "priorityBoard": {
       "now": [
-        "RunSmart iOS: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
+        "RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
         "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition"
       ],
       "next": [
@@ -621,7 +621,7 @@
       "later": [
         "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
         "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-        "RunSmart iOS: 27 saved plan(s) \u2014 latest \"RunSmart Adaptive Preview \u2014 Side-by-Side Experiment\" (2026-07-16). See Saved Plans.",
+        "RunSmart iOS: 28 saved plan(s) \u2014 latest \"Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching\" (2026-07-18). See Saved Plans.",
         "Resumely iOS: 24 saved plan(s) \u2014 latest \"Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)\" (2026-07-16). See Saved Plans.",
         "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
         "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
@@ -637,7 +637,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-17 13:50",
+      "lastRefresh": "2026-07-19 17:31",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -684,8 +684,8 @@
         "Resumely iOS: docs/product/current-product-state.md",
         "Resumely iOS: docs/product/product-vision.md",
         "Resumely iOS: docs/specs/README.md",
-        "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md",
-        "Resumely iOS: docs/specs/drafts/release-b-initiation-prompt.md",
+        "Resumely iOS: docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md",
+        "Resumely iOS: docs/specs/drafts/release-b-initiation-prompt 2.md",
         "Resumely iOS: primary:tasks/MEMORY.md",
         "Resumely iOS: primary:tasks/lessons.md",
         "Resumely iOS: primary:tasks/progress.md",
@@ -695,12 +695,16 @@
         "Resumely iOS: tasks/progress.md",
         "Resumely iOS: tasks/session-log.md",
         "Resumely iOS: tasks/todo.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
         "Resumely iOS: worktree:claude/release-b-story-9:tasks/MEMORY.md",
         "Resumely iOS: worktree:claude/release-b-story-9:tasks/lessons.md",
         "Resumely iOS: worktree:claude/release-b-story-9:tasks/progress.md",
         "Resumely iOS: worktree:claude/release-b-story-9:tasks/session-log.md",
         "Resumely iOS: worktree:claude/release-b-story-9:tasks/todo.md",
+        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
+        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
+        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
+        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
+        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
         "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
@@ -732,11 +736,22 @@
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
         "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
-        "Resumely iOS: worktree:detached:tasks/MEMORY.md",
-        "Resumely iOS: worktree:detached:tasks/lessons.md",
-        "Resumely iOS: worktree:detached:tasks/progress.md",
-        "Resumely iOS: worktree:detached:tasks/session-log.md",
-        "Resumely iOS: worktree:detached:tasks/todo.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:tasks/MEMORY.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:tasks/lessons.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:tasks/progress.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:tasks/session-log.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:tasks/todo.md",
+        "Resumely iOS: worktree:codex/wp46-story-11:tasks/MEMORY.md",
+        "Resumely iOS: worktree:codex/wp46-story-11:tasks/lessons.md",
+        "Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md",
+        "Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md",
+        "Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md",
+        "Resumely iOS: worktree:codex/wp46-story-13:tasks/MEMORY.md",
+        "Resumely iOS: worktree:codex/wp46-story-13:tasks/lessons.md",
+        "Resumely iOS: worktree:codex/wp46-story-13:tasks/progress.md",
+        "Resumely iOS: worktree:codex/wp46-story-13:tasks/session-log.md",
+        "Resumely iOS: worktree:codex/wp46-story-13:tasks/todo.md",
         "RunSmart Web: docs/agent-os/project-context.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -802,31 +817,44 @@
         "RunSmart iOS: worktree:detached:tasks/progress.md",
         "RunSmart iOS: worktree:detached:tasks/session-log.md",
         "RunSmart iOS: worktree:detached:tasks/todo.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-fix-plan.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/demo-mode-simulator-recording.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/e5-adaptive-flex-week.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/e7-garmin-wearable-depth.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/post-submission-ux-redesign-1.0.1.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/specs/wp25-garmin-track.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-        "RunSmart iOS: worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/lessons.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/progress.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/session-log.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/todo.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/progress.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/session-log.md",
+        "RunSmart iOS: worktree:fix/flexweek-duplicate-slot-ids:tasks/todo.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:tasks/ERRORS.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:tasks/MEMORY.md",
         "RunSmart iOS: worktree:fix/zero-streak-profile:tasks/lessons.md",
@@ -850,8 +878,8 @@
       {
         "id": "runsmart-ios",
         "name": "RunSmart iOS",
-        "state": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
-        "nextAction": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
+        "state": "`coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19)",
+        "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
         "blockerCount": 1,
         "blockers": [
           "None \u2014 waiting on Apple App Review turnaround"
@@ -864,6 +892,15 @@
           "lastUpdated": "2026-06-01"
         },
         "plans": [
+          {
+            "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
+            "path": "docs/specs/2026-07-18-adaptive-coach-phase1.md",
+            "date": "2026-07-18",
+            "status": null,
+            "kind": "spec",
+            "sourceBranch": "feat/adaptive-coach-phase1",
+            "source": "worktree"
+          },
           {
             "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
             "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
@@ -888,7 +925,7 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -897,7 +934,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -906,7 +943,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -915,7 +952,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -924,7 +961,7 @@
             "date": "2026-06-08",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -933,7 +970,7 @@
             "date": "2026-06-08",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -942,7 +979,7 @@
             "date": "2026-06-03",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -951,7 +988,7 @@
             "date": "2026-06-03",
             "status": "Submitted for Review",
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -960,7 +997,7 @@
             "date": "2026-06-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -969,7 +1006,7 @@
             "date": "2026-06-01",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -978,7 +1015,7 @@
             "date": "2026-05-31",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -987,7 +1024,7 @@
             "date": "2026-05-28",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -996,7 +1033,7 @@
             "date": "2026-05-27",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1005,7 +1042,7 @@
             "date": "2026-05-26",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1014,7 +1051,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1023,7 +1060,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1032,7 +1069,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1041,7 +1078,7 @@
             "date": "2026-05-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1050,7 +1087,7 @@
             "date": "2026-05-17",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1059,7 +1096,7 @@
             "date": "2026-05-17",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1068,7 +1105,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1077,7 +1114,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1086,7 +1123,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1095,7 +1132,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1104,20 +1141,20 @@
             "date": null,
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           }
         ],
         "dirty": true,
-        "dirtyCount": 4,
-        "extraWorktrees": 5,
+        "dirtyCount": 5,
+        "extraWorktrees": 7,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-15 3606770 docs: add 1.0.9 post-live activation runbook (#95)",
+        "lastCommit": "2026-07-19 0365816 docs: record coach_message v10 deploy and client/server parity gap",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-16",
-        "evidenceGap": false,
-        "evidenceDate": "2026-07-16",
+        "freshestDate": "2026-07-19",
+        "evidenceGap": true,
+        "evidenceDate": "2026-07-15",
         "evidenceTests": [
           "275 tests"
         ],
@@ -1135,12 +1172,24 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/progress.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/todo.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/session-log.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/lessons.md",
           "worktree:fix/zero-streak-profile:tasks/progress.md",
           "worktree:fix/zero-streak-profile:tasks/todo.md",
           "worktree:fix/zero-streak-profile:tasks/session-log.md",
           "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
           "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
           "worktree:fix/zero-streak-profile:tasks/lessons.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/progress.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/todo.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/session-log.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
           "worktree:detached:tasks/progress.md",
           "worktree:detached:tasks/todo.md",
           "worktree:detached:tasks/session-log.md",
@@ -1166,48 +1215,49 @@
           "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
           "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
           "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-          "worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-fix-plan.md",
-          "worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-          "worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md",
-          "worktree:fix/zero-streak-profile:docs/specs/post-submission-ux-redesign-1.0.1.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-          "worktree:fix/zero-streak-profile:docs/specs/e5-adaptive-flex-week.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-          "worktree:fix/zero-streak-profile:docs/specs/wp25-garmin-track.md",
-          "worktree:fix/zero-streak-profile:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-          "worktree:fix/zero-streak-profile:docs/specs/e7-garmin-wearable-depth.md",
-          "worktree:fix/zero-streak-profile:docs/specs/demo-mode-simulator-recording.md",
-          "worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md"
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
-          "kind": "worktree",
-          "branch": "detached"
+          "kind": "primary",
+          "branch": "main"
         },
         "sourceConfidence": "High",
-        "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-16 \u2014 read-only PostHog verification only; no code changed, so no build/test run. Last code validation remains 2026-07-15: full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke still waived, not observed",
-        "parsedLastUpdated": "2026-07-16",
-        "parsedActiveStory": "None in flight. 1.0.9 (23) is LIVE. Post-live activation verification executed 2026-07-16 (PR #96, evidence report only) \u2014 E1 verdict BLOCKED"
+        "preferredSource": "tasks/progress.md latest entry",
+        "parsedLastValidation": "2026-07-15 \u2014 full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke explicitly waived, not observed \u2014 see entry above",
+        "parsedLastUpdated": "2026-07-19",
+        "parsedActiveStory": "`coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19)"
       },
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+        "state": "Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19)",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "blockerCount": 3,
         "blockers": [
@@ -1229,16 +1279,16 @@
             "date": "2026-07-16",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "claude/release-b-story-9",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
             "title": "Release B Initiation Prompt \u2014 Continuous, Evidence-Backed Journey",
-            "path": "docs/specs/drafts/release-b-initiation-prompt.md",
+            "path": "docs/specs/drafts/release-b-initiation-prompt 2.md",
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/first-time-journey-release-a",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -1432,22 +1482,22 @@
           },
           {
             "title": "Figma Board Blueprint \u2014 Resumely First-Time Journey Upgrade",
-            "path": "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md",
+            "path": "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md",
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/first-time-journey-release-a",
+            "sourceBranch": "detached",
             "source": "primary"
           }
         ],
         "dirty": true,
         "dirtyCount": 8,
-        "extraWorktrees": 4,
-        "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
-        "lastCommit": "2026-07-15 6532c64 docs: format the 1.4.2 submission entry so the status parser reads it",
+        "extraWorktrees": 7,
+        "branch": "HEAD (no branch)",
+        "lastCommit": "2026-07-19 103bf0f docs: close out Release C session - Story 13 passed, 1.4.3(13) ready (#111)",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-16",
+        "freshestDate": "2026-07-19",
         "evidenceGap": true,
         "evidenceDate": "2026-07-11",
         "evidenceTests": [],
@@ -1478,18 +1528,33 @@
           "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+          "worktree:codex/wp46-story-10:tasks/progress.md",
+          "worktree:codex/wp46-story-10:tasks/todo.md",
+          "worktree:codex/wp46-story-10:tasks/session-log.md",
+          "worktree:codex/wp46-story-10:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-10:tasks/lessons.md",
+          "worktree:codex/wp46-story-11:tasks/progress.md",
+          "worktree:codex/wp46-story-11:tasks/todo.md",
+          "worktree:codex/wp46-story-11:tasks/session-log.md",
+          "worktree:codex/wp46-story-11:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-11:tasks/lessons.md",
+          "worktree:codex/wp46-story-13:tasks/progress.md",
+          "worktree:codex/wp46-story-13:tasks/todo.md",
+          "worktree:codex/wp46-story-13:tasks/session-log.md",
+          "worktree:codex/wp46-story-13:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-13:tasks/lessons.md",
           "worktree:claude/release-b-story-9:tasks/progress.md",
           "worktree:claude/release-b-story-9:tasks/todo.md",
           "worktree:claude/release-b-story-9:tasks/session-log.md",
           "worktree:claude/release-b-story-9:tasks/MEMORY.md",
           "worktree:claude/release-b-story-9:tasks/lessons.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/todo.md",
-          "worktree:detached:tasks/session-log.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/lessons.md",
-          "worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
-          "docs/specs/drafts/release-b-initiation-prompt.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+          "docs/specs/drafts/release-b-initiation-prompt 2.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
@@ -1511,17 +1576,17 @@
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-          "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
+          "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
         "taskSource": {
-          "kind": "worktree",
-          "branch": "claude/release-b-story-9"
+          "kind": "primary",
+          "branch": "detached"
         },
         "sourceConfidence": "High",
-        "preferredSource": "tasks/progress.md",
+        "preferredSource": "tasks/progress.md latest entry",
         "parsedLastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
-        "parsedLastUpdated": "2026-07-16",
-        "parsedActiveStory": "None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d)"
+        "parsedLastUpdated": "2026-07-19",
+        "parsedActiveStory": null
       },
       {
         "id": "runsmart-web",
@@ -1664,8 +1729,8 @@
         "extraWorktrees": 0,
         "branch": "main...origin/main",
         "lastCommit": "2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)",
-        "stale": false,
-        "freshness": "Needs Review",
+        "stale": true,
+        "freshness": "Stale",
         "freshestDate": "2026-07-11",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03",
@@ -1708,7 +1773,7 @@
           "kind": "primary",
           "branch": "main"
         },
-        "sourceConfidence": "High",
+        "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "parsedLastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
         "parsedLastUpdated": "2026-07-11",
@@ -1827,10 +1892,10 @@
         "dirtyCount": 2,
         "extraWorktrees": 1,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-11 8fe95e7 docs: log WP-43 ship (PR #115) in progress.md",
+        "lastCommit": "2026-07-19 ffedabc fix: expose optimization_id on saved-resume API responses (#116)",
         "stale": false,
-        "freshness": "Needs Review",
-        "freshestDate": "2026-07-11",
+        "freshness": "Fresh",
+        "freshestDate": "2026-07-19",
         "evidenceGap": true,
         "evidenceDate": "2026-07-03",
         "evidenceTests": [],
@@ -1977,10 +2042,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 16,
+        "dirtyCount": 14,
         "extraWorktrees": 1,
-        "branch": "main...origin/main [ahead 10]",
-        "lastCommit": "2026-07-17 db34d432 Merge dashboard FTUX submissions and artifacts",
+        "branch": "main...origin/main [ahead 11]",
+        "lastCommit": "2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-17",
@@ -2057,9 +2122,9 @@
         "role": "iOS Release / Product Engineer",
         "repoState": "Dirty",
         "branch": "main...origin/main",
-        "nextAction": "**Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum)",
+        "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -2072,12 +2137,24 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/progress.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/todo.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/session-log.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md",
+          "worktree:feat/adaptive-coach-phase1:tasks/lessons.md",
           "worktree:fix/zero-streak-profile:tasks/progress.md",
           "worktree:fix/zero-streak-profile:tasks/todo.md",
           "worktree:fix/zero-streak-profile:tasks/session-log.md",
           "worktree:fix/zero-streak-profile:tasks/MEMORY.md",
           "worktree:fix/zero-streak-profile:tasks/ERRORS.md",
           "worktree:fix/zero-streak-profile:tasks/lessons.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/progress.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/todo.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/session-log.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
+          "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
           "worktree:detached:tasks/progress.md",
           "worktree:detached:tasks/todo.md",
           "worktree:detached:tasks/session-log.md",
@@ -2103,42 +2180,43 @@
           "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
           "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
           "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-          "worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-fix-plan.md",
-          "worktree:fix/zero-streak-profile:docs/plans/2026-06-11-code-review-baseline-audit.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-          "worktree:fix/zero-streak-profile:.agent-os/distribution/gtm-plan.md",
-          "worktree:fix/zero-streak-profile:docs/specs/post-submission-ux-redesign-1.0.1.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-          "worktree:fix/zero-streak-profile:docs/specs/e5-adaptive-flex-week.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-          "worktree:fix/zero-streak-profile:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-          "worktree:fix/zero-streak-profile:docs/specs/wp25-garmin-track.md",
-          "worktree:fix/zero-streak-profile:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-          "worktree:fix/zero-streak-profile:docs/specs/e7-garmin-wearable-depth.md",
-          "worktree:fix/zero-streak-profile:docs/specs/demo-mode-simulator-recording.md",
-          "worktree:fix/zero-streak-profile:.agent-os/distribution/weekly-plan.md"
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation. Next action: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum). Known blockers: None \u2014 waiting on Apple App Review turnaround. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: `coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19). Next action: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll. Known blockers: None \u2014 waiting on Apple App Review turnaround. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ios",
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Dirty",
-        "branch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
+        "branch": "HEAD (no branch)",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2165,18 +2243,33 @@
           "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
           "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
+          "worktree:codex/wp46-story-10:tasks/progress.md",
+          "worktree:codex/wp46-story-10:tasks/todo.md",
+          "worktree:codex/wp46-story-10:tasks/session-log.md",
+          "worktree:codex/wp46-story-10:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-10:tasks/lessons.md",
+          "worktree:codex/wp46-story-11:tasks/progress.md",
+          "worktree:codex/wp46-story-11:tasks/todo.md",
+          "worktree:codex/wp46-story-11:tasks/session-log.md",
+          "worktree:codex/wp46-story-11:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-11:tasks/lessons.md",
+          "worktree:codex/wp46-story-13:tasks/progress.md",
+          "worktree:codex/wp46-story-13:tasks/todo.md",
+          "worktree:codex/wp46-story-13:tasks/session-log.md",
+          "worktree:codex/wp46-story-13:tasks/MEMORY.md",
+          "worktree:codex/wp46-story-13:tasks/lessons.md",
           "worktree:claude/release-b-story-9:tasks/progress.md",
           "worktree:claude/release-b-story-9:tasks/todo.md",
           "worktree:claude/release-b-story-9:tasks/session-log.md",
           "worktree:claude/release-b-story-9:tasks/MEMORY.md",
           "worktree:claude/release-b-story-9:tasks/lessons.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/todo.md",
-          "worktree:detached:tasks/session-log.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/lessons.md",
-          "worktree:claude/release-b-story-9:docs/specs/drafts/recommendation-evidence-backend-contract.md",
-          "docs/specs/drafts/release-b-initiation-prompt.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
+          "worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+          "docs/specs/drafts/release-b-initiation-prompt 2.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
@@ -2198,9 +2291,9 @@
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
           "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-          "docs/specs/drafts/first-time-user-journey-upgrade-figma-board.md"
+          "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -2209,8 +2302,8 @@
         "repoState": "Dirty",
         "branch": "main...origin/main",
         "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-        "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "sourceConfidence": "Medium",
+        "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -2240,7 +2333,7 @@
           "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
           "docs/plans/2026-02-12-runsmart-execution-plan.md"
         ],
-        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Next action: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope. Known blockers: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production; the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Next action: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope. Known blockers: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production; the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ai",
@@ -2282,7 +2375,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 10]",
+        "branch": "main...origin/main [ahead 11]",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2311,7 +2404,7 @@
     ],
     "executiveOverview": {
       "headline": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
-      "portfolioState": "RunSmart iOS \u2014 PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation: **Investigate the sign-in P0 (below) before 2026-07-22.** Then, if E1 is still wanted, build E1 exposure/assignment instrumentation \u2014 it does not exist on `main` (searched: no flag read, no exposure event, no arm allocation; the only `variant` hit is a hardcoded `\"C\"` literal in AhaMoments). Re-run the frozen mature-D7 query on **2026-07-22** (`REPLACE_SNAPSHOT_END_UTC` \u2265 `2026-07-22 09:30:00`) \u2014 a maturity checkpoint, NOT a decision date (denominator will be ~2 vs the 10 minimum) \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "portfolioState": "RunSmart iOS \u2014 `coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -2343,10 +2436,13 @@
         "RunSmart Web",
         "ResumeBuilder AI (Web)"
       ],
-      "staleProjectCount": 0,
-      "staleProjects": [],
-      "evidenceGapCount": 4,
+      "staleProjectCount": 1,
+      "staleProjects": [
+        "RunSmart Web"
+      ],
+      "evidenceGapCount": 5,
       "evidenceGapProjects": [
+        "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
         "ResumeBuilder AI (Web)",
@@ -2392,9 +2488,18 @@
       {
         "project": "RunSmart iOS",
         "projectId": "runsmart-ios",
-        "total": 27,
+        "total": 28,
         "shown": 7,
         "plans": [
+          {
+            "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
+            "path": "docs/specs/2026-07-18-adaptive-coach-phase1.md",
+            "date": "2026-07-18",
+            "status": null,
+            "kind": "spec",
+            "sourceBranch": "feat/adaptive-coach-phase1",
+            "source": "worktree"
+          },
           {
             "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
             "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
@@ -2419,7 +2524,7 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -2428,7 +2533,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -2437,16 +2542,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
-            "source": "worktree"
-          },
-          {
-            "title": "Code Review Baseline Audit \u2014 2026-06-11",
-            "path": "docs/plans/2026-06-11-code-review-baseline-audit.md",
-            "date": "2026-06-11",
-            "status": null,
-            "kind": "plan",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -2455,7 +2551,7 @@
             "date": "2026-06-01",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "fix/zero-streak-profile",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           }
         ]
@@ -2472,16 +2568,16 @@
             "date": "2026-07-16",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "claude/release-b-story-9",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
             "title": "Release B Initiation Prompt \u2014 Continuous, Evidence-Backed Journey",
-            "path": "docs/specs/drafts/release-b-initiation-prompt.md",
+            "path": "docs/specs/drafts/release-b-initiation-prompt 2.md",
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/first-time-journey-release-a",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -4976,15 +5072,15 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 3,
+      "uncommitted": 1,
       "extraWorktrees": 1,
-      "ahead": 10,
+      "ahead": 11,
       "behind": 0,
       "synced": false,
       "notes": [
-        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "10 local commit(s) not pushed to the upstream branch."
+        "11 local commit(s) not pushed to the upstream branch."
       ]
     },
     "portfolioTrust": {
@@ -4992,25 +5088,25 @@
       "label": "Refresh required",
       "reasons": [
         "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-        "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "10 local commit(s) not pushed to the upstream branch."
+        "11 local commit(s) not pushed to the upstream branch."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
       "hygieneWarnings": [
         "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-        "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
+        "Extra product worktrees retained for review: RunSmart iOS (7), Resumely iOS (7)."
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-17 13:50",
+      "generatedAt": "2026-07-19 17:31",
       "apps": [
         {
           "projectId": 171597,
           "appId": "runsmart-ios",
           "app": "RunSmart",
-          "declaredState": "PHASE 4 \u2014 1.0.9 (23) live; post-live activation measurement. Mature-D7 cohort immature until 2026-07-22. E1 blocked on missing exposure instrumentation",
+          "declaredState": "`coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19)",
           "git": {
             "available": true,
             "tag": "pre-consolidation-r2",
@@ -5021,7 +5117,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+          "declaredState": "Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19)",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -5033,13 +5129,13 @@
         {
           "appId": "runsmart-ios",
           "available": true,
-          "liveUsers7d": 10,
+          "liveUsers7d": 11,
           "source": "api"
         },
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 44,
+          "liveUsers7d": 67,
           "source": "api"
         }
       ],
@@ -5067,15 +5163,15 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-17 13:50",
+      "lastRunAt": "2026-07-19 17:31",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
-      "targetBranch": "codex/first-time-journey-release-a...origin/codex/first-time-journey-release-a",
+      "targetBranch": "HEAD (no branch)",
       "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
