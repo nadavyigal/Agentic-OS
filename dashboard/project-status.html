@@ -111,7 +111,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-19 17:31"
+    "lastSuccessfulRefresh": "2026-07-19 17:33"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 `coach_message` edge function DEPLOYED v9 \u2192 v10; Adaptive Coach live AI path now enabled (2026-07-19): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Release C Story 13 \u2014 physical gate PASSED with 2 defects found and fixed live (2026-07-19): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -195,10 +195,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 5,
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 7,
-        "lastCommit": "2026-07-19 0365816 docs: record coach_message v10 deploy and client/server parity gap",
+        "lastCommit": "2026-07-19 2e5fd1d docs: sign-in P0 evidence \u2014 every fresh install that tried SIWA failed (#103)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -254,6 +254,7 @@
           "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
           "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
+          "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
           "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
           "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
@@ -850,7 +851,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-16. Newer commits exist after this status (last commit: 2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-16. Newer commits exist after this status (last commit: 2026-07-19 5b2999fe dashboard: activation autopsy findings + coming-days roadmap in Portfolio HQ); trust git for the latest state.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
       "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
@@ -875,11 +876,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main [ahead 11]",
-        "dirty": true,
-        "dirtyCount": 14,
+        "branch": "main...origin/main",
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 1,
-        "lastCommit": "2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review",
+        "lastCommit": "2026-07-19 5b2999fe dashboard: activation autopsy findings + coming-days roadmap in Portfolio HQ",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -907,7 +908,7 @@
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-17",
+        "freshestDate": "2026-07-19",
         "evidenceGap": true,
         "evidenceDate": "2026-07-13"
       },
@@ -975,7 +976,7 @@
     "later": [
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-      "RunSmart iOS: 28 saved plan(s) \u2014 latest \"Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching\" (2026-07-18). See Saved Plans.",
+      "RunSmart iOS: 29 saved plan(s) \u2014 latest \"RunSmart iOS Activation Cliff: Evidence and Fix Plan\" (2026-07-19). See Saved Plans.",
       "Resumely iOS: 24 saved plan(s) \u2014 latest \"Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)\" (2026-07-16). See Saved Plans.",
       "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
       "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
@@ -1104,7 +1105,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-19 17:31",
+    "lastRefresh": "2026-07-19 17:33",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1247,6 +1248,7 @@
       "RunSmart Web: tasks/session-log.md",
       "RunSmart Web: tasks/todo.md",
       "RunSmart iOS: .agent-os/distribution/gtm-plan.md",
+      "RunSmart iOS: docs/plans/2026-07-19-activation-cliff-fix-plan.md",
       "RunSmart iOS: docs/specs/README.md",
       "RunSmart iOS: primary:tasks/ERRORS.md",
       "RunSmart iOS: primary:tasks/MEMORY.md",
@@ -1359,6 +1361,15 @@
         "lastUpdated": "2026-06-01"
       },
       "plans": [
+        {
+          "title": "RunSmart iOS Activation Cliff: Evidence and Fix Plan",
+          "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "date": "2026-07-19",
+          "status": null,
+          "kind": "plan",
+          "sourceBranch": "main",
+          "source": "primary"
+        },
         {
           "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
           "path": "docs/specs/2026-07-18-adaptive-coach-phase1.md",
@@ -1612,11 +1623,11 @@
           "source": "worktree"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 5,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 7,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-19 0365816 docs: record coach_message v10 deploy and client/server parity gap",
+      "lastCommit": "2026-07-19 2e5fd1d docs: sign-in P0 evidence \u2014 every fresh install that tried SIWA failed (#103)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-19",
@@ -1682,6 +1693,7 @@
         "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
         "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
         "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
         "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
@@ -2508,14 +2520,14 @@
           "source": "worktree"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 14,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 1,
-      "branch": "main...origin/main [ahead 11]",
-      "lastCommit": "2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-19 5b2999fe dashboard: activation autopsy findings + coming-days roadmap in Portfolio HQ",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-17",
+      "freshestDate": "2026-07-19",
       "evidenceGap": true,
       "evidenceDate": "2026-07-13",
       "evidenceTests": [],
@@ -2587,7 +2599,7 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Dirty",
+      "repoState": "Clean",
       "branch": "main...origin/main",
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "sourceConfidence": "High",
@@ -2647,6 +2659,7 @@
         "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
         "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
+        "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
         "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
         "worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
@@ -2841,8 +2854,8 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
-      "branch": "main...origin/main [ahead 11]",
+      "repoState": "Clean",
+      "branch": "main...origin/main",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2889,13 +2902,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 5,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
-      "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2952,7 +2963,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-19 17:31",
+    "lastRunAt": "2026-07-19 17:33",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -3023,9 +3034,18 @@
     {
       "project": "RunSmart iOS",
       "projectId": "runsmart-ios",
-      "total": 28,
+      "total": 29,
       "shown": 7,
       "plans": [
+        {
+          "title": "RunSmart iOS Activation Cliff: Evidence and Fix Plan",
+          "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "date": "2026-07-19",
+          "status": null,
+          "kind": "plan",
+          "sourceBranch": "main",
+          "source": "primary"
+        },
         {
           "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
           "path": "docs/specs/2026-07-18-adaptive-coach-phase1.md",
@@ -3066,15 +3086,6 @@
           "title": "Build 15 Resubmit + Repo Cleanup \u2014 2026-06-18",
           "path": "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
           "date": "2026-06-18",
-          "status": null,
-          "kind": "plan",
-          "sourceBranch": "feat/adaptive-coach-phase1",
-          "source": "worktree"
-        },
-        {
-          "title": "Code Review Fix Plan \u2014 2026-06-11",
-          "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
-          "date": "2026-06-11",
           "status": null,
           "kind": "plan",
           "sourceBranch": "feat/adaptive-coach-phase1",
@@ -5607,15 +5618,13 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 0,
     "extraWorktrees": 1,
-    "ahead": 11,
+    "ahead": 0,
     "behind": 0,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-      "11 local commit(s) not pushed to the upstream branch."
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
   "planExecution": {
@@ -5721,14 +5730,12 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-      "11 local commit(s) not pushed to the upstream branch."
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+      "Uncommitted files in product repos: Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (7), Resumely iOS (7)."
     ]
   },
@@ -5844,12 +5851,6 @@
         "type": "worktree",
         "detail": "worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview",
         "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "RunSmart iOS",
-        "type": "dirty",
-        "detail": "5 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "RunSmart iOS",
@@ -6015,12 +6016,6 @@
       },
       {
         "project": "Agentic OS",
-        "type": "default-branch",
-        "detail": "main has 11 unpushed commit(s)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Agentic OS",
         "type": "unpushed",
         "detail": "dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16",
         "action": "Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off."
@@ -6033,23 +6028,17 @@
       },
       {
         "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "14 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
         "type": "cleanup",
         "detail": "3 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 47,
+    "actionableCount": 44,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-19 17:31",
+    "generatedAt": "2026-07-19 17:33",
     "apps": [
       {
         "projectId": 171597,

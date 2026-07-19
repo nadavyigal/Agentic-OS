@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-19 14:31 UTC",
+  "generatedAt": "2026-07-19 14:33 UTC",
   "sources": {
-    "status": "2026-07-19 17:31",
+    "status": "2026-07-19 17:33",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-19"
   },
@@ -12,14 +12,12 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-      "11 local commit(s) not pushed to the upstream branch."
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
+      "Uncommitted files in product repos: Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (7), Resumely iOS (7)."
     ]
   },
@@ -34,8 +32,8 @@
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-15",
-      "dirty": true,
-      "dirtyCount": 5
+      "dirty": false,
+      "dirtyCount": 0
     },
     {
       "name": "Resumely iOS",
@@ -70,8 +68,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": true,
-      "dirtyCount": 14
+      "dirty": false,
+      "dirtyCount": 0
     }
   ],
   "numbers": {
@@ -287,7 +285,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-19 17:31",
+      "lastRan": "2026-07-19 17:33",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

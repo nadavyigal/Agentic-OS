@@ -14,21 +14,21 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | `coach_message` edge function DEPLOYED v9 → v10; Adaptive Coach live AI path now enabled (2026-07-19) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (5) | Fresh | High | tasks/progress.md latest entry | 2026-07-19 0365816 docs: record coach_message v10 deploy and client/server parity gap |
+| RunSmart iOS | `coach_message` edge function DEPLOYED v9 → v10; Adaptive Coach live AI path now enabled (2026-07-19) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | No | Fresh | High | tasks/progress.md latest entry | 2026-07-19 2e5fd1d docs: sign-in P0 evidence — every fresh install that tried SIWA failed (#103) |
 | Resumely iOS | Release C Story 13 — physical gate PASSED with 2 defects found and fixed live (2026-07-19) | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (8) | Fresh | High | tasks/progress.md latest entry | 2026-07-19 103bf0f docs: close out Release C session - Story 13 passed, 1.4.3(13) ready (#111) |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Stale | Medium | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-19 ffedabc fix: expose optimization_id on saved-resume API responses (#116) |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (14) | Fresh | Medium | tasks/progress.md | 2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | No | Fresh | Medium | tasks/progress.md | 2026-07-19 5b2999fe dashboard: activation autopsy findings + coming-days roadmap in Portfolio HQ |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- RunSmart iOS: validated 2026-07-15, last commit 2026-07-19 0365816 docs: record coach_message v10 deploy and client/server parity gap
+- RunSmart iOS: validated 2026-07-15, last commit 2026-07-19 2e5fd1d docs: sign-in P0 evidence — every fresh install that tried SIWA failed (#103)
 - Resumely iOS: validated 2026-07-11, last commit 2026-07-19 103bf0f docs: close out Release C session - Story 13 passed, 1.4.3(13) ready (#111)
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-19 ffedabc fix: expose optimization_id on saved-resume API responses (#116)
-- Agentic OS: validated 2026-07-13, last commit 2026-07-17 3fa9a7c8 executive: run weekly CEO portfolio review
+- Agentic OS: validated 2026-07-13, last commit 2026-07-19 5b2999fe dashboard: activation autopsy findings + coming-days roadmap in Portfolio HQ
 
 ## Drift Warnings
 
@@ -55,7 +55,6 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 5 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] claude/release-b-story-9: 1 unpushed commit(s), last commit 2026-07-16 -> Push claude/release-b-story-9 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-10 and open a PR, or explicitly hand it off.
@@ -83,10 +82,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 11 unpushed commit(s) -> Sync the default branch first: pull, then push.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] worktree on claude/resumely-ftux-release-b-c-b5e864, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-ftux-release-b-c-b5e864 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 14 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -130,7 +127,7 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 
 - RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation — not just faster race plans — see .agent-os/distribution/gtm-plan.md
 - ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional — without sounding like a robot — see .agent-os/distribution/gtm-plan.md
-- RunSmart iOS: 28 saved plan(s) — latest "Adaptive Coach Phase 1 — Recovery- and Load-Aware Proactive Coaching" (2026-07-18). See Saved Plans.
+- RunSmart iOS: 29 saved plan(s) — latest "RunSmart iOS Activation Cliff: Evidence and Fix Plan" (2026-07-19). See Saved Plans.
 - Resumely iOS: 24 saved plan(s) — latest "Recommendation Evidence Contract — APPROVED 2026-07-16 (v1 client-side, v2 backend)" (2026-07-16). See Saved Plans.
 - RunSmart Web: 13 saved plan(s) — latest "Garmin First Aha First Build Plan" (2026-07-01). See Saved Plans.
 - ResumeBuilder AI (Web): 10 saved plan(s) — latest "Fit/Match Web Copy Reconciliation Implementation Plan" (2026-06-29). See Saved Plans.
@@ -293,6 +290,7 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart Web: tasks/session-log.md
 - RunSmart Web: tasks/todo.md
 - RunSmart iOS: .agent-os/distribution/gtm-plan.md
+- RunSmart iOS: docs/plans/2026-07-19-activation-cliff-fix-plan.md
 - RunSmart iOS: docs/specs/README.md
 - RunSmart iOS: primary:tasks/ERRORS.md
 - RunSmart iOS: primary:tasks/MEMORY.md
