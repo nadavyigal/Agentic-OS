@@ -4,6 +4,12 @@ One page. Source: live PostHog reads this session (projects 171597 + 270848, 90d
 - RunSmart iOS repo: `docs/plans/2026-07-19-activation-cliff-fix-plan.md`
 - Resumely iOS repo: `docs/plans/2026-07-19-activation-cliff-fix-plan.md`
 
+## Same-day update: both apps submitted to ASC (2026-07-19 evening)
+
+- **RunSmart 1.1.0 (24) Waiting for Review** (public 1.0.9 (23)): ships Adaptive Coach Phase 1 flag-ON; contains **none** of the wall fixes. The Adaptive Coach Phase 2 gate (2 weeks live + >=20 real `adaptive_coach_shown` users) is arithmetically unfillable while ~96% of installs die on the wall (~25 organic installs/month x 4% past the wall = ~1 real user/month reaching Today). S1 (wall instrumentation) should be the first content of 1.1.1.
+- **Resumely 1.4.3 (13) Waiting for Review** (public 1.4.2 (12)): WP-46 Release C **partially ships the top fix** (tappable "Sign in to Optimize" under the guest score card + diagnosis persistence across sign-in). Remaining: the CTA tap is uninstrumented. Judge the fix on the post-1.4.3 cohort: >=20 clean uploaders, win at >=30% optimization_started (baseline 12.5%).
+- **Correction to the original read:** `free_ats_completed` DOES carry `score_bucket` (first query used wrong names). Live 90d: 5 events "0-40", 5 events "41-60" — every real free-ATS user saw <=60, half <=40. Low score + (pre-1.4.3) dead-end screen hit at the same moment.
+
 ## The two numbers that matter
 
 | Product | Biggest cliff | Clean number |
