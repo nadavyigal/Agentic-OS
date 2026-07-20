@@ -4,8 +4,10 @@
     {
       "name": "portfolio-hq",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "dashboard"],
-      "port": 8765
+      "runtimeArgs": [
+        "/Users/nadavyigal/Documents/Projects /Agentic OS/.claude/serve-portfolio-hq.py"
+      ],
+      "autoPort": true
     }
   ]
 }
