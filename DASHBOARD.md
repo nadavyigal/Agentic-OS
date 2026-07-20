@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-20 13:53
+- Last refresh: 2026-07-20 14:01
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -24,11 +24,11 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 | Resumely iOS | 1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20) | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | Yes | Fresh | High |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | Yes | Stale | Medium |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | Yes | Fresh | High |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | Yes | Fresh | Medium |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | No | Fresh | Medium |
 
 ## Stranded Work
 
-53 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+52 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13
 - [RunSmart iOS] claude/bold-noyce-678ace: unmerged commits, remote branch deleted, last commit 2026-07-14
@@ -47,7 +47,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix
 - [RunSmart iOS] worktree on claude/runsmart-ios-signin-wall-95dcb4, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648
-- [RunSmart iOS] worktree on claude/runsmart-session-prompt-a6406d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d
+- [RunSmart iOS] worktree on detached at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d
 - [RunSmart iOS] worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read
 - [RunSmart iOS] worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview
 - [Resumely iOS] claude/release-b-story-9: 1 unpushed commit(s), last commit 2026-07-16
@@ -68,7 +68,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [Resumely iOS] worktree on codex/wp46-story-13 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-13
 - [Resumely iOS] worktree on claude/release-b-story-9 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-9
 - [Resumely iOS] worktree on claude/release-c-story-13-submit-769148, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-release-a-b-landing-325d9a
-- [Resumely iOS] 10 uncommitted file(s) in the primary working tree
+- [Resumely iOS] 8 uncommitted file(s) in the primary working tree
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree
@@ -81,8 +81,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19
 - [Agentic OS] worktree on claude/agentic-os-session-ae5ec5 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5
-- [Agentic OS] worktree on claude/resumely-session-70fcda at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-session-70fcda
-- [Agentic OS] 7 uncommitted file(s) in the primary working tree
+- [Agentic OS] worktree on claude/resumely-session-70fcda, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-session-70fcda
 
 ## Work Packet Hygiene
 

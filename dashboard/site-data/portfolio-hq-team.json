@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 10:53 UTC",
+  "generatedAt": "2026-07-20 11:02 UTC",
   "sources": {
-    "status": "2026-07-20 13:53",
+    "status": "2026-07-20 14:01",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-20",
     "manualOldestVerified": "2026-07-15"
@@ -12,8 +12,7 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 6 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "6 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -44,7 +43,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 10
+      "dirtyCount": 8
     },
     {
       "name": "RunSmart Web",
@@ -70,8 +69,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": true,
-      "dirtyCount": 7
+      "dirty": false,
+      "dirtyCount": 0
     }
   ],
   "numbers": {
@@ -271,7 +270,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 13:53",
+      "lastRan": "2026-07-20 14:01",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
