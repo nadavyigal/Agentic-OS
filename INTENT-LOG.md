@@ -36,6 +36,11 @@ not transcripts. The signal is the pattern across requests, not any single promp
 
 ## Entries
 
+## 2026-07-20 - Both apps live; fix the morning process that failed to notice
+**Request:** Run the morning brief and record that both iOS apps are live on the App Store. The founder named the versions as "1.0.9 and 1.1.0"; verification against Apple's lookup API showed the live pair is actually RunSmart 1.1.0 and Resumely 1.4.3, with 1.0.9 being RunSmart's superseded version. Resumely's own progress.md still read "Waiting for Review" a release behind. The founder then pushed back on the morning process itself: Portfolio HQ and the EOD close were being skipped, the trust panel kept demanding a refresh that had just been run, and stale endpoints were causing repeated mistakes.
+**Intent / why:** The dashboard is only worth having if its status survives contact with reality and its instructions can actually be followed. Two failures compounded here: status drifted a full release behind the store because nothing checked an external source of truth, and the trust panel prescribed a remedy (re-run morning) that was structurally incapable of clearing the condition it was flagging, which trains the founder to distrust the panel entirely. Fixing the release numbers without fixing the process that missed them would guarantee a repeat.
+**Themes:** trust, verifiability, external-ground-truth, process-drift
+
 ## 2026-07-16 - WP-46: integrate Release B, gate Story 9 on a real contract, then unblock it same-day
 **Request:** Execute WP-46 (Resumely FTUX Release B+C continuation): reconcile the other session's Stories 7-8 PR chain without duplicating it, verify the Story 9 backend-evidence contract, then ship Stories 9-13 toward one 1.5.0 release. When the contract turned out not to exist, the founder asked for the approval checklist walked through with alternatives, chose client-side extraction (alternative B), and later stopped the session mid-Story-9 validation asking for a clean handoff.
 **Intent / why:** Ship the FTUX overhaul as one evidence-backed 1.5.0 release without re-doing work another session owns and without letting a phantom "approved contract" slip through - the gate held (the contract existed only as a requirement in DECISIONS.md), the founder decided with a recommendation in front of them, and the decisive unblock was noticing the backend had zero quality advantage at v1 over on-device extraction from text the endpoint already returns. Recurring pattern: gates are cheap to honor and expensive to fake.
@@ -255,3 +260,21 @@ The morning brief currently reads PROJECT-STATUS.md. Add a one-line pull from th
 2. Add Stop hook to settings.json (reuse the existing hook pattern)
 3. Test: end a session and verify the entry appears
 4. Add theme pull to morning-brief on next morning-brief session
+
+## Theme Clusters - 2026-07
+
+- trust (3)
+- verifiability (2)
+- evidence-before-done (2)
+- cross-session-continuity (2)
+- scope-discipline (2)
+- external-ground-truth (1)
+- process-drift (1)
+- distribution-os (1)
+- self-improvement (1)
+- mode-system (1)
+- org-design (1)
+- evidence-before-commit (1)
+- compound-don't-accrete (1)
+- cross-tool-handoff (1)
+- verification (1)
