@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-20 13:38
+- Last refresh: 2026-07-20 13:53
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,10 +28,11 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Stranded Work
 
-51 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+53 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13
 - [RunSmart iOS] claude/bold-noyce-678ace: unmerged commits, remote branch deleted, last commit 2026-07-14
+- [RunSmart iOS] claude/runsmart-ios-signin-wall-95dcb4: unmerged commits, remote branch deleted, last commit 2026-07-20
 - [RunSmart iOS] codex/adaptive-coach-device-qa-fixture: unmerged commits, remote branch deleted, last commit 2026-07-19
 - [RunSmart iOS] codex/docs-1.0.9-activation-read: unmerged commits, remote branch deleted, last commit 2026-07-15
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12
@@ -46,6 +47,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix
 - [RunSmart iOS] worktree on claude/runsmart-ios-signin-wall-95dcb4, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648
+- [RunSmart iOS] worktree on claude/runsmart-session-prompt-a6406d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d
 - [RunSmart iOS] worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read
 - [RunSmart iOS] worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview
 - [Resumely iOS] claude/release-b-story-9: 1 unpushed commit(s), last commit 2026-07-16
@@ -66,7 +68,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [Resumely iOS] worktree on codex/wp46-story-13 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-13
 - [Resumely iOS] worktree on claude/release-b-story-9 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-9
 - [Resumely iOS] worktree on claude/release-c-story-13-submit-769148, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-release-a-b-landing-325d9a
-- [Resumely iOS] 8 uncommitted file(s) in the primary working tree
+- [Resumely iOS] 10 uncommitted file(s) in the primary working tree
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree
@@ -75,12 +77,12 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability
-- [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree
+- [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19
-- [Agentic OS] worktree on claude/ios-apps-status-update-7f220b, 4 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b
-- [Agentic OS] worktree on claude/resumely-ftux-release-b-c-b5e864, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-ftux-release-b-c-b5e864
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] worktree on claude/agentic-os-session-ae5ec5 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5
+- [Agentic OS] worktree on claude/resumely-session-70fcda at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-session-70fcda
+- [Agentic OS] 7 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

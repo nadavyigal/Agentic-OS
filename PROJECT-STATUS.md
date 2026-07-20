@@ -15,10 +15,10 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | 1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | No | Fresh | High | tasks/progress.md latest entry | 2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started |
-| Resumely iOS | 1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20) | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (8) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 47f1476 WP-48: post-1.4.3 cohort read — not mature, 2 blocking measurement defects (#112) |
+| Resumely iOS | 1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20) | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (10) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 47f1476 WP-48: post-1.4.3 cohort read — not mature, 2 blocking measurement defects (#112) |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Stale | Medium | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
-| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-20 0db1edb feat: carry anonymous ATS check artifacts through signup (WP-49 / WP-29 S5) |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (1) | Fresh | Medium | tasks/progress.md | 2026-07-20 b578baf5 dashboard: purge stale waiting-for-review claims; app_version blocker + PR #105 |
+| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (10) | Fresh | High | tasks/progress.md | 2026-07-20 77500ba WP-49: make anonymous carryover reads survive an unapplied migration |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (7) | Fresh | Medium | tasks/progress.md | 2026-07-20 b019d31b packets: three consolidated per-project session prompts |
 
 ## Evidence Gaps
 
@@ -27,8 +27,8 @@ Latest commit post-dates the last validation (code moved since the last proof):
 - RunSmart iOS: validated 2026-07-15, last commit 2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started
 - Resumely iOS: validated 2026-07-11, last commit 2026-07-20 47f1476 WP-48: post-1.4.3 cohort read — not mature, 2 blocking measurement defects (#112)
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
-- ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-20 0db1edb feat: carry anonymous ATS check artifacts through signup (WP-49 / WP-29 S5)
-- Agentic OS: validated 2026-07-13, last commit 2026-07-20 b578baf5 dashboard: purge stale waiting-for-review claims; app_version blocker + PR #105
+- ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-20 77500ba WP-49: make anonymous carryover reads survive an unapplied migration
+- Agentic OS: validated 2026-07-13, last commit 2026-07-20 b019d31b packets: three consolidated per-project session prompts
 
 ## Drift Warnings
 
@@ -40,6 +40,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 
 - [RunSmart iOS] backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13 -> Push backup-7b15df1-docs and open a PR, or consciously discard it.
 - [RunSmart iOS] claude/bold-noyce-678ace: unmerged commits, remote branch deleted, last commit 2026-07-14 -> Push claude/bold-noyce-678ace and open a PR, or consciously discard it.
+- [RunSmart iOS] claude/runsmart-ios-signin-wall-95dcb4: unmerged commits, remote branch deleted, last commit 2026-07-20 -> Push claude/runsmart-ios-signin-wall-95dcb4 and open a PR, or consciously discard it.
 - [RunSmart iOS] codex/adaptive-coach-device-qa-fixture: unmerged commits, remote branch deleted, last commit 2026-07-19 -> Push codex/adaptive-coach-device-qa-fixture and open a PR, or consciously discard it.
 - [RunSmart iOS] codex/docs-1.0.9-activation-read: unmerged commits, remote branch deleted, last commit 2026-07-15 -> Push codex/docs-1.0.9-activation-read and open a PR, or consciously discard it.
 - [RunSmart iOS] codex/wp40-release-closeout: unmerged commits, never pushed, last commit 2026-07-12 -> Push codex/wp40-release-closeout and open a PR, or consciously discard it.
@@ -54,9 +55,10 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ios-signin-wall-95dcb4, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648 -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] worktree on claude/runsmart-session-prompt-a6406d at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 4 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [RunSmart iOS] 5 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] claude/release-b-story-9: 1 unpushed commit(s), last commit 2026-07-16 -> Push claude/release-b-story-9 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-10 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-11: 1 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-11 and open a PR, or explicitly hand it off.
@@ -75,8 +77,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Resumely iOS] worktree on codex/wp46-story-13 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-13 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/release-b-story-9 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-9 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on claude/release-c-story-13-submit-769148, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-release-a-b-landing-325d9a -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Resumely iOS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Resumely iOS] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Resumely iOS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
 - [RunSmart Web] 8 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -85,13 +87,13 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] fix/pdf-parse-xref-error: unmerged commits, never pushed, last commit 2026-06-03 -> Push fix/pdf-parse-xref-error and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
-- [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19 -> Push claude/activation-autopsy-2026-07-19 and open a PR, or consciously discard it.
-- [Agentic OS] worktree on claude/ios-apps-status-update-7f220b, 4 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] worktree on claude/resumely-ftux-release-b-c-b5e864, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-ftux-release-b-c-b5e864 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] 4 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Agentic OS] worktree on claude/agentic-os-session-ae5ec5 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5 -> Land or discard this worktree, then `git worktree remove` it.
+- [Agentic OS] worktree on claude/resumely-session-70fcda at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-session-70fcda -> Land or discard this worktree, then `git worktree remove` it.
+- [Agentic OS] 7 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 6 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
 
@@ -163,22 +165,22 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Agentic OS: primary:tasks/progress.md
 - Agentic OS: tasks/MEMORY.md
 - Agentic OS: tasks/progress.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-06-07-obsidian-integration.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-07-02-founder-advisor.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/specs/2026-05-24-morning-brief-design.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:docs/superpowers/specs/2026-07-02-founder-advisor-design.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:tasks/ERRORS.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:tasks/MEMORY.md
-- Agentic OS: worktree:claude/ios-apps-status-update-7f220b:tasks/progress.md
-- Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/ERRORS.md
-- Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/MEMORY.md
-- Agentic OS: worktree:claude/resumely-ftux-release-b-c-b5e864:tasks/progress.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-07-obsidian-integration.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-02-founder-advisor.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-24-morning-brief-design.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-07-02-founder-advisor-design.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/ERRORS.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/MEMORY.md
+- Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/progress.md
+- Agentic OS: worktree:claude/resumely-session-70fcda:tasks/ERRORS.md
+- Agentic OS: worktree:claude/resumely-session-70fcda:tasks/MEMORY.md
+- Agentic OS: worktree:claude/resumely-session-70fcda:tasks/progress.md
 - ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md
 - ResumeBuilder AI (Web): docs/agent-os/project-context.md
 - ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md
@@ -330,6 +332,12 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/progress.md
 - RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/session-log.md
 - RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/todo.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/ERRORS.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/MEMORY.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/lessons.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/progress.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/session-log.md
+- RunSmart iOS: worktree:claude/runsmart-session-prompt-a6406d:tasks/todo.md
 - RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md
 - RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md
 - RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md

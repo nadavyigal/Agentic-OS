@@ -36,6 +36,10 @@ SITE_AUDIENCES = ("founder", "team", "public")
 PACKET_DONE = {"closed", "completed", "superseded", "shipped", "posted"}
 DECISION_DONE = {"closed", "done", "superseded", "reconciled"}
 
+# How long a hand-maintained manual block may go unverified before the page
+# says so out loud. A week matches the founder's weekly review cadence.
+MANUAL_BLOCK_MAX_AGE_DAYS = 7
+
 # status.json text fields (work packet "project"/"goal"/etc.) sometimes carry absolute local
 # filesystem paths (e.g. a client repo path). This dashboard ends up in a public repo, so strip
 # them from the auto layer before embedding rather than repeating them verbatim.
@@ -239,6 +243,72 @@ def string_values(value):
     elif isinstance(value, dict):
         for item in value.values():
             yield from string_values(item)
+
+
+def parse_iso_date(value):
+    """Parse a YYYY-MM-DD stamp, or return None if it is missing or malformed."""
+    match = re.search(r"(\d{4}-\d{2}-\d{2})", str(value or ""))
+    if not match:
+        return None
+    try:
+        return datetime.strptime(match.group(1), "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
+
+def find_stale_manual_blocks(manual, today=None, max_age_days=MANUAL_BLOCK_MAX_AGE_DAYS):
+    """Flag manual blocks whose claims have not been re-verified recently.
+
+    portfolio-hq-manual.json is hand-maintained input that this refresh never
+    writes, so it decays silently while the page keeps rendering a fresh
+    `asOf` — a current-looking date stamp over stale content, which is worse
+    than an obviously old page (2026-07-20).
+
+    Each block carries its own `verified` date, checked here against the clock.
+    The issues returned flow into the same surface as cross-layer
+    contradictions, so an unverified block downgrades trust and becomes
+    visible instead of rotting quietly behind a today-stamped header.
+    """
+    issues = []
+    today = today or datetime.now().date()
+    verified = manual.get("verified") or {}
+    blocks = [
+        key
+        for key in manual
+        if key not in ("asOf", "note", "verifiedNote", "verified")
+    ]
+
+    for key in sorted(blocks):
+        raw = verified.get(key)
+        stamped = parse_iso_date(raw)
+        if not stamped:
+            issues.append(
+                {
+                    "id": f"manual-unverified-{key}",
+                    "source": "Manual layer freshness",
+                    "message": (
+                        f"Manual block '{key}' has no verified date, so nothing "
+                        "vouches for its claims. Check it against a real source "
+                        "and add it to \"verified\" in portfolio-hq-manual.json."
+                    ),
+                }
+            )
+            continue
+        age = (today - stamped).days
+        if age > max_age_days:
+            issues.append(
+                {
+                    "id": f"manual-stale-{key}",
+                    "source": "Manual layer freshness",
+                    "message": (
+                        f"Manual block '{key}' was last verified {raw} "
+                        f"({age} days ago). Re-check it against git, the App Store, "
+                        "or PostHog before acting on it — a refresh cannot make a "
+                        "hand-maintained claim true."
+                    ),
+                }
+            )
+    return issues
 
 
 def find_consistency_issues(auto, manual):
@@ -634,7 +704,7 @@ def main():
     registry = load_optional(REGISTRY)
 
     auto = redact_paths(build_auto(status, usage, manual, registry))
-    consistency_issues = find_consistency_issues(auto, manual)
+    consistency_issues = find_consistency_issues(auto, manual) + find_stale_manual_blocks(manual)
     auto["consistencyIssues"] = consistency_issues
     auto["trust"] = build_consistency_trust(auto.get("trust"), consistency_issues)
 
@@ -644,6 +714,12 @@ def main():
             "status": status.get("metadata", {}).get("lastSuccessfulRefresh"),
             "usage": usage.get("generatedAt"),
             "manual": manual.get("asOf"),
+            # asOf is only when the file was last written. The oldest per-block
+            # verification is the honest floor on how current the claims are.
+            "manualOldestVerified": min(
+                (str(v) for v in (manual.get("verified") or {}).values() if parse_iso_date(v)),
+                default=None,
+            ),
         },
         "auto": auto,
         "manual": manual,

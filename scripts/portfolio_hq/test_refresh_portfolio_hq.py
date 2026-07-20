@@ -214,5 +214,55 @@ class SitePayloadTests(unittest.TestCase):
             MODULE.build_site_payload(self.source_payload(), "customers")
 
 
+class ManualBlockFreshnessTests(unittest.TestCase):
+    """The manual layer is never written by the refresh, so it decays silently
+    while `asOf` keeps rendering as today. These cover the guard against that."""
+
+    TODAY = MODULE.datetime.strptime("2026-07-20", "%Y-%m-%d").date()
+
+    def test_recently_verified_block_raises_nothing(self):
+        manual = {"asOf": "2026-07-20", "tracks": [], "verified": {"tracks": "2026-07-20"}}
+        self.assertEqual(MODULE.find_stale_manual_blocks(manual, today=self.TODAY), [])
+
+    def test_block_verified_beyond_the_window_is_flagged(self):
+        manual = {"asOf": "2026-07-20", "tracks": [], "verified": {"tracks": "2026-07-01"}}
+        issues = MODULE.find_stale_manual_blocks(manual, today=self.TODAY)
+        self.assertEqual(len(issues), 1)
+        self.assertEqual(issues[0]["id"], "manual-stale-tracks")
+        self.assertIn("19 days ago", issues[0]["message"])
+
+    def test_boundary_day_is_not_yet_stale(self):
+        """Exactly max_age_days old is still fresh; one day past is not."""
+        manual = {"asOf": "2026-07-20", "tracks": [], "verified": {"tracks": "2026-07-13"}}
+        self.assertEqual(MODULE.find_stale_manual_blocks(manual, today=self.TODAY), [])
+        manual["verified"]["tracks"] = "2026-07-12"
+        self.assertEqual(len(MODULE.find_stale_manual_blocks(manual, today=self.TODAY)), 1)
+
+    def test_block_with_no_verified_date_is_flagged(self):
+        """A fresh asOf must not vouch for a block nobody ever checked."""
+        manual = {"asOf": "2026-07-20", "clocks": [], "verified": {}}
+        issues = MODULE.find_stale_manual_blocks(manual, today=self.TODAY)
+        self.assertEqual([i["id"] for i in issues], ["manual-unverified-clocks"])
+
+    def test_malformed_verified_date_is_treated_as_unverified(self):
+        manual = {"asOf": "2026-07-20", "clocks": [], "verified": {"clocks": "2026-13-45"}}
+        issues = MODULE.find_stale_manual_blocks(manual, today=self.TODAY)
+        self.assertEqual([i["id"] for i in issues], ["manual-unverified-clocks"])
+
+    def test_metadata_keys_are_not_treated_as_claim_blocks(self):
+        manual = {"asOf": "2026-07-20", "note": "x", "verifiedNote": "y", "verified": {}}
+        self.assertEqual(MODULE.find_stale_manual_blocks(manual, today=self.TODAY), [])
+
+    def test_stale_blocks_downgrade_portfolio_trust(self):
+        """The whole point: a stale manual block has to reach the trust panel."""
+        manual = {"asOf": "2026-07-20", "tracks": [], "verified": {"tracks": "2026-06-01"}}
+        issues = MODULE.find_stale_manual_blocks(manual, today=self.TODAY)
+        trust = MODULE.build_consistency_trust(
+            {"level": "actionable", "label": "Actionable", "reasons": []}, issues
+        )
+        self.assertEqual(trust["level"], "mixed")
+        self.assertIn("1 cross-layer contradiction", trust["reasons"][0])
+
+
 if __name__ == "__main__":
     unittest.main()

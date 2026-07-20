@@ -1,25 +1,26 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 10:38 UTC",
+  "generatedAt": "2026-07-20 10:53 UTC",
   "sources": {
-    "status": "2026-07-20 13:38",
+    "status": "2026-07-20 13:53",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-20"
+    "manual": "2026-07-20",
+    "manualOldestVerified": "2026-07-15"
   },
   "trust": {
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 1 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: commit 6 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "6 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (7), Resumely iOS (7)."
+      "Extra product worktrees retained for review: RunSmart iOS (8), Resumely iOS (7)."
     ]
   },
   "consistencyIssues": [],
@@ -43,7 +44,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 8
+      "dirtyCount": 10
     },
     {
       "name": "RunSmart Web",
@@ -61,7 +62,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-03",
       "dirty": true,
-      "dirtyCount": 2
+      "dirtyCount": 10
     },
     {
       "name": "Agentic OS",
@@ -70,7 +71,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 7
     }
   ],
   "numbers": {
@@ -270,7 +271,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 13:38",
+      "lastRan": "2026-07-20 13:53",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

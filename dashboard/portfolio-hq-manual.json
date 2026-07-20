@@ -1,6 +1,22 @@
 {
   "asOf": "2026-07-20",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
+  "verifiedNote": "Per-block last-verified dates. asOf is when this file was last written; these are when each block's claims were last checked against a real source (git, App Store, PostHog). The refresh flags any block older than 7 days as a cross-layer issue, so a stale block cannot hide under a fresh asOf. Bump a date ONLY after re-verifying that block against its source.",
+  "verified": {
+    "founderCommand": "2026-07-20",
+    "suggestedSessions": "2026-07-20",
+    "readouts": "2026-07-20",
+    "tracks": "2026-07-20",
+    "clocks": "2026-07-20",
+    "knownUnknown": "2026-07-20",
+    "weekPriorities": "2026-07-20",
+    "activationHeadline": "2026-07-19",
+    "traffic": "2026-07-19",
+    "funnels": "2026-07-19",
+    "growth": "2026-07-19",
+    "posthogDashboards": "2026-07-19",
+    "artifacts": "2026-07-15"
+  },
   "founderCommand": [
     {
       "title": "1.1.1 is now measurable — fold your remaining work in, then ship",
@@ -436,59 +452,15 @@
       "prompt": "RunSmart iOS: populate app_version (and app_build) on every PostHog event as a super property registered at SDK init, so it applies to autocaptured events too. Verify against a real device that a fresh event carries both. Fold into 1.1.1 (25) before it ships. Also fix onboarding_started firing twice per session (observed 2026-07-20 09:22:11 and 09:23:59 in one founder session)."
     },
     {
-      "product": "RunSmart (founder verification)",
-      "projectId": "runsmart-ios",
-      "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app",
-      "model": "Manual founder action - public App Store build on a physical device",
-      "urgency": "p0",
-      "title": "Disprove or reproduce the RunSmart sign-in P0",
-      "why": "Both clean public build-23 entrants emitted non-cancel sign-in failures and neither progressed. One founder-device attempt can distinguish a likely configuration failure from a tiny-sample signal before six more days of cohort time pass.",
-      "outcome": "Either confirm sign-in works on public 1.0.9 (23), or capture the failure message + authorize Supabase inspection",
-      "prompt": "Install public RunSmart 1.0.9 (23), attempt Sign in with Apple once, record UTC bounds and visible result, then flush and inspect the matching PostHog event. If it fails, inspect provisioning/ASC capability and authorize the Supabase connector for provider-config inspection before changing code."
-    },
-    {
-      "product": "Resumely (primary)",
-      "projectId": "resumebuilder-ios",
-      "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
-      "model": "Claude Code - continue only after the current Stories 7-8 session integrates",
-      "urgency": "high",
-      "title": "Execute WP-46: combined Release B+C continuation",
-      "why": "The founder chose one 1.5.0 target while keeping Stories 7 and 8 under their current owner. WP-46 turns the remaining work into sequential, evidence-gated stories without interfering with the live app.",
-      "outcome": "Stories 9-13 implemented toward a 1.5.0 release-readiness handoff; no App Store/archive action",
-      "prompt": "Execute WP-46. Reconcile and preserve the current Stories 7-8 work, verify the approved Story 9 additive backend contract, then implement Stories 9-13 sequentially. Produce a 1.5.0 release-readiness handoff and stop before any archive or App Store action."
-    },
-    {
       "product": "Measurement hygiene",
       "projectId": "agentic-os",
       "repo": "/Users/nadavyigal/Documents/Projects /Agentic OS",
       "model": "Sonnet tier - documentation review only",
       "urgency": "high",
-      "title": "Land both production-readiness reports",
-      "why": "RunSmart PR #96 and the Resumely 1.4.2 report branch contain the current measurement contracts and prevent the dashboard from falling back to stale review-era narratives.",
-      "outcome": "Both readiness reports reviewed/merged with uncertainty language preserved (no 0/0 → 0%)",
-      "prompt": "Review and merge RunSmart PR #96 and open/review the Resumely measurement-report PR from codex/release-a-measurement-baseline-2026-07-16. Preserve their uncertainty language and do not convert 0/0 into 0%."
-    },
-    {
-      "product": "Resumely Web",
-      "projectId": "resumebuilder-web",
-      "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-",
-      "model": "Cursor / Claude - product engineering",
-      "urgency": "medium",
-      "title": "WP-29 S5 — anonymous session carryover after signup",
-      "why": "S1-S4 funnel fixes shipped; the first authenticated dashboard still risks looking empty without carryover, which kills activation right after the conversion moment.",
-      "outcome": "Guest optimization/job context survives signup so the first dashboard is not empty",
-      "prompt": "In the ResumeBuilder web repo, implement WP-29 S5: anonymous session carryover after signup so the first dashboard is not empty. Read tasks/MEMORY.md and the WP-29 notes first. Deliver one work packet only: design + implement carryover for guest resume/job/optimization context into the authenticated session, with acceptance criteria and checks. Do not touch Stripe, Premium CTAs, or Gate A."
-    },
-    {
-      "product": "Portfolio HQ / GTM",
-      "projectId": "agentic-os",
-      "repo": "/Users/nadavyigal/Documents/Projects /Agentic OS",
-      "model": "Cursor / Claude - growth research",
-      "urgency": "done",
-      "title": "X/Twitter trend + user-language pass (filed 2026-07-19)",
-      "why": "Completed: language clusters + activation/GTM hooks + do-not-claim list. Native X still blocked (login wall); next scrape needs founder X session.",
-      "outcome": "Brief filed at executive-os/research/2026-07-19-x-twitter-activation-gtm-hooks.md — founder picks copy lines next",
-      "prompt": "Search X/Twitter and the open web for current job-hunt / resume / ATS pain and beginner-running coach pain. Cluster objections and exact phrases people use. Produce: (1) Resumely activation + GTM hooks, (2) RunSmart activation + GTM hooks, (3) what NOT to claim. Keep it decision-ready, not a novel. Prefer evidence quotes over vibes."
+      "title": "Land the two stranded measurement reports (PR #96 + Resumely baseline branch)",
+      "why": "Verified 2026-07-20: RunSmart PR #96 is still OPEN and uniquely holds release-b-initiation-prompt.md plus the FTUX audit, and the Resumely branch codex/release-a-measurement-baseline-2026-07-16 exists on origin with no PR open. Both carry measurement contracts that keep the dashboard off stale review-era narratives.",
+      "outcome": "PR #96 reviewed/merged or closed with its artifacts relocated; the Resumely baseline branch opened as a PR or explicitly abandoned",
+      "prompt": "Resolve two stranded measurement artifacts. (1) RunSmart iOS PR #96: review and merge, or close it after relocating release-b-initiation-prompt.md and the FTUX audit onto main. (2) Resumely iOS branch codex/release-a-measurement-baseline-2026-07-16: open a PR or record why it is abandoned. Preserve the uncertainty language in both; never convert 0/0 into 0%."
     }
   ],
   "growth": {
@@ -849,14 +821,14 @@
       "r1": "0% (0/12 mature, 07-05)",
       "r2": "0% (0/13 mature, 07-12)",
       "target": "≥30%",
-      "wall": "Directional 07-19: 63→6→3→0→0 · ASC 1.1.0 in review"
+      "wall": "Directional 07-19: 63→6→3→0→0 · 1.1.0 (24) LIVE since 2026-07-19T21:48:08Z"
     },
     {
       "app": "Resumely",
       "r1": "0% (0/37 mature, 07-05)",
       "r2": "0% (0/73 mature, 07-12)",
       "target": "≥20% by 08-01",
-      "wall": "Directional 07-19: 14→4→2 · ASC 1.4.3 in review"
+      "wall": "Directional 07-19: 14→4→2 · 1.4.3 (13) LIVE since 2026-07-19T21:47:02Z"
     }
   ]
 }

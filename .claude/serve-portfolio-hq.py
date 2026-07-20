@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Serve the Portfolio HQ dashboard for the Claude preview pane.
 
 Why this exists instead of `python3 -m http.server --directory dashboard`:
@@ -26,7 +26,13 @@ import os
 import socketserver
 import sys
 
-DASHBOARD = "/Users/nadavyigal/Documents/Projects /Agentic OS/dashboard"
+# Resolved from this script's own location, so it works from the primary repo
+# and from a worktree without editing the path. The preview sandbox is scoped to
+# the project directory it was launched in and cannot read sibling checkouts, so
+# a hardcoded absolute path to another checkout fails with EPERM.
+DASHBOARD = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dashboard"
+)
 
 
 def main() -> int:
