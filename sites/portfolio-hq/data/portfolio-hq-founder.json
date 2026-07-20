@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-19 14:33 UTC",
+  "generatedAt": "2026-07-20 04:47 UTC",
   "sources": {
-    "status": "2026-07-19 17:33",
+    "status": "2026-07-20 07:47",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-19"
   },
@@ -12,7 +12,8 @@
     "label": "Refresh required",
     "reasons": [
       "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -28,7 +29,7 @@
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "`coach_message` edge function DEPLOYED v9 → v10; Adaptive Coach live AI path now enabled (2026-07-19)",
+      "state": "1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20)",
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-15",
@@ -37,7 +38,7 @@
     },
     {
       "name": "Resumely iOS",
-      "state": "Release C Story 13 — physical gate PASSED with 2 defects found and fixed live (2026-07-19)",
+      "state": "1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20)",
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
@@ -68,8 +69,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 16
     }
   ],
   "numbers": {
@@ -192,6 +193,12 @@
     {
       "date": "2026-07-19",
       "when": null,
+      "what": "X/Twitter → activation & GTM research filed (native X login-walled; hooks ready for founder copy pick)",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-19",
+      "when": null,
       "what": "RunSmart sign-in P0 hardened: 7 code-1000 failures / 3 fresh installs / 2 builds; Supabase auth logs show no token exchange today → on-device Apple-side failure, provider_disabled ruled out for 07-19",
       "state": "you"
     },
@@ -285,7 +292,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-19 17:33",
+      "lastRan": "2026-07-20 07:47",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

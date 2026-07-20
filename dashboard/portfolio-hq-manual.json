@@ -480,15 +480,15 @@
       "projectId": "agentic-os",
       "repo": "/Users/nadavyigal/Documents/Projects /Agentic OS",
       "model": "Cursor / Claude - growth research",
-      "urgency": "medium",
-      "title": "X/Twitter trend + user-language pass for Resumely and RunSmart",
-      "why": "Activation copy and GTM hooks should come from real user language, not founder assumptions. This session feeds both products' onboarding and distribution.",
-      "outcome": "A short research brief with phrases, objections, and 5 testable activation/GTM hooks per product",
+      "urgency": "done",
+      "title": "X/Twitter trend + user-language pass (filed 2026-07-19)",
+      "why": "Completed: language clusters + activation/GTM hooks + do-not-claim list. Native X still blocked (login wall); next scrape needs founder X session.",
+      "outcome": "Brief filed at executive-os/research/2026-07-19-x-twitter-activation-gtm-hooks.md — founder picks copy lines next",
       "prompt": "Search X/Twitter and the open web for current job-hunt / resume / ATS pain and beginner-running coach pain. Cluster objections and exact phrases people use. Produce: (1) Resumely activation + GTM hooks, (2) RunSmart activation + GTM hooks, (3) what NOT to claim. Keep it decision-ready, not a novel. Prefer evidence quotes over vibes."
     }
   ],
   "growth": {
-    "note": "WP-32 closed inconclusive on 2026-07-12 with 3 reactions, 1 comment, no qualitative product feedback, and no available ASC lift read. WP-31 is the next approved draft-only organic asset; publishing remains founder-gated."
+    "note": "WP-32 closed inconclusive on 2026-07-12. X/Twitter → activation & GTM research filed 2026-07-19: executive-os/research/2026-07-19-x-twitter-activation-gtm-hooks.md (native X login-walled; hooks from HU/ATS/AI-resume language + prior demand-mining). Next: founder picks 1 Resumely + 1 RunSmart ASO/first-screen line to draft; no publish without approval. WP-31 remains the next approved draft-only organic asset."
   },
   "traffic": [
     {
@@ -682,6 +682,11 @@
     {
       "date": "2026-07-19",
       "what": "Activation autopsy merged across all 4 repos (RunSmart #100, Resumely #109, Agentic OS #31, vault #37); clean funnels + fix plans filed",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-19",
+      "what": "X/Twitter → activation & GTM research filed (native X login-walled; hooks ready for founder copy pick)",
       "state": "done"
     },
     {
