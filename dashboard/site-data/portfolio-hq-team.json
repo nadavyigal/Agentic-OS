@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 04:47 UTC",
+  "generatedAt": "2026-07-20 05:34 UTC",
   "sources": {
-    "status": "2026-07-20 07:47",
+    "status": "2026-07-20 08:34",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-19"
   },
@@ -11,9 +11,9 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 1 local-only commit(s). A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "1 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -69,8 +69,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": true,
-      "dirtyCount": 16
+      "dirty": false,
+      "dirtyCount": 0
     }
   ],
   "numbers": {
@@ -270,7 +270,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 07:47",
+      "lastRan": "2026-07-20 08:34",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

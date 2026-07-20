@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-20 07:47"
+    "lastSuccessfulRefresh": "2026-07-20 08:34"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -751,7 +751,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-16. Newer commits exist after this status (last commit: 2026-07-19 3808119d executive: sign-in P0 escalation + resolve stale claims in the autopsy one-pager); trust git for the latest state.",
+      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-20.",
       "currentPhase": "Advanced OS patterns lean pilot",
       "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
       "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
@@ -776,11 +776,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": true,
-        "dirtyCount": 16,
+        "branch": "main...origin/main [ahead 1]",
+        "dirty": false,
+        "dirtyCount": 0,
         "extraWorktrees": 2,
-        "lastCommit": "2026-07-19 3808119d executive: sign-in P0 escalation + resolve stale claims in the autopsy one-pager",
+        "lastCommit": "2026-07-20 1436d9fe fix: trust panel told founder to run morning for problems morning cannot fix",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -806,12 +806,12 @@
         ],
         "taskSource": {
           "kind": "worktree",
-          "branch": "claude/resumely-ftux-release-b-c-b5e864"
+          "branch": "claude/ios-apps-status-update-7f220b"
         },
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-19",
+        "freshestDate": "2026-07-20",
         "evidenceGap": true,
         "evidenceDate": "2026-07-13"
       },
@@ -826,7 +826,7 @@
           "Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) \u2014 if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes"
         ],
         "lastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
-        "lastUpdated": "2026-07-16",
+        "lastUpdated": "2026-07-20",
         "qaNeeded": null,
         "estimatedCompletion": "dashboard trust refresh and sync in this session",
         "decisionsNeeded": [
@@ -1008,7 +1008,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-20 07:47",
+    "lastRefresh": "2026-07-20 08:34",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -2437,14 +2437,14 @@
           "source": "worktree"
         }
       ],
-      "dirty": true,
-      "dirtyCount": 16,
+      "dirty": false,
+      "dirtyCount": 0,
       "extraWorktrees": 2,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-19 3808119d executive: sign-in P0 escalation + resolve stale claims in the autopsy one-pager",
+      "branch": "main...origin/main [ahead 1]",
+      "lastCommit": "2026-07-20 1436d9fe fix: trust panel told founder to run morning for problems morning cannot fix",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-19",
+      "freshestDate": "2026-07-20",
       "evidenceGap": true,
       "evidenceDate": "2026-07-13",
       "evidenceTests": [],
@@ -2475,12 +2475,12 @@
       ],
       "taskSource": {
         "kind": "worktree",
-        "branch": "claude/resumely-ftux-release-b-c-b5e864"
+        "branch": "claude/ios-apps-status-update-7f220b"
       },
       "sourceConfidence": "Medium",
       "preferredSource": "tasks/progress.md",
       "parsedLastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
-      "parsedLastUpdated": "2026-07-16",
+      "parsedLastUpdated": "2026-07-20",
       "parsedActiveStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch"
     }
   ],
@@ -2775,8 +2775,8 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "repoState": "Clean",
+      "branch": "main...origin/main [ahead 1]",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2826,12 +2826,11 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 4,
+    "dirtyProjectCount": 3,
     "dirtyProjects": [
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2888,7 +2887,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-20 07:47",
+    "lastRunAt": "2026-07-20 08:34",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -5558,14 +5557,14 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 3,
+    "uncommitted": 0,
     "extraWorktrees": 2,
-    "ahead": 0,
+    "ahead": 1,
     "behind": 0,
     "synced": false,
     "notes": [
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "1 local commit(s) not pushed to the upstream branch."
     ]
   },
   "planExecution": {
@@ -5697,9 +5696,9 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims.",
-      "3 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 1 local-only commit(s). A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "1 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
@@ -5730,6 +5729,12 @@
         "type": "local-only",
         "detail": "claude/bold-noyce-678ace: unmerged commits, remote branch deleted, last commit 2026-07-14",
         "action": "Push claude/bold-noyce-678ace and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "codex/adaptive-coach-device-qa-fixture: unmerged commits, remote branch deleted, last commit 2026-07-19",
+        "action": "Push codex/adaptive-coach-device-qa-fixture and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart iOS",
@@ -5824,7 +5829,7 @@
       {
         "project": "RunSmart iOS",
         "type": "cleanup",
-        "detail": "2 merged branch(es) safe to delete",
+        "detail": "4 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       },
       {
@@ -5856,6 +5861,24 @@
         "type": "unpushed",
         "detail": "codex/wp46-story-13: 6 unpushed commit(s), last commit 2026-07-19",
         "action": "Push codex/wp46-story-13 and open a PR, or explicitly hand it off."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "chore/release-c-1.4.3-version-bump: unmerged commits, remote branch deleted, last commit 2026-07-19",
+        "action": "Push chore/release-c-1.4.3-version-bump and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/activation-cliff-plan: unmerged commits, remote branch deleted, last commit 2026-07-19",
+        "action": "Push claude/activation-cliff-plan and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/release-c-story-13-submit-769148: unmerged commits, remote branch deleted, last commit 2026-07-19",
+        "action": "Push claude/release-c-story-13-submit-769148 and open a PR, or consciously discard it."
       },
       {
         "project": "Resumely iOS",
@@ -5985,6 +6008,12 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 1 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "unpushed",
         "detail": "dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16",
         "action": "Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off."
@@ -5998,7 +6027,7 @@
       {
         "project": "Agentic OS",
         "type": "worktree",
-        "detail": "worktree on claude/ios-apps-status-update-7f220b at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b",
+        "detail": "worktree on claude/ios-apps-status-update-7f220b, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -6009,23 +6038,17 @@
       },
       {
         "project": "Agentic OS",
-        "type": "dirty",
-        "detail": "16 uncommitted file(s) in the primary working tree",
-        "action": "Commit or discard before the next session ends."
-      },
-      {
-        "project": "Agentic OS",
         "type": "cleanup",
         "detail": "4 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 47,
+    "actionableCount": 51,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-20 07:47",
+    "generatedAt": "2026-07-20 08:34",
     "apps": [
       {
         "projectId": 171597,
