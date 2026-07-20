@@ -713,7 +713,51 @@ class TestPortfolioTrust(unittest.TestCase):
             {"lastRefresh": yesterday_refresh},
         )
         self.assertEqual(trust["level"], "refresh_required")
-        self.assertIn("Morning refresh was not run today.", trust["reasons"])
+        # Morning genuinely fixes this one, so it is the correct remedy to name here.
+        self.assertTrue(
+            any("./agentic-os morning" in reason for reason in trust["reasons"])
+        )
+
+    def test_unsynced_never_tells_founder_to_rerun_morning(self):
+        """Regression (2026-07-20): the panel nagged 'Run ./agentic-os morning'
+        for an unsynced repo. Morning cannot commit files or remove worktrees,
+        so following the advice never cleared the warning."""
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(),
+            {
+                "synced": False,
+                "branch": "main",
+                "uncommitted": 3,
+                "extraWorktrees": 2,
+                "notes": [],
+            },
+            {"lastRefresh": today_refresh},
+        )
+        self.assertEqual(trust["level"], "refresh_required")
+        joined = " ".join(trust["reasons"])
+        self.assertNotIn("Run ./agentic-os morning", joined)
+        self.assertIn("commit 3 uncommitted file(s)", joined)
+        self.assertIn("./agentic-os clean --apply", joined)
+
+    def test_sync_remedy_names_each_real_blocker(self):
+        self.assertIn("push 2 local-only commit(s)", cli.sync_remedy({"ahead": 2}))
+        self.assertIn("pull 1 upstream commit(s)", cli.sync_remedy({"behind": 1}))
+        self.assertIn("switch off 'feat/x' back to main", cli.sync_remedy({"branch": "feat/x"}))
+        # No specifics available: still must not send the founder back to morning.
+        self.assertNotIn("morning", cli.sync_remedy({}))
+
+    def test_stale_app_remedy_does_not_promise_refresh_fixes_it(self):
+        """A stale progress.md is cleared by editing that repo, not by refreshing."""
+        today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")
+        trust = cli.build_portfolio_trust(
+            self._health(freshness="Stale"),
+            {"synced": True, "notes": []},
+            {"lastRefresh": today_refresh},
+        )
+        joined = " ".join(trust["reasons"])
+        self.assertIn("tasks/progress.md", joined)
+        self.assertNotIn("Run ./agentic-os morning", joined)
 
     def test_stale_shippable_app_is_refresh_required(self):
         today_refresh = datetime.now().strftime("%Y-%m-%d 09:00 IDT")

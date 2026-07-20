@@ -25,7 +25,7 @@ Solo founder. Two apps in parallel. RunSmart is primary; ResumeBuilder is second
 
 Before doing anything — in this order:
 
-1. Read `~/.claude/MEMORY.md` - global decisions. Never contradict a logged decision without flagging it first.
+1. Read the auto-memory index at `~/.claude/projects/*/memory/MEMORY.md` plus this repo's `DECISIONS.md` - global decisions. Never contradict a logged decision without flagging it first. **Do not read `~/.claude/MEMORY.md`** - it was retired 2026-07-03, is frozen at that date, and is kept for historical reference only.
 2. Read `~/.claude/ERRORS.md` - global failed approaches. Never propose an approach already logged here.
 3. Read `tasks/MEMORY.md` if it exists in the current project - project-specific decisions.
 4. Read `tasks/ERRORS.md` if it exists in the current project - project-specific failed approaches.
@@ -177,7 +177,7 @@ If a similar approach is already logged as failed, do not re-propose it. Surface
 
 When I say "session end", "done for now", "wrapping up", or "let's stop here":
 
-1. Write a session summary to `tasks/MEMORY.md` (or `~/.claude/MEMORY.md` if cross-project):
+1. Write a session summary to `tasks/MEMORY.md` (or a cross-project auto-memory entry under `~/.claude/projects/*/memory/` if the session spanned repos — **not** the retired `~/.claude/MEMORY.md`):
 ```
 ## YYYY-MM-DD — [Brief session title]
 Worked on: [what we focused on]

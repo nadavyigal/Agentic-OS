@@ -1703,6 +1703,39 @@ def build_plan_execution_status(
     }
 
 
+def sync_remedy(repo_integrity: dict[str, Any]) -> str:
+    """The command that actually clears an unsynced repo.
+
+    Never returns "run ./agentic-os morning": a refresh re-reads repos, it cannot
+    commit a file, remove a worktree, or push a branch. Suggesting it for a sync
+    failure produces a nag the founder cannot clear by following it, which is how
+    the trust panel lost credibility (2026-07-20).
+    """
+    fixes: list[str] = []
+    branch = repo_integrity.get("branch")
+    if branch and branch != "main":
+        fixes.append(f"switch off '{branch}' back to main")
+    uncommitted = repo_integrity.get("uncommitted") or 0
+    if uncommitted:
+        fixes.append(f"commit {uncommitted} uncommitted file(s)")
+    worktrees = repo_integrity.get("extraWorktrees") or 0
+    if worktrees:
+        fixes.append(f"consolidate {worktrees} worktree(s) with ./agentic-os clean --apply")
+    ahead = repo_integrity.get("ahead") or 0
+    if ahead:
+        fixes.append(f"push {ahead} local-only commit(s)")
+    behind = repo_integrity.get("behind") or 0
+    if behind:
+        fixes.append(f"pull {behind} upstream commit(s)")
+    if not fixes:
+        return "Repo sync is unclean. Resolve it before trusting App Store / ship / readiness claims."
+    return (
+        "To clear this: "
+        + "; ".join(fixes)
+        + ". A refresh cannot fix sync — do not re-run ./agentic-os morning for this."
+    )
+
+
 def build_portfolio_trust(
     project_health: list[dict[str, Any]],
     repo_integrity: dict[str, Any],
@@ -1744,22 +1777,19 @@ def build_portfolio_trust(
         reasons.extend(c.get("message", "Unspecified contradiction.") for c in hard_contradictions[:3])
     elif not repo_integrity.get("synced"):
         level = "refresh_required"
-        reasons.append(
-            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
-        )
+        reasons.append(sync_remedy(repo_integrity))
         reasons.extend(repo_integrity.get("notes") or [])
     elif not refresh_today:
         level = "refresh_required"
         reasons.append(
-            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+            "Run ./agentic-os morning — it has not been run today, so this page may predate today's work."
         )
-        reasons.append("Morning refresh was not run today.")
     elif stale_apps:
         level = "refresh_required"
         reasons.append(
-            "Run ./agentic-os morning or fix sync before trusting App Store / ship / readiness claims."
+            f"Stale shippable app evidence: {', '.join(stale_apps)}. "
+            "Update tasks/progress.md in that repo — a refresh re-reads the file, it cannot make it current."
         )
-        reasons.append(f"Stale shippable app evidence: {', '.join(stale_apps)}.")
     elif dirty_apps or low_conf or evidence_gaps:
         level = "caution"
         reasons.append(
