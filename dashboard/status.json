@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-20 08:34"
+    "lastSuccessfulRefresh": "2026-07-20 08:43"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -777,10 +777,10 @@
       },
       "localEvidence": {
         "branch": "main...origin/main [ahead 1]",
-        "dirty": false,
-        "dirtyCount": 0,
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
-        "lastCommit": "2026-07-20 1436d9fe fix: trust panel told founder to run morning for problems morning cannot fix",
+        "lastCommit": "2026-07-20 4b67803a log: 2026-07-20 intent entry \u2014 both apps live, morning process repair",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -1008,7 +1008,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-20 08:34",
+    "lastRefresh": "2026-07-20 08:43",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -2437,11 +2437,11 @@
           "source": "worktree"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 2,
       "branch": "main...origin/main [ahead 1]",
-      "lastCommit": "2026-07-20 1436d9fe fix: trust panel told founder to run morning for problems morning cannot fix",
+      "lastCommit": "2026-07-20 4b67803a log: 2026-07-20 intent entry \u2014 both apps live, morning process repair",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-20",
@@ -2775,7 +2775,7 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
+      "repoState": "Dirty",
       "branch": "main...origin/main [ahead 1]",
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "sourceConfidence": "Medium",
@@ -2826,11 +2826,12 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 3,
+    "dirtyProjectCount": 4,
     "dirtyProjects": [
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2887,7 +2888,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-20 08:34",
+    "lastRunAt": "2026-07-20 08:43",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -6038,17 +6039,23 @@
       },
       {
         "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Agentic OS",
         "type": "cleanup",
         "detail": "4 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 51,
+    "actionableCount": 52,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-20 08:34",
+    "generatedAt": "2026-07-20 08:43",
     "apps": [
       {
         "projectId": 171597,

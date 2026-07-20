@@ -1,26 +1,28 @@
 {
-  "asOf": "2026-07-19",
+  "asOf": "2026-07-20",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "founderCommand": [
     {
-      "title": "ASC review clock — RunSmart 1.1.0 and Resumely 1.4.3 are both Waiting for Review",
-      "body": "Founder update 2026-07-19: RunSmart 1.1.0 is in ASC for review; Resumely 1.4.3 was just submitted. Prior live builds (RunSmart 1.0.9 / Resumely 1.4.2) remain the public binaries until Apple approves. Do not treat review submission as live FTUX evidence.",
-      "prompt": "Do not submit another binary or change ASC metadata unless Apple rejects. Watch ASC for Waiting for Review → In Review → Ready for Sale. When either version goes live, record the exact version/build, UTC time, and start a clean post-live measurement window. Until then, keep using the prior live builds for public founder verification."
+      "title": "Both apps are LIVE — confirm the activation events actually fire",
+      "body": "Apple released both builds 2026-07-19: Resumely 1.4.3 at 21:47:02Z, RunSmart 1.1.0 at 21:48:08Z (verified 2026-07-20 against Apple's public lookup API, not the ASC portal). Both shipped brand-new instrumentation that has never seen a real cohort. Before writing any 1.1.1 or 1.5.0 code, confirm in PostHog that a clean install of each live build emits its events — otherwise every downstream read is measuring nothing.",
+      "prompt": "Verify post-release telemetry for both live iOS builds. RunSmart 1.1.0 (project 171597): confirm adaptive_coach_shown fires from a clean install and check whether any organic user gets past the sign-in wall. Resumely 1.4.3 (project 270848): confirm the Stories 10-12 activation events (resume_file_selected, resume_upload_succeeded, optimization_completed) fire end to end. Exclude founder/QA, but per the 2026-07-19 lesson list what each excluded person did and individually re-examine anyone carrying an ERROR event. Report per app: events firing yes/no, organic user count, and whether the funnel is readable yet."
     },
     {
-      "title": "Verify RunSmart public sign-in on the still-live 1.0.9 build — P0 signal, not yet a proven outage",
-      "body": "The frozen 1.0.9 (23) post-live read found 2 clean physical App Store entrants, 5 non-cancel ASAuthorizationError code 1000 failures, 0 sign_in_completed and no progression beyond sign-in. 1.1.0 is in review and must not be assumed to fix this until it ships and is re-verified.",
-      "prompt": "Install public RunSmart 1.0.9 (23) on the founder device and attempt Sign in with Apple once using a valid non-destructive account. Record UTC time, exact visible result and whether onboarding opens. If it fails, capture the user-facing message and authorize the Supabase connector so the Apple provider configuration can be inspected. Do not change code or ASC configuration until the failure is reproduced."
+      "title": "RunSmart sign-in P0 is still live in 1.1.0 — it shipped without the fix",
+      "body": "The 1.0.9 read found 5 non-cancel ASAuthorizationError 1000 failures, 0 sign_in_completed, and no progression past sign-in. 1.1.0 is now the public binary and contains NONE of the wall fixes, so the cliff is live for every new download right now. Adaptive Coach shipped flag-ON behind that wall, so its Phase 2 gate (>=20 real adaptive_coach_shown) cannot fill. This is the single highest-leverage open item in the portfolio.",
+      "prompt": "RunSmart iOS: the sign-in wall P0 is live in the shipped 1.1.0 build. Execute S1 from docs/plans/2026-07-19-activation-cliff-fix-plan.md: instrument the wall at RunSmartLiteAppShell.swift:184 with sign_in_wall_viewed / sign_in_wall_tapped / sign_in_wall_abandoned, add screen names, and fix the double-fire. Then reproduce the ASAuthorizationError 1000 failure on a physical device against the live App Store build to determine whether it is a configuration outage or a persuasion problem. Ship as 1.1.1.",
+      "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
-      "title": "Finish active Stories 7-8, then execute the gated 1.5.0 continuation",
-      "body": "The active Claude Code session owns Stories 7 and 8. WP-46 continues from their integrated evidence through Stories 9-13 as one combined Release B+C target. 1.4.3 is in ASC review; do not confuse that submission with the 1.5.0 engineering lane.",
-      "prompt": "Execute WP-46 only after Stories 7 and 8 are committed, pushed and integrated. Verify the approved additive Story 9 backend-evidence contract, then deliver Stories 9-13 sequentially toward 1.5.0. Stop before archive, TestFlight or App Store actions."
+      "title": "Resumely: read the first real activation cohort — 1.4.3 opened the window",
+      "body": "WP-46 Release C is shipped and closed. 1.4.3 is the first build that partially fixes the activation cliff (tappable 'Sign in to Optimize' + diagnosis persistence) AND the first where saved-resume reuse works at all, since the optimization_id fix. The cohort window opened 2026-07-19. Do not start 1.5.0 engineering before reading what this release actually did.",
+      "prompt": "Resumely iOS: 1.4.3 is live as of 2026-07-19. Read the first post-1.4.3 activation cohort per the rule in docs/plans/2026-07-19-activation-cliff-fix-plan.md: >=20 clean uploaders, win condition >=30% optimization_started against the 12.5% baseline. If the sample is not yet mature, say so and state the date it will be, rather than reading it early. Then scope S2 (instrument score_screen_signin_tapped, file-picker outcome events, job_source) for 1.4.4.",
+      "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP"
     },
     {
-      "title": "Merge RunSmart PR #96 after review",
-      "body": "PR #96 contains the read-only 1.0.9 post-live activation evidence plus the corrected progress narrative. It records the P0 sign-in signal, the undefined 0/0 mature-D7 state, the E1 instrumentation block and the July 22 checkpoint. Both commits are pushed; nothing is local-only.",
-      "prompt": "Review and merge RunSmart PR #96 if its two documentation-only commits match the saved evidence. Do not turn its n=2 sign-in signal into a confirmed outage claim and do not alter the live build."
+      "title": "Portfolio hygiene — 2 worktrees and 1 unpushed commit block dashboard trust",
+      "body": "Trust reads 'Refresh required' but a refresh cannot clear it: the blockers are 2 open Agentic OS worktrees and 1 local-only commit. Founder declined branch deletion on 2026-07-20, so this stays open deliberately. Clear it by pushing and removing the worktrees only (not the branches) when the review sessions are finished.",
+      "prompt": "Agentic OS: clear the dashboard-trust hygiene blockers WITHOUT deleting any branches. Push any local-only commits on main, then remove only the finished worktrees under .claude/worktrees/ using 'git worktree remove', leaving every branch intact. Re-run ./agentic-os morning and confirm portfolio trust reads 'actionable'."
     }
   ],
   "tracks": [

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 05:34 UTC",
+  "generatedAt": "2026-07-20 05:43 UTC",
   "sources": {
-    "status": "2026-07-20 08:34",
+    "status": "2026-07-20 08:43",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-19"
+    "manual": "2026-07-20"
   },
   "trust": {
     "level": "refresh_required",
@@ -69,8 +69,8 @@
       "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -270,14 +270,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 08:34",
+      "lastRan": "2026-07-20 08:43",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-19",
+      "lastRan": "2026-07-20",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
