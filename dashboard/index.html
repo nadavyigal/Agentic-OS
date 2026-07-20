@@ -637,7 +637,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-20 13:04",
+      "lastRefresh": "2026-07-20 13:38",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -1298,7 +1298,7 @@
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -1316,7 +1316,7 @@
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -1514,14 +1514,14 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "detached",
             "source": "primary"
           }
         ],
         "dirty": true,
         "dirtyCount": 8,
         "extraWorktrees": 7,
-        "branch": "main...origin/main",
+        "branch": "HEAD (no branch)",
         "lastCommit": "2026-07-20 47f1476 WP-48: post-1.4.3 cohort read \u2014 not mature, 2 blocking measurement defects (#112)",
         "stale": false,
         "freshness": "Fresh",
@@ -1609,7 +1609,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "detached"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md latest entry",
@@ -2075,10 +2075,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 13,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
         "branch": "main...origin/main",
-        "lastCommit": "2026-07-20 e4332ef5 dashboard: WP-47/48 merged, WP-49 held on a migration-ordering hazard",
+        "lastCommit": "2026-07-20 b578baf5 dashboard: purge stale waiting-for-review claims; app_version blocker + PR #105",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-20",
@@ -2253,7 +2253,7 @@
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
+        "branch": "HEAD (no branch)",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2612,7 +2612,7 @@
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -2630,7 +2630,7 @@
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "detached",
             "source": "primary"
           },
           {
@@ -5283,12 +5283,13 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 1,
       "extraWorktrees": 2,
       "ahead": 0,
       "behind": 0,
       "synced": false,
       "notes": [
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
@@ -5296,7 +5297,8 @@
       "level": "refresh_required",
       "label": "Refresh required",
       "reasons": [
-        "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+        "To clear this: commit 1 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+        "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
         "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ],
       "refreshToday": true,
@@ -5307,7 +5309,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-20 13:05",
+      "generatedAt": "2026-07-20 13:38",
       "apps": [
         {
           "projectId": 171597,
@@ -5370,7 +5372,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-20 13:05",
+      "lastRunAt": "2026-07-20 13:38",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -5378,7 +5380,7 @@
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
-      "targetBranch": "main...origin/main",
+      "targetBranch": "HEAD (no branch)",
       "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
