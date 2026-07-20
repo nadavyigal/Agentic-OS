@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-20 12:15
+- Last refresh: 2026-07-20 13:04
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -80,7 +80,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19
 - [Agentic OS] worktree on claude/ios-apps-status-update-7f220b, 4 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b
 - [Agentic OS] worktree on claude/resumely-ftux-release-b-c-b5e864, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-ftux-release-b-c-b5e864
-- [Agentic OS] 3 uncommitted file(s) in the primary working tree
+- [Agentic OS] 13 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

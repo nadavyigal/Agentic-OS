@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 09:15 UTC",
+  "generatedAt": "2026-07-20 10:05 UTC",
   "sources": {
-    "status": "2026-07-20 12:15",
+    "status": "2026-07-20 13:04",
     "usage": "2026-07-10T11:01:59.711345+00:00",
     "manual": "2026-07-20"
   },
@@ -11,8 +11,7 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 2 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -70,7 +69,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-13",
       "dirty": true,
-      "dirtyCount": 3
+      "dirtyCount": 13
     }
   ],
   "numbers": {
@@ -101,8 +100,8 @@
         },
         {
           "metric": "ASC status",
-          "resumely": "1.4.3 Waiting for Review · public still 1.4.2 (12)",
-          "runsmart": "1.1.0 Waiting for Review · public still 1.0.9 (23)"
+          "resumely": "1.4.3 (13) LIVE since 2026-07-19T21:47:02Z",
+          "runsmart": "1.1.0 (24) LIVE since 2026-07-19T21:48:08Z"
         },
         {
           "metric": "Target",
@@ -189,7 +188,7 @@
     {
       "date": "2026-07-19",
       "when": null,
-      "what": "ASC: RunSmart 1.1.0 Waiting for Review; Resumely 1.4.3 just submitted for review (founder-confirmed)",
+      "what": "ASC 2026-07-20: RunSmart 1.1.0 and Resumely 1.4.3 both APPROVED and LIVE (store-verified)",
       "state": "waiting"
     },
     {
@@ -201,7 +200,7 @@
     {
       "date": "2026-07-16",
       "when": null,
-      "what": "Prior FTUX still public until review clears: RunSmart 1.0.9 (23), Resumely 1.4.2 (12)",
+      "what": "Superseded builds: RunSmart 1.0.9 (23) and Resumely 1.4.2 (12) are no longer public",
       "state": "done"
     },
     {
@@ -270,7 +269,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 12:15",
+      "lastRan": "2026-07-20 13:04",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {

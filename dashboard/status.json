@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-20 12:15"
+    "lastSuccessfulRefresh": "2026-07-20 13:04"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -93,11 +93,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
         "dirty": false,
         "dirtyCount": 0,
         "extraWorktrees": 7,
-        "lastCommit": "2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104)",
+        "lastCommit": "2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -185,7 +185,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "claude/wp51-app-version-super-property"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md latest entry",
@@ -781,9 +781,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 3,
+        "dirtyCount": 13,
         "extraWorktrees": 2,
-        "lastCommit": "2026-07-20 da9d7dc1 packets: WP-47..50 \u2014 one ready packet per project off 2026-07-20 status",
+        "lastCommit": "2026-07-20 e4332ef5 dashboard: WP-47/48 merged, WP-49 held on a migration-ordering hazard",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -1011,7 +1011,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-20 12:15",
+    "lastRefresh": "2026-07-20 13:04",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1540,8 +1540,8 @@
       "dirty": false,
       "dirtyCount": 0,
       "extraWorktrees": 7,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104)",
+      "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
+      "lastCommit": "2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-20",
@@ -1639,7 +1639,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "main"
+        "branch": "claude/wp51-app-version-super-property"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md latest entry",
@@ -2449,10 +2449,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 3,
+      "dirtyCount": 13,
       "extraWorktrees": 2,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-20 da9d7dc1 packets: WP-47..50 \u2014 one ready packet per project off 2026-07-20 status",
+      "lastCommit": "2026-07-20 e4332ef5 dashboard: WP-47/48 merged, WP-49 held on a migration-ordering hazard",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-20",
@@ -2531,7 +2531,7 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Clean",
-      "branch": "main...origin/main",
+      "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2903,7 +2903,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-20 12:15",
+    "lastRunAt": "2026-07-20 13:05",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -5725,13 +5725,12 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 2,
+    "uncommitted": 0,
     "extraWorktrees": 2,
     "ahead": 0,
     "behind": 0,
     "synced": false,
     "notes": [
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
@@ -5864,8 +5863,7 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 2 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -6201,7 +6199,7 @@
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "3 uncommitted file(s) in the primary working tree",
+        "detail": "13 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -6216,7 +6214,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-20 12:15",
+    "generatedAt": "2026-07-20 13:05",
     "apps": [
       {
         "projectId": 171597,
@@ -6245,7 +6243,7 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 11,
+        "liveUsers7d": 14,
         "source": "api"
       },
       {
