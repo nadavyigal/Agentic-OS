@@ -637,7 +637,7 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-20 08:43",
+      "lastRefresh": "2026-07-20 08:45",
       "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
@@ -2067,10 +2067,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 4,
         "extraWorktrees": 2,
-        "branch": "main...origin/main [ahead 1]",
-        "lastCommit": "2026-07-20 4b67803a log: 2026-07-20 intent entry \u2014 both apps live, morning process repair",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-07-20 e9d4b0f0 dashboard: rewrite stale Launch Pad cards \u2014 both apps are live",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-20",
@@ -2405,7 +2405,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 1]",
+        "branch": "main...origin/main",
         "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
         "sourceConfidence": "Medium",
         "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -3724,6 +3724,63 @@
           "decision": null
         },
         {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Make the sign-in wall measurable, then determine whether the ASAuthorizationError 1000 failures are a configuration outage or a persuasion problem",
+          "source": "docs/plans/2026-07-19-activation-cliff-fix-plan.md (S1); 2026-07-20 morning brief",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "sign_in_wall_viewed fires for organic users, and the viewed\u2192tapped\u2192completed drop is finally attributable",
+          "path": "executive-os/work-packets/WP-47-runsmart-ios-signin-wall-1-1-1.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Read the first real activation cohort produced by 1.4.3, then scope S2 instrumentation for 1.4.4",
+          "source": "docs/plans/2026-07-19-activation-cliff-fix-plan.md (S2); 2026-07-20 morning brief",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "a stated, dated read of the post-1.4.3 cohort \u2014 or an explicit \"not mature until DATE\"",
+          "path": "executive-os/work-packets/WP-48-resumely-ios-first-activation-cohort.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "ResumeBuilder AI (Web) \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Carry anonymous ATS-check results through signup into the new account, closing WP-29 S5",
+          "source": "dashboard/status.json \u2014 \"WP-29 S5 anonymous-session carryover is next\"",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "an anonymous ATS check survives signup and appears in the new account's dashboard",
+          "path": "executive-os/work-packets/WP-49-resumely-web-anonymous-carryover.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
           "title": "Work Packet WP-5",
           "status": "Open",
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
@@ -3739,6 +3796,25 @@
           "memoryUpdate": null,
           "successSignal": "New build 1.0 (3) uploaded with working Sign in with Apple and in-app account deletion, screen recording attached, submission accepted",
           "path": "executive-os/work-packets/WP-5-resumely-resubmission-build3-apple-signin-deletion.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "RunSmart Web \u2014 `/Users/nadavyigal/Documents/RunSmart`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Run the day-30 revisit of the paused Garmin track and produce an explicit go/no-go",
+          "source": "tasks/progress.md 2026-07-03 entry; 2026-07-02 priority-reset decision",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "a written go/no-go on the Garmin track, with the stale premise corrected",
+          "path": "executive-os/work-packets/WP-50-runsmart-web-garmin-day30-revisit.md",
           "copyPrompt": null,
           "decision": null
         },
@@ -4192,7 +4268,7 @@
         },
         {
           "name": "Work packets",
-          "what": "0 active, 48 total. Copy only Active packets; closed packets are history."
+          "what": "0 active, 52 total. Copy only Active packets; closed packets are history."
         },
         {
           "name": "Brainstorm / next moves",
@@ -5019,6 +5095,63 @@
           "decision": null
         },
         {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Make the sign-in wall measurable, then determine whether the ASAuthorizationError 1000 failures are a configuration outage or a persuasion problem",
+          "source": "docs/plans/2026-07-19-activation-cliff-fix-plan.md (S1); 2026-07-20 morning brief",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "sign_in_wall_viewed fires for organic users, and the viewed\u2192tapped\u2192completed drop is finally attributable",
+          "path": "executive-os/work-packets/WP-47-runsmart-ios-signin-wall-1-1-1.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Read the first real activation cohort produced by 1.4.3, then scope S2 instrumentation for 1.4.4",
+          "source": "docs/plans/2026-07-19-activation-cliff-fix-plan.md (S2); 2026-07-20 morning brief",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "a stated, dated read of the post-1.4.3 cohort \u2014 or an explicit \"not mature until DATE\"",
+          "path": "executive-os/work-packets/WP-48-resumely-ios-first-activation-cohort.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "ResumeBuilder AI (Web) \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Carry anonymous ATS-check results through signup into the new account, closing WP-29 S5",
+          "source": "dashboard/status.json \u2014 \"WP-29 S5 anonymous-session carryover is next\"",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "an anonymous ATS check survives signup and appears in the new account's dashboard",
+          "path": "executive-os/work-packets/WP-49-resumely-web-anonymous-carryover.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
           "title": "Work Packet WP-5",
           "status": "Open",
           "project": "Resumely iOS (ResumeBuilder IOS APP)",
@@ -5034,6 +5167,25 @@
           "memoryUpdate": null,
           "successSignal": "New build 1.0 (3) uploaded with working Sign in with Apple and in-app account deletion, screen recording attached, submission accepted",
           "path": "executive-os/work-packets/WP-5-resumely-resubmission-build3-apple-signin-deletion.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet",
+          "status": "Ready",
+          "project": "RunSmart Web \u2014 `/Users/nadavyigal/Documents/RunSmart`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": "Run the day-30 revisit of the paused Garmin track and produce an explicit go/no-go",
+          "source": "tasks/progress.md 2026-07-03 entry; 2026-07-02 priority-reset decision",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": null,
+          "signal": null,
+          "memoryUpdate": null,
+          "successSignal": "a written go/no-go on the Garmin track, with the stale premise corrected",
+          "path": "executive-os/work-packets/WP-50-runsmart-web-garmin-day30-revisit.md",
           "copyPrompt": null,
           "decision": null
         },
@@ -5119,23 +5271,23 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 0,
+      "uncommitted": 4,
       "extraWorktrees": 2,
-      "ahead": 1,
+      "ahead": 0,
       "behind": 0,
       "synced": false,
       "notes": [
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "1 local commit(s) not pushed to the upstream branch."
+        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
     "portfolioTrust": {
       "level": "refresh_required",
       "label": "Refresh required",
       "reasons": [
-        "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 1 local-only commit(s). A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "1 local commit(s) not pushed to the upstream branch."
+        "To clear this: commit 4 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
@@ -5145,7 +5297,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-20 08:43",
+      "generatedAt": "2026-07-20 08:45",
       "apps": [
         {
           "projectId": 171597,
@@ -5208,7 +5360,7 @@
     "contradictions": [],
     "dailyRunResult": {
       "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-20 08:43",
+      "lastRunAt": "2026-07-20 08:45",
       "checksStatus": "Pending verify",
       "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",

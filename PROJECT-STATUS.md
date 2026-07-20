@@ -18,7 +18,7 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Resumely iOS | 1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20) | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (8) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 56d0a70 docs: 1.4.3 (13) APPROVED and LIVE on the App Store |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Stale | Medium | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (2) | Fresh | High | tasks/progress.md | 2026-07-19 ffedabc fix: expose optimization_id on saved-resume API responses (#116) |
-| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (1) | Fresh | Medium | tasks/progress.md | 2026-07-20 4b67803a log: 2026-07-20 intent entry — both apps live, morning process repair |
+| Agentic OS | Advanced OS patterns lean pilot | Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work | 0 | Yes (4) | Fresh | Medium | tasks/progress.md | 2026-07-20 e9d4b0f0 dashboard: rewrite stale Launch Pad cards — both apps are live |
 
 ## Evidence Gaps
 
@@ -28,7 +28,7 @@ Latest commit post-dates the last validation (code moved since the last proof):
 - Resumely iOS: validated 2026-07-11, last commit 2026-07-20 56d0a70 docs: 1.4.3 (13) APPROVED and LIVE on the App Store
 - RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
 - ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-19 ffedabc fix: expose optimization_id on saved-resume API responses (#116)
-- Agentic OS: validated 2026-07-13, last commit 2026-07-20 4b67803a log: 2026-07-20 intent entry — both apps live, morning process repair
+- Agentic OS: validated 2026-07-13, last commit 2026-07-20 e9d4b0f0 dashboard: rewrite stale Launch Pad cards — both apps are live
 
 ## Drift Warnings
 
@@ -86,12 +86,11 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 2 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 1 unpushed commit(s) -> Sync the default branch first: pull, then push.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19 -> Push claude/activation-autopsy-2026-07-19 and open a PR, or consciously discard it.
 - [Agentic OS] worktree on claude/ios-apps-status-update-7f220b, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/ios-apps-status-update-7f220b -> Land or discard this worktree, then `git worktree remove` it.
 - [Agentic OS] worktree on claude/resumely-ftux-release-b-c-b5e864, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-ftux-release-b-c-b5e864 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 4 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 4 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
