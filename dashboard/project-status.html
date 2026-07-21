@@ -102,7 +102,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-20 IDT",
+    "lastUpdated": "2026-07-21 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local evidence mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, the previous EOD handoff, and the freshest task/plan evidence across active worktrees. PostHog decision snapshots remain a separately dated manual layer.",
     "freshnessRule": {
@@ -111,7 +111,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-20 14:01"
+    "lastSuccessfulRefresh": "2026-07-21 07:53"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -131,7 +131,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-07-20",
+    "evidenceFreshDate": "2026-07-21",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -153,7 +153,7 @@
       "progressLabel": "Build 8 in review",
       "lastValidation": "2026-07-15 \u2014 full suite 275 tests, 0 failures; Release-config build SUCCEEDED at `3186343`. S6/S1 device smoke explicitly waived, not observed \u2014 see entry above",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-20",
+      "lastUpdated": "2026-07-21",
       "blockers": [
         "None \u2014 waiting on Apple App Review turnaround"
       ],
@@ -194,11 +194,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "main...origin/main [behind 5]",
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 8,
-        "lastCommit": "2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started",
+        "lastCommit": "2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104)",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -241,12 +241,12 @@
           "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/todo.md",
-          "worktree:detached:tasks/session-log.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/ERRORS.md",
-          "worktree:detached:tasks/lessons.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
+          "worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
@@ -292,7 +292,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/wp51-app-version-super-property"
+          "branch": "main"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md latest entry",
@@ -357,7 +357,7 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Last completed: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Source: tasks/progress.md latest entry, updated 2026-07-20.",
+      "status": "Phase: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Last completed: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Source: tasks/progress.md latest entry, updated 2026-07-20. Newer commits exist after this status (last commit: 2026-07-21 eddba82 Add lesson: verify blank simulator frames on a second device); trust git for the latest state.",
       "currentPhase": "1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20)",
       "activeStory": "WP-41 - Resumely 1.4.1 picker-to-file-selected checkpoint UNDERPOWERED (2026-07-18)",
       "lastCompletedStory": "1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20)",
@@ -367,7 +367,7 @@
       "progressLabel": "Smoke + ASC upload remaining",
       "lastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-20",
+      "lastUpdated": "2026-07-21",
       "blockers": [
         "PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
         "missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
@@ -403,11 +403,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "claude/wp50-measurement-denominator...origin/claude/wp50-measurement-denominator",
+        "branch": "claude/session-ec92e2...origin/claude/session-ec92e2",
         "dirty": true,
-        "dirtyCount": 8,
+        "dirtyCount": 6,
         "extraWorktrees": 7,
-        "lastCommit": "2026-07-20 e296aa3 WP-50: redesignate the activation denominator to a pre-auth event",
+        "lastCommit": "2026-07-21 eddba82 Add lesson: verify blank simulator frames on a second device",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -484,12 +484,12 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/wp50-measurement-denominator"
+          "branch": "claude/session-ec92e2"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md latest entry",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-20",
+        "freshestDate": "2026-07-21",
         "evidenceGap": true,
         "evidenceDate": "2026-07-11"
       },
@@ -562,7 +562,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-20",
+      "lastUpdated": "2026-07-21",
       "blockers": [
         "Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
@@ -700,7 +700,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-20",
+      "lastUpdated": "2026-07-21",
       "blockers": [
         "Gate A remains closed by decision",
         "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
@@ -861,17 +861,17 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Advanced OS patterns lean pilot. Active: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch. Last completed: Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review. Source: tasks/progress.md, updated 2026-07-20.",
-      "currentPhase": "Advanced OS patterns lean pilot",
-      "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
-      "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
-      "nextRecommendedStory": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
+      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: Portfolio HQ morning refresh (2026-07-21). Recorded founder-confirmed RunSmart 1.1.1 (25) live state, surfaced Resumely Stories 1-7 as complete on `claude/session-ec92e2` with 1.4.4 release prep next, drafted the 2026-07-20 EOD from 36 commits across four repos, regenerated Portfolio HQ, and passed `./agentic-os verify`. Source: tasks/progress.md, updated 2026-07-21.",
+      "currentPhase": "Daily portfolio operations and evidence reconciliation",
+      "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
+      "lastCompletedStory": "Portfolio HQ morning refresh (2026-07-21). Recorded founder-confirmed RunSmart 1.1.1 (25) live state, surfaced Resumely Stories 1-7 as complete on `claude/session-ec92e2` with 1.4.4 release prep next, drafted the 2026-07-20 EOD from 36 commits across four repos, regenerated Portfolio HQ, and passed `./agentic-os verify`",
+      "nextRecommendedStory": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
       "estimatedCompletion": "Ongoing",
       "progressPercent": null,
       "progressLabel": "Active",
-      "lastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
+      "lastValidation": "2026-07-21 \u2014 `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-20",
+      "lastUpdated": "2026-07-21",
       "blockers": [],
       "risks": [
         "Global summaries can go stale if product repos are not re-read."
@@ -886,59 +886,59 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
-        "dirty": false,
-        "dirtyCount": 0,
+        "branch": "main...origin/main [ahead 2]",
+        "dirty": true,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
-        "lastCommit": "2026-07-20 ca2c4501 dashboard: stamp manual blocks with verified dates so stale claims cannot hide",
+        "lastCommit": "2026-07-21 bb54e2ac dashboard: refresh July 21 founder morning state",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
           "primary:tasks/progress.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
-          "worktree:claude/agentic-os-session-ae5ec5:tasks/progress.md",
-          "worktree:claude/agentic-os-session-ae5ec5:tasks/MEMORY.md",
-          "worktree:claude/agentic-os-session-ae5ec5:tasks/ERRORS.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
           "worktree:claude/resumely-session-70fcda:tasks/progress.md",
           "worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
           "worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-          "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+          "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+          "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+          "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+          "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+          "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
         "taskSource": {
-          "kind": "worktree",
-          "branch": "claude/resumely-session-70fcda"
+          "kind": "primary",
+          "branch": "main"
         },
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-20",
-        "evidenceGap": true,
-        "evidenceDate": "2026-07-13"
+        "freshestDate": "2026-07-21",
+        "evidenceGap": false,
+        "evidenceDate": "2026-07-21"
       },
       "taskParse": {
         "status": "Active",
-        "currentPhase": "Advanced OS patterns lean pilot",
-        "activeStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch",
-        "lastCompletedStory": "Brain Map sync-duplicate fix (2026-07-13). Root-caused the \" 2\"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) \u2014 Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes \u00b7 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The \" 2\" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 \u2192 `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug \u2014 `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as \"recommendation, not a rule\" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md \"Model routing\" for the new lineup; added the \"Model route\" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped \u2014 generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review",
-        "nextRecommendedStory": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
+        "currentPhase": "Daily portfolio operations and evidence reconciliation",
+        "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
+        "lastCompletedStory": "Portfolio HQ morning refresh (2026-07-21). Recorded founder-confirmed RunSmart 1.1.1 (25) live state, surfaced Resumely Stories 1-7 as complete on `claude/session-ec92e2` with 1.4.4 release prep next, drafted the 2026-07-20 EOD from 36 commits across four repos, regenerated Portfolio HQ, and passed `./agentic-os verify`",
+        "nextRecommendedStory": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
         "blockers": [],
         "risks": [
           "Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) \u2014 if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes"
         ],
-        "lastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
-        "lastUpdated": "2026-07-20",
+        "lastValidation": "2026-07-21 \u2014 `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff",
+        "lastUpdated": "2026-07-21",
         "qaNeeded": null,
-        "estimatedCompletion": "dashboard trust refresh and sync in this session",
+        "estimatedCompletion": "one focused Resumely release-prep session",
         "decisionsNeeded": [
           "Should drift detection stay detect-only, or gain a `refresh --reconcile` that auto-heals curated narrative for High projects?",
           "Should web-repo (RunSmart Web, ResumeBuilder Web) `tasks/progress.md` seeding proceed now or stay on hold?"
@@ -951,7 +951,7 @@
           "tests": [],
           "buildStatus": null,
           "qaDocs": [],
-          "evidenceDate": "2026-07-13"
+          "evidenceDate": "2026-07-21"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -964,10 +964,10 @@
           "tasks/session-log.md",
           "tasks/lessons.md"
         ],
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": false,
         "path": null,
@@ -1118,7 +1118,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-20 14:01",
+    "lastRefresh": "2026-07-21 07:53",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1127,22 +1127,22 @@
       "Agentic OS: primary:tasks/progress.md",
       "Agentic OS: tasks/MEMORY.md",
       "Agentic OS: tasks/progress.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/ERRORS.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/MEMORY.md",
-      "Agentic OS: worktree:claude/agentic-os-session-ae5ec5:tasks/progress.md",
       "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
       "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
       "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/progress.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+      "Agentic OS: worktree:detached:tasks/ERRORS.md",
+      "Agentic OS: worktree:detached:tasks/MEMORY.md",
+      "Agentic OS: worktree:detached:tasks/progress.md",
       "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
       "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md",
@@ -1280,6 +1280,12 @@
       "RunSmart iOS: tasks/progress.md",
       "RunSmart iOS: tasks/session-log.md",
       "RunSmart iOS: tasks/todo.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
+      "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:docs/plans/2026-07-13-ftux-upgrade-plan.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
       "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
@@ -1307,12 +1313,6 @@
       "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
       "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
       "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
-      "RunSmart iOS: worktree:detached:tasks/ERRORS.md",
-      "RunSmart iOS: worktree:detached:tasks/MEMORY.md",
-      "RunSmart iOS: worktree:detached:tasks/lessons.md",
-      "RunSmart iOS: worktree:detached:tasks/progress.md",
-      "RunSmart iOS: worktree:detached:tasks/session-log.md",
-      "RunSmart iOS: worktree:detached:tasks/todo.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
@@ -1650,11 +1650,11 @@
           "source": "worktree"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 8,
-      "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
-      "lastCommit": "2026-07-20 5d3942e fix(analytics): register app_version/app_build, dedupe onboarding_started",
+      "branch": "main...origin/main [behind 5]",
+      "lastCommit": "2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104)",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-20",
@@ -1707,12 +1707,12 @@
         "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-        "worktree:detached:tasks/progress.md",
-        "worktree:detached:tasks/todo.md",
-        "worktree:detached:tasks/session-log.md",
-        "worktree:detached:tasks/MEMORY.md",
-        "worktree:detached:tasks/ERRORS.md",
-        "worktree:detached:tasks/lessons.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
@@ -1758,7 +1758,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "claude/wp51-app-version-super-property"
+        "branch": "main"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md latest entry",
@@ -1791,7 +1791,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/wp50-measurement-denominator",
+          "sourceBranch": "claude/session-ec92e2",
           "source": "primary"
         },
         {
@@ -1809,7 +1809,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/wp50-measurement-denominator",
+          "sourceBranch": "claude/session-ec92e2",
           "source": "primary"
         },
         {
@@ -2007,18 +2007,18 @@
           "date": null,
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/wp50-measurement-denominator",
+          "sourceBranch": "claude/session-ec92e2",
           "source": "primary"
         }
       ],
       "dirty": true,
-      "dirtyCount": 8,
+      "dirtyCount": 6,
       "extraWorktrees": 7,
-      "branch": "claude/wp50-measurement-denominator...origin/claude/wp50-measurement-denominator",
-      "lastCommit": "2026-07-20 e296aa3 WP-50: redesignate the activation denominator to a pre-auth event",
+      "branch": "claude/session-ec92e2...origin/claude/session-ec92e2",
+      "lastCommit": "2026-07-21 eddba82 Add lesson: verify blank simulator frames on a second device",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-20",
+      "freshestDate": "2026-07-21",
       "evidenceGap": true,
       "evidenceDate": "2026-07-11",
       "evidenceTests": [],
@@ -2102,7 +2102,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "claude/wp50-measurement-denominator"
+        "branch": "claude/session-ec92e2"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md latest entry",
@@ -2464,8 +2464,8 @@
     {
       "id": "agentic-os",
       "name": "Agentic OS",
-      "state": "Advanced OS patterns lean pilot",
-      "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
+      "state": "Daily portfolio operations and evidence reconciliation",
+      "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
       "blockerCount": 0,
       "blockers": [],
       "gtm": {
@@ -2482,7 +2482,7 @@
           "date": "2026-07-12",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2491,7 +2491,7 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2500,7 +2500,7 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2509,7 +2509,7 @@
           "date": "2026-07-01",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2518,7 +2518,7 @@
           "date": "2026-06-22",
           "status": "draft",
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2527,7 +2527,7 @@
           "date": "2026-06-07",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2536,7 +2536,7 @@
           "date": "2026-06-04",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2545,7 +2545,7 @@
           "date": "2026-05-24",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2554,7 +2554,7 @@
           "date": "2026-05-20",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2563,20 +2563,20 @@
           "date": "2026-05-20",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         }
       ],
-      "dirty": false,
-      "dirtyCount": 0,
+      "dirty": true,
+      "dirtyCount": 1,
       "extraWorktrees": 2,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-20 ca2c4501 dashboard: stamp manual blocks with verified dates so stale claims cannot hide",
+      "branch": "main...origin/main [ahead 2]",
+      "lastCommit": "2026-07-21 bb54e2ac dashboard: refresh July 21 founder morning state",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-20",
-      "evidenceGap": true,
-      "evidenceDate": "2026-07-13",
+      "freshestDate": "2026-07-21",
+      "evidenceGap": false,
+      "evidenceDate": "2026-07-21",
       "evidenceTests": [],
       "buildStatus": null,
       "qaDocs": [],
@@ -2586,32 +2586,32 @@
         "primary:tasks/progress.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/ERRORS.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/progress.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/MEMORY.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/ERRORS.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/ERRORS.md",
         "worktree:claude/resumely-session-70fcda:tasks/progress.md",
         "worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
         "worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+        "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+        "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+        "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+        "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+        "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+        "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+        "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+        "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
       "taskSource": {
-        "kind": "worktree",
-        "branch": "claude/resumely-session-70fcda"
+        "kind": "primary",
+        "branch": "main"
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation",
-      "parsedLastUpdated": "2026-07-20",
-      "parsedActiveStory": "Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch"
+      "parsedLastValidation": "2026-07-21 \u2014 `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff",
+      "parsedLastUpdated": "2026-07-21",
+      "parsedActiveStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0"
     }
   ],
   "agentQueue": [
@@ -2649,8 +2649,8 @@
       "projectId": "runsmart-ios",
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
-      "repoState": "Clean",
-      "branch": "claude/wp51-app-version-super-property...origin/claude/wp51-app-version-super-property",
+      "repoState": "Dirty",
+      "branch": "main...origin/main [behind 5]",
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2696,12 +2696,12 @@
         "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-        "worktree:detached:tasks/progress.md",
-        "worktree:detached:tasks/todo.md",
-        "worktree:detached:tasks/session-log.md",
-        "worktree:detached:tasks/MEMORY.md",
-        "worktree:detached:tasks/ERRORS.md",
-        "worktree:detached:tasks/lessons.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
+        "worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
         "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
@@ -2752,7 +2752,7 @@
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "claude/wp50-measurement-denominator...origin/claude/wp50-measurement-denominator",
+      "branch": "claude/session-ec92e2...origin/claude/session-ec92e2",
       "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2915,35 +2915,35 @@
       "projectId": "agentic-os",
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
-      "repoState": "Clean",
-      "branch": "main...origin/main",
-      "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+      "repoState": "Dirty",
+      "branch": "main...origin/main [ahead 2]",
+      "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/progress.md",
         "primary:tasks/progress.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/ERRORS.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/progress.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/MEMORY.md",
-        "worktree:claude/agentic-os-session-ae5ec5:tasks/ERRORS.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/ERRORS.md",
         "worktree:claude/resumely-session-70fcda:tasks/progress.md",
         "worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
         "worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-        "worktree:claude/agentic-os-session-ae5ec5:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+        "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+        "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
+        "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+        "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+        "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+        "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+        "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+        "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
-      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Advanced OS patterns lean pilot. Next action: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Daily portfolio operations and evidence reconciliation. Next action: In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
@@ -2966,11 +2966,13 @@
     ],
     "openDecisionCount": 4,
     "blockedProjectCount": 4,
-    "dirtyProjectCount": 3,
+    "dirtyProjectCount": 5,
     "dirtyProjects": [
+      "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)"
+      "ResumeBuilder AI (Web)",
+      "Agentic OS"
     ],
     "blockedProjects": [
       "RunSmart iOS",
@@ -2982,13 +2984,12 @@
     "staleProjects": [
       "RunSmart Web"
     ],
-    "evidenceGapCount": 5,
+    "evidenceGapCount": 4,
     "evidenceGapProjects": [
       "RunSmart iOS",
       "Resumely iOS",
       "RunSmart Web",
-      "ResumeBuilder AI (Web)",
-      "Agentic OS"
+      "ResumeBuilder AI (Web)"
     ],
     "lowTrustProjects": [],
     "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -3027,7 +3028,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-20 14:01",
+    "lastRunAt": "2026-07-21 07:53",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -3035,7 +3036,7 @@
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "claude/wp50-measurement-denominator...origin/claude/wp50-measurement-denominator",
+    "targetBranch": "claude/session-ec92e2...origin/claude/session-ec92e2",
     "readyForNextSession": false,
     "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
     "nextActions": [
@@ -3178,7 +3179,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/wp50-measurement-denominator",
+          "sourceBranch": "claude/session-ec92e2",
           "source": "primary"
         },
         {
@@ -3196,7 +3197,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/wp50-measurement-denominator",
+          "sourceBranch": "claude/session-ec92e2",
           "source": "primary"
         },
         {
@@ -3373,7 +3374,7 @@
           "date": "2026-07-12",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -3382,7 +3383,7 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -3391,7 +3392,7 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -3400,7 +3401,7 @@
           "date": "2026-07-01",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -3409,7 +3410,7 @@
           "date": "2026-06-22",
           "status": "draft",
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -3418,7 +3419,7 @@
           "date": "2026-06-07",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/agentic-os-session-ae5ec5",
+          "sourceBranch": "detached",
           "source": "worktree"
         }
       ]
@@ -4574,7 +4575,7 @@
       },
       {
         "name": "Resumely iOS \u2014 Full-Screen Copy Rewrite Audit + Version 2",
-        "purpose": "1. Scope = **active V2 journey** (Home \u2192 Fit \u2192 Diagnosis \u2192 Optimized/Preview \u2192 Export \u2192 Submit Package \u2192 Me) + Design/Expert locked teasers + marketing scree...",
+        "purpose": "Use `PROMPTS/ios-ui-copy-followup-audit.md` from the Agentic OS repo in a new",
         "path": "executive-os/research/2026-07-19-resumely-copy-rewrite-v2.md"
       },
       {
@@ -5851,11 +5852,12 @@
     "branch": "main",
     "uncommitted": 0,
     "extraWorktrees": 2,
-    "ahead": 0,
+    "ahead": 2,
     "behind": 0,
     "synced": false,
     "notes": [
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "2 local commit(s) not pushed to the upstream branch."
     ]
   },
   "planExecution": {
@@ -5987,13 +5989,14 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "2 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: Resumely iOS.",
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (8), Resumely iOS (7)."
     ]
   },
@@ -6006,13 +6009,25 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-20",
+    "generatedOn": "2026-07-21",
     "items": [
+      {
+        "project": "RunSmart iOS",
+        "type": "default-branch",
+        "detail": "main is 5 commit(s) behind origin (pull needed)",
+        "action": "Sync the default branch first: pull, then push."
+      },
       {
         "project": "RunSmart iOS",
         "type": "local-only",
         "detail": "backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13",
         "action": "Push backup-7b15df1-docs and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "claude/1-1-1-submitted-for-review: unmerged commits, remote branch deleted, last commit 2026-07-20",
+        "action": "Push claude/1-1-1-submitted-for-review and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart iOS",
@@ -6025,6 +6040,24 @@
         "type": "local-only",
         "detail": "claude/runsmart-ios-signin-wall-95dcb4: unmerged commits, remote branch deleted, last commit 2026-07-20",
         "action": "Push claude/runsmart-ios-signin-wall-95dcb4 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "claude/session-2026-07-20-wp51-merge-triage: unmerged commits, remote branch deleted, last commit 2026-07-20",
+        "action": "Push claude/session-2026-07-20-wp51-merge-triage and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "claude/wp51-app-version-super-property: unmerged commits, remote branch deleted, last commit 2026-07-20",
+        "action": "Push claude/wp51-app-version-super-property and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "claude/wp51-device-verification: unmerged commits, remote branch deleted, last commit 2026-07-20",
+        "action": "Push claude/wp51-device-verification and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart iOS",
@@ -6113,7 +6146,7 @@
       {
         "project": "RunSmart iOS",
         "type": "worktree",
-        "detail": "worktree on detached at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d",
+        "detail": "worktree on claude/1-1-1-submitted-for-review at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -6127,6 +6160,12 @@
         "type": "worktree",
         "detail": "worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview",
         "action": "Land or discard this worktree, then `git worktree remove` it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
       },
       {
         "project": "RunSmart iOS",
@@ -6181,6 +6220,12 @@
         "type": "local-only",
         "detail": "claude/release-c-story-13-submit-769148: unmerged commits, remote branch deleted, last commit 2026-07-19",
         "action": "Push claude/release-c-story-13-submit-769148 and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "local-only",
+        "detail": "claude/resumely-ios-activation-cohort-2ab57e: unmerged commits, remote branch deleted, last commit 2026-07-20",
+        "action": "Push claude/resumely-ios-activation-cohort-2ab57e and open a PR, or consciously discard it."
       },
       {
         "project": "Resumely iOS",
@@ -6245,7 +6290,7 @@
       {
         "project": "Resumely iOS",
         "type": "dirty",
-        "detail": "8 uncommitted file(s) in the primary working tree",
+        "detail": "6 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -6310,6 +6355,12 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 2 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "unpushed",
         "detail": "dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16",
         "action": "Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off."
@@ -6323,7 +6374,7 @@
       {
         "project": "Agentic OS",
         "type": "worktree",
-        "detail": "worktree on claude/agentic-os-session-ae5ec5 at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5",
+        "detail": "worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -6334,17 +6385,23 @@
       },
       {
         "project": "Agentic OS",
+        "type": "dirty",
+        "detail": "1 uncommitted file(s) in the primary working tree",
+        "action": "Commit or discard before the next session ends."
+      },
+      {
+        "project": "Agentic OS",
         "type": "cleanup",
         "detail": "6 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 52,
+    "actionableCount": 61,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-20 14:01",
+    "generatedAt": "2026-07-21 07:53",
     "apps": [
       {
         "projectId": 171597,
@@ -6379,7 +6436,7 @@
       {
         "appId": "resumebuilder-ios",
         "available": true,
-        "liveUsers7d": 62,
+        "liveUsers7d": 69,
         "source": "api"
       }
     ],
@@ -6406,19 +6463,18 @@
   },
   "contradictions": [],
   "eodHandoff": {
-    "date": "2026-07-12",
+    "date": "2026-07-20",
     "moved": [
-      "RunSmart iOS \u2014 release: bump to 1.0.8 (22) and record archived build awaiting review (#86)",
-      "Agentic OS \u2014 feat: daily-note habit rail + clickable Brain Map, wired into refresh; chore: refresh portfolio hq after activation update; feat: install portfolio activation playbook v2; dashboard: surface WP-32 closeout; (+6 more)",
-      "Builder OS Vault \u2014 vault: Brain Map re-saved by Excalidraw on open, graph zoom preference; vault: Brain Map + daily habit rails \u2014 Excalidraw enabled, graph colors, first pre-filled note; vault: execute all 5 second-brain review decisions; vault: second-brain review filed + top phantom links fixed (#29)",
-      "Claude Code sessions today: Builder OS Vault",
+      "ResumeBuilder Web \u2014 tasks: record WP-49 hold clearance and validation evidence; WP-49: make anonymous carryover reads survive an unapplied migration; feat: carry anonymous ATS check artifacts through signup (WP-49 / WP-29 S5)",
+      "RunSmart iOS \u2014 docs(tasks): 1.1.1 (25) archived and submitted to App Store Connect (#109); docs(tasks): 1.1.1 (25) archived and submitted to App Store Connect; docs(tasks): device-verify WP-51 super properties; 1.1.1 (25) archive-ready (#108); docs(tasks): device-verify WP-51 super properties; 1.1.1 (25) archive-ready; (+8 more)",
+      "Resumely iOS \u2014 Story 4: simplify locked Optimized/Design/Expert states; Story 3: route auth CTAs to the right mode and add legal links; Story 2: repair share and marketing claims, branding, and URLs; Story 1: replace user-facing ATS terminology with Match language; (+5 more)",
+      "Agentic OS \u2014 docs: add iOS UI and copy follow-up audit prompt; dashboard: regenerate from refresh after manual-layer verification pass; dashboard: stamp manual blocks with verified dates so stale claims cannot hide; packets: three consolidated per-project session prompts; (+8 more)",
+      "Claude Code sessions today: Agentic OS, ResumeBuilder, RunSmart",
       "Cursor \u2014 _fill manually (Cursor sessions aren't introspectable)_"
     ],
-    "didnt": [
-      "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on 2026-07-25 (or minimum check 2026-07-18) for clean marketing_version=1.4.1 coho\u2026"
-    ],
+    "didnt": [],
     "carry": [
-      "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on 2026-07-25 (or minimum check 2026-07-18) for clean marketing_version=1.4.1 coho\u2026"
+      ":"
     ],
     "source": "Builder OS daily note"
   }

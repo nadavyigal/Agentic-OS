@@ -1,16 +1,16 @@
 {
-  "asOf": "2026-07-20",
+  "asOf": "2026-07-21",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "verifiedNote": "Per-block last-verified dates. asOf is when this file was last written; these are when each block's claims were last checked against a real source (git, App Store, PostHog). The refresh flags any block older than 7 days as a cross-layer issue, so a stale block cannot hide under a fresh asOf. Bump a date ONLY after re-verifying that block against its source.",
   "verified": {
-    "founderCommand": "2026-07-20",
-    "suggestedSessions": "2026-07-20",
-    "readouts": "2026-07-20",
-    "tracks": "2026-07-20",
-    "clocks": "2026-07-20",
-    "knownUnknown": "2026-07-20",
-    "weekPriorities": "2026-07-20",
-    "activationHeadline": "2026-07-19",
+    "founderCommand": "2026-07-21",
+    "suggestedSessions": "2026-07-21",
+    "readouts": "2026-07-21",
+    "tracks": "2026-07-21",
+    "clocks": "2026-07-21",
+    "knownUnknown": "2026-07-21",
+    "weekPriorities": "2026-07-21",
+    "activationHeadline": "2026-07-21",
     "traffic": "2026-07-19",
     "funnels": "2026-07-19",
     "growth": "2026-07-19",
@@ -19,9 +19,9 @@
   },
   "founderCommand": [
     {
-      "title": "1.1.1 is now measurable — fold your remaining work in, then ship",
-      "body": "PR #105 adds app_version/app_build as PostHog super properties and fixes the onboarding_started double-fire. 317 tests pass, xcresult-verified; red state confirmed on the dedupe test. This was the blocker: app_version was set on 2 of 3,813 events over 60 days, so no RunSmart funnel could be split by build and the WP-47 wall events would have been unattributable to a release. With #105 merged, 1.1.1 (25) already carries measurement, so anything else you fold in is measurable on arrival. One gap: no device check yet that a live event actually carries app_version — worth doing before submitting.",
-      "prompt": "RunSmart iOS: review and merge PR #105 (app_version super properties + onboarding_started dedupe). Then build 1.1.1 (25) to a physical device, trigger any event, and confirm in PostHog project 171597 that it carries app_version=1.1.1 and app_build=25. Report the event name and both property values.",
+      "title": "RunSmart 1.1.1 is live — run the true first-time Apple sign-in test",
+      "body": "Founder confirmed 2026-07-21 that RunSmart 1.1.1 (25) is live. The release carries named sign-in-wall events, error codes, app_version/app_build attribution, onboarding dedupe, and the plan-generation terminal-event fix; 317 tests passed and the version/build super properties were verified on a physical iPhone before submission. The remaining activation gate is S0 with an Apple ID that has never authorized RunSmart.",
+      "prompt": "RunSmart iOS S0 on public 1.1.1 (25): use a physical device signed into iCloud and an Apple ID that has NEVER authorized RunSmart. Delete/reinstall from the App Store, attempt Sign in with Apple once, record UTC and the exact result, then confirm the matching sign_in_completed or sign_in_failed event in PostHog project 171597 carries app_version=1.1.1 and app_build=25.",
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
@@ -31,9 +31,9 @@
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
-      "title": "Resumely: cohort is NOT mature — do not read it until ~2026-08-18",
-      "body": "WP-48 merged (#112, 47f1476) and the answer is a clean negative: 0 of the required 20 clean uploaders, 9 hours after release. Clean arrival is 4.7 file-selectors/week, which projects to 2026-08-18 for a readable cohort. It also found 2 blocking measurement defects — most importantly the 12.5% baseline is NOT reproducible on 1.4.3, because resume_upload_succeeded sits behind the sign-in guard and is unreachable for guests. Reading early would have declared a win that was pure denominator substitution. Fix the denominator before the window opens, not after.",
-      "prompt": "Resumely iOS: implement the measurement fixes from docs/qa/reports/wp48-post-1.4.3-cohort-read-2026-07-20.md before the cohort matures. Redesignate the activation denominator to a pre-auth event (resume_file_selected) and recompute the baseline on that same definition so the win rule is reproducible on 1.4.3. Then scope S2 instrumentation (score_screen_signin_tapped, file-picker outcome events, job_source) for 1.4.4. Do not read the cohort — it is not mature until ~2026-08-18.",
+      "title": "Resumely 1.4.4 is the next ship — land the completed seven-story pass",
+      "body": "All seven stories in the 2026-07-20 UI/copy improvement plan are complete on branch claude/session-ec92e2. The pass replaces misleading ATS language with Match language, repairs share/marketing claims and URLs, fixes sign-up routing and legal links, removes fabricated locked-state scores, reaches 900/900 Hebrew localization, fixes tab overlap and RTL icons, and passes the final QA/Taste gate. Recorded validation: 205 tests passed with 1 intentional skip, Debug and unsigned Release builds green, EN/HE smokes clean, and analytics/API contracts untouched. The branch still reports 1.4.3 (13), so merge plus explicit 1.4.4 version/build release prep remain.",
+      "prompt": "Resumely iOS: review and merge claude/session-ec92e2 as the complete seven-story UI/copy release, preserving its unrelated untracked duplicate files. Then prepare version 1.4.4 with a fresh build number derived from main, run the full release checks and physical journey gate, and stop before archive/upload unless the founder explicitly authorizes the App Store action.",
       "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP"
     },
     {
@@ -47,9 +47,9 @@
     {
       "id": "activation-playbook-v2",
       "name": "Portfolio Activation Playbook v2",
-      "pill": "CURRENT — BOTH BUILDS LIVE, COHORT WINDOWS OPEN",
+      "pill": "CURRENT — RUNSMART 1.1.1 LIVE, RESUMELY 1.4.4 NEXT",
       "tone": "wait",
-      "standing": "The canonical activation contract remains Intent -> Setup -> First value -> Verified value -> Repeat value. Founder-excluded mature D7 snapshots still drive decisions. Both apps are LIVE (verified 2026-07-20 against Apple's public lookup API): RunSmart 1.1.0 released 2026-07-19T21:48:08Z, Resumely 1.4.3 released 2026-07-19T21:47:02Z. 1.0.9 (23) and 1.4.2 (12) are superseded. Both post-release cohort windows opened 2026-07-19; neither is mature yet. WP-48 measured Resumely at 0 of the required 20 clean uploaders with a 4.7/week arrival rate, projecting maturity to ~2026-08-18. Treat any read before then as directional only.",
+      "standing": "The canonical activation contract remains Intent -> Setup -> First value -> Verified value -> Repeat value. Founder-excluded mature D7 snapshots still drive decisions. Founder confirmed RunSmart 1.1.1 (25) live on 2026-07-21; Resumely 1.4.3 (13) remains live while the completed seven-story UI/copy pass is prepared as 1.4.4. WP-48 measured Resumely at 0 of the required 20 clean uploaders with a 4.7/week arrival rate, projecting maturity to ~2026-08-18. A 1.4.4 release resets the exact-version cohort clock; do not combine its cohort with 1.4.3.",
       "items": [
         {
           "tone": "done",
@@ -57,11 +57,11 @@
         },
         {
           "tone": "wait",
-          "text": "ASC 2026-07-20: RunSmart 1.1.0 (24) and Resumely 1.4.3 (13) are both APPROVED and LIVE, released within 66 seconds of each other on 2026-07-19. Store-verified via Apple's lookup API, not the ASC portal."
+          "text": "ASC founder update 2026-07-21: RunSmart 1.1.1 (25) is LIVE; Resumely 1.4.3 (13) remains live and the completed seven-story pass is the 1.4.4 release candidate."
         },
         {
           "tone": "done",
-          "text": "Resumely Release B Story 7 completed 2026-07-16: guest resume, job and diagnosis context now survives authentication; Story 8 is next"
+          "text": "Resumely UI/copy Stories 1-7 completed 2026-07-21 on claude/session-ec92e2; merge and 1.4.4 release prep are next"
         },
         {
           "tone": "run",
@@ -77,16 +77,16 @@
         },
         {
           "tone": "wait",
-          "text": "Post-live gates reset on each new version. Both clean windows opened 2026-07-19; Resumely matures ~2026-08-18 at the measured 4.7 clean file-selectors/week. RunSmart cannot open a comparable window until app_version is populated (see the measurement-blocker entry)."
+          "text": "Post-live gates reset on each new version. RunSmart 1.1.1 can now be segmented by app_version/app_build. Resumely's current 1.4.3 cohort projects to ~2026-08-18, but shipping 1.4.4 resets the exact-version clock and requires a fresh maturity date."
         }
       ]
     },
     {
       "id": "runsmart-ftux",
       "name": "RunSmart FTUX upgrade",
-      "pill": "1.1.0 LIVE — 1.1.1 IN PROGRESS",
+      "pill": "1.1.1 (25) LIVE — S0 NEXT",
       "tone": "wait",
-      "standing": "RunSmart 1.1.0 (24) is APPROVED and LIVE, released 2026-07-19T21:48:08Z (verified 2026-07-20 via Apple's lookup API). It shipped Adaptive Coach Phase 1 flag-ON against coach_message edge v10, and none of the sign-in wall fixes, so the activation cliff is live in the public binary. WP-47 (#104, 18b8764) merged the wall instrumentation into 1.1.1 (25), not yet shipped. A founder clean-install on 2026-07-20 09:21-09:27 UTC completed sign-in, onboarding, HealthKit, first run and plan generation end to end with 0 sign_in_failed.",
+      "standing": "Founder confirmed 2026-07-21 that RunSmart 1.1.1 (25) is LIVE, superseding 1.1.0 (24). The public binary now includes WP-47 sign-in-wall measurement and plan-generation dedupe plus WP-51 app_version/app_build attribution and onboarding dedupe. A pre-release physical-device event confirmed the version/build properties reach PostHog. S0 remains unresolved because the successful 2026-07-20 clean install reused an Apple ID that had already authorized RunSmart.",
       "items": [
         {
           "tone": "done",
@@ -110,7 +110,7 @@
         },
         {
           "tone": "wait",
-          "text": "1.1.0 (24) APPROVED and LIVE 2026-07-19T21:48:08Z, superseding 1.0.9 (23). Store-verified."
+          "text": "1.1.1 (25) LIVE 2026-07-21, founder-confirmed, superseding 1.1.0 (24)."
         },
         {
           "tone": "you",
@@ -141,9 +141,9 @@
     {
       "id": "resumely-ftux",
       "name": "Resumely FTUX upgrade",
-      "pill": "1.4.3 LIVE — COHORT NOT MATURE UNTIL ~2026-08-18",
+      "pill": "1.4.3 LIVE — 1.4.4 SEVEN-STORY PASS COMPLETE",
       "tone": "wait",
-      "standing": "Resumely 1.4.3 (13) is APPROVED and LIVE, released 2026-07-19T21:47:02Z (verified 2026-07-20 via Apple's lookup API), superseding 1.4.2 (12). WP-48 (#112, 47f1476) read the post-release cohort and returned a clean negative: 0 of the required 20 clean uploaders, and it found 2 blocking measurement defects. The 12.5% baseline is NOT reproducible on 1.4.3 because resume_upload_succeeded sits behind the sign-in guard and is unreachable for guests. Fix the denominator before the window matures.",
+      "standing": "Resumely 1.4.3 (13) is LIVE. All seven stories in the 2026-07-20 UI/copy improvement plan are complete on claude/session-ec92e2 and should ship together as 1.4.4 after merge, version/build bump, release validation, and the physical journey gate. The branch remains at 1.4.3 (13) and has not been archived or uploaded. WP-48's current cohort remains immature; a 1.4.4 release creates a new exact-version cohort.",
       "items": [
         {
           "tone": "done",
@@ -162,8 +162,8 @@
           "text": "PR #97 reconciled the live Release A source and exact version stamp onto origin/main; main can rebuild the active binary"
         },
         {
-          "tone": "run",
-          "text": "Stories 7 and 8 are actively being built in Claude Code; Portfolio HQ must not duplicate or overwrite that session"
+          "tone": "done",
+          "text": "UI/copy Stories 1-7 completed on claude/session-ec92e2: Match-language trust repair, marketing/share URLs, auth/legal routing, honest locked states, 900/900 Hebrew, tab/RTL fixes, QA and Taste Review"
         },
         {
           "tone": "done",
@@ -175,15 +175,15 @@
         },
         {
           "tone": "run",
-          "text": "Story 10 remains required to make optimized_preview_rendered trustworthy, separate file selection from upload, and deduplicate repeated optimization_completed correlations"
+          "text": "Next release step: review and merge the seven-story branch, bump from 1.4.3 (13) to 1.4.4 with a fresh build number, rerun release gates, then perform the physical journey checklist"
         },
         {
-          "tone": "you",
-          "text": "Story 9 contract decision is assigned to the active Claude session: named owner, additive schema, delivery plan, compatibility behavior and safe fallback"
+          "tone": "wait",
+          "text": "WP-48 measurement follow-up remains after the UI/copy merge: fix is_internal_tester classification and add S2 telemetry before the next cohort read"
         },
         {
-          "tone": "run",
-          "text": "WP-46 is the continuation packet: after Stories 7-8 integrate, execute Stories 9-13 in order toward one 1.5.0 release-readiness handoff"
+          "tone": "wait",
+          "text": "No ASC/TestFlight action has been taken for 1.4.4; archive/upload requires the normal founder release gate"
         }
       ]
     },
@@ -441,15 +441,15 @@
   },
   "suggestedSessions": [
     {
-      "product": "Portfolio / ASC",
-      "projectId": "agentic-os",
-      "repo": "/Users/nadavyigal/Documents/Projects /Agentic OS",
-      "model": "Manual founder watch - App Store Connect",
+      "product": "Resumely iOS",
+      "projectId": "resumely-ios",
+      "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP",
+      "model": "GPT-5.6 Sol implementation review + release prep",
       "urgency": "high",
-      "title": "Fix app_version — RunSmart is unmeasurable by build without it",
-      "why": "Both builds are live, so the review-watch session is obsolete. The real blocker is that app_version is set on only 2 of 3,813 RunSmart events over 60 days, so no funnel can be split by build. The WP-47 wall events will land in an undifferentiated pool.",
-      "outcome": "ASC status noted; when either ships, Portfolio HQ asOf + post-live clocks updated same day",
-      "prompt": "RunSmart iOS: populate app_version (and app_build) on every PostHog event as a super property registered at SDK init, so it applies to autocaptured events too. Verify against a real device that a fresh event carries both. Fold into 1.1.1 (25) before it ships. Also fix onboarding_started firing twice per session (observed 2026-07-20 09:22:11 and 09:23:59 in one founder session)."
+      "title": "Land the seven-story Resumely pass and prepare 1.4.4",
+      "why": "Stories 1-7 are complete and validated on claude/session-ec92e2, but the work is branch-only and still stamped 1.4.3 (13). Shipping requires review/merge, a fresh build number, final release checks, and physical journey evidence.",
+      "outcome": "Seven-story branch merged; 1.4.4 version/build prepared from main; full suite, Debug/Release, EN/HE and physical journey gates recorded; archive/upload still founder-gated",
+      "prompt": "Resumely iOS: review and merge claude/session-ec92e2 without absorbing the unrelated untracked duplicate files. Prepare 1.4.4 with a fresh build number derived from main, rerun the full release suite and EN/HE plus physical journey gates, and stop before archive/upload unless explicitly authorized."
     },
     {
       "product": "Measurement hygiene",
@@ -622,7 +622,7 @@
       {
         "metric": "ASC status",
         "resumely": "1.4.3 (13) LIVE since 2026-07-19T21:47:02Z",
-        "runsmart": "1.1.0 (24) LIVE since 2026-07-19T21:48:08Z"
+        "runsmart": "1.1.1 (25) LIVE, founder-confirmed 2026-07-21"
       },
       {
         "metric": "Target",
@@ -676,9 +676,14 @@
       "state": "you"
     },
     {
-      "date": "2026-07-19",
-      "what": "ASC 2026-07-20: RunSmart 1.1.0 and Resumely 1.4.3 both APPROVED and LIVE (store-verified)",
-      "state": "waiting"
+      "date": "2026-07-21",
+      "what": "Founder confirmed RunSmart 1.1.1 (25) LIVE; S0 with a never-authorized Apple ID is the next RunSmart gate",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-21",
+      "what": "Resumely UI/copy Stories 1-7 complete on claude/session-ec92e2; merge and 1.4.4 release prep are next, no ASC action yet",
+      "state": "running"
     },
     {
       "date": "2026-07-19",
@@ -746,13 +751,12 @@
   "knownUnknown": {
     "kk": [
       "SIGN-IN (2026-07-19, hardened): RunSmart has 7 non-cancel ASAuthorizationError code-1000 failures across 3 distinct fresh installs — iPhone99,7 and iPhone12,1 on public 1.0.9 (2026-07-15) and iPhone17,2 on build 24 (2026-07-19) — with 0 sign_in_completed on any of them. The single sign_in_completed on 1.0.9 (2026-07-16) is the founder's already-provisioned iPhone 13 (iPhone14,5). Supabase auth logs covering today's 11:03-11:04 UTC failures contain no /token request, so the failure occurs on-device before Supabase is contacted; Supabase provider_disabled is ruled out for that window (older 07-15 failures are outside the 24h log retention and cannot be checked). Code 1000 is also produced by a device with no iCloud account and by locally-installed builds whose provisioning lacks the SIWA capability — build 24 was not an App Store install, so that data point is weak. Verdict: strong unresolved P0 signal, still NOT a proven production outage. One clean repro on an iCloud-signed device with the public binary settles it.",
-      "MEASUREMENT BLOCKER (2026-07-20): app_version is populated on only 2 of 3,813 RunSmart events over 60 days. RunSmart funnels cannot be split by build at all, so no release-over-release comparison is possible and the WP-47 wall events will be unattributable. Fix before shipping 1.1.1.",
-      "DOUBLE-FIRE (2026-07-20): onboarding_started fired twice in one founder session (09:22:11 and 09:23:59) against a single onboarding_completed. Same shape as the plan_generation double-fire WP-47 fixed. Inflates the onboarding denominator.",
+      "RUNSMART 1.1.1 MEASUREMENT (2026-07-21): the former app_version/app_build blocker and onboarding/plan-generation double-fire defects are fixed in the live 1.1.1 (25) binary. Physical-device verification before submission confirmed the version/build super properties reach PostHog. Production sign-in-wall event presence still needs confirmation from the public build.",
       "CLEAN FUNNELS (2026-07-19, founder/QA/bot-excluded, 90d): RunSmart 23 organic App Store users → 1 onboarding_started → 1 plan_generated → 0 run_started (95.7% lost at the first screen). Resumely 145 reached → 20 tapped upload → 16 uploaded → 8 job_added → 2 optimization_started → 1 export_success (87.5% of uploaders never optimize).",
       "CONTAMINATION SCALE: Resumely raw dashboards are ~90% non-organic — 45 is_internal_tester persons (1,216 events) plus automated QA chains firing 3-9 events/sec (latest run 2026-07-18) generate nearly all raw fit_check_*, save_failed and optimization_apply_* volume. RunSmart has no is_internal_tester flag at all; exclusions there rely on behavioural heuristics (>=6 sessions or >=3 app versions) plus 39 simulator persons on model x86_64.",
       "CORRECTION: free_ats_completed DOES carry score_bucket (an earlier read queried the wrong property names and wrongly reported it null). Live 90d: 5 events '0-40' and 5 events '41-60' — every real free-ATS user saw a score of 60 or below, half saw 40 or below.",
-      "BUILD CONTENT: RunSmart 1.1.0 (24) in review contains NONE of the activation fixes (Adaptive Coach Phase 1 only). Resumely 1.4.3 (13) in review PARTIALLY ships the top fix — tappable 'Sign in to Optimize' under the guest score card plus diagnosis persistence across sign-in; the CTA tap remains uninstrumented and sign-in does not auto-continue into optimization.",
-      "ASC 2026-07-20 (store-verified via Apple's lookup API): RunSmart 1.1.0 (24) released 2026-07-19T21:48:08Z and Resumely 1.4.3 (13) released 2026-07-19T21:47:02Z. Both LIVE. 1.0.9 and 1.4.2 superseded.",
+      "BUILD CONTENT: RunSmart 1.1.1 (25) is founder-confirmed LIVE and carries the activation measurement fixes. Resumely 1.4.3 (13) remains live; the complete seven-story UI/copy pass is branch-only and targeted for 1.4.4, with no version bump or ASC action yet.",
+      "ASC 2026-07-21: RunSmart 1.1.1 (25) LIVE, founder-confirmed. Resumely 1.4.3 (13) remains the public build while 1.4.4 is prepared.",
       "PostHog refresh 2026-07-19: RunSmart directional ordered funnel 63→6→3→0→0 (Jun 1–Jul 19); Resumely directional ordered funnel 14→4→2 upload→optimize→export (last 30d). Decision-grade mature D7 remains 0/13 and 0/73 from 2026-07-12.",
       "Resumely PR #97 reconciled Release A Stories 1-6 and the exact 1.4.2 (12) version stamp onto origin/main; 151 tests passed, 1 intentional skip, 0 failures, so main can rebuild the active binary.",
       "Resumely 1.4.2 production readiness is No: 82 exact-version rows across 5 raw people, 4 excluded and 0 clean post-release entrants. Mature D7 is 0/0 undefined; tagging is complete and the live property audit found no prohibited content.",
@@ -765,7 +769,7 @@
       "Garmin: brand attribution + Internal-Test-vs-Commercial tiering are well-grounded in Garmin's public docs (matches 3 real rejections). Fee structure for RunSmart specifically and the Gate 1-4 checklist are founder-confirmed directly with Marc via email/attachments (2026-07-08) — the 07-06 research pass's \"unconfirmed\" flag was based on Garmin's generic public docs, not RunSmart's actual terms with Marc; no further written confirmation needed."
     ],
     "ku": [
-      "When will ASC clear RunSmart 1.1.0 and Resumely 1.4.3, and do the public binaries change the sign-in / export walls?",
+      "Does public RunSmart 1.1.1 produce the named sign-in-wall events with version/build attribution for a never-authorized Apple ID, and does that path succeed or reproduce ASAuthorizationError 1000?",
       "Can the next Hebrew distribution test produce a measurable answer after WP-32 closed without attribution? It must use unique campaign links and verified analytics access before publishing.",
       "Did Resumely Stories 2-4 (PR #90, merged 07-08) actually move the upload-picker friction numbers for real (non-founder) traffic? Re-read once enough post-merge volume exists.",
       "Does the merged web export-observability path reveal real web export failures after 5 real completers, or does it confirm the button works for organic users?",
@@ -791,23 +795,23 @@
   "weekPriorities": [
     {
       "n": 1,
-      "title": "RunSmart — close the sign-in question before writing any more RunSmart code",
-      "body": "Evidence hardened 2026-07-19: 7 non-cancel ASAuthorizationError 1000 across 3 fresh installs (1.0.9 public and 1.1.0 build 24), 0 successes on those devices, and the ONLY sign_in_completed is the founder's already-signed-in iPhone 13. Supabase auth logs for today's 11:03-11:04 UTC failures show no /token request at all, so the failure is on-device (Apple side) before Supabase — provider_disabled is ruled out for today. The 2026-07-19 device test is BLOCKED (never reached SignInView). Do one clean repro: wipe the app, confirm the device is signed into iCloud, install PUBLIC 1.0.9 from the App Store, tap Sign in with Apple once, record UTC + exact on-screen text. If it fails on a clean iCloud-signed device, this is a production outage and outranks every other item in the portfolio. If it succeeds, the wall is a persuasion problem and item 3 takes over."
+      "title": "Resumely — land the completed seven-story pass and prepare 1.4.4",
+      "body": "Stories 1-7 are complete on claude/session-ec92e2 with 205 tests passing, 1 intentional skip, Debug/Release green, 900/900 Hebrew, clean EN/HE smokes, and zero analytics/API contract diff. Review and merge the branch, bump to 1.4.4 with a fresh build number, rerun release checks and the physical journey gate, then stop at the founder-controlled archive/upload boundary."
     },
     {
       "n": 2,
-      "title": "Resumely — ship S2 telemetry while 1.4.3 sits in review",
-      "body": "1.4.3 already carries the top cliff fix (tappable 'Sign in to Optimize' + diagnosis persistence). Half a day of work makes the resulting read attributable: score_screen_signin_tapped, file-picker outcome events (selected/cancelled/error + file type/size), and a job_source (url vs paste) property on free_ats_completed and optimization_started. Ships in 1.4.4/1.5.0. Highest lift-per-hour in the portfolio because Resumely is primary and its window closes 2026-08-01."
+      "title": "RunSmart — run S0 against public 1.1.1",
+      "body": "1.1.1 (25) is live and measurable. Use an Apple ID that has never authorized RunSmart, attempt Sign in with Apple once, and confirm the resulting named wall event in PostHog carries app_version=1.1.1/app_build=25. Failure means a P0 Apple capability/provisioning investigation; success turns the next decision back to value-before-account."
     },
     {
       "n": 3,
-      "title": "RunSmart — S1 wall instrumentation in 1.1.1 (carry the error code)",
-      "body": "Add sign_in_wall_viewed, sign_in_tapped, sign_in_wall_abandoned (once per session; background/terminate after >=5s with no attempt), real screen names, and attach error_domain/error_code to every wall event. This makes item 1 self-answering for every future user instead of needing a device repro. Session replay only after privacy guardrails (consent/opt-out, input masking, retention, access control) — ship events without replay rather than delay. Also fixes the plan_generation_failed/succeeded double-fire."
+      "title": "Resumely — finish 1.4.4 measurement readiness before the cohort read",
+      "body": "After the seven-story merge, fix the remaining is_internal_tester classifier defect and add score_screen_signin_tapped, picker type/size, and job_source telemetry. Do not read the cohort early; shipping 1.4.4 resets the exact-version maturity clock."
     },
     {
       "n": 4,
-      "title": "ASC — wait honestly on both binaries",
-      "body": "Both apps are LIVE (verified 2026-07-20 against Apple's public lookup API): RunSmart 1.1.0 released 2026-07-19T21:48:08Z, Resumely 1.4.3 released 2026-07-19T21:47:02Z. 1.0.9 (23) and 1.4.2 (12) are superseded. Both cohort windows opened 2026-07-19. Resumely predeclared rule: >=20 clean post-1.4.3 uploaders, win at >=30% optimization_started — currently 0/20, matures ~2026-08-18, and the denominator needs fixing first (WP-48). RunSmart cannot be read by build at all until app_version is populated."
+      "title": "Release truth — RunSmart live, Resumely candidate not shipped",
+      "body": "RunSmart 1.1.1 (25) is founder-confirmed live. Resumely remains on public 1.4.3 (13); the seven-story branch is complete but still branch-only and versioned 1.4.3 (13). Do not describe 1.4.4 as shipped until merge, version/build prep, physical QA, archive/upload, and Apple state are each confirmed."
     },
     {
       "n": 5,
@@ -821,7 +825,7 @@
       "r1": "0% (0/12 mature, 07-05)",
       "r2": "0% (0/13 mature, 07-12)",
       "target": "≥30%",
-      "wall": "Directional 07-19: 63→6→3→0→0 · 1.1.0 (24) LIVE since 2026-07-19T21:48:08Z"
+      "wall": "Directional 07-19 baseline: 63→6→3→0→0 · 1.1.1 (25) LIVE, founder-confirmed 2026-07-21"
     },
     {
       "app": "Resumely",

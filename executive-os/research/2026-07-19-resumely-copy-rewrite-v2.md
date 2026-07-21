@@ -8,6 +8,17 @@
 
 ---
 
+## Follow-up audit entry point
+
+Use `PROMPTS/ios-ui-copy-followup-audit.md` from the Agentic OS repo in a new
+Codex task opened at the Resumely iOS repo root. The prompt treats this rewrite
+pack as candidate copy to verify against fresh simulator evidence, then returns
+an audit and decision-complete implementation plan without changing product
+code. Run the companion RunSmart audit as a separate task so the two product
+voices and evidence sets do not bleed together.
+
+---
+
 ## ASSUMPTIONS
 
 1. Scope = **active V2 journey** (Home → Fit → Diagnosis → Optimized/Preview → Export → Submit Package → Me) + Design/Expert locked teasers + marketing screenshot slots. Legacy Scan/Improve strings included where still reachable.

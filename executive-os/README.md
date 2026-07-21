@@ -73,6 +73,9 @@ Run these from `PROMPTS/` (root of the Agentic OS):
   opportunities.
 - `PROMPTS/context-extraction.md` — run a one-question-at-a-time founder
   interview and save a durable checkpoint.
+- `PROMPTS/ios-ui-copy-followup-audit.md` — run a fresh, screenshot-backed iOS
+  UI and anti-AI-slop copy audit, then produce a decision-complete improvement
+  plan for one app at a time.
 
 ## What This Is Not
 
