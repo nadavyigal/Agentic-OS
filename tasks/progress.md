@@ -2,15 +2,15 @@
 
 Project: Global Agentic OS
 Status: Active
-Current Phase: Advanced OS patterns lean pilot
-Active Story: Restore dashboard trust and carry current founder work into the daily command surface: both current ASC releases live, Portfolio Activation Playbook V2 plus distribution ranking in progress with Claude Code, and WP-45 S0 implemented on the Resumely iOS branch.
-Last Completed Story: Brain Map sync-duplicate fix (2026-07-13). Root-caused the " 2"-suffixed wikilinks in the Builder OS Brain Map: they were emitted by the generator itself because the vault contains real file-sync conflict copies (`CLAUDE 2.md`, `wiki-index 2.md`, `lint-wiki 2.md`, `Builder OS Brain Map 2.md`) — Excalidraw's re-save only surfaced them via its `## Element Links` section. Fixed `scripts/brain_map/generate_brain_map.py` to skip `<base> N.md` shadows whose original exists in the same folder; regenerated (123 notes · 592 links, zero phantom links, second run byte-identical), added the LESSONS.md entry. The " 2" vault files themselves are stale older snapshots left for the founder to delete. Prior: Model-routing rollout + Portfolio HQ model tracking (2026-07-10, on main). Merged the two frontmatter PRs (RunSmart #117, ResumeBuilder #113 → `claude-sonnet-5`). Verified all July-2026 pricing independently (claude-api skill + web). Added a **Models** tab to Portfolio HQ: new `dashboard/model-registry.json` (10 models, 4 utilities, 13-row routing matrix), wired through `scripts/portfolio_hq/refresh_portfolio_hq.py`, rendered + verified in-browser. Fixed a real cost bug — `collect_usage.py` priced Opus at Claude-3-era $15/$75 (inflated ~3x); corrected to $5/$25 and re-ran (30d spend now ~$4.4k, was ~$8.6k). Framed routes as "recommendation, not a rule" (GLOBAL-TOOL-USAGE.md) and made the git workflow tool-agnostic for Codex/Cursor (AGENTS.md). Earlier same day: rewrote GLOBAL-TOOL-USAGE.md "Model routing" for the new lineup; added the "Model route" WP-template field; logged DECISIONS.md (two 2026-07-10 entries). Prior on main: Portfolio HQ v3 shipped — generator parses executive-os + distribution-os plus per-workflow last-ran dates; HTML shell rewritten with an orchestrator SVG map. Before that: weekly distribution review (2026-07-09) logged WP-31 + WP-32 and the monthly CFO review.
-Next Recommended Story: Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work.
-Estimated Completion: dashboard trust refresh and sync in this session
+Current Phase: Daily portfolio operations and evidence reconciliation
+Active Story: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0.
+Last Completed Story: Portfolio HQ morning refresh (2026-07-21). Recorded founder-confirmed RunSmart 1.1.1 (25) live state, surfaced Resumely Stories 1-7 as complete on `claude/session-ec92e2` with 1.4.4 release prep next, drafted the 2026-07-20 EOD from 36 commits across four repos, regenerated Portfolio HQ, and passed `./agentic-os verify`.
+Next Recommended Story: In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization.
+Estimated Completion: one focused Resumely release-prep session
 Blockers: —
 Risks: Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) — if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes.
-Last Validation: Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation.
-Last Updated: 2026-07-13
+Last Validation: 2026-07-21 — `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff.
+Last Updated: 2026-07-21
 Latest QA Report: —
 
 <!--

@@ -1,24 +1,25 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-20 11:02 UTC",
+  "generatedAt": "2026-07-21 04:53 UTC",
   "sources": {
-    "status": "2026-07-20 14:01",
+    "status": "2026-07-21 07:53",
     "usage": "2026-07-10T11:01:59.711345+00:00",
-    "manual": "2026-07-20",
+    "manual": "2026-07-21",
     "manualOldestVerified": "2026-07-15"
   },
   "trust": {
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
+      "2 local commit(s) not pushed to the upstream branch."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
-      "Uncommitted files in product repos: Resumely iOS.",
+      "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
       "Extra product worktrees retained for review: RunSmart iOS (8), Resumely iOS (7)."
     ]
   },
@@ -33,8 +34,8 @@
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-15",
-      "dirty": false,
-      "dirtyCount": 0
+      "dirty": true,
+      "dirtyCount": 1
     },
     {
       "name": "Resumely iOS",
@@ -43,7 +44,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 8
+      "dirtyCount": 6
     },
     {
       "name": "RunSmart Web",
@@ -65,12 +66,12 @@
     },
     {
       "name": "Agentic OS",
-      "state": "Advanced OS patterns lean pilot",
-      "nextAction": "Finish dashboard-trust reconciliation, push Agentic OS main, then use the refreshed one-move recommendation for today's work",
+      "state": "Daily portfolio operations and evidence reconciliation",
+      "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-13",
-      "dirty": false,
-      "dirtyCount": 0
+      "evidenceDate": "2026-07-21",
+      "dirty": true,
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -102,7 +103,7 @@
         {
           "metric": "ASC status",
           "resumely": "1.4.3 (13) LIVE since 2026-07-19T21:47:02Z",
-          "runsmart": "1.1.0 (24) LIVE since 2026-07-19T21:48:08Z"
+          "runsmart": "1.1.1 (25) LIVE, founder-confirmed 2026-07-21"
         },
         {
           "metric": "Target",
@@ -187,10 +188,16 @@
       "state": "you"
     },
     {
-      "date": "2026-07-19",
+      "date": "2026-07-21",
       "when": null,
-      "what": "ASC 2026-07-20: RunSmart 1.1.0 and Resumely 1.4.3 both APPROVED and LIVE (store-verified)",
-      "state": "waiting"
+      "what": "Founder confirmed RunSmart 1.1.1 (25) LIVE; S0 with a never-authorized Apple ID is the next RunSmart gate",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "Resumely UI/copy Stories 1-7 complete on claude/session-ec92e2; merge and 1.4.4 release prep are next, no ASC action yet",
+      "state": "running"
     },
     {
       "date": "2026-07-19",
@@ -270,14 +277,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-20 14:01",
+      "lastRan": "2026-07-21 07:53",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-20",
+      "lastRan": "2026-07-21",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
