@@ -596,9 +596,9 @@
         "Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
         "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
         "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
-        "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
+        "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
-        "ResumeBuilder AI (Web): Gate A remains closed by decision",
+        "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
         "ResumeBuilder AI (Web): do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
       ],
       "needsDecision": [
@@ -632,13 +632,14 @@
         "RunSmart iOS: None \u2014 waiting on Apple App Review turnaround",
         "Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
         "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
-        "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
-        "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
+        "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
+        "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
+        "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision"
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-21 14:30",
-      "command": "./agentic-os refresh",
+      "lastRefresh": "2026-07-21 20:04",
+      "command": "./agentic-os morning",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
         "Agentic OS: primary:tasks/ERRORS.md",
@@ -669,12 +670,8 @@
         "ResumeBuilder AI (Web): primary:tasks/MEMORY.md",
         "ResumeBuilder AI (Web): primary:tasks/lessons.md",
         "ResumeBuilder AI (Web): primary:tasks/progress.md",
-        "ResumeBuilder AI (Web): primary:tasks/session-log.md",
-        "ResumeBuilder AI (Web): primary:tasks/todo.md",
         "ResumeBuilder AI (Web): tasks/MEMORY.md",
         "ResumeBuilder AI (Web): tasks/progress.md",
-        "ResumeBuilder AI (Web): tasks/session-log.md",
-        "ResumeBuilder AI (Web): tasks/todo.md",
         "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md",
         "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md",
         "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
@@ -804,12 +801,6 @@
         "RunSmart iOS: tasks/progress.md",
         "RunSmart iOS: tasks/session-log.md",
         "RunSmart iOS: tasks/todo.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
-        "RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
         "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
@@ -870,6 +861,12 @@
         "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/progress.md",
         "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/session-log.md",
         "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/todo.md",
+        "RunSmart iOS: worktree:detached:tasks/ERRORS.md",
+        "RunSmart iOS: worktree:detached:tasks/MEMORY.md",
+        "RunSmart iOS: worktree:detached:tasks/lessons.md",
+        "RunSmart iOS: worktree:detached:tasks/progress.md",
+        "RunSmart iOS: worktree:detached:tasks/session-log.md",
+        "RunSmart iOS: worktree:detached:tasks/todo.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/lessons.md",
@@ -1253,12 +1250,12 @@
           "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
+          "worktree:detached:tasks/lessons.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
@@ -1669,7 +1666,7 @@
         "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
         "blockerCount": 2,
         "blockers": [
-          "Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
+          "**Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
           "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
         ],
         "gtm": {
@@ -1686,7 +1683,7 @@
             "date": "2026-07-01",
             "status": "Planned, not implemented",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1695,7 +1692,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1704,7 +1701,7 @@
             "date": "2026-06-15",
             "status": "PENDING \u2014 email sent [DATE], awaiting response from api.feedback@garmin.com",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1713,7 +1710,7 @@
             "date": "2026-06-15",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1722,7 +1719,7 @@
             "date": "2026-06-15",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1731,7 +1728,7 @@
             "date": "2026-06-10",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1740,7 +1737,7 @@
             "date": "2026-05-12",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1749,7 +1746,7 @@
             "date": "2026-03-17",
             "status": "Draft",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1758,7 +1755,7 @@
             "date": "2026-02-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1767,7 +1764,7 @@
             "date": "2026-02-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1776,7 +1773,7 @@
             "date": "2026-02-15",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1785,7 +1782,7 @@
             "date": "2026-02-12",
             "status": "Validated in brainstorming session",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1794,20 +1791,20 @@
             "date": "2026-02-12",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           }
         ],
         "dirty": true,
         "dirtyCount": 8,
         "extraWorktrees": 0,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)",
-        "stale": true,
-        "freshness": "Stale",
-        "freshestDate": "2026-07-11",
-        "evidenceGap": true,
-        "evidenceDate": "2026-07-03",
+        "branch": "fix/plan-eval-key-preflight...origin/fix/plan-eval-key-preflight",
+        "lastCommit": "2026-07-21 c7e4f57 fix(eval): make the plan-generator eval runnable locally and fail honestly",
+        "stale": false,
+        "freshness": "Fresh",
+        "freshestDate": "2026-07-21",
+        "evidenceGap": false,
+        "evidenceDate": "2026-07-21",
         "evidenceTests": [
           "13 tests",
           "36 tests"
@@ -1845,12 +1842,12 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "fix/plan-eval-key-preflight"
         },
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-03 \u2014 see Last Completed Story for today's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
-        "parsedLastUpdated": "2026-07-11",
+        "parsedLastValidation": "2026-07-21 \u2014 live plan-generator eval 12/12, judgePassRate 1.0 (threshold 0.85), 0 fallbacks, 0 critical failures, `report.json` regenerated; preflight guard verified by running with no key available; `npx tsc --noEmit` exit 0; `npx eslint evals/plan-generator/` exit 0. 2026-07-03 \u2014 see Last Completed Story for that day's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
+        "parsedLastUpdated": "2026-07-21",
         "parsedActiveStory": "None \u2014 Garmin relaunch work (commercial app filing, real-device screenshots, reconnect flow) stays paused. See Nadav Builder OS vault `05-Decisions/2026-07-02-priority-reset-resumely-primary.md` and Agentic OS `DECISIONS.md`"
       },
       {
@@ -1860,7 +1857,7 @@
         "nextAction": "WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty",
         "blockerCount": 2,
         "blockers": [
-          "Gate A remains closed by decision",
+          "**Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
           "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
         ],
         "gtm": {
@@ -1877,7 +1874,7 @@
             "date": "2026-06-29",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "claude/wp49-anonymous-carryover",
+            "sourceBranch": "fix/resume-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -1965,25 +1962,21 @@
         "dirty": true,
         "dirtyCount": 10,
         "extraWorktrees": 1,
-        "branch": "claude/wp49-anonymous-carryover...origin/claude/wp49-anonymous-carryover",
-        "lastCommit": "2026-07-20 4121cf8 tasks: record WP-49 hold clearance and validation evidence",
+        "branch": "fix/resume-eval-key-preflight...origin/fix/resume-eval-key-preflight",
+        "lastCommit": "2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly",
         "stale": false,
         "freshness": "Fresh",
-        "freshestDate": "2026-07-20",
-        "evidenceGap": true,
-        "evidenceDate": "2026-07-03",
+        "freshestDate": "2026-07-21",
+        "evidenceGap": false,
+        "evidenceDate": "2026-07-21",
         "evidenceTests": [],
         "buildStatus": null,
         "qaDocs": [],
         "sourceFiles": [
           "tasks/MEMORY.md",
-          "tasks/todo.md",
           "tasks/progress.md",
-          "tasks/session-log.md",
           "docs/agent-os/project-context.md",
           "primary:tasks/progress.md",
-          "primary:tasks/todo.md",
-          "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
@@ -2005,11 +1998,11 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/wp49-anonymous-carryover"
+          "branch": "fix/resume-eval-key-preflight"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
+        "parsedLastValidation": "2026-07-21 \u2014 live resume-optimizer eval 7/7, judgePassRate 1.0, 0 critical failures, `report.json` regenerated; preflight guard verified by running with no key available; `npm run lint` 0 errors / 18 pre-existing warnings; `npx eslint scripts/run-eval-resume.mjs` exit 0. Noted in passing: `ci.yml` runs `test:contracts` and `bench-agent` with `|| true`, so neither can fail the build, and it never runs `tsc` \u2014 see Risks. Earlier \u2014 WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
         "parsedLastUpdated": "2026-07-03",
         "parsedActiveStory": "WP-29 S5 \u2014 carry anonymous check results through signup into the new account/dashboard"
       },
@@ -2017,9 +2010,11 @@
         "id": "agentic-os",
         "name": "Agentic OS",
         "state": "Daily portfolio operations and evidence reconciliation",
-        "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
-        "blockerCount": 0,
-        "blockers": [],
+        "nextAction": "Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
+        "blockerCount": 1,
+        "blockers": [
+          "Both product eval harnesses are red (RunSmart >=11 gated runs, ResumeBuilder >=7). Releases that depend on eval evidence have no working gate until these are fixed"
+        ],
         "gtm": {
           "exists": false,
           "path": null,
@@ -2120,10 +2115,10 @@
           }
         ],
         "dirty": true,
-        "dirtyCount": 18,
+        "dirtyCount": 1,
         "extraWorktrees": 2,
-        "branch": "main...origin/main [ahead 2]",
-        "lastCommit": "2026-07-21 7364d8c2 dashboard: refresh July 21 founder morning state",
+        "branch": "main...origin/main",
+        "lastCommit": "2026-07-21 981f96d0 ci-health: both product evals green \u2014 first pass in either workflow's history",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-21",
@@ -2161,7 +2156,7 @@
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "parsedLastValidation": "2026-07-21 \u2014 `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff",
+        "parsedLastValidation": "2026-07-21 \u2014 `./agentic-os test` 94 passed (19 new: CI streak counting, out-of-order runs, PR-noise filtering, truncated streaks, three fail-open paths, spend-split math). `./agentic-os refresh` run end-to-end; CI health and spend split both printed from live data",
         "parsedLastUpdated": "2026-07-21",
         "parsedActiveStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0"
       }
@@ -2254,12 +2249,12 @@
           "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
           "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/progress.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/todo.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md",
-          "worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
+          "worktree:detached:tasks/lessons.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
           "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
@@ -2401,10 +2396,10 @@
         "project": "RunSmart Web",
         "role": "Backend Support Engineer",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
+        "branch": "fix/plan-eval-key-preflight...origin/fix/plan-eval-key-preflight",
         "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-        "sourceConfidence": "Medium",
-        "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "sourceConfidence": "High",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -2434,26 +2429,22 @@
           "docs/plans/2026-02-12-runsmart-product-strategy-design.md",
           "docs/plans/2026-02-12-runsmart-execution-plan.md"
         ],
-        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Next action: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope. Known blockers: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production; the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Backend Support Engineer for RunSmart Web. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Next action: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope. Known blockers: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production; the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "resumebuilder-ai",
         "project": "ResumeBuilder AI (Web)",
         "role": "Backend Rollout Engineer",
         "repoState": "Dirty",
-        "branch": "claude/wp49-anonymous-carryover...origin/claude/wp49-anonymous-carryover",
+        "branch": "fix/resume-eval-key-preflight...origin/fix/resume-eval-key-preflight",
         "nextAction": "WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty",
         "sourceConfidence": "High",
-        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
+        "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
           "tasks/MEMORY.md",
-          "tasks/todo.md",
           "tasks/progress.md",
-          "tasks/session-log.md",
           "docs/agent-os/project-context.md",
           "primary:tasks/progress.md",
-          "primary:tasks/todo.md",
-          "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
@@ -2473,15 +2464,15 @@
           "worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md",
           "worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md"
         ],
-        "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next. Next action: WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty. Known blockers: Gate A remains closed by decision; do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, primary:tasks/progress.md. Current state: WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next. Next action: WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty. Known blockers: **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision; do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "agentic-os",
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main [ahead 2]",
-        "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
+        "branch": "main...origin/main",
+        "nextAction": "Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
         "evidence": [
@@ -2507,7 +2498,7 @@
           "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
           "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
-        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Daily portfolio operations and evidence reconciliation. Next action: In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization. Known blockers: none listed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Daily portfolio operations and evidence reconciliation. Next action: Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4. Known blockers: Both product eval harnesses are red (RunSmart >=11 gated runs, ResumeBuilder >=7). Releases that depend on eval evidence have no working gate until these are fixed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       }
     ],
     "executiveOverview": {
@@ -2523,13 +2514,13 @@
         "Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)",
         "Resumely iOS: missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list",
         "Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap",
-        "RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
+        "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
-        "ResumeBuilder AI (Web): Gate A remains closed by decision",
+        "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
         "ResumeBuilder AI (Web): do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
       ],
       "openDecisionCount": 4,
-      "blockedProjectCount": 4,
+      "blockedProjectCount": 5,
       "dirtyProjectCount": 5,
       "dirtyProjects": [
         "RunSmart iOS",
@@ -2542,17 +2533,14 @@
         "RunSmart iOS",
         "Resumely iOS",
         "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "ResumeBuilder AI (Web)",
+        "Agentic OS"
       ],
-      "staleProjectCount": 1,
-      "staleProjects": [
-        "RunSmart Web"
-      ],
-      "evidenceGapCount": 3,
+      "staleProjectCount": 0,
+      "staleProjects": [],
+      "evidenceGapCount": 1,
       "evidenceGapProjects": [
-        "Resumely iOS",
-        "RunSmart Web",
-        "ResumeBuilder AI (Web)"
+        "Resumely iOS"
       ],
       "lowTrustProjects": [],
       "financialSnapshot": "Needs Data - no revenue/cost instrumentation wired.",
@@ -2736,7 +2724,7 @@
             "date": "2026-07-01",
             "status": "Planned, not implemented",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -2745,7 +2733,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -2754,7 +2742,7 @@
             "date": "2026-06-15",
             "status": "PENDING \u2014 email sent [DATE], awaiting response from api.feedback@garmin.com",
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -2763,7 +2751,7 @@
             "date": "2026-06-15",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -2772,7 +2760,7 @@
             "date": "2026-06-15",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -2781,7 +2769,7 @@
             "date": "2026-06-10",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "main",
+            "sourceBranch": "fix/plan-eval-key-preflight",
             "source": "primary"
           }
         ]
@@ -2798,7 +2786,7 @@
             "date": "2026-06-29",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "claude/wp49-anonymous-carryover",
+            "sourceBranch": "fix/resume-eval-key-preflight",
             "source": "primary"
           },
           {
@@ -5345,25 +5333,21 @@
     },
     "repoIntegrity": {
       "branch": "main",
-      "uncommitted": 4,
+      "uncommitted": 0,
       "extraWorktrees": 2,
-      "ahead": 2,
+      "ahead": 0,
       "behind": 0,
       "synced": false,
       "notes": [
-        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "2 local commit(s) not pushed to the upstream branch."
+        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
     "portfolioTrust": {
       "level": "refresh_required",
       "label": "Refresh required",
       "reasons": [
-        "To clear this: commit 4 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-        "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-        "2 local commit(s) not pushed to the upstream branch."
+        "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
@@ -5373,7 +5357,7 @@
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-21 14:30",
+      "generatedAt": "2026-07-21 20:04",
       "apps": [
         {
           "projectId": 171597,
@@ -5408,7 +5392,7 @@
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 73,
+          "liveUsers7d": 79,
           "source": "api"
         }
       ],
@@ -5435,17 +5419,17 @@
     },
     "contradictions": [],
     "dailyRunResult": {
-      "lastCommand": "./agentic-os refresh",
-      "lastRunAt": "2026-07-21 14:30",
-      "checksStatus": "Pending verify",
-      "checksCompletedAt": "",
+      "lastCommand": "./agentic-os morning",
+      "lastRunAt": "2026-07-21 20:04",
+      "checksStatus": "Passed",
+      "checksCompletedAt": "2026-07-21 20:04",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
       "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
       "targetBranch": "HEAD (no branch)",
-      "readyForNextSession": false,
+      "readyForNextSession": true,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {

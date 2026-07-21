@@ -16,17 +16,15 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (6) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104) |
 | Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (7) | Fresh | High | tasks/progress.md | 2026-07-21 fab1437 Merge pull request #115 from nadavyigal/claude/resumely-1-4-4-version-bump |
-| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Stale | Medium | tasks/progress.md | 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117) |
-| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (10) | Fresh | High | tasks/progress.md | 2026-07-20 4121cf8 tasks: record WP-49 hold clearance and validation evidence |
-| Agentic OS | Daily portfolio operations and evidence reconciliation | In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization | 0 | Yes (18) | Fresh | High | tasks/progress.md | 2026-07-21 7364d8c2 dashboard: refresh July 21 founder morning state |
+| RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-21 c7e4f57 fix(eval): make the plan-generator eval runnable locally and fail honestly |
+| ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (10) | Fresh | High | tasks/progress.md | 2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly |
+| Agentic OS | Daily portfolio operations and evidence reconciliation | Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4 | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-21 981f96d0 ci-health: both product evals green — first pass in either workflow's history |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
 - Resumely iOS: validated 2026-07-11, last commit 2026-07-21 fab1437 Merge pull request #115 from nadavyigal/claude/resumely-1-4-4-version-bump
-- RunSmart Web: validated 2026-07-03, last commit 2026-07-10 60a80db agents: refresh subagent model IDs to Sonnet 5 (#117)
-- ResumeBuilder AI (Web): validated 2026-07-03, last commit 2026-07-20 4121cf8 tasks: record WP-49 hold clearance and validation evidence
 
 ## Drift Warnings
 
@@ -59,7 +57,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ios-signin-wall-95dcb4, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-1-0-9-verification-f8e8a2 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on claude/runsmart-ftux-audit-240648, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-ftux-audit-240648 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] worktree on claude/1-1-1-submitted-for-review at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] worktree on detached at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/runsmart-session-prompt-a6406d -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/docs-1.0.9-activation-read at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /runsmart-1.0.9-activation-read -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on codex/runsmart-adaptive-preview at /Users/nadavyigal/Documents/Projects /runsmart-adaptive-preview -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
@@ -95,12 +93,11 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] pr-83-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-83-review and open a PR, or consciously discard it.
 - [ResumeBuilder AI (Web)] worktree on codex/fix-web-export-observability at /Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai--export-observability -> Land or discard this worktree, then `git worktree remove` it.
 - [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] main has 2 unpushed commit(s) -> Sync the default branch first: pull, then push.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] claude/activation-autopsy-2026-07-19: unmerged commits, remote branch deleted, last commit 2026-07-19 -> Push claude/activation-autopsy-2026-07-19 and open a PR, or consciously discard it.
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5 -> Land or discard this worktree, then `git worktree remove` it.
 - [Agentic OS] worktree on claude/resumely-session-70fcda, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/resumely-session-70fcda -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 18 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 6 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -156,8 +153,9 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart iOS: None — waiting on Apple App Review turnaround
 - Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)
 - Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
-- RunSmart Web: Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
+- RunSmart Web: **Founder action required** — the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
 - RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard
+- ResumeBuilder AI (Web): **Founder action required** — the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision
 
 ## Agent Queue
 
@@ -196,12 +194,8 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - ResumeBuilder AI (Web): primary:tasks/MEMORY.md
 - ResumeBuilder AI (Web): primary:tasks/lessons.md
 - ResumeBuilder AI (Web): primary:tasks/progress.md
-- ResumeBuilder AI (Web): primary:tasks/session-log.md
-- ResumeBuilder AI (Web): primary:tasks/todo.md
 - ResumeBuilder AI (Web): tasks/MEMORY.md
 - ResumeBuilder AI (Web): tasks/progress.md
-- ResumeBuilder AI (Web): tasks/session-log.md
-- ResumeBuilder AI (Web): tasks/todo.md
 - ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md
 - ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md
 - ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md
@@ -331,12 +325,6 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart iOS: tasks/progress.md
 - RunSmart iOS: tasks/session-log.md
 - RunSmart iOS: tasks/todo.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/ERRORS.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/MEMORY.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/lessons.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/progress.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/session-log.md
-- RunSmart iOS: worktree:claude/1-1-1-submitted-for-review:tasks/todo.md
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md
 - RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md
@@ -397,6 +385,12 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/progress.md
 - RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/session-log.md
 - RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/todo.md
+- RunSmart iOS: worktree:detached:tasks/ERRORS.md
+- RunSmart iOS: worktree:detached:tasks/MEMORY.md
+- RunSmart iOS: worktree:detached:tasks/lessons.md
+- RunSmart iOS: worktree:detached:tasks/progress.md
+- RunSmart iOS: worktree:detached:tasks/session-log.md
+- RunSmart iOS: worktree:detached:tasks/todo.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/lessons.md
