@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-21 04:53 UTC",
+  "generatedAt": "2026-07-21 11:30 UTC",
   "sources": {
-    "status": "2026-07-21 07:53",
-    "usage": "2026-07-10T11:01:59.711345+00:00",
+    "status": "2026-07-21 14:30",
+    "usage": "2026-07-21T11:30:58.729575+00:00",
     "manual": "2026-07-21",
     "manualOldestVerified": "2026-07-15"
   },
@@ -12,7 +12,8 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "To clear this: commit 4 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
       "2 local commit(s) not pushed to the upstream branch."
     ],
@@ -20,7 +21,7 @@
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (8), Resumely iOS (7)."
+      "Extra product worktrees retained for review: RunSmart iOS (9), Resumely iOS (8)."
     ]
   },
   "consistencyIssues": [],
@@ -30,21 +31,21 @@
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "1.1.0 (24) APPROVED and LIVE on the App Store (2026-07-20)",
+      "state": "Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21)",
       "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-15",
+      "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 6
     },
     {
       "name": "Resumely iOS",
-      "state": "1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20)",
+      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
       "dirty": true,
-      "dirtyCount": 6
+      "dirtyCount": 7
     },
     {
       "name": "RunSmart Web",
@@ -71,7 +72,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 18
     }
   ],
   "numbers": {
@@ -299,7 +300,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-21 07:53",
+      "lastRan": "2026-07-21 14:30",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -348,7 +349,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-10T11:01:59.711345+00:00",
+      "lastRan": "2026-07-21T11:30:58.729575+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ],
@@ -680,44 +681,45 @@
     ],
     "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
     "spendByFamily": {
-      "opus": {
-        "cost_usd": 2356.95,
-        "sessions": 44
-      },
       "sonnet": {
-        "cost_usd": 2009.22,
-        "sessions": 125
+        "cost_usd": 2103.76,
+        "sessions": 86
+      },
+      "opus": {
+        "cost_usd": 1786.08,
+        "sessions": 43
       },
       "unknown": {
         "cost_usd": 0.0,
-        "sessions": 12
+        "sessions": 25
       }
     },
     "spendByTool": {
       "claude-code": {
-        "cost_usd": 4366.16,
-        "sessions": 169
+        "cost_usd": 3889.84,
+        "sessions": 129
       },
       "codex": {
         "cost_usd": 0.0,
-        "sessions": 12
+        "sessions": 25
       }
     },
     "spendWindowDays": 30,
-    "spendGeneratedAt": "2026-07-10T11:01:59.711345+00:00"
+    "spendGeneratedAt": "2026-07-21T11:30:58.729575+00:00"
   },
   "usage": {
-    "generatedAt": "2026-07-10T11:01:59.711345+00:00",
+    "generatedAt": "2026-07-21T11:30:58.729575+00:00",
     "windowDays": 30,
-    "totalCostUsd": 4366.16,
+    "totalCostUsd": 3889.84,
     "byProject": {
-      "Builder OS Vault": 2090.41,
-      "Agentic OS": 1162.39,
-      "ResumeBuilder": 875.6,
-      "RunSmart": 192.53,
+      "Builder OS Vault": 2584.25,
+      "ResumeBuilder": 553.25,
+      "RunSmart": 480.45,
+      "Agentic OS": 216.32,
       "Michal": 20.59,
+      "hungry-thompson-3aa380": 17.55,
       "Remotion - video": 17.43,
-      "hungry-thompson-3aa380": 7.23
+      "nadavyigal": 0.0
     },
     "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver."
   }
