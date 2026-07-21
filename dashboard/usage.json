@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-21T17:04:45.296074+00:00",
+  "generatedAt": "2026-07-21T18:56:04.550349+00:00",
   "windowDays": 30,
-  "totalCostUsd": 3912.14,
-  "totalCacheReadTokens": 6851698184,
-  "sessionCount": 156,
+  "totalCostUsd": 3981.45,
+  "totalCacheReadTokens": 6946568672,
+  "sessionCount": 159,
   "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver.",
   "byTool": {
     "claude-code": {
-      "cost_usd": 3912.14,
-      "input_tokens": 6694561,
-      "output_tokens": 27492744,
-      "cache_read_tokens": 6851698184,
-      "sessions": 131
+      "cost_usd": 3981.45,
+      "input_tokens": 6695588,
+      "output_tokens": 27981936,
+      "cache_read_tokens": 6946568672,
+      "sessions": 134
     },
     "codex": {
       "cost_usd": 0.0,
@@ -23,25 +23,25 @@
   },
   "byProject": {
     "Builder OS Vault": {
-      "cost_usd": 2606.55,
-      "input_tokens": 5172238,
-      "output_tokens": 18638684,
-      "cache_read_tokens": 4605194846,
-      "sessions": 76
+      "cost_usd": 2651.72,
+      "input_tokens": 5172827,
+      "output_tokens": 18921305,
+      "cache_read_tokens": 4672077024,
+      "sessions": 77
     },
     "ResumeBuilder": {
-      "cost_usd": 553.25,
-      "input_tokens": 432832,
-      "output_tokens": 3568661,
-      "cache_read_tokens": 1053513618,
-      "sessions": 23
+      "cost_usd": 565.78,
+      "input_tokens": 433057,
+      "output_tokens": 3666719,
+      "cache_read_tokens": 1068663867,
+      "sessions": 24
     },
     "RunSmart": {
-      "cost_usd": 480.45,
-      "input_tokens": 565237,
-      "output_tokens": 2843765,
-      "cache_read_tokens": 806623348,
-      "sessions": 28
+      "cost_usd": 492.06,
+      "input_tokens": 565450,
+      "output_tokens": 2952278,
+      "cache_read_tokens": 819461409,
+      "sessions": 29
     },
     "Agentic OS": {
       "cost_usd": 216.32,
@@ -88,11 +88,11 @@
       "sessions": 86
     },
     "opus": {
-      "cost_usd": 1808.38,
-      "input_tokens": 3204541,
-      "output_tokens": 12356547,
-      "cache_read_tokens": 2757018393,
-      "sessions": 45
+      "cost_usd": 1877.69,
+      "input_tokens": 3205568,
+      "output_tokens": 12845739,
+      "cache_read_tokens": 2851888881,
+      "sessions": 48
     },
     "unknown": {
       "cost_usd": 0.0,
@@ -131,6 +131,13 @@
       "cache_read_tokens": 374413422,
       "sessions": 7
     },
+    "2026-07-21": {
+      "cost_usd": 222.95,
+      "input_tokens": 5546,
+      "output_tokens": 1621927,
+      "cache_read_tokens": 291778287,
+      "sessions": 9
+    },
     "2026-06-25": {
       "cost_usd": 212.89,
       "input_tokens": 252506,
@@ -158,13 +165,6 @@
       "output_tokens": 843534,
       "cache_read_tokens": 264589263,
       "sessions": 3
-    },
-    "2026-07-21": {
-      "cost_usd": 153.64,
-      "input_tokens": 4519,
-      "output_tokens": 1132735,
-      "cache_read_tokens": 196907799,
-      "sessions": 6
     },
     "2026-07-20": {
       "cost_usd": 151.2,

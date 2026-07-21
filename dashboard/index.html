@@ -589,7 +589,7 @@
   "generated": "2026-07-21",
   "fallbackStatus": {
     "summary": {
-      "overallStatus": "RunSmart iOS \u2014 Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "overallStatus": "RunSmart iOS \u2014 Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "bestNextAction": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "mainBlockers": [
         "RunSmart iOS: None \u2014 waiting on Apple App Review turnaround",
@@ -621,7 +621,7 @@
       "later": [
         "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
         "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
-        "RunSmart iOS: 30 saved plan(s) \u2014 latest \"Clean-install telemetry integrity repair\" (2026-07-21). See Saved Plans.",
+        "RunSmart iOS: 27 saved plan(s) \u2014 latest \"RunSmart iOS Activation Cliff: Evidence and Fix Plan\" (2026-07-19). See Saved Plans.",
         "Resumely iOS: 25 saved plan(s) \u2014 latest \"Resumely Activation Cliff: Evidence and Fix Plan\" (2026-07-19). See Saved Plans.",
         "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
         "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
@@ -638,8 +638,8 @@
       ]
     },
     "runCenter": {
-      "lastRefresh": "2026-07-21 20:04",
-      "command": "./agentic-os morning",
+      "lastRefresh": "2026-07-21 21:55",
+      "command": "./agentic-os refresh",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "sourcesRead": [
         "Agentic OS: primary:tasks/ERRORS.md",
@@ -647,9 +647,6 @@
         "Agentic OS: primary:tasks/progress.md",
         "Agentic OS: tasks/MEMORY.md",
         "Agentic OS: tasks/progress.md",
-        "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
-        "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
-        "Agentic OS: worktree:claude/resumely-session-70fcda:tasks/progress.md",
         "Agentic OS: worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
         "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
         "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
@@ -664,27 +661,23 @@
         "Agentic OS: worktree:detached:tasks/MEMORY.md",
         "Agentic OS: worktree:detached:tasks/progress.md",
         "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
+        "ResumeBuilder AI (Web): .agent-os/distribution/weekly-plan.md",
         "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
+        "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
         "ResumeBuilder AI (Web): docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md",
+        "ResumeBuilder AI (Web): docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
         "ResumeBuilder AI (Web): primary:tasks/ERRORS.md",
         "ResumeBuilder AI (Web): primary:tasks/MEMORY.md",
         "ResumeBuilder AI (Web): primary:tasks/lessons.md",
         "ResumeBuilder AI (Web): primary:tasks/progress.md",
         "ResumeBuilder AI (Web): tasks/MEMORY.md",
         "ResumeBuilder AI (Web): tasks/progress.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:tasks/ERRORS.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:tasks/MEMORY.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:tasks/lessons.md",
-        "ResumeBuilder AI (Web): worktree:codex/fix-web-export-observability:tasks/progress.md",
+        "Resumely iOS: docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "Resumely iOS: docs/product/current-product-state.md",
         "Resumely iOS: docs/product/product-vision.md",
         "Resumely iOS: docs/specs/README.md",
@@ -699,54 +692,28 @@
         "Resumely iOS: tasks/progress.md",
         "Resumely iOS: tasks/session-log.md",
         "Resumely iOS: tasks/todo.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:tasks/MEMORY.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:tasks/lessons.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:tasks/progress.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:tasks/session-log.md",
-        "Resumely iOS: worktree:claude/release-b-story-9:tasks/todo.md",
-        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
-        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
-        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
-        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
-        "Resumely iOS: worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:tasks/MEMORY.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:tasks/lessons.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:tasks/progress.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:tasks/session-log.md",
-        "Resumely iOS: worktree:claude/resumely-1-4-4-version-bump:tasks/todo.md",
-        "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
-        "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
-        "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
-        "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
-        "Resumely iOS: worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
-        "Resumely iOS: worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
         "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+        "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
         "Resumely iOS: worktree:codex/wp46-story-10:tasks/MEMORY.md",
         "Resumely iOS: worktree:codex/wp46-story-10:tasks/lessons.md",
         "Resumely iOS: worktree:codex/wp46-story-10:tasks/progress.md",
@@ -757,11 +724,6 @@
         "Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md",
         "Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md",
         "Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md",
-        "Resumely iOS: worktree:codex/wp46-story-13:tasks/MEMORY.md",
-        "Resumely iOS: worktree:codex/wp46-story-13:tasks/lessons.md",
-        "Resumely iOS: worktree:codex/wp46-story-13:tasks/progress.md",
-        "Resumely iOS: worktree:codex/wp46-story-13:tasks/session-log.md",
-        "Resumely iOS: worktree:codex/wp46-story-13:tasks/todo.md",
         "RunSmart Web: docs/agent-os/project-context.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
         "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -790,6 +752,7 @@
         "RunSmart Web: tasks/session-log.md",
         "RunSmart Web: tasks/todo.md",
         "RunSmart iOS: .agent-os/distribution/gtm-plan.md",
+        "RunSmart iOS: docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "RunSmart iOS: docs/specs/README.md",
         "RunSmart iOS: primary:tasks/ERRORS.md",
         "RunSmart iOS: primary:tasks/MEMORY.md",
@@ -801,72 +764,32 @@
         "RunSmart iOS: tasks/progress.md",
         "RunSmart iOS: tasks/session-log.md",
         "RunSmart iOS: tasks/todo.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
-        "RunSmart iOS: worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/lessons.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/progress.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/session-log.md",
-        "RunSmart iOS: worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/todo.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
-        "RunSmart iOS: worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
-        "RunSmart iOS: worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:.agent-os/distribution/gtm-plan.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:.agent-os/distribution/weekly-plan.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-baseline-audit.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-fix-plan.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/demo-mode-simulator-recording.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/e5-adaptive-flex-week.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/e7-garmin-wearable-depth.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/post-submission-ux-redesign-1.0.1.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/specs/wp25-garmin-track.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/lessons.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/progress.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/session-log.md",
-        "RunSmart iOS: worktree:codex/weekly-release-cadence:tasks/todo.md",
-        "RunSmart iOS: worktree:detached:tasks/ERRORS.md",
-        "RunSmart iOS: worktree:detached:tasks/MEMORY.md",
-        "RunSmart iOS: worktree:detached:tasks/lessons.md",
-        "RunSmart iOS: worktree:detached:tasks/progress.md",
-        "RunSmart iOS: worktree:detached:tasks/session-log.md",
-        "RunSmart iOS: worktree:detached:tasks/todo.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+        "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/ERRORS.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/MEMORY.md",
         "RunSmart iOS: worktree:feat/adaptive-coach-phase1:tasks/lessons.md",
@@ -917,22 +840,13 @@
         },
         "plans": [
           {
-            "title": "Clean-install telemetry integrity repair",
-            "path": "docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-            "date": "2026-07-21",
-            "status": "Implemented and verified for 1.1.2 (26) release",
-            "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
-          },
-          {
             "title": "RunSmart iOS Activation Cliff: Evidence and Fix Plan",
             "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
+            "sourceBranch": "main",
+            "source": "primary"
           },
           {
             "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
@@ -940,25 +854,7 @@
             "date": "2026-07-18",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
-          },
-          {
-            "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
-            "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
-            "date": "2026-07-16",
-            "status": "Implemented; review-ready with Simulator XCTest runner caveat",
-            "kind": "spec",
-            "sourceBranch": "codex/runsmart-adaptive-preview",
-            "source": "worktree"
-          },
-          {
-            "title": "FTUX Upgrade Plan \u2014 RunSmart iOS",
-            "path": "docs/plans/2026-07-13-ftux-upgrade-plan.md",
-            "date": "2026-07-13",
-            "status": null,
-            "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -967,7 +863,7 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -976,7 +872,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -985,7 +881,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -994,7 +890,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1003,7 +899,7 @@
             "date": "2026-06-08",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1012,7 +908,7 @@
             "date": "2026-06-08",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1021,7 +917,7 @@
             "date": "2026-06-03",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1030,7 +926,7 @@
             "date": "2026-06-03",
             "status": "Submitted for Review",
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1039,7 +935,7 @@
             "date": "2026-06-01",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1048,7 +944,7 @@
             "date": "2026-06-01",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1057,7 +953,7 @@
             "date": "2026-05-31",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1066,7 +962,7 @@
             "date": "2026-05-28",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1075,7 +971,7 @@
             "date": "2026-05-27",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1084,7 +980,7 @@
             "date": "2026-05-26",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1093,7 +989,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1102,7 +998,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1111,7 +1007,7 @@
             "date": "2026-05-24",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1120,7 +1016,7 @@
             "date": "2026-05-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1129,7 +1025,7 @@
             "date": "2026-05-17",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1138,7 +1034,7 @@
             "date": "2026-05-17",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1147,7 +1043,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1156,7 +1052,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1165,7 +1061,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1174,7 +1070,7 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -1183,13 +1079,13 @@
             "date": null,
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           }
         ],
         "dirty": true,
         "dirtyCount": 6,
-        "extraWorktrees": 9,
+        "extraWorktrees": 3,
         "branch": "main...origin/main [behind 8]",
         "lastCommit": "2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104)",
         "stale": false,
@@ -1214,12 +1110,6 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/weekly-release-cadence:tasks/progress.md",
-          "worktree:codex/weekly-release-cadence:tasks/todo.md",
-          "worktree:codex/weekly-release-cadence:tasks/session-log.md",
-          "worktree:codex/weekly-release-cadence:tasks/MEMORY.md",
-          "worktree:codex/weekly-release-cadence:tasks/ERRORS.md",
-          "worktree:codex/weekly-release-cadence:tasks/lessons.md",
           "worktree:feat/adaptive-coach-phase1:tasks/progress.md",
           "worktree:feat/adaptive-coach-phase1:tasks/todo.md",
           "worktree:feat/adaptive-coach-phase1:tasks/session-log.md",
@@ -1238,67 +1128,34 @@
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/progress.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/todo.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/session-log.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/MEMORY.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/ERRORS.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/lessons.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/todo.md",
-          "worktree:detached:tasks/session-log.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/ERRORS.md",
-          "worktree:detached:tasks/lessons.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-          "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-fix-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-baseline-audit.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-          "worktree:codex/weekly-release-cadence:.agent-os/distribution/gtm-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/post-submission-ux-redesign-1.0.1.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/e5-adaptive-flex-week.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/wp25-garmin-track.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/e7-garmin-wearable-depth.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/demo-mode-simulator-recording.md",
-          "worktree:codex/weekly-release-cadence:.agent-os/distribution/weekly-plan.md"
+          "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
           "kind": "primary",
@@ -1313,7 +1170,7 @@
       {
         "id": "resumebuilder-ios",
         "name": "Resumely iOS",
-        "state": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+        "state": "1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20)",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "blockerCount": 3,
         "blockers": [
@@ -1335,8 +1192,8 @@
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "claude/resumely-1-4-4-version-bump",
-            "source": "worktree"
+            "sourceBranch": "claude/activation-milestone-repair-963fe7",
+            "source": "primary"
           },
           {
             "title": "Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)",
@@ -1353,7 +1210,7 @@
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "detached",
+            "sourceBranch": "claude/activation-milestone-repair-963fe7",
             "source": "primary"
           },
           {
@@ -1362,7 +1219,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1371,7 +1228,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1380,7 +1237,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1389,7 +1246,7 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1398,7 +1255,7 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1407,7 +1264,7 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1416,7 +1273,7 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1425,7 +1282,7 @@
             "date": "2026-06-18",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1434,7 +1291,7 @@
             "date": "2026-06-18",
             "status": "App Store live; build 5 in review",
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1443,7 +1300,7 @@
             "date": "2026-06-12",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1452,7 +1309,7 @@
             "date": "2026-06-12",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1461,7 +1318,7 @@
             "date": "2026-06-12",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1470,7 +1327,7 @@
             "date": "2026-06-12",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1479,7 +1336,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1488,7 +1345,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1497,7 +1354,7 @@
             "date": "2026-06-11",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1506,7 +1363,7 @@
             "date": "2026-06-05",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1515,7 +1372,7 @@
             "date": "2026-06-05",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1524,7 +1381,7 @@
             "date": "2026-06-05",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1533,7 +1390,7 @@
             "date": "2026-06-03",
             "status": "Submitted for Review",
             "kind": "plan",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1542,7 +1399,7 @@
             "date": "2026-05-31",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -1551,15 +1408,15 @@
             "date": null,
             "status": null,
             "kind": "spec",
-            "sourceBranch": "detached",
+            "sourceBranch": "claude/activation-milestone-repair-963fe7",
             "source": "primary"
           }
         ],
         "dirty": true,
         "dirtyCount": 7,
-        "extraWorktrees": 8,
-        "branch": "HEAD (no branch)",
-        "lastCommit": "2026-07-21 fab1437 Merge pull request #115 from nadavyigal/claude/resumely-1-4-4-version-bump",
+        "extraWorktrees": 2,
+        "branch": "claude/activation-milestone-repair-963fe7...origin/claude/activation-milestone-repair-963fe7",
+        "lastCommit": "2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51)",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-21",
@@ -1583,16 +1440,6 @@
           "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
           "worktree:codex/wp46-story-10:tasks/progress.md",
           "worktree:codex/wp46-story-10:tasks/todo.md",
           "worktree:codex/wp46-story-10:tasks/session-log.md",
@@ -1603,61 +1450,41 @@
           "worktree:codex/wp46-story-11:tasks/session-log.md",
           "worktree:codex/wp46-story-11:tasks/MEMORY.md",
           "worktree:codex/wp46-story-11:tasks/lessons.md",
-          "worktree:codex/wp46-story-13:tasks/progress.md",
-          "worktree:codex/wp46-story-13:tasks/todo.md",
-          "worktree:codex/wp46-story-13:tasks/session-log.md",
-          "worktree:codex/wp46-story-13:tasks/MEMORY.md",
-          "worktree:codex/wp46-story-13:tasks/lessons.md",
-          "worktree:claude/release-b-story-9:tasks/progress.md",
-          "worktree:claude/release-b-story-9:tasks/todo.md",
-          "worktree:claude/release-b-story-9:tasks/session-log.md",
-          "worktree:claude/release-b-story-9:tasks/MEMORY.md",
-          "worktree:claude/release-b-story-9:tasks/lessons.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/progress.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/todo.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/session-log.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/MEMORY.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/lessons.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
-          "worktree:claude/resumely-1-4-4-version-bump:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt 2.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+          "worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+          "worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+          "worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
         "taskSource": {
-          "kind": "worktree",
-          "branch": "claude/resumely-1-4-4-version-bump"
+          "kind": "primary",
+          "branch": "claude/activation-milestone-repair-963fe7"
         },
         "sourceConfidence": "High",
-        "preferredSource": "tasks/progress.md",
+        "preferredSource": "tasks/progress.md latest entry",
         "parsedLastValidation": "2026-07-11 \u2014 PostHog project `270848` funnel read completed (deferred verdict); Debug build last **SUCCEEDED** 2026-07-09 (`597bf9f` gitignore hygiene). Live-on-Store confirmed by founder 2026-07-11",
-        "parsedLastUpdated": "2026-07-21",
-        "parsedActiveStory": "None \u2014 WP-37 S4 handoff closed. PostHog funnel re-read attempted 2026-07-11; deferred to **2026-07-18** (7d) / **2026-07-25** (14d)"
+        "parsedLastUpdated": "2026-07-20",
+        "parsedActiveStory": null
       },
       {
         "id": "runsmart-web",
@@ -1883,8 +1710,8 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "ATS Per-Keyword In-Context Suggestions \u2014 Implementation Plan",
@@ -1892,8 +1719,8 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely \u2014 Growth + Pricing Design Spec",
@@ -1901,8 +1728,8 @@
             "date": "2026-06-07",
             "status": "Approved by founder",
             "kind": "spec",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 4: Ambassador Flow \u2014 \"I Got Hired\"",
@@ -1910,8 +1737,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 3: StoreKit Paywall \u2014 iOS IAP",
@@ -1919,8 +1746,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 2: Web ATS Tool \u2014 Dedicated SEO Page",
@@ -1928,8 +1755,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 1: ASO + Launch Assets",
@@ -1937,8 +1764,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "GTM Plan \u2014 ResumeBuilder iOS",
@@ -1946,8 +1773,8 @@
             "date": "2026-05-28",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "ResumeBuilder \u2014 Weekly Plan",
@@ -1955,13 +1782,13 @@
             "date": null,
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           }
         ],
         "dirty": true,
         "dirtyCount": 10,
-        "extraWorktrees": 1,
+        "extraWorktrees": 0,
         "branch": "fix/resume-eval-key-preflight...origin/fix/resume-eval-key-preflight",
         "lastCommit": "2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly",
         "stale": false,
@@ -1980,21 +1807,16 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/fix-web-export-observability:tasks/progress.md",
-          "worktree:codex/fix-web-export-observability:tasks/MEMORY.md",
-          "worktree:codex/fix-web-export-observability:tasks/ERRORS.md",
-          "worktree:codex/fix-web-export-observability:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
           "docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
-          "worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md",
-          "worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md"
+          "docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
+          "docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
+          "docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
+          ".agent-os/distribution/weekly-plan.md"
         ],
         "taskSource": {
           "kind": "primary",
@@ -2116,9 +1938,9 @@
         ],
         "dirty": true,
         "dirtyCount": 1,
-        "extraWorktrees": 2,
-        "branch": "main...origin/main",
-        "lastCommit": "2026-07-21 981f96d0 ci-health: both product evals green \u2014 first pass in either workflow's history",
+        "extraWorktrees": 1,
+        "branch": "docs/exd-023-apple-signin-verdict...origin/docs/exd-023-apple-signin-verdict",
+        "lastCommit": "2026-07-21 de8d8e75 WP-52a packet; WP-51 fix landed and invalidates every prior activation figure",
         "stale": false,
         "freshness": "Fresh",
         "freshestDate": "2026-07-21",
@@ -2136,9 +1958,6 @@
           "worktree:detached:tasks/progress.md",
           "worktree:detached:tasks/MEMORY.md",
           "worktree:detached:tasks/ERRORS.md",
-          "worktree:claude/resumely-session-70fcda:tasks/progress.md",
-          "worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
-          "worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
           "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
           "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
           "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
@@ -2152,7 +1971,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "docs/exd-023-apple-signin-verdict"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -2213,12 +2032,6 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/weekly-release-cadence:tasks/progress.md",
-          "worktree:codex/weekly-release-cadence:tasks/todo.md",
-          "worktree:codex/weekly-release-cadence:tasks/session-log.md",
-          "worktree:codex/weekly-release-cadence:tasks/MEMORY.md",
-          "worktree:codex/weekly-release-cadence:tasks/ERRORS.md",
-          "worktree:codex/weekly-release-cadence:tasks/lessons.md",
           "worktree:feat/adaptive-coach-phase1:tasks/progress.md",
           "worktree:feat/adaptive-coach-phase1:tasks/todo.md",
           "worktree:feat/adaptive-coach-phase1:tasks/session-log.md",
@@ -2237,67 +2050,34 @@
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/progress.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/todo.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/session-log.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/MEMORY.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/ERRORS.md",
-          "worktree:claude/runsmart-ios-signin-wall-95dcb4:tasks/lessons.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/progress.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/todo.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/session-log.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/MEMORY.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/ERRORS.md",
-          "worktree:claude/runsmart-ftux-audit-240648:tasks/lessons.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/todo.md",
-          "worktree:detached:tasks/session-log.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/ERRORS.md",
-          "worktree:detached:tasks/lessons.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/progress.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/todo.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/session-log.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/MEMORY.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/ERRORS.md",
-          "worktree:codex/docs-1.0.9-activation-read:tasks/lessons.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/progress.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/todo.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/session-log.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/MEMORY.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/ERRORS.md",
-          "worktree:codex/runsmart-adaptive-preview:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-          "worktree:codex/runsmart-adaptive-preview:docs/specs/2026-07-16-runsmart-adaptive-preview.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-fix-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/plans/2026-06-11-code-review-baseline-audit.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
-          "worktree:codex/weekly-release-cadence:.agent-os/distribution/gtm-plan.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/post-submission-ux-redesign-1.0.1.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/e5-adaptive-flex-week.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
-          "worktree:codex/weekly-release-cadence:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/wp25-garmin-track.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/e7-garmin-wearable-depth.md",
-          "worktree:codex/weekly-release-cadence:docs/specs/demo-mode-simulator-recording.md",
-          "worktree:codex/weekly-release-cadence:.agent-os/distribution/weekly-plan.md"
+          "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-recovery.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-08-app-review-rejection-external-research-prompt.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-06-03-ux-redesign-1.0.1-submission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-03-build-8-resubmission.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-01-sprint-11-ux-voice-coach.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/post-submission-ux-redesign-1.0.1.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/01-runsmart-ios-archive-submit.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-27-flex-week-deploy-analytics-intervention.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e5-adaptive-flex-week.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-24-e2-e6-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e6-post-run-debrief.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-24-e2-weekly-progress-narrative.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-19-posthog-analytics.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/specs/2026-05-17-sprint5-beginner-habit-cue-preview-design.md",
+          "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-05-17-sprint5-beginner-habit-cue-preview.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/wp25-garmin-track.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/sprint-9-real-activity-today-data-flow-ux.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/e7-garmin-wearable-depth.md",
+          "worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
+          "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md"
         ],
         "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21). Next action: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll. Known blockers: None \u2014 waiting on Apple App Review turnaround. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
@@ -2306,7 +2086,7 @@
         "project": "Resumely iOS",
         "role": "iOS Release Manager",
         "repoState": "Dirty",
-        "branch": "HEAD (no branch)",
+        "branch": "claude/activation-milestone-repair-963fe7...origin/claude/activation-milestone-repair-963fe7",
         "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2323,16 +2103,6 @@
           "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/progress.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/todo.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/session-log.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/MEMORY.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:tasks/lessons.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/progress.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/todo.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/session-log.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/MEMORY.md",
-          "worktree:codex/reconcile-release-a-1.4.2:tasks/lessons.md",
           "worktree:codex/wp46-story-10:tasks/progress.md",
           "worktree:codex/wp46-story-10:tasks/todo.md",
           "worktree:codex/wp46-story-10:tasks/session-log.md",
@@ -2343,53 +2113,33 @@
           "worktree:codex/wp46-story-11:tasks/session-log.md",
           "worktree:codex/wp46-story-11:tasks/MEMORY.md",
           "worktree:codex/wp46-story-11:tasks/lessons.md",
-          "worktree:codex/wp46-story-13:tasks/progress.md",
-          "worktree:codex/wp46-story-13:tasks/todo.md",
-          "worktree:codex/wp46-story-13:tasks/session-log.md",
-          "worktree:codex/wp46-story-13:tasks/MEMORY.md",
-          "worktree:codex/wp46-story-13:tasks/lessons.md",
-          "worktree:claude/release-b-story-9:tasks/progress.md",
-          "worktree:claude/release-b-story-9:tasks/todo.md",
-          "worktree:claude/release-b-story-9:tasks/session-log.md",
-          "worktree:claude/release-b-story-9:tasks/MEMORY.md",
-          "worktree:claude/release-b-story-9:tasks/lessons.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/progress.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/todo.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/session-log.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/MEMORY.md",
-          "worktree:claude/resumely-1-4-4-version-bump:tasks/lessons.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/progress.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/todo.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/session-log.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/MEMORY.md",
-          "worktree:claude/release-c-story-13-submit-769148:tasks/lessons.md",
-          "worktree:claude/resumely-1-4-4-version-bump:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt 2.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/fit-first-triage-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resume-aha-moments.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-spec.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/resume-aha-moments-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/app-store-screenshot-generator.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "worktree:codex/release-a-measurement-baseline-2026-07-16:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+          "worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+          "worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
+          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+          "worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
-        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+        "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
       {
         "projectId": "runsmart-web",
@@ -2448,21 +2198,16 @@
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
           "primary:tasks/lessons.md",
-          "worktree:codex/fix-web-export-observability:tasks/progress.md",
-          "worktree:codex/fix-web-export-observability:tasks/MEMORY.md",
-          "worktree:codex/fix-web-export-observability:tasks/ERRORS.md",
-          "worktree:codex/fix-web-export-observability:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
           "docs/superpowers/plans/2026-06-29-fit-match-web-reconciliation.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
-          "worktree:codex/fix-web-export-observability:docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
-          "worktree:codex/fix-web-export-observability:.agent-os/distribution/gtm-plan.md",
-          "worktree:codex/fix-web-export-observability:.agent-os/distribution/weekly-plan.md"
+          "docs/superpowers/plans/2026-06-22-ats-requirement-keyword-matching.md",
+          "docs/superpowers/plans/2026-06-22-ats-keyword-context-suggestions.md",
+          "docs/superpowers/specs/2026-06-07-resumely-growth-pricing-design.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-4-ambassador-flow.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-3-storekit-paywall.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-2-web-ats-tool.md",
+          "docs/superpowers/plans/2026-06-07-resumely-plan-1-aso-launch-assets.md",
+          ".agent-os/distribution/weekly-plan.md"
         ],
         "copyPrompt": "Act as Backend Rollout Engineer for ResumeBuilder AI (Web). Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, docs/agent-os/project-context.md, primary:tasks/progress.md. Current state: WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next. Next action: WP-29 S5 \u2014 design and implement anonymous session carryover after signup so the first dashboard is not empty. Known blockers: **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision; do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
       },
@@ -2471,7 +2216,7 @@
         "project": "Agentic OS",
         "role": "Agentic OS Operator",
         "repoState": "Dirty",
-        "branch": "main...origin/main",
+        "branch": "docs/exd-023-apple-signin-verdict...origin/docs/exd-023-apple-signin-verdict",
         "nextAction": "Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
         "sourceConfidence": "High",
         "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
@@ -2484,9 +2229,6 @@
           "worktree:detached:tasks/progress.md",
           "worktree:detached:tasks/MEMORY.md",
           "worktree:detached:tasks/ERRORS.md",
-          "worktree:claude/resumely-session-70fcda:tasks/progress.md",
-          "worktree:claude/resumely-session-70fcda:tasks/MEMORY.md",
-          "worktree:claude/resumely-session-70fcda:tasks/ERRORS.md",
           "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
           "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
           "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
@@ -2503,7 +2245,7 @@
     ],
     "executiveOverview": {
       "headline": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
-      "portfolioState": "RunSmart iOS \u2014 Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+      "portfolioState": "RunSmart iOS \u2014 Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20): Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
       "focus": [
         "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
         "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
@@ -2582,26 +2324,17 @@
       {
         "project": "RunSmart iOS",
         "projectId": "runsmart-ios",
-        "total": 30,
+        "total": 27,
         "shown": 7,
         "plans": [
-          {
-            "title": "Clean-install telemetry integrity repair",
-            "path": "docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-            "date": "2026-07-21",
-            "status": "Implemented and verified for 1.1.2 (26) release",
-            "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
-          },
           {
             "title": "RunSmart iOS Activation Cliff: Evidence and Fix Plan",
             "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
+            "sourceBranch": "main",
+            "source": "primary"
           },
           {
             "title": "Adaptive Coach Phase 1 \u2014 Recovery- and Load-Aware Proactive Coaching",
@@ -2609,25 +2342,7 @@
             "date": "2026-07-18",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/weekly-release-cadence",
-            "source": "worktree"
-          },
-          {
-            "title": "RunSmart Adaptive Preview \u2014 Side-by-Side Experiment",
-            "path": "docs/specs/2026-07-16-runsmart-adaptive-preview.md",
-            "date": "2026-07-16",
-            "status": "Implemented; review-ready with Simulator XCTest runner caveat",
-            "kind": "spec",
-            "sourceBranch": "codex/runsmart-adaptive-preview",
-            "source": "worktree"
-          },
-          {
-            "title": "FTUX Upgrade Plan \u2014 RunSmart iOS",
-            "path": "docs/plans/2026-07-13-ftux-upgrade-plan.md",
-            "date": "2026-07-13",
-            "status": null,
-            "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -2636,7 +2351,34 @@
             "date": "2026-06-26",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
+            "source": "worktree"
+          },
+          {
+            "title": "Build 15 Resubmit + Repo Cleanup \u2014 2026-06-18",
+            "path": "docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
+            "date": "2026-06-18",
+            "status": null,
+            "kind": "plan",
+            "sourceBranch": "feat/adaptive-coach-phase1",
+            "source": "worktree"
+          },
+          {
+            "title": "Code Review Fix Plan \u2014 2026-06-11",
+            "path": "docs/plans/2026-06-11-code-review-fix-plan.md",
+            "date": "2026-06-11",
+            "status": null,
+            "kind": "plan",
+            "sourceBranch": "feat/adaptive-coach-phase1",
+            "source": "worktree"
+          },
+          {
+            "title": "Code Review Baseline Audit \u2014 2026-06-11",
+            "path": "docs/plans/2026-06-11-code-review-baseline-audit.md",
+            "date": "2026-06-11",
+            "status": null,
+            "kind": "plan",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           },
           {
@@ -2645,7 +2387,7 @@
             "date": "2026-06-01",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "codex/weekly-release-cadence",
+            "sourceBranch": "feat/adaptive-coach-phase1",
             "source": "worktree"
           }
         ]
@@ -2662,8 +2404,8 @@
             "date": "2026-07-19",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "claude/resumely-1-4-4-version-bump",
-            "source": "worktree"
+            "sourceBranch": "claude/activation-milestone-repair-963fe7",
+            "source": "primary"
           },
           {
             "title": "Recommendation Evidence Contract \u2014 APPROVED 2026-07-16 (v1 client-side, v2 backend)",
@@ -2680,7 +2422,7 @@
             "date": "2026-07-15",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "detached",
+            "sourceBranch": "claude/activation-milestone-repair-963fe7",
             "source": "primary"
           },
           {
@@ -2689,7 +2431,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -2698,7 +2440,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           },
           {
@@ -2707,7 +2449,7 @@
             "date": "2026-07-14",
             "status": null,
             "kind": "spec",
-            "sourceBranch": "codex/release-a-measurement-baseline-2026-07-16",
+            "sourceBranch": "codex/wp46-story-10",
             "source": "worktree"
           }
         ]
@@ -2795,8 +2537,8 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "ATS Per-Keyword In-Context Suggestions \u2014 Implementation Plan",
@@ -2804,8 +2546,8 @@
             "date": "2026-06-22",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely \u2014 Growth + Pricing Design Spec",
@@ -2813,8 +2555,8 @@
             "date": "2026-06-07",
             "status": "Approved by founder",
             "kind": "spec",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 4: Ambassador Flow \u2014 \"I Got Hired\"",
@@ -2822,8 +2564,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "Resumely Plan 3: StoreKit Paywall \u2014 iOS IAP",
@@ -2831,8 +2573,8 @@
             "date": "2026-06-07",
             "status": null,
             "kind": "plan",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           },
           {
             "title": "GTM Plan \u2014 ResumeBuilder iOS",
@@ -2840,8 +2582,8 @@
             "date": "2026-05-28",
             "status": "draft",
             "kind": "gtm",
-            "sourceBranch": "codex/fix-web-export-observability",
-            "source": "worktree"
+            "sourceBranch": "fix/resume-eval-key-preflight",
+            "source": "primary"
           }
         ]
       },
@@ -3881,6 +3623,139 @@
           "decision": null
         },
         {
+          "title": "Work Packet WP-51 \u2014 Repair the Resumely activation milestone before the EXD-015 verdict",
+          "status": "Unknown",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21; live PostHog read project 270848 (2026-07-21); `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (measurement contract); **EXD-022** (activation gate = \u226520 clean activations on a working milestone; supersedes EXD-015's 20%-by-08-01 target)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Resumely activation measurement loop",
+          "signal": "The 2026-07-21 live read on the canonical WP-50 contract returned a **non-monotonic funnel** \u2014 12 `resume_file_selected` \u2192 7 `optimization_completed` \u2192 **1** `optimized_preview_rendered`, with **3** `export_success`. More people exported than rendered a preview, which is impossible if the milestone fired reliably. `optimized_preview_rendered` has only 3 people across 60 days",
+          "memoryUpdate": "`tasks/lessons.md` (Resumely iOS) + `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (amend the contract with the fix)",
+          "successSignal": "`optimized_preview_rendered` person-count is **\u2265** `export_success` person-count over the same window, and the ordered funnel is monotonic non-increasing on a fresh 14-day read. Secondary: `save_failed`, `optimization_apply_failed` and `optimization_state_recovery_failed` all carry a populated `reason` on every new occurrence",
+          "path": "executive-os/work-packets/WP-51-resumely-fix-activation-milestone.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-52 \u2014 Diagnose the RunSmart Apple sign-in chain (timeboxed)",
+          "status": "Unknown",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21 \u00a710 (CEO decision (a)); live PostHog project 171597 (2026-07-21); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `05-Decisions/2026-06-10-resumely-apple-signin-hidden`",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "On live 1.1.1 (25), a genuine App Store install (`$is_testflight`/`$is_sideloaded`/`$is_emulator` all false) on iPhone17,1 produced **5 consecutive `ASAuthorizationError` code 1000** events at `screen=sign_in_wall`, 2026-07-20 12:22-12:25 UTC, 0 completions. Cumulative 12 events / 4 devices / 3 builds. Every `sign_in_completed` on record belongs to an Apple ID that had already authorized RunSmart",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS) + a decision entry in Agentic OS `EXECUTIVE-DECISIONS.md`",
+          "successSignal": "A written verdict naming **which specific link** in the chain is broken, or ruling all of them out \u2014 sufficient to choose between WP-52a (repair) and WP-53 (guest path)",
+          "path": "executive-os/work-packets/WP-52-runsmart-apple-signin-chain-diagnosis.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-52a \u2014 Instrument `sign_in_failed`, then reproduce under revoked authorization",
+          "status": "Open",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "EXD-023 (WP-52 verdict, 2026-07-21); WP-52 closed same day with \"all five chain links correct\"",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "The Apple configuration chain is proven correct, yet June converted 7 of 40 launchers (17.5%) and July converted **0 of ~26** non-founder launchers (p \u2248 0.7% if the June rate held). Outcomes partition perfectly across 13 devices. Auth code unchanged across builds 17-22. Every success on record is an already-authorized Apple ID",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS); EXD-023 status cell",
+          "successSignal": "a `sign_in_failed` event carrying a populated `NSUnderlyingErrorKey`, **or** a controlled reproduction of bare code 1000 under revoked authorization",
+          "path": "executive-os/work-packets/WP-52a-runsmart-signin-instrument-and-repro.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-53 \u2014 RunSmart guest path to plan generation",
+          "status": "Conditional",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21 \u00a710 (CEO decision (a)); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `2026-07-19-activation-cliff-autopsy`",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "95.7% of organic App Store users quit at the first screen (22/23, 90d clean read), and the reason is now confirmed to be a hard Apple error rather than persuasion. Resumely, which has no auth gate before value, is the only product in the portfolio with a readable activation funnel",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS) + `EXECUTIVE-DECISIONS.md`",
+          "successSignal": "A user who has never signed in reaches a generated plan, and `plan_generated` fires with no `sign_in_completed` for that person",
+          "path": "executive-os/work-packets/WP-53-runsmart-guest-path-to-plan.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-54 \u2014 Measurement integrity guardrails",
+          "status": "Open",
+          "project": "Agentic OS \u2014 `/Users/nadavyigal/Documents/Projects /Agentic OS`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21; Builder OS `2026-07-21-weekly-review`; PostHog AI audits of projects 171597 + 270848 (2026-07-21)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Activation measurement integrity loop (**register this loop as part of this packet \u2014 it does not exist yet**)",
+          "signal": "Seven recorded instances of the same failure class, plus two non-monotonic funnels, across two projects and three consecutive reviews",
+          "memoryUpdate": "`~/.claude/LEARNINGS.md` + Agentic OS `LESSONS.md`",
+          "successSignal": "A dashboard series or plan doc referencing a non-existent event/property fails loudly at refresh time instead of rendering as zero; a non-monotonic funnel raises a drift warning",
+          "path": "executive-os/work-packets/WP-54-measurement-integrity-guardrails.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-55 \u2014 Turn on the observability that is already paid for",
+          "status": "Open",
+          "project": "Split across three repos \u2014 see per-item routing below",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "PostHog AI audits of projects 171597 + 270848 (2026-07-21)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Activation measurement integrity loop",
+          "signal": "Session replay is off in RunSmart (zero `$snapshot` events in 90 days) while 9 users rage-clicked the main screen 30 times. Error tracking is off in both projects (zero `$exception` events). RunSmart's `$screen_name` resolves to raw SwiftUI class names, which makes replay and rage-click data undiagnosable even once replay is on",
+          "memoryUpdate": "`tasks/lessons.md` in both iOS repos",
+          "successSignal": "`$snapshot` events present in RunSmart; `$exception` events present in both; `$screen_name` shows human-readable names like `PlanView` rather than `UIHostingController<ModifiedContent<AnyView, RootModifier>>`",
+          "path": "executive-os/work-packets/WP-55-observability-switches.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-56 \u2014 Resumely file-picker abandonment",
+          "status": "Open",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "PostHog AI audit of project 270848 (2026-07-21), Section B8",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Resumely activation loop",
+          "signal": "27 people opened the file picker in 30 days; 13 selected a file. **A 48% abandonment at the single step where the user has already declared intent.** This is the largest upstream leak in the Resumely funnel",
+          "memoryUpdate": "`tasks/lessons.md` (Resumely iOS)",
+          "successSignal": "picker-open \u2192 file-selected conversion above 65% on a 4-week post-change read, measured against the 48% pre-change baseline",
+          "path": "executive-os/work-packets/WP-56-resumely-file-picker-leak.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
           "title": "Work Packet WP-6",
           "status": "closed",
           "project": "RunSmart iOS",
@@ -4099,6 +3974,26 @@
       ]
     },
     "decisions": [
+      {
+        "id": "EXD-023",
+        "date": "2026-07-21",
+        "area": "Technical",
+        "decision": "WP-52 verdict: the RunSmart Apple sign-in chain is correctly configured; the failure is a first-time-authorization regression, not a portal or Supabase problem",
+        "recommendation": "**(c) \u2014 instrument and reproduce first.** All five chain links are correct, so neither (a) nor (b) is yet justified by evidence.",
+        "owner": "Nadav",
+        "review": "2026-07-28",
+        "status": "**Decided"
+      },
+      {
+        "id": "EXD-022",
+        "date": "2026-07-21",
+        "area": "Strategy",
+        "decision": "Restate EXD-015's activation target in terms current volume can actually test",
+        "recommendation": "**(b) \u2014 DECIDED.** Replace \"20% real activation within 30 days\" with: **at least 20 clean activations observed on a working milestone, no calendar deadline**, and hold the 2026-08-01 date as a *checkpoint that reports progress*, not a verdict date.",
+        "owner": "Nadav",
+        "review": "2026-08-01 (checkpoint, not verdict)",
+        "status": "**Decided"
+      },
       {
         "id": "EXD-021",
         "date": "2026-07-09",
@@ -4326,11 +4221,11 @@
         },
         {
           "name": "Decisions",
-          "what": "0 open of 21 logged in EXECUTIVE-DECISIONS.md."
+          "what": "0 open of 23 logged in EXECUTIVE-DECISIONS.md."
         },
         {
           "name": "Work packets",
-          "what": "0 active, 52 total. Copy only Active packets; closed packets are history."
+          "what": "0 active, 59 total. Copy only Active packets; closed packets are history."
         },
         {
           "name": "Brainstorm / next moves",
@@ -5252,6 +5147,139 @@
           "decision": null
         },
         {
+          "title": "Work Packet WP-51 \u2014 Repair the Resumely activation milestone before the EXD-015 verdict",
+          "status": "Unknown",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21; live PostHog read project 270848 (2026-07-21); `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (measurement contract); **EXD-022** (activation gate = \u226520 clean activations on a working milestone; supersedes EXD-015's 20%-by-08-01 target)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Resumely activation measurement loop",
+          "signal": "The 2026-07-21 live read on the canonical WP-50 contract returned a **non-monotonic funnel** \u2014 12 `resume_file_selected` \u2192 7 `optimization_completed` \u2192 **1** `optimized_preview_rendered`, with **3** `export_success`. More people exported than rendered a preview, which is impossible if the milestone fired reliably. `optimized_preview_rendered` has only 3 people across 60 days",
+          "memoryUpdate": "`tasks/lessons.md` (Resumely iOS) + `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (amend the contract with the fix)",
+          "successSignal": "`optimized_preview_rendered` person-count is **\u2265** `export_success` person-count over the same window, and the ordered funnel is monotonic non-increasing on a fresh 14-day read. Secondary: `save_failed`, `optimization_apply_failed` and `optimization_state_recovery_failed` all carry a populated `reason` on every new occurrence",
+          "path": "executive-os/work-packets/WP-51-resumely-fix-activation-milestone.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-52 \u2014 Diagnose the RunSmart Apple sign-in chain (timeboxed)",
+          "status": "Unknown",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21 \u00a710 (CEO decision (a)); live PostHog project 171597 (2026-07-21); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `05-Decisions/2026-06-10-resumely-apple-signin-hidden`",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "On live 1.1.1 (25), a genuine App Store install (`$is_testflight`/`$is_sideloaded`/`$is_emulator` all false) on iPhone17,1 produced **5 consecutive `ASAuthorizationError` code 1000** events at `screen=sign_in_wall`, 2026-07-20 12:22-12:25 UTC, 0 completions. Cumulative 12 events / 4 devices / 3 builds. Every `sign_in_completed` on record belongs to an Apple ID that had already authorized RunSmart",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS) + a decision entry in Agentic OS `EXECUTIVE-DECISIONS.md`",
+          "successSignal": "A written verdict naming **which specific link** in the chain is broken, or ruling all of them out \u2014 sufficient to choose between WP-52a (repair) and WP-53 (guest path)",
+          "path": "executive-os/work-packets/WP-52-runsmart-apple-signin-chain-diagnosis.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-52a \u2014 Instrument `sign_in_failed`, then reproduce under revoked authorization",
+          "status": "Open",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "EXD-023 (WP-52 verdict, 2026-07-21); WP-52 closed same day with \"all five chain links correct\"",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "The Apple configuration chain is proven correct, yet June converted 7 of 40 launchers (17.5%) and July converted **0 of ~26** non-founder launchers (p \u2248 0.7% if the June rate held). Outcomes partition perfectly across 13 devices. Auth code unchanged across builds 17-22. Every success on record is an already-authorized Apple ID",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS); EXD-023 status cell",
+          "successSignal": "a `sign_in_failed` event carrying a populated `NSUnderlyingErrorKey`, **or** a controlled reproduction of bare code 1000 under revoked authorization",
+          "path": "executive-os/work-packets/WP-52a-runsmart-signin-instrument-and-repro.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-53 \u2014 RunSmart guest path to plan generation",
+          "status": "Conditional",
+          "project": "RunSmart iOS \u2014 `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21 \u00a710 (CEO decision (a)); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `2026-07-19-activation-cliff-autopsy`",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "RunSmart activation gate loop",
+          "signal": "95.7% of organic App Store users quit at the first screen (22/23, 90d clean read), and the reason is now confirmed to be a hard Apple error rather than persuasion. Resumely, which has no auth gate before value, is the only product in the portfolio with a readable activation funnel",
+          "memoryUpdate": "`tasks/lessons.md` (RunSmart iOS) + `EXECUTIVE-DECISIONS.md`",
+          "successSignal": "A user who has never signed in reaches a generated plan, and `plan_generated` fires with no `sign_in_completed` for that person",
+          "path": "executive-os/work-packets/WP-53-runsmart-guest-path-to-plan.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-54 \u2014 Measurement integrity guardrails",
+          "status": "Open",
+          "project": "Agentic OS \u2014 `/Users/nadavyigal/Documents/Projects /Agentic OS`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "COO Operating Review 2026-07-21; Builder OS `2026-07-21-weekly-review`; PostHog AI audits of projects 171597 + 270848 (2026-07-21)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Activation measurement integrity loop (**register this loop as part of this packet \u2014 it does not exist yet**)",
+          "signal": "Seven recorded instances of the same failure class, plus two non-monotonic funnels, across two projects and three consecutive reviews",
+          "memoryUpdate": "`~/.claude/LEARNINGS.md` + Agentic OS `LESSONS.md`",
+          "successSignal": "A dashboard series or plan doc referencing a non-existent event/property fails loudly at refresh time instead of rendering as zero; a non-monotonic funnel raises a drift warning",
+          "path": "executive-os/work-packets/WP-54-measurement-integrity-guardrails.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-55 \u2014 Turn on the observability that is already paid for",
+          "status": "Open",
+          "project": "Split across three repos \u2014 see per-item routing below",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "PostHog AI audits of projects 171597 + 270848 (2026-07-21)",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Activation measurement integrity loop",
+          "signal": "Session replay is off in RunSmart (zero `$snapshot` events in 90 days) while 9 users rage-clicked the main screen 30 times. Error tracking is off in both projects (zero `$exception` events). RunSmart's `$screen_name` resolves to raw SwiftUI class names, which makes replay and rage-click data undiagnosable even once replay is on",
+          "memoryUpdate": "`tasks/lessons.md` in both iOS repos",
+          "successSignal": "`$snapshot` events present in RunSmart; `$exception` events present in both; `$screen_name` shows human-readable names like `PlanView` rather than `UIHostingController<ModifiedContent<AnyView, RootModifier>>`",
+          "path": "executive-os/work-packets/WP-55-observability-switches.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
+          "title": "Work Packet WP-56 \u2014 Resumely file-picker abandonment",
+          "status": "Open",
+          "project": "Resumely iOS \u2014 `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP`",
+          "repoId": "research",
+          "repoPath": null,
+          "goal": null,
+          "source": "PostHog AI audit of project 270848 (2026-07-21), Section B8",
+          "workflowPattern": "normal",
+          "inputTrust": "trusted",
+          "outcomeLoop": null,
+          "loop": "Resumely activation loop",
+          "signal": "27 people opened the file picker in 30 days; 13 selected a file. **A 48% abandonment at the single step where the user has already declared intent.** This is the largest upstream leak in the Resumely funnel",
+          "memoryUpdate": "`tasks/lessons.md` (Resumely iOS)",
+          "successSignal": "picker-open \u2192 file-selected conversion above 65% on a 4-week post-change read, measured against the 48% pre-change baseline",
+          "path": "executive-os/work-packets/WP-56-resumely-file-picker-leak.md",
+          "copyPrompt": null,
+          "decision": null
+        },
+        {
           "title": "Work Packet WP-6",
           "status": "closed",
           "project": "RunSmart iOS",
@@ -5332,32 +5360,34 @@
       "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _None active \u2014 last shaping walkthrough completed 2026-07-08._\n- \u2705 RunSmart Hebrew-first distribution playbook \u2014 **park until 2026-08-01** (EXD-016 re-confirmed; no work packet).\n- \u2705 RunSmart legal entity \u2014 **investigate with accountant**; founder scheduling call (EXD-017 re-confirmed; WP-35; reminder **2026-07-22**).\n- \u2705 Resumely web Premium CTA \u2014 **hide/disable until Gate A** (EXD-018 re-confirmed; WP-29 S4 already covers implementation; no new packet).\n- _Not now, but do not lose._\n- 2026-07-05: RunSmart Hebrew-first distribution playbook is parked until the Resumely 30-day activation window closes on 2026-08-01. Source draft remains `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`). Decision: EXD-016.\n---\nUpdated: 2026-07-08"
     },
     "repoIntegrity": {
-      "branch": "main",
+      "branch": "docs/exd-023-apple-signin-verdict",
       "uncommitted": 0,
-      "extraWorktrees": 2,
+      "extraWorktrees": 1,
       "ahead": 0,
       "behind": 0,
       "synced": false,
       "notes": [
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+        "On branch 'docs/exd-023-apple-signin-verdict', not main. Merge to main so all tools see it.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ]
     },
     "portfolioTrust": {
       "level": "refresh_required",
       "label": "Refresh required",
       "reasons": [
-        "To clear this: consolidate 2 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-        "2 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+        "To clear this: switch off 'docs/exd-023-apple-signin-verdict' back to main; consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+        "On branch 'docs/exd-023-apple-signin-verdict', not main. Merge to main so all tools see it.",
+        "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
       ],
       "refreshToday": true,
       "needsNextPacketCount": 3,
       "hygieneWarnings": [
         "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-        "Extra product worktrees retained for review: RunSmart iOS (9), Resumely iOS (8)."
+        "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (2)."
       ]
     },
     "groundTruth": {
-      "generatedAt": "2026-07-21 20:04",
+      "generatedAt": "2026-07-21 21:56",
       "apps": [
         {
           "projectId": 171597,
@@ -5374,7 +5404,7 @@
           "projectId": 270848,
           "appId": "resumebuilder-ios",
           "app": "Resumely",
-          "declaredState": "Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists",
+          "declaredState": "1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20)",
           "git": {
             "available": true,
             "tag": "consolidated-2026-05-11",
@@ -5392,7 +5422,7 @@
         {
           "appId": "resumebuilder-ios",
           "available": true,
-          "liveUsers7d": 79,
+          "liveUsers7d": 81,
           "source": "api"
         }
       ],
@@ -5419,17 +5449,17 @@
     },
     "contradictions": [],
     "dailyRunResult": {
-      "lastCommand": "./agentic-os morning",
-      "lastRunAt": "2026-07-21 20:04",
-      "checksStatus": "Passed",
-      "checksCompletedAt": "2026-07-21 20:04",
+      "lastCommand": "./agentic-os refresh",
+      "lastRunAt": "2026-07-21 21:56",
+      "checksStatus": "Pending verify",
+      "checksCompletedAt": "",
       "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
       "recommendedPromptProject": "Resumely iOS",
       "recommendedPromptRole": "iOS Release Manager",
-      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+      "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.4.3 (13) APPROVED and LIVE \u2014 Release C shipped (2026-07-20). Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
       "targetRepoState": "Dirty",
-      "targetBranch": "HEAD (no branch)",
-      "readyForNextSession": true,
+      "targetBranch": "claude/activation-milestone-repair-963fe7...origin/claude/activation-milestone-repair-963fe7",
+      "readyForNextSession": false,
       "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "nextActions": [
         {
