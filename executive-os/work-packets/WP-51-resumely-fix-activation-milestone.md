@@ -1,7 +1,17 @@
 # Work Packet WP-51 — Repair the Resumely activation milestone before the EXD-015 verdict
 
-- Status: In Progress
-- Started: 2026-07-21 (founder launched the session in the Resumely iOS repo)
+- Status: **Fix landed 2026-07-21** (`39654f1` on `claude/activation-milestone-repair-963fe7`). Awaiting ship + live verification.
+- Started / fixed: 2026-07-21, same day.
+- **Root cause:** the milestone was gated on `hasVisibleAppliedChanges`, which inspects the separately-fetched `sections` array. That was never a valid proxy for "the user sees a résumé" — the preview's primary path renders from the backend using `optimization_id` alone (`resumeData: nil`), so whenever the optimization-detail fetch was slow, empty, or failing, a real résumé was on screen with `sections` empty and the milestone was suppressed. Export runs off that same rendered HTML, which is exactly why the funnel came back impossible.
+- **Fix:** the gate now judges visibility from the markup actually displayed (`PreviewActivationPolicy.hasVisibleRenderedContent`), stripping style/script/head content and requiring ≥40 visible characters so a chrome-only render still does not count. Once-per-optimization dedupe and the `optimization_id` correlation field are unchanged. The WP-50 denominator is untouched.
+- **Validation:** red state observed before implementing; focused `AnalyticsServiceTests` 20/20; full suite 207 tests / 1 intentional skip / 0 failures; unsigned Release build succeeded. Live success signal cannot be checked until a build ships.
+
+> [!danger] The open question is answered, and the answer invalidates history
+> The defective gate shipped with the event's **original 1.4.1 form** (`738da5a`). Story 10 (`31b73b6`/`8277cba`) only added `optimization_id` and moved emission onto `didFinish` — it did not introduce the bug.
+>
+> **`optimized_preview_rendered` has therefore never fired reliably, and no activation figure ever computed on it is trustworthy.** That includes the 12.5% baseline. Any prior Resumely activation number sourced from this milestone should be treated as unmeasured rather than low, and none of them can be used as a before/after comparison point for this fix.
+>
+> This is also the strongest possible retroactive justification for EXD-022: the portfolio was holding a percentage target against an instrument that never worked.
 - Mode: Builder
 - Source: COO Operating Review 2026-07-21; live PostHog read project 270848 (2026-07-21); `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (measurement contract); **EXD-022** (activation gate = ≥20 clean activations on a working milestone; supersedes EXD-015's 20%-by-08-01 target)
 - Workflow pattern: normal
