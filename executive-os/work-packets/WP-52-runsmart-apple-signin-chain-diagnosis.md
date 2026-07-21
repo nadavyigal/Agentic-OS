@@ -1,7 +1,10 @@
 # Work Packet WP-52 — Diagnose the RunSmart Apple sign-in chain (timeboxed)
 
-- Status: In Progress
-- Started: 2026-07-21 (founder launched the session in the RunSmart iOS repo). Timebox runs from this date.
+- Status: **CLOSED 2026-07-21 — verdict delivered inside the timebox. See EXD-023.**
+- Started / closed: 2026-07-21, same day.
+- Verdict: **All five chain links are correctly configured.** Proven, not assumed: the distribution profile for `com.runsmart.lite` (issued 2026-07-19, one day before the 1.1.1 archive) carries `com.apple.developer.applesignin: [Default]`, confirmed by `codesign -d --entitlements` on the shipped archive — and Apple only issues that entitlement when the App ID capability is enabled, so link 2's artifact proves link 1. Link 5 is proven by a matched pair on 2026-07-21: Supabase `user_signedup` / `provider: apple` / `grant_type: id_token` / **status 200** at 07:27:34Z, and PostHog `sign_in_completed` from build 25, `$is_testflight=false`, at 07:27:35.9Z. The shipped App Store binary completed a native Apple sign-in through Supabase.
+- **Correction to this packet's own premise:** links 3 and 4 (Services ID, `.p8`) are **not in the causal path** for native `signInWithIdToken` and cannot raise an on-device `ASAuthorizationError`. That path is for web OAuth. This packet listed them as chain links; that was wrong, and it is why the Resumely June hypothesis did not transfer.
+- Follow-on: **WP-52a** — capture `NSUnderlyingErrorKey` in `sign_in_failed`, then reproduce under revoked authorization. WP-53 stays closed.
 - Mode: Sweeper
 - Source: COO Operating Review 2026-07-21 §10 (CEO decision (a)); live PostHog project 171597 (2026-07-21); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `05-Decisions/2026-06-10-resumely-apple-signin-hidden`
 - Workflow pattern: normal

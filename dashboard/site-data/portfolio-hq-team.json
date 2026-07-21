@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-21 18:41 UTC",
+  "generatedAt": "2026-07-21 18:44 UTC",
   "sources": {
     "status": "2026-07-21 20:04",
     "usage": "2026-07-21T17:04:45.296074+00:00",
@@ -100,9 +100,9 @@
           "runsmart": "install → onboarding, and the cause is now named: the sign-in wall is not a persuasion step, it is a broken gate that returns Apple error 1000 to first-time users"
         },
         {
-          "metric": "Sign-in integrity (ESCALATED 2026-07-21)",
+          "metric": "Sign-in integrity (WP-52 verdict, EXD-023, 2026-07-21)",
           "resumely": "n/a — guests reach value before any account, which is why Resumely is measurable at all",
-          "runsmart": "P0 CONFIRMED ON LIVE 1.1.1. 5/5 ASAuthorizationError 1000 at screen=sign_in_wall on iPhone17,1, 2026-07-20 12:22-12:25 UTC, $is_testflight/$is_sideloaded/$is_emulator all false. Cumulative 12 events / 4 devices / 3 builds; 0 successes from a never-authorized Apple ID",
+          "runsmart": "Config CLEARED, failures REAL. All 5 chain links correct with artifacts; the App Store binary completed a native Apple sign-in through Supabase on 07-21 (status 200). But June converted 7/40 launchers (17.5%) vs July 0/~26 (p≈0.7%), outcomes partition perfectly across 13 devices, auth code unchanged builds 17-22, and every success is an already-authorized Apple ID. Cause is first-time authorization. Next: WP-52a instrument NSUnderlyingErrorKey + revoke-and-retry repro",
           "bad": true
         },
         {

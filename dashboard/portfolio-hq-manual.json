@@ -19,9 +19,9 @@
   },
   "founderCommand": [
     {
-      "title": "P0 CONFIRMED — Apple sign-in fails on the LIVE 1.1.1 public binary",
+      "title": "P0 — Apple config is CLEARED (EXD-023); cause is first-time authorization. Next: WP-52a instrument + repro",
       "body": "PostHog read 2026-07-21 (project 171597): on 2026-07-20 12:22-12:25 UTC a single person on iPhone17,1 running app_version=1.1.1 / app_build=25 hit ASAuthorizationError code 1000 five consecutive times at screen=sign_in_wall, with 0 sign_in_completed. The event flags rule out the usual escape hatches: $is_testflight=false, $is_sideloaded=false, $is_emulator=false — this is a real App Store install of the public binary. The new WP-47/WP-51 instrumentation works exactly as designed (named wall events, error_code, error_domain, screen, and version/build attribution all present), and what it captured is the failure, not the fix. Cumulative: 12 code-1000 events across 4 distinct devices on 3 builds (1.0.9, 1.1.0, 1.1.1); every sign_in_completed to date is an Apple ID that had already authorized RunSmart. This is no longer 'a strong unresolved signal' — it reproduced in production on the current release. Treat it as an open P0 outage, not an eligibility question.",
-      "prompt": "RunSmart iOS P0: Sign in with Apple fails with ASAuthorizationError 1000 on the LIVE 1.1.1 (25) App Store binary — 5/5 attempts on iPhone17,1, 2026-07-20 12:22-12:25 UTC, $is_testflight/$is_sideloaded/$is_emulator all false. Investigate the Apple-side capability chain rather than the app logic: confirm the Sign In with Apple capability is present on the App Store distribution provisioning profile and the App ID, confirm the Services ID / primary App ID association and key configuration in the Apple Developer portal, and confirm the Supabase Apple provider client ID matches the app's bundle ID exactly. Supabase auth logs showed no /token request during prior failures, so the failure occurs on-device before Supabase is contacted. Do not close this on a device that has already authorized RunSmart.",
+      "prompt": "RunSmart iOS WP-52a: the Apple configuration chain is CLEARED (EXD-023) — do not re-inspect it. The distribution profile carries com.apple.developer.applesignin, confirmed on the shipped archive, and the App Store binary completed a native Apple sign-in through Supabase on 2026-07-21 (status 200). Services ID and .p8 are the web OAuth path and are not in the causal chain for native signInWithIdToken. Two steps: (1) capture NSUnderlyingErrorKey on sign_in_failed so code 1000 stops being bare; (2) reproduce under revoked authorization — revoke RunSmart in Settings > Apple ID > Sign in with Apple on the founder's own device, then retry. That needs no new device or Apple ID. If the repro still yields a bare 1000 with no underlying error, escalate to WP-53 (guest path) rather than iterating further. Also settle this while you are in the data: were June's 7 successes first-time or already-authorized Apple IDs? Auth code was unchanged across builds 17-22, so if June's successes were returning users, first-time sign-in may have been broken all along rather than regressing.",
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
@@ -628,9 +628,9 @@
         "runsmart": "install → onboarding, and the cause is now named: the sign-in wall is not a persuasion step, it is a broken gate that returns Apple error 1000 to first-time users"
       },
       {
-        "metric": "Sign-in integrity (ESCALATED 2026-07-21)",
+        "metric": "Sign-in integrity (WP-52 verdict, EXD-023, 2026-07-21)",
         "resumely": "n/a — guests reach value before any account, which is why Resumely is measurable at all",
-        "runsmart": "P0 CONFIRMED ON LIVE 1.1.1. 5/5 ASAuthorizationError 1000 at screen=sign_in_wall on iPhone17,1, 2026-07-20 12:22-12:25 UTC, $is_testflight/$is_sideloaded/$is_emulator all false. Cumulative 12 events / 4 devices / 3 builds; 0 successes from a never-authorized Apple ID",
+        "runsmart": "Config CLEARED, failures REAL. All 5 chain links correct with artifacts; the App Store binary completed a native Apple sign-in through Supabase on 07-21 (status 200). But June converted 7/40 launchers (17.5%) vs July 0/~26 (p≈0.7%), outcomes partition perfectly across 13 devices, auth code unchanged builds 17-22, and every success is an already-authorized Apple ID. Cause is first-time authorization. Next: WP-52a instrument NSUnderlyingErrorKey + revoke-and-retry repro",
         "bad": true
       },
       {
