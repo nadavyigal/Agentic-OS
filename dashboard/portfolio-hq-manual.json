@@ -645,9 +645,9 @@
         "runsmart": "1.1.1 LIVE since 2026-07-20T20:38:19Z (store-verified, not just founder-reported)"
       },
       {
-        "metric": "Target",
-        "resumely": "≥20% by 2026-08-01",
-        "runsmart": "≥30%"
+        "metric": "Target (RESTATED 2026-07-21, EXD-022)",
+        "resumely": "≥20 clean activations on a WORKING milestone — no deadline. Supersedes '20% by 08-01', which was untestable at n=12. 2026-08-01 is now a reporting checkpoint; 2026-09-01 triggers an activation-strategy revisit if nothing is measurable",
+        "runsmart": "≥30% — but not measurable at all until the sign-in gate opens (WP-52 in progress)"
       }
     ],
     "note": "REFRESH 2026-07-21 (live PostHog, projects 171597 + 270848). Three things changed and they are not equally good news. (1) RunSmart's new instrumentation works and immediately caught the sign-in P0 reproducing on the LIVE 1.1.1 public binary — this closes the 'is it outage or persuasion' question in favour of outage, and it invalidates reading any RunSmart FTUX number as a product signal until sign-in is fixed. (2) Resumely's canonical WP-50 funnel is readable but n=12/30d and internally inconsistent (more exporters than preview-renderers), so the activation milestone optimized_preview_rendered is itself suspect and must be fixed before the 2026-08-01 EXD-015 target review means anything. (3) Store-verified release truth: RunSmart 1.1.1 live 2026-07-20T20:38:19Z, Resumely still 1.4.3 — though 1.4.4 events are already in PostHog, so a non-App-Store build is circulating. Prior clean-funnel row retained below for continuity. Clean-funnel row added 2026-07-19 from a founder/QA/bot-excluded PostHog read (projects 171597 + 270848, 90d) filed as executive-os/ACTIVATION-AUTOPSY-2026-07-19.md and per-repo docs/plans/2026-07-19-activation-cliff-fix-plan.md. Exclusions: founder person, +fable-qa*/+export-wall* aliases, is_internal_tester (45 persons / 1,216 events in Resumely), burst chains >=3 events/sec, and RunSmart behavioural founder/QA heuristics (>=6 sessions or >=3 app versions). Mature founder-excluded D7 from 2026-07-12 remains the decision contract; the clean-funnel row is diagnostic, not a replacement cohort. Correction: free_ats_completed DOES carry score_bucket — live 90d is 5x '0-40' + 5x '41-60', so every real free-ATS user saw <=60."
@@ -766,9 +766,24 @@
       "state": "you"
     },
     {
-      "date": "2026-08-01",
-      "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?",
+      "date": "2026-07-21",
+      "what": "EXD-022 DECIDED — activation gate restated to ≥20 clean activations on a working milestone, no deadline. EXD-015's untestable 20%-by-08-01 target superseded; priority clauses unchanged",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-21",
+      "what": "WP-51 (Resumely milestone repair) and WP-52 (RunSmart Apple-chain diagnosis, timeboxed) both IN PROGRESS — founder launched both sessions",
       "state": "running"
+    },
+    {
+      "date": "2026-08-01",
+      "what": "EXD-022 CHECKPOINT (not a verdict) — write a progress read on clean activations toward the ≥20 gate",
+      "state": "waiting"
+    },
+    {
+      "date": "2026-09-01",
+      "what": "EXD-022 trigger — if no measurable activation exists by now, revisit the activation strategy itself rather than the metric",
+      "state": "waiting"
     },
     {
       "date": null,

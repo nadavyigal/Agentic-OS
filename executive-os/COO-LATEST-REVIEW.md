@@ -2,8 +2,9 @@
 
 - Status: current
 - Reviewed: 2026-07-21
-- Selected next action: **WP-51 — repair the Resumely activation milestone (`optimized_preview_rendered`) before the 2026-08-01 EXD-015 verdict.**
+- Selected next action: **WP-51 — repair the Resumely activation milestone (`optimized_preview_rendered`).** Now the gating item under EXD-022: activations cannot accumulate toward the count gate while the event under-fires.
 - Action type: local-repo (Resumely iOS)
+- **Execution update 2026-07-21 (same day):** both escalated decisions resolved by the founder, and **WP-51 and WP-52 are both In Progress** — sessions launched in the Resumely iOS and RunSmart iOS repos respectively. EXD-022 recorded as Decided. WP-53 remains correctly blocked on WP-52's verdict.
 - Source: `DASHBOARD.md`, `PROJECT-STATUS.md`, `dashboard/status.json` (refreshed 2026-07-21 20:04), `dashboard/portfolio-hq-manual.json` (PostHog layer refreshed 2026-07-21), live PostHog reads projects 171597 + 270848 (2026-07-21, both fingerprinted before reading), Apple lookup API (2026-07-21), `executive-os/COO-OS.md`, `executive-os/workflows/coo-operating-review.md`, `executive-os/templates/work-packet-template.md`, Builder OS `2026-07-21-weekly-review`.
 - Revisit when: WP-51 lands and a fresh 14-day funnel reads monotonic; or 2026-08-01, whichever comes first.
 - Supersedes: COO Operating Review 2026-07-12 (WP-32 closed inconclusive, WP-31 named as next).
@@ -46,13 +47,19 @@ RunSmart's confirmed sign-in outage is the more severe defect in absolute terms,
 
 ## 5. Next Execution Sequence
 
-1. **WP-51 — repair `optimized_preview_rendered`** *(local-repo, Resumely iOS)*. The only work that changes whether 2026-08-01 produces an answer. Packet attached.
-2. **CEO decision on RunSmart's gate** *(manual-founder)*. Repair the Apple configuration chain, or ship a guest path. Do not start either until decided — they are different products, not different tasks.
+1. **WP-51 — repair `optimized_preview_rendered`** *(local-repo, Resumely iOS)*. **IN PROGRESS.** Under EXD-022 this is the gating item: activations cannot accumulate toward the count gate while the milestone under-fires.
+2. **WP-52 — diagnose the Apple sign-in chain** *(local-repo, RunSmart iOS)*. **IN PROGRESS**, timeboxed to one session, diagnosis only. Its verdict decides whether WP-53 opens.
 3. ~~Resumely 1.4.4 submission~~ **— done. Founder confirmed 2026-07-21 that 1.4.4 (14) is submitted and under ASC review** (Match Score language, honest locked screens, corrected share/Terms/Privacy links, fixed "Create free account" routing, full Hebrew, layout polish). This **raises** WP-51's urgency rather than lowering it: 1.4.4 carries no measurement fix, so approval resets the exact-version cohort clock and starts a fresh cohort measured by a milestone that under-fires. WP-51 must be ready to ship as 1.4.5 on approval.
 4. ~~Resolve the 1.4.4 field anomaly~~ **— explained.** The 1.4.4 events in PostHog are consistent with pre-submission/TestFlight validation of the build now under review, not an unrecorded release. No packet needed; confirm the persons carry `is_internal_tester` on the next cohort read.
 5. **Stranded-work sweep** *(global-OS)*. 62 items, concentrated in RunSmart iOS: `main` 8 behind origin plus 5 local-only `claude/*` branches with deleted remotes. `./agentic-os clean --apply` handles the agent branches. Low urgency, non-blocking.
 
-## 6. CEO Escalation Needed: **Yes**
+## 6. CEO Escalation Needed: **Yes — RESOLVED SAME DAY**
+
+> **Both decisions were escalated and answered on 2026-07-21.**
+> **(a)** Founder confirmed the diagnosis-first sequencing. WP-52 (timeboxed Apple-chain diagnosis, no config changes) is In Progress in the RunSmart iOS repo. WP-53 (guest path) stays blocked on its verdict — correctly, since a one-session portal fix would make the expensive packet unnecessary.
+> **(b)** Founder adopted the recommended restatement as written. **EXD-022 is Decided:** the activation gate is now ≥20 clean activations on a working milestone with no calendar deadline, 2026-08-01 retained as a reporting checkpoint, and a 2026-09-01 trigger to revisit the activation strategy itself if nothing is measurable by then. EXD-015's target clause is annotated as superseded; its priority clauses remain in force.
+>
+> The original escalation text is preserved below as the record of what was asked.
 
 Two decisions, both genuinely CEO-owned:
 

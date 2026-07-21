@@ -1,8 +1,9 @@
 # Work Packet WP-51 — Repair the Resumely activation milestone before the EXD-015 verdict
 
-- Status: Open
+- Status: In Progress
+- Started: 2026-07-21 (founder launched the session in the Resumely iOS repo)
 - Mode: Builder
-- Source: COO Operating Review 2026-07-21; live PostHog read project 270848 (2026-07-21); `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (measurement contract); EXD-015 (20% activation by 2026-08-01)
+- Source: COO Operating Review 2026-07-21; live PostHog read project 270848 (2026-07-21); `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (measurement contract); **EXD-022** (activation gate = ≥20 clean activations on a working milestone; supersedes EXD-015's 20%-by-08-01 target)
 - Workflow pattern: normal
 - Input trust: trusted
 - Loop: Resumely activation measurement loop
@@ -20,7 +21,11 @@ Resumely iOS — `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuil
 
 ## Why This Packet Exists Now
 
-EXD-015 sets a 20% activation target reviewed on **2026-08-01 — 11 days out**. The milestone chosen to measure it does not fire reliably, so on current trajectory that review arrives with no verdict possible for a measurement reason rather than a product reason. That is the same failure the portfolio already spent two weeks on (WP-46, WP-48, WP-50). This packet exists to stop it recurring a fourth time.
+**EXD-022 (decided 2026-07-21)** replaced EXD-015's untestable "20% by 2026-08-01" with an absolute-count gate: **≥20 clean activations observed on a working milestone**, no calendar deadline. That restatement makes this packet the gating item rather than one of several.
+
+The reason is arithmetic. Under a percentage target, a broken milestone produced a wrong ratio. Under a count target, a broken milestone means **activations do not accumulate at all** — the counter is stuck near zero for an instrumentation reason, and no amount of elapsed time or traffic advances it. The gate cannot open until the event fires correctly.
+
+Compounding it: 1.4.4 (14) is under App Store review and carries no measurement fix, so its approval resets the exact-version cohort clock and starts a fresh cohort on the same broken instrument. This is the same failure class the portfolio already spent two weeks on (WP-46, WP-48, WP-50). This packet exists to stop it recurring a fourth time.
 
 This is **not** a request to change the activation definition. WP-50's contract is sound and was chosen deliberately over two rejected alternatives (`resume_uploaded`, whose call site was removed in 1.4.3; `resume_upload_succeeded`, which sits behind the sign-in guard — WP-48 Defect B). The contract is right; the emission is broken.
 

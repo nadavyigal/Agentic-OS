@@ -1,6 +1,7 @@
 # Work Packet WP-52 — Diagnose the RunSmart Apple sign-in chain (timeboxed)
 
-- Status: Open
+- Status: In Progress
+- Started: 2026-07-21 (founder launched the session in the RunSmart iOS repo). Timebox runs from this date.
 - Mode: Sweeper
 - Source: COO Operating Review 2026-07-21 §10 (CEO decision (a)); live PostHog project 171597 (2026-07-21); Builder OS `2026-07-21-apple-signin-cross-product-pattern`; `05-Decisions/2026-06-10-resumely-apple-signin-hidden`
 - Workflow pattern: normal
