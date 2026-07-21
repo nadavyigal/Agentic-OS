@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-07-21T11:30:41.696742+00:00",
+  "repos": [
+    {
+      "project": "RunSmart Web",
+      "checked": true,
+      "failures": [
+        {
+          "workflow": "Plan-generator eval (nightly + pre-release)",
+          "consecutive": 11,
+          "truncated": true,
+          "since": "2026-07-11T05:17:33Z",
+          "url": "https://github.com/nadavyigal/Running-coach-/actions/runs/29803920833"
+        }
+      ]
+    },
+    {
+      "project": "ResumeBuilder AI (Web)",
+      "checked": true,
+      "failures": [
+        {
+          "workflow": "Resume-optimizer eval (nightly + pre-release)",
+          "consecutive": 7,
+          "truncated": true,
+          "since": "2026-07-15T05:14:15Z",
+          "url": "https://github.com/nadavyigal/new-ResumeBuilder-ai-/actions/runs/29804415168"
+        }
+      ]
+    }
+  ],
+  "issues": [
+    "RunSmart Web: Plan-generator eval (nightly + pre-release) failing \u226511 consecutive gated runs since 2026-07-11",
+    "ResumeBuilder AI (Web): Resume-optimizer eval (nightly + pre-release) failing \u22657 consecutive gated runs since 2026-07-15"
+  ],
+  "degraded": false,
+  "note": ""
+}

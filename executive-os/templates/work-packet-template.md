@@ -40,6 +40,7 @@ Keep this lean. Do not make work packets heavy just to fill optional fields.
 - Memory update: [Optional destination file or lesson]
 - Success signal: [Observable evidence or metric]
 - Model route: [Default model/tier to run this packet — see GLOBAL-TOOL-USAGE.md "Model routing". Multi-story packets add a per-story "Model route" column in the Stories table instead, e.g. WP-40]
+- Rollback: [How to undo this if it lands badly — required when Mode is Maintainer, or when the packet touches auth, billing, data, migrations, or deployment config. Name the concrete step: revert PR #N, flip flag X off, restore from migration Y. "Revert the commit" only counts when nothing else changed state]
 
 ## Owner Role
 [Local role]
@@ -66,6 +67,7 @@ Keep this lean. Do not make work packets heavy just to fill optional fields.
 [Exact task]
 
 ## Constraints
+- Secrets: [none | the named credentials this packet may read, e.g. `OPENAI_API_KEY` from the local env]. Never write, print, commit, or move a production secret. If the task cannot proceed without a credential not named here, stop and ask.
 - Do not touch unrelated files.
 - Do not deploy, submit, bill, email, or change production services without explicit approval.
 - Do not invent validation results.

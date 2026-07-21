@@ -16,7 +16,7 @@ import urllib.error
 import urllib.request
 import webbrowser
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -129,6 +129,23 @@ POSTHOG_PROJECTS = {
     "runsmart-ios": {"projectId": 171597, "name": "RunSmart"},
     "resumebuilder-ios": {"projectId": 270848, "name": "Resumely"},
 }
+
+# CI health. The eval harnesses are the only deterministic quality gates the products
+# have, and they ran red for eight nights without any OS surface saying so. The refresh
+# reads GitHub Actions conclusions so a dead verifier is as loud as stale evidence.
+CI_CACHE_PATH = DASHBOARD / "ci-health.json"
+CI_RUN_LIMIT = 12
+CI_TIMEOUT_SEC = 20
+# A run counts against the founder only when it is scheduled or landed on a release
+# branch. PR and feature-branch failures are expected while work is in flight.
+CI_GATED_BRANCHES = {"main", "master"}
+
+# Spend split. The 2026-07-03 optimization review measured meta-work at 72% of spend
+# against a >=60%-on-product working target; usage.json is the instrument for it.
+META_SPEND_PROJECTS = {"Agentic OS", "Builder OS Vault"}
+PRODUCT_SPEND_PROJECTS = {"RunSmart", "ResumeBuilder"}
+PRODUCT_SPEND_TARGET_PCT = 60
+USAGE_STALE_AFTER_DAYS = 3
 
 # Directories where the founder's saved plans / specs / GTM live. Every saved plan must
 # surface on the dashboard (the founder's rule: "any plan I asked to save must surface").
@@ -309,6 +326,169 @@ def check_hook_health() -> list[str]:
         issues.append(f"launchd job {LAUNCHD_LABEL} last exited with status {last_exit}")
 
     return issues
+
+
+def parse_gh_runs(raw: str) -> list[dict[str, Any]]:
+    """Normalize `gh run list --json ...` output. Pure; never raises.
+
+    Malformed or unexpected payloads yield [] so a gh version change degrades to
+    "CI unknown" rather than crashing the morning refresh.
+    """
+    try:
+        data = json.loads(raw)
+    except (json.JSONDecodeError, TypeError, ValueError):
+        return []
+    if not isinstance(data, list):
+        return []
+    runs: list[dict[str, Any]] = []
+    for item in data:
+        if not isinstance(item, dict):
+            continue
+        runs.append(
+            {
+                "workflow": str(item.get("workflowName") or item.get("name") or "unknown").strip(),
+                "conclusion": str(item.get("conclusion") or "").strip().lower(),
+                "event": str(item.get("event") or "").strip().lower(),
+                "branch": str(item.get("headBranch") or "").strip(),
+                "createdAt": str(item.get("createdAt") or "").strip(),
+                "url": str(item.get("url") or "").strip(),
+            }
+        )
+    return runs
+
+
+def ci_failures_from_runs(runs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Report workflows whose most recent gated run failed, with the failure streak.
+
+    Only scheduled runs and runs on a release branch count - a red PR run means work
+    is in flight, not that the quality gate is down. The consecutive count is what
+    turns "flaky last night" into "red for eight nights", which is the signal that
+    actually needed surfacing. Pure; no I/O.
+    """
+    by_workflow: dict[str, list[dict[str, Any]]] = {}
+    for row in runs:
+        gated = row.get("event") == "schedule" or row.get("branch") in CI_GATED_BRANCHES
+        if not gated or not row.get("conclusion"):
+            continue
+        by_workflow.setdefault(row["workflow"], []).append(row)
+
+    failures: list[dict[str, Any]] = []
+    for workflow, rows in by_workflow.items():
+        rows.sort(key=lambda r: r.get("createdAt") or "", reverse=True)
+        if rows[0]["conclusion"] != "failure":
+            continue
+        streak = 0
+        for row in rows:
+            if row["conclusion"] != "failure":
+                break
+            streak += 1
+        failures.append(
+            {
+                "workflow": workflow,
+                "consecutive": streak,
+                # Every run we fetched was a failure, so the real streak may be longer.
+                "truncated": streak == len(rows),
+                "since": rows[streak - 1].get("createdAt") or "",
+                "url": rows[0].get("url") or "",
+            }
+        )
+    failures.sort(key=lambda f: (-f["consecutive"], f["workflow"]))
+    return failures
+
+
+def format_ci_issue(project: str, failure: dict[str, Any]) -> str:
+    count = failure.get("consecutive", 0)
+    prefix = "≥" if failure.get("truncated") else ""
+    since = (failure.get("since") or "")[:10] or "unknown date"
+    plural = "" if count == 1 else "s"
+    return (
+        f"{project}: {failure.get('workflow')} failing "
+        f"{prefix}{count} consecutive gated run{plural} since {since}"
+    )
+
+
+def load_ci_cache() -> dict[str, Any]:
+    try:
+        cached = json.loads(CI_CACHE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return cached if isinstance(cached, dict) else {}
+
+
+def degraded_ci_health(note: str) -> dict[str, Any]:
+    """Fall back to the last known CI state. Never claims green when it cannot see."""
+    cached = load_ci_cache()
+    cached.setdefault("issues", [])
+    cached.setdefault("repos", [])
+    cached["degraded"] = True
+    cached["note"] = note
+    return cached
+
+
+def check_ci_health() -> dict[str, Any]:
+    """Read GitHub Actions conclusions for every product repo.
+
+    Fails open: a missing `gh`, an expired token, or a GitHub outage leaves the last
+    cached result in place rather than blocking the refresh - same contract as
+    git-guard.sh. The one thing it must never do is report green because it could
+    not look.
+    """
+    if not command_available("gh"):
+        return degraded_ci_health("gh CLI not installed - CI health is last known, not current")
+
+    repos: list[dict[str, Any]] = []
+    issues: list[str] = []
+    attempted = 0
+    reached = 0
+
+    for source_name, path in parse_project_paths():
+        project_id, display_name = PROJECT_ALIASES.get(source_name, (None, source_name))
+        if project_id not in PRODUCT_IDS:
+            continue
+        path = remap_ci_path(path)
+        if not (path / ".github" / "workflows").is_dir():
+            continue
+        attempted += 1
+        proc = run(
+            [
+                "gh", "run", "list",
+                "--limit", str(CI_RUN_LIMIT),
+                "--json", "workflowName,conclusion,event,headBranch,createdAt,url",
+            ],
+            cwd=path,
+            timeout=CI_TIMEOUT_SEC,
+        )
+        if proc.returncode != 0:
+            note = (proc.stderr or proc.stdout or "").strip().splitlines()
+            repos.append(
+                {
+                    "project": display_name,
+                    "checked": False,
+                    "note": (note[0][:180] if note else "gh run list failed"),
+                }
+            )
+            continue
+        reached += 1
+        failures = ci_failures_from_runs(parse_gh_runs(proc.stdout))
+        repos.append({"project": display_name, "checked": True, "failures": failures})
+        issues.extend(format_ci_issue(display_name, failure) for failure in failures)
+
+    if attempted and not reached:
+        return degraded_ci_health("GitHub unreachable for every product repo - CI health is last known")
+
+    health = {
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "repos": repos,
+        "issues": issues,
+        "degraded": False,
+        "note": "",
+    }
+    try:
+        CI_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        CI_CACHE_PATH.write_text(json.dumps(health, indent=2) + "\n", encoding="utf-8")
+    except OSError:
+        pass
+    return health
 
 
 def parse_time_label(value: str | None) -> datetime | None:
@@ -3804,6 +3984,14 @@ def refresh(args: argparse.Namespace) -> int:
         print("⚠️ Hook health check")
         for issue in hook_issues:
             print(f"  - {issue}")
+    ci_health = check_ci_health()
+    ci_issues = ci_health.get("issues") or []
+    if ci_issues:
+        print("⚠️ CI health check — a product quality gate is down")
+        for issue in ci_issues:
+            print(f"  - {issue}")
+        if ci_health.get("degraded"):
+            print(f"  - (last known state: {ci_health.get('note')})")
     status = update_status_json(port=args.port, command=f"./agentic-os {args.command}")
     contradictions = status.get("contradictions") or []
     if contradictions:
@@ -3857,6 +4045,17 @@ def refresh(args: argparse.Namespace) -> int:
         print(f"- stale evidence: {', '.join(stale_apps)}")
     else:
         print("- stale evidence: none")
+    if ci_issues:
+        print(f"- CI health: {len(ci_issues)} gated workflow(s) failing (see the CI health check above)")
+    elif ci_health.get("degraded"):
+        print(f"- CI health: unknown ({ci_health.get('note')})")
+    else:
+        checked = [r["project"] for r in ci_health.get("repos", []) if r.get("checked")]
+        skipped = [r["project"] for r in ci_health.get("repos", []) if not r.get("checked")]
+        detail = f" ({', '.join(checked)})" if checked else ""
+        print(f"- CI health: all gated workflows green{detail}")
+        for repo in skipped:
+            print(f"  - not checked: {repo}")
     ground = status.get("groundTruth") or {}
     queried = [row.get("appId") for row in ground.get("posthog", []) if row.get("source") == "api"]
     if queried:
@@ -3865,6 +4064,7 @@ def refresh(args: argparse.Namespace) -> int:
         print(f"- ground truth: unavailable ({'; '.join(ground.get('unavailable', [])[:2])})")
     else:
         print("- ground truth: local git + optional overrides only (no PostHog key)")
+    refresh_usage()
     refresh_portfolio_hq()
     refresh_daily_note()
     refresh_brain_map()
@@ -3885,6 +4085,117 @@ def refresh_portfolio_hq() -> None:
     else:
         print("⚠️ portfolio HQ refresh failed (dashboard/portfolio-hq.html left as-is)")
         print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+
+
+def usage_spend_split(usage: dict[str, Any]) -> dict[str, Any] | None:
+    """Split tracked spend into product work vs meta (OS + vault) work. Pure.
+
+    The denominator is product + meta only. Spend on unrelated repos is reported
+    separately rather than diluting the ratio the 2026-07-03 review defined.
+    Returns None when usage.json carries no per-project costs to split.
+    """
+    by_project = usage.get("byProject")
+    if not isinstance(by_project, dict) or not by_project:
+        return None
+
+    product = meta = other = 0.0
+    for name, row in by_project.items():
+        if not isinstance(row, dict):
+            continue
+        try:
+            cost = float(row.get("cost_usd") or 0.0)
+        except (TypeError, ValueError):
+            continue
+        if name in PRODUCT_SPEND_PROJECTS:
+            product += cost
+        elif name in META_SPEND_PROJECTS:
+            meta += cost
+        else:
+            other += cost
+
+    tracked = product + meta
+    if tracked <= 0:
+        return None
+    product_pct = round(product / tracked * 100, 1)
+    return {
+        "productUsd": round(product, 2),
+        "metaUsd": round(meta, 2),
+        "otherUsd": round(other, 2),
+        "productPct": product_pct,
+        "targetPct": PRODUCT_SPEND_TARGET_PCT,
+        "belowTarget": product_pct < PRODUCT_SPEND_TARGET_PCT,
+        "windowDays": usage.get("windowDays"),
+    }
+
+
+def usage_age_days(usage: dict[str, Any], now: datetime | None = None) -> float | None:
+    """Age of usage.json in days, or None when the stamp is missing or unparseable."""
+    raw = usage.get("generatedAt")
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    try:
+        stamp = datetime.fromisoformat(raw.strip().replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if stamp.tzinfo is None:
+        stamp = stamp.replace(tzinfo=timezone.utc)
+    reference = now or datetime.now(timezone.utc)
+    if reference.tzinfo is None:
+        reference = reference.replace(tzinfo=timezone.utc)
+    return max((reference - stamp).total_seconds() / 86400, 0.0)
+
+
+def refresh_usage() -> None:
+    """Regenerate dashboard/usage.json, then print the product-vs-meta spend split.
+
+    The 2026-07-03 review named this split as the control loop on the OS's own top
+    problem and it was never wired in, so the file sat 11 days stale. Collecting is
+    slow (it walks every session transcript) but it runs once per refresh.
+    """
+    script = ROOT / "scripts" / "usage" / "collect_usage.py"
+    if not script.is_file():
+        print("- spend split: unavailable (scripts/usage/collect_usage.py not found)")
+        return
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script), "--quiet"],
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+    except subprocess.TimeoutExpired:
+        print("⚠️ usage collection timed out (dashboard/usage.json left as-is)")
+        result = None
+    else:
+        if result.returncode != 0:
+            print("⚠️ usage collection failed (dashboard/usage.json left as-is)")
+            print(f"  - {(result.stderr or result.stdout).strip()[:200]}")
+
+    try:
+        usage = json.loads((DASHBOARD / "usage.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        print("- spend split: unavailable (dashboard/usage.json unreadable)")
+        return
+
+    age = usage_age_days(usage)
+    if age is not None and age > USAGE_STALE_AFTER_DAYS:
+        print(f"⚠️ usage telemetry is {age:.0f} days stale - the spend split below is not current")
+
+    split = usage_spend_split(usage)
+    if not split:
+        print("- spend split: unavailable (no per-project costs in usage.json)")
+        return
+
+    window = split.get("windowDays") or "?"
+    verdict = "BELOW TARGET" if split["belowTarget"] else "on target"
+    line = (
+        f"- spend split ({window}d): product ${split['productUsd']:,.0f} "
+        f"vs meta ${split['metaUsd']:,.0f} = {split['productPct']}% on product "
+        f"(target >={split['targetPct']}%) - {verdict}"
+    )
+    print(line)
+    if split["otherUsd"] > 0:
+        print(f"  - excluded from the ratio: ${split['otherUsd']:,.0f} on other repos")
 
 
 def _run_vault_helper(script: Path, label: str) -> None:

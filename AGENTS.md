@@ -18,8 +18,11 @@ Solo founder. Two apps in parallel. RunSmart is primary; ResumeBuilder is second
 |---|---|
 | RunSmart Web | `/Users/nadavyigal/Documents/RunSmart` |
 | RunSmart iOS | `/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app` |
+| ResumeBuilder Web | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/new-ResumeBuilder-ai-` |
 | ResumeBuilder iOS | `/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP` |
 | Agentic OS | `/Users/nadavyigal/Documents/Projects /Agentic OS` |
+
+`PROJECT-PATHS.md` is canonical if these ever disagree.
 
 ## Session Start Ritual (Every Session, Every Project)
 
@@ -113,7 +116,7 @@ Stop And Ask Before.
 | **Builder** | The Global Work Rules above, unchanged: lint + tests before done, one story at a time, no unsolicited refactoring. |
 | **Sweeper** | Deletion bias. Zero new functionality even if related — simplify, unship, or clean up only. If the diff adds a feature, it is not a Sweeper packet. |
 | **Grower** | Every change must cite a named metric or funnel step it is meant to move (PostHog event, activation number, channel score from `distribution-os/channel-backlog.md`). No change without a stated "how we'll know it worked." |
-| **Maintainer** | Highest caution. No aesthetic or refactor changes bundled in. Reversibility check required before touching auth, billing, data, or migrations — this tightens Stop And Ask Before, it does not loosen it. |
+| **Maintainer** | Highest caution. No aesthetic or refactor changes bundled in. Reversibility check required before touching auth, billing, data, or migrations — this tightens Stop And Ask Before, it does not loosen it. The packet's `Rollback` field must be filled before work starts; if it is empty, fill it or ask, do not proceed. |
 
 If a packet has no `Mode` field, treat it as **Builder** (the existing default) and flag the missing field in the Final Output.
 

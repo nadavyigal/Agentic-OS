@@ -1262,5 +1262,259 @@ class TestRepoIntegrity(unittest.TestCase):
         self.assertIn("3 local commit(s) not pushed", integrity["notes"][0])
 
 
+def gh_run(workflow, conclusion, created, event="schedule", branch="main"):
+    return {
+        "workflowName": workflow,
+        "conclusion": conclusion,
+        "event": event,
+        "headBranch": branch,
+        "createdAt": created,
+        "url": f"https://example.test/{workflow}/{created}",
+    }
+
+
+class TestCiHealth(unittest.TestCase):
+    def test_parse_gh_runs_survives_garbage(self):
+        self.assertEqual(cli.parse_gh_runs("not json"), [])
+        self.assertEqual(cli.parse_gh_runs('{"unexpected": "object"}'), [])
+        self.assertEqual(cli.parse_gh_runs("[1, 2, null]"), [])
+
+    def test_parse_gh_runs_normalizes_fields(self):
+        runs = cli.parse_gh_runs(json.dumps([gh_run("Eval", "FAILURE", "2026-07-21T05:24:53Z")]))
+        self.assertEqual(len(runs), 1)
+        self.assertEqual(runs[0]["workflow"], "Eval")
+        self.assertEqual(runs[0]["conclusion"], "failure")
+
+    def test_failing_nightly_eval_is_reported_with_streak(self):
+        runs = cli.parse_gh_runs(
+            json.dumps(
+                [
+                    gh_run("Plan eval", "failure", "2026-07-21T05:24:53Z"),
+                    gh_run("Plan eval", "failure", "2026-07-20T05:44:30Z"),
+                    gh_run("Plan eval", "failure", "2026-07-19T05:27:04Z"),
+                    gh_run("Plan eval", "success", "2026-07-18T05:27:04Z"),
+                    gh_run("Plan eval", "success", "2026-07-17T05:27:04Z"),
+                ]
+            )
+        )
+
+        failures = cli.ci_failures_from_runs(runs)
+
+        self.assertEqual(len(failures), 1)
+        self.assertEqual(failures[0]["consecutive"], 3)
+        self.assertFalse(failures[0]["truncated"])
+        self.assertEqual(failures[0]["since"], "2026-07-19T05:27:04Z")
+        self.assertIn(
+            "failing 3 consecutive gated runs since 2026-07-19",
+            cli.format_ci_issue("RunSmart Web", failures[0]),
+        )
+
+    def test_all_fetched_runs_failing_marks_streak_truncated(self):
+        runs = cli.parse_gh_runs(
+            json.dumps(
+                [
+                    gh_run("Plan eval", "failure", "2026-07-21T05:24:53Z"),
+                    gh_run("Plan eval", "failure", "2026-07-20T05:44:30Z"),
+                ]
+            )
+        )
+
+        failures = cli.ci_failures_from_runs(runs)
+
+        self.assertTrue(failures[0]["truncated"])
+        self.assertIn("≥2 consecutive", cli.format_ci_issue("RunSmart Web", failures[0]))
+
+    def test_green_latest_run_clears_earlier_failures(self):
+        runs = cli.parse_gh_runs(
+            json.dumps(
+                [
+                    gh_run("Plan eval", "success", "2026-07-21T05:24:53Z"),
+                    gh_run("Plan eval", "failure", "2026-07-20T05:44:30Z"),
+                ]
+            )
+        )
+        self.assertEqual(cli.ci_failures_from_runs(runs), [])
+
+    def test_pr_branch_failures_are_ignored(self):
+        runs = cli.parse_gh_runs(
+            json.dumps(
+                [
+                    gh_run("CI", "failure", "2026-07-21T05:24:53Z", event="pull_request", branch="feat/x"),
+                ]
+            )
+        )
+        self.assertEqual(cli.ci_failures_from_runs(runs), [])
+
+    def test_out_of_order_runs_are_sorted_before_streak_count(self):
+        runs = cli.parse_gh_runs(
+            json.dumps(
+                [
+                    gh_run("Plan eval", "success", "2026-07-18T05:27:04Z"),
+                    gh_run("Plan eval", "failure", "2026-07-21T05:24:53Z"),
+                    gh_run("Plan eval", "failure", "2026-07-20T05:44:30Z"),
+                ]
+            )
+        )
+
+        failures = cli.ci_failures_from_runs(runs)
+
+        self.assertEqual(failures[0]["consecutive"], 2)
+
+    def test_missing_gh_falls_back_to_cache_and_never_claims_green(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "ci-health.json"
+            cache.write_text(
+                json.dumps({"issues": ["RunSmart Web: Plan eval failing 8 consecutive gated runs since 2026-07-14"]}),
+                encoding="utf-8",
+            )
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=False):
+                health = cli.check_ci_health()
+
+        self.assertTrue(health["degraded"])
+        self.assertEqual(len(health["issues"]), 1)
+        self.assertIn("gh CLI not installed", health["note"])
+
+    def test_github_unreachable_falls_back_to_cache(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "ci-health.json"
+            cache.write_text(json.dumps({"issues": ["cached failure"]}), encoding="utf-8")
+            repo = Path(tmp) / "repo"
+            (repo / ".github" / "workflows").mkdir(parents=True)
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=True), \
+                 patch("cli.parse_project_paths", return_value=[("RunSmart Web", repo)]), \
+                 patch("cli.run", return_value=subprocess.CompletedProcess([], 1, "", "gh: network error")):
+                health = cli.check_ci_health()
+
+        self.assertTrue(health["degraded"])
+        self.assertEqual(health["issues"], ["cached failure"])
+
+    def test_missing_cache_degrades_to_empty_not_green(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "absent.json"
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=False):
+                health = cli.check_ci_health()
+
+        self.assertTrue(health["degraded"])
+        self.assertEqual(health["issues"], [])
+
+    def test_healthy_repo_writes_cache_and_reports_green(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "ci-health.json"
+            repo = Path(tmp) / "repo"
+            (repo / ".github" / "workflows").mkdir(parents=True)
+            payload = json.dumps([gh_run("Plan eval", "success", "2026-07-21T05:24:53Z")])
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=True), \
+                 patch("cli.parse_project_paths", return_value=[("RunSmart Web", repo)]), \
+                 patch("cli.run", return_value=subprocess.CompletedProcess([], 0, payload, "")):
+                health = cli.check_ci_health()
+            # Asserted inside the temp dir: the cache is gone once it is torn down.
+            self.assertTrue(cache.is_file())
+
+        self.assertFalse(health["degraded"])
+        self.assertEqual(health["issues"], [])
+
+    def test_repo_without_workflows_is_skipped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "ci-health.json"
+            repo = Path(tmp) / "repo"
+            repo.mkdir()
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=True), \
+                 patch("cli.parse_project_paths", return_value=[("RunSmart Web", repo)]), \
+                 patch("cli.run", side_effect=AssertionError("gh must not run for a repo with no workflows")):
+                health = cli.check_ci_health()
+
+        self.assertFalse(health["degraded"])
+        self.assertEqual(health["repos"], [])
+
+    def test_non_product_repo_is_not_checked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cache = Path(tmp) / "ci-health.json"
+            repo = Path(tmp) / "repo"
+            (repo / ".github" / "workflows").mkdir(parents=True)
+            with patch.object(cli, "CI_CACHE_PATH", cache), \
+                 patch("cli.command_available", return_value=True), \
+                 patch("cli.parse_project_paths", return_value=[("Global Agentic OS", repo)]), \
+                 patch("cli.run", side_effect=AssertionError("gh must not run for a non-product repo")):
+                health = cli.check_ci_health()
+
+        self.assertEqual(health["repos"], [])
+
+
+class TestUsageSpendSplit(unittest.TestCase):
+    def test_split_uses_product_plus_meta_as_denominator(self):
+        usage = {
+            "windowDays": 30,
+            "byProject": {
+                "RunSmart": {"cost_usd": 300.0},
+                "ResumeBuilder": {"cost_usd": 300.0},
+                "Agentic OS": {"cost_usd": 300.0},
+                "Builder OS Vault": {"cost_usd": 100.0},
+                "Michal": {"cost_usd": 999.0},
+            },
+        }
+
+        split = cli.usage_spend_split(usage)
+
+        self.assertEqual(split["productUsd"], 600.0)
+        self.assertEqual(split["metaUsd"], 400.0)
+        self.assertEqual(split["otherUsd"], 999.0)
+        self.assertEqual(split["productPct"], 60.0)
+        self.assertFalse(split["belowTarget"])
+
+    def test_meta_heavy_month_is_flagged_below_target(self):
+        usage = {
+            "byProject": {
+                "RunSmart": {"cost_usd": 716.0},
+                "ResumeBuilder": {"cost_usd": 1664.0},
+                "Agentic OS": {"cost_usd": 3180.0},
+                "Builder OS Vault": {"cost_usd": 2987.0},
+            }
+        }
+
+        split = cli.usage_spend_split(usage)
+
+        # The 2026-07-03 review's measured 30d numbers: 27.8% product / 72.2% meta.
+        self.assertEqual(split["productPct"], 27.8)
+        self.assertTrue(split["belowTarget"])
+
+    def test_split_returns_none_without_costs(self):
+        self.assertIsNone(cli.usage_spend_split({}))
+        self.assertIsNone(cli.usage_spend_split({"byProject": {}}))
+        self.assertIsNone(cli.usage_spend_split({"byProject": {"RunSmart": {"cost_usd": 0}}}))
+
+    def test_split_ignores_malformed_rows(self):
+        usage = {
+            "byProject": {
+                "RunSmart": {"cost_usd": 100.0},
+                "ResumeBuilder": "not a dict",
+                "Agentic OS": {"cost_usd": "unparseable"},
+                "Builder OS Vault": {"cost_usd": 100.0},
+            }
+        }
+
+        split = cli.usage_spend_split(usage)
+
+        self.assertEqual(split["productUsd"], 100.0)
+        self.assertEqual(split["metaUsd"], 100.0)
+
+    def test_usage_age_detects_stale_telemetry(self):
+        now = datetime(2026, 7, 21, 12, 0, tzinfo=cli.timezone.utc)
+        fresh = {"generatedAt": "2026-07-21T11:00:00+00:00"}
+        stale = {"generatedAt": "2026-07-10T11:01:59.711345+00:00"}
+
+        self.assertLess(cli.usage_age_days(fresh, now=now), 1)
+        self.assertGreater(cli.usage_age_days(stale, now=now), cli.USAGE_STALE_AFTER_DAYS)
+
+    def test_usage_age_handles_missing_and_bad_stamps(self):
+        self.assertIsNone(cli.usage_age_days({}))
+        self.assertIsNone(cli.usage_age_days({"generatedAt": "not a date"}))
+        self.assertIsNotNone(cli.usage_age_days({"generatedAt": "2026-07-10T11:01:59Z"}))
+
+
 if __name__ == "__main__":
     unittest.main()
