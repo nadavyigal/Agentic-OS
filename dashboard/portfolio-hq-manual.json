@@ -31,9 +31,9 @@
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
-      "title": "Resumely 1.4.4 is the next ship — land the completed seven-story pass",
-      "body": "All seven stories in the 2026-07-20 UI/copy improvement plan are complete on branch claude/session-ec92e2. The pass replaces misleading ATS language with Match language, repairs share/marketing claims and URLs, fixes sign-up routing and legal links, removes fabricated locked-state scores, reaches 900/900 Hebrew localization, fixes tab overlap and RTL icons, and passes the final QA/Taste gate. Recorded validation: 205 tests passed with 1 intentional skip, Debug and unsigned Release builds green, EN/HE smokes clean, and analytics/API contracts untouched. The branch still reports 1.4.3 (13), so merge plus explicit 1.4.4 version/build release prep remain.",
-      "prompt": "Resumely iOS: review and merge claude/session-ec92e2 as the complete seven-story UI/copy release, preserving its unrelated untracked duplicate files. Then prepare version 1.4.4 with a fresh build number derived from main, run the full release checks and physical journey gate, and stop before archive/upload unless the founder explicitly authorizes the App Store action.",
+      "title": "Resumely 1.4.4 is UNDER ASC REVIEW — land WP-51 before it approves",
+      "body": "Founder confirmed 2026-07-21 that 1.4.4 (14) is submitted and under App Store review. Contents are the seven-story UI/copy pass: Match Score language replacing ATS framing, honest locked screens with no sample score, corrected share/Terms/Privacy links, fixed 'Create free account' routing to sign-up, full Hebrew translation, and layout polish (tab-bar overlap, RTL arrows, language switcher tap target). Validation on record: 205 tests passed, 1 intentional skip, Debug and unsigned Release green, EN/HE smokes clean, analytics/API contracts untouched. The operational consequence is the part to act on: this release contains NO fix for optimized_preview_rendered, so the moment it approves it resets the exact-version cohort clock and starts a fresh cohort measured by a milestone that under-fires. WP-51 needs to land in 1.4.5 quickly, or the 2026-08-01 EXD-015 verdict is measured on a broken instrument for a second consecutive release.",
+      "prompt": "Resumely iOS: 1.4.4 (14) is under ASC review and contains no measurement fix. Execute WP-51 (executive-os/work-packets/WP-51-resumely-fix-activation-milestone.md) against main now so the repair is ready to ship as 1.4.5 immediately after 1.4.4 approves. Do not wait for the approval to start.",
       "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP"
     },
     {
@@ -641,7 +641,7 @@
       },
       {
         "metric": "ASC status (App Store API, 2026-07-21)",
-        "resumely": "1.4.3 LIVE since 2026-07-19T21:47:02Z. 1.4.4 is NOT public — but 1.4.4 events are already arriving in PostHog, so a non-App-Store build is in the field",
+        "resumely": "1.4.3 LIVE since 2026-07-19T21:47:02Z. 1.4.4 (14) SUBMITTED and UNDER ASC REVIEW (founder-confirmed 2026-07-21) — a UI/copy/Hebrew release carrying NO activation-measurement fix, so approval resets the exact-version cohort clock while the milestone is still broken",
         "runsmart": "1.1.1 LIVE since 2026-07-20T20:38:19Z (store-verified, not just founder-reported)"
       },
       {

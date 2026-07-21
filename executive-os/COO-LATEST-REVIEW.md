@@ -48,8 +48,8 @@ RunSmart's confirmed sign-in outage is the more severe defect in absolute terms,
 
 1. **WP-51 — repair `optimized_preview_rendered`** *(local-repo, Resumely iOS)*. The only work that changes whether 2026-08-01 produces an answer. Packet attached.
 2. **CEO decision on RunSmart's gate** *(manual-founder)*. Repair the Apple configuration chain, or ship a guest path. Do not start either until decided — they are different products, not different tasks.
-3. **Resumely 1.4.4 submission** *(manual-founder)*. Merged and version-bumped; archive/upload remains founder-gated. Independent of items 1 and 2, but it resets the exact-version cohort clock, so land WP-51 first or the new cohort inherits the broken milestone.
-4. **Resolve the 1.4.4 field anomaly** *(QA)*. 1.4.4 events are arriving in PostHog while the store serves 1.4.3. Identify the build before it contaminates the next cohort read.
+3. ~~Resumely 1.4.4 submission~~ **— done. Founder confirmed 2026-07-21 that 1.4.4 (14) is submitted and under ASC review** (Match Score language, honest locked screens, corrected share/Terms/Privacy links, fixed "Create free account" routing, full Hebrew, layout polish). This **raises** WP-51's urgency rather than lowering it: 1.4.4 carries no measurement fix, so approval resets the exact-version cohort clock and starts a fresh cohort measured by a milestone that under-fires. WP-51 must be ready to ship as 1.4.5 on approval.
+4. ~~Resolve the 1.4.4 field anomaly~~ **— explained.** The 1.4.4 events in PostHog are consistent with pre-submission/TestFlight validation of the build now under review, not an unrecorded release. No packet needed; confirm the persons carry `is_internal_tester` on the next cohort read.
 5. **Stranded-work sweep** *(global-OS)*. 62 items, concentrated in RunSmart iOS: `main` 8 behind origin plus 5 local-only `claude/*` branches with deleted remotes. `./agentic-os clean --apply` handles the agent branches. Low urgency, non-blocking.
 
 ## 6. CEO Escalation Needed: **Yes**

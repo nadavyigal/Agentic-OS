@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-21 17:17 UTC",
+  "generatedAt": "2026-07-21 17:41 UTC",
   "sources": {
     "status": "2026-07-21 20:04",
     "usage": "2026-07-21T17:04:45.296074+00:00",
@@ -113,7 +113,7 @@
         },
         {
           "metric": "ASC status (App Store API, 2026-07-21)",
-          "resumely": "1.4.3 LIVE since 2026-07-19T21:47:02Z. 1.4.4 is NOT public — but 1.4.4 events are already arriving in PostHog, so a non-App-Store build is in the field",
+          "resumely": "1.4.3 LIVE since 2026-07-19T21:47:02Z. 1.4.4 (14) SUBMITTED and UNDER ASC REVIEW (founder-confirmed 2026-07-21) — a UI/copy/Hebrew release carrying NO activation-measurement fix, so approval resets the exact-version cohort clock while the milestone is still broken",
           "runsmart": "1.1.1 LIVE since 2026-07-20T20:38:19Z (store-verified, not just founder-reported)"
         },
         {
