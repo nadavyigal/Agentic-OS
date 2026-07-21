@@ -9,7 +9,7 @@
 - Loop: Resumely activation measurement loop
 - Signal: The 2026-07-21 live read on the canonical WP-50 contract returned a **non-monotonic funnel** — 12 `resume_file_selected` → 7 `optimization_completed` → **1** `optimized_preview_rendered`, with **3** `export_success`. More people exported than rendered a preview, which is impossible if the milestone fired reliably. `optimized_preview_rendered` has only 3 people across 60 days.
 - Memory update: `tasks/lessons.md` (Resumely iOS) + `docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md` (amend the contract with the fix)
-- Success signal: `optimized_preview_rendered` person-count is **≥** `export_success` person-count over the same window, and the ordered funnel is monotonic non-increasing on a fresh 14-day read
+- Success signal: `optimized_preview_rendered` person-count is **≥** `export_success` person-count over the same window, and the ordered funnel is monotonic non-increasing on a fresh 14-day read. Secondary: `save_failed`, `optimization_apply_failed` and `optimization_state_recovery_failed` all carry a populated `reason` on every new occurrence.
 - Model route: Sonnet 5 (instrumentation fix + verification; no architectural change)
 - Rollback: Revert the instrumentation commit. This packet touches analytics emission only — no auth, billing, data, or migration surface. If the fix over-fires instead, the event's person-count exceeding `optimization_completed` is the tell.
 
@@ -36,6 +36,39 @@ This is **not** a request to change the activation definition. WP-50's contract 
 3. **Fix the emission** so it fires whenever a user actually sees a rendered optimized résumé. Preserve the once-per-optimization guarantee and the `optimization_id` correlation field.
 4. **Add a regression test** proving the event fires on a successful preview render. Red before, green after.
 5. **Verify against live data** after the fix ships: re-run the canonical funnel and confirm monotonicity.
+
+## Scope addition from the 2026-07-21 PostHog AI audit (verified)
+
+The audit independently found three failure events firing with **zero diagnostic properties**. Verified against live data the same day, 30d window:
+
+| Event | Events | Persons | Rows with a populated reason/error |
+|---|---|---|---|
+| `save_failed` | 21 | 20 | **0 of 21** |
+| `optimization_apply_failed` | 12 | 9 | **0 of 12** |
+| `optimization_state_recovery_failed` | 24 | 12 | **0 of 24** |
+
+These sit in the **same post-activation commit path** as the milestone this packet repairs: a user optimizes, then tries to apply/save/recover the result and it fails, blind. Given only 7 clean people reach `optimization_completed` in 30 days, 20 people hitting `save_failed` means the failures are concentrated among users who are not otherwise visible as activated — and every one of them is undiagnosable.
+
+**Add to this packet:** a `reason` and `error_code` property on all three events. Same instrumentation surface, same session, and it turns three blind failure paths into debuggable ones. Do not attempt to *fix* the underlying failures here — just make them visible. The fix is a separate packet once you can see the causes.
+
+## Rejected: the audit's proposal to redefine activation as `optimization_completed`
+
+The audit states *"No explicit activation definition exists in this project"* and proposes `optimization_completed` as activation. **Both the premise and the proposal are wrong, and adopting them would silently revert WP-48 and WP-50.**
+
+The definition does exist — it lives in the repo (`docs/qa/reports/wp46-story10-activation-funnel-2026-07-18.md`), not in PostHog, which is why the audit could not see it. Denominator `resume_file_selected`, milestone `optimized_preview_rendered`.
+
+`optimization_completed` was considered and is **backend completion, not delivered value.** The whole point of `optimized_preview_rendered` is that it fires only when the user actually *sees* a rendered optimized résumé. Substituting backend completion reintroduces exactly the gap WP-46 Story 10 closed.
+
+That said, the audit's instinct points at something real, and it is this packet's open question: **the gap between the two events is either the defect or the truth, and the monotonicity check settles it.** Clean 30d figures, `is_internal_tester` excluded:
+
+```
+optimization_completed        7
+optimized_viewed              4
+optimized_preview_rendered    1   <- milestone
+export_success                3   <- MORE than rendered a preview
+```
+
+Three people exported a résumé that one person is recorded as having seen. That is not a behavioural funnel; it is impossible. **This is the proof that the milestone under-fires rather than users dropping off**, and it is the reason the audit's Experiment 2 (progress-framing to fix a "56% fall-off" between completion and viewing) would be optimizing a measurement artifact. Do not ship that experiment until this packet lands.
 
 ## Out of Scope — Do Not Touch
 

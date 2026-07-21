@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-21 17:52 UTC",
+  "generatedAt": "2026-07-21 18:41 UTC",
   "sources": {
     "status": "2026-07-21 20:04",
     "usage": "2026-07-21T17:04:45.296074+00:00",
@@ -104,6 +104,23 @@
           "resumely": "n/a — guests reach value before any account, which is why Resumely is measurable at all",
           "runsmart": "P0 CONFIRMED ON LIVE 1.1.1. 5/5 ASAuthorizationError 1000 at screen=sign_in_wall on iPhone17,1, 2026-07-20 12:22-12:25 UTC, $is_testflight/$is_sideloaded/$is_emulator all false. Cumulative 12 events / 4 devices / 3 builds; 0 successes from a never-authorized Apple ID",
           "bad": true
+        },
+        {
+          "metric": "Audit cross-check (2026-07-21) — why the PostHog AI number is 2.7x optimistic",
+          "resumely": "A PostHog-generated audit reported 12.8% activation (25/196). It excluded 4 email-matched persons; 54 of 199 persons (27%) carry is_internal_tester and generate 49% of all events. Clean equivalent is ~4.8% (7 optimization_completed / ~145 clean actives). The audit also invented its own activation definition, unaware the WP-50 contract lives in the repo rather than in PostHog",
+          "runsmart": "Same audit claimed sign_in_failed carries no diagnostics ('error and provider are null') and made fixing it a top-5 weekly priority. It queried property names that do not exist — the real ones (error_code=1000, error_domain, screen=sign_in_wall) are populated on all 12 events. Instrumentation is fine; the Apple config is not",
+          "bad": true
+        },
+        {
+          "metric": "Post-activation failure rates (NEW 2026-07-21, verified)",
+          "resumely": "save_failed 21 events / 20 people, optimization_apply_failed 12/9, optimization_state_recovery_failed 24/12 — ALL with zero diagnostic properties (0 of 57 rows populated). Users who do activate then hit a blind wall",
+          "runsmart": "plan_generation ~29% failure rate (28 started → 12 succeeded, 8 failed). coach_message_sent silent for 30d while coach_thread_opened still fires — likely silent breakage",
+          "bad": true
+        },
+        {
+          "metric": "Retention (NEW 2026-07-21)",
+          "resumely": "92% one-and-done (217/234 persons active in exactly one week over 60d); W2 return ~6%. WAU grew 6→63 over 7 weeks then fell to 34 — growth is almost entirely new users, not returning ones",
+          "runsmart": "D1 10.7% (9/84), D7/D30 not computable — 69 of 84 person IDs are anonymous installs that never authenticated, so the denominator is unusable"
         },
         {
           "metric": "Measurement integrity (NEW 2026-07-21)",
@@ -249,6 +266,12 @@
       "when": null,
       "what": "Resumely 1.4.4 events are arriving in PostHog while the App Store still serves 1.4.3 — confirm which non-App-Store build is in the field",
       "state": "you"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "PostHog AI audits run on both projects — real value (blind failure events, session replay off, file-picker leak) but 2 of its top-5 actions are wrong; corrections folded into WP-51/52/54, new WP-55/56 created",
+      "state": "done"
     },
     {
       "date": "2026-07-21",

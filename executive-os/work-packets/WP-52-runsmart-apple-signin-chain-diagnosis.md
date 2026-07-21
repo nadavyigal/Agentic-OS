@@ -13,6 +13,24 @@
 - Model route: Sonnet 5 (configuration inspection and evidence gathering; no architecture)
 - Rollback: N/A — diagnosis only, no code or config changes. **Do not "fix while looking."**
 
+## ⚠️ Correction to the 2026-07-21 PostHog AI audit — read before acting on it
+
+A PostHog-generated audit run the same day claims: *"`sign_in_failed` — `error`, `provider`: both are null on all 12 occurrences. The event fires but carries no diagnostic info. You cannot tell what is failing or which auth provider. Fix immediately."* It lists this as the #2 priority for the week.
+
+**That claim is false, and acting on it would waste this packet's timebox.**
+
+The audit queried property names that do not exist on the event. The real properties are populated on all 12 occurrences:
+
+| Property queried by the audit | Exists? | Actual property | Actual value |
+|---|---|---|---|
+| `error` | No | `error_code` | `1000` |
+| `provider` | No | `error_domain` | `com.apple.AuthenticationServices.AuthorizationError` |
+| — | — | `screen` | `sign_in_wall` |
+
+The diagnostics that make this packet possible are already there. **Do not add sign-in instrumentation.** The instrumentation is fine; the Apple configuration is not.
+
+This is itself the fifth recorded instance of the wrong-property-name failure class that WP-54 exists to prevent (`marketing_version`, `resume_uploaded`, `resume_upload_succeeded`, `optimized_preview_rendered`, and now this). Treat any "property is null" claim as unverified until the property is confirmed to exist in the project taxonomy.
+
 ## Owner Role
 RunSmart iOS engineer + founder (portal access required)
 
