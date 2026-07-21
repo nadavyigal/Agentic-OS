@@ -4,12 +4,12 @@ Project: Global Agentic OS
 Status: Active
 Current Phase: Daily portfolio operations and evidence reconciliation
 Active Story: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0.
-Last Completed Story: Portfolio HQ morning refresh (2026-07-21). Recorded founder-confirmed RunSmart 1.1.1 (25) live state, surfaced Resumely Stories 1-7 as complete on `claude/session-ec92e2` with 1.4.4 release prep next, drafted the 2026-07-20 EOD from 36 commits across four repos, regenerated Portfolio HQ, and passed `./agentic-os verify`.
-Next Recommended Story: In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization.
-Estimated Completion: one focused Resumely release-prep session
-Blockers: —
+Last Completed Story: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75).
+Next Recommended Story: Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4.
+Estimated Completion: one focused eval-repair session, then Resumely release prep
+Blockers: Both product eval harnesses are red (RunSmart >=11 gated runs, ResumeBuilder >=7). Releases that depend on eval evidence have no working gate until these are fixed.
 Risks: Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) — if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes.
-Last Validation: 2026-07-21 — `./agentic-os morning` completed; parser tests, dashboard JSON, embedded JSON, fallback sync, confidence/freshness validation, work-packet hygiene, dashboard links, and `git diff --check` passed. Portfolio HQ regenerated with the 2026-07-20 EOD handoff.
+Last Validation: 2026-07-21 — `./agentic-os test` 94 passed (19 new: CI streak counting, out-of-order runs, PR-noise filtering, truncated streaks, three fail-open paths, spend-split math). `./agentic-os refresh` run end-to-end; CI health and spend split both printed from live data.
 Last Updated: 2026-07-21
 Latest QA Report: —
 
