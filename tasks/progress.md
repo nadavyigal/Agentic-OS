@@ -10,7 +10,7 @@ Estimated Completion: dashboard trust refresh and sync in this session
 Blockers: —
 Risks: Growth/Executive tabs parse markdown headings (## Active, Top 3 Priorities, Week of YYYY-MM-DD, - Reviewed:) — if those file formats change, the parsers return empty sections rather than failing. WP-31/WP-32 still have real gaps (no asset pack for WP-31, no engagement/ASC log for WP-32) before the 2026-07-12 measurement window closes.
 Last Validation: Pending refreshed `./agentic-os morning` after the 2026-07-13 founder evidence reconciliation.
-Last Updated: 2026-07-13
+Last Updated: 2026-07-20
 Latest QA Report: —
 
 <!--
