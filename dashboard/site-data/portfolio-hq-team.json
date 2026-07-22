@@ -1,27 +1,26 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-21 11:30 UTC",
+  "generatedAt": "2026-07-22 04:54 UTC",
   "sources": {
-    "status": "2026-07-21 14:30",
-    "usage": "2026-07-21T11:30:58.729575+00:00",
-    "manual": "2026-07-21",
+    "status": "2026-07-21 21:55",
+    "usage": "2026-07-21T18:56:04.550349+00:00",
+    "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
   "trust": {
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 4 uncommitted file(s); consolidate 2 worktree(s) with ./agentic-os clean --apply; push 2 local-only commit(s). A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "4 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
-      "2 extra worktree(s) open. Consolidate to main; do not work in worktrees.",
-      "2 local commit(s) not pushed to the upstream branch."
+      "To clear this: switch off 'docs/exd-023-apple-signin-verdict' back to main; consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "On branch 'docs/exd-023-apple-signin-verdict', not main. Merge to main so all tools see it.",
+      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (9), Resumely iOS (8)."
+      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (2)."
     ]
   },
   "consistencyIssues": [],
@@ -40,7 +39,7 @@
     },
     {
       "name": "Resumely iOS",
-      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
+      "state": "1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20)",
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
@@ -51,8 +50,8 @@
       "name": "RunSmart Web",
       "state": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
       "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-      "freshness": "Stale",
-      "evidenceDate": "2026-07-03",
+      "freshness": "Fresh",
+      "evidenceDate": "2026-07-21",
       "dirty": true,
       "dirtyCount": 8
     },
@@ -61,18 +60,18 @@
       "state": "WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next",
       "nextAction": "WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-03",
+      "evidenceDate": "2026-07-21",
       "dirty": true,
       "dirtyCount": 10
     },
     {
       "name": "Agentic OS",
       "state": "Daily portfolio operations and evidence reconciliation",
-      "nextAction": "In the Resumely iOS repo, review and merge `claude/session-ec92e2`, then prepare 1.4.4 with a fresh build number and the documented release/physical QA gates. Do not archive or upload without explicit founder authorization",
+      "nextAction": "Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the <configuration value> repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 18
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -85,6 +84,12 @@
           "bad": true
         },
         {
+          "metric": "Live 30d funnel (canonical contracts, 2026-07-21)",
+          "resumely": "12 file-selected → 7 optimized → 1 preview-rendered → 3 exported (WP-50 contract, is_internal_tester excluded; n too small to test the 20% target, and the preview step is defective)",
+          "runsmart": "3 saw the sign-in wall → 2 tapped → 1 in, 1 hard-failed 5x with Apple code 1000 on the live binary",
+          "bad": true
+        },
+        {
           "metric": "Clean 90d funnel (founder/QA/bot-excluded, 2026-07-19)",
           "resumely": "145 reached → 20 tapped upload → 16 uploaded → 8 job → 2 optimized → 1 exported",
           "runsmart": "23 organic App Store users → 1 onboarded → 1 planned → 0 ran",
@@ -92,78 +97,113 @@
         },
         {
           "metric": "The cliff (single biggest step loss)",
-          "resumely": "upload → optimization: 14/16 lost (87.5%). Guest dead-end at the score screen; 1.4.3 partially fixes it",
-          "runsmart": "install → onboarding: 22/23 lost (95.7%). Uninstrumented sign-in wall is the first screen"
+          "resumely": "arrival → file selected: ~12-15 guests/wk arrive, 0-5 ever select a résumé. The cliff moved earlier than the old upload→optimization framing suggested",
+          "runsmart": "install → onboarding, and the cause is now named: the sign-in wall is not a persuasion step, it is a broken gate that returns Apple error 1000 to first-time users"
         },
         {
-          "metric": "Sign-in integrity (NEW 2026-07-19)",
-          "resumely": "n/a — guests reach value before any account",
-          "runsmart": "7 non-cancel Apple errors (code 1000) across 3 fresh installs on 2 builds; only success is the founder's already-provisioned iPhone 13. Supabase auth logs show NO token exchange during today's failures → fails on-device before Supabase",
+          "metric": "Sign-in integrity (WP-52 verdict, EXD-023, 2026-07-21)",
+          "resumely": "n/a — guests reach value before any account, which is why Resumely is measurable at all",
+          "runsmart": "Config CLEARED, failures REAL. All 5 chain links correct with artifacts; the App Store binary completed a native Apple sign-in through Supabase on 07-21 (status 200). But June converted 7/40 launchers (17.5%) vs July 0/~26 (p≈0.7%), outcomes partition perfectly across 13 devices, auth code unchanged builds 17-22, and every success is an already-authorized Apple ID. Cause is first-time authorization. Next: WP-52a instrument NSUnderlyingErrorKey + revoke-and-retry repro",
           "bad": true
         },
         {
-          "metric": "ASC status",
-          "resumely": "1.4.3 (13) LIVE since 2026-07-19T21:47:02Z",
-          "runsmart": "1.1.1 (25) LIVE, founder-confirmed 2026-07-21"
+          "metric": "Audit cross-check (2026-07-21) — why the PostHog AI number is 2.7x optimistic",
+          "resumely": "A PostHog-generated audit reported 12.8% activation (25/196). It excluded 4 email-matched persons; 54 of 199 persons (27%) carry is_internal_tester and generate 49% of all events. Clean equivalent is ~4.8% (7 optimization_completed / ~145 clean actives). The audit also invented its own activation definition, unaware the WP-50 contract lives in the repo rather than in PostHog",
+          "runsmart": "Same audit claimed sign_in_failed carries no diagnostics ('error and provider are null') and made fixing it a top-5 weekly priority. It queried property names that do not exist — the real ones (error_code=1000, error_domain, screen=sign_in_wall) are populated on all 12 events. Instrumentation is fine; the Apple config is not",
+          "bad": true
         },
         {
-          "metric": "Target",
-          "resumely": "≥20% by 2026-08-01",
-          "runsmart": "≥30%"
+          "metric": "Post-activation failure rates (NEW 2026-07-21, verified)",
+          "resumely": "save_failed 21 events / 20 people, optimization_apply_failed 12/9, optimization_state_recovery_failed 24/12 — ALL with zero diagnostic properties (0 of 57 rows populated). Users who do activate then hit a blind wall",
+          "runsmart": "plan_generation ~29% failure rate (28 started → 12 succeeded, 8 failed). coach_message_sent silent for 30d while coach_thread_opened still fires — likely silent breakage",
+          "bad": true
+        },
+        {
+          "metric": "Retention (NEW 2026-07-21)",
+          "resumely": "92% one-and-done (217/234 persons active in exactly one week over 60d); W2 return ~6%. WAU grew 6→63 over 7 weeks then fell to 34 — growth is almost entirely new users, not returning ones",
+          "runsmart": "D1 10.7% (9/84), D7/D30 not computable — 69 of 84 person IDs are anonymous installs that never authenticated, so the denominator is unusable"
+        },
+        {
+          "metric": "Measurement integrity (NEW 2026-07-21)",
+          "resumely": "Activation milestone optimized_preview_rendered fires for only 3 people in 60d while more people export than preview — funnel is non-monotonic, so the milestone is suspect",
+          "runsmart": "app_version/app_build now land correctly on the live build. Note: marketing_version is NOT in this project's taxonomy — plans referencing it should read $app_version / app_build",
+          "bad": true
+        },
+        {
+          "metric": "ASC status (App Store API, 2026-07-21)",
+          "resumely": "1.4.3 LIVE since 2026-07-19T21:47:02Z. 1.4.4 (14) SUBMITTED and UNDER ASC REVIEW (founder-confirmed 2026-07-21) — a UI/copy/Hebrew release carrying NO activation-measurement fix, so approval resets the exact-version cohort clock while the milestone is still broken",
+          "runsmart": "1.1.1 LIVE since 2026-07-20T20:38:19Z (store-verified, not just founder-reported)"
+        },
+        {
+          "metric": "Target (RESTATED 2026-07-21, EXD-022)",
+          "resumely": "≥20 clean activations on a WORKING milestone — no deadline. Supersedes '20% by 08-01', which was untestable at n=12. 2026-08-01 is now a reporting checkpoint; 2026-09-01 triggers an activation-strategy revisit if nothing is measurable",
+          "runsmart": "≥30% — but not measurable at all until the sign-in gate opens (WP-52 in progress)"
         }
       ],
-      "note": "Clean-funnel row added 2026-07-19 from a founder/QA/bot-excluded PostHog read (projects 171597 + 270848, 90d) filed as executive-os/ACTIVATION-AUTOPSY-2026-07-19.md and per-repo docs/plans/2026-07-19-activation-cliff-fix-plan.md. Exclusions: founder person, +fable-qa*/+export-wall* aliases, is_internal_tester (45 persons / 1,216 events in Resumely), burst chains >=3 events/sec, and RunSmart behavioural founder/QA heuristics (>=6 sessions or >=3 app versions). Mature founder-excluded D7 from 2026-07-12 remains the decision contract; the clean-funnel row is diagnostic, not a replacement cohort. Correction: free_ats_completed DOES carry score_bucket — live 90d is 5x '0-40' + 5x '41-60', so every real free-ATS user saw <=60."
+      "note": "REFRESH 2026-07-21 (live PostHog, projects 171597 + 270848). Three things changed and they are not equally good news. (1) RunSmart's new instrumentation works and immediately caught the sign-in P0 reproducing on the LIVE 1.1.1 public binary — this closes the 'is it outage or persuasion' question in favour of outage, and it invalidates reading any RunSmart FTUX number as a product signal until sign-in is fixed. (2) Resumely's canonical WP-50 funnel is readable but n=12/30d and internally inconsistent (more exporters than preview-renderers), so the activation milestone optimized_preview_rendered is itself suspect and must be fixed before the 2026-08-01 EXD-015 target review means anything. (3) Store-verified release truth: RunSmart 1.1.1 live 2026-07-20T20:38:19Z, Resumely still 1.4.3 — though 1.4.4 events are already in PostHog, so a non-App-Store build is circulating. Prior clean-funnel row retained below for continuity. Clean-funnel row added 2026-07-19 from a founder/QA/bot-excluded PostHog read (projects 171597 + 270848, 90d) filed as executive-os/ACTIVATION-AUTOPSY-2026-07-19.md and per-repo docs/plans/2026-07-19-activation-cliff-fix-plan.md. Exclusions: founder person, +fable-qa*/+export-wall* aliases, is_internal_tester (45 persons / 1,216 events in Resumely), burst chains >=3 events/sec, and RunSmart behavioural founder/QA heuristics (>=6 sessions or >=3 app versions). Mature founder-excluded D7 from 2026-07-12 remains the decision contract; the clean-funnel row is diagnostic, not a replacement cohort. Correction: free_ats_completed DOES carry score_bucket — live 90d is 5x '0-40' + 5x '41-60', so every real free-ATS user saw <=60."
     },
     "funnels": [
       {
         "id": "resumely",
         "name": "Resumely",
-        "tag": "iOS · ordered 7d window · last 30d through 2026-07-19 (directional, not mature D7)",
+        "tag": "iOS · WP-50 canonical contract · last 30d through 2026-07-21 (n=12, NOT decision-grade)",
         "steps": [
           [
-            "Resume uploaded",
-            14
+            "Resume file selected (WP-50 denominator)",
+            12
           ],
           [
-            "Optimization completed within 7d",
-            4
+            "Optimization completed",
+            7
           ],
           [
-            "Export success within 7d",
-            2
+            "Optimized preview rendered (activation)",
+            1
+          ],
+          [
+            "Export success",
+            3
           ]
         ]
       },
       {
         "id": "runsmart",
         "name": "RunSmart",
-        "tag": "iOS · ordered 7d window · Jun 1–Jul 19 2026 (directional, not mature organic D7)",
+        "tag": "iOS · sign-in wall, live 1.1.1 (25) only · 2026-07-20 → 07-21 (n=3, outage evidence)",
         "steps": [
           [
-            "Installed",
-            63
-          ],
-          [
-            "Onboarding completed",
-            6
-          ],
-          [
-            "Plan generated",
+            "Sign-in wall viewed",
             3
           ],
           [
-            "Run started",
-            0
+            "Sign-in wall tapped",
+            2
           ],
           [
-            "Run completed",
-            0
+            "Sign-in completed",
+            1
+          ],
+          [
+            "Sign-in FAILED (code 1000)",
+            1
           ]
         ]
       }
     ]
   },
   "clocks": [
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "Resumely 1.4.4 (14) LIVE (store-verified IL/GB 20:17Z); 1.4.5 (15) prepped on claude/resumely-ios-1-4-5-prep-07f44c with the WP-51 milestone fix + failure-event diagnostics, fully pushed",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "Resumely 1.4.5 submit-to-ASC is the founder action; it is the FIRST build whose activation milestone works, so the EXD-022 count gate starts from its cohort — every day it is not live is a day the counter cannot move",
+      "state": "you"
+    },
     {
       "date": "2026-07-19",
       "when": null,
@@ -199,6 +239,36 @@
       "when": null,
       "what": "Resumely UI/copy Stories 1-7 complete on claude/session-ec92e2; merge and 1.4.4 release prep are next, no ASC action yet",
       "state": "running"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "P0 ESCALATION — Apple sign-in reproduced on the LIVE 1.1.1 binary: 5/5 code-1000 at sign_in_wall, real App Store install. S0 is answered: outage, not persuasion",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "Resumely measurement defect — optimized_preview_rendered under-fires (3 people/60d, fewer than exporters). Fix before the 2026-08-01 EXD-015 target review",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "Resumely 1.4.4 events are arriving in PostHog while the App Store still serves 1.4.3 — confirm which non-App-Store build is in the field",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "PostHog AI audits run on both projects — real value (blind failure events, session replay off, file-picker leak) but 2 of its top-5 actions are wrong; corrections folded into WP-51/52/54, new WP-55/56 created",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "PostHog numbers refresh — RunSmart 171597 sign-in wall + Resumely 270848 WP-50 canonical funnel and traffic updated in Portfolio HQ",
+      "state": "done"
     },
     {
       "date": "2026-07-19",
@@ -249,10 +319,28 @@
       "state": "you"
     },
     {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "EXD-022 DECIDED — activation gate restated to ≥20 clean activations on a working milestone, no deadline. EXD-015's untestable 20%-by-08-01 target superseded; priority clauses unchanged",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "WP-51 (Resumely milestone repair) and WP-52 (RunSmart Apple-chain diagnosis, timeboxed) both IN PROGRESS — founder launched both sessions",
+      "state": "running"
+    },
+    {
       "date": "2026-08-01",
       "when": null,
-      "what": "EXD-015 review — did Resumely hit 20% real activation in 30 days?",
-      "state": "running"
+      "what": "EXD-022 CHECKPOINT (not a verdict) — write a progress read on clean activations toward the ≥20 gate",
+      "state": "waiting"
+    },
+    {
+      "date": "2026-09-01",
+      "when": null,
+      "what": "EXD-022 trigger — if no measurable activation exists by now, revisit the activation strategy itself rather than the metric",
+      "state": "waiting"
     },
     {
       "date": null,
@@ -278,14 +366,14 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-21 14:30",
+      "lastRan": "2026-07-21 21:55",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-21",
+      "lastRan": "2026-07-22",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
@@ -299,7 +387,7 @@
       "id": "coo",
       "name": "COO operating review",
       "cadence": "as needed",
-      "lastRan": "2026-07-12",
+      "lastRan": "2026-07-21",
       "how": "Answers 'what do I do next?' from current evidence when you feel lost between sessions."
     },
     {
@@ -327,7 +415,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-21T11:30:58.729575+00:00",
+      "lastRan": "2026-07-21T18:56:04.550349+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ]
