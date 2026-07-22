@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-22 17:54 UTC",
+  "generatedAt": "2026-07-22 17:55 UTC",
   "sources": {
-    "status": "2026-07-22 20:54",
-    "usage": "2026-07-22T17:54:11.113461+00:00",
+    "status": "2026-07-22 20:55",
+    "usage": "2026-07-22T17:55:55.795101+00:00",
     "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
@@ -12,8 +12,7 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 1 uncommitted file(s); consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -71,7 +70,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 3
+      "dirtyCount": 1
     }
   ],
   "numbers": {
@@ -252,7 +251,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-22 20:54",
+      "lastRan": "2026-07-22 20:55",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -301,7 +300,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-22T17:54:11.113461+00:00",
+      "lastRan": "2026-07-22T17:55:55.795101+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ]

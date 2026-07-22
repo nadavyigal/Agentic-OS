@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-22 20:54"
+    "lastSuccessfulRefresh": "2026-07-22 20:55"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 Post-release watch. Nothing to build until the instrument reports: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install \u00b7 Resumely iOS \u2014 Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -709,7 +709,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22); trust git for the latest state.",
+      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live); trust git for the latest state.",
       "currentPhase": "Daily portfolio operations and evidence reconciliation",
       "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
       "lastCompletedStory": "OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75)",
@@ -738,9 +738,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 3,
+        "dirtyCount": 1,
         "extraWorktrees": 1,
-        "lastCommit": "2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22",
+        "lastCommit": "2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -967,7 +967,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-22 20:54",
+    "lastRefresh": "2026-07-22 20:55",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -2320,10 +2320,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 3,
+      "dirtyCount": 1,
       "extraWorktrees": 1,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22",
+      "lastCommit": "2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -2721,7 +2721,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-22 20:54",
+    "lastRunAt": "2026-07-22 20:55",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -5829,13 +5829,12 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 1,
+    "uncommitted": 0,
     "extraWorktrees": 1,
     "ahead": 0,
     "behind": 0,
     "synced": false,
     "notes": [
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
@@ -5968,8 +5967,7 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: commit 1 uncommitted file(s); consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -6197,7 +6195,7 @@
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "3 uncommitted file(s) in the primary working tree",
+        "detail": "1 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -6212,7 +6210,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-22 20:54",
+    "generatedAt": "2026-07-22 20:55",
     "apps": [
       {
         "projectId": 171597,
