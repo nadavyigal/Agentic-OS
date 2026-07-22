@@ -14,18 +14,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| RunSmart iOS | Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (6) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104) |
-| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (7) | Fresh | High | tasks/progress.md | 2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51) |
+| RunSmart iOS | Post-release watch. Nothing to build until the instrument reports | **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** → read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** → a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true — that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as "no data". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install | 1 | Yes (1) | Fresh | Medium | tasks/progress.md | 2026-07-22 36aaf7d docs(tasks): 1.1.2 (27) is live — post-release watch, and the P0 framing it was built to serve is refuted |
+| Resumely iOS | Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet | **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, "too early" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 | 1 | Yes (7) | Fresh | Medium | tasks/progress.md | 2026-07-22 3fd7271 docs(tasks): 1.4.5 (15) is live — the first build whose activation number means anything |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-21 c7e4f57 fix(eval): make the plan-generator eval runnable locally and fail honestly |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (10) | Fresh | High | tasks/progress.md | 2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly |
-| Agentic OS | Daily portfolio operations and evidence reconciliation | Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4 | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge |
+| Agentic OS | Daily portfolio operations and evidence reconciliation | Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4 | 1 | Yes (16) | Fresh | High | tasks/progress.md | 2026-07-22 81e4fe8a refresh: refuse to write into a vault checkout that is behind its remote (#35) |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Resumely iOS: validated 2026-07-11, last commit 2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51)
-- Agentic OS: validated 2026-07-21, last commit 2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge
+- Agentic OS: validated 2026-07-21, last commit 2026-07-22 81e4fe8a refresh: refuse to write into a vault checkout that is behind its remote (#35)
 
 ## Drift Warnings
 
@@ -35,7 +34,6 @@ None. Curated narrative matches the parsed source for all High-confidence projec
 
 Commits, branches, and worktrees that exist only locally or only on a side branch. Every item here is at risk of being lost. Push + PR, hand off explicitly, or consciously discard:
 
-- [RunSmart iOS] main is 8 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
 - [RunSmart iOS] backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13 -> Push backup-7b15df1-docs and open a PR, or consciously discard it.
 - [RunSmart iOS] docs/1.0.9-asc-submission-waiver: unmerged commits, remote branch deleted, last commit 2026-07-15 -> Push docs/1.0.9-asc-submission-waiver and open a PR, or consciously discard it.
 - [RunSmart iOS] docs/public-108-smoke-2026-07-13: unmerged commits, remote branch deleted, last commit 2026-07-15 -> Push docs/public-108-smoke-2026-07-13 and open a PR, or consciously discard it.
@@ -46,10 +44,10 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on feat/adaptive-coach-phase1 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/adaptive-coach-phase1 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on fix/zero-streak-profile, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/bold-noyce-678ace -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] worktree on claude/apple-chain-diagnosis-252a35 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/lucid-swanson-18f638 -> Land or discard this worktree, then `git worktree remove` it.
-- [RunSmart iOS] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [RunSmart iOS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Resumely iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
+- [RunSmart iOS] worktree on claude/healthkit-sync-journey-d6ce3e at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/healthkit-sync-journey-d6ce3e -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] worktree on claude/apple-chain-diagnosis-252a35, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/lucid-swanson-18f638 -> Land or discard this worktree, then `git worktree remove` it.
+- [RunSmart iOS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [RunSmart iOS] 4 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 - [Resumely iOS] codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-10 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-11: 1 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-11 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-12: 2 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-12 and open a PR, or explicitly hand it off.
@@ -58,7 +56,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
 - [Resumely iOS] worktree on codex/wp46-story-10 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-10 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on codex/wp46-story-11 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-11 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/resumely-ios-1-4-5-prep-07f44c at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c -> Land or discard this worktree, then `git worktree remove` it.
+- [Resumely iOS] worktree on detached at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] 7 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
@@ -70,8 +68,8 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
-- [Agentic OS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
+- [Agentic OS] 16 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 2 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
 
@@ -92,18 +90,18 @@ None. Active/open packet states match the current project status.
 
 ## Morning Brief
 
-RunSmart iOS — Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll · Resumely iOS — Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
+RunSmart iOS — Post-release watch. Nothing to build until the instrument reports: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** → read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** → a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true — that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as "no data". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install · Resumely iOS — Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, "too early" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 · RunSmart Web — Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes · ResumeBuilder AI (Web) — WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next
 
 ## What To Do Next
 
-Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition
+Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, "too early" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86
 
 ## Action Board
 
 ### Now
 
-- RunSmart iOS: Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll
-- Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition
+- RunSmart iOS: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** → read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** → a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true — that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as "no data". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install
+- Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, "too early" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86
 
 ### Next
 
@@ -123,9 +121,8 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 
 ### Blocked
 
-- RunSmart iOS: None — waiting on Apple App Review turnaround
-- Resumely iOS: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet)
-- Resumely iOS: automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap
+- RunSmart iOS: None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query — exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)
+- Resumely iOS: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release — it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading — the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`
 - RunSmart Web: **Founder action required** — the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production
 - RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard
 - ResumeBuilder AI (Web): **Founder action required** — the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision
@@ -188,12 +185,6 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Resumely iOS: tasks/progress.md
 - Resumely iOS: tasks/session-log.md
 - Resumely iOS: tasks/todo.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md
@@ -226,6 +217,12 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md
+- Resumely iOS: worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md
+- Resumely iOS: worktree:detached:tasks/MEMORY.md
+- Resumely iOS: worktree:detached:tasks/lessons.md
+- Resumely iOS: worktree:detached:tasks/progress.md
+- Resumely iOS: worktree:detached:tasks/session-log.md
+- Resumely iOS: worktree:detached:tasks/todo.md
 - RunSmart Web: docs/agent-os/project-context.md
 - RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md
 - RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md
@@ -265,15 +262,21 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - RunSmart iOS: tasks/progress.md
 - RunSmart iOS: tasks/session-log.md
 - RunSmart iOS: tasks/todo.md
-- RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:docs/plans/2026-07-13-ftux-upgrade-plan.md
-- RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:docs/plans/2026-07-19-activation-cliff-fix-plan.md
-- RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:docs/specs/2026-07-21-clean-install-telemetry-integrity.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/ERRORS.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/MEMORY.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/lessons.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/progress.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/session-log.md
 - RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/todo.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-13-ftux-upgrade-plan.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-19-activation-cliff-fix-plan.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/specs/2026-07-21-clean-install-telemetry-integrity.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/ERRORS.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/MEMORY.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/lessons.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/progress.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/session-log.md
+- RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/todo.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md
 - RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md

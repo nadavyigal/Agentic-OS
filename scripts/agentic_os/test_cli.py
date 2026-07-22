@@ -173,6 +173,47 @@ class TestParseTaskFiles(unittest.TestCase):
             self.assertEqual(parsed["preferredSource"], "tasks/progress.md")
             self.assertEqual(parsed["sourceConfidence"], "Medium")
 
+    def test_bold_status_block_wins_over_older_plain_block(self):
+        """A bold `**Current Phase:**` block is a status block, not a bullet.
+
+        Regression: sessions write the bold form, `keyed_fields` skipped any line
+        starting with `*`, and the dashboard reported an older plain block lower in
+        the same file as current. On 2026-07-22 that showed RunSmart iOS as
+        "1.0.9 (23) submitted, awaiting App Review" while 1.1.2 (27) was live.
+        """
+        with tempfile.TemporaryDirectory() as d:
+            write_tasks(
+                d,
+                {
+                    "progress.md": (
+                        "**Status:** 1.1.2 (27) live on the App Store.\n"
+                        "**Current Phase:** Post-release watch\n"
+                        "**Next Recommended Story:** read has_underlying_error at T+7\n"
+                        "**Last Validation:** full suite 324 passed on 2026-07-22\n"
+                        "**Last Updated:** 2026-07-22\n"
+                        "\n---\n\n"
+                        "Current Phase: PHASE 3 — 1.0.9 (23) submitted, awaiting App Review\n"
+                        "Next Recommended Story: wait for review\n"
+                        "Last Validation: tests passed on 2026-07-15\n"
+                        "Last Updated: 2026-07-15\n"
+                    )
+                },
+            )
+            parsed = cli.parse_task_files(Path(d))
+            self.assertEqual(parsed["currentPhase"], "Post-release watch")
+            self.assertEqual(parsed["nextRecommendedStory"], "read has_underlying_error at T+7")
+            self.assertEqual(parsed["lastUpdated"], "2026-07-22")
+            self.assertEqual(parsed["sourceConfidence"], "High")
+
+    def test_bold_narrative_headline_is_not_mistaken_for_a_field(self):
+        """`**WP-52a STEP 2 RUN (2026-07-22):**` is prose, not a Key: Value line."""
+        fields = cli.keyed_fields(
+            "**WP-52a STEP 2 RUN — first-time sign-in works (2026-07-22):** Body text.\n"
+            "**Current Phase:** Post-release watch\n"
+        )
+        self.assertEqual(fields.get("current phase"), "Post-release watch")
+        self.assertEqual(len(fields), 1)
+
     def test_newer_narrative_entry_supersedes_stale_structured_block(self):
         with tempfile.TemporaryDirectory() as d:
             write_tasks(
