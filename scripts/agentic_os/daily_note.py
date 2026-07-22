@@ -23,6 +23,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import vault_git  # noqa: E402  (same directory; added to path above)
+
 AOS_ROOT = Path(__file__).resolve().parents[2]
 VAULT = Path("/Users/nadavyigal/Documents/Projects /Nadav Builder OS")
 JOURNAL = VAULT / "11-Journal"
@@ -135,6 +138,9 @@ def main() -> int:
     if not VAULT.is_dir():
         print("⚠️ daily note: vault not found, skipped")
         return 0
+    # Never seed a note into a checkout that is behind its remote (2026-07-22).
+    if not vault_git.require_fresh_vault(VAULT, "daily note"):
+        return 1
     JOURNAL.mkdir(exist_ok=True)
     target = JOURNAL / f"{today}.md"
     if target.exists():

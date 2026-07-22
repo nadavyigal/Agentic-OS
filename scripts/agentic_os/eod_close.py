@@ -267,6 +267,9 @@ def close_day(day: str, force: bool) -> tuple[bool, str]:
     """Fill today's note. Returns (changed, message)."""
     if not VAULT.is_dir():
         return False, "⚠️ eod close: vault not found, skipped"
+    # Never draft into a checkout that is behind its remote (2026-07-22).
+    if not daily_note.vault_git.require_fresh_vault(VAULT, "eod close"):
+        return False, ""
     JOURNAL.mkdir(exist_ok=True)
     target = JOURNAL / f"{day}.md"
     if not target.exists():
@@ -303,6 +306,10 @@ def main() -> int:
         day = args.date
 
     _changed, message = close_day(day, args.force)
+    if not message:
+        # The staleness guard already printed its own refusal; don't add a blank
+        # line, and exit non-zero so the caller reports it as blocked.
+        return 1
     print(message)
     return 0
 
