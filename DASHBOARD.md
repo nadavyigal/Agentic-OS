@@ -12,7 +12,7 @@ Best next action: Resumely iOS: **In date order, and do not collapse them into o
 
 ## Run Center
 
-- Last refresh: 2026-07-22 20:54
+- Last refresh: 2026-07-22 20:55
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -63,7 +63,7 @@ Best next action: Resumely iOS: **In date order, and do not collapse them into o
 - [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5
-- [Agentic OS] 3 uncommitted file(s) in the primary working tree
+- [Agentic OS] 1 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 
