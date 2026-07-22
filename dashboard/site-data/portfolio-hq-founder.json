@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-22 06:51 UTC",
+  "generatedAt": "2026-07-22 17:36 UTC",
   "sources": {
-    "status": "2026-07-22 09:51",
-    "usage": "2026-07-22T06:51:20.597562+00:00",
+    "status": "2026-07-22 20:35",
+    "usage": "2026-07-22T17:36:02.114654+00:00",
     "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
@@ -12,36 +12,38 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "To clear this: switch off 'claude/hq-refresh-both-apps-live-2026-07-22' back to main; commit 2 uncommitted file(s); consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
+      "On branch 'claude/hq-refresh-both-apps-live-2026-07-22', not main. Merge to main so all tools see it.",
+      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
+      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (3)."
     ]
   },
   "consistencyIssues": [],
   "command": {
-    "bestNextAction": "Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort."
+    "bestNextAction": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86"
   },
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21)",
-      "nextAction": "Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll",
+      "state": "Post-release watch. Nothing to build until the instrument reports",
+      "nextAction": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** → read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** → a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true — that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-21",
+      "evidenceDate": "2026-07-22",
       "dirty": true,
-      "dirtyCount": 6
+      "dirtyCount": 1
     },
     {
       "name": "Resumely iOS",
-      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
-      "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
+      "state": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
+      "nextAction": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-11",
+      "evidenceDate": "2026-07-22",
       "dirty": true,
       "dirtyCount": 7
     },
@@ -70,7 +72,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 16
     }
   ],
   "numbers": {
@@ -387,7 +389,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-22 09:51",
+      "lastRan": "2026-07-22 20:35",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -422,7 +424,7 @@
       "id": "vault",
       "name": "Weekly review note (Obsidian)",
       "cadence": "weekly",
-      "lastRan": "2026-07-05",
+      "lastRan": "2026-07-21",
       "how": "The human-readable week summary in the vault (07-Weekly-Reviews)."
     },
     {
@@ -436,7 +438,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-22T06:51:20.597562+00:00",
+      "lastRan": "2026-07-22T17:36:02.114654+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ],
@@ -769,12 +771,12 @@
     "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
     "spendByFamily": {
       "sonnet": {
-        "cost_usd": 2103.76,
-        "sessions": 86
+        "cost_usd": 2083.83,
+        "sessions": 85
       },
       "opus": {
-        "cost_usd": 1948.81,
-        "sessions": 49
+        "cost_usd": 2030.98,
+        "sessions": 50
       },
       "unknown": {
         "cost_usd": 0.0,
@@ -783,7 +785,7 @@
     },
     "spendByTool": {
       "claude-code": {
-        "cost_usd": 4052.56,
+        "cost_usd": 4114.8,
         "sessions": 135
       },
       "codex": {
@@ -792,16 +794,16 @@
       }
     },
     "spendWindowDays": 30,
-    "spendGeneratedAt": "2026-07-22T06:51:20.597562+00:00"
+    "spendGeneratedAt": "2026-07-22T17:36:02.114654+00:00"
   },
   "usage": {
-    "generatedAt": "2026-07-22T06:51:20.597562+00:00",
+    "generatedAt": "2026-07-22T17:36:02.114654+00:00",
     "windowDays": 30,
-    "totalCostUsd": 4052.56,
+    "totalCostUsd": 4114.8,
     "byProject": {
-      "Builder OS Vault": 2674.98,
-      "ResumeBuilder": 604.13,
-      "RunSmart": 501.56,
+      "Builder OS Vault": 2667.91,
+      "ResumeBuilder": 610.22,
+      "RunSmart": 564.79,
       "Agentic OS": 216.32,
       "Michal": 20.59,
       "hungry-thompson-3aa380": 17.55,

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "audience": "public",
-  "generatedAt": "2026-07-22 06:51 UTC",
+  "generatedAt": "2026-07-22 17:36 UTC",
   "products": [
     {
       "name": "RunSmart iOS",
@@ -9,7 +9,7 @@
     },
     {
       "name": "Resumely iOS",
-      "availability": "Live"
+      "availability": "In progress"
     },
     {
       "name": "RunSmart Web",

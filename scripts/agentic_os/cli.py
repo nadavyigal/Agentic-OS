@@ -177,6 +177,11 @@ PROGRESS_KEY_MAP = {
     "estimated completion": "estimatedCompletion",
 }
 
+# A bold progress.md label: `**Current Phase:** value`. The key cannot contain `*` or `:`,
+# so a bold narrative headline (`**WP-52a STEP 2 RUN (2026-07-22):**`) yields a key that is
+# simply absent from PROGRESS_KEY_MAP and is ignored rather than misparsed.
+BOLD_KEY_RE = re.compile(r"^\s*\*\*(?P<key>[^*:]+?):?\*\*:?\s*(?P<value>.*)$")
+
 # Tokens that mean "no real value" when they are the entire field value.
 EMPTY_TOKENS = {"", "-", "—", "–", "none", "n/a", "na", "tbd", "pending", "todo"}
 
@@ -797,13 +802,27 @@ def has_validation_evidence(text: str | None) -> bool:
 
 
 def keyed_fields(text: str) -> dict[str, str]:
-    """Parse leading `Key: Value` metadata lines (tasks/progress.md style)."""
+    """Parse leading `Key: Value` metadata lines (tasks/progress.md style).
+
+    Accepts the bold form (`**Current Phase:** ...`) as well as the plain one.
+    Sessions write the bold form because it renders as a status block, and the
+    `*` prefix used to fall into the bullet skip below — so a file whose newest
+    block was bold parsed as if that block did not exist, and the dashboard
+    silently reported an older plain block further down the same file as
+    current. First occurrence still wins, which is what makes newest-on-top
+    files parse to their newest block.
+    """
     fields: dict[str, str] = {}
     for line in text.splitlines():
-        if ":" not in line or line.lstrip().startswith(("#", "|", "-", ">", "*")):
-            continue
-        key, _, value = line.partition(":")
-        normalized = key.strip().lower()
+        bold = BOLD_KEY_RE.match(line)
+        if bold:
+            normalized = bold.group("key").strip().lower()
+            value = bold.group("value")
+        else:
+            if ":" not in line or line.lstrip().startswith(("#", "|", "-", ">", "*")):
+                continue
+            key, _, value = line.partition(":")
+            normalized = key.strip().lower()
         if normalized in PROGRESS_KEY_MAP and normalized not in fields:
             fields[normalized] = value.strip()
     return fields
