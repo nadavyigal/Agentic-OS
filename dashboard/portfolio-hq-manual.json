@@ -1,13 +1,13 @@
 {
-  "asOf": "2026-07-21",
+  "asOf": "2026-07-22",
   "note": "Manual layer of dashboard/portfolio-hq.html: everything here comes from live PostHog reads, founder statements, or weekly readouts — not derivable from status.json. Update this file (and bump asOf), then run ./agentic-os refresh — it regenerates portfolio-hq.html as its last step.",
   "verifiedNote": "Per-block last-verified dates. asOf is when this file was last written; these are when each block's claims were last checked against a real source (git, App Store, PostHog). The refresh flags any block older than 7 days as a cross-layer issue, so a stale block cannot hide under a fresh asOf. Bump a date ONLY after re-verifying that block against its source.",
   "verified": {
-    "founderCommand": "2026-07-21",
+    "founderCommand": "2026-07-22",
     "suggestedSessions": "2026-07-21",
     "readouts": "2026-07-21",
     "tracks": "2026-07-21",
-    "clocks": "2026-07-21",
+    "clocks": "2026-07-22",
     "knownUnknown": "2026-07-21",
     "weekPriorities": "2026-07-21",
     "activationHeadline": "2026-07-21",
@@ -31,9 +31,9 @@
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
-      "title": "WP-51 FIX LANDED — the activation milestone NEVER worked; ship it as 1.4.5",
-      "body": "WP-51 landed 2026-07-21 (39654f1, branch claude/activation-milestone-repair-963fe7): 207 tests pass, 1 intentional skip, Release build green. Root cause: the milestone was gated on hasVisibleAppliedChanges, which inspects a separately-fetched sections array — but the preview's primary path renders from the backend using optimization_id alone (resumeData: nil), so whenever that fetch was slow, empty or failing, a real resume was on screen with sections empty and the milestone was suppressed. Export runs off the same rendered HTML, which is exactly why the funnel came back impossible. THE FINDING THAT MATTERS: this gate shipped with the event's ORIGINAL 1.4.1 form — Story 10 only added optimization_id. The milestone has therefore NEVER fired reliably, so no activation figure ever computed on it is trustworthy, including the 12.5% baseline. Treat every prior Resumely activation number as unmeasured rather than low, and do not use any of them as a before/after comparison for this fix. Meanwhile 1.4.4 (14) is under ASC review and does NOT contain this fix, so its approval starts a fresh cohort on the broken instrument.",
-      "prompt": "Resumely iOS: WP-51's fix is on branch claude/activation-milestone-repair-963fe7 (39654f1) with 207 tests green. Review and merge it, then prepare 1.4.5 with a fresh build number so it can ship as soon as 1.4.4 clears review. Do NOT compare post-fix activation against any pre-fix figure — the milestone never fired reliably since 1.4.1, so there is no valid baseline; the first trustworthy read starts with the 1.4.5 cohort. While you are in the repo, add reason and error_code properties to save_failed, optimization_apply_failed and optimization_state_recovery_failed, which currently fire with zero diagnostics across 57 occurrences.",
+      "title": "Resumely 1.4.5 (15) is READY — founder submit-to-ASC is the only remaining step",
+      "body": "1.4.4 (14) is LIVE (store-verified IL/GB 2026-07-21T20:17Z; US propagating). 1.4.5 (15) is prepped and fully pushed on branch claude/resumely-ios-1-4-5-prep-07f44c (worktree .claude/worktrees/resumely-ios-1-4-5-prep-07f44c, @{u}.. empty). It carries the WP-51 milestone fix (PR #117 merged to main 2026-07-21T19:09Z) plus reason/error_code diagnostics on the three blind failure events. WP-51's finding stands: optimized_preview_rendered was gated on hasVisibleAppliedChanges since the event's original 1.4.1 form, so it NEVER fired reliably and every prior Resumely activation number (incl. the 12.5% baseline) is unmeasured, not low. The measurement clock does not start until 1.4.5 is live — 1.4.4 shipped without the fix, so its cohort is still blind. This is why submitting 1.4.5 promptly matters: every day 1.4.5 is not live is a day the EXD-022 count gate cannot move off zero.",
+      "prompt": "FOUNDER ACTION (not a Claude session): archive and submit Resumely 1.4.5 (15) from branch claude/resumely-ios-1-4-5-prep-07f44c to App Store Connect. 1.4.4 is already live so there is no submission conflict. This is the first build whose optimized_preview_rendered milestone actually works; the EXD-022 activation count starts from its cohort. After it goes live, the first trustworthy activation read is 7 days later — do not read the cohort before then.",
       "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP"
     },
     {
@@ -692,6 +692,16 @@
     }
   ],
   "clocks": [
+    {
+      "date": "2026-07-21",
+      "what": "Resumely 1.4.4 (14) LIVE (store-verified IL/GB 20:17Z); 1.4.5 (15) prepped on claude/resumely-ios-1-4-5-prep-07f44c with the WP-51 milestone fix + failure-event diagnostics, fully pushed",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-22",
+      "what": "Resumely 1.4.5 submit-to-ASC is the founder action; it is the FIRST build whose activation milestone works, so the EXD-022 count gate starts from its cohort — every day it is not live is a day the counter cannot move",
+      "state": "you"
+    },
     {
       "date": "2026-07-19",
       "what": "Activation autopsy merged across all 4 repos (RunSmart #100, Resumely #109, Agentic OS #31, vault #37); clean funnels + fix plans filed",

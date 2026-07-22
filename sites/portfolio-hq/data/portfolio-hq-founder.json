@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-21 18:56 UTC",
+  "generatedAt": "2026-07-22 04:54 UTC",
   "sources": {
     "status": "2026-07-21 21:55",
     "usage": "2026-07-21T18:56:04.550349+00:00",
-    "manual": "2026-07-21",
+    "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
   "trust": {
@@ -215,6 +215,18 @@
   },
   "clocks": [
     {
+      "date": "2026-07-21",
+      "when": null,
+      "what": "Resumely 1.4.4 (14) LIVE (store-verified IL/GB 20:17Z); 1.4.5 (15) prepped on claude/resumely-ios-1-4-5-prep-07f44c with the WP-51 milestone fix + failure-event diagnostics, fully pushed",
+      "state": "done"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "Resumely 1.4.5 submit-to-ASC is the founder action; it is the FIRST build whose activation milestone works, so the EXD-022 count gate starts from its cohort — every day it is not live is a day the counter cannot move",
+      "state": "you"
+    },
+    {
       "date": "2026-07-19",
       "when": null,
       "what": "Activation autopsy merged across all 4 repos (RunSmart #100, Resumely #109, Agentic OS #31, vault #37); clean funnels + fix plans filed",
@@ -383,7 +395,7 @@
       "id": "metrics",
       "name": "Live numbers refresh (PostHog layer)",
       "cadence": "weekly",
-      "lastRan": "2026-07-21",
+      "lastRan": "2026-07-22",
       "how": "Claude pulls founder-excluded PostHog numbers and updates the funnels, traffic and founder queue on this page."
     },
     {
