@@ -118,6 +118,16 @@ def vault_status(vault: Path, fetch: bool = True) -> dict:
         out["state"] = "ahead"
     else:
         out["state"] = "current"
+
+    # A failed fetch means rev-list compared against whatever origin/* ref was
+    # cached by the last successful fetch, so "current"/"ahead" is unverified
+    # rather than safe. Downgrade to unknown so the "freshness unverified"
+    # warning fires instead of silent false confidence — otherwise a transient
+    # network blip reproduces the exact failure this module exists to prevent.
+    # "behind"/"diverged" are left alone: blocking on stale-but-bad data is
+    # still the safe call.
+    if fetch and not out["fetched"] and out["state"] in ("current", "ahead"):
+        out["state"] = "unknown"
     return out
 
 
@@ -155,28 +165,30 @@ def require_fresh_vault(vault: Path, label: str, fetch: bool = True) -> bool:
     Callers should `return 1` (or otherwise abort) on False, having written
     nothing. Never raises.
     """
+    # The whole body is guarded, not just the status lookup: the "never raises"
+    # promise above has to be enforced rather than incidental.
     try:
         status = vault_status(vault, fetch=fetch)
+
+        state = status["state"]
+
+        if state in ("behind", "diverged"):
+            print(staleness_block_message(vault, status, label))
+            return False
+
+        if state == "ahead":
+            n = status["ahead"]
+            plural = "commit" if n == 1 else "commits"
+            print(
+                f"⚠️ {label}: vault has {n} unpushed {plural} on {status['branch']}. "
+                "Proceeding, but push before they strand."
+            )
+            return True
+
+        if state == "unknown" and not status["fetched"]:
+            print(f"⚠️ {label}: could not reach the vault remote; freshness unverified. Proceeding.")
+            return True
+
+        return True
     except Exception:  # noqa: BLE001 - a guard must never break the ritual
         return True
-
-    state = status["state"]
-
-    if state in ("behind", "diverged"):
-        print(staleness_block_message(vault, status, label))
-        return False
-
-    if state == "ahead":
-        n = status["ahead"]
-        plural = "commit" if n == 1 else "commits"
-        print(
-            f"⚠️ {label}: vault has {n} unpushed {plural} on {status['branch']}. "
-            "Proceeding, but push before they strand."
-        )
-        return True
-
-    if state == "unknown" and not status["fetched"]:
-        print(f"⚠️ {label}: could not reach the vault remote; freshness unverified. Proceeding.")
-        return True
-
-    return True

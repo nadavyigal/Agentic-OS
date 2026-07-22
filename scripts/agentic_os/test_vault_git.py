@@ -120,6 +120,52 @@ class VaultGitTest(unittest.TestCase):
             bool,
         )
 
+    def test_guard_never_raises_on_malformed_status(self) -> None:
+        """The 'never raises' promise must cover messaging, not just the lookup."""
+        original = vault_git.vault_status
+        try:
+            vault_git.vault_status = lambda *a, **k: {}  # missing every key
+            self.assertTrue(vault_git.require_fresh_vault(self.local, "t", fetch=False))
+        finally:
+            vault_git.vault_status = original
+
+    # --- failed fetch must not masquerade as verified freshness -------------
+
+    def _break_remote(self) -> None:
+        """Make `git fetch` fail while the cached origin/* refs survive."""
+        self.remote.rename(self.remote.with_name("remote-gone.git"))
+
+    def test_failed_fetch_downgrades_current_to_unknown(self) -> None:
+        """A network blip must not let a stale cache read as 'current'."""
+        self._break_remote()
+        s = vault_git.vault_status(self.local, fetch=True)
+        self.assertFalse(s["fetched"])
+        self.assertEqual(s["state"], "unknown")
+        # Still allowed (fail open), but the caller now warns instead of trusting.
+        self.assertTrue(vault_git.require_fresh_vault(self.local, "t", fetch=True))
+
+    def test_failed_fetch_downgrades_ahead_to_unknown(self) -> None:
+        commit(self.local, "local-only.md")
+        self._break_remote()
+        s = vault_git.vault_status(self.local, fetch=True)
+        self.assertFalse(s["fetched"])
+        self.assertEqual(s["state"], "unknown")
+
+    def test_failed_fetch_still_blocks_when_cache_says_behind(self) -> None:
+        """Stale-but-bad data is still worth blocking on."""
+        self._advance_remote(2)  # local now knows it is behind via cached refs
+        self._break_remote()
+        s = vault_git.vault_status(self.local, fetch=True)
+        self.assertFalse(s["fetched"])
+        self.assertEqual(s["state"], "behind")
+        self.assertFalse(vault_git.require_fresh_vault(self.local, "t", fetch=True))
+
+    def test_successful_fetch_keeps_current(self) -> None:
+        """The downgrade must not fire when the fetch actually worked."""
+        s = vault_git.vault_status(self.local, fetch=True)
+        self.assertTrue(s["fetched"])
+        self.assertEqual(s["state"], "current")
+
     # --- message quality ------------------------------------------------
 
     def test_block_message_is_actionable(self) -> None:
