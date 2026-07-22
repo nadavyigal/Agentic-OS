@@ -28,7 +28,11 @@ import json
 import math
 import os
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "agentic_os"))
+import vault_git  # noqa: E402  (sibling helper package; added to path above)
 
 VAULT = Path("/Users/nadavyigal/Documents/Projects /Nadav Builder OS")
 OUT = VAULT / "01-Agentic-OS" / "Maps" / "Builder OS Brain Map.md"
@@ -306,6 +310,11 @@ def main() -> int:
     if not VAULT.is_dir():
         print("⚠️ brain map: vault not found, skipped")
         return 0
+    # A map generated from a stale checkout depicts a vault state that never
+    # existed — exactly what happened on 2026-07-22 (129 nodes drawn from a
+    # checkout missing the July 13-19 notes). Refuse rather than mislead.
+    if not vault_git.require_fresh_vault(VAULT, "brain map"):
+        return 1
     content = generate()
     if OUT.exists() and OUT.read_text() == content:
         print("brain map: unchanged (graph identical), left as-is")

@@ -4210,8 +4210,14 @@ def _run_vault_helper(script: Path, label: str) -> None:
     if result.returncode == 0 and result.stdout.strip():
         print(result.stdout.strip())
     elif result.returncode != 0:
-        print(f"⚠️ {label} failed (vault left as-is)")
-        print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+        # The vault staleness guard (scripts/agentic_os/vault_git.py) exits
+        # non-zero having already printed a complete, actionable refusal.
+        # Pass it through verbatim instead of burying it under a generic error.
+        if result.stdout.lstrip().startswith("⛔"):
+            print(result.stdout.strip())
+        else:
+            print(f"⚠️ {label} failed (vault left as-is)")
+            print(f"  - {result.stderr.strip() or result.stdout.strip()}")
 
 
 def refresh_daily_note() -> None:
@@ -4243,8 +4249,12 @@ def _run_vault_helper_argv(argv: list[str], label: str) -> None:
     if result.returncode == 0 and result.stdout.strip():
         print(result.stdout.strip())
     elif result.returncode != 0:
-        print(f"⚠️ {label} failed (vault left as-is)")
-        print(f"  - {result.stderr.strip() or result.stdout.strip()}")
+        # See _run_vault_helper: pass the staleness guard's refusal through verbatim.
+        if result.stdout.lstrip().startswith("⛔"):
+            print(result.stdout.strip())
+        else:
+            print(f"⚠️ {label} failed (vault left as-is)")
+            print(f"  - {result.stderr.strip() or result.stdout.strip()}")
 
 
 def doctor() -> int:
