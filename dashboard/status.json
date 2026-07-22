@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-22 20:35"
+    "lastSuccessfulRefresh": "2026-07-22 20:54"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 Post-release watch. Nothing to build until the instrument reports: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install \u00b7 Resumely iOS \u2014 Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -91,11 +91,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/IOS%20RunSmart%20light%20/IOS%20RunSmart%20app"
       },
       "localEvidence": {
-        "branch": "claude/progress-1.1.2-live...origin/claude/progress-1.1.2-live",
+        "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 5,
-        "lastCommit": "2026-07-22 36aaf7d docs(tasks): 1.1.2 (27) is live \u2014 post-release watch, and the P0 framing it was built to serve is refuted",
+        "lastCommit": "2026-07-22 42267ba Merge pull request #115 from nadavyigal/claude/progress-1.1.2-live",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -171,7 +171,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/progress-1.1.2-live"
+          "branch": "main"
         },
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
@@ -278,11 +278,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "claude/progress-1.4.5-live...origin/claude/progress-1.4.5-live",
+        "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 7,
         "extraWorktrees": 3,
-        "lastCommit": "2026-07-22 3fd7271 docs(tasks): 1.4.5 (15) is live \u2014 the first build whose activation number means anything",
+        "lastCommit": "2026-07-22 a604fac Merge pull request #119 from nadavyigal/claude/progress-1.4.5-live",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -339,7 +339,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/progress-1.4.5-live"
+          "branch": "main"
         },
         "sourceConfidence": "Medium",
         "preferredSource": "tasks/progress.md",
@@ -709,7 +709,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 81e4fe8a refresh: refuse to write into a vault checkout that is behind its remote (#35)); trust git for the latest state.",
+      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22); trust git for the latest state.",
       "currentPhase": "Daily portfolio operations and evidence reconciliation",
       "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
       "lastCompletedStory": "OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75)",
@@ -736,11 +736,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "claude/hq-refresh-both-apps-live-2026-07-22",
+        "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 16,
+        "dirtyCount": 3,
         "extraWorktrees": 1,
-        "lastCommit": "2026-07-22 81e4fe8a refresh: refuse to write into a vault checkout that is behind its remote (#35)",
+        "lastCommit": "2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -763,7 +763,7 @@
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "claude/hq-refresh-both-apps-live-2026-07-22"
+          "branch": "main"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -967,7 +967,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-22 20:35",
+    "lastRefresh": "2026-07-22 20:54",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1452,8 +1452,8 @@
       "dirty": true,
       "dirtyCount": 1,
       "extraWorktrees": 5,
-      "branch": "claude/progress-1.1.2-live...origin/claude/progress-1.1.2-live",
-      "lastCommit": "2026-07-22 36aaf7d docs(tasks): 1.1.2 (27) is live \u2014 post-release watch, and the P0 framing it was built to serve is refuted",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-22 42267ba Merge pull request #115 from nadavyigal/claude/progress-1.1.2-live",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -1537,7 +1537,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "claude/progress-1.1.2-live"
+        "branch": "main"
       },
       "sourceConfidence": "Medium",
       "preferredSource": "tasks/progress.md",
@@ -1586,7 +1586,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/progress-1.4.5-live",
+          "sourceBranch": "main",
           "source": "primary"
         },
         {
@@ -1784,15 +1784,15 @@
           "date": null,
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/progress-1.4.5-live",
+          "sourceBranch": "main",
           "source": "primary"
         }
       ],
       "dirty": true,
       "dirtyCount": 7,
       "extraWorktrees": 3,
-      "branch": "claude/progress-1.4.5-live...origin/claude/progress-1.4.5-live",
-      "lastCommit": "2026-07-22 3fd7271 docs(tasks): 1.4.5 (15) is live \u2014 the first build whose activation number means anything",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-22 a604fac Merge pull request #119 from nadavyigal/claude/progress-1.4.5-live",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -1861,7 +1861,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "claude/progress-1.4.5-live"
+        "branch": "main"
       },
       "sourceConfidence": "Medium",
       "preferredSource": "tasks/progress.md",
@@ -2320,10 +2320,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 16,
+      "dirtyCount": 3,
       "extraWorktrees": 1,
-      "branch": "claude/hq-refresh-both-apps-live-2026-07-22",
-      "lastCommit": "2026-07-22 81e4fe8a refresh: refuse to write into a vault checkout that is behind its remote (#35)",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-22 630836a3 Merge pull request #36 from nadavyigal/claude/hq-refresh-both-apps-live-2026-07-22",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -2354,7 +2354,7 @@
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "claude/hq-refresh-both-apps-live-2026-07-22"
+        "branch": "main"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
@@ -2399,7 +2399,7 @@
       "project": "RunSmart iOS",
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
-      "branch": "claude/progress-1.1.2-live...origin/claude/progress-1.1.2-live",
+      "branch": "main...origin/main",
       "nextAction": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -2483,7 +2483,7 @@
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "claude/progress-1.4.5-live...origin/claude/progress-1.4.5-live",
+      "branch": "main...origin/main",
       "nextAction": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
       "sourceConfidence": "Medium",
       "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
@@ -2618,7 +2618,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "claude/hq-refresh-both-apps-live-2026-07-22",
+      "branch": "main...origin/main",
       "nextAction": "Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2721,7 +2721,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-22 20:35",
+    "lastRunAt": "2026-07-22 20:54",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -2729,7 +2729,7 @@
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet. Next action: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86. Known blockers: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "claude/progress-1.4.5-live...origin/claude/progress-1.4.5-live",
+    "targetBranch": "main...origin/main",
     "readyForNextSession": false,
     "summary": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
     "nextActions": [
@@ -2890,7 +2890,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "claude/progress-1.4.5-live",
+          "sourceBranch": "main",
           "source": "primary"
         },
         {
@@ -5828,15 +5828,14 @@
     "brainstorm": "Living scratchpad for ideas and the next moves, before they become decisions or work packets.\nThis is the front of the operating loop:\n**Morning (status) \u2192 Executive review (remarks) \u2192 Decisions (EXECUTIVE-DECISIONS.md) \u2192 Work packets (work-packets/) \u2192 here (brainstorm next).**\nKeep it loose. Promote anything solid into a decision (EXECUTIVE-DECISIONS.md) or a work packet (work-packets/). Nothing here is committed work until it moves to one of those.\n- _Add ideas as bullets. Date them. Move the good ones down to \"Shaping\" when they firm up._\n- _Ideas being turned into an EXD decision or a WP work packet. Note which._\n- _None active \u2014 last shaping walkthrough completed 2026-07-08._\n- \u2705 RunSmart Hebrew-first distribution playbook \u2014 **park until 2026-08-01** (EXD-016 re-confirmed; no work packet).\n- \u2705 RunSmart legal entity \u2014 **investigate with accountant**; founder scheduling call (EXD-017 re-confirmed; WP-35; reminder **2026-07-22**).\n- \u2705 Resumely web Premium CTA \u2014 **hide/disable until Gate A** (EXD-018 re-confirmed; WP-29 S4 already covers implementation; no new packet).\n- _Not now, but do not lose._\n- 2026-07-05: RunSmart Hebrew-first distribution playbook is parked until the Resumely 30-day activation window closes on 2026-08-01. Source draft remains `distribution-os/projects/runsmart/scaffold/hebrew-first-playbook.md` (`status: draft, approved: no`). Decision: EXD-016.\n---\nUpdated: 2026-07-08"
   },
   "repoIntegrity": {
-    "branch": "claude/hq-refresh-both-apps-live-2026-07-22",
-    "uncommitted": 2,
+    "branch": "main",
+    "uncommitted": 1,
     "extraWorktrees": 1,
     "ahead": 0,
     "behind": 0,
     "synced": false,
     "notes": [
-      "On branch 'claude/hq-refresh-both-apps-live-2026-07-22', not main. Merge to main so all tools see it.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ]
   },
@@ -5969,9 +5968,8 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: switch off 'claude/hq-refresh-both-apps-live-2026-07-22' back to main; commit 2 uncommitted file(s); consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-      "On branch 'claude/hq-refresh-both-apps-live-2026-07-22', not main. Merge to main so all tools see it.",
-      "2 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "To clear this: commit 1 uncommitted file(s); consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
@@ -6199,13 +6197,13 @@
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "16 uncommitted file(s) in the primary working tree",
+        "detail": "3 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
         "project": "Agentic OS",
         "type": "cleanup",
-        "detail": "2 merged branch(es) safe to delete",
+        "detail": "1 merged branch(es) safe to delete",
         "action": "Delete merged local branches to cut noise."
       }
     ],
@@ -6214,7 +6212,7 @@
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-22 20:35",
+    "generatedAt": "2026-07-22 20:54",
     "apps": [
       {
         "projectId": 171597,
