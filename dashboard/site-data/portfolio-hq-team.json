@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-22 06:51 UTC",
+  "generatedAt": "2026-07-22 09:15 UTC",
   "sources": {
-    "status": "2026-07-22 09:51",
-    "usage": "2026-07-22T06:51:20.597562+00:00",
+    "status": "2026-07-22 12:15",
+    "usage": "2026-07-22T09:15:52.057662+00:00",
     "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
@@ -70,7 +70,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 15
     }
   ],
   "numbers": {
@@ -192,6 +192,30 @@
   },
   "clocks": [
     {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "Resumely 1.4.5 (15) in Apple review — EXD-011 freeze applies: no ASC/build/metadata changes until Apple responds. First valid activation read is live + 7 days",
+      "state": "waiting"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "RunSmart WP-52a step 1 is STRANDED — has_underlying_error lives only on open PR #113; origin/main is 1.1.2 (26) without it. Merge before archiving 1.1.2 or lose a release cycle of diagnostics",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "RunSmart iOS local main is dirty and 8 behind origin (Localizable.xcstrings + tasks/*.md modified) — reconcile before any 1.1.2 archive work",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-22",
+      "when": null,
+      "what": "RunSmart 1.1.2 (26) merged to main and HELD for weekly release cadence (PR #112) — unshipped release inventory, not a live build",
+      "state": "waiting"
+    },
+    {
       "date": "2026-07-21",
       "when": null,
       "what": "Resumely 1.4.4 (14) LIVE (store-verified IL/GB 20:17Z); 1.4.5 (15) prepped on claude/resumely-ios-1-4-5-prep-07f44c with the WP-51 milestone fix + failure-event diagnostics, fully pushed",
@@ -200,8 +224,8 @@
     {
       "date": "2026-07-22",
       "when": null,
-      "what": "Resumely 1.4.5 submit-to-ASC is the founder action; it is the FIRST build whose activation milestone works, so the EXD-022 count gate starts from its cohort — every day it is not live is a day the counter cannot move",
-      "state": "you"
+      "what": "Resumely 1.4.5 (15) SUBMITTED to App Store Connect (founder, 2026-07-22). First build whose activation milestone actually works; EXD-022 count gate starts from its cohort once it is live",
+      "state": "done"
     },
     {
       "date": "2026-07-19",
@@ -365,7 +389,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-22 09:51",
+      "lastRan": "2026-07-22 12:15",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -414,7 +438,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-22T06:51:20.597562+00:00",
+      "lastRan": "2026-07-22T09:15:52.057662+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ]

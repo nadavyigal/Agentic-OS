@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-07-22T06:51:20.597562+00:00",
+  "generatedAt": "2026-07-22T09:15:52.057662+00:00",
   "windowDays": 30,
-  "totalCostUsd": 4052.56,
-  "totalCacheReadTokens": 7023627751,
+  "totalCostUsd": 4044.16,
+  "totalCacheReadTokens": 7007524164,
   "sessionCount": 160,
   "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver.",
   "byTool": {
     "claude-code": {
-      "cost_usd": 4052.56,
-      "input_tokens": 6696428,
-      "output_tokens": 28222419,
-      "cache_read_tokens": 7023627751,
+      "cost_usd": 4044.16,
+      "input_tokens": 6559984,
+      "output_tokens": 27939501,
+      "cache_read_tokens": 7007524164,
       "sessions": 135
     },
     "codex": {
@@ -23,17 +23,17 @@
   },
   "byProject": {
     "Builder OS Vault": {
-      "cost_usd": 2674.98,
-      "input_tokens": 5172902,
-      "output_tokens": 18958192,
-      "cache_read_tokens": 4684407764,
+      "cost_usd": 2660.49,
+      "input_tokens": 5036422,
+      "output_tokens": 18658031,
+      "cache_read_tokens": 4665508557,
       "sessions": 77
     },
     "ResumeBuilder": {
-      "cost_usd": 604.13,
-      "input_tokens": 433725,
-      "output_tokens": 3823667,
-      "cache_read_tokens": 1123350918,
+      "cost_usd": 610.22,
+      "input_tokens": 433761,
+      "output_tokens": 3840910,
+      "cache_read_tokens": 1126146538,
       "sessions": 25
     },
     "RunSmart": {
@@ -81,18 +81,18 @@
   },
   "byModelFamily": {
     "sonnet": {
-      "cost_usd": 2103.76,
-      "input_tokens": 3490020,
-      "output_tokens": 15136197,
-      "cache_read_tokens": 4094679791,
-      "sessions": 86
+      "cost_usd": 2083.83,
+      "input_tokens": 3352729,
+      "output_tokens": 14809501,
+      "cache_read_tokens": 4069387717,
+      "sessions": 85
     },
     "opus": {
-      "cost_usd": 1948.81,
-      "input_tokens": 3206408,
-      "output_tokens": 13086222,
-      "cache_read_tokens": 2928947960,
-      "sessions": 49
+      "cost_usd": 1960.33,
+      "input_tokens": 3207255,
+      "output_tokens": 13130000,
+      "cache_read_tokens": 2938136447,
+      "sessions": 50
     },
     "unknown": {
       "cost_usd": 0.0,
@@ -201,18 +201,18 @@
       "cache_read_tokens": 292033996,
       "sessions": 5
     },
+    "2026-07-22": {
+      "cost_usd": 118.04,
+      "input_tokens": 2169,
+      "output_tokens": 514348,
+      "cache_read_tokens": 142756591,
+      "sessions": 3
+    },
     "2026-07-12": {
       "cost_usd": 116.62,
       "input_tokens": 143143,
       "output_tokens": 530080,
       "cache_read_tokens": 225167313,
-      "sessions": 2
-    },
-    "2026-07-22": {
-      "cost_usd": 106.51,
-      "input_tokens": 1322,
-      "output_tokens": 470570,
-      "cache_read_tokens": 133568104,
       "sessions": 2
     },
     "2026-07-09": {
@@ -333,13 +333,6 @@
       "output_tokens": 213119,
       "cache_read_tokens": 33257068,
       "sessions": 6
-    },
-    "2026-06-12": {
-      "cost_usd": 19.93,
-      "input_tokens": 137291,
-      "output_tokens": 326696,
-      "cache_read_tokens": 25292074,
-      "sessions": 1
     },
     "2026-05-23": {
       "cost_usd": 19.51,

@@ -10,7 +10,7 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-22 09:51"
+    "lastSuccessfulRefresh": "2026-07-22 12:15"
   },
   "summary": {
     "overallStatus": "RunSmart iOS \u2014 Public 1.1.1 (25) reinstall journey \u2014 mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21): Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll \u00b7 Resumely iOS \u2014 Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -278,11 +278,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "HEAD (no branch)",
+        "branch": "main...origin/main",
         "dirty": true,
         "dirtyCount": 7,
         "extraWorktrees": 3,
-        "lastCommit": "2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51)",
+        "lastCommit": "2026-07-22 b03a28a Merge pull request #118 from nadavyigal/claude/resumely-ios-1-4-5-prep-07f44c",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -306,12 +306,12 @@
           "worktree:codex/wp46-story-11:tasks/session-log.md",
           "worktree:codex/wp46-story-11:tasks/MEMORY.md",
           "worktree:codex/wp46-story-11:tasks/lessons.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md",
-          "worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/lessons.md",
+          "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt 2.md",
           "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
@@ -338,8 +338,8 @@
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
         "taskSource": {
-          "kind": "worktree",
-          "branch": "claude/resumely-ios-1-4-5-prep-07f44c"
+          "kind": "primary",
+          "branch": "main"
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
@@ -709,7 +709,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge); trust git for the latest state.",
+      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 d9b87e1a dashboard: reconcile trust panel after PR #33 merge to main); trust git for the latest state.",
       "currentPhase": "Daily portfolio operations and evidence reconciliation",
       "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
       "lastCompletedStory": "OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75)",
@@ -738,9 +738,9 @@
       "localEvidence": {
         "branch": "main...origin/main",
         "dirty": true,
-        "dirtyCount": 1,
+        "dirtyCount": 15,
         "extraWorktrees": 1,
-        "lastCommit": "2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge",
+        "lastCommit": "2026-07-22 d9b87e1a dashboard: reconcile trust panel after PR #33 merge to main",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
@@ -968,7 +968,7 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-22 09:51",
+    "lastRefresh": "2026-07-22 12:15",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
@@ -1021,12 +1021,6 @@
       "Resumely iOS: tasks/progress.md",
       "Resumely iOS: tasks/session-log.md",
       "Resumely iOS: tasks/todo.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md",
-      "Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md",
       "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
       "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
       "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
@@ -1059,6 +1053,12 @@
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md",
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md",
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md",
+      "Resumely iOS: worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+      "Resumely iOS: worktree:detached:tasks/MEMORY.md",
+      "Resumely iOS: worktree:detached:tasks/lessons.md",
+      "Resumely iOS: worktree:detached:tasks/progress.md",
+      "Resumely iOS: worktree:detached:tasks/session-log.md",
+      "Resumely iOS: worktree:detached:tasks/todo.md",
       "RunSmart Web: docs/agent-os/project-context.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -1561,7 +1561,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/resumely-ios-1-4-5-prep-07f44c",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -1579,7 +1579,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
+          "sourceBranch": "main",
           "source": "primary"
         },
         {
@@ -1777,15 +1777,15 @@
           "date": null,
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
+          "sourceBranch": "main",
           "source": "primary"
         }
       ],
       "dirty": true,
       "dirtyCount": 7,
       "extraWorktrees": 3,
-      "branch": "HEAD (no branch)",
-      "lastCommit": "2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51)",
+      "branch": "main...origin/main",
+      "lastCommit": "2026-07-22 b03a28a Merge pull request #118 from nadavyigal/claude/resumely-ios-1-4-5-prep-07f44c",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -1819,12 +1819,12 @@
         "worktree:codex/wp46-story-11:tasks/session-log.md",
         "worktree:codex/wp46-story-11:tasks/MEMORY.md",
         "worktree:codex/wp46-story-11:tasks/lessons.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/todo.md",
+        "worktree:detached:tasks/session-log.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/lessons.md",
+        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
         "docs/specs/drafts/release-b-initiation-prompt 2.md",
         "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
@@ -1851,8 +1851,8 @@
         "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
       ],
       "taskSource": {
-        "kind": "worktree",
-        "branch": "claude/resumely-ios-1-4-5-prep-07f44c"
+        "kind": "primary",
+        "branch": "main"
       },
       "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
@@ -2311,10 +2311,10 @@
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
+      "dirtyCount": 15,
       "extraWorktrees": 1,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge",
+      "lastCommit": "2026-07-22 d9b87e1a dashboard: reconcile trust panel after PR #33 merge to main",
       "stale": false,
       "freshness": "Fresh",
       "freshestDate": "2026-07-22",
@@ -2468,7 +2468,7 @@
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "HEAD (no branch)",
+      "branch": "main...origin/main",
       "nextAction": "Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2495,12 +2495,12 @@
         "worktree:codex/wp46-story-11:tasks/session-log.md",
         "worktree:codex/wp46-story-11:tasks/MEMORY.md",
         "worktree:codex/wp46-story-11:tasks/lessons.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md",
-        "worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/todo.md",
+        "worktree:detached:tasks/session-log.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/lessons.md",
+        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
         "docs/specs/drafts/release-b-initiation-prompt 2.md",
         "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
@@ -2709,7 +2709,7 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-22 09:51",
+    "lastRunAt": "2026-07-22 12:15",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
@@ -2717,7 +2717,7 @@
     "recommendedPromptRole": "iOS Release Manager",
     "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-launch \u2014 1.4.1 (11) live; picker\u2192file-selected funnel read **deferred** until post-live cohort exists. Next action: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition. Known blockers: PostHog read blocked on calendar (no post-live 1.4.1 traffic yet); missing `tasks/ERRORS.md` and `docs/agent-os/project-context.md` from required read list; automated tapping of the system Files picker close button is blocked by app-scoped snapshots/no raw coordinate tap. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "HEAD (no branch)",
+    "targetBranch": "main...origin/main",
     "readyForNextSession": false,
     "summary": "Resumely iOS: Re-run PostHog picker\u2192file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
     "nextActions": [
@@ -2860,7 +2860,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/resumely-ios-1-4-5-prep-07f44c",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2878,7 +2878,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
+          "sourceBranch": "main",
           "source": "primary"
         },
         {
@@ -6062,12 +6062,6 @@
       },
       {
         "project": "Resumely iOS",
-        "type": "default-branch",
-        "detail": "main is 2 commit(s) behind origin (pull needed)",
-        "action": "Sync the default branch first: pull, then push."
-      },
-      {
-        "project": "Resumely iOS",
         "type": "unpushed",
         "detail": "codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18",
         "action": "Push codex/wp46-story-10 and open a PR, or explicitly hand it off."
@@ -6117,7 +6111,7 @@
       {
         "project": "Resumely iOS",
         "type": "worktree",
-        "detail": "worktree on claude/resumely-ios-1-4-5-prep-07f44c at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c",
+        "detail": "worktree on detached at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -6189,7 +6183,7 @@
       {
         "project": "Agentic OS",
         "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
+        "detail": "15 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -6199,12 +6193,12 @@
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 35,
+    "actionableCount": 34,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-22 09:51",
+    "generatedAt": "2026-07-22 12:15",
     "apps": [
       {
         "projectId": 171597,

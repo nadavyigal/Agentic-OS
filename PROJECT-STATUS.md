@@ -15,17 +15,17 @@ Confidence is parsed from local task files: High = task file parsed with validat
 | Project | State | Next Action | Blockers | Dirty | Freshness | Confidence | Source | Last Commit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | RunSmart iOS | Public 1.1.1 (25) reinstall journey — mechanics PASS, S0 still eligibility-blocked; three telemetry defects found (2026-07-21) | Once 1.0.9 (23) is approved and live: verify WP-43/45 events firing in PostHog for real users, then Experiment E1 (coach preview). If App Review flags S6 or S1 (the waived items), they are the first place to look. Known analytics semantics to remember when reading funnels: onboarding_step_abandoned fires on any backgrounding; plan_generation_timed_out duration inflates if backgrounded mid-poll | 1 | Yes (6) | Fresh | High | tasks/progress.md latest entry | 2026-07-20 18b8764 feat(analytics): instrument the sign-in wall, fix plan-generation double-fire (1.1.1) (#104) |
-| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (7) | Fresh | High | tasks/progress.md | 2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51) |
+| Resumely iOS | Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists | Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition | 3 | Yes (7) | Fresh | High | tasks/progress.md | 2026-07-22 b03a28a Merge pull request #118 from nadavyigal/claude/resumely-ios-1-4-5-prep-07f44c |
 | RunSmart Web | Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes | **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope | 2 | Yes (8) | Fresh | High | tasks/progress.md | 2026-07-21 c7e4f57 fix(eval): make the plan-generator eval runnable locally and fail honestly |
 | ResumeBuilder AI (Web) | WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next | WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty | 2 | Yes (10) | Fresh | High | tasks/progress.md | 2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly |
-| Agentic OS | Daily portfolio operations and evidence reconciliation | Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4 | 1 | Yes (1) | Fresh | High | tasks/progress.md | 2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge |
+| Agentic OS | Daily portfolio operations and evidence reconciliation | Fix the two red eval harnesses — they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4 | 1 | Yes (15) | Fresh | High | tasks/progress.md | 2026-07-22 d9b87e1a dashboard: reconcile trust panel after PR #33 merge to main |
 
 ## Evidence Gaps
 
 Latest commit post-dates the last validation (code moved since the last proof):
 
-- Resumely iOS: validated 2026-07-11, last commit 2026-07-21 39654f1 fix(ios): repair the activation milestone emission (WP-51)
-- Agentic OS: validated 2026-07-21, last commit 2026-07-22 4a999eeb dashboard: regenerate site-data mirrors after PR #33 merge
+- Resumely iOS: validated 2026-07-11, last commit 2026-07-22 b03a28a Merge pull request #118 from nadavyigal/claude/resumely-ios-1-4-5-prep-07f44c
+- Agentic OS: validated 2026-07-21, last commit 2026-07-22 d9b87e1a dashboard: reconcile trust panel after PR #33 merge to main
 
 ## Drift Warnings
 
@@ -49,7 +49,6 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [RunSmart iOS] worktree on claude/apple-chain-diagnosis-252a35 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/lucid-swanson-18f638 -> Land or discard this worktree, then `git worktree remove` it.
 - [RunSmart iOS] 6 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart iOS] 3 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
-- [Resumely iOS] main is 2 commit(s) behind origin (pull needed) -> Sync the default branch first: pull, then push.
 - [Resumely iOS] codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-10 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-11: 1 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-11 and open a PR, or explicitly hand it off.
 - [Resumely iOS] codex/wp46-story-12: 2 unpushed commit(s), last commit 2026-07-18 -> Push codex/wp46-story-12 and open a PR, or explicitly hand it off.
@@ -58,7 +57,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22 -> Push pr-72-review and open a PR, or consciously discard it.
 - [Resumely iOS] worktree on codex/wp46-story-10 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-10 -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] worktree on codex/wp46-story-11 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-11 -> Land or discard this worktree, then `git worktree remove` it.
-- [Resumely iOS] worktree on claude/resumely-ios-1-4-5-prep-07f44c at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c -> Land or discard this worktree, then `git worktree remove` it.
+- [Resumely iOS] worktree on detached at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c -> Land or discard this worktree, then `git worktree remove` it.
 - [Resumely iOS] 7 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22 -> Push garmin/brand-compliance-2026-06-22 and open a PR, or consciously discard it.
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30 -> Push pr-108-review and open a PR, or consciously discard it.
@@ -70,7 +69,7 @@ Commits, branches, and worktrees that exist only locally or only on a side branc
 - [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16 -> Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off.
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5 -> Land or discard this worktree, then `git worktree remove` it.
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
+- [Agentic OS] 15 uncommitted file(s) in the primary working tree -> Commit or discard before the next session ends.
 - [Agentic OS] 1 merged branch(es) safe to delete -> Delete merged local branches to cut noise.
 
 ## Work Packet Hygiene
@@ -188,12 +187,6 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Resumely iOS: tasks/progress.md
 - Resumely iOS: tasks/session-log.md
 - Resumely iOS: tasks/todo.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:docs/plans/2026-07-19-activation-cliff-fix-plan.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/MEMORY.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/lessons.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/progress.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/session-log.md
-- Resumely iOS: worktree:claude/resumely-ios-1-4-5-prep-07f44c:tasks/todo.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md
 - Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md
@@ -226,6 +219,12 @@ Resumely iOS: Re-run PostHog picker→file-selected funnel on **2026-07-25** (or
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md
 - Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md
+- Resumely iOS: worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md
+- Resumely iOS: worktree:detached:tasks/MEMORY.md
+- Resumely iOS: worktree:detached:tasks/lessons.md
+- Resumely iOS: worktree:detached:tasks/progress.md
+- Resumely iOS: worktree:detached:tasks/session-log.md
+- Resumely iOS: worktree:detached:tasks/todo.md
 - RunSmart Web: docs/agent-os/project-context.md
 - RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md
 - RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md

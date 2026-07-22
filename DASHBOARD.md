@@ -12,7 +12,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Run Center
 
-- Last refresh: 2026-07-22 09:51
+- Last refresh: 2026-07-22 12:15
 - Localhost: `http://127.0.0.1:8787/portfolio-hq.html`
 - Safe mode: No App Store, billing, production, email, or external service action is triggered.
 
@@ -28,7 +28,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 
 ## Stranded Work
 
-35 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
+34 item(s) at risk of being lost (full list with actions in PROJECT-STATUS.md):
 
 - [RunSmart iOS] main is 8 commit(s) behind origin (pull needed)
 - [RunSmart iOS] backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13
@@ -43,7 +43,6 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [RunSmart iOS] worktree on fix/flexweek-duplicate-slot-ids at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/flexweek-dup-id-fix
 - [RunSmart iOS] worktree on claude/apple-chain-diagnosis-252a35 at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/lucid-swanson-18f638
 - [RunSmart iOS] 6 uncommitted file(s) in the primary working tree
-- [Resumely iOS] main is 2 commit(s) behind origin (pull needed)
 - [Resumely iOS] codex/wp46-story-10: 3 unpushed commit(s), last commit 2026-07-18
 - [Resumely iOS] codex/wp46-story-11: 1 unpushed commit(s), last commit 2026-07-18
 - [Resumely iOS] codex/wp46-story-12: 2 unpushed commit(s), last commit 2026-07-18
@@ -52,7 +51,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [Resumely iOS] pr-72-review: unmerged commits, never pushed, last commit 2026-06-22
 - [Resumely iOS] worktree on codex/wp46-story-10 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-10
 - [Resumely iOS] worktree on codex/wp46-story-11 at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-story-11
-- [Resumely iOS] worktree on claude/resumely-ios-1-4-5-prep-07f44c at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c
+- [Resumely iOS] worktree on detached at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP/.claude/worktrees/resumely-ios-1-4-5-prep-07f44c
 - [Resumely iOS] 7 uncommitted file(s) in the primary working tree
 - [RunSmart Web] garmin/brand-compliance-2026-06-22: unmerged commits, remote branch deleted, last commit 2026-06-22
 - [RunSmart Web] pr-108-review: unmerged commits, never pushed, last commit 2026-06-30
@@ -64,7 +63,7 @@ Best next action: Resumely iOS: Re-run PostHog picker→file-selected funnel on 
 - [ResumeBuilder AI (Web)] 10 uncommitted file(s) in the primary working tree
 - [Agentic OS] dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16
 - [Agentic OS] worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5
-- [Agentic OS] 1 uncommitted file(s) in the primary working tree
+- [Agentic OS] 15 uncommitted file(s) in the primary working tree
 
 ## Work Packet Hygiene
 

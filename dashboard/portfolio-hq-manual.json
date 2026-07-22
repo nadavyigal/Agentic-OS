@@ -19,9 +19,9 @@
   },
   "founderCommand": [
     {
-      "title": "P0 — Apple config is CLEARED (EXD-023); cause is first-time authorization. Next: WP-52a instrument + repro",
-      "body": "PostHog read 2026-07-21 (project 171597): on 2026-07-20 12:22-12:25 UTC a single person on iPhone17,1 running app_version=1.1.1 / app_build=25 hit ASAuthorizationError code 1000 five consecutive times at screen=sign_in_wall, with 0 sign_in_completed. The event flags rule out the usual escape hatches: $is_testflight=false, $is_sideloaded=false, $is_emulator=false — this is a real App Store install of the public binary. The new WP-47/WP-51 instrumentation works exactly as designed (named wall events, error_code, error_domain, screen, and version/build attribution all present), and what it captured is the failure, not the fix. Cumulative: 12 code-1000 events across 4 distinct devices on 3 builds (1.0.9, 1.1.0, 1.1.1); every sign_in_completed to date is an Apple ID that had already authorized RunSmart. This is no longer 'a strong unresolved signal' — it reproduced in production on the current release. Treat it as an open P0 outage, not an eligibility question.",
-      "prompt": "RunSmart iOS WP-52a: the Apple configuration chain is CLEARED (EXD-023) — do not re-inspect it. The distribution profile carries com.apple.developer.applesignin, confirmed on the shipped archive, and the App Store binary completed a native Apple sign-in through Supabase on 2026-07-21 (status 200). Services ID and .p8 are the web OAuth path and are not in the causal chain for native signInWithIdToken. Two steps: (1) capture NSUnderlyingErrorKey on sign_in_failed so code 1000 stops being bare; (2) reproduce under revoked authorization — revoke RunSmart in Settings > Apple ID > Sign in with Apple on the founder's own device, then retry. That needs no new device or Apple ID. If the repro still yields a bare 1000 with no underlying error, escalate to WP-53 (guest path) rather than iterating further. Also settle this while you are in the data: were June's 7 successes first-time or already-authorized Apple IDs? Auth code was unchanged across builds 17-22, so if June's successes were returning users, first-time sign-in may have been broken all along rather than regressing.",
+      "title": "P0 — Apple config CLEARED (EXD-023); the WP-52a instrumentation is STRANDED on unmerged PR #113",
+      "body": "PostHog read 2026-07-21 (project 171597): on 2026-07-20 12:22-12:25 UTC a single person on iPhone17,1 running app_version=1.1.1 / app_build=25 hit ASAuthorizationError code 1000 five consecutive times at screen=sign_in_wall, with 0 sign_in_completed. The event flags rule out the usual escape hatches: $is_testflight=false, $is_sideloaded=false, $is_emulator=false — this is a real App Store install of the public binary. The new WP-47/WP-51 instrumentation works exactly as designed (named wall events, error_code, error_domain, screen, and version/build attribution all present), and what it captured is the failure, not the fix. Cumulative: 12 code-1000 events across 4 distinct devices on 3 builds (1.0.9, 1.1.0, 1.1.1); every sign_in_completed to date is an Apple ID that had already authorized RunSmart. This is no longer 'a strong unresolved signal' — it reproduced in production on the current release. Treat it as an open P0 outage, not an eligibility question. **New 2026-07-22 (repo-verified):** WP-52a step 1 shipped, but it is not on `main`. `has_underlying_error` exists only on branch `claude/apple-chain-diagnosis-252a35`, carried by **PR #113 (open since 2026-07-21)**. `origin/main` is at **1.1.2 (26)**, held for weekly release cadence (PR #112), and does NOT contain the unwrapped `NSUnderlyingErrorKey`. So the diagnostic that was supposed to end this P0 is inert twice over: unmerged, and not in the build that is queued to ship. Merging PR #113 into 1.1.2 before it is archived costs one merge; missing that window costs a whole release cycle of blind code-1000 events.",
+      "prompt": "RunSmart iOS: merge PR #113 (`claude/apple-chain-diagnosis-252a35`) into main BEFORE archiving 1.1.2 (26), so the build that ships carries the `has_underlying_error` / `NSUnderlyingErrorKey` unwrap on `sign_in_failed`. The Apple configuration chain is CLEARED (EXD-023) — do not re-inspect it. Also reconcile the dirty working tree on main (Localizable.xcstrings, tasks/*.md are modified and main is behind origin by 8) before doing anything else. Then WP-52a step 2 is founder-only: revoke RunSmart in Settings > Apple ID > Sign in with Apple, reinstall from the App Store, attempt sign-in once, and read the event. If the repro still yields a bare 1000 with no underlying error, escalate to WP-53 (guest path) rather than iterating further.",
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
@@ -31,9 +31,9 @@
       "repo": "/Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app"
     },
     {
-      "title": "Resumely 1.4.5 (15) is READY — founder submit-to-ASC is the only remaining step",
-      "body": "1.4.4 (14) is LIVE (store-verified IL/GB 2026-07-21T20:17Z; US propagating). 1.4.5 (15) is prepped and fully pushed on branch claude/resumely-ios-1-4-5-prep-07f44c (worktree .claude/worktrees/resumely-ios-1-4-5-prep-07f44c, @{u}.. empty). It carries the WP-51 milestone fix (PR #117 merged to main 2026-07-21T19:09Z) plus reason/error_code diagnostics on the three blind failure events. WP-51's finding stands: optimized_preview_rendered was gated on hasVisibleAppliedChanges since the event's original 1.4.1 form, so it NEVER fired reliably and every prior Resumely activation number (incl. the 12.5% baseline) is unmeasured, not low. The measurement clock does not start until 1.4.5 is live — 1.4.4 shipped without the fix, so its cohort is still blind. This is why submitting 1.4.5 promptly matters: every day 1.4.5 is not live is a day the EXD-022 count gate cannot move off zero.",
-      "prompt": "FOUNDER ACTION (not a Claude session): archive and submit Resumely 1.4.5 (15) from branch claude/resumely-ios-1-4-5-prep-07f44c to App Store Connect. 1.4.4 is already live so there is no submission conflict. This is the first build whose optimized_preview_rendered milestone actually works; the EXD-022 activation count starts from its cohort. After it goes live, the first trustworthy activation read is 7 days later — do not read the cohort before then.",
+      "title": "Resumely 1.4.5 (15) is SUBMITTED to ASC — the activation clock starts when it goes live, not now",
+      "body": "Founder-reported 2026-07-22: **1.4.5 (15) submitted to App Store Connect for review.** Repo-verified the same day — PR #118 (`claude/resumely-ios-1-4-5-prep-07f44c`) is merged to `main` at b03a28a and the project carries MARKETING_VERSION 1.4.5 / build 15. 1.4.4 (14) is LIVE (store-verified IL/GB 2026-07-21T20:17Z). 1.4.5 carries the WP-51 milestone fix (PR #117 merged 2026-07-21T19:09Z) plus reason/error_code diagnostics on the three blind failure events. WP-51's finding stands: `optimized_preview_rendered` was gated on `hasVisibleAppliedChanges` since its original 1.4.1 form, so it NEVER fired reliably and every prior Resumely activation number (incl. the 12.5% baseline) is unmeasured, not low. **The EXD-022 count gate cannot move until 1.4.5 is Ready for Sale AND its cohort has 7 days of maturity** — i.e. the first trustworthy read is 7 days after approval, not 7 days from today. Nothing about the activation number changes while this build is in review.",
+      "prompt": "Resumely iOS: 1.4.5 (15) is in App Store review — do NOT change builds, metadata, or ASC state while it is under review (EXD-011 freeze pattern). While waiting, the useful work is non-release: close the open doc PRs (#116 lessons from the 1.4.4 release gate, #100, #96, #86) and confirm the is_internal_tester classifier defect is fixed so the 1.4.5 cohort is clean on arrival. When 1.4.5 goes Ready for Sale, record the exact timestamp — it is the zero point for the EXD-022 activation count, and no cohort read before live+7d is valid.",
       "repo": "/Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP"
     },
     {
@@ -693,14 +693,34 @@
   ],
   "clocks": [
     {
+      "date": "2026-07-22",
+      "what": "Resumely 1.4.5 (15) in Apple review — EXD-011 freeze applies: no ASC/build/metadata changes until Apple responds. First valid activation read is live + 7 days",
+      "state": "waiting"
+    },
+    {
+      "date": "2026-07-22",
+      "what": "RunSmart WP-52a step 1 is STRANDED — has_underlying_error lives only on open PR #113; origin/main is 1.1.2 (26) without it. Merge before archiving 1.1.2 or lose a release cycle of diagnostics",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-22",
+      "what": "RunSmart iOS local main is dirty and 8 behind origin (Localizable.xcstrings + tasks/*.md modified) — reconcile before any 1.1.2 archive work",
+      "state": "you"
+    },
+    {
+      "date": "2026-07-22",
+      "what": "RunSmart 1.1.2 (26) merged to main and HELD for weekly release cadence (PR #112) — unshipped release inventory, not a live build",
+      "state": "waiting"
+    },
+    {
       "date": "2026-07-21",
       "what": "Resumely 1.4.4 (14) LIVE (store-verified IL/GB 20:17Z); 1.4.5 (15) prepped on claude/resumely-ios-1-4-5-prep-07f44c with the WP-51 milestone fix + failure-event diagnostics, fully pushed",
       "state": "done"
     },
     {
       "date": "2026-07-22",
-      "what": "Resumely 1.4.5 submit-to-ASC is the founder action; it is the FIRST build whose activation milestone works, so the EXD-022 count gate starts from its cohort — every day it is not live is a day the counter cannot move",
-      "state": "you"
+      "what": "Resumely 1.4.5 (15) SUBMITTED to App Store Connect (founder, 2026-07-22). First build whose activation milestone actually works; EXD-022 count gate starts from its cohort once it is live",
+      "state": "done"
     },
     {
       "date": "2026-07-19",
