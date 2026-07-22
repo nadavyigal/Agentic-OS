@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "audience": "team",
-  "generatedAt": "2026-07-22 06:50 UTC",
+  "generatedAt": "2026-07-22 06:51 UTC",
   "sources": {
-    "status": "2026-07-21 21:55",
-    "usage": "2026-07-21T18:56:04.550349+00:00",
+    "status": "2026-07-22 09:51",
+    "usage": "2026-07-22T06:51:20.597562+00:00",
     "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
@@ -12,15 +12,14 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: switch off 'docs/exd-023-apple-signin-verdict' back to main; consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "On branch 'docs/exd-023-apple-signin-verdict', not main. Merge to main so all tools see it.",
+      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
       "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (3), Resumely iOS (2)."
+      "Extra product worktrees retained for review: RunSmart iOS (4), Resumely iOS (3)."
     ]
   },
   "consistencyIssues": [],
@@ -39,7 +38,7 @@
     },
     {
       "name": "Resumely iOS",
-      "state": "1.4.3 (13) APPROVED and LIVE — Release C shipped (2026-07-20)",
+      "state": "Post-launch — 1.4.1 (11) live; picker→file-selected funnel read **deferred** until post-live cohort exists",
       "nextAction": "Re-run PostHog picker→file-selected funnel on **2026-07-25** (or minimum check **2026-07-18**) for clean `marketing_version=1.4.1` cohort; see deferred-read entry above for query definition",
       "freshness": "Fresh",
       "evidenceDate": "2026-07-11",
@@ -366,7 +365,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-21 21:55",
+      "lastRan": "2026-07-22 09:51",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -415,7 +414,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-21T18:56:04.550349+00:00",
+      "lastRan": "2026-07-22T06:51:20.597562+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ]
