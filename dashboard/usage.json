@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-07-22T17:36:02.114654+00:00",
+  "generatedAt": "2026-07-22T17:54:11.113461+00:00",
   "windowDays": 30,
-  "totalCostUsd": 4114.8,
-  "totalCacheReadTokens": 7119666370,
+  "totalCostUsd": 4127.15,
+  "totalCacheReadTokens": 7138328651,
   "sessionCount": 160,
   "note": "Claude Code: priced from on-disk usage (PRICES verified 2026-07-10 vs model-registry.json; Opus now $5/$25, was mis-priced at Claude-3-era $15/$75). Codex: activity only (no token counts persisted). Cursor: not captured (see README). Cache-read tokens (from long sessions) are typically the dominant cost driver.",
   "byTool": {
     "claude-code": {
-      "cost_usd": 4114.8,
-      "input_tokens": 6235834,
-      "output_tokens": 28230482,
-      "cache_read_tokens": 7119666370,
+      "cost_usd": 4127.15,
+      "input_tokens": 6235985,
+      "output_tokens": 28307691,
+      "cache_read_tokens": 7138328651,
       "sessions": 135
     },
     "codex": {
@@ -23,10 +23,10 @@
   },
   "byProject": {
     "Builder OS Vault": {
-      "cost_usd": 2667.91,
-      "input_tokens": 4711648,
-      "output_tokens": 18629505,
-      "cache_read_tokens": 4696753191,
+      "cost_usd": 2680.25,
+      "input_tokens": 4711799,
+      "output_tokens": 18706714,
+      "cache_read_tokens": 4715415472,
       "sessions": 76
     },
     "ResumeBuilder": {
@@ -88,10 +88,10 @@
       "sessions": 85
     },
     "opus": {
-      "cost_usd": 2030.98,
-      "input_tokens": 2883105,
-      "output_tokens": 13420981,
-      "cache_read_tokens": 3050278653,
+      "cost_usd": 2043.32,
+      "input_tokens": 2883256,
+      "output_tokens": 13498190,
+      "cache_read_tokens": 3068940934,
       "sessions": 50
     },
     "unknown": {
@@ -125,10 +125,10 @@
       "sessions": 2
     },
     "2026-07-22": {
-      "cost_usd": 258.81,
-      "input_tokens": 3933,
-      "output_tokens": 1421400,
-      "cache_read_tokens": 318488650,
+      "cost_usd": 271.15,
+      "input_tokens": 4084,
+      "output_tokens": 1498609,
+      "cache_read_tokens": 337150931,
       "sessions": 7
     },
     "2026-07-19": {
