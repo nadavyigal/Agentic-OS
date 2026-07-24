@@ -184,7 +184,7 @@ Rules:
 | Story | Repo | Mode | Outcome |
 |---|---|---|---|
 | S0 — Measurement contract and baseline | iOS + PostHog | Grower | **Done 2026-07-12** — clean before/after funnel, no UX change |
-| **S1 — Scorer integrity: repair the dead components** | Web/backend | Builder | The composite can actually reach its own top band |
+| **S1 — Scorer integrity: repair the dead components** | Web/backend | Builder | **Done 2026-07-24 (PR #119)** — the composite can reach its own top band |
 | **S2 — Symmetric before/after and the no-regression invariant** | Web/backend | Builder | The pair is measured the same way; the number cannot go down |
 | **S3 — One canonical score per (resume, job)** | Web/backend | Builder | Fit screen and optimize screen agree |
 | S4 — Extraction-quality gate | Web/backend | Builder | Junk requirements cannot produce a confident score |
@@ -206,6 +206,14 @@ Rules:
 Envelope fields (verify, do not re-add if present): `flow_version`, `score_version`, `job_input_source`, `extraction_quality`, `requirement_count_bucket`, `score_bucket`, `is_internal_tester`, `app`, `marketing_version`, `build_number`.
 
 ### S1 — Scorer integrity: repair the dead components
+
+**Implemented 2026-07-24.** ResumeBuilder web branch `claude/wp45-s1-scorer-integrity`, commits `f8966e5` + `ccbc4d5`, [PR #119](https://github.com/nadavyigal/new-ResumeBuilder-ai-/pull/119). All four defects addressed: keyword_phrase withdrawn from the weighting (weights rescaled old/0.88), the no-metrics penalty removed as double-counting, per-side format reports in both orchestrators, and a conservative text extractor for the original side's work history passed as a dedicated `recency_json` so it reaches only the recency analyzer.
+
+Gate results: G1 an excellent candidate without quantified metrics scored 72 and now scores 87, so Strong is reachable; G2 every weighted component varies by >= 5 points across fixtures and keyword_phrase is out of the denominator. 30 deterministic tests, 6 verified failing on the pre-fix source. Full suite unchanged at 17 pre-existing suite failures, passing 171 -> 201; eslint clean; 0 new tsc errors; `next build` passes on a clean checkout.
+
+An adversarial review caught two own-goals in the first commit that would have widened the delta dishonestly — the derived stub reaching four analyzers that branch on `resume_json` (collapsing original-side section_completeness from ~100 to 25), and integration.ts comparing two different format functions (a manufactured ~+2.4 points per run). Both fixed in `ccbc4d5` with regression gates verified to fail against the first commit. **Lesson for S2-S5: verify that a scorer change does not move the ORIGINAL side, not just that the composite went up.**
+
+Still open from this story: `core.ts`/`index.ts` remain duplicate orchestrators; `SubScoreBreakdown.tsx` shows keyword_phrase as a live bar; free-checker scores rise ~11-13 points so the >= 75 verdict may start firing before S5 calibrates the bands.
 
 **This is the story that fixes what the user saw.** Address D1–D4. Each fix is independently testable and independently revertable.
 
