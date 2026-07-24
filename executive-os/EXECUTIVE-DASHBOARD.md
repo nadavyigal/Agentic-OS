@@ -2,19 +2,19 @@
 
 Manual source-of-truth dashboard for the Executive Intelligence OS. Financial cells stay `Needs Data` until a real source exists.
 
-Last updated: 2026-07-17 IDT
+Last updated: 2026-07-24 IDT
 
 ## Executive Summary
 
-Resumely is primary through the 2026-08-01 activation window. Release A 1.4.2 (12) is live, Story 8 is the active FTUX lane, and WP-46 queues Stories 9-13 toward one 1.5.0 readiness handoff. RunSmart 1.0.9 (23) is live, but its n=2 public sign-in failure signal needs one founder-device reproduction before any code or configuration change. Mature activation remains Resumely 0/73 and RunSmart 0/13 from the 2026-07-12 read; newer exact-version cohorts are immature. Sources: `dashboard/portfolio-hq-manual.json`, `EXECUTIVE-METRICS.md`, and `DECISIONS.md`.
+Resumely remains primary. Both apps are live on the July 22 builds: RunSmart 1.1.2 (27) and Resumely 1.4.5 (15). Resumely 1.4.6 (16) is merged and release-validated but has not been archived, uploaded, or submitted; it carries WP-53 recovery protection for a defect still affecting live 1.4.5 users. RunSmart 1.1.3 (28) is merged and ready for founder archive. Resumely's first valid activation cohort starts with 1.4.5 because the prior milestone was defective; RunSmart sign-in fails for some users, not all, and the next action depends on one diagnostic property. Sources: `dashboard/status.json`, `dashboard/portfolio-hq-manual.json`, both iOS repos' `main` task progress, EXD-022, and EXD-023.
 
 ## Top 3 Priorities
 
-1. Verify RunSmart public-build Sign in with Apple once on the founder device; reproduce before changing code or production configuration.
-2. Finish the existing Resumely Story 8 lane, then execute WP-46 Stories 9-13 sequentially toward a 1.5.0 readiness handoff; no App Store action.
-3. Protect measurement: land current evidence after review, record WP-31 publish/baseline data, and run the July 22/25 cohort checks without turning 0/0 into 0%.
+1. Ship Resumely 1.4.6 safely: physical recovery/export smoke, then founder archive and upload.
+2. Run the first valid Resumely reads: July 29 for funnel monotonicity and August 5 for the clean activation count toward EXD-022.
+3. Archive RunSmart 1.1.3, then use the first real 1.1.2 `has_underlying_error` value to choose the sign-in response.
 
-Source: `executive-os/reviews/2026-07-17-weekly-ceo-review.md`.
+Source: `executive-os/reviews/2026-07-24-weekly-ceo-review.md`.
 
 ## Financial Snapshot
 
@@ -23,51 +23,53 @@ Revenue, costs, margin, burn, and runway are `unknown - need: App Store Connect/
 ## Decision Board
 
 - Open executive decisions: 0.
-- Keep Resumely primary through 2026-08-01 (EXD-015).
-- Defer RunSmart E1 until sign-in works and at least 10 clean mature-D7 entrants exist (`DECISIONS.md`, 2026-07-16).
-- Keep Resumely Release B+C as one sequential 1.5.0 target; no archive, TestFlight, or App Store action is authorized (`DECISIONS.md`, 2026-07-16).
-- Keep Gate A, paid acquisition, RunSmart Hebrew distribution, and Garmin relaunch engineering closed or parked under their existing decisions.
+- EXD-022: activation gate is at least 20 clean activations on a working milestone, with no calendar deadline. August 1 is a written checkpoint, not a verdict.
+- EXD-023: the "sign-in broken for everyone" framing is refuted. Keep the fallback conditional on the first live `has_underlying_error` value.
+- EXD-015: Resumely remains primary; its old target wording is superseded by EXD-022.
+- 2026-07-18 Adaptive Coach decision: approved Phase 1 investment remains valid, but there is no reason to expand it this week. Garmin remains paused.
+- EXD-009 / Gate A and EXD-016 remain closed or parked.
 - New durable decision this review: none.
 
 ## Plan Board
 
-- `BUSINESS-GTM-PLAN-V0.md`: COO drafts a post-cohort decision packet after the July 22/25 reads.
-- RunSmart Hebrew-first playbook: COO drafts a 2026-08-01 revisit packet; execution remains parked under EXD-016.
-- RunSmart iOS GTM plan: COO drafts a sign-in and cohort-gated packet, not a volume-launch packet.
-- Seven research briefs remain `research_only`; no execution assignment this week.
+- `BUSINESS-GTM-PLAN-V0.md`: COO drafts a post-read packet after the August 5 Resumely read and the first decisive RunSmart failure event.
+- RunSmart Hebrew-first playbook: COO drafts a dated August 1 revisit packet; execution remains parked.
+- RunSmart iOS GTM plan: COO drafts a sign-in-and-cohort-gated packet, not a volume-launch packet.
+- Indexed research briefs remain `research_only`; no execution assignment this week.
 
 Source: `dashboard/status.json` `planExecution`.
 
 ## Contradictions
 
-- Parsed status still says Resumely 1.4.1 with no active story; the dated founder-confirmed layer says 1.4.2 live, Story 7 complete, Story 8 active, and WP-46 queued.
-- `CEO-OS.md` still names RunSmart as primary and describes pre-release stages; EXD-015 makes Resumely primary through 2026-08-01.
-- `EXECUTIVE-METRICS.md` uses the correct mature activation baseline but names prior live versions in its blocked-app row.
-- Portfolio evidence refreshed today, but trust is still `Refresh required` because one unrelated dirty worktree remains and the snapshot began with local commits ahead of origin.
+- The ground-truth guard misclassifies descriptive post-release phase text as pre-launch even though both apps are live.
+- The parser selected older Resumely side-branch progress; `main` has 1.4.6 merged and ready for founder archive.
+- A stranded draft said Resumely 1.4.6 was in App Store review; `main` explicitly says nothing was archived, uploaded, or submitted.
+- `CEO-OS.md` still names RunSmart as primary; later durable decisions make Resumely primary while allowing bounded Adaptive Coach work.
+- `EXECUTIVE-METRICS.md` still carries an invalid Resumely pre-1.4.5 baseline and the superseded 20%-by-August-1 target.
+- The generated decision board still contains old build-8, voice-coach, upload-path, and rollout prompts despite zero open durable decisions.
 
-Resolution: use the dated manual evidence for current release sequencing, preserve the mature cohort contract for decisions, and keep the parser lag visible until its source is reconciled.
+Resolution: use current `main` product progress for release state, EXD-022/023 for decisions, and the July 22 manual evidence layer for cohort rules. Preserve the older files as historical evidence until their owners reconcile them.
 
 ## Risk Board
 
-- RunSmart sign-in: possible public P0, but n=2 is not enough to declare an outage.
-- Resumely measurement: Release A has 0 clean post-release entrants, so no exact-version activation claim is valid yet.
-- Evidence durability: several current audit and measurement artifacts remain branch-only.
-- Portfolio trust: one unrelated dirty worktree remains open; do not treat generated readiness claims as automatically authoritative.
-- Distribution: WP-31 publish time and Israeli storefront baseline are still missing; WP-32 closed inconclusive because attribution was absent.
-- Finance: revenue, costs, burn, and runway remain unknown.
+- Resumely's recovery defect remains live until 1.4.6 ships.
+- Resumely's first valid cohort is immature; early rates would be misleading.
+- RunSmart sign-in still fails on an unknown subset of devices/accounts.
+- Portfolio trust is degraded by dirty repos, stale branch selection, and live-phase parser false positives.
+- Revenue, costs, burn, and runway remain unknown.
 
 ## Weekly Review
 
-- Current review: `executive-os/reviews/2026-07-17-weekly-ceo-review.md`.
-- Prior review preserved: `executive-os/reviews/2026-07-09-weekly-ceo-review.md`.
-- No new row added to `EXECUTIVE-DECISIONS.md`; evidence supports carrying forward existing decisions, not creating a new one.
+- Current review: `executive-os/reviews/2026-07-24-weekly-ceo-review.md`.
+- Prior review preserved: `executive-os/reviews/2026-07-17-weekly-ceo-review.md`.
+- No new row added to `EXECUTIVE-DECISIONS.md`; evidence supports clarification, not a new durable decision.
 
 ## Next Actions
 
-1. Founder runs one RunSmart public sign-in attempt and records UTC plus exact result.
-2. Existing Resumely session finishes and integrates Story 8.
-3. WP-46 continues Stories 9-13 only after the active work integrates.
-4. Review and merge the current evidence branches, then reconcile the stale Resumely progress source.
-5. Record WP-31 publish timestamp and App Store Connect Israeli storefront baseline.
-6. Run July 22 directional checks and the preferred July 25 Resumely cohort read.
-7. Build the one-time manual recurring-cost list before the next CFO review.
+1. Founder completes Resumely 1.4.6 physical smoke, archive, validation, upload, and submission.
+2. Founder archives and uploads RunSmart 1.1.3 without adding scope.
+3. Analytics runs Resumely's July 29 monotonicity check and August 5 clean activation count.
+4. Analytics reads RunSmart's first real `has_underlying_error` value and routes the next action.
+5. COO drafts the three gated next packets only at their named checkpoints.
+6. Maintainer reconciles product progress sources and stale generated decision prompts.
+7. Founder creates the recurring-cost list before the next CFO review.
