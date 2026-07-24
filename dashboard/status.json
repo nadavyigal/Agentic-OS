@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Global Agentic OS Dashboard",
-    "lastUpdated": "2026-07-22 IDT",
+    "lastUpdated": "2026-07-24 IDT",
     "sourceOfTruth": "../PROJECT-STATUS.md",
     "sourcePolicy": "Local evidence mode. Refreshed by ./agentic-os from PROJECT-PATHS.md, local git, the previous EOD handoff, and the freshest task/plan evidence across active worktrees. PostHog decision snapshots remain a separately dated manual layer.",
     "freshnessRule": {
@@ -10,14 +10,15 @@
       "stale": "Older than 7 days.",
       "unknown": "No reliable updated date found."
     },
-    "lastSuccessfulRefresh": "2026-07-22 20:55"
+    "lastSuccessfulRefresh": "2026-07-24 09:11"
   },
   "summary": {
-    "overallStatus": "RunSmart iOS \u2014 Post-release watch. Nothing to build until the instrument reports: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install \u00b7 Resumely iOS \u2014 Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
-    "bestNextAction": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
+    "overallStatus": "RunSmart iOS \u2014 1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit: **Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships \u00b7 Resumely iOS \u2014 WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "bestNextAction": "Resumely iOS: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
     "mainBlockers": [
-      "RunSmart iOS: None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)",
-      "Resumely iOS: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`",
+      "RunSmart iOS: Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)",
+      "Resumely iOS: Live 1.4.5 cannot be called fully operational until WP-53 ships",
+      "Resumely iOS: no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified",
       "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
       "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
@@ -28,7 +29,7 @@
       "Resumely iOS: confirm founder can unlock iPhone 13 for device smoke before archive.",
       "ResumeBuilder Web: defer rollout unless Resumely smoke exposes backend blockers."
     ],
-    "evidenceFreshDate": "2026-07-22",
+    "evidenceFreshDate": "2026-07-24",
     "generatedFrom": "Parsed local repo truth (tasks/progress.md) + every saved plan/spec/GTM. One process, re-derived each run."
   },
   "projects": [
@@ -39,20 +40,20 @@
       "role": "Primary premium mobile running coach product.",
       "freshness": "Fresh",
       "statusTone": "submission",
-      "status": "Phase: Post-release watch. Nothing to build until the instrument reports. Active: None in flight. Last completed: 1.1.2 (27) release \u2014 PR #114 (`b9c5532`), archived, uploaded, submitted, approved and released 2026-07-22. Source: tasks/progress.md, updated 2026-07-22.",
+      "status": "Phase: 1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit. Active: 1.1.3 (28) release on branch `claude/release-1.1.3-routes` \u2014 version bumped, `fastlane/metadata/en-US/release_notes.txt` rewritten for the route feature. Archive/upload/submit are founder-only. Last completed: Route feature review + repair merged to `main` \u2014 PR **#116** (`8cbb928`); the route-tables migration was applied to production `dxqglotcyirxzyqaxqln` on 2026-07-23 with founder approval. Source: tasks/progress.md, updated 2026-07-24.",
       "distributionStatus": "Build 8 in Apple review (submitted 2026-06-03); launch distribution waits for review outcome",
-      "currentPhase": "Post-release watch. Nothing to build until the instrument reports",
-      "activeStory": "None in flight",
-      "lastCompletedStory": "1.1.2 (27) release \u2014 PR #114 (`b9c5532`), archived, uploaded, submitted, approved and released 2026-07-22",
-      "nextRecommendedStory": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
+      "currentPhase": "1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit",
+      "activeStory": "1.1.3 (28) release on branch `claude/release-1.1.3-routes` \u2014 version bumped, `fastlane/metadata/en-US/release_notes.txt` rewritten for the route feature. Archive/upload/submit are founder-only",
+      "lastCompletedStory": "Route feature review + repair merged to `main` \u2014 PR **#116** (`8cbb928`); the route-tables migration was applied to production `dxqglotcyirxzyqaxqln` on 2026-07-23 with founder approval",
+      "nextRecommendedStory": "**Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
       "estimatedCompletion": "Review ETA unknown (24-48h typical)",
       "progressPercent": 98,
       "progressLabel": "Build 8 in review",
-      "lastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.1.2 public (store ground truth). Pre-release: full suite **324 passed / 0 failed / 0 skipped**, xcresult-verified, new copy test confirmed failing pre-fix; Release build for `generic/platform=iOS` verified at 1.1.2 (27) with a non-empty POSTHOG_API_KEY in the built Info.plist, SIWA entitlement present, and the instrumentation confirmed in the compiled binary. **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and any cohort query today returns a number that looks like a finding and is not one",
+      "lastValidation": "2026-07-24 \u2014 `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 applied to all 6 configurations in `project.pbxproj` (grep-verified: 6 of each new value, 0 stale), diff is exactly the 12 version lines. Release build for `generic/platform=iOS` (unsigned, `CODE_SIGNING_ALLOWED=NO`, DerivedData under `/private/tmp`): **BUILD SUCCEEDED**, built `Info.plist` reads `CFBundleShortVersionString 1.1.3` / `CFBundleVersion 28` with a non-empty `POSTHOG_API_KEY` (47 chars); SIWA entitlement not re-verified on an unsigned build but unchanged from 1.1.2's signed-archive check (no entitlements/config touched). The route code is unchanged from the PR #116 merge validated **2026-07-23** at full suite **327 passed / 1 failed**, where the 1 failure (`testPlanWeeksGroupByCalendarWeekAndTotalDistance`) reproduces on unmodified HEAD (Hebrew-locale simulator vs English month-label assertion; pre-existing, unrelated) and 3 new route tests were confirmed red\u2192green",
       "validationState": "v1.0 release artifacts frozen; Apple review outcome pending.",
-      "lastUpdated": "2026-07-22",
+      "lastUpdated": "2026-07-24",
       "blockers": [
-        "None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)"
+        "Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)"
       ],
       "risks": [
         "Apple rejects build 8 for a new reason",
@@ -95,7 +96,7 @@
         "dirty": true,
         "dirtyCount": 1,
         "extraWorktrees": 5,
-        "lastCommit": "2026-07-22 42267ba Merge pull request #115 from nadavyigal/claude/progress-1.1.2-live",
+        "lastCommit": "2026-07-24 a700bfc Merge pull request #117 from nadavyigal/claude/release-1.1.3-routes",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -126,12 +127,12 @@
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
           "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/progress.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/todo.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/session-log.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/MEMORY.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/ERRORS.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/lessons.md",
+          "worktree:detached:tasks/progress.md",
+          "worktree:detached:tasks/todo.md",
+          "worktree:detached:tasks/session-log.md",
+          "worktree:detached:tasks/MEMORY.md",
+          "worktree:detached:tasks/ERRORS.md",
+          "worktree:detached:tasks/lessons.md",
           "worktree:claude/apple-chain-diagnosis-252a35:tasks/progress.md",
           "worktree:claude/apple-chain-diagnosis-252a35:tasks/todo.md",
           "worktree:claude/apple-chain-diagnosis-252a35:tasks/session-log.md",
@@ -139,10 +140,10 @@
           "worktree:claude/apple-chain-diagnosis-252a35:tasks/ERRORS.md",
           "worktree:claude/apple-chain-diagnosis-252a35:tasks/lessons.md",
           ".agent-os/distribution/gtm-plan.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "worktree:detached:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
+          "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-          "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-13-ftux-upgrade-plan.md",
+          "worktree:detached:docs/plans/2026-07-13-ftux-upgrade-plan.md",
           "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
           "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
           "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
@@ -173,25 +174,25 @@
           "kind": "primary",
           "branch": "main"
         },
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-22",
+        "freshestDate": "2026-07-24",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-22"
+        "evidenceDate": "2026-07-24"
       },
       "taskParse": {
-        "status": "**1.1.2 (27) APPROVED AND LIVE on the App Store.** Store-verified 2026-07-22 against Apple's public lookup API (`id6768297840` \u2192 `version: 1.1.2`, `currentVersionReleaseDate: 2026-07-22T17:04:47Z`), not from report. This is the first public build carrying (a) the WP-52a `has_underlying_error` / `underlying_error_domain` / `_code` / `_description` instrumentation on `sign_in_failed`, redacted in the emitter; (b) failure copy that names iCloud, scoped after review so it fires only for failures Apple itself reported and a Supabase outage no longer sends users to check something that is not broken; (c) the double-tap guard on the Sign in with Apple button, with the `scenePhase .active` re-arm race fixed so a foreground return cannot regenerate the nonce mid-exchange. Supersedes 1.1.1 (25); build 26 never reached users. **The P0 framing this build was built to serve has itself been refuted** \u2014 see the WP-52a step 2 entry below: first-time Sign in with Apple works, it fails for *some* users on **3** real devices (not 4; `iPhone99,7` is not an Apple model), and the cause is still unnamed",
-        "currentPhase": "Post-release watch. Nothing to build until the instrument reports",
-        "activeStory": "None in flight",
-        "lastCompletedStory": "1.1.2 (27) release \u2014 PR #114 (`b9c5532`), archived, uploaded, submitted, approved and released 2026-07-22",
-        "nextRecommendedStory": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
+        "status": "**1.1.2 (27) is LIVE on the App Store; 1.1.3 (28) is PREPARED for archive on branch `claude/release-1.1.3-routes`.** 1.1.2 store-verified 2026-07-22 against Apple's lookup API (`id6768297840` \u2192 `version: 1.1.2`). 1.1.3 (28) is the first build to carry the **repaired route feature** (route creator usable, route/benchmark detail reachable, and cloud route persistence now backed by the `user_saved_routes` / `user_benchmark_routes` tables that were applied to production 2026-07-23). It is a version bump + release-notes change only \u2014 the route code merged to `main` in PR #116 (`8cbb928`); no app logic changed in this release commit",
+        "currentPhase": "1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit",
+        "activeStory": "1.1.3 (28) release on branch `claude/release-1.1.3-routes` \u2014 version bumped, `fastlane/metadata/en-US/release_notes.txt` rewritten for the route feature. Archive/upload/submit are founder-only",
+        "lastCompletedStory": "Route feature review + repair merged to `main` \u2014 PR **#116** (`8cbb928`); the route-tables migration was applied to production `dxqglotcyirxzyqaxqln` on 2026-07-23 with founder approval",
+        "nextRecommendedStory": "**Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
         "blockers": [
-          "None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)"
+          "Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)"
         ],
         "risks": [],
-        "lastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.1.2 public (store ground truth). Pre-release: full suite **324 passed / 0 failed / 0 skipped**, xcresult-verified, new copy test confirmed failing pre-fix; Release build for `generic/platform=iOS` verified at 1.1.2 (27) with a non-empty POSTHOG_API_KEY in the built Info.plist, SIWA entitlement present, and the instrumentation confirmed in the compiled binary. **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and any cohort query today returns a number that looks like a finding and is not one",
-        "lastUpdated": "2026-07-22",
+        "lastValidation": "2026-07-24 \u2014 `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 applied to all 6 configurations in `project.pbxproj` (grep-verified: 6 of each new value, 0 stale), diff is exactly the 12 version lines. Release build for `generic/platform=iOS` (unsigned, `CODE_SIGNING_ALLOWED=NO`, DerivedData under `/private/tmp`): **BUILD SUCCEEDED**, built `Info.plist` reads `CFBundleShortVersionString 1.1.3` / `CFBundleVersion 28` with a non-empty `POSTHOG_API_KEY` (47 chars); SIWA entitlement not re-verified on an unsigned build but unchanged from 1.1.2's signed-archive check (no entitlements/config touched). The route code is unchanged from the PR #116 merge validated **2026-07-23** at full suite **327 passed / 1 failed**, where the 1 failure (`testPlanWeeksGroupByCalendarWeekAndTotalDistance`) reproduces on unmodified HEAD (Hebrew-locale simulator vs English month-label assertion; pre-existing, unrelated) and 3 new route tests were confirmed red\u2192green",
+        "lastUpdated": "2026-07-24",
         "qaNeeded": null,
         "estimatedCompletion": null,
         "decisionsNeeded": [
@@ -201,9 +202,9 @@
         "openQuestions": [],
         "evidence": {
           "tests": [],
-          "buildStatus": null,
+          "buildStatus": "succeeded",
           "qaDocs": [],
-          "evidenceDate": "2026-07-22"
+          "evidenceDate": "2026-07-24"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -215,10 +216,10 @@
           "tasks/lessons.md"
         ],
         "missing": [],
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": true,
         "path": ".agent-os/distribution/gtm-plan.md",
@@ -234,19 +235,20 @@
       "role": "Native iOS app for Resumely resume optimization product.",
       "freshness": "Fresh",
       "statusTone": "pre-submission",
-      "status": "Phase: Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet. Active: None in flight. Last completed: 1.4.5 (15) release \u2014 WP-51 (PR #117, `39654f1`) + WP-52 (PR #118, `6657fe8`), archived, uploaded, submitted, approved and released 2026-07-22. Source: tasks/progress.md, updated 2026-07-22.",
-      "currentPhase": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
-      "activeStory": "None in flight",
-      "lastCompletedStory": "1.4.5 (15) release \u2014 WP-51 (PR #117, `39654f1`) + WP-52 (PR #118, `6657fe8`), archived, uploaded, submitted, approved and released 2026-07-22",
-      "nextRecommendedStory": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
+      "status": "Phase: WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending. Active: WP-53 \u2014 optimization ID preservation across transient history failures. Last completed: WP-53 implementation and release verification \u2014 2026-07-23. Source: tasks/progress.md, updated 2026-07-23.",
+      "currentPhase": "WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending",
+      "activeStory": "WP-53 \u2014 optimization ID preservation across transient history failures",
+      "lastCompletedStory": "WP-53 implementation and release verification \u2014 2026-07-23",
+      "nextRecommendedStory": "Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
       "estimatedCompletion": "Unknown",
       "progressPercent": null,
       "progressLabel": "Smoke + ASC upload remaining",
-      "lastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.4.5 public (store ground truth). Pre-release validation is unchanged from the block below (focused `AnalyticsServiceTests` 22/22; full suite **208 XCTest passed / 1 intentional skip / 0 failures** plus 5 swift-testing, `** TEST SUCCEEDED **`, iPhone 17 iOS 26.5; unsigned generic-iOS Release build `** BUILD SUCCEEDED **`; EN and HE launch smoke both PASS). **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and the funnel is not yet readable; physical-device journey on 1.4.5 still not run",
+      "lastValidation": "2026-07-23 \u2014 CodeRabbit follow-up: focused recovery/journey **13/13**, apply parsing **10/10**, full suite **216 passed / 1 intentional skip / 0 failures** (includes 5 Swift Testing tests) on iPhone 17 iOS 26.5. Two deterministic suspended-request tests prove late failure cannot overwrite a newer optimization and late success cannot restore state after sign-out. Initial WP-53 gates remain green: unsigned generic-iOS Release build **SUCCEEDED**; Debug build/install/launch and Home screenshot smoke **PASS**. PostHog T+1 still has **0 clean users**",
       "validationState": "Build, tests, analytics, UX, and export fixes passed. Real-device live-account smoke not done.",
-      "lastUpdated": "2026-07-22",
+      "lastUpdated": "2026-07-24",
       "blockers": [
-        "None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`"
+        "Live 1.4.5 cannot be called fully operational until WP-53 ships",
+        "no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified"
       ],
       "risks": [
         "WKWebView PDF/export fragility on real device",
@@ -278,11 +280,11 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/ResumeBuilder/ResumeBuilder%20IOS%20APP"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "codex/wp-53-optimization-id-preservation...origin/codex/wp-53-optimization-id-preservation",
         "dirty": true,
         "dirtyCount": 7,
-        "extraWorktrees": 3,
-        "lastCommit": "2026-07-22 a604fac Merge pull request #119 from nadavyigal/claude/progress-1.4.5-live",
+        "extraWorktrees": 4,
+        "lastCommit": "2026-07-23 0bdfb42 test(ios): bound optimization recovery polling",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/todo.md",
@@ -296,6 +298,11 @@
           "primary:tasks/session-log.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/lessons.md",
+          "worktree:main:tasks/progress.md",
+          "worktree:main:tasks/todo.md",
+          "worktree:main:tasks/session-log.md",
+          "worktree:main:tasks/MEMORY.md",
+          "worktree:main:tasks/lessons.md",
           "worktree:codex/wp46-story-10:tasks/progress.md",
           "worktree:codex/wp46-story-10:tasks/todo.md",
           "worktree:codex/wp46-story-10:tasks/session-log.md",
@@ -311,71 +318,73 @@
           "worktree:detached:tasks/session-log.md",
           "worktree:detached:tasks/MEMORY.md",
           "worktree:detached:tasks/lessons.md",
-          "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+          "worktree:main:docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+          "worktree:main:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+          "worktree:main:docs/specs/drafts/recommendation-evidence-backend-contract.md",
           "docs/specs/drafts/release-b-initiation-prompt 2.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-          "worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-          "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-          "worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
-          "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-          "worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+          "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+          "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+          "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+          "worktree:main:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+          "worktree:main:docs/specs/drafts/fit-first-triage-stories.md",
+          "worktree:main:docs/specs/drafts/fit-first-triage-spec.md",
+          "worktree:main:docs/specs/drafts/fit-first-triage-brief.md",
+          "worktree:main:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+          "worktree:main:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+          "worktree:main:docs/specs/resume-aha-moments.md",
+          "worktree:main:docs/specs/drafts/resume-aha-moments-stories.md",
+          "worktree:main:docs/specs/drafts/resume-aha-moments-spec.md",
+          "worktree:main:docs/specs/drafts/resume-aha-moments-brief.md",
+          "worktree:main:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+          "worktree:main:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+          "worktree:main:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+          "worktree:main:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+          "worktree:main:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+          "worktree:main:docs/specs/app-store-screenshot-generator.md",
+          "worktree:main:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+          "worktree:main:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
           "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
         ],
         "taskSource": {
           "kind": "primary",
-          "branch": "main"
+          "branch": "codex/wp-53-optimization-id-preservation"
         },
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-22",
+        "freshestDate": "2026-07-23",
         "evidenceGap": false,
-        "evidenceDate": "2026-07-22"
+        "evidenceDate": "2026-07-23"
       },
       "taskParse": {
-        "status": "**1.4.5 (15) APPROVED AND LIVE on the App Store.** Store-verified 2026-07-22 against Apple's public lookup API (`id6776752349` \u2192 `version: 1.4.5`, `currentVersionReleaseDate: 2026-07-22T15:23:44Z`), not from report. **This is the first build whose activation number means anything.** It carries WP-51 (the `optimized_preview_rendered` repair) and WP-52 (`reason` on the three blind failure events) on top of 1.4.4's seven-story UI/copy pass, superseding 1.4.3 (13). **The measurement note is now load-bearing, not a caveat:** the milestone shipped defective in its original 1.4.1 form (`738da5a`), so it has NEVER fired reliably, there is NO valid pre-fix activation baseline, and the 12.5% / 10.0% figures are **UNMEASURED, not low** \u2014 comparing against them is meaningless rather than imprecise. The first trustworthy cohort clock started 2026-07-22T15:23:44Z",
-        "currentPhase": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
-        "activeStory": "None in flight",
-        "lastCompletedStory": "1.4.5 (15) release \u2014 WP-51 (PR #117, `39654f1`) + WP-52 (PR #118, `6657fe8`), archived, uploaded, submitted, approved and released 2026-07-22",
-        "nextRecommendedStory": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
+        "status": "**1.4.5 (15) is LIVE but has a confirmed recovery defect; WP-53 is fixed on PR #120 and requires a hotfix release.** On cold launch, `reconcileLatestOptimization()` cleared the UserDefaults-backed `latestOptimizationId` before fetching history. A transient history failure therefore permanently orphaned the user's completed optimization and made Optimized/Design/Expert appear locked. The fix preserves the ID only when the request throws; a successful authoritative history response retains its existing replacement/empty behavior. CodeRabbit review added a generation/session guard so late success, empty, or failure results cannot overwrite a newer optimization or restore state after sign-out. The broader plan was rewritten to remove rejected Task 2/3 instructions",
+        "currentPhase": "WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending",
+        "activeStory": "WP-53 \u2014 optimization ID preservation across transient history failures",
+        "lastCompletedStory": "WP-53 implementation and release verification \u2014 2026-07-23",
+        "nextRecommendedStory": "Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
         "blockers": [
-          "None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`"
+          "Live 1.4.5 cannot be called fully operational until WP-53 ships",
+          "no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified"
         ],
         "risks": [
           "New Submit Package copy is source-English in newly added SwiftUI strings until localization extraction/translation catches up",
           "existing Hebrew keys still cover the main pre-existing labels"
         ],
-        "lastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.4.5 public (store ground truth). Pre-release validation is unchanged from the block below (focused `AnalyticsServiceTests` 22/22; full suite **208 XCTest passed / 1 intentional skip / 0 failures** plus 5 swift-testing, `** TEST SUCCEEDED **`, iPhone 17 iOS 26.5; unsigned generic-iOS Release build `** BUILD SUCCEEDED **`; EN and HE launch smoke both PASS). **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and the funnel is not yet readable; physical-device journey on 1.4.5 still not run",
-        "lastUpdated": "2026-07-22",
+        "lastValidation": "2026-07-23 \u2014 CodeRabbit follow-up: focused recovery/journey **13/13**, apply parsing **10/10**, full suite **216 passed / 1 intentional skip / 0 failures** (includes 5 Swift Testing tests) on iPhone 17 iOS 26.5. Two deterministic suspended-request tests prove late failure cannot overwrite a newer optimization and late success cannot restore state after sign-out. Initial WP-53 gates remain green: unsigned generic-iOS Release build **SUCCEEDED**; Debug build/install/launch and Home screenshot smoke **PASS**. PostHog T+1 still has **0 clean users**",
+        "lastUpdated": "2026-07-23",
         "qaNeeded": "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md",
         "estimatedCompletion": null,
         "decisionsNeeded": [],
         "openQuestions": [],
         "evidence": {
           "tests": [
-            "208 XCTest"
+            "5 Swift Testing"
           ],
-          "buildStatus": "succeeded",
+          "buildStatus": null,
           "qaDocs": [
             "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
           ],
-          "evidenceDate": "2026-07-22"
+          "evidenceDate": "2026-07-23"
         },
         "preferredSource": "tasks/progress.md",
         "sourcesUsed": [
@@ -388,10 +397,10 @@
         "missing": [
           "tasks/ERRORS.md"
         ],
-        "sourceConfidence": "Medium",
+        "sourceConfidence": "High",
         "notes": ""
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "gtm": {
         "exists": false,
         "path": null,
@@ -405,7 +414,7 @@
       "name": "RunSmart Web",
       "type": "Web app",
       "role": "Main AI running coach product and source of product logic.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "reference",
       "status": "Phase: Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes. Active: None \u2014 Garmin relaunch work (commercial app filing, real-device screenshots, reconnect flow) stays paused. See Nadav Builder OS vault `05-Decisions/2026-07-02-priority-reset-resumely-primary.md` and Agentic OS `DECISIONS.md`. Last completed: 2026-07-21 \u2014 Plan-generator eval repair. The nightly eval had failed **25 of 25 runs since it was created on 2026-06-27**, i.e. it has never once passed in CI. Root cause: the `OPENAI_API_KEY` repo secret was never configured (`gh api repos/:owner/:repo/actions/secrets` returns `total_count: 0`), so GitHub substituted an empty string and the run died with `AI_APICallError: Incorrect API key provided: ''`. The same gap existed locally: the eval's vitest config loaded no env file, so the documented `npm run eval:plan` could not see `.env.local` either. Fixed both: the eval config now reads `OPENAI_API_KEY` via `loadEnv` (explicit env and the CI secret still win), and a `beforeAll` preflight fails with an actionable message that names the setup gap instead of surfacing a cryptic SDK error that reads like a quality regression. **The plan generator itself was healthy the whole time** \u2014 a full live run scored 12/12 cases, judge pass rate 100%, 0 fallbacks, 0 critical failures. `npx tsc --noEmit` exit 0, `npx eslint evals/plan-generator/` exit 0. Remaining founder action: add the repo secret so CI can go green. Earlier entry \u2014 2026-07-03 \u2014 Supabase aggregate check on `garmin_connections` found all 9 rows now `reauth_required`, 0 `connected` (newest successful sync `2026-07-01 03:40:58`, just before the app deactivation) \u2014 the \"keep the 5 currently-synced users working\" premise behind the maintenance-mode decision is stale; there are 0 users currently syncing, not 5. Verified the reconnect UX for affected users is not silently broken: `handleGarminConnect()` in `profile-screen.tsx` correctly surfaces WP-25's gated 503 message as a toast. Fixed one in-scope papercut: that toast was titled \"Connection failed\" for this planned-pause case, which reads more alarming than warranted; now shows \"Garmin sync paused\" (default variant) when the error matches `GARMIN_CONNECT_DISABLED_MESSAGE`, \"Connection failed\" (destructive) for genuine errors. `npx tsc --noEmit` clean, `npx eslint components/profile-screen.tsx` 0 errors/12 pre-existing warnings (none new), `profile-screen.test.tsx` 1/1 passed. Source: tasks/progress.md, updated 2026-07-21.",
       "currentPhase": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
@@ -417,7 +426,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-21 \u2014 live plan-generator eval 12/12, judgePassRate 1.0 (threshold 0.85), 0 fallbacks, 0 critical failures, `report.json` regenerated; preflight guard verified by running with no key available; `npx tsc --noEmit` exit 0; `npx eslint evals/plan-generator/` exit 0. 2026-07-03 \u2014 see Last Completed Story for that day's checks. 2026-07-02 \u2014 credential-guard focused tests passed, 13 tests. Connection-gate focused Garmin suite passed, 36 tests; `npm run type-check` passed; targeted `npx eslint` on changed TS/TSX files exited 0 with 14 existing warnings in `components/device-connection-screen.tsx` and `components/profile-screen.tsx`. Read-only Vercel production env listing confirmed no `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET`, no `GARMIN_CONNECT_ENABLED`, and no production env rotation",
       "validationState": "Needs dirty-tree triage and B1 evidence pull before execution.",
-      "lastUpdated": "2026-07-22",
+      "lastUpdated": "2026-07-24",
       "blockers": [
         "**Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
         "the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard"
@@ -478,7 +487,7 @@
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-07-21",
         "evidenceGap": false,
         "evidenceDate": "2026-07-21"
@@ -543,7 +552,7 @@
       "name": "ResumeBuilder AI (Web)",
       "type": "AI resume optimization product",
       "role": "High-quality resume generation, templates, export, confidence, and conversion.",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "statusTone": "reference",
       "status": "Phase: WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next. Active: WP-29 S5 \u2014 carry anonymous check results through signup into the new account/dashboard. Last completed: 2026-07-21 \u2014 Resume-optimizer eval repair. The nightly eval had failed **25 of 25 runs since it was created on 2026-06-27**, i.e. it has never once passed in CI. Root cause: the `OPENAI_API_KEY` repo secret was never configured (`gh api repos/:owner/:repo/actions/secrets` returns `total_count: 0`), so CI logged `OPENAI_API_KEY:` empty and the run died inside the optimizer pipeline. The same gap existed locally: nothing loaded `.env.local`, so the documented `npm run eval:resume` failed identically. Fixed in `scripts/run-eval-resume.mjs` \u2014 it now loads `.env.local` via the already-present `dotenv` dep (scoped to this paid eval so the mocked suite never picks up a live key) and preflights the key, failing with a message that names the setup gap instead of surfacing a generic \"Failed to optimize resume in pipeline pass 1\" trace. **The optimizer itself was healthy the whole time** \u2014 a full live run scored 7/7 cases, judge pass rate 100%, 0 critical failures. `npm run lint` 0 errors (18 pre-existing warnings), `npx eslint scripts/run-eval-resume.mjs` exit 0. Remaining founder action: add the repo secret so CI can go green. Earlier entry \u2014 WP-29 S4 \u2014 disabled Premium CTAs while Gate A is closed, guarded `/api/upgrade`, and recorded the option A decision in Agentic OS `DECISIONS.md`. Branch `codex/wp29-s4-disable-premium-cta`. **Note:** this keyed block was last updated 2026-07-03 and does not reflect WP-47/48/49, which merged in the interim; treat the WP-29 lines below as stale until someone reconciles them. Source: tasks/progress.md, updated 2026-07-03. Newer commits exist after this status (last commit: 2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly); trust git for the latest state.",
       "currentPhase": "WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
@@ -555,7 +564,7 @@
       "progressLabel": "Unknown",
       "lastValidation": "2026-07-21 \u2014 live resume-optimizer eval 7/7, judgePassRate 1.0, 0 critical failures, `report.json` regenerated; preflight guard verified by running with no key available; `npm run lint` 0 errors / 18 pre-existing warnings; `npx eslint scripts/run-eval-resume.mjs` exit 0. Noted in passing: `ci.yml` runs `test:contracts` and `bench-agent` with `|| true`, so neither can fail the build, and it never runs `tsc` \u2014 see Risks. Earlier \u2014 WP-29 S4 branch `codex/wp29-s4-disable-premium-cta` \u2014 focused pricing/upgrade tests 2/2 passed, `npm run check:i18n` passed, targeted eslint passed, full `npm run lint` passed with existing warnings only, `npm run build` passed. `npx tsc --noEmit` still fails on pre-existing contract/security test typing and stale export errors, none in touched S4 files",
       "validationState": "Needs branch cleanup and rollout validation before production activation.",
-      "lastUpdated": "2026-07-22",
+      "lastUpdated": "2026-07-24",
       "blockers": [
         "**Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
         "do not wire Stripe or re-enable Premium CTAs until the gate is explicitly reopened"
@@ -606,7 +615,7 @@
         },
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
-        "freshness": "Fresh",
+        "freshness": "Needs Review",
         "freshestDate": "2026-07-21",
         "evidenceGap": false,
         "evidenceDate": "2026-07-21"
@@ -709,7 +718,7 @@
       "role": "Manual coordination, status, dashboards, Executive OS, and agent routing.",
       "freshness": "Fresh",
       "statusTone": "reference",
-      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live); trust git for the latest state.",
+      "status": "Phase: Daily portfolio operations and evidence reconciliation. Active: Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0. Last completed: OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75). Source: tasks/progress.md, updated 2026-07-21. Newer commits exist after this status (last commit: 2026-07-24 1bb9c64b Merge branch 'claude/ceo-review-2026-07-24'); trust git for the latest state.",
       "currentPhase": "Daily portfolio operations and evidence reconciliation",
       "activeStory": "Land the completed Resumely seven-story UI/copy pass and prepare 1.4.4; RunSmart 1.1.1 is live and waits on the true first-time Apple sign-in S0",
       "lastCompletedStory": "OS instrumentation refinement (2026-07-21). Wired GitHub Actions conclusions into `./agentic-os refresh` via `check_ci_health()`, which immediately surfaced both product eval harnesses as long-running red (RunSmart plan-generator >=11 gated runs since 2026-07-11; ResumeBuilder resume-optimizer >=7 since 2026-07-15). Added `refresh_usage()` so `usage.json` regenerates each refresh instead of going stale, printing the product-vs-meta spend split against the >=60% target (now 27.0%). Added `Rollback` and `Secrets` fields to the work-packet template, with the Maintainer mode contract requiring `Rollback`. 94 parser tests pass (was 75)",
@@ -719,7 +728,7 @@
       "progressLabel": "Active",
       "lastValidation": "2026-07-21 \u2014 `./agentic-os test` 94 passed (19 new: CI streak counting, out-of-order runs, PR-noise filtering, truncated streaks, three fail-open paths, spend-split math). `./agentic-os refresh` run end-to-end; CI health and spend split both printed from live data",
       "validationState": "Will be checked with JSON parse and git diff --check.",
-      "lastUpdated": "2026-07-22",
+      "lastUpdated": "2026-07-24",
       "blockers": [
         "Both product eval harnesses are red (RunSmart >=11 gated runs, ResumeBuilder >=7). Releases that depend on eval evidence have no working gate until these are fixed"
       ],
@@ -736,30 +745,27 @@
         "repo": "file:///Users/nadavyigal/Documents/Projects%20/Agentic%20OS"
       },
       "localEvidence": {
-        "branch": "main...origin/main",
+        "branch": "main...origin/main [ahead 2]",
         "dirty": true,
-        "dirtyCount": 1,
-        "extraWorktrees": 1,
-        "lastCommit": "2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live",
+        "dirtyCount": 16,
+        "extraWorktrees": 0,
+        "lastCommit": "2026-07-24 1bb9c64b Merge branch 'claude/ceo-review-2026-07-24'",
         "sourceFiles": [
           "tasks/MEMORY.md",
           "tasks/progress.md",
           "primary:tasks/progress.md",
           "primary:tasks/MEMORY.md",
           "primary:tasks/ERRORS.md",
-          "worktree:detached:tasks/progress.md",
-          "worktree:detached:tasks/MEMORY.md",
-          "worktree:detached:tasks/ERRORS.md",
-          "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-          "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-          "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-          "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-          "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-          "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-          "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-          "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-          "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-          "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+          "docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+          "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+          "docs/superpowers/plans/2026-07-02-founder-advisor.md",
+          "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+          "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+          "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+          "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+          "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+          "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+          "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
         ],
         "taskSource": {
           "kind": "primary",
@@ -768,7 +774,7 @@
         "sourceConfidence": "High",
         "preferredSource": "tasks/progress.md",
         "freshness": "Fresh",
-        "freshestDate": "2026-07-22",
+        "freshestDate": "2026-07-24",
         "evidenceGap": true,
         "evidenceDate": "2026-07-21"
       },
@@ -828,8 +834,8 @@
   ],
   "priorityBoard": {
     "now": [
-      "RunSmart iOS: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
-      "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86"
+      "RunSmart iOS: **Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
+      "Resumely iOS: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate"
     ],
     "next": [
       "RunSmart Web: **Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) \u2014 there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
@@ -839,15 +845,15 @@
       "RunSmart iOS GTM ready (draft): The AI running coach for beginners and returning runners who need safe daily adaptation \u2014 not just faster race plans \u2014 see .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web) GTM ready (draft): ResumeBuilder AI helps you build and tailor a resume that passes ATS scans and reads like a confident professional \u2014 without sounding like a robot \u2014 see .agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: 29 saved plan(s) \u2014 latest \"Clean-install telemetry integrity repair\" (2026-07-21). See Saved Plans.",
-      "Resumely iOS: 25 saved plan(s) \u2014 latest \"Resumely Activation Cliff: Evidence and Fix Plan\" (2026-07-19). See Saved Plans.",
+      "Resumely iOS: 26 saved plan(s) \u2014 latest \"Optimization ID Preservation (WP-53)\" (2026-07-23). See Saved Plans.",
       "RunSmart Web: 13 saved plan(s) \u2014 latest \"Garmin First Aha First Build Plan\" (2026-07-01). See Saved Plans.",
       "ResumeBuilder AI (Web): 10 saved plan(s) \u2014 latest \"Fit/Match Web Copy Reconciliation Implementation Plan\" (2026-06-29). See Saved Plans.",
       "Agentic OS: 10 saved plan(s) \u2014 latest \"Portfolio Activation Playbook v2\" (2026-07-12). See Saved Plans.",
       "Portfolio: 3 strategic plan(s) need the next work packet \u2014 run COO operating review (see Command Center plan index)."
     ],
     "blocked": [
-      "RunSmart iOS: None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)",
-      "Resumely iOS: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`",
+      "RunSmart iOS: Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)",
+      "Resumely iOS: no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified",
       "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
       "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision"
@@ -967,28 +973,25 @@
     }
   ],
   "runCenter": {
-    "lastRefresh": "2026-07-22 20:55",
+    "lastRefresh": "2026-07-24 09:11",
     "command": "./agentic-os refresh",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "sourcesRead": [
+      "Agentic OS: docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
+      "Agentic OS: docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+      "Agentic OS: docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+      "Agentic OS: docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+      "Agentic OS: docs/superpowers/plans/2026-07-02-founder-advisor.md",
+      "Agentic OS: docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+      "Agentic OS: docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+      "Agentic OS: docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+      "Agentic OS: docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+      "Agentic OS: docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
       "Agentic OS: primary:tasks/ERRORS.md",
       "Agentic OS: primary:tasks/MEMORY.md",
       "Agentic OS: primary:tasks/progress.md",
       "Agentic OS: tasks/MEMORY.md",
       "Agentic OS: tasks/progress.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-      "Agentic OS: worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-      "Agentic OS: worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-      "Agentic OS: worktree:detached:tasks/ERRORS.md",
-      "Agentic OS: worktree:detached:tasks/MEMORY.md",
-      "Agentic OS: worktree:detached:tasks/progress.md",
       "ResumeBuilder AI (Web): .agent-os/distribution/gtm-plan.md",
       "ResumeBuilder AI (Web): .agent-os/distribution/weekly-plan.md",
       "ResumeBuilder AI (Web): docs/agent-os/project-context.md",
@@ -1020,28 +1023,6 @@
       "Resumely iOS: tasks/progress.md",
       "Resumely iOS: tasks/session-log.md",
       "Resumely iOS: tasks/todo.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-      "Resumely iOS: worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
       "Resumely iOS: worktree:codex/wp46-story-10:tasks/MEMORY.md",
       "Resumely iOS: worktree:codex/wp46-story-10:tasks/lessons.md",
       "Resumely iOS: worktree:codex/wp46-story-10:tasks/progress.md",
@@ -1052,12 +1033,40 @@
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/progress.md",
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/session-log.md",
       "Resumely iOS: worktree:codex/wp46-story-11:tasks/todo.md",
-      "Resumely iOS: worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
       "Resumely iOS: worktree:detached:tasks/MEMORY.md",
       "Resumely iOS: worktree:detached:tasks/lessons.md",
       "Resumely iOS: worktree:detached:tasks/progress.md",
       "Resumely iOS: worktree:detached:tasks/session-log.md",
       "Resumely iOS: worktree:detached:tasks/todo.md",
+      "Resumely iOS: worktree:main:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+      "Resumely iOS: worktree:main:docs/specs/app-store-screenshot-generator.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/fit-first-triage-brief.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/fit-first-triage-spec.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/fit-first-triage-stories.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/resume-aha-moments-brief.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/resume-aha-moments-spec.md",
+      "Resumely iOS: worktree:main:docs/specs/drafts/resume-aha-moments-stories.md",
+      "Resumely iOS: worktree:main:docs/specs/resume-aha-moments.md",
+      "Resumely iOS: worktree:main:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+      "Resumely iOS: worktree:main:docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+      "Resumely iOS: worktree:main:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+      "Resumely iOS: worktree:main:tasks/MEMORY.md",
+      "Resumely iOS: worktree:main:tasks/lessons.md",
+      "Resumely iOS: worktree:main:tasks/progress.md",
+      "Resumely iOS: worktree:main:tasks/session-log.md",
+      "Resumely iOS: worktree:main:tasks/todo.md",
       "RunSmart Web: docs/agent-os/project-context.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-execution-plan.md",
       "RunSmart Web: docs/plans/2026-02-12-runsmart-product-strategy-design.md",
@@ -1103,15 +1112,15 @@
       "RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/progress.md",
       "RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/session-log.md",
       "RunSmart iOS: worktree:claude/apple-chain-diagnosis-252a35:tasks/todo.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-13-ftux-upgrade-plan.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/ERRORS.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/MEMORY.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/lessons.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/progress.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/session-log.md",
-      "RunSmart iOS: worktree:claude/healthkit-sync-journey-d6ce3e:tasks/todo.md",
+      "RunSmart iOS: worktree:detached:docs/plans/2026-07-13-ftux-upgrade-plan.md",
+      "RunSmart iOS: worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+      "RunSmart iOS: worktree:detached:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
+      "RunSmart iOS: worktree:detached:tasks/ERRORS.md",
+      "RunSmart iOS: worktree:detached:tasks/MEMORY.md",
+      "RunSmart iOS: worktree:detached:tasks/lessons.md",
+      "RunSmart iOS: worktree:detached:tasks/progress.md",
+      "RunSmart iOS: worktree:detached:tasks/session-log.md",
+      "RunSmart iOS: worktree:detached:tasks/todo.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/gtm-plan.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md",
       "RunSmart iOS: worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-baseline-audit.md",
@@ -1173,11 +1182,11 @@
     {
       "id": "runsmart-ios",
       "name": "RunSmart iOS",
-      "state": "Post-release watch. Nothing to build until the instrument reports",
-      "nextAction": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
+      "state": "1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit",
+      "nextAction": "**Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
       "blockerCount": 1,
       "blockers": [
-        "None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)"
+        "Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)"
       ],
       "gtm": {
         "exists": true,
@@ -1193,7 +1202,7 @@
           "date": "2026-07-21",
           "status": "Implemented and verified for 1.1.2 (26) release",
           "kind": "spec",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -1202,7 +1211,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -1220,7 +1229,7 @@
           "date": "2026-07-13",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -1453,14 +1462,14 @@
       "dirtyCount": 1,
       "extraWorktrees": 5,
       "branch": "main...origin/main",
-      "lastCommit": "2026-07-22 42267ba Merge pull request #115 from nadavyigal/claude/progress-1.1.2-live",
+      "lastCommit": "2026-07-24 a700bfc Merge pull request #117 from nadavyigal/claude/release-1.1.3-routes",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-22",
+      "freshestDate": "2026-07-24",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-22",
+      "evidenceDate": "2026-07-24",
       "evidenceTests": [],
-      "buildStatus": null,
+      "buildStatus": "succeeded",
       "qaDocs": [],
       "sourceFiles": [
         "tasks/MEMORY.md",
@@ -1492,12 +1501,12 @@
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/progress.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/todo.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/session-log.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/MEMORY.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/ERRORS.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/lessons.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/todo.md",
+        "worktree:detached:tasks/session-log.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/ERRORS.md",
+        "worktree:detached:tasks/lessons.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/progress.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/todo.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/session-log.md",
@@ -1505,10 +1514,10 @@
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/ERRORS.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:detached:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
+        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-13-ftux-upgrade-plan.md",
+        "worktree:detached:docs/plans/2026-07-13-ftux-upgrade-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
         "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
         "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
@@ -1539,20 +1548,21 @@
         "kind": "primary",
         "branch": "main"
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.1.2 public (store ground truth). Pre-release: full suite **324 passed / 0 failed / 0 skipped**, xcresult-verified, new copy test confirmed failing pre-fix; Release build for `generic/platform=iOS` verified at 1.1.2 (27) with a non-empty POSTHOG_API_KEY in the built Info.plist, SIWA entitlement present, and the instrumentation confirmed in the compiled binary. **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and any cohort query today returns a number that looks like a finding and is not one",
-      "parsedLastUpdated": "2026-07-22",
-      "parsedActiveStory": "None in flight"
+      "parsedLastValidation": "2026-07-24 \u2014 `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 applied to all 6 configurations in `project.pbxproj` (grep-verified: 6 of each new value, 0 stale), diff is exactly the 12 version lines. Release build for `generic/platform=iOS` (unsigned, `CODE_SIGNING_ALLOWED=NO`, DerivedData under `/private/tmp`): **BUILD SUCCEEDED**, built `Info.plist` reads `CFBundleShortVersionString 1.1.3` / `CFBundleVersion 28` with a non-empty `POSTHOG_API_KEY` (47 chars); SIWA entitlement not re-verified on an unsigned build but unchanged from 1.1.2's signed-archive check (no entitlements/config touched). The route code is unchanged from the PR #116 merge validated **2026-07-23** at full suite **327 passed / 1 failed**, where the 1 failure (`testPlanWeeksGroupByCalendarWeekAndTotalDistance`) reproduces on unmodified HEAD (Hebrew-locale simulator vs English month-label assertion; pre-existing, unrelated) and 3 new route tests were confirmed red\u2192green",
+      "parsedLastUpdated": "2026-07-24",
+      "parsedActiveStory": "1.1.3 (28) release on branch `claude/release-1.1.3-routes` \u2014 version bumped, `fastlane/metadata/en-US/release_notes.txt` rewritten for the route feature. Archive/upload/submit are founder-only"
     },
     {
       "id": "resumebuilder-ios",
       "name": "Resumely iOS",
-      "state": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
-      "nextAction": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
-      "blockerCount": 1,
+      "state": "WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending",
+      "nextAction": "Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
+      "blockerCount": 2,
       "blockers": [
-        "None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`"
+        "Live 1.4.5 cannot be called fully operational until WP-53 ships",
+        "no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified"
       ],
       "gtm": {
         "exists": false,
@@ -1563,12 +1573,21 @@
       },
       "plans": [
         {
+          "title": "Optimization ID Preservation (WP-53)",
+          "path": "docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+          "date": "2026-07-23",
+          "status": null,
+          "kind": "plan",
+          "sourceBranch": "main",
+          "source": "worktree"
+        },
+        {
           "title": "Resumely Activation Cliff: Evidence and Fix Plan",
           "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1577,7 +1596,7 @@
           "date": "2026-07-16",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1586,7 +1605,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "main",
+          "sourceBranch": "codex/wp-53-optimization-id-preservation",
           "source": "primary"
         },
         {
@@ -1595,7 +1614,7 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1604,7 +1623,7 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1613,7 +1632,7 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1622,7 +1641,7 @@
           "date": "2026-06-26",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1631,7 +1650,7 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1640,7 +1659,7 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1649,7 +1668,7 @@
           "date": "2026-06-22",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1658,7 +1677,7 @@
           "date": "2026-06-18",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1667,7 +1686,7 @@
           "date": "2026-06-18",
           "status": "App Store live; build 5 in review",
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1676,7 +1695,7 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1685,7 +1704,7 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1694,7 +1713,7 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1703,7 +1722,7 @@
           "date": "2026-06-12",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1712,7 +1731,7 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1721,7 +1740,7 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1730,7 +1749,7 @@
           "date": "2026-06-11",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1739,7 +1758,7 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1748,7 +1767,7 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1757,7 +1776,7 @@
           "date": "2026-06-05",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1766,7 +1785,7 @@
           "date": "2026-06-03",
           "status": "Submitted for Review",
           "kind": "plan",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1775,7 +1794,7 @@
           "date": "2026-05-31",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -1784,24 +1803,24 @@
           "date": null,
           "status": null,
           "kind": "spec",
-          "sourceBranch": "main",
+          "sourceBranch": "codex/wp-53-optimization-id-preservation",
           "source": "primary"
         }
       ],
       "dirty": true,
       "dirtyCount": 7,
-      "extraWorktrees": 3,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-22 a604fac Merge pull request #119 from nadavyigal/claude/progress-1.4.5-live",
+      "extraWorktrees": 4,
+      "branch": "codex/wp-53-optimization-id-preservation...origin/codex/wp-53-optimization-id-preservation",
+      "lastCommit": "2026-07-23 0bdfb42 test(ios): bound optimization recovery polling",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-22",
+      "freshestDate": "2026-07-23",
       "evidenceGap": false,
-      "evidenceDate": "2026-07-22",
+      "evidenceDate": "2026-07-23",
       "evidenceTests": [
-        "208 XCTest"
+        "5 Swift Testing"
       ],
-      "buildStatus": "succeeded",
+      "buildStatus": null,
       "qaDocs": [
         "docs/qa/reports/wp-13-fit-check-live-smoke-2026-06-23.md"
       ],
@@ -1818,6 +1837,11 @@
         "primary:tasks/session-log.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/lessons.md",
+        "worktree:main:tasks/progress.md",
+        "worktree:main:tasks/todo.md",
+        "worktree:main:tasks/session-log.md",
+        "worktree:main:tasks/MEMORY.md",
+        "worktree:main:tasks/lessons.md",
         "worktree:codex/wp46-story-10:tasks/progress.md",
         "worktree:codex/wp46-story-10:tasks/todo.md",
         "worktree:codex/wp46-story-10:tasks/session-log.md",
@@ -1833,41 +1857,42 @@
         "worktree:detached:tasks/session-log.md",
         "worktree:detached:tasks/MEMORY.md",
         "worktree:detached:tasks/lessons.md",
-        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+        "worktree:main:docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+        "worktree:main:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:main:docs/specs/drafts/recommendation-evidence-backend-contract.md",
         "docs/specs/drafts/release-b-initiation-prompt 2.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-        "worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-        "worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+        "worktree:main:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-stories.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-spec.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-brief.md",
+        "worktree:main:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+        "worktree:main:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+        "worktree:main:docs/specs/resume-aha-moments.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-stories.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-spec.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-brief.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+        "worktree:main:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+        "worktree:main:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+        "worktree:main:docs/specs/app-store-screenshot-generator.md",
+        "worktree:main:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+        "worktree:main:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
         "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
       ],
       "taskSource": {
         "kind": "primary",
-        "branch": "main"
+        "branch": "codex/wp-53-optimization-id-preservation"
       },
-      "sourceConfidence": "Medium",
+      "sourceConfidence": "High",
       "preferredSource": "tasks/progress.md",
-      "parsedLastValidation": "2026-07-22 \u2014 Apple lookup API confirms 1.4.5 public (store ground truth). Pre-release validation is unchanged from the block below (focused `AnalyticsServiceTests` 22/22; full suite **208 XCTest passed / 1 intentional skip / 0 failures** plus 5 swift-testing, `** TEST SUCCEEDED **`, iPhone 17 iOS 26.5; unsigned generic-iOS Release build `** BUILD SUCCEEDED **`; EN and HE launch smoke both PASS). **Not validated:** no post-release PostHog read taken \u2014 the build is hours old and the funnel is not yet readable; physical-device journey on 1.4.5 still not run",
-      "parsedLastUpdated": "2026-07-22",
-      "parsedActiveStory": "None in flight"
+      "parsedLastValidation": "2026-07-23 \u2014 CodeRabbit follow-up: focused recovery/journey **13/13**, apply parsing **10/10**, full suite **216 passed / 1 intentional skip / 0 failures** (includes 5 Swift Testing tests) on iPhone 17 iOS 26.5. Two deterministic suspended-request tests prove late failure cannot overwrite a newer optimization and late success cannot restore state after sign-out. Initial WP-53 gates remain green: unsigned generic-iOS Release build **SUCCEEDED**; Debug build/install/launch and Home screenshot smoke **PASS**. PostHog T+1 still has **0 clean users**",
+      "parsedLastUpdated": "2026-07-23",
+      "parsedActiveStory": "WP-53 \u2014 optimization ID preservation across transient history failures"
     },
     {
       "id": "runsmart-web",
@@ -2011,7 +2036,7 @@
       "branch": "fix/plan-eval-key-preflight...origin/fix/plan-eval-key-preflight",
       "lastCommit": "2026-07-21 c7e4f57 fix(eval): make the plan-generator eval runnable locally and fail honestly",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-07-21",
       "evidenceGap": false,
       "evidenceDate": "2026-07-21",
@@ -2175,7 +2200,7 @@
       "branch": "fix/resume-eval-key-preflight...origin/fix/resume-eval-key-preflight",
       "lastCommit": "2026-07-21 7394f8c fix(eval): make the resume-optimizer eval runnable locally and fail honestly",
       "stale": false,
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "freshestDate": "2026-07-21",
       "evidenceGap": false,
       "evidenceDate": "2026-07-21",
@@ -2234,8 +2259,8 @@
           "date": "2026-07-12",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Founder Advisor \u2014 Design",
@@ -2243,8 +2268,8 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Founder Advisor Implementation Plan",
@@ -2252,8 +2277,8 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "OS Improvement Plan Completion Implementation Plan",
@@ -2261,8 +2286,8 @@
           "date": "2026-07-01",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "RunSmart Hebrew-First Distribution Playbook",
@@ -2270,8 +2295,8 @@
           "date": "2026-06-22",
           "status": "draft",
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "2026-06-07 Obsidian Integration Plan",
@@ -2279,8 +2304,8 @@
           "date": "2026-06-07",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Design: Pre-Launch Sprint \u2014 Two-Track GTM Prep",
@@ -2288,8 +2313,8 @@
           "date": "2026-06-04",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Design: Morning Brief Prompt",
@@ -2297,8 +2322,8 @@
           "date": "2026-05-24",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Claude Code Setup Overhaul \u2014 Design Spec",
@@ -2306,8 +2331,8 @@
           "date": "2026-05-20",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Claude Code Setup Overhaul \u2014 Implementation Plan",
@@ -2315,18 +2340,18 @@
           "date": "2026-05-20",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         }
       ],
       "dirty": true,
-      "dirtyCount": 1,
-      "extraWorktrees": 1,
-      "branch": "main...origin/main",
-      "lastCommit": "2026-07-22 cf9c90d5 Merge pull request #37 from nadavyigal/claude/hq-founder-actions-both-live",
+      "dirtyCount": 16,
+      "extraWorktrees": 0,
+      "branch": "main...origin/main [ahead 2]",
+      "lastCommit": "2026-07-24 1bb9c64b Merge branch 'claude/ceo-review-2026-07-24'",
       "stale": false,
       "freshness": "Fresh",
-      "freshestDate": "2026-07-22",
+      "freshestDate": "2026-07-24",
       "evidenceGap": true,
       "evidenceDate": "2026-07-21",
       "evidenceTests": [],
@@ -2338,19 +2363,16 @@
         "primary:tasks/progress.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/ERRORS.md",
-        "worktree:detached:tasks/progress.md",
-        "worktree:detached:tasks/MEMORY.md",
-        "worktree:detached:tasks/ERRORS.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-        "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-        "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-        "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-        "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-        "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-        "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-        "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+        "docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+        "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "docs/superpowers/plans/2026-07-02-founder-advisor.md",
+        "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+        "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+        "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+        "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+        "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+        "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
       "taskSource": {
         "kind": "primary",
@@ -2400,9 +2422,9 @@
       "role": "iOS Release / Product Engineer",
       "repoState": "Dirty",
       "branch": "main...origin/main",
-      "nextAction": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "nextAction": "**Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -2433,12 +2455,12 @@
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/MEMORY.md",
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/ERRORS.md",
         "worktree:fix/flexweek-duplicate-slot-ids:tasks/lessons.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/progress.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/todo.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/session-log.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/MEMORY.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/ERRORS.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:tasks/lessons.md",
+        "worktree:detached:tasks/progress.md",
+        "worktree:detached:tasks/todo.md",
+        "worktree:detached:tasks/session-log.md",
+        "worktree:detached:tasks/MEMORY.md",
+        "worktree:detached:tasks/ERRORS.md",
+        "worktree:detached:tasks/lessons.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/progress.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/todo.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/session-log.md",
@@ -2446,10 +2468,10 @@
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/ERRORS.md",
         "worktree:claude/apple-chain-diagnosis-252a35:tasks/lessons.md",
         ".agent-os/distribution/gtm-plan.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:detached:docs/specs/2026-07-21-clean-install-telemetry-integrity.md",
+        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/specs/2026-07-18-adaptive-coach-phase1.md",
-        "worktree:claude/healthkit-sync-journey-d6ce3e:docs/plans/2026-07-13-ftux-upgrade-plan.md",
+        "worktree:detached:docs/plans/2026-07-13-ftux-upgrade-plan.md",
         "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-26-build18-asc-submission-and-garmin-resend.md",
         "worktree:feat/adaptive-coach-phase1:docs/superpowers/plans/2026-06-18-build15-resubmit-cleanup.md",
         "worktree:feat/adaptive-coach-phase1:docs/plans/2026-06-11-code-review-fix-plan.md",
@@ -2476,17 +2498,17 @@
         "worktree:feat/adaptive-coach-phase1:docs/specs/demo-mode-simulator-recording.md",
         "worktree:feat/adaptive-coach-phase1:.agent-os/distribution/weekly-plan.md"
       ],
-      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-release watch. Nothing to build until the instrument reports. Next action: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install. Known blockers: None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release / Product Engineer for RunSmart iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: 1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit. Next action: **Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships. Known blockers: Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month). Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "resumebuilder-ios",
       "project": "Resumely iOS",
       "role": "iOS Release Manager",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
-      "nextAction": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
-      "sourceConfidence": "Medium",
-      "trustDirective": "Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting.",
+      "branch": "codex/wp-53-optimization-id-preservation...origin/codex/wp-53-optimization-id-preservation",
+      "nextAction": "Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
+      "sourceConfidence": "High",
+      "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics.",
       "evidence": [
         "tasks/MEMORY.md",
         "tasks/todo.md",
@@ -2500,6 +2522,11 @@
         "primary:tasks/session-log.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/lessons.md",
+        "worktree:main:tasks/progress.md",
+        "worktree:main:tasks/todo.md",
+        "worktree:main:tasks/session-log.md",
+        "worktree:main:tasks/MEMORY.md",
+        "worktree:main:tasks/lessons.md",
         "worktree:codex/wp46-story-10:tasks/progress.md",
         "worktree:codex/wp46-story-10:tasks/todo.md",
         "worktree:codex/wp46-story-10:tasks/session-log.md",
@@ -2515,33 +2542,34 @@
         "worktree:detached:tasks/session-log.md",
         "worktree:detached:tasks/MEMORY.md",
         "worktree:detached:tasks/lessons.md",
-        "worktree:detached:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/recommendation-evidence-backend-contract.md",
+        "worktree:main:docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+        "worktree:main:docs/plans/2026-07-19-activation-cliff-fix-plan.md",
+        "worktree:main:docs/specs/drafts/recommendation-evidence-backend-contract.md",
         "docs/specs/drafts/release-b-initiation-prompt 2.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/fit-first-triage-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
-        "worktree:codex/wp46-story-10:docs/specs/resume-aha-moments.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-spec.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/resume-aha-moments-brief.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-stories.md",
-        "worktree:codex/wp46-story-10:docs/specs/drafts/app-store-screenshot-generator-brief.md",
-        "worktree:codex/wp46-story-10:docs/specs/app-store-screenshot-generator.md",
-        "worktree:codex/wp46-story-10:docs/superpowers/plans/2026-06-03-app-store-submission.md",
-        "worktree:codex/wp46-story-10:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-stories.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-spec.md",
+        "worktree:main:docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
+        "worktree:main:docs/superpowers/plans/2026-06-26-v1.1-build7-asc-submission.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-stories.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-spec.md",
+        "worktree:main:docs/specs/drafts/fit-first-triage-brief.md",
+        "worktree:main:docs/superpowers/specs/2026-06-18-v5-build-ship-design.md",
+        "worktree:main:docs/superpowers/plans/2026-06-18-v5-build-ship.md",
+        "worktree:main:docs/specs/resume-aha-moments.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-stories.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-spec.md",
+        "worktree:main:docs/specs/drafts/resume-aha-moments-brief.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-smoke-test-ats-submit-and-screenshot-plan.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-code-review-remediation-plan.md",
+        "worktree:main:docs/superpowers/plans/2026-06-11-code-review-implementation-prompt.md",
+        "worktree:main:docs/specs/drafts/app-store-screenshot-generator-stories.md",
+        "worktree:main:docs/specs/drafts/app-store-screenshot-generator-brief.md",
+        "worktree:main:docs/specs/app-store-screenshot-generator.md",
+        "worktree:main:docs/superpowers/plans/2026-06-03-app-store-submission.md",
+        "worktree:main:docs/specs/resumely-pre-submission-ux-ui-transformation.md",
         "docs/specs/drafts/first-time-user-journey-upgrade-figma-board 2.md"
       ],
-      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet. Next action: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86. Known blockers: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
+      "copyPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending. Next action: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate. Known blockers: Live 1.4.5 cannot be called fully operational until WP-53 ships; no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     },
     {
       "projectId": "runsmart-web",
@@ -2618,7 +2646,7 @@
       "project": "Agentic OS",
       "role": "Agentic OS Operator",
       "repoState": "Dirty",
-      "branch": "main...origin/main",
+      "branch": "main...origin/main [ahead 2]",
       "nextAction": "Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4",
       "sourceConfidence": "High",
       "trustDirective": "Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence.",
@@ -2628,34 +2656,32 @@
         "primary:tasks/progress.md",
         "primary:tasks/MEMORY.md",
         "primary:tasks/ERRORS.md",
-        "worktree:detached:tasks/progress.md",
-        "worktree:detached:tasks/MEMORY.md",
-        "worktree:detached:tasks/ERRORS.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
-        "worktree:detached:docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-02-founder-advisor.md",
-        "worktree:detached:docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
-        "worktree:detached:docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
-        "worktree:detached:docs/superpowers/plans/2026-06-07-obsidian-integration.md",
-        "worktree:detached:docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
-        "worktree:detached:docs/superpowers/specs/2026-05-24-morning-brief-design.md",
-        "worktree:detached:docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
-        "worktree:detached:docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
+        "docs/superpowers/plans/2026-07-12-portfolio-activation-playbook-v2.md",
+        "docs/superpowers/specs/2026-07-02-founder-advisor-design.md",
+        "docs/superpowers/plans/2026-07-02-founder-advisor.md",
+        "docs/superpowers/plans/2026-07-01-os-improvement-plan-completion.md",
+        "docs/superpowers/plans/2026-06-22-runsmart-hebrew-first-distribution-playbook.md",
+        "docs/superpowers/plans/2026-06-07-obsidian-integration.md",
+        "docs/superpowers/specs/2026-06-04-pre-launch-sprint-design.md",
+        "docs/superpowers/specs/2026-05-24-morning-brief-design.md",
+        "docs/superpowers/specs/2026-05-20-claude-code-setup-overhaul-design.md",
+        "docs/superpowers/plans/2026-05-20-claude-code-setup-overhaul.md"
       ],
       "copyPrompt": "Act as Agentic OS Operator for Agentic OS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. Note: the repo has commits newer than the last recorded validation, so re-validate before trusting the recorded evidence. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/progress.md, primary:tasks/progress.md, primary:tasks/MEMORY.md. Current state: Daily portfolio operations and evidence reconciliation. Next action: Fix the two red eval harnesses \u2014 they are the only deterministic quality gates the products have and both have been down for over a week. Start with the RunSmart plan-generator eval (`gh run view --log` on the newest failure; the step fails before writing `report.json`, so check the OPENAI_API_KEY repo secret first). Then, in the Resumely iOS repo, review and merge `claude/session-ec92e2` and prepare 1.4.4. Known blockers: Both product eval harnesses are red (RunSmart >=11 gated runs, ResumeBuilder >=7). Releases that depend on eval evidence have no working gate until these are fixed. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval."
     }
   ],
   "executiveOverview": {
-    "headline": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
-    "portfolioState": "RunSmart iOS \u2014 Post-release watch. Nothing to build until the instrument reports: **Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** \u2192 read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** \u2192 a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true \u2014 that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install \u00b7 Resumely iOS \u2014 Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86 \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
+    "headline": "Resumely iOS: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
+    "portfolioState": "RunSmart iOS \u2014 1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit: **Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record \u2192 save \u2192 benchmark \u2192 re-run \u2192 comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode \u2192 upload \u2192 submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) \u2014 one event decides it; True \u2192 name the precondition and fix with copy + a precondition check; False \u2192 open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships \u00b7 Resumely iOS \u2014 WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate \u00b7 RunSmart Web \u2014 Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes \u00b7 ResumeBuilder AI (Web) \u2014 WP-29 Resumely web funnel P0 fixes \u2014 S1-S4 completed; S5 anonymous-session carryover is next",
     "focus": [
       "Resumely iOS: founder device smoke on iPhone 13, then Xcode Organizer archive + ASC upload.",
       "RunSmart iOS: monitor build 8 review \u2014 approved triggers GTM; rejected triggers minimal fix as build 9.",
       "RunSmart iOS: GTM plan at .agent-os/distribution/gtm-plan.md is ready to activate on approval."
     ],
     "risks": [
-      "RunSmart iOS: None technical. Traffic-gated: at ~26 launchers/month a failure event may take days to arrive. Read hygiene applies to every query \u2014 exclude the founder's own PostHog person and QA/bot bursts, and fingerprint the project before reading (the MCP banner has claimed 171597 while serving 270848)",
-      "Resumely iOS: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`",
+      "RunSmart iOS: Device-smoke of the route loop and archive/upload/submit are founder-only (physical device + ASC access). **No DB gate remains** \u2014 the route-tables migration is already live in production. Sign-in telemetry read stays traffic-gated (~26 launchers/month)",
+      "Resumely iOS: Live 1.4.5 cannot be called fully operational until WP-53 ships",
+      "Resumely iOS: no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified",
       "RunSmart Web: **Founder action required** \u2014 the plan-generator eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Garmin relaunch work is paused by decision, not blocked on founder action. `GARMIN_TEST_CLIENT_ID` / `GARMIN_TEST_CLIENT_SECRET` remain intentionally absent from production",
       "RunSmart Web: the WP-26 Internal Test app credentials stay non-production only, per WP-25's credential guard",
       "ResumeBuilder AI (Web): **Founder action required** \u2014 the resume-optimizer eval cannot go green in CI until `OPENAI_API_KEY` is added as a repo secret (`gh secret set OPENAI_API_KEY`). Claude cannot set credentials. Until then the nightly stays red and the eval gate is not actually gating anything. Gate A remains closed by decision",
@@ -2721,27 +2747,29 @@
   ],
   "dailyRunResult": {
     "lastCommand": "./agentic-os refresh",
-    "lastRunAt": "2026-07-22 20:55",
+    "lastRunAt": "2026-07-24 09:11",
     "checksStatus": "Pending verify",
     "checksCompletedAt": "",
     "localhostUrl": "http://127.0.0.1:8787/portfolio-hq.html",
     "recommendedPromptProject": "Resumely iOS",
     "recommendedPromptRole": "iOS Release Manager",
-    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is Medium: the status is parsed from local task files but validation is unclear. Verify the current state in the repo before acting. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet. Next action: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86. Known blockers: None. The two founder gates that blocked the previous three entries (no ASC upload credential on this machine, no physical device online) did not block this release \u2014 it shipped. Measurement is now traffic-gated only. **Read hygiene, mandatory on every query above:** exclude the founder's own PostHog person, `is_internal_tester` persons and QA/bot bursts before computing anything (54 of 199 persons carried the flag and generated 49% of events on the 2026-07-21 read), and fingerprint the project before reading \u2014 the MCP banner has claimed 171597 while serving 270848. Two retired events produce silent false zeros for anyone re-querying: `resume_uploaded` lost its production call site in 1.4.3, and `resume_upload_succeeded` sits behind the sign-in guard so it can never exceed `sign_in_completed`. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
+    "recommendedPrompt": "Act as iOS Release Manager for Resumely iOS. Source confidence is High: the status below is parsed from current local task files with validation evidence. You may proceed from it, but still open the repo to confirm specifics. First read the repo AGENTS.md if it exists, then read the listed source files: tasks/MEMORY.md, tasks/todo.md, tasks/progress.md, tasks/session-log.md. Current state: WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending. Next action: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate. Known blockers: Live 1.4.5 cannot be called fully operational until WP-53 ships; no clean external 1.4.5 PostHog traffic was present at the T+1 check. Physical-device offline recovery is still unverified. Deliver one progress-making work packet only: objective, files to inspect, exact implementation or QA steps, acceptance criteria, checks to run, and what must not be touched. Do not deploy, submit, email, bill, migrate, or change production services without explicit approval.",
     "targetRepoState": "Dirty",
-    "targetBranch": "main...origin/main",
+    "targetBranch": "codex/wp-53-optimization-id-preservation...origin/codex/wp-53-optimization-id-preservation",
     "readyForNextSession": false,
-    "summary": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 \u2014 cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint \u2014 report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open \u2192 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
+    "summary": "Resumely iOS: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible \u2192 terminate \u2192 force history fetch offline \u2192 relaunch \u2192 Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
     "nextActions": [
       {
-        "title": "Restore dashboard trust",
-        "detail": "Fix the sync or freshness warning, then run ./agentic-os morning again.",
-        "type": "system"
+        "title": "Resolve contradiction before execution",
+        "detail": "Resumely is declared 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending' but PostHog shows 94 live users in 7d.",
+        "type": "system",
+        "where": "Agentic OS repo",
+        "copyPrompt": "Confirm the contradiction fix to update status docs manually (one-tap confirm, no auto-write)."
       }
     ],
-    "topBanner": null,
-    "contradictionCount": 0,
-    "confirmProposedFix": null
+    "topBanner": "\u26a0\ufe0f Status contradicts reality",
+    "contradictionCount": 2,
+    "confirmProposedFix": "Ground truth disagrees with declared status. Confirm to update the affected tasks/progress.md entries. No auto-write was performed."
   },
   "driftWarnings": [],
   "openQuestionsBoard": [
@@ -2801,7 +2829,7 @@
           "date": "2026-07-21",
           "status": "Implemented and verified for 1.1.2 (26) release",
           "kind": "spec",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2810,7 +2838,7 @@
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2828,7 +2856,7 @@
           "date": "2026-07-13",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "claude/healthkit-sync-journey-d6ce3e",
+          "sourceBranch": "detached",
           "source": "worktree"
         },
         {
@@ -2863,16 +2891,25 @@
     {
       "project": "Resumely iOS",
       "projectId": "resumebuilder-ios",
-      "total": 25,
+      "total": 26,
       "shown": 6,
       "plans": [
+        {
+          "title": "Optimization ID Preservation (WP-53)",
+          "path": "docs/superpowers/plans/2026-07-23-optimization-id-preservation.md",
+          "date": "2026-07-23",
+          "status": null,
+          "kind": "plan",
+          "sourceBranch": "main",
+          "source": "worktree"
+        },
         {
           "title": "Resumely Activation Cliff: Evidence and Fix Plan",
           "path": "docs/plans/2026-07-19-activation-cliff-fix-plan.md",
           "date": "2026-07-19",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -2881,7 +2918,7 @@
           "date": "2026-07-16",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -2890,7 +2927,7 @@
           "date": "2026-07-15",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "main",
+          "sourceBranch": "codex/wp-53-optimization-id-preservation",
           "source": "primary"
         },
         {
@@ -2899,7 +2936,7 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         },
         {
@@ -2908,16 +2945,7 @@
           "date": "2026-07-14",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
-          "source": "worktree"
-        },
-        {
-          "title": "Product Brief \u2014 Trustworthy First-Time Journey Upgrade",
-          "path": "docs/specs/drafts/first-time-user-journey-upgrade-brief.md",
-          "date": "2026-07-14",
-          "status": null,
-          "kind": "spec",
-          "sourceBranch": "codex/wp46-story-10",
+          "sourceBranch": "main",
           "source": "worktree"
         }
       ]
@@ -3067,8 +3095,8 @@
           "date": "2026-07-12",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Founder Advisor \u2014 Design",
@@ -3076,8 +3104,8 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "spec",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "Founder Advisor Implementation Plan",
@@ -3085,8 +3113,8 @@
           "date": "2026-07-02",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "OS Improvement Plan Completion Implementation Plan",
@@ -3094,8 +3122,8 @@
           "date": "2026-07-01",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "RunSmart Hebrew-First Distribution Playbook",
@@ -3103,8 +3131,8 @@
           "date": "2026-06-22",
           "status": "draft",
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         },
         {
           "title": "2026-06-07 Obsidian Integration Plan",
@@ -3112,8 +3140,8 @@
           "date": "2026-06-07",
           "status": null,
           "kind": "plan",
-          "sourceBranch": "detached",
-          "source": "worktree"
+          "sourceBranch": "main",
+          "source": "primary"
         }
       ]
     }
@@ -5829,13 +5857,14 @@
   },
   "repoIntegrity": {
     "branch": "main",
-    "uncommitted": 0,
-    "extraWorktrees": 1,
-    "ahead": 0,
+    "uncommitted": 1,
+    "extraWorktrees": 0,
+    "ahead": 2,
     "behind": 0,
     "synced": false,
     "notes": [
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "1 uncommitted change(s). Commit so nothing is lost between sessions/tools.",
+      "2 local commit(s) not pushed to the upstream branch."
     ]
   },
   "planExecution": {
@@ -5967,14 +5996,15 @@
     "level": "refresh_required",
     "label": "Refresh required",
     "reasons": [
-      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync \u2014 do not re-run ./agentic-os morning for this.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "Status contradicts reality. Confirm and reconcile status before acting.",
+      "Resumely is declared 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending' but PostHog shows 94 live users in 7d.",
+      "Resumely App Store state is LIVE (undated) but declared state is 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending'."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (3)."
+      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
     ]
   },
   "latestCooReview": {
@@ -5986,13 +6016,19 @@
     "path": "executive-os/COO-LATEST-REVIEW.md"
   },
   "strandedWork": {
-    "generatedOn": "2026-07-22",
+    "generatedOn": "2026-07-24",
     "items": [
       {
         "project": "RunSmart iOS",
         "type": "local-only",
         "detail": "backup-7b15df1-docs: unmerged commits, never pushed, last commit 2026-07-13",
         "action": "Push backup-7b15df1-docs and open a PR, or consciously discard it."
+      },
+      {
+        "project": "RunSmart iOS",
+        "type": "local-only",
+        "detail": "claude/apple-chain-diagnosis-252a35: unmerged commits, remote branch deleted, last commit 2026-07-22",
+        "action": "Push claude/apple-chain-diagnosis-252a35 and open a PR, or consciously discard it."
       },
       {
         "project": "RunSmart iOS",
@@ -6051,7 +6087,7 @@
       {
         "project": "RunSmart iOS",
         "type": "worktree",
-        "detail": "worktree on claude/healthkit-sync-journey-d6ce3e at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/healthkit-sync-journey-d6ce3e",
+        "detail": "worktree on detached at /Users/nadavyigal/Documents/Projects /IOS RunSmart light /IOS RunSmart app/.claude/worktrees/healthkit-sync-journey-d6ce3e",
         "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
@@ -6107,6 +6143,12 @@
         "type": "local-only",
         "detail": "pr-72-review: unmerged commits, never pushed, last commit 2026-06-22",
         "action": "Push pr-72-review and open a PR, or consciously discard it."
+      },
+      {
+        "project": "Resumely iOS",
+        "type": "worktree",
+        "detail": "worktree on main, 1 uncommitted file(s) at /Users/nadavyigal/Documents/Projects /ResumeBuilder/ResumeBuilder IOS APP-review-prompt",
+        "action": "Land or discard this worktree, then `git worktree remove` it."
       },
       {
         "project": "Resumely iOS",
@@ -6182,20 +6224,20 @@
       },
       {
         "project": "Agentic OS",
+        "type": "default-branch",
+        "detail": "main has 2 unpushed commit(s)",
+        "action": "Sync the default branch first: pull, then push."
+      },
+      {
+        "project": "Agentic OS",
         "type": "unpushed",
         "detail": "dashboard/ftux-submissions-and-artifacts: 3 unpushed commit(s), last commit 2026-07-16",
         "action": "Push dashboard/ftux-submissions-and-artifacts and open a PR, or explicitly hand it off."
       },
       {
         "project": "Agentic OS",
-        "type": "worktree",
-        "detail": "worktree on detached at /Users/nadavyigal/Documents/Projects /Agentic OS/.claude/worktrees/agentic-os-session-ae5ec5",
-        "action": "Land or discard this worktree, then `git worktree remove` it."
-      },
-      {
-        "project": "Agentic OS",
         "type": "dirty",
-        "detail": "1 uncommitted file(s) in the primary working tree",
+        "detail": "16 uncommitted file(s) in the primary working tree",
         "action": "Commit or discard before the next session ends."
       },
       {
@@ -6205,18 +6247,18 @@
         "action": "Delete merged local branches to cut noise."
       }
     ],
-    "actionableCount": 34,
+    "actionableCount": 36,
     "note": "Work that exists only on this machine or only on a side branch/worktree. Anything listed here is at risk of being forgotten. Rebuilt every refresh from git; never hand-edit."
   },
   "packetHygiene": [],
   "groundTruth": {
-    "generatedAt": "2026-07-22 20:55",
+    "generatedAt": "2026-07-24 09:11",
     "apps": [
       {
         "projectId": 171597,
         "appId": "runsmart-ios",
         "app": "RunSmart",
-        "declaredState": "Post-release watch. Nothing to build until the instrument reports",
+        "declaredState": "1.1.3 (28) release prep \u2014 route feature merged to `main`, `MARKETING_VERSION` 1.1.2 \u2192 1.1.3 and `CURRENT_PROJECT_VERSION` 27 \u2192 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive \u2192 upload \u2192 submit",
         "git": {
           "available": true,
           "tag": "pre-consolidation-r2",
@@ -6227,7 +6269,7 @@
         "projectId": 270848,
         "appId": "resumebuilder-ios",
         "app": "Resumely",
-        "declaredState": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
+        "declaredState": "WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending",
         "git": {
           "available": true,
           "tag": "consolidated-2026-05-11",
@@ -6239,7 +6281,7 @@
       {
         "appId": "runsmart-ios",
         "available": true,
-        "liveUsers7d": 17,
+        "liveUsers7d": 18,
         "source": "api"
       },
       {
@@ -6265,16 +6307,68 @@
         "available": true
       }
     ],
-    "contradictions": [],
+    "contradictions": [
+      {
+        "severity": "hard",
+        "appId": "resumebuilder-ios",
+        "source": "posthog",
+        "kind": "live-users-vs-prelaunch",
+        "message": "Resumely is declared 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending' but PostHog shows 94 live users in 7d.",
+        "proposedFix": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (PostHog shows 94 users/7d). No auto-write.",
+        "confirmPrompt": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (PostHog shows 94 users/7d). No auto-write."
+      },
+      {
+        "severity": "hard",
+        "appId": "resumebuilder-ios",
+        "source": "appstore",
+        "kind": "live-vs-prelaunch",
+        "message": "Resumely App Store state is LIVE (undated) but declared state is 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending'.",
+        "proposedFix": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (App Store state live as of undated). No auto-write.",
+        "confirmPrompt": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (App Store state live as of undated). No auto-write."
+      }
+    ],
     "unavailable": [],
-    "needsConfirmation": false,
-    "proposedFix": null
+    "needsConfirmation": true,
+    "proposedFix": "Ground truth contradicts declared status. Proposed next step: confirm and update the relevant tasks/progress.md status lines. No files were auto-edited."
   },
-  "contradictions": [],
+  "contradictions": [
+    {
+      "severity": "hard",
+      "appId": "resumebuilder-ios",
+      "source": "posthog",
+      "kind": "live-users-vs-prelaunch",
+      "message": "Resumely is declared 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending' but PostHog shows 94 live users in 7d.",
+      "proposedFix": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (PostHog shows 94 users/7d). No auto-write.",
+      "confirmPrompt": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (PostHog shows 94 users/7d). No auto-write."
+    },
+    {
+      "severity": "hard",
+      "appId": "resumebuilder-ios",
+      "source": "appstore",
+      "kind": "live-vs-prelaunch",
+      "message": "Resumely App Store state is LIVE (undated) but declared state is 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending'.",
+      "proposedFix": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (App Store state live as of undated). No auto-write.",
+      "confirmPrompt": "Confirm update for Resumely: set Current Phase to LIVE in tasks/progress.md (App Store state live as of undated). No auto-write."
+    }
+  ],
   "eodHandoff": {
-    "date": "2026-07-21",
-    "moved": [],
-    "didnt": [],
+    "date": "2026-07-22",
+    "moved": [
+      "RunSmart iOS \u2014 docs(tasks): 1.1.2 (27) is live \u2014 post-release watch, and the P0 framing it was built to serve is refuted; release: 1.1.2 (27) \u2014 sign-in diagnosis build, supersedes build 26 (#114); fix(auth): address CodeRabbit review on PR #114 \u2014 two real defects; release: 1.1.2 (27) \u2014 sign-in diagnosis build, supersedes build 26; (+7 more)",
+      "Resumely iOS \u2014 docs(tasks): 1.4.5 (15) is live \u2014 the first build whose activation number means anything; index on (no branch): 39654f1 fix(ios): repair the activation milestone emission (WP-51); feat(ios): failure-event diagnostics + 1.4.5 (15) prep (WP-52)",
+      "Agentic OS \u2014 hq: regenerate from clean main so the trust banner reflects merged state; hq: founder action set for both apps live, and correct EXD-023 where it is now false; refresh: both iOS apps live, and fix the parser bug that hid every bold status block; refresh: refuse to write into a vault checkout that is behind its remote (#35); (+6 more)",
+      "Builder OS Vault \u2014 vault: regenerate Brain Map after the post-release refresh; vault: both iOS apps live (1.1.2 / 1.4.5) + the sign-in P0 refutation; vault: rewrite Dashboard from a wiki-index duplicate into a habit cockpit; vault: bind QuickAdd capture hotkeys + regenerate Brain Map from the synced vault; (+2 more)",
+      "Claude Code sessions today: Builder OS Vault, ResumeBuilder, RunSmart",
+      "Cursor \u2014 _fill manually (Cursor sessions aren't introspectable)_"
+    ],
+    "didnt": [
+      "**No PostHog read of any kind.** Both builds are hours old; a cohort query today returns a number that looks like a finding and is not one. Filed the dated watch schedule instead of a premature figure",
+      "**No review prompt built.** It is the top recommendation and the only build worth doing during the measurement wait, but it was scoped rather than shipped today",
+      "**No ASO promo text submitted.** Both drafts have now been sitting written since 2026-07-11; this needs an ASC login, ~20 minutes, and no build",
+      "**Spend split not acted on.** 28.9% product vs a >=60% target ($1,175 product vs $2,898 meta, 30d). Flagged by every refresh today, addressed by none of them",
+      "**45 open packets / 34 stranded items untouched**, deliberately. Sweeping them during a measurement wait is the trap, not the work",
+      "`Localizable.xcstrings` left modified and unstaged in both iOS repos; 8 stale product worktrees left in place. Both pre-existing and out of scope"
+    ],
     "carry": [
       ":"
     ],

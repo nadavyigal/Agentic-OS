@@ -1,47 +1,55 @@
 {
   "schemaVersion": 1,
   "audience": "founder",
-  "generatedAt": "2026-07-22 17:55 UTC",
+  "generatedAt": "2026-07-24 06:11 UTC",
   "sources": {
-    "status": "2026-07-22 20:55",
-    "usage": "2026-07-22T17:55:55.795101+00:00",
+    "status": "2026-07-24 09:11",
+    "usage": "2026-07-24T06:11:06.244680+00:00",
     "manual": "2026-07-22",
     "manualOldestVerified": "2026-07-15"
   },
   "trust": {
-    "level": "refresh_required",
-    "label": "Refresh required",
+    "level": "mixed",
+    "label": "Mixed freshness",
     "reasons": [
-      "To clear this: consolidate 1 worktree(s) with ./agentic-os clean --apply. A refresh cannot fix sync — do not re-run ./agentic-os morning for this.",
-      "1 extra worktree(s) open. Consolidate to main; do not work in worktrees."
+      "1 cross-layer contradiction needs review before acting.",
+      "Status contradicts reality. Confirm and reconcile status before acting.",
+      "Resumely is declared 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending' but PostHog shows 94 live users in 7d.",
+      "Resumely App Store state is LIVE (undated) but declared state is 'WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending'."
     ],
     "refreshToday": true,
     "needsNextPacketCount": 3,
     "hygieneWarnings": [
       "Uncommitted files in product repos: RunSmart iOS, Resumely iOS.",
-      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (3)."
+      "Extra product worktrees retained for review: RunSmart iOS (5), Resumely iOS (4)."
     ]
   },
-  "consistencyIssues": [],
+  "consistencyIssues": [
+    {
+      "id": "manual-stale-artifacts",
+      "source": "Manual layer freshness",
+      "message": "Manual block 'artifacts' was last verified 2026-07-15 (9 days ago). Re-check it against git, the App Store, or PostHog before acting on it — a refresh cannot make a hand-maintained claim true."
+    }
+  ],
   "command": {
-    "bestNextAction": "Resumely iOS: **In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86"
+    "bestNextAction": "Resumely iOS: Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible → terminate → force history fetch offline → relaunch → Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate"
   },
   "products": [
     {
       "name": "RunSmart iOS",
-      "state": "Post-release watch. Nothing to build until the instrument reports",
-      "nextAction": "**Read `has_underlying_error` from the first real `sign_in_failed` on 1.1.2 (target 2026-07-29, T+7).** The verdict is the property value, not the count, and one event decides it. **True** → read `underlying_error_domain`/`_code`, name the precondition (device not signed into iCloud vs Apple ID without 2FA vs genuine app fault), fix with copy plus a precondition check. **False** → a genuinely bare 1000 the device cannot diagnose, which opens **WP-53** (email or guest fallback) on evidence rather than by elimination. **Third possible outcome, name it in advance:** code-1000 volume drops with `has_underlying_error` never going true — that means the iCloud-naming copy was the fix and WP-53 stays closed. Do not read a quiet funnel as \"no data\". Cheap prior check at T+1 (2026-07-23): confirm events arrive carrying `app_version` 1.1.2, which also re-validates the 1.1.1 fix for analytics losing app version/build after a fresh install",
+      "state": "1.1.3 (28) release prep — route feature merged to `main`, `MARKETING_VERSION` 1.1.2 → 1.1.3 and `CURRENT_PROJECT_VERSION` 27 → 28 across all 6 configs, App Store release notes rewritten. Awaiting the founder device-smoke gate, then archive → upload → submit",
+      "nextAction": "**Founder: device-smoke the route loop, then ship 1.1.3 (28).** Run record → save → benchmark → re-run → comparison once on a physical device (the one gate the QA report left open), then archive 1.1.3 (28) in Xcode → upload → submit. **In parallel and unchanged:** read `has_underlying_error` from the first real `sign_in_failed` on live 1.1.2 (target **2026-07-29, T+7**) — one event decides it; True → name the precondition and fix with copy + a precondition check; False → open WP-53 (email/guest fallback) on evidence. Cheap prior check still owed from T+1 (2026-07-23): confirm live events arrive carrying `app_version` 1.1.2 **and** 1.1.3 once it ships",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-22",
+      "evidenceDate": "2026-07-24",
       "dirty": true,
       "dirtyCount": 1
     },
     {
       "name": "Resumely iOS",
-      "state": "Post-release watch on the repaired instrument. The 1.4.5 cohort is accumulating; no read is valid yet",
-      "nextAction": "**In date order, and do not collapse them into one read.** (1) **T+1, 2026-07-23:** confirm events arrive carrying `app_version` 1.4.5 — cheapest check that the build reaches real installs. (2) **T+7, 2026-07-29:** monotonicity check, `optimized_preview_rendered` >= `export_success` on a fresh read. This validates the WP-51 instrument and is **not** an activation figure; reporting it as one repeats the error WP-50 corrected. (3) **2026-08-01:** EXD-022 reporting checkpoint — report the clean-activation count honestly, \"too early\" included; no verdict authority. (4) **T+14, 2026-08-05:** first definitive 1.4.5 cohort read against the >=20 clean-activation gate. Then **WP-48 S2-B** (`is_internal_tester` classifier on Debug/TestFlight builds), the last known measurement defect and the reason 27% of persons still contaminate raw reads, then **WP-56** (file picker, 27 open → 13 select, 48% abandonment with healthy steps either side), deliberately queued behind WP-51 so the gain is countable. Also still open: the deferred Hebrew/RTL PDF gate and triage of stale PRs #100, #96, #86",
+      "state": "WP-53 verified on `codex/wp-53-optimization-id-preservation`; PR #120 review comments addressed, push/re-review pending",
+      "nextAction": "Merge and ship WP-53 in the next hotfix build, then run one authenticated physical-device regression: completed optimization visible → terminate → force history fetch offline → relaunch → Optimized preview/export remains available. Keep the previously scheduled T+7 (2026-07-29) milestone monotonicity check and T+14 (2026-08-05) cohort read separate",
       "freshness": "Fresh",
-      "evidenceDate": "2026-07-22",
+      "evidenceDate": "2026-07-23",
       "dirty": true,
       "dirtyCount": 7
     },
@@ -49,7 +57,7 @@
       "name": "RunSmart Web",
       "state": "Garmin track is maintenance-only per the 2026-07-02 priority-reset decision (Resumely primary). No relaunch work in progress; only breakage fixes",
       "nextAction": "**Still paused.** Restoring actual sync for the 9 reauth_required users needs either a working production/commercial credential set (WP-26 Steps 3-4) or pointing real users at the Evaluation-tier Internal Test app (the same Terms violation that got the old app deactivated) — there is no maintenance-mode-compatible fix available. This is a fact worth surfacing at the day-30 revisit (~2026-08-01), not a reason to resume now. See Agentic OS WP-26/27/28 for the paused relaunch scope",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "evidenceDate": "2026-07-21",
       "dirty": true,
       "dirtyCount": 8
@@ -58,7 +66,7 @@
       "name": "ResumeBuilder AI (Web)",
       "state": "WP-29 Resumely web funnel P0 fixes — S1-S4 completed; S5 anonymous-session carryover is next",
       "nextAction": "WP-29 S5 — design and implement anonymous session carryover after signup so the first dashboard is not empty",
-      "freshness": "Fresh",
+      "freshness": "Needs Review",
       "evidenceDate": "2026-07-21",
       "dirty": true,
       "dirtyCount": 10
@@ -70,7 +78,7 @@
       "freshness": "Fresh",
       "evidenceDate": "2026-07-21",
       "dirty": true,
-      "dirtyCount": 1
+      "dirtyCount": 16
     }
   ],
   "numbers": {
@@ -273,7 +281,7 @@
       "id": "refresh",
       "name": "Repo refresh (rebuilds this page)",
       "cadence": "daily",
-      "lastRan": "2026-07-22 20:55",
+      "lastRan": "2026-07-24 09:11",
       "how": "Re-reads every repo and rebuilds all auto sections of this page."
     },
     {
@@ -322,7 +330,7 @@
       "id": "usage",
       "name": "Cost tracker (token spend)",
       "cadence": "weekly",
-      "lastRan": "2026-07-22T17:55:55.795101+00:00",
+      "lastRan": "2026-07-24T06:11:06.244680+00:00",
       "how": "Collects Claude Code token cost per project (Numbers tab)."
     }
   ],
@@ -655,40 +663,41 @@
     "crossVendorReview": "For high-risk changes, implementer and reviewer must be different vendors: Composer/Grok/Luna → Opus 4.8 review; Claude → GPT-5.6 Sol review; GPT-5.6 Sol → Opus 4.8 or Fable 5 review.",
     "spendByFamily": {
       "sonnet": {
-        "cost_usd": 2083.83,
+        "cost_usd": 2152.81,
         "sessions": 85
       },
       "opus": {
-        "cost_usd": 2044.51,
-        "sessions": 50
+        "cost_usd": 2142.92,
+        "sessions": 54
       },
       "unknown": {
         "cost_usd": 0.0,
-        "sessions": 25
+        "sessions": 24
       }
     },
     "spendByTool": {
       "claude-code": {
-        "cost_usd": 4128.34,
-        "sessions": 135
+        "cost_usd": 4295.74,
+        "sessions": 139
       },
       "codex": {
         "cost_usd": 0.0,
-        "sessions": 25
+        "sessions": 24
       }
     },
     "spendWindowDays": 30,
-    "spendGeneratedAt": "2026-07-22T17:55:55.795101+00:00"
+    "spendGeneratedAt": "2026-07-24T06:11:06.244680+00:00"
   },
   "usage": {
-    "generatedAt": "2026-07-22T17:55:55.795101+00:00",
+    "generatedAt": "2026-07-24T06:11:06.244680+00:00",
     "windowDays": 30,
-    "totalCostUsd": 4128.34,
+    "totalCostUsd": 4295.74,
     "byProject": {
-      "Builder OS Vault": 2681.45,
+      "Builder OS Vault": 2742.87,
+      "RunSmart": 637.29,
       "ResumeBuilder": 610.22,
-      "RunSmart": 564.79,
       "Agentic OS": 216.32,
+      "hard-talk-webpage-73bdf3": 33.47,
       "Michal": 20.59,
       "hungry-thompson-3aa380": 17.55,
       "Remotion - video": 17.43,
